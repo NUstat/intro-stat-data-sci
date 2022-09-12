@@ -1,0 +1,16 @@
+# standard R info to ignore
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# macOS files
+.DS_Store
+
+# local files to ignore (avoid verison diffs that don't matter)
+*_cache/
+/.quarto/
+/_book/
+
+# Probably not needed unless we embed interactive tutroials or apps
+rsconnect
