@@ -12,5 +12,5 @@
 /.quarto/
 /_book/
 
-# Probably not needed unless we embed interactive tutroials or apps
+# Probably not needed unless we embed interactive tutorials or apps
 rsconnect
