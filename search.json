@@ -2,9 +2,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "intro-stat-data-sci",
+    "title": "Introduction to Statistics and Data Science",
     "section": "",
-    "text": "This is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome\n\n\n\n\n\n\nWarning\n\n\n\nPlease note that this is a “development version” of this book for the new design of STAT 202. Meaning this is a work in progress being edited and updated as we go.\nWe would appreciate any feedback on typos and errors.\n\n\n\n\n\nNorthwestern University Libraries\n\n\nThis open textbook is produced with support from Northwestern University Libraries.\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "preface.html",
+    "href": "preface.html",
+    "title": "Preface",
+    "section": "",
+    "text": "To learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "intro.html",
