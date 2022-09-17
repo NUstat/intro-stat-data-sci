@@ -1,4 +1,16 @@
-# Preface {.unnumbered}
+![](images/logos/StatisticsDataScience-LogoShort-HorizPurple.png)
+
+# Welcome {.unnumbered}
+
+::: callout-warning
+Please note that this is a "development version" of this book for the new design of STAT 202. Meaning this is a work in progress being edited and updated as we go.
+
+We would appreciate any feedback on typos and errors.
+:::
+
+[![Northwestern University Libraries](images/logos/nu-libraries.png){alt="Northwestern University Libraries"}](https://www.library.northwestern.edu/)
+
+This open textbook is produced with support from [Northwestern University Libraries](https://www.library.northwestern.edu/).
 
 This is a Quarto book.
 
