@@ -1,6 +1,6 @@
-![](images/logos/StatisticsDataScience-LogoShort-HorizPurple.png)
+## Welcome {.unnumbered}
 
-# Welcome {.unnumbered}
+This is the website for **Introduction to Statistics and Data Science**. This book starts you down the path of learning how to think with data using R. You'll learn the basics of how to engage, explore, and examine many types of data arising from several contexts. Hopefully you'll have fun and see how valuable it is to be able to critically think with data.
 
 ::: callout-warning
 Please note that this is a "development version" of this book for the new design of STAT 202. Meaning this is a work in progress being edited and updated as we go.
@@ -8,14 +8,14 @@ Please note that this is a "development version" of this book for the new design
 We would appreciate any feedback on typos and errors.
 :::
 
-[![Northwestern University Libraries](images/logos/nu-libraries.png){alt="Northwestern University Libraries"}](https://www.library.northwestern.edu/)
+This open textbook is produced with support from [Northwestern University Libraries](https://www.library.northwestern.edu/) and [The Alumnae of Northwestern University](https://www.nualumnae.org/).
 
-This open textbook is produced with support from [Northwestern University Libraries](https://www.library.northwestern.edu/).
+::: {layout-ncol=2}
+[![](images/logos/nu-libraries.png)](https://www.library.northwestern.edu/)
 
-This is a Quarto book.
+[![](images/logos/alumnae_post_cent_logo.jpeg)](https://www.nualumnae.org/)
+:::
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## License
 
-```{r}
-1 + 1
-```
+This website is (and will always be) **free to use**, and is licensed under the [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) License. If you'd like to give back, please consider reporting a typo or leaving a pull request at [github.com/NUstat/intro-stat-data-sci](https://github.com/NUstat/intro-stat-data-sci).

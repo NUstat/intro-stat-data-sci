@@ -4,7 +4,9 @@ project:
 book:
   title: "Introduction to Statistics and Data Science"
   author: "Elizabeth Tipton, Arend M Kuyper, Danielle Sass, and Kaitlyn G. Fitzgerald - Adapted from ModernDive by Chester Ismay and Albert Y. Kim"
-  downloads: [pdf, epub]
+  # downloads: [pdf, epub]
+  date: today
+  date-format: iso
   sidebar:
     search: true
     logo: "images/logos/StatisticsDataScience-LogoSemi-VertPurple.png"
@@ -27,5 +29,3 @@ format:
 # execute: 
 #   freeze: auto
 
-date: today
-date-format: iso
