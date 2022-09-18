@@ -12,7 +12,7 @@ book:
     - Chester Ismay and Albert Y. Kim
   # comments:
   #   hypothesis: true
-  # downloads: [pdf]
+  downloads: [pdf]
   date: today
   date-format: iso
   # reader-mode: true
@@ -64,7 +64,11 @@ book:
   appendices:
   - statistical-background.qmd
 
-bibliography: references.bib
+bibliography:
+  - bib/references.bib
+  - bib/packages.bib
+  - bib/articles.bib
+  - bib/books.bib
 biblio-style: apalike
 
 format:
@@ -76,3 +80,4 @@ format:
 # execute: 
 #   freeze: auto
 
+from: markdown+emoji

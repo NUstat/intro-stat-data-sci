@@ -1,0 +1,5 @@
+:::{.callout-tip icon=false}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
+
+
+:::
