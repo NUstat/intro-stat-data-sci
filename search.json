@@ -25,27 +25,104 @@
     "href": "preface.html#introduction-for-students",
     "title": "Preface",
     "section": "Introduction for students",
-    "text": "Introduction for students\nThis book assumes no prerequisites: no algebra, no calculus, and no prior programming/coding experience. This is intended to be a gentle introduction to the practice of analyzing data and answering questions using data the way statisticians, data scientists, data journalists, and other researchers would.\nIn Figure @ref(fig:moderndive-figure) we present a flowchart of what you’ll cover in this book. You’ll first get started with data in Chapter @ref(getting-started), where you’ll learn about the difference between R and RStudio, start coding in R, understand what R packages are, and explore your first dataset: all domestic departure flights from a New York City airport in 2013. Then\n\nData Exploration: You’ll assemble your data science toolbox using tidyverse packages. In particular:\n\n\nCh.@ref(viz): Visualizing data via the ggplot2 package.\nCh.@ref(wrangling): Wrangling data via the dplyr package.\nCh.@ref(tidy): Understanding the concept of “tidy” data as a standardized data input format for all packages in the tidyverse\n\n\nData Modeling: Using these data science tools, you’ll start performing data modeling. In particular:\n\nCh.@ref(regression): Constructing basic regression models.\nCh.@ref(multiple-regression): Constructing multiple regression models.\n\nStatistical Theory: Now you’ll learn about the role of randomization in making inferences and the general frameworks used to make inferences in statistics. In particular:\n\n\nCh.@ref(causality): Randomization and causality.\nCh.@ref(populations): Populations and generalizability.\nCh.@ref(sampling): Sampling distributions.\n\n\nStatistical Inference: You’ll learn to combine your newly acquired data analysis and modeling skills with statistical theory to make inferences. In particular:\n\nCh.@ref(CIs): Building confidence intervals.\nCh.@ref(pvalues): Calculating p-values.\nCh.@ref(hypothesis-tests): Conducting hypothesis tests.\n\n\n\n\n\n\n\nCourse Flowchart\n\n\n\n\n\nWhat you will learn from this book\nWe hope that by the end of this book, you’ll have learned\n\nHow to use R to explore data.\nHow to generate research questions and hypotheses.\nHow to think like a statistician and the role of chance in your data.\nHow to answer statistical questions using tools like confidence intervals and hypothesis tests.\nHow to effectively create “data stories” using these tools.\n\nWhat do we mean by data stories? We mean any analysis involving data that engages the reader in answering questions with careful visuals and thoughtful discussion, such as How strong is the relationship between per capita income and crime in Chicago neighborhoods? and How many f**ks does Quentin Tarantino give (as measured by the amount of swearing in his films)?. Further discussions on data stories can be found in this Think With Google article.\nFor other examples of data stories constructed by students like yourselves, look at the final projects for two courses that have previously used a version of this book:\n\nMiddlebury College MATH 116 Introduction to Statistical and Data Sciences using student collected data.\nPacific University SOC 301 Social Statistics using data from the fivethirtyeight R package.\n\nThis book will help you develop your “data science toolbox”, including tools such as data visualization, data formatting, data wrangling, and data modeling using regression. With these tools, you’ll be able to perform the entirety of the “data/science pipeline” while building data communication skills.\nIn particular, this book will lean heavily on data visualization. In today’s world, we are bombarded with graphics that attempt to convey ideas. We will explore what makes a good graphic and what the standard ways are to convey relationships with data. You’ll also see the use of visualization to introduce concepts like mean, median, standard deviation, distributions, etc. In general, we’ll use visualization as a way of building almost all of the ideas in this book.\nTo impart the statistical lessons in this book, we have intentionally minimized the number of mathematical formulas used and instead have focused on developing a conceptual understanding via data visualization, statistical computing, and simulations. We hope this is a more intuitive experience than the way statistics has traditionally been taught in the past and how it is commonly perceived.\nFinally, you’ll learn the importance of literate programming. By this we mean you’ll learn how to write code that is useful not just for a computer to execute but also for readers to understand exactly what your analysis is doing and how you did it. This is part of a greater effort to encourage reproducible research (see subsection Reproducible research for more details). Hal Abelson coined the phrase that we will follow throughout this book:\n\n“Programs must be written for people to read, and only incidentally for machines to execute.”\n\nWe understand that there may be challenging moments as you learn to program. We still continue to struggle and find ourselves often using web searches to find answers and reach out to colleagues for help. In the long run though, we all can solve problems faster and more elegantly via programming. We wrote this book as our way to help you get started and you should know that there is a huge community of R users that are always happy to help everyone along as well. This community exists in particular on the internet on various forums and websites such as stackoverflow.com.\n\n\nData/science pipeline\nYou may think of statistics as just being a bunch of numbers. We commonly hear the phrase “statistician” when listening to broadcasts of sporting events. Statistics (in particular, data analysis), in addition to describing numbers like with baseball batting averages, plays a vital role in all of the sciences. You’ll commonly hear the phrase “statistically significant” thrown around in the media. You’ll see articles that say “Science now shows that chocolate is good for you.” Underpinning these claims is data analysis and a theoretical model relating the data collected in a sample to a larger population. By the end of this book, you’ll be able to better understand whether these claims should be trusted or whether we should be wary. Inside data analysis are many sub-fields that we will discuss throughout this book (though not necessarily in this order):\n\ndata collection\ndata wrangling\ndata visualization\ndata modeling\nstatistical inference\ncorrelation and regression\ninterpretation of results\ndata communication/storytelling\n\nThese sub-fields are summarized in what Grolemund and Wickham term the “Data/Science Pipeline” in Figure @ref(fig:pipeline-figure).\n\n\n\n\n\nData/Science Pipeline\n\n\n\n\nWe will begin by digging into the gray Understand portion of the cycle with data visualization, then with a discussion on what is meant by tidy data and data wrangling, and then conclude by talking about interpreting and discussing the results of our models via Communication. These steps are vital to any statistical analysis. But why should you care about statistics? “Why did they make me take this class?”\nThere’s a reason so many fields require a statistics course. Scientific knowledge grows through an understanding of statistical significance and data analysis. You needn’t be intimidated by statistics. It’s not the beast that it used to be and, paired with computation, you’ll see how reproducible research in the sciences particularly increases scientific knowledge.\n\n\nReproducible research\n\n“The most important tool is the mindset, when starting, that the end product will be reproducible.” – Keith Baggerly\n\nAnother goal of this book is to help readers understand the importance of reproducible analyses. The hope is to get readers into the habit of making their analyses reproducible from the very beginning. This means we’ll be trying to help you build new habits. This will take practice and be difficult at times. You’ll see just why it is so important for you to keep track of your code and well-document it to help yourself later and any potential collaborators as well.\nCopying and pasting results from one program into a word processor is not the way that efficient and effective scientific research is conducted. It’s much more important for time to be spent on data collection and data analysis and not on copying and pasting plots back and forth across a variety of programs.\nIn a traditional analysis if an error was made with the original data, we’d need to step through the entire process again: recreate the plots and copy and paste all of the new plots and our statistical analysis into your document. This is error prone and a frustrating use of time. We’ll see how to use R Markdown to get away from this tedious activity so that we can spend more time doing science.\n\n“We are talking about computational reproducibility.” - Yihui Xie\n\nReproducibility means a lot of things in terms of different scientific fields. Are experiments conducted in a way that another researcher could follow the steps and get similar results? In this book, we will focus on what is known as computational reproducibility. This refers to being able to pass all of one’s data analysis, data-sets, and conclusions to someone else and have them get exactly the same results on their machine. This allows for time to be spent interpreting results and considering assumptions instead of the more error prone way of starting from scratch or following a list of steps that may be different from machine to machine."
+    "text": "Introduction for students\nThis book assumes no prerequisites: no algebra, no calculus, and no prior programming/coding experience. This is intended to be a gentle introduction to the practice of analyzing data and answering questions using data the way statisticians, data scientists, data journalists, and other researchers would.\nIn Figure 1 we present a flowchart of what you’ll cover in this book. You’ll first get started with data in Chapter 1, where you’ll learn about the difference between R and RStudio, start coding in R, understand what R packages are, and explore your first dataset: all domestic departure flights from a New York City airport in 2013. Then\n\nData Exploration: You’ll assemble your data science toolbox using tidyverse packages. In particular:\n\nCh. 2: Visualizing data via the ggplot2 package.\nCh. 3: Wrangling data via the dplyr package.\nCh. 4: Understanding the concept of “tidy” data as a standardized data input format for all packages in the tidyverse\n\nData Modeling: Using these data science tools, you’ll start performing data modeling. In particular:\n\nCh. 5: Constructing basic regression models.\nCh. 6: Constructing multiple regression models.\n\nStatistical Theory: Now you’ll learn about the role of randomization in making inferences and the general frameworks used to make inferences in statistics. In particular:\n\nCh. 7: Randomization and causality.\nCh. 8: Populations and generalizability.\nCh. 9: Sampling distributions.\n\nStatistical Inference: You’ll learn to combine your newly acquired data analysis and modeling skills with statistical theory to make inferences. In particular:\n\nCh. 10: Building confidence intervals.\nCh. 11: Calculating p-values.\nCh. 12: Conducting hypothesis tests.\n\n\n\n\n\nFigure 1: Course Flowchart\n\n\n\nWhat you will learn from this book\nWe hope that by the end of this book, you’ll have learned\n\nHow to use R to explore data.\nHow to generate research questions and hypotheses.\nHow to think like a statistician and the role of chance in your data.\nHow to answer statistical questions using tools like confidence intervals and hypothesis tests.\nHow to effectively create “data stories” using these tools.\n\nWhat do we mean by data stories? We mean any analysis involving data that engages the reader in answering questions with careful visuals and thoughtful discussion, such as How strong is the relationship between per capita income and crime in Chicago neighborhoods? and How many f**ks does Quentin Tarantino give (as measured by the amount of swearing in his films)?. Further discussions on data stories can be found in this Think With Google article.\nFor other examples of data stories constructed by students like yourselves, look at the final projects for two courses that have previously used a version of this book:\n\nMiddlebury College MATH 116 Introduction to Statistical and Data Sciences using student collected data.\nPacific University SOC 301 Social Statistics using data from the fivethirtyeight R package.\n\nThis book will help you develop your “data science toolbox”, including tools such as data visualization, data formatting, data wrangling, and data modeling using regression. With these tools, you’ll be able to perform the entirety of the “data/science pipeline” while building data communication skills.\nIn particular, this book will lean heavily on data visualization. In today’s world, we are bombarded with graphics that attempt to convey ideas. We will explore what makes a good graphic and what the standard ways are to convey relationships with data. You’ll also see the use of visualization to introduce concepts like mean, median, standard deviation, distributions, etc. In general, we’ll use visualization as a way of building almost all of the ideas in this book.\nTo impart the statistical lessons in this book, we have intentionally minimized the number of mathematical formulas used and instead have focused on developing a conceptual understanding via data visualization, statistical computing, and simulations. We hope this is a more intuitive experience than the way statistics has traditionally been taught in the past and how it is commonly perceived.\nFinally, you’ll learn the importance of literate programming. By this we mean you’ll learn how to write code that is useful not just for a computer to execute but also for readers to understand exactly what your analysis is doing and how you did it. This is part of a greater effort to encourage reproducible research (see subsection Reproducible research for more details). Hal Abelson coined the phrase that we will follow throughout this book:\n\n“Programs must be written for people to read, and only incidentally for machines to execute.”\n\nWe understand that there may be challenging moments as you learn to program. We still continue to struggle and find ourselves often using web searches to find answers and reach out to colleagues for help. In the long run though, we all can solve problems faster and more elegantly via programming. We wrote this book as our way to help you get started and you should know that there is a huge community of R users that are always happy to help everyone along as well. This community exists in particular on the internet on various forums and websites such as stackoverflow.com.\n\n\nData/science pipeline\nYou may think of statistics as just being a bunch of numbers. We commonly hear the phrase “statistician” when listening to broadcasts of sporting events. Statistics (in particular, data analysis), in addition to describing numbers like with baseball batting averages, plays a vital role in all of the sciences. You’ll commonly hear the phrase “statistically significant” thrown around in the media. You’ll see articles that say “Science now shows that chocolate is good for you.” Underpinning these claims is data analysis and a theoretical model relating the data collected in a sample to a larger population. By the end of this book, you’ll be able to better understand whether these claims should be trusted or whether we should be wary. Inside data analysis are many sub-fields that we will discuss throughout this book (though not necessarily in this order):\n\ndata collection\ndata wrangling\ndata visualization\ndata modeling\nstatistical inference\ncorrelation and regression\ninterpretation of results\ndata communication/storytelling\n\nThese sub-fields are summarized in what Grolemund and Wickham term the “Data/Science Pipeline” in Figure 2.\n\n\n\nFigure 2: Data/Science Pipeline\n\n\nWe will begin by digging into the gray Understand portion of the cycle with data visualization, then with a discussion on what is meant by tidy data and data wrangling, and then conclude by talking about interpreting and discussing the results of our models via Communication. These steps are vital to any statistical analysis. But why should you care about statistics? “Why did they make me take this class?”\nThere’s a reason so many fields require a statistics course. Scientific knowledge grows through an understanding of statistical significance and data analysis. You needn’t be intimidated by statistics. It’s not the beast that it used to be and, paired with computation, you’ll see how reproducible research in the sciences particularly increases scientific knowledge.\n\n\nReproducible research\n\n“The most important tool is the mindset, when starting, that the end product will be reproducible.” – Keith Baggerly\n\nAnother goal of this book is to help readers understand the importance of reproducible analyses. The hope is to get readers into the habit of making their analyses reproducible from the very beginning. This means we’ll be trying to help you build new habits. This will take practice and be difficult at times. You’ll see just why it is so important for you to keep track of your code and well-document it to help yourself later and any potential collaborators as well.\nCopying and pasting results from one program into a word processor is not the way that efficient and effective scientific research is conducted. It’s much more important for time to be spent on data collection and data analysis and not on copying and pasting plots back and forth across a variety of programs.\nIn a traditional analysis if an error was made with the original data, we’d need to step through the entire process again: recreate the plots and copy and paste all of the new plots and our statistical analysis into your document. This is error prone and a frustrating use of time. We’ll see how to use R Markdown to get away from this tedious activity so that we can spend more time doing science.\n\n“We are talking about computational reproducibility.” - Yihui Xie\n\nReproducibility means a lot of things in terms of different scientific fields. Are experiments conducted in a way that another researcher could follow the steps and get similar results? In this book, we will focus on what is known as computational reproducibility. This refers to being able to pass all of one’s data analysis, data-sets, and conclusions to someone else and have them get exactly the same results on their machine. This allows for time to be spent interpreting results and considering assumptions instead of the more error prone way of starting from scratch or following a list of steps that may be different from machine to machine."
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
+    "objectID": "01-getting-started.html",
+    "href": "01-getting-started.html",
+    "title": "1  Getting Started with Data in R",
     "section": "",
-    "text": "See Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "02-visualization.html",
+    "href": "02-visualization.html",
+    "title": "2  Data Visualization",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "03-wrangling.html",
+    "href": "03-wrangling.html",
+    "title": "3  Data Wrangling",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "04-tidy.html",
+    "href": "04-tidy.html",
+    "title": "4  Data Importing & “Tidy Data”",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "05-regression.html",
+    "href": "05-regression.html",
+    "title": "5  Basic Regression",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "06-multiple-regression.html",
+    "href": "06-multiple-regression.html",
+    "title": "6  Multiple Regression",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "07-causality.html",
+    "href": "07-causality.html",
+    "title": "7  Randomization and Causality",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "08-populations.html",
+    "href": "08-populations.html",
+    "title": "8  Populations and Generalizability",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "09-sampling-distributions.html",
+    "href": "09-sampling-distributions.html",
+    "title": "9  Sampling Distributions",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "10-confidence-intervals.html",
+    "href": "10-confidence-intervals.html",
+    "title": "10  Confidence Intervals",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "11-p-values.html",
+    "href": "11-p-values.html",
+    "title": "11  P-values",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "12-hypothesis-tests.html",
+    "href": "12-hypothesis-tests.html",
+    "title": "12  Hypothesis tests",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
+  },
+  {
+    "objectID": "13-putting-together.html",
+    "href": "13-putting-together.html",
+    "title": "13  Putting it all together",
+    "section": "",
+    "text": "Under Construction\n\n\n\nCurrently working on content transfer from previous version of the book."
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "14  Summary",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]

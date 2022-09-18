@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Statistics and Data Science - Preface</title>
+<title>Introduction to Statistics and Data Science - 7&nbsp; Randomization and Causality</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-getting-started.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./08-populations.html" rel="next">
+<link href="./06-multiple-regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Preface</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link active">Preface</a>
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -200,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a>
+  <a href="./07-causality.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -260,25 +260,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction-for-students" id="toc-introduction-for-students" class="nav-link active" data-scroll-target="#introduction-for-students">Introduction for students</a>
-  <ul class="collapse">
-  <li><a href="#what-you-will-learn-from-this-book" id="toc-what-you-will-learn-from-this-book" class="nav-link" data-scroll-target="#what-you-will-learn-from-this-book">What you will learn from this book</a></li>
-  <li><a href="#datascience-pipeline" id="toc-datascience-pipeline" class="nav-link" data-scroll-target="#datascience-pipeline">Data/science pipeline</a></li>
-  <li><a href="#reproducible-research" id="toc-reproducible-research" class="nav-link" data-scroll-target="#reproducible-research">Reproducible research</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/preface.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Preface</h1>
+<h1 class="title"><span id="sec-causality" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></span></h1>
 </div>
 
 
@@ -292,121 +281,21 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Help! I’m new to R and RStudio and I need to learn about them! However, I’m completely new to coding! What do I do?</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 31.2%;justify-content: center;">
-<figure class="figure">
-<p><a href="https://www.r-project.org/"><img src="images/logos/Rlogo.png" class="img-fluid figure-img" width="97"></a></p>
-</figure>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 68.8%;justify-content: center;">
-<figure class="figure">
-<p><a href="https://www.rstudio.com/products/rstudio/download/"><img src="images/logos/RStudio_logo_flat.png" class="img-fluid figure-img" width="214"></a></p>
-</figure>
+<div class="callout-caption-container flex-fill">
+Under Construction
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Currently working on content transfer from previous version of the book.</p>
 </div>
-<p>If you’re asking yourself this question, then you’ve come to the right place! Start with our “Introduction for Students”.</p>
-<section id="introduction-for-students" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="introduction-for-students">Introduction for students</h2>
-<p>This book assumes no prerequisites: no algebra, no calculus, and no prior programming/coding experience. This is intended to be a gentle introduction to the practice of analyzing data and answering questions using data the way statisticians, data scientists, data journalists, and other researchers would.</p>
-<p>In <a href="#fig-course-flowchart">Figure&nbsp;<span>1</span></a> we present a flowchart of what you’ll cover in this book. You’ll first get started with data in <a href="01-getting-started.html">Chapter&nbsp;<span>1</span></a>, where you’ll learn about the difference between R and RStudio, start coding in R, understand what R packages are, and explore your first dataset: all domestic departure flights from a New York City airport in 2013. Then</p>
-<ol type="1">
-<li><strong>Data Exploration</strong>: You’ll assemble your data science toolbox using <code>tidyverse</code> packages. In particular:
-<ul>
-<li><a href="02-visualization.html">Ch.&nbsp;<span>2</span></a>: Visualizing data via the <code>ggplot2</code> package.</li>
-<li><a href="03-wrangling.html">Ch.&nbsp;<span>3</span></a>: Wrangling data via the <code>dplyr</code> package.</li>
-<li><a href="04-tidy.html">Ch.&nbsp;<span>4</span></a>: Understanding the concept of “tidy” data as a standardized data input format for all packages in the <code>tidyverse</code></li>
-</ul></li>
-<li><strong>Data Modeling</strong>: Using these data science tools, you’ll start performing data modeling. In particular:
-<ul>
-<li><a href="05-regression.html">Ch.&nbsp;<span>5</span></a>: Constructing basic regression models.</li>
-<li><a href="06-multiple-regression.html">Ch.&nbsp;<span>6</span></a>: Constructing multiple regression models.</li>
-</ul></li>
-<li><strong>Statistical Theory</strong>: Now you’ll learn about the role of randomization in making inferences and the general frameworks used to make inferences in statistics. In particular:
-<ul>
-<li><a href="07-causality.html">Ch.&nbsp;<span>7</span></a>: Randomization and causality.</li>
-<li><a href="08-populations.html">Ch.&nbsp;<span>8</span></a>: Populations and generalizability.</li>
-<li><a href="09-sampling-distributions.html">Ch.&nbsp;<span>9</span></a>: Sampling distributions.</li>
-</ul></li>
-<li><strong>Statistical Inference</strong>: You’ll learn to combine your newly acquired data analysis and modeling skills with statistical theory to make inferences. In particular:
-<ul>
-<li><a href="10-confidence-intervals.html">Ch.&nbsp;<span>10</span></a>: Building confidence intervals.</li>
-<li><a href="11-p-values.html">Ch.&nbsp;<span>11</span></a>: Calculating p-values.</li>
-<li><a href="12-hypothesis-tests.html">Ch.&nbsp;<span>12</span></a>: Conducting hypothesis tests.</li>
-</ul></li>
-</ol>
-<div id="fig-course-flowchart" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/flowcharts/STAT_202_Diagram-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Course Flowchart</figcaption><p></p>
-</figure>
 </div>
-<section id="what-you-will-learn-from-this-book" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="what-you-will-learn-from-this-book">What you will learn from this book</h3>
-<p>We hope that by the end of this book, you’ll have learned</p>
-<ol type="1">
-<li>How to use R to explore data.</li>
-<li>How to generate research questions and hypotheses.</li>
-<li>How to think like a statistician and the role of chance in your data.</li>
-<li>How to answer statistical questions using tools like confidence intervals and hypothesis tests.</li>
-<li>How to effectively create “data stories” using these tools.</li>
-</ol>
-<p>What do we mean by data stories? We mean any analysis involving data that engages the reader in answering questions with careful visuals and thoughtful discussion, such as <a href="http://rpubs.com/ry_lisa_elana/chicago">How strong is the relationship between per capita income and crime in Chicago neighborhoods?</a> and <a href="https://ismayc.github.io/soc301_s2017/group_projects/group4.html">How many f**ks does Quentin Tarantino give (as measured by the amount of swearing in his films)?</a>. Further discussions on data stories can be found in this <a href="https://www.thinkwithgoogle.com/marketing-resources/data-measurement/tell-meaningful-stories-with-data/">Think With Google article</a>.</p>
-<p>For other examples of data stories constructed by students like yourselves, look at the final projects for two courses that have previously used a version of this book:</p>
-<ul>
-<li>Middlebury College <a href="https://rudeboybert.github.io/MATH116/PS/final_project/final_project_outline.html#past_examples">MATH 116 Introduction to Statistical and Data Sciences</a> using student collected data.</li>
-<li>Pacific University <a href="https://ismayc.github.io/soc301_s2017/group-projects/index.html">SOC 301 Social Statistics</a> using data from the <a href="https://cran.r-project.org/web/packages/fivethirtyeight/vignettes/fivethirtyeight.html">fivethirtyeight R package</a>.</li>
-</ul>
-<p>This book will help you develop your “data science toolbox”, including tools such as data visualization, data formatting, data wrangling, and data modeling using regression. With these tools, you’ll be able to perform the entirety of the “data/science pipeline” while building data communication skills.</p>
-<p>In particular, this book will lean heavily on data visualization. In today’s world, we are bombarded with graphics that attempt to convey ideas. We will explore what makes a good graphic and what the standard ways are to convey relationships with data. You’ll also see the use of visualization to introduce concepts like mean, median, standard deviation, distributions, etc. In general, we’ll use visualization as a way of building almost all of the ideas in this book.</p>
-<p>To impart the statistical lessons in this book, we have intentionally minimized the number of mathematical formulas used and instead have focused on developing a conceptual understanding via data visualization, statistical computing, and simulations. We hope this is a more intuitive experience than the way statistics has traditionally been taught in the past and how it is commonly perceived.</p>
-<p>Finally, you’ll learn the importance of literate programming. By this we mean you’ll learn how to write code that is useful not just for a computer to execute but also for readers to understand exactly what your analysis is doing and how you did it. This is part of a greater effort to encourage reproducible research (see subsection <em>Reproducible research</em> for more details). Hal Abelson coined the phrase that we will follow throughout this book:</p>
-<blockquote class="blockquote">
-<p>“Programs must be written for people to read, and only incidentally for machines to execute.”</p>
-</blockquote>
-<p>We understand that there may be challenging moments as you learn to program. We still continue to struggle and find ourselves often using web searches to find answers and reach out to colleagues for help. In the long run though, we all can solve problems faster and more elegantly via programming. We wrote this book as our way to help you get started and you should know that there is a huge community of R users that are always happy to help everyone along as well. This community exists in particular on the internet on various forums and websites such as <a href="https://stackoverflow.com/">stackoverflow.com</a>.</p>
-</section>
-<section id="datascience-pipeline" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="datascience-pipeline">Data/science pipeline</h3>
-<p>You may think of statistics as just being a bunch of numbers. We commonly hear the phrase “statistician” when listening to broadcasts of sporting events. Statistics (in particular, data analysis), in addition to describing numbers like with baseball batting averages, plays a vital role in all of the sciences. You’ll commonly hear the phrase “statistically significant” thrown around in the media. You’ll see articles that say “Science now shows that chocolate is good for you.” Underpinning these claims is data analysis and a theoretical model relating the data collected in a sample to a larger population. By the end of this book, you’ll be able to better understand whether these claims should be trusted or whether we should be wary. Inside data analysis are many sub-fields that we will discuss throughout this book (though not necessarily in this order):</p>
-<ul>
-<li>data collection</li>
-<li>data wrangling</li>
-<li>data visualization</li>
-<li>data modeling</li>
-<li>statistical inference</li>
-<li>correlation and regression</li>
-<li>interpretation of results</li>
-<li>data communication/storytelling</li>
-</ul>
-<p>These sub-fields are summarized in what Grolemund and Wickham term the <a href="http://r4ds.had.co.nz/explore-intro.html">“Data/Science Pipeline”</a> in <a href="#fig-pipline">Figure&nbsp;<span>2</span></a>.</p>
-<div id="fig-pipline" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/tidy1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Data/Science Pipeline</figcaption><p></p>
-</figure>
-</div>
-<p>We will begin by digging into the gray <strong>Understand</strong> portion of the cycle with data visualization, then with a discussion on what is meant by tidy data and data wrangling, and then conclude by talking about interpreting and discussing the results of our models via <strong>Communication</strong>. These steps are vital to any statistical analysis. But why should you care about statistics? “Why did they make me take this class?”</p>
-<p>There’s a reason so many fields require a statistics course. Scientific knowledge grows through an understanding of statistical significance and data analysis. You needn’t be intimidated by statistics. It’s not the beast that it used to be and, paired with computation, you’ll see how reproducible research in the sciences particularly increases scientific knowledge.</p>
-</section>
-<section id="reproducible-research" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="reproducible-research">Reproducible research</h3>
-<blockquote class="blockquote">
-<p>“The most important tool is the <em>mindset</em>, when starting, that the end product will be reproducible.” – Keith Baggerly</p>
-</blockquote>
-<p>Another goal of this book is to help readers understand the importance of reproducible analyses. The hope is to get readers into the habit of making their analyses reproducible from the very beginning. This means we’ll be trying to help you build new habits. This will take practice and be difficult at times. You’ll see just why it is so important for you to keep track of your code and well-document it to help yourself later and any potential collaborators as well.</p>
-<p>Copying and pasting results from one program into a word processor is not the way that efficient and effective scientific research is conducted. It’s much more important for time to be spent on data collection and data analysis and not on copying and pasting plots back and forth across a variety of programs.</p>
-<p>In a traditional analysis if an error was made with the original data, we’d need to step through the entire process again: recreate the plots and copy and paste all of the new plots and our statistical analysis into your document. This is error prone and a frustrating use of time. We’ll see how to use R Markdown to get away from this tedious activity so that we can spend more time doing science.</p>
-<blockquote class="blockquote">
-<p>“We are talking about <em>computational</em> reproducibility.” - Yihui Xie</p>
-</blockquote>
-<p>Reproducibility means a lot of things in terms of different scientific fields. Are experiments conducted in a way that another researcher could follow the steps and get similar results? In this book, we will focus on what is known as <strong>computational reproducibility</strong>. This refers to being able to pass all of one’s data analysis, data-sets, and conclusions to someone else and have them get exactly the same results on their machine. This allows for time to be spent interpreting results and considering assumptions instead of the more error prone way of starting from scratch or following a list of steps that may be different from machine to machine.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -509,13 +398,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="./06-multiple-regression.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-getting-started.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with Data in R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08-populations.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
