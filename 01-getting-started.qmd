@@ -11,13 +11,13 @@ rq <- 0
 # **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
 # **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
 
-knitr::opts_chunk$set(
-  tidy = FALSE, 
-  out.width = '\\textwidth', 
-  fig.height = 4,
-  fig.align='center',
-  warning = FALSE
-  )
+# knitr::opts_chunk$set(
+#   tidy = FALSE, 
+#   out.width = '\\textwidth', 
+#   fig.height = 4,
+#   fig.align='center',
+#   warning = FALSE
+#   )
 
 options(scipen = 99, digits = 3)
 
@@ -414,4 +414,4 @@ We've given you what we feel are the most essential concepts to know before you 
 
 If you are completely new to the world of coding, R, and RStudio and feel you could benefit from a more detailed introduction, we suggest you check out Chester Ismay's short book [Getting used to R, RStudio, and R Markdown](https://rbasics.netlify.com/) [@usedtor2016], which includes screencast recordings that you can follow along and pause as you learn. Furthermore, there is an introduction to R Markdown, a tool used for reproducible research in R.
 
-![](images/gettting-used-to-R.png){height="3.5in" fig-align="center"}
+![](images/gettting-used-to-R.png){height="3.5in"}

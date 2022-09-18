@@ -76,6 +76,15 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+    
+knitr:
+  opts_chunk: 
+    tidy: false
+    out.width: '\\textwidth'
+    collapse: true
+    fig.height: 4
+    fig.align: 'center'
+    warning: false
 
 # execute: 
 #   freeze: auto
