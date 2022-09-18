@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/index.html</loc>
-    <lastmod>2022-09-18T05:39:43.496Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.971Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/preface.html</loc>
-    <lastmod>2022-09-18T05:39:43.496Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.971Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/01-getting-started.html</loc>
-    <lastmod>2022-09-18T05:39:43.496Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.971Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/02-visualization.html</loc>
-    <lastmod>2022-09-18T05:39:43.500Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.971Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/03-wrangling.html</loc>
-    <lastmod>2022-09-18T05:39:43.500Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.975Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/04-tidy.html</loc>
-    <lastmod>2022-09-18T05:39:43.500Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.975Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/05-regression.html</loc>
-    <lastmod>2022-09-18T05:39:43.500Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.983Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/06-multiple-regression.html</loc>
-    <lastmod>2022-09-18T05:39:43.500Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.983Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/07-causality.html</loc>
-    <lastmod>2022-09-18T05:39:43.500Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/08-populations.html</loc>
-    <lastmod>2022-09-18T05:39:43.512Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/09-sampling-distributions.html</loc>
-    <lastmod>2022-09-18T05:39:43.512Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/10-confidence-intervals.html</loc>
-    <lastmod>2022-09-18T05:39:43.512Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/11-p-values.html</loc>
-    <lastmod>2022-09-18T05:39:43.512Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/12-hypothesis-tests.html</loc>
-    <lastmod>2022-09-18T05:39:43.516Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.991Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/13-putting-together.html</loc>
-    <lastmod>2022-09-18T05:39:43.516Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nustat.github.io/intro-stat-data-sci/summary.html</loc>
-    <lastmod>2022-09-18T05:39:43.516Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.991Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/references.html</loc>
-    <lastmod>2022-09-18T05:39:43.516Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.991Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nustat.github.io/intro-stat-data-sci/statistical-background.html</loc>
+    <lastmod>2022-09-18T06:14:27.991Z</lastmod>
   </url>
   <url>
     <loc>https://nustat.github.io/intro-stat-data-sci/Introduction-to-Statistics-and-Data-Science.pdf</loc>
-    <lastmod>2022-09-18T05:39:43.312Z</lastmod>
+    <lastmod>2022-09-18T06:14:27.767Z</lastmod>
   </url>
 </urlset>
