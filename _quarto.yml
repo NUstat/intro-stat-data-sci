@@ -76,17 +76,13 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
-    
-knitr:
-  opts_chunk: 
-    tidy: false
-    out.width: '\\textwidth'
-    collapse: true
-    fig.height: 4
-    fig.align: 'center'
-    warning: false
 
-# execute: 
-#   freeze: auto
+# execute:
+#   tidy: false
+#   warning: false
+#   fig.align: 'center'
+#   fig.height: 4
+#   out.width: '\\textwidth'
+#   # freeze: auto
 
 from: markdown+emoji

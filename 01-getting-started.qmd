@@ -11,13 +11,13 @@ rq <- 0
 # **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
 # **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
 
-# knitr::opts_chunk$set(
-#   tidy = FALSE, 
-#   out.width = '\\textwidth', 
-#   fig.height = 4,
-#   fig.align='center',
-#   warning = FALSE
-#   )
+knitr::opts_chunk$set(
+  tidy = FALSE,
+  out.width = '\\textwidth',
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
 
 options(scipen = 99, digits = 3)
 
@@ -330,22 +330,16 @@ Among the many ways of getting a feel for the data contained in a data frame suc
 
 Run `View(flights)` in your Console in RStudio, either by typing it or cutting & pasting it into the Console pane, and explore this data frame in the resulting pop-up viewer. You should get into the habit of always `View`ing any data frames that come your way. Note the capital "V" in `View`. R is case-sensitive so you'll receive an error is you run `view(flights)` instead of `View(flights)`.
 
-```{block}
-#| label: lc2-2
-#| type: learncheck
-**_Learning check_**
-```
+:::{.callout-tip icon=false}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
-**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** What does any *ONE* row in this `flights` dataset refer to?
+What does any *ONE* row in this `flights` dataset refer to?
 
--   A. Data on an airline
--   B. Data on a flight
--   C. Data on an airport
--   D. Data on multiple flights
-
-```{block}
-#| type: learncheck
-```
+a. Data on an airline
+a. Data on a flight
+a. Data on an airport
+a. Data on multiple flights
+:::
 
 By running `View(flights)`, we see the different *variables* listed in the columns and we see that there are different types of variables. Some of the variables like `distance`, `day`, and `arr_delay` are what we will call *quantitative* variables. These variables are numerical in nature. Other variables here are *categorical*.
 
