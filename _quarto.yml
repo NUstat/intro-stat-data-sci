@@ -3,13 +3,22 @@ project:
 
 book:
   title: "Introduction to Statistics and Data Science"
-  author: "Elizabeth Tipton, Arend M Kuyper, Danielle Sass, and Kaitlyn G. Fitzgerald - Adapted from ModernDive by Chester Ismay and Albert Y. Kim"
-  # downloads: [pdf, epub]
+  author: 
+    - Elizabeth Tipton 
+    - Arend M Kuyper
+    - Danielle Sass
+    - Kaitlyn G. Fitzgerald
+    - Adapted from ModernDive by 
+    - Chester Ismay and Albert Y. Kim
+  # comments:
+  #   hypothesis: true
+  # downloads: [pdf]
   date: today
   date-format: iso
   # reader-mode: true
   site-url: https://nustat.github.io/intro-stat-data-sci/
   repo-url: https://github.com/NUstat/intro-stat-data-sci
+  repo-branch: main
   repo-actions: [edit, issue]
   sharing: [twitter, facebook, linkedin]
   
@@ -49,8 +58,11 @@ book:
       - 11-p-values.qmd
       - 12-hypothesis-tests.qmd
       - 13-putting-together.qmd
-      - summary.qmd
+      - text: "---"
       - references.qmd
+  
+  appendices:
+  - statistical-background.qmd
 
 bibliography: references.bib
 biblio-style: apalike
