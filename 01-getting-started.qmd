@@ -230,7 +230,7 @@ There are two ways to install an R package. For example, to install the `ggplot2
 
 Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer verions, you need to re-install it by repeating the above steps.
 
-:::{.callout-tip icon=false}
+:::{.callout-tip icon=false collapse=false}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
 Repeat the above installing steps for the `dplyr`, `nycflights13`, and `knitr` packages. This will install the earlier mentioned `dplyr` package, the `nycflights13` package containing data on all domestic flights leaving a NYC airport in 2013, and the `knitr` package for writing reports in R.
@@ -252,7 +252,7 @@ If after running the above code, a blinking cursor returns next to the `>` "prom
 
 ... it means that you didn't successfully install it. In that case, go back to the previous subsection "Package installation" and install it.
 
-:::{.callout-tip icon=false}
+:::{.callout-tip icon=false collapse=false}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
 "Load" the `dplyr`, `nycflights13`, and `knitr` packages as well by repeating the above steps.
@@ -330,7 +330,7 @@ Among the many ways of getting a feel for the data contained in a data frame suc
 
 Run `View(flights)` in your Console in RStudio, either by typing it or cutting & pasting it into the Console pane, and explore this data frame in the resulting pop-up viewer. You should get into the habit of always `View`ing any data frames that come your way. Note the capital "V" in `View`. R is case-sensitive so you'll receive an error is you run `view(flights)` instead of `View(flights)`.
 
-:::{.callout-tip icon=false}
+:::{.callout-tip icon=false collapse=false}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
 What does any *ONE* row in this `flights` dataset refer to?
@@ -355,7 +355,7 @@ glimpse(flights)
 
 We see that `glimpse()` will give you the first few entries of each variable in a row after the variable. In addition, the *data type* (see [Subsection -@sec-programming-concepts]) of the variable is given immediately after each variable's name inside `< >`. Here, `int` and `dbl` refer to "integer" and "double", which are computer coding terminology for quantitative/numerical variables. In contrast, `chr` refers to "character", which is computer terminology for text data. Text data, such as the `carrier` or `origin` of a flight, are categorical variables. The `time_hour` variable is an example of one more type of data type: `dttm`. As you may suspect, this variable corresponds to a specific date and time of day. However, we won't work with dates in this class and leave it to a more advanced book on data science.
 
-:::{.callout-tip icon=false}
+:::{.callout-tip icon=false collapse=false}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
 What are some examples in this dataset of **categorical** variables? What makes them different than **quantitative** variables?
@@ -400,7 +400,7 @@ Another nice feature of R is the help system. You can get help in R by entering 
 
 A help file should pop-up in the Help pane of RStudio. If you have questions about a function or data frame included in an R package, you should get in the habit of consulting the help file right away.
 
-## Conclusion {#gs-conclusion}
+## Conclusion {#sec-gs-conclusion}
 
 We've given you what we feel are the most essential concepts to know before you can start exploring data in R. Is this chapter exhaustive? Absolutely not. To try to include everything in this chapter would make the chapter so large it wouldn't be useful!
 
