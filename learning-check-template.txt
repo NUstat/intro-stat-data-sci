@@ -1,4 +1,4 @@
-:::{.callout-tip icon=false collapse=false}
+:::{.callout-tip icon=false collapse=true}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
 
