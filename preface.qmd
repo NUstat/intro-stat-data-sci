@@ -13,29 +13,27 @@ If you're asking yourself this question, then you've come to the right place! St
 
 ## Introduction for students {.unnumbered}
 
-This book assumes no prerequisites: no algebra, no calculus, and no prior programming/coding experience. This is intended to be a gentle introduction to the practice of analyzing data and answering questions using data the way statisticians, data scientists, data journalists, and other researchers would.
+This book assumes no prerequisites: no algebra, no calculus, and no prior programming/coding experience. This is intended to be a gentle introduction to the practice of analyzing data and answering questions using data the way statisticians, data scientists, data journalists, and other researchers would. 
 
-In Figure \@ref(fig:moderndive-figure) we present a flowchart of what you'll cover in this book. You'll first get started with data in Chapter \@ref(getting-started), where you'll learn about the difference between R and RStudio, start coding in R, understand what R packages are, and explore your first dataset: all domestic departure flights from a New York City airport in 2013. Then
+In @fig-course-flowchart we present a flowchart of what you'll cover in this book. You'll first get started with data in [Chapter -@sec-getting-started], where you'll learn about the difference between R and RStudio, start coding in R, understand what R packages are, and explore your first dataset: all domestic departure flights from a New York City airport in 2013. Then
 
 1. **Data Exploration**: You'll assemble your data science toolbox using `tidyverse` packages. In particular:
-  + Ch.\@ref(viz): Visualizing data via the `ggplot2` package.
-+ Ch.\@ref(wrangling): Wrangling data via the `dplyr` package.
-+ Ch.\@ref(tidy): Understanding the concept of "tidy" data as a standardized data input format for all packages in the `tidyverse`
+    + [Ch. -@sec-viz]: Visualizing data via the `ggplot2` package.
+    + [Ch. -@sec-wrangling]: Wrangling data via the `dplyr` package.
+    + [Ch. @sec-tidy]: Understanding the concept of "tidy" data as a standardized data input format for all packages in the `tidyverse`
 1. **Data Modeling**: Using these data science tools, you'll start performing data modeling. In particular:
-    + Ch.\@ref(regression): Constructing basic regression models.
-    + Ch.\@ref(multiple-regression): Constructing multiple regression models.
+    + [Ch. -@sec-regression]: Constructing basic regression models.
+    + [Ch. -@sec-multiple-regression]: Constructing multiple regression models.
 1. **Statistical Theory**: Now you'll learn about the role of randomization in making inferences and the general frameworks used to make inferences in statistics. In particular:
-  + Ch.\@ref(causality): Randomization and causality.
-+ Ch.\@ref(populations): Populations and generalizability.
-+ Ch.\@ref(sampling): Sampling distributions.
+    + [Ch. -@sec-causality]: Randomization and causality.
+    + [Ch. -@sec-populations]: Populations and generalizability.
+    + [Ch. -@sec-sampling]: Sampling distributions.
 1. **Statistical Inference**: You'll learn to combine your newly acquired data analysis and modeling skills with statistical theory to make inferences.  In particular:
-    + Ch.\@ref(CIs): Building confidence intervals.
-    + Ch.\@ref(pvalues): Calculating p-values.
-    + Ch.\@ref(hypothesis-tests): Conducting hypothesis tests.
+    + [Ch. -@sec-confidence-int]: Building confidence intervals.
+    + [Ch. -@sec-pvalues]: Calculating p-values.
+    + [Ch. -@sec-hypothesis-tests]: Conducting hypothesis tests.
 
-```{r moderndive-figure, echo=FALSE, fig.align='center', fig.cap="Course Flowchart", fig.width=8}
-knitr::include_graphics("images/flowcharts/STAT_202_Diagram-1.png")
-```
+![Course Flowchart](images/flowcharts/STAT_202_Diagram-1.png){#fig-course-flowchart fig-align="center" fig-cap="Course Flowchart" fig-width=8}
 
 ### What you will learn from this book {.unnumbered}
 
@@ -70,7 +68,7 @@ We understand that there may be challenging moments as you learn to program. We 
 
 You may think of statistics as just being a bunch of numbers. We commonly hear the phrase "statistician" when listening to broadcasts of sporting events. Statistics (in particular, data analysis), in addition to describing numbers like with baseball batting averages, plays a vital role in all of the sciences. You'll commonly hear the phrase "statistically significant" thrown around in the media. You'll see articles that say "Science now shows that chocolate is good for you." Underpinning these claims is data analysis and a theoretical model relating the data collected in a sample to a larger population. By the end of this book, you'll be able to better understand whether these claims should be trusted or whether we should be wary. Inside data analysis are many sub-fields that we will discuss throughout this book (though not necessarily in this order):
   
-  - data collection
+- data collection
 - data wrangling
 - data visualization
 - data modeling
@@ -79,11 +77,9 @@ You may think of statistics as just being a bunch of numbers. We commonly hear t
 - interpretation of results
 - data communication/storytelling
 
-These sub-fields are summarized in what Grolemund and Wickham term the ["Data/Science Pipeline"](http://r4ds.had.co.nz/explore-intro.html) in Figure \@ref(fig:pipeline-figure).
+These sub-fields are summarized in what Grolemund and Wickham term the ["Data/Science Pipeline"](http://r4ds.had.co.nz/explore-intro.html) in @fig-pipline.
 
-```{r pipeline-figure, echo=FALSE, fig.align='center', fig.cap="Data/Science Pipeline"}
-knitr::include_graphics("images/tidy1.png")
-```
+![Data/Science Pipeline](images/tidy1.png){#fig-pipline fig-align="center"}
 
 We will begin by digging into the gray **Understand** portion of the cycle with data visualization, then with a discussion on what is meant by tidy data and data wrangling, and then conclude by talking about interpreting and discussing the results of our models via **Communication**.  These steps are vital to any statistical analysis.  But why should you care about statistics?  "Why did they make me take this class?"
 
@@ -102,4 +98,6 @@ In a traditional analysis if an error was made with the original data, we'd need
 > "We are talking about _computational_ reproducibility." - Yihui Xie
 
 Reproducibility means a lot of things in terms of different scientific fields. Are experiments conducted in a way that another researcher could follow the steps and get similar results? In this book, we will focus on what is known as **computational reproducibility**.  This refers to being able to pass all of one's data analysis, data-sets, and conclusions to someone else and have them get exactly the same results on their machine.  This allows for time to be spent interpreting results and considering assumptions instead of the more error prone way of starting from scratch or following a list of steps that may be different from machine to machine.
+
+
 

@@ -7,15 +7,50 @@ book:
   # downloads: [pdf, epub]
   date: today
   date-format: iso
+  # reader-mode: true
+  site-url: https://nustat.github.io/intro-stat-data-sci/
+  repo-url: https://github.com/NUstat/intro-stat-data-sci
+  repo-actions: [edit, issue]
+  sharing: [twitter, facebook, linkedin]
+  
   sidebar:
     search: true
     logo: "images/logos/StatisticsDataScience-LogoSemi-VertPurple.png"
+    logo-href: "https://statistics.northwestern.edu/"
+
   chapters:
     - index.qmd
     - preface.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+
+    - part: Getting started
+      chapters:
+      - 01-getting-started.qmd
+    
+    - part: Data Exploration via the tidyverse
+      chapters:
+      - 02-visualization.qmd
+      - 03-wrangling.qmd
+      - 04-tidy.qmd
+    
+    - part: Data Modeling
+      chapters:
+      - 05-regression.qmd
+      - 06-multiple-regression.qmd
+    
+    - part: Statistical Theory
+      chapters:
+      - 07-causality.qmd
+      - 08-populations.qmd
+      - 09-sampling-distributions.qmd
+      
+    - part: Statistical Inference
+      chapters:
+      - 10-confidence-intervals.qmd
+      - 11-p-values.qmd
+      - 12-hypothesis-tests.qmd
+      - 13-putting-together.qmd
+      - summary.qmd
+      - references.qmd
 
 bibliography: references.bib
 biblio-style: apalike
