@@ -633,7 +633,7 @@ div.csl-indent {
 </ol>
 <p>Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer verions, you need to re-install it by repeating the above steps.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -642,7 +642,7 @@ div.csl-indent {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Repeat the above installing steps for the <code>dplyr</code>, <code>nycflights13</code>, and <code>knitr</code> packages. This will install the earlier mentioned <code>dplyr</code> package, the <code>nycflights13</code> package containing data on all domestic flights leaving a NYC airport in 2013, and the <code>knitr</code> package for writing reports in R.</p>
 </div>
@@ -659,7 +659,7 @@ div.csl-indent {
 <pre><code>Error in library(ggplot2) : there is no package called ‘ggplot2’</code></pre>
 <p>… it means that you didn’t successfully install it. In that case, go back to the previous subsection “Package installation” and install it.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -668,7 +668,7 @@ div.csl-indent {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>“Load” the <code>dplyr</code>, <code>nycflights13</code>, and <code>knitr</code> packages as well by repeating the above steps.</p>
 </div>
@@ -754,7 +754,7 @@ div.csl-indent {
 <p><strong>1. <code>View()</code></strong>:</p>
 <p>Run <code>View(flights)</code> in your Console in RStudio, either by typing it or cutting &amp; pasting it into the Console pane, and explore this data frame in the resulting pop-up viewer. You should get into the habit of always <code>View</code>ing any data frames that come your way. Note the capital “V” in <code>View</code>. R is case-sensitive so you’ll receive an error is you run <code>view(flights)</code> instead of <code>View(flights)</code>.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -763,7 +763,7 @@ div.csl-indent {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>What does any <em>ONE</em> row in this <code>flights</code> dataset refer to?</p>
 <ol type="a">
@@ -807,7 +807,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 <p>We see that <code>glimpse()</code> will give you the first few entries of each variable in a row after the variable. In addition, the <em>data type</em> (see <a href="#sec-programming-concepts">Subsection&nbsp;<span>1.2.2</span></a>) of the variable is given immediately after each variable’s name inside <code>&lt; &gt;</code>. Here, <code>int</code> and <code>dbl</code> refer to “integer” and “double”, which are computer coding terminology for quantitative/numerical variables. In contrast, <code>chr</code> refers to “character”, which is computer terminology for text data. Text data, such as the <code>carrier</code> or <code>origin</code> of a flight, are categorical variables. The <code>time_hour</code> variable is an example of one more type of data type: <code>dttm</code>. As you may suspect, this variable corresponds to a specific date and time of day. However, we won’t work with dates in this class and leave it to a more advanced book on data science.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -816,7 +816,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>What are some examples in this dataset of <strong>categorical</strong> variables? What makes them different than <strong>quantitative</strong> variables?</p>
 </div>
