@@ -20,6 +20,88 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -61,6 +143,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -87,8 +170,9 @@ ul.task-list li input[type="checkbox"] {
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
     <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
@@ -271,7 +355,42 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-r-rstudio" id="toc-sec-r-rstudio" class="nav-link active" data-scroll-target="#sec-r-rstudio"><span class="toc-section-number">1.1</span>  What are R and RStudio?</a>
+  <ul class="collapse">
+  <li><a href="#using-rstudio-cloud" id="toc-using-rstudio-cloud" class="nav-link" data-scroll-target="#using-rstudio-cloud"><span class="toc-section-number">1.1.1</span>  Using RStudio Cloud</a></li>
+  <li><a href="#installing-r-and-rstudio-on-your-personal-computer" id="toc-installing-r-and-rstudio-on-your-personal-computer" class="nav-link" data-scroll-target="#installing-r-and-rstudio-on-your-personal-computer"><span class="toc-section-number">1.1.2</span>  Installing R and RStudio on your personal computer</a></li>
+  <li><a href="#using-r-via-rstudio" id="toc-using-r-via-rstudio" class="nav-link" data-scroll-target="#using-r-via-rstudio"><span class="toc-section-number">1.1.3</span>  Using R via RStudio</a></li>
+  </ul></li>
+  <li><a href="#sec-code" id="toc-sec-code" class="nav-link" data-scroll-target="#sec-code"><span class="toc-section-number">1.2</span>  How do I code in R?</a>
+  <ul class="collapse">
+  <li><a href="#creating-your-first-r-markdown-document" id="toc-creating-your-first-r-markdown-document" class="nav-link" data-scroll-target="#creating-your-first-r-markdown-document"><span class="toc-section-number">1.2.1</span>  Creating your first R Markdown document</a></li>
+  <li><a href="#sec-programming-concepts" id="toc-sec-programming-concepts" class="nav-link" data-scroll-target="#sec-programming-concepts"><span class="toc-section-number">1.2.2</span>  Basic programming concepts and terminology</a></li>
+  <li><a href="#errors-warnings-and-messages" id="toc-errors-warnings-and-messages" class="nav-link" data-scroll-target="#errors-warnings-and-messages"><span class="toc-section-number">1.2.3</span>  Errors, warnings, and messages</a></li>
+  <li><a href="#tips-on-learning-to-code" id="toc-tips-on-learning-to-code" class="nav-link" data-scroll-target="#tips-on-learning-to-code"><span class="toc-section-number">1.2.4</span>  Tips on learning to code</a></li>
+  </ul></li>
+  <li><a href="#sec-packages" id="toc-sec-packages" class="nav-link" data-scroll-target="#sec-packages"><span class="toc-section-number">1.3</span>  What are R packages?</a>
+  <ul class="collapse">
+  <li><a href="#package-installation" id="toc-package-installation" class="nav-link" data-scroll-target="#package-installation"><span class="toc-section-number">1.3.1</span>  Package installation</a></li>
+  <li><a href="#sec-package-loading" id="toc-sec-package-loading" class="nav-link" data-scroll-target="#sec-package-loading"><span class="toc-section-number">1.3.2</span>  Package loading</a></li>
+  <li><a href="#sec-package-use" id="toc-sec-package-use" class="nav-link" data-scroll-target="#sec-package-use"><span class="toc-section-number">1.3.3</span>  Package use</a></li>
+  </ul></li>
+  <li><a href="#sec-nycflights13" id="toc-sec-nycflights13" class="nav-link" data-scroll-target="#sec-nycflights13"><span class="toc-section-number">1.4</span>  Explore your first dataset</a>
+  <ul class="collapse">
+  <li><a href="#nycflights13-package" id="toc-nycflights13-package" class="nav-link" data-scroll-target="#nycflights13-package"><span class="toc-section-number">1.4.1</span>  <code>nycflights13</code> package</a></li>
+  <li><a href="#flights-data-frame" id="toc-flights-data-frame" class="nav-link" data-scroll-target="#flights-data-frame"><span class="toc-section-number">1.4.2</span>  <code>flights</code> data frame</a></li>
+  <li><a href="#exploredataframes" id="toc-exploredataframes" class="nav-link" data-scroll-target="#exploredataframes"><span class="toc-section-number">1.4.3</span>  Exploring data frames</a></li>
+  <li><a href="#help-files" id="toc-help-files" class="nav-link" data-scroll-target="#help-files"><span class="toc-section-number">1.4.4</span>  Help files</a></li>
+  </ul></li>
+  <li><a href="#gs-conclusion" id="toc-gs-conclusion" class="nav-link" data-scroll-target="#gs-conclusion"><span class="toc-section-number">1.5</span>  Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">1.5.1</span>  Additional resources</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/01-getting-started.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -292,21 +411,448 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-caution callout callout-style-default callout-captioned">
+<p>Before we can start exploring data in R, there are some key concepts to understand first:</p>
+<ol type="1">
+<li>What are R and RStudio?</li>
+<li>How do I code in R?</li>
+<li>What are R packages?</li>
+</ol>
+<p>We’ll introduce these concepts in upcoming Sections <a href="#sec-r-rstudio"><span>1.1</span></a> - <a href="#sec-packages"><span>1.3</span></a> If you are already somewhat familiar with these concepts, feel free to skip to <a href="#sec-nycflights13"><span>Section&nbsp;1.4</span></a> where we’ll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.</p>
+<section id="sec-r-rstudio" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-r-rstudio"><span class="header-section-number">1.1</span> What are R and RStudio?</h2>
+<p>For much of this book, we will assume that you are using R via RStudio. First time users often confuse the two. At its simplest:</p>
+<ul>
+<li>R is like a car’s engine.</li>
+<li>RStudio is like a car’s dashboard.</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 48%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">R: Engine</th>
+<th style="text-align: center;">RStudio: Dashboard</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="images/engine.jpg" style="height:1.7in"></td>
+<td style="text-align: center;"><img src="images/dashboard.jpg" style="height:1.7in"></td>
+</tr>
+</tbody>
+</table>
+<p>More precisely, R is a programming language that runs computations while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface by adding many convenient features and tools. So just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier as well.</p>
+<section id="using-rstudio-cloud" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="using-rstudio-cloud"><span class="header-section-number">1.1.1</span> Using RStudio Cloud</h3>
+<p>RStudio Cloud (<a href="https://rstudio.cloud" class="uri">https://rstudio.cloud</a>) is a hosted version of RStudio that allows you to begin coding directly from your browser - there is no software to install and nothing to configure on your computer.</p>
+<p>To begin using RStudio Cloud use the link provided by your instructor to gain access to the classroom workspace. You will be prompted to create a free account or log in if you have an existing account.</p>
+<p>After you open RStudio Cloud, you should now have access to the classroom under ‘Spaces’ on the left hand side (in this case ‘Stat 202’).</p>
+<p><img src="images/RStudioCloud.png" class="img-fluid"></p>
+<p>Throughout class you will be working on various activities. Once the instructor has made an activity available you will click on the classroom Workspace (Stat 202) to access the available projects. To begin working on an activity click ‘Start’. Once that activity project is open navigate to the ‘File’ pane and open the R Markdown ‘.Rmd’ file.</p>
+<p><img src="images/RStudioWorkspace.png" class="img-fluid"></p>
+<p>You can use RStudio Cloud for personal use as well by creating projects in ‘Your Workspace’. However, RStudio Cloud limits the number of projects and amount of accessible time so it is recommended that you later install the software on your own computer.</p>
+</section>
+<section id="installing-r-and-rstudio-on-your-personal-computer" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="installing-r-and-rstudio-on-your-personal-computer"><span class="header-section-number">1.1.2</span> Installing R and RStudio on your personal computer</h3>
+<blockquote class="blockquote">
+<p><strong>Note about RStudio Server or RStudio Cloud</strong>: If your instructor has provided you with a link and access to RStudio Server or RStudio Cloud, then you can skip this section. We do recommend after a few months of working on RStudio Server/Cloud that you return to these instructions to install this software on your own computer though. You will first need to download and install both R and RStudio (Desktop version) on your computer. It is important that you install R first and then install RStudio second.</p>
+</blockquote>
+<ol type="1">
+<li><p><strong>You must do this first:</strong> <a href="https://cloud.r-project.org/">Download and install R</a>.</p>
+<ul>
+<li>If you are a Windows user: Click on “Download R for Windows”, then click on “base”, then click on the Download link.</li>
+<li>If you are macOS user: Click on “Download R for (Mac) OS X”, then under “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of August 10, 2019 was R-3.6.1.</li>
+</ul></li>
+<li><p><strong>You must do this second:</strong> <a href="https://www.rstudio.com/products/rstudio/download/">Download and install RStudio</a>.</p>
+<ul>
+<li>Scroll down to “Installers for Supported Platforms” near the bottom of the page.</li>
+<li>Click on the download link corresponding to your computer’s operating system.</li>
+</ul></li>
+</ol>
+</section>
+<section id="using-r-via-rstudio" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="using-r-via-rstudio"><span class="header-section-number">1.1.3</span> Using R via RStudio</h3>
+<p>Recall our car analogy from above. Much as we don’t drive a car by interacting directly with the engine but rather by interacting with elements on the car’s dashboard, we won’t be using R directly but rather we will use RStudio’s interface. After you install R and RStudio on your computer, you’ll have two new programs AKA applications you can open. We will always work in RStudio and not R. In other words:</p>
+<table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">R: Do not open this</th>
+<th style="text-align: center;">RStudio: Open this</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="images/logos/Rlogo.png" height="75"></td>
+<td style="text-align: center;"><img src="images/logos/rstudio-square-logo.png" class="img-fluid" width="85"></td>
+</tr>
+</tbody>
+</table>
+<p>After you open RStudio, you should see the following:</p>
+<p><img src="images/rstudio.png" class="img-fluid"></p>
+<p>Note the three panes, which are three panels dividing the screen: The <em>Console pane</em>, the <em>Files pane</em>, and the <em>Environment pane</em>. Over the course of this chapter, you’ll come to learn what purpose each of these panes serve.</p>
+</section>
+</section>
+<section id="sec-code" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-code"><span class="header-section-number">1.2</span> How do I code in R?</h2>
+<p>Now that you’re set up with R and RStudio, you are probably asking yourself “OK. Now how do I use R?” The first thing to note as that unlike other statistical software programs like Excel, STATA, or SAS that provide <a href="https://en.wikipedia.org/wiki/Point_and_click">point and click</a> interfaces, R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a>, meaning you have to enter in R commands written in R code. In other words, you have to code/program in R. Note that we’ll use the terms “coding” and “programming” interchangeably in this book.</p>
+<p>While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this book is not a book on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.</p>
+<section id="creating-your-first-r-markdown-document" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="creating-your-first-r-markdown-document"><span class="header-section-number">1.2.1</span> Creating your first R Markdown document</h3>
+<p>R Markdown allows you to easily create a document which combines your code, the results from your code, as well as any text that accompanies the analysis. To create a new R Markdown file, in R Studio select File&gt;New File&gt;R Markdown. Then, you will see a window pop-up titled <em>New R Markdown</em>. Here, you specify the type of file you wish to create. HTML is generally the recommended document type since it does not have traditional <em>page</em> separators like PDF and Word do. You can also choose a title and author for your document using their respective fields. Finally, select <em>Ok</em> to create your new R Markdown file. You will see it appear as a tab in your R Studio session. Click the <em>save icon</em> to save your new document.</p>
+<p>The following is an example of an R Markdown document:</p>
+<p><img src="images/markdown_example.png" class="img-fluid"></p>
+<ol type="a">
+<li>Save your document.</li>
+<li>Click <em>knit</em> to compile your R Markdown into the document file type that you specified. The file will be saved in your <em>Files pane</em>. This will also save your document.</li>
+<li>Insert a new code chunk in your document where the cursor is located. You will often have many code chunks in your document.</li>
+<li>Run the current code chunk.</li>
+</ol>
+<p>When you create your Markdown file and <em>knit</em> it into a document, the chunks are run in order and any output from them is shown in the document, in the order and location that their respective chunk appears. Sometimes you may wish to type code or analyze data without it printing in the document. If that is the case, you type the code in the <em>Console</em> rather than in the <em>.Rmd</em> file.</p>
+<p>While you read through this book, it will be helpful to have an RMarkdown document open so you can copy code provided and paste it into a code chunk to run.</p>
+</section>
+<section id="sec-programming-concepts" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="sec-programming-concepts"><span class="header-section-number">1.2.2</span> Basic programming concepts and terminology</h3>
+<p>We now introduce some basic programming concepts and terminology. Instead of asking you to learn all these concepts and terminology right now, we’ll guide you so that you’ll “learn by doing.” Note that in this book we will always use a different font to distinguish regular text from <code>computer_code</code>. The best way to master these topics is, in our opinions, “learning by doing” and lots of repetition.</p>
+<ul>
+<li><p>Basics:</p>
+<ul>
+<li><em>Console</em>: Where you enter in commands. </li>
+<li><em>Running code</em>: The act of telling R to perform an action by giving it commands in the console.</li>
+<li><em>Objects</em>: Where values are saved in R. In order to do useful and interesting things in R, we will want to <em>assign</em> a name to an object. For example we could do the following assignments: <code>x &lt;- 44 - 20</code> and <code>three &lt;- 3</code>. This would allow us to run <code>x + three</code> which would return <code>27</code>.</li>
+<li><em>Data types</em>: Integers, doubles/numerics, logicals, and characters.</li>
+</ul></li>
+</ul>
+<p>In R Studio try typing the following code into the console or code chunk.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">44-20</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>three <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>three</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+<p>You should see <code>x</code> and <code>three</code> appear as stored objects in the <em>Environment</em> pane. Anything you store in the <em>Environment</em> pane can be referenced and used later. R can also be used as a calculator, notice how it evaluates <code>x+three</code>.</p>
+<ul>
+<li><p><em>Vectors</em>: A series of values. These are created using the <code>c()</code> function, where <code>c()</code> stands for “combine” or “concatenate”. For example: <code>c(6, 11, 13, 31, 90, 92)</code>.</p></li>
+<li><p><em>Factors</em>: <em>Categorical data</em> are represented in R as factors.</p></li>
+<li><p><em>Data frames</em>: Data frames are like rectangular spreadsheets: they are representations of datasets in R where the rows correspond to <em>observations</em> and the columns correspond to <em>variables</em> that describe the observations. We’ll cover data frames later in Section <a href="#sec-nycflights13"><span>Section&nbsp;1.4</span></a>.</p></li>
+<li><p><em>Conditionals</em>:</p>
+<ul>
+<li>Testing for equality in R using <code>==</code> (and not <code>=</code> which is typically used for assignment). Ex: <code>2 + 1 == 3</code> compares <code>2 + 1</code> to <code>3</code> and is correct R code, while <code>2 + 1 = 3</code> will return an error.</li>
+<li>Boolean algebra: <code>TRUE/FALSE</code> statements and mathematical operators such as <code>&lt;</code> (less than), <code>&lt;=</code> (less than or equal), and <code>!=</code> (not equal to).</li>
+<li>Logical operators: <code>&amp;</code> representing “and” as well as <code>|</code> representing “or.” Ex: <code>(2 + 1 == 3) &amp; (2 + 1 == 4)</code> returns <code>FALSE</code> since both clauses are not <code>TRUE</code> (only the first clause is <code>TRUE</code>). On the other hand, <code>(2 + 1 == 3) | (2 + 1 == 4)</code> returns <code>TRUE</code> since at least one of the two clauses is <code>TRUE</code>.</li>
+</ul></li>
+<li><p><em>Functions</em>, also called <em>commands</em>: Functions perform tasks in R. They take in inputs called <em>arguments</em> and return outputs. You can either manually specify a function’s arguments or use the function’s <em>default values</em>.</p></li>
+</ul>
+<p>This list is by no means an exhaustive list of all the programming concepts and terminology needed to become a savvy R user; such a list would be so large it wouldn’t be very useful, especially for novices. Rather, we feel this is a minimally viable list of programming concepts and terminology you need to know before getting started. We feel that you can learn the rest as you go. Remember that your mastery of all of these concepts and terminology will build as you practice more and more.</p>
+</section>
+<section id="errors-warnings-and-messages" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="errors-warnings-and-messages"><span class="header-section-number">1.2.3</span> Errors, warnings, and messages</h3>
+<p>One thing that intimidates new R and RStudio users is how it reports <em>errors</em>, <em>warnings</em>, and <em>messages</em>. R reports errors, warnings, and messages in a glaring red font, which makes it seem like it is scolding you. However, seeing red text in the console is not always bad.</p>
+<p>R will show red text in the console pane in three different situations:</p>
+<ul>
+<li><p><strong>Errors</strong>: When the red text is a legitimate error, it will be prefaced with “Error in…” and try to explain what went wrong. Generally when there’s an error, the code will not run. For example, we’ll see in <a href="#sec-package-use">Subsection&nbsp;<span>1.3.3</span></a> if you see <code>Error in ggplot(...) : could not find function "ggplot"</code>, it means that the <code>ggplot()</code> function is not accessible because the package that contains the function (<code>ggplot2</code>) was not loaded with <code>library(ggplot2)</code>. Thus you cannot use the <code>ggplot()</code> function without the <code>ggplot2</code> package being loaded first.</p></li>
+<li><p><strong>Warnings</strong>: When the red text is a warning, it will be prefaced with “Warning:” and R will try to explain why there’s a warning. Generally your code will still work, but with some caveats. For example, you will see in <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a> if you create a scatterplot based on a dataset where one of the values is missing, you will see this warning: <code>Warning: Removed 1 rows containing missing values (geom_point)</code>. R will still produce the scatterplot with all the remaining values, but it is warning you that one of the points isn’t there.</p></li>
+<li><p><strong>Messages</strong>: When the red text doesn’t start with either “Error” or “Warning”, it’s <em>just a friendly message</em>. You’ll see these messages when you load <em>R packages</em> in the upcoming <a href="#sec-package-loading">Subsection&nbsp;<span>1.3.2</span></a> or when you read data saved in spreadsheet files with the <code>read_csv()</code> function as you’ll see in <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a>. These are helpful diagnostic messages and they don’t stop your code from working. Additionally, you’ll see these messages when you install packages too using <code>install.packages()</code>.</p></li>
+</ul>
+<p>Remember, when you see red text in the console, <em>don’t panic</em>. It doesn’t necessarily mean anything is wrong. Rather:</p>
+<ul>
+<li><p>If the text starts with “Error”, figure out what’s causing it. <span style="color:red">Think of errors as a red traffic light: something is wrong!</span></p></li>
+<li><p>If the text starts with “Warning”, figure out if it’s something to worry about. For instance, if you get a warning about missing values in a scatterplot and you know there are missing values, you’re fine. If that’s surprising, look at your data and see what’s missing. <span style="color:gold">Think of warnings as a yellow traffic light: everything is working fine, but watch out/pay attention.</span></p></li>
+<li><p>Otherwise the text is just a message. Read it, wave back at R, and thank it for talking to you. <span style="color:green">Think of messages as a green traffic light: everything is working fine.</span></p></li>
+</ul>
+</section>
+<section id="tips-on-learning-to-code" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="tips-on-learning-to-code"><span class="header-section-number">1.2.4</span> Tips on learning to code</h3>
+<p>Learning to code/program is very much like learning a foreign language, it can be very daunting and frustrating at first. Such frustrations are very common and it is very normal to feel discouraged as you learn. However just as with learning a foreign language, if you put in the effort and are not afraid to make mistakes, anybody can learn.</p>
+<p>Here are a few useful tips to keep in mind as you learn to program:</p>
+<ul>
+<li><p><strong>Remember that computers are not actually that smart</strong>: You may think your computer or smartphone are “smart,” but really people spent a lot of time and energy designing them to appear “smart.” Rather you have to tell a computer everything it needs to do. Furthermore the instructions you give your computer can’t have any mistakes in them, nor can they be ambiguous in any way.</p></li>
+<li><p><strong>Take the “copy, paste, and tweak” approach</strong>: Especially when learning your first programming language, it is often much easier to taking existing code that you know works and modify it to suit your ends, rather than trying to write new code from scratch. We call this the <em>copy, paste, and tweak</em> approach. So early on, we suggest not trying to write code from memory, but rather take existing examples we have provided you, then copy, paste, and tweak them to suit your goals. Don’t be afraid to play around!</p></li>
+<li><p><strong>The best way to learn to code is by doing</strong>: Rather than learning to code for its own sake, we feel that learning to code goes much smoother when you have a goal in mind or when you are working on a particular project, like analyzing data that you are interested in.</p></li>
+<li><p><strong>Practice is key</strong>: Just as the only method to improving your foreign language skills is through practice, practice, and practice; so also the only method to improving your coding is through practice, practice, and practice. Don’t worry however; we’ll give you plenty of opportunities to do so!</p></li>
+</ul>
+</section>
+</section>
+<section id="sec-packages" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-packages"><span class="header-section-number">1.3</span> What are R packages?</h2>
+<p>Another point of confusion with many new R users is the idea of an R package. R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a world-wide community of R users and can be downloaded for free from the internet. For example, among the many packages we will use in this book are the <code>ggplot2</code> package for data visualization in <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>, the <code>dplyr</code> package for data wrangling in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>, and the <code>moderndive</code> package that accompanies this book.</p>
+<p>A good analogy for R packages is they are like apps you can download onto a mobile phone:</p>
+<table class="table">
+<colgroup>
+<col style="width: 51%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">R: A new phone</th>
+<th style="text-align: center;">R Packages: Apps you can download</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="images/iphone.jpg" style="height:1.5in"></td>
+<td style="text-align: center;"><img src="images/apps.jpg" style="height:1.5in"></td>
+</tr>
+</tbody>
+</table>
+<p>So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.</p>
+<p>Let’s continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a recent photo you have taken on Instagram. You need to:</p>
+<ol type="1">
+<li><p><em>Install the app</em>: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you’re set. You might do this again in the future any time there is an update to the app.</p></li>
+<li><p><em>Open the app</em>: After you’ve installed Instagram, you need to open the app.</p></li>
+</ol>
+<p>Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:</p>
+<ol type="1">
+<li><p><em>Install the package</em>: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you’ve installed a package, you likely won’t install it again unless you want to update it to a newer version.</p></li>
+<li><p><em>“Load” the package</em>: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio on your computer; you need to “load” each package you want to use every time you start RStudio.</p></li>
+</ol>
+<p>Let’s now show you how to perform these two steps for the <code>ggplot2</code> package for data visualization.</p>
+<section id="package-installation" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="package-installation"><span class="header-section-number">1.3.1</span> Package installation</h3>
+<blockquote class="blockquote">
+<p><strong>Note about RStudio Server</strong>: If your instructor has provided you with a link and access to RStudio Server, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server, but rather RStudio Desktop on your own computer.</p>
+</blockquote>
+<p>There are two ways to install an R package. For example, to install the <code>ggplot2</code> package:</p>
+<ol type="1">
+<li><p><strong>Easy way</strong>: In the Files pane of RStudio:</p>
+<ol type="a">
+<li><p>Click on the “Packages” tab</p></li>
+<li><p>Click on “Install”</p></li>
+<li><p>Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type <code>ggplot2</code></p></li>
+<li><p>Click “Install”</p>
+<p><img src="images/install_packages_easy_way.png" style="height:4in"></p></li>
+</ol></li>
+<li><p><strong>Slightly harder way</strong>: An alternative but slightly less convenient way to install a package is by typing <code>install.packages("ggplot2")</code> in the Console pane of RStudio and hitting enter. Note you must include the quotation marks.</p></li>
+</ol>
+<p>Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer verions, you need to re-install it by repeating the above steps.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Under Construction
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 1.1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Currently working on content transfer from previous version of the book.</p>
+<p>Repeat the above installing steps for the <code>dplyr</code>, <code>nycflights13</code>, and <code>knitr</code> packages. This will install the earlier mentioned <code>dplyr</code> package, the <code>nycflights13</code> package containing data on all domestic flights leaving a NYC airport in 2013, and the <code>knitr</code> package for writing reports in R.</p>
 </div>
 </div>
+</section>
+<section id="sec-package-loading" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="sec-package-loading"><span class="header-section-number">1.3.2</span> Package loading</h3>
+<p>Recall that after you’ve installed a package, you need to “load” it, in other words open it. We do this by using the <code>library()</code> command. For example, to load the <code>ggplot2</code> package, run the following code in the Console pane. What do we mean by “run the following code”? Either type or copy &amp; paste the following code into the Console pane and then hit the enter key.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If after running the above code, a blinking cursor returns next to the <code>&gt;</code> “prompt” sign, it means you were successful and the <code>ggplot2</code> package is now loaded and ready to use. If however, you get a red “error message” that reads…</p>
+<pre><code>Error in library(ggplot2) : there is no package called ‘ggplot2’</code></pre>
+<p>… it means that you didn’t successfully install it. In that case, go back to the previous subsection “Package installation” and install it.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 1.2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Load” the <code>dplyr</code>, <code>nycflights13</code>, and <code>knitr</code> packages as well by repeating the above steps.</p>
+</div>
+</div>
+</section>
+<section id="sec-package-use" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="sec-package-use"><span class="header-section-number">1.3.3</span> Package use</h3>
+<p>One extremely common mistake new R users make when wanting to use particular packages is that they forget to “load” them first by using the <code>library()</code> command we just saw. Remember: <em>you have to load each package you want to use every time you start RStudio.</em> If you don’t first “load” a package, but attempt to use one of its features, you’ll see an error message similar to:</p>
+<pre><code>Error: could not find function</code></pre>
+<p>R is telling you that you are trying to use a function in a package that has not yet been “loaded.” Almost all new users forget do this when starting out, and it is a little annoying to get used to. However, you’ll remember with practice.</p>
+</section>
+</section>
+<section id="sec-nycflights13" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-nycflights13"><span class="header-section-number">1.4</span> Explore your first dataset</h2>
+<p>Let’s put everything we’ve learned so far into practice and start exploring some real data! Data comes to us in a variety of formats, from pictures to text to numbers. Throughout this book, we’ll focus on datasets that are saved in “spreadsheet”-type format; this is probably the most common way data are collected and saved in many fields. Remember from <a href="#sec-programming-concepts">Subsection&nbsp;<span>1.2.2</span></a> that these “spreadsheet”-type datasets are called <em>data frames</em> in R; we will focus on working with data saved as data frames throughout this book.</p>
+<p>Let’s first load all the packages needed for this chapter, assuming you’ve already installed them. Read <a href="#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages if you haven’t already.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At the beginning of all subsequent chapters in this text, we’ll always have a list of packages that you should have installed and loaded to work with that chapter’s R code.</p>
+<section id="nycflights13-package" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="nycflights13-package"><span class="header-section-number">1.4.1</span> <code>nycflights13</code> package</h3>
+<p>Many of us have flown on airplanes or know someone who has. Air travel has become an ever-present aspect in many people’s lives. If you live in or are visiting a relatively large city and you walk around that city’s airport, you see gates showing flight information from many different airlines. And you will frequently see that some flights are delayed because of a variety of conditions. Are there ways that we can avoid having to deal with these flight delays?</p>
+<p>We’d all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for the moment that you are very much anticipating being at your final destination.) Throughout this book, we’re going to analyze data related to flights contained in the <code>nycflights13</code> package <span class="citation" data-cites="R-nycflights13">(<a href="references.html#ref-R-nycflights13" role="doc-biblioref">Wickham 2021</a>)</span>. Specifically, this package contains five data sets saved in five separate data frames with information about all domestic flights departing from New York City in 2013. These include Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia (LGA) airports:</p>
+<ul>
+<li><code>flights</code>: Information on all 336,776 flights</li>
+<li><code>airlines</code>: A table matching airline names and their two letter IATA airline codes (also known as carrier codes) for 16 airline companies</li>
+<li><code>planes</code>: Information about each of 3,322 physical aircraft used.</li>
+<li><code>weather</code>: Hourly meteorological data for each of the three NYC airports. This data frame has 26,115 rows, roughtly corresponding to the 365 <span class="math inline">\(\times\)</span> 24 <span class="math inline">\(\times\)</span> 3 = 26,280 possible hourly measurements one can observe at three locations over the course of a year.</li>
+<li><code>airports</code>: Airport names, codes, and locations for 1,458 destination airports.</li>
+</ul>
+</section>
+<section id="flights-data-frame" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="flights-data-frame"><span class="header-section-number">1.4.2</span> <code>flights</code> data frame</h3>
+<p>We will begin by exploring the <code>flights</code> data frame that is included in the <code>nycflights13</code> package and getting an idea of its structure. Run the following code in your console (either by typing it or cutting &amp; pasting it): it loads in the <code>flights</code> dataset into your Console. Note depending on the size of your monitor, the output may vary slightly.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 336,776 × 19
+    year month   day dep_time sched_de…¹ dep_d…² arr_t…³ sched…⁴ arr_d…⁵ carrier
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;      &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;  
+ 1  2013     1     1      517        515       2     830     819      11 UA     
+ 2  2013     1     1      533        529       4     850     830      20 UA     
+ 3  2013     1     1      542        540       2     923     850      33 AA     
+ 4  2013     1     1      544        545      -1    1004    1022     -18 B6     
+ 5  2013     1     1      554        600      -6     812     837     -25 DL     
+ 6  2013     1     1      554        558      -4     740     728      12 UA     
+ 7  2013     1     1      555        600      -5     913     854      19 B6     
+ 8  2013     1     1      557        600      -3     709     723     -14 EV     
+ 9  2013     1     1      557        600      -3     838     846      -8 B6     
+10  2013     1     1      558        600      -2     753     745       8 AA     
+# … with 336,766 more rows, 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;,
+#   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
+#   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;, and abbreviated variable names
+#   ¹​sched_dep_time, ²​dep_delay, ³​arr_time, ⁴​sched_arr_time, ⁵​arr_delay</code></pre>
+</div>
+</div>
+<p>Let’s unpack this output:</p>
+<ul>
+<li><p><code>A tibble: 336,776 x 19</code>: A <code>tibble</code> is a kind of data frame used in R. This particular data frame has</p>
+<ul>
+<li><code>336,776</code> rows</li>
+<li><code>19</code> columns corresponding to 19 variables describing each observation</li>
+</ul></li>
+<li><p><code>year month day dep_time sched_dep_time dep_delay arr_time</code> are different columns, in other words variables, of this data frame.</p></li>
+<li><p>We then have the first 10 rows of observations corresponding to 10 flights.</p></li>
+<li><p><code>... with 336,766 more rows, and 11 more variables:</code> indicating to us that 336,766 more rows of data and 11 more variables could not fit in this screen.</p></li>
+</ul>
+<p>Unfortunately, this output does not allow us to explore the data very well. Let’s look at different tools to explore data frames.</p>
+</section>
+<section id="exploredataframes" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="exploredataframes"><span class="header-section-number">1.4.3</span> Exploring data frames</h3>
+<p>Among the many ways of getting a feel for the data contained in a data frame such as <code>flights</code>, we present three functions that take as their “argument”, in other words their input, the data frame in question. We also include a fourth method for exploring one particular column of a data frame:</p>
+<ol type="1">
+<li>Using the <code>View()</code> function built for use in RStudio. We will use this the most.</li>
+<li>Using the <code>glimpse()</code> function, which is included in the <code>dplyr</code> package.</li>
+<li>Using the <code>kable()</code> function, which is included in the <code>knitr</code> package.</li>
+<li>Using the <code>$</code> operator to view a single variable in a data frame.</li>
+</ol>
+<p><strong>1. <code>View()</code></strong>:</p>
+<p>Run <code>View(flights)</code> in your Console in RStudio, either by typing it or cutting &amp; pasting it into the Console pane, and explore this data frame in the resulting pop-up viewer. You should get into the habit of always <code>View</code>ing any data frames that come your way. Note the capital “V” in <code>View</code>. R is case-sensitive so you’ll receive an error is you run <code>view(flights)</code> instead of <code>View(flights)</code>.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 1.3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What does any <em>ONE</em> row in this <code>flights</code> dataset refer to?</p>
+<ol type="a">
+<li>Data on an airline</li>
+<li>Data on a flight</li>
+<li>Data on an airport</li>
+<li>Data on multiple flights</li>
+</ol>
+</div>
+</div>
+<p>By running <code>View(flights)</code>, we see the different <em>variables</em> listed in the columns and we see that there are different types of variables. Some of the variables like <code>distance</code>, <code>day</code>, and <code>arr_delay</code> are what we will call <em>quantitative</em> variables. These variables are numerical in nature. Other variables here are <em>categorical</em>.</p>
+<p>Note that if you look in the leftmost column of the <code>View(flights)</code> output, you will see a column of numbers. These are the row numbers of the dataset. If you glance across a row with the same number, say row 5, you can get an idea of what each row corresponds to. In other words, this will allow you to identify what object is being referred to in a given row. This is often called the <em>observational unit</em>. The <em>observational unit</em> in this example is an individual flight departing New York City in 2013. You can identify the observational unit by determining what “thing” is being measured or described by each of the variables.</p>
+<p><strong>2. <code>glimpse()</code></strong>:</p>
+<p>The second way to explore a data frame is using the <code>glimpse()</code> function included in the <code>dplyr</code> package. Thus, you can only use the <code>glimpse()</code> function after you’ve loaded the <code>dplyr</code> package. This function provides us with an alternative method for exploring a data frame:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 336,776
+Columns: 19
+$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…
+$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …
+$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …
+$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…
+$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…
+$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…
+$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…
+$ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "…
+$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…
+$ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394…
+$ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",…
+$ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",…
+$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…
+$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …
+$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…
+$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…
+$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…</code></pre>
+</div>
+</div>
+<p>We see that <code>glimpse()</code> will give you the first few entries of each variable in a row after the variable. In addition, the <em>data type</em> (see <a href="#sec-programming-concepts">Subsection&nbsp;<span>1.2.2</span></a>) of the variable is given immediately after each variable’s name inside <code>&lt; &gt;</code>. Here, <code>int</code> and <code>dbl</code> refer to “integer” and “double”, which are computer coding terminology for quantitative/numerical variables. In contrast, <code>chr</code> refers to “character”, which is computer terminology for text data. Text data, such as the <code>carrier</code> or <code>origin</code> of a flight, are categorical variables. The <code>time_hour</code> variable is an example of one more type of data type: <code>dttm</code>. As you may suspect, this variable corresponds to a specific date and time of day. However, we won’t work with dates in this class and leave it to a more advanced book on data science.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 1.4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What are some examples in this dataset of <strong>categorical</strong> variables? What makes them different than <strong>quantitative</strong> variables?</p>
+</div>
+</div>
+<p><strong>3. <code>kable()</code></strong>:</p>
+<p>The another way to explore the entirety of a data frame is using the <code>kable()</code> function from the <code>knitr</code> package. Let’s explore the different carrier codes for all the airlines in our dataset two ways. Run both of these lines of code in your Console:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>airlines</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(airlines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At first glance, it may not appear that there is much difference in the outputs. However when using tools for document production such as <a href="http://rmarkdown.rstudio.com/lesson-1.html">R Markdown</a>, the latter code produces output that is much more legible and reader-friendly.</p>
+<p><strong>4. <code>$</code> operator</strong></p>
+<p>Lastly, the <code>$</code> operator allows us to explore a single variable within a data frame. For example, run the following in your console</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>airlines</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>airlines<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We used the <code>$</code> operator to extract only the <code>name</code> variable and return it as a vector of length 16. We will only be occasionally exploring data frames using this operator, instead favoring the <code>View()</code> and <code>glimpse()</code> functions.</p>
+</section>
+<section id="help-files" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="help-files"><span class="header-section-number">1.4.4</span> Help files</h3>
+<p>Another nice feature of R is the help system. You can get help in R by entering a <code>?</code> before the name of a function or data frame in question and you will be presented with a page showing the documentation. For example, let’s look at the help file for the <code>flights</code> data frame:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>?flights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A help file should pop-up in the Help pane of RStudio. If you have questions about a function or data frame included in an R package, you should get in the habit of consulting the help file right away.</p>
+</section>
+</section>
+<section id="gs-conclusion" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="gs-conclusion"><span class="header-section-number">1.5</span> Conclusion</h2>
+<p>We’ve given you what we feel are the most essential concepts to know before you can start exploring data in R. Is this chapter exhaustive? Absolutely not. To try to include everything in this chapter would make the chapter so large it wouldn’t be useful!</p>
+<section id="additional-resources" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">1.5.1</span> Additional resources</h3>
+<p>If you are completely new to the world of coding, R, and RStudio and feel you could benefit from a more detailed introduction, we suggest you check out Chester Ismay’s short book <a href="https://rbasics.netlify.com/">Getting used to R, RStudio, and R Markdown</a> <span class="citation" data-cites="usedtor2016">(<a href="references.html#ref-usedtor2016" role="doc-biblioref">Ismay 2016</a>)</span>, which includes screencast recordings that you can follow along and pause as you learn. Furthermore, there is an introduction to R Markdown, a tool used for reproducible research in R.</p>
+<p><img src="images/gettting-used-to-R.png" style="height:3.5in"></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-usedtor2016" class="csl-entry" role="doc-biblioentry">
+Ismay, Chester. 2016. <em>Getting Used to r, <span>RStudio</span>, and r Markdown</em>. <a href="http://ismayc.github.io/rbasics-book">http://ismayc.github.io/rbasics-book</a>.
+</div>
+<div id="ref-R-nycflights13" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2021. <em>Nycflights13: Flights That Departed NYC in 2013</em>. <a href="https://github.com/hadley/nycflights13">https://github.com/hadley/nycflights13</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
