@@ -367,7 +367,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#sec-code" id="toc-sec-code" class="nav-link" data-scroll-target="#sec-code"><span class="toc-section-number">1.2</span>  How do I code in R?</a>
   <ul class="collapse">
-  <li><a href="#creating-your-first-r-markdown-document" id="toc-creating-your-first-r-markdown-document" class="nav-link" data-scroll-target="#creating-your-first-r-markdown-document"><span class="toc-section-number">1.2.1</span>  Creating your first R Markdown document</a></li>
+  <li><a href="#creating-your-first-quarto-document" id="toc-creating-your-first-quarto-document" class="nav-link" data-scroll-target="#creating-your-first-quarto-document"><span class="toc-section-number">1.2.1</span>  Creating your first Quarto document</a></li>
   <li><a href="#sec-programming-concepts" id="toc-sec-programming-concepts" class="nav-link" data-scroll-target="#sec-programming-concepts"><span class="toc-section-number">1.2.2</span>  Basic programming concepts and terminology</a></li>
   <li><a href="#errors-warnings-and-messages" id="toc-errors-warnings-and-messages" class="nav-link" data-scroll-target="#errors-warnings-and-messages"><span class="toc-section-number">1.2.3</span>  Errors, warnings, and messages</a></li>
   <li><a href="#tips-on-learning-to-code" id="toc-tips-on-learning-to-code" class="nav-link" data-scroll-target="#tips-on-learning-to-code"><span class="toc-section-number">1.2.4</span>  Tips on learning to code</a></li>
@@ -389,6 +389,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">1.5.1</span>  Additional resources</a></li>
   </ul></li>
+  <li><a href="#sec-pp01" id="toc-sec-pp01" class="nav-link" data-scroll-target="#sec-pp01"><span class="toc-section-number">1.6</span>  Practice Problems</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/01-getting-started.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -448,10 +449,10 @@ div.csl-indent {
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="using-rstudio-cloud"><span class="header-section-number">1.1.1</span> Using RStudio Cloud</h3>
 <p>RStudio Cloud (<a href="https://rstudio.cloud" class="uri">https://rstudio.cloud</a>) is a hosted version of RStudio that allows you to begin coding directly from your browser - there is no software to install and nothing to configure on your computer.</p>
 <p>To begin using RStudio Cloud use the link provided by your instructor to gain access to the classroom workspace. You will be prompted to create a free account or log in if you have an existing account.</p>
-<p>After you open RStudio Cloud, you should now have access to the classroom under ‘Spaces’ on the left hand side (in this case ‘Stat 202’).</p>
-<p><img src="images/RStudioCloud.png" class="img-fluid"></p>
-<p>Throughout class you will be working on various activities. Once the instructor has made an activity available you will click on the classroom Workspace (Stat 202) to access the available projects. To begin working on an activity click ‘Start’. Once that activity project is open navigate to the ‘File’ pane and open the R Markdown ‘.Rmd’ file.</p>
-<p><img src="images/RStudioWorkspace.png" class="img-fluid"></p>
+<p>After you open RStudio Cloud, you should now have access to the classroom under ‘Spaces’ on the left hand side (in this case ‘STAT202’).</p>
+<p><img src="images/rstudio_cloud.png" class="img-fluid"></p>
+<p>Throughout this course you will be working on various activities. Once the instructor has made an activity available you will click on the classroom Workspace (STAT202) to access the available projects. To begin working on an activity click ‘Start’. Once that activity project is open navigate to the ‘File’ pane and open the Quarto ‘.qmd’ file.</p>
+<p><img src="images/rstudio_workspace.png" class="img-fluid"></p>
 <p>You can use RStudio Cloud for personal use as well by creating projects in ‘Your Workspace’. However, RStudio Cloud limits the number of projects and amount of accessible time so it is recommended that you later install the software on your own computer.</p>
 </section>
 <section id="installing-r-and-rstudio-on-your-personal-computer" class="level3" data-number="1.1.2">
@@ -502,19 +503,19 @@ div.csl-indent {
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-code"><span class="header-section-number">1.2</span> How do I code in R?</h2>
 <p>Now that you’re set up with R and RStudio, you are probably asking yourself “OK. Now how do I use R?” The first thing to note as that unlike other statistical software programs like Excel, STATA, or SAS that provide <a href="https://en.wikipedia.org/wiki/Point_and_click">point and click</a> interfaces, R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a>, meaning you have to enter in R commands written in R code. In other words, you have to code/program in R. Note that we’ll use the terms “coding” and “programming” interchangeably in this book.</p>
 <p>While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this book is not a book on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.</p>
-<section id="creating-your-first-r-markdown-document" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="creating-your-first-r-markdown-document"><span class="header-section-number">1.2.1</span> Creating your first R Markdown document</h3>
-<p>R Markdown allows you to easily create a document which combines your code, the results from your code, as well as any text that accompanies the analysis. To create a new R Markdown file, in R Studio select File&gt;New File&gt;R Markdown. Then, you will see a window pop-up titled <em>New R Markdown</em>. Here, you specify the type of file you wish to create. HTML is generally the recommended document type since it does not have traditional <em>page</em> separators like PDF and Word do. You can also choose a title and author for your document using their respective fields. Finally, select <em>Ok</em> to create your new R Markdown file. You will see it appear as a tab in your R Studio session. Click the <em>save icon</em> to save your new document.</p>
-<p>The following is an example of an R Markdown document:</p>
-<p><img src="images/markdown_example.png" class="img-fluid"></p>
+<section id="creating-your-first-quarto-document" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="creating-your-first-quarto-document"><span class="header-section-number">1.2.1</span> Creating your first Quarto document</h3>
+<p>Quarto allows you to easily create a document which combines your code, the results from your code, as well as any text that accompanies the analysis. To create a new Quarto file, in RStudio select File&gt;New File&gt;Quarto Document. Then, you will see a window pop-up titled <em>New Quarto Document</em>. Here, you specify the type of file you wish to create. HTML is generally the recommended document type since it does not have traditional <em>page</em> separators like PDF and Word do. You can also choose a title and author for your document using their respective fields. Finally, select <em>Create</em> to create your new Quarto file. You will see it appear as a tab in your RStudio session. Click the <em>save icon</em> to save your new document.</p>
+<p>The following is an example of a Quarto document:</p>
+<p><img src="images/quarto_example.png" class="img-fluid"></p>
 <ol type="a">
 <li>Save your document.</li>
-<li>Click <em>knit</em> to compile your R Markdown into the document file type that you specified. The file will be saved in your <em>Files pane</em>. This will also save your document.</li>
+<li>Click <em>Render</em> to compile your Quarto document into the file type that you specified. The file will be saved in your <em>Files pane</em>. This will also save your document.</li>
 <li>Insert a new code chunk in your document where the cursor is located. You will often have many code chunks in your document.</li>
 <li>Run the current code chunk.</li>
 </ol>
-<p>When you create your Markdown file and <em>knit</em> it into a document, the chunks are run in order and any output from them is shown in the document, in the order and location that their respective chunk appears. Sometimes you may wish to type code or analyze data without it printing in the document. If that is the case, you type the code in the <em>Console</em> rather than in the <em>.Rmd</em> file.</p>
-<p>While you read through this book, it will be helpful to have an RMarkdown document open so you can copy code provided and paste it into a code chunk to run.</p>
+<p>When you create your Quarto file and <em>Render</em> it into a document, the chunks are run in order and any output from them is shown in the document, in the order and location that their respective chunk appears. Sometimes you may wish to type code or analyze data without it printing in the document. If that is the case, you type the code in the <em>Console</em> rather than in the <em>.qmd</em> file.</p>
+<p>While you read through this book, it will be helpful to have a Quarto document open so you can copy code provided and paste it into a code chunk to run.</p>
 </section>
 <section id="sec-programming-concepts" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="sec-programming-concepts"><span class="header-section-number">1.2.2</span> Basic programming concepts and terminology</h3>
@@ -528,7 +529,7 @@ div.csl-indent {
 <li><em>Data types</em>: Integers, doubles/numerics, logicals, and characters.</li>
 </ul></li>
 </ul>
-<p>In R Studio try typing the following code into the console or code chunk.</p>
+<p>In RStudio try typing the following code into the console or code chunk.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">44-20</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>three <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -617,7 +618,7 @@ div.csl-indent {
 <section id="package-installation" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="package-installation"><span class="header-section-number">1.3.1</span> Package installation</h3>
 <blockquote class="blockquote">
-<p><strong>Note about RStudio Server</strong>: If your instructor has provided you with a link and access to RStudio Server, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server, but rather RStudio Desktop on your own computer.</p>
+<p><strong>Note about RStudio Server/Cloud</strong>: If your instructor has provided you with a link and access to RStudio Server/Cloud, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server/Cloud, but rather RStudio Desktop on your own computer.</p>
 </blockquote>
 <p>There are two ways to install an R package. For example, to install the <code>ggplot2</code> package:</p>
 <ol type="1">
@@ -828,7 +829,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>airlines</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(airlines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>At first glance, it may not appear that there is much difference in the outputs. However when using tools for document production such as <a href="http://rmarkdown.rstudio.com/lesson-1.html">R Markdown</a>, the latter code produces output that is much more legible and reader-friendly.</p>
+<p>At first glance, it may not appear that there is much difference in the outputs. However when using tools for document production such as <a href="https://quarto.org/docs/get-started/hello/rstudio.html">Quarto</a>, the latter code produces output that is much more legible and reader-friendly.</p>
 <p><strong>4. <code>$</code> operator</strong></p>
 <p>Lastly, the <code>$</code> operator allows us to explore a single variable within a data frame. For example, run the following in your console</p>
 <div class="cell" data-layout-align="center">
@@ -851,8 +852,143 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <p>We’ve given you what we feel are the most essential concepts to know before you can start exploring data in R. Is this chapter exhaustive? Absolutely not. To try to include everything in this chapter would make the chapter so large it wouldn’t be useful!</p>
 <section id="additional-resources" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">1.5.1</span> Additional resources</h3>
-<p>If you are completely new to the world of coding, R, and RStudio and feel you could benefit from a more detailed introduction, we suggest you check out Chester Ismay’s short book <a href="https://rbasics.netlify.com/">Getting used to R, RStudio, and R Markdown</a> <span class="citation" data-cites="usedtor2016">(<a href="references.html#ref-usedtor2016" role="doc-biblioref">Ismay 2016</a>)</span>, which includes screencast recordings that you can follow along and pause as you learn. Furthermore, there is an introduction to R Markdown, a tool used for reproducible research in R.</p>
+<p>If you are completely new to the world of coding, R, and RStudio and feel you could benefit from a more detailed introduction, we suggest you check out Chester Ismay’s short book <a href="https://rbasics.netlify.com/">Getting used to R, RStudio, and R Markdown</a> <span class="citation" data-cites="usedtor2016">(<a href="references.html#ref-usedtor2016" role="doc-biblioref">Ismay 2016</a>)</span>, which includes screencast recordings that you can follow along and pause as you learn. While this book teaches R Markdown it it important to note that everything in R Markdown is transferable to Quarto. R Markdown and Quarto are both tools used for reproducible research but R Markdown is fundamentally tied to R while Quarto is a multi-language platform. For a getting started guide on Quarto, we suggest the <a href="https://quarto.org/docs/get-started/hello/rstudio.html">Quarto Getting Started webpage</a></p>
 <p><img src="images/gettting-used-to-R.png" style="height:3.5in"></p>
+</section>
+</section>
+<section id="sec-pp01" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="sec-pp01"><span class="header-section-number">1.6</span> Practice Problems</h2>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Concept
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<ol type="1">
+<li><p>Which type of document do we use to both code and write explanations?</p>
+<ol type="a">
+<li>R Script</li>
+<li>Quarto Document</li>
+<li>HTML file</li>
+<li>R Notebook</li>
+</ol></li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li><p>Which type of red text in the console pane generally means that your code will not run?</p>
+<ol type="a">
+<li>error</li>
+<li>warning</li>
+<li>message</li>
+</ol></li>
+</ol>
+<p><br></p>
+<ol start="3" type="1">
+<li><p>If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.</p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+</ol></li>
+</ol>
+<p><br></p>
+<ol start="5" type="1">
+<li><p>If you type <span class="math inline">\(8/2 == 4\)</span> into the console, what will the output be?</p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+<li>NA</li>
+<li>0</li>
+<li>4</li>
+</ol></li>
+<li><p>If you type <span class="math inline">\(3^2 != 9\)</span> into the console, what will the output be?</p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+<li>NA</li>
+<li>0</li>
+<li>9</li>
+</ol></li>
+<li><p>If you type <span class="math inline">\(5*3\)</span> into the console, what will the output be?</p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+<li>NA</li>
+<li>8</li>
+<li>15</li>
+</ol></li>
+</ol>
+<p><br></p>
+<ol start="8" type="1">
+<li><p>What does any ONE row in this flights dataset refer to?</p>
+<ol type="a">
+<li>Data on an airline</li>
+<li>Data on a flight</li>
+<li>Data on an airport</li>
+<li>Data on multiple flights</li>
+</ol></li>
+</ol>
+<p><br></p>
+<ol start="9" type="1">
+<li><p>In the flights dataset, <code>air_time</code> and <code>arr_delay</code> are which type of variables?</p>
+<ol type="a">
+<li>string</li>
+<li>categorical</li>
+<li>quantitative</li>
+<li>character</li>
+<li>dataframe</li>
+</ol></li>
+</ol>
+<p><br></p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Application
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<ol start="10" type="1">
+<li>In a code chunk, first define a variable <code>z</code> to be the product of 12 and 31, then define a variable called <code>add_on</code> to be the number 12. Print the output of <code>z + add_on</code>.</li>
+</ol>
+<p><br></p>
+<ol start="11" type="1">
+<li>Consider the <code>titanic</code> data set included in the package <code>ISDSdatasets</code>. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.</li>
+</ol>
+<pre><code>Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.</code></pre>
+<p><br></p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advanced
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>For the following problems we will use the <code>titanic</code> data set to learn additional data exploration techniques.</p>
+<ol start="12" type="1">
+<li>Use the function <code>head()</code> on the <code>titanic</code> dataset. What does it do? Based on this, what do you expect the function <code>tail()</code> does?</li>
+</ol>
+<p><br></p>
+<ol start="13" type="1">
+<li>The function <code>unique()</code>, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function <code>unique()</code> on the variable <code>Embarked</code>.</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -863,7 +999,6 @@ Ismay, Chester. 2016. <em>Getting Used to r, <span>RStudio</span>, and r Markdow
 Wickham, Hadley. 2021. <em>Nycflights13: Flights That Departed NYC in 2013</em>. <a href="https://github.com/hadley/nycflights13">https://github.com/hadley/nycflights13</a>.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->
