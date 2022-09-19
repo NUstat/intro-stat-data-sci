@@ -26,6 +26,10 @@ jobs:
           r-version: '4.2.0'
 
       - name: Install R Dependencies
+        run: sudo apt-get update && apt-get install -y --no-install-recommends
+      - name: Install curl
+        run: |-
+          Rscript -e "install.packages(c('curl'), repos = 'https://demo.rstudiopm.com/all/__linux__/bionic/latest')"
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
