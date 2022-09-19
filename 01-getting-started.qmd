@@ -53,13 +53,13 @@ RStudio Cloud (<https://rstudio.cloud>) is a hosted version of RStudio that allo
 
 To begin using RStudio Cloud use the link provided by your instructor to gain access to the classroom workspace. You will be prompted to create a free account or log in if you have an existing account.
 
-After you open RStudio Cloud, you should now have access to the classroom under 'Spaces' on the left hand side (in this case 'Stat 202').
+After you open RStudio Cloud, you should now have access to the classroom under 'Spaces' on the left hand side (in this case 'STAT202').
 
-![](images/RStudioCloud.png)
+![](images/rstudio_cloud.png)
 
-Throughout class you will be working on various activities. Once the instructor has made an activity available you will click on the classroom Workspace (Stat 202) to access the available projects. To begin working on an activity click 'Start'. Once that activity project is open navigate to the 'File' pane and open the R Markdown '.Rmd' file.
+Throughout this course you will be working on various activities. Once the instructor has made an activity available you will click on the classroom Workspace (STAT202) to access the available projects. To begin working on an activity click 'Start'. Once that activity project is open navigate to the 'File' pane and open the Quarto '.qmd' file.
 
-![](images/RStudioWorkspace.png)
+![](images/rstudio_workspace.png)
 
 You can use RStudio Cloud for personal use as well by creating projects in 'Your Workspace'. However, RStudio Cloud limits the number of projects and amount of accessible time so it is recommended that you later install the software on your own computer.
 
@@ -97,22 +97,22 @@ Now that you're set up with R and RStudio, you are probably asking yourself "OK.
 
 While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this book is not a book on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.
 
-### Creating your first R Markdown document
+### Creating your first Quarto document
 
-R Markdown allows you to easily create a document which combines your code, the results from your code, as well as any text that accompanies the analysis. To create a new R Markdown file, in R Studio select File\>New File\>R Markdown. Then, you will see a window pop-up titled *New R Markdown*. Here, you specify the type of file you wish to create. HTML is generally the recommended document type since it does not have traditional *page* separators like PDF and Word do. You can also choose a title and author for your document using their respective fields. Finally, select *Ok* to create your new R Markdown file. You will see it appear as a tab in your R Studio session. Click the *save icon* to save your new document.
+Quarto allows you to easily create a document which combines your code, the results from your code, as well as any text that accompanies the analysis. To create a new Quarto file, in RStudio select File\>New File\>Quarto Document. Then, you will see a window pop-up titled *New Quarto Document*. Here, you specify the type of file you wish to create. HTML is generally the recommended document type since it does not have traditional *page* separators like PDF and Word do. You can also choose a title and author for your document using their respective fields. Finally, select *Create* to create your new Quarto file. You will see it appear as a tab in your RStudio session. Click the *save icon* to save your new document.
 
-The following is an example of an R Markdown document:
+The following is an example of a Quarto document:
 
-![](images/markdown_example.png)
+![](images/quarto_example.png)
 
 a)  Save your document.
-b)  Click *knit* to compile your R Markdown into the document file type that you specified. The file will be saved in your *Files pane*. This will also save your document.
+b)  Click *Render* to compile your Quarto document into the file type that you specified. The file will be saved in your *Files pane*. This will also save your document.
 c)  Insert a new code chunk in your document where the cursor is located. You will often have many code chunks in your document.
 d)  Run the current code chunk.
 
-When you create your Markdown file and *knit* it into a document, the chunks are run in order and any output from them is shown in the document, in the order and location that their respective chunk appears. Sometimes you may wish to type code or analyze data without it printing in the document. If that is the case, you type the code in the *Console* rather than in the *.Rmd* file.
+When you create your Quarto file and *Render* it into a document, the chunks are run in order and any output from them is shown in the document, in the order and location that their respective chunk appears. Sometimes you may wish to type code or analyze data without it printing in the document. If that is the case, you type the code in the *Console* rather than in the *.qmd* file.
 
-While you read through this book, it will be helpful to have an RMarkdown document open so you can copy code provided and paste it into a code chunk to run.
+While you read through this book, it will be helpful to have a Quarto document open so you can copy code provided and paste it into a code chunk to run.
 
 ### Basic programming concepts and terminology {#sec-programming-concepts}
 
@@ -125,7 +125,7 @@ We now introduce some basic programming concepts and terminology. Instead of ask
     -   *Objects*: Where values are saved in R. In order to do useful and interesting things in R, we will want to *assign* a name to an object. For example we could do the following assignments: `x <- 44 - 20` and `three <- 3`. This would allow us to run `x + three` which would return `27`.
     -   *Data types*: Integers, doubles/numerics, logicals, and characters.
 
-In R Studio try typing the following code into the console or code chunk.
+In RStudio try typing the following code into the console or code chunk.
 
 ```{r}
 x <- 44-20
@@ -213,7 +213,7 @@ Let's now show you how to perform these two steps for the `ggplot2` package for 
 
 ### Package installation {#package-installation}
 
-> **Note about RStudio Server**: If your instructor has provided you with a link and access to RStudio Server, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server, but rather RStudio Desktop on your own computer.
+> **Note about RStudio Server/Cloud**: If your instructor has provided you with a link and access to RStudio Server/Cloud, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server/Cloud, but rather RStudio Desktop on your own computer.
 
 There are two ways to install an R package. For example, to install the `ggplot2` package:
 
@@ -373,7 +373,7 @@ airlines
 kable(airlines)
 ```
 
-At first glance, it may not appear that there is much difference in the outputs. However when using tools for document production such as [R Markdown](http://rmarkdown.rstudio.com/lesson-1.html), the latter code produces output that is much more legible and reader-friendly.
+At first glance, it may not appear that there is much difference in the outputs. However when using tools for document production such as [Quarto](https://quarto.org/docs/get-started/hello/rstudio.html), the latter code produces output that is much more legible and reader-friendly.
 
 **4. `$` operator**
 
@@ -406,6 +406,110 @@ We've given you what we feel are the most essential concepts to know before you 
 
 ### Additional resources
 
-If you are completely new to the world of coding, R, and RStudio and feel you could benefit from a more detailed introduction, we suggest you check out Chester Ismay's short book [Getting used to R, RStudio, and R Markdown](https://rbasics.netlify.com/) [@usedtor2016], which includes screencast recordings that you can follow along and pause as you learn. Furthermore, there is an introduction to R Markdown, a tool used for reproducible research in R.
+If you are completely new to the world of coding, R, and RStudio and feel you could benefit from a more detailed introduction, we suggest you check out Chester Ismay's short book [Getting used to R, RStudio, and R Markdown](https://rbasics.netlify.com/) [@usedtor2016], which includes screencast recordings that you can follow along and pause as you learn. While this book teaches R Markdown it it important to note that everything in R Markdown is transferable to Quarto. R Markdown and Quarto are both tools used for reproducible research but R Markdown is fundamentally tied to R while Quarto is a multi-language platform. For a getting started guide on Quarto, we suggest the [Quarto Getting Started webpage](https://quarto.org/docs/get-started/hello/rstudio.html)
 
 ![](images/gettting-used-to-R.png){height="3.5in"}
+
+
+## Practice Problems
+
+
+:::{.callout-note icon=false}
+## Concept
+:::
+
+1.  Which type of document do we use to both code and write explanations?
+
+    a)  R Script
+    b)  Quarto Document
+    c)  HTML file
+    d)  R Notebook
+
+\n
+
+2.  Which type of red text in the console pane generally means that your code will not run?
+
+    a)  error
+    b)  warning
+    c)  message
+
+\n
+
+3.  If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.
+
+    a)  TRUE
+    b)  FALSE
+
+\n
+
+5.  If you type $8/2 == 4$ into the console, what will the output be?
+
+    a)  TRUE
+    b)  FALSE
+    c)  NA
+    d)  0
+    e)  4
+
+6.  If you type $3^2 != 9$ into the console, what will the output be?
+
+    a)  TRUE
+    b)  FALSE
+    c)  NA
+    d)  0
+    e)  9
+    
+7.  If you type $5*3$ into the console, what will the output be?
+
+    a)  TRUE
+    b)  FALSE
+    c)  NA
+    d)  8
+    e)  15
+\n
+
+8.  What does any ONE row in this flights dataset refer to?
+
+    a)  Data on an airline
+    b)  Data on a flight
+    c)  Data on an airport
+    d)  Data on multiple flights
+
+\n
+
+9.  In the flights dataset, `air_time` and `arr_delay` are which type of variables?
+
+    a)  string
+    b)  categorical
+    c)  quantitative
+    d)  character
+    e)  dataframe
+
+\n
+
+
+:::{.callout-note icon=false}
+## Application
+:::
+
+10.  In a code chunk, first define a variable `z` to be the product of 12 and 31, then define a variable called `add_on` to be the number 12. Print the output of `z + add_on`.
+
+\n
+
+11.  Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
+
+    Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.
+
+\n
+
+
+:::{.callout-note icon=false}
+## Advanced
+:::
+
+For the following problems we will use the `titanic` data set to learn additional data exploration techniques.
+
+12.  Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
+
+\n
+
+13. The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
