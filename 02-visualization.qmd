@@ -105,6 +105,7 @@ In February 2006, a statistician named Hans Rosling gave a TED talk titled ["The
 gapminder_2007 %>% 
   head() %>% 
   kable(
+    format = "markdown",
     digits = 2,
     caption = "Gapminder 2007 Data: First 6 of 142 countries", 
     booktabs = TRUE
