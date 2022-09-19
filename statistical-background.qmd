@@ -1,4 +1,4 @@
-# Statistical Background {#appendix-stat-background}
+# Statistical Background {#sec-stat-background}
 
 ::: callout-caution
 ## Under Construction

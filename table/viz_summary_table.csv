@@ -1,0 +1,6 @@
+Named graph,Shows,Geometric object,Notes
+Scatterplot,Relationship between 2 numerical variables,`geom_point()`,
+Linegraph,Relationship between 2 numerical variables,`geom_line()`,Used when there is a sequential order to x-variable e.g. time
+Histogram,Distribution of 1 numerical variable,`geom_histogram()`,Facetted histograms show the distribution of 1 numerical variable split by the values of another variable
+Boxplot,Distribution of 1 numerical variable split by the values of another variable,`geom_boxplot()`,
+Barplot,Distribution of 1 categorical variable,"`geom_bar()` when counts are not pre-counted, `geom_col()` when counts are pre-counted","Stacked, side-by-side, and faceted barplots show the joint distribution of 2 categorical variables"
