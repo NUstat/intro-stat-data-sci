@@ -433,16 +433,12 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     b)  warning
     c)  message
 
-<br />
-
 3.  If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.
 
     a)  TRUE
     b)  FALSE
 
-<br />
-
-5.  If you type $8/2 == 4$ into the console, what will the output be?
+4.  If you type $8/2 == 4$ into the console, what will the output be?
 
     a)  TRUE
     b)  FALSE
@@ -450,15 +446,15 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     d)  0
     e)  4
 
-6.  If you type $3^2 != 9$ into the console, what will the output be?
+5.  If you type $3^2 != 9$ into the console, what will the output be?
 
     a)  TRUE
     b)  FALSE
     c)  NA
     d)  0
     e)  9
-    
-7.  If you type $5*3$ into the console, what will the output be?
+
+6.  If you type $5*3$ into the console, what will the output be?
 
     a)  TRUE
     b)  FALSE
@@ -466,18 +462,14 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     d)  8
     e)  15
 
-<br />
-
-8.  What does any ONE row in this flights dataset refer to?
+7.  What does any ONE row in this flights dataset refer to?
 
     a)  Data on an airline
     b)  Data on a flight
     c)  Data on an airport
     d)  Data on multiple flights
 
-<br />
-
-9.  In the flights dataset, `air_time` and `arr_delay` are which type of variables?
+8.  In the flights dataset, `air_time` and `arr_delay` are which type of variables?
 
     a)  string
     b)  categorical
@@ -485,21 +477,15 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     d)  character
     e)  dataframe
 
-<br />
-
 :::{.callout-note icon=false}
 ## Application
 :::
 
-10.  In a code chunk, first define a variable `z` to be the product of 12 and 31, then define a variable called `add_on` to be the number 12. Print the output of `z + add_on`.
+9.  In a code chunk, first define a variable `z` to be the product of 12 and 31, then define a variable called `add_on` to be the number 12. Print the output of `z + add_on`.
 
-<br />
-
-11.  Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
+10.  Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
 
     Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.
-
-<br />
 
 :::{.callout-note icon=false}
 ## Advanced
@@ -507,8 +493,6 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
 
 For the following problems we will use the `titanic` data set to learn additional data exploration techniques.
 
-12.  Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
+11.  Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
 
-<br />
-
-13. The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
+12. The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
