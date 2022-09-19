@@ -97,4 +97,28 @@ gapminder_2007 <- gapminder %>%
 
 In February 2006, a statistician named Hans Rosling gave a TED talk titled ["The best stats you've ever seen"](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen) where he presented global economic, health, and development data from the website [gapminder.org](http://www.gapminder.org/tools/#_locale_id=en;&chart-type=bubbles). For example, for the `r nrow(gapminder_2007)` countries included from 2007, let's consider only the first 6 countries when listed alphabetically in @tbl-gapminder-2007.
 
+```{r}
+#| label: tbl-gapminder-2007
+#| tbl-cap: "Gapminder 2007 Data: First 6 of 142 countries"
+#| echo: false
 
+gapminder_2007 %>% 
+  head() %>% 
+  kable(
+    digits = 2,
+    caption = "Gapminder 2007 Data: First 6 of 142 countries", 
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(
+    font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+    latex_options = c("HOLD_position")
+    )
+```
+
+Each row in this table corresponds to a country in 2007. For each row, we have 5 columns:
+
+1. **Country**: Name of country.
+1. **Continent**: Which of the five continents the country is part of. (Note that "Americas" includes countries in both North and South America and that Antarctica is excluded.)
+1. **Life Expectancy**: Life expectancy in years.
+1. **Population**: Number of people living in the country.
+1. **GDP per Capita**: Gross domestic product (in US dollars).
