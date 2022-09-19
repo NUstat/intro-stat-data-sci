@@ -411,7 +411,7 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
 ![](images/gettting-used-to-R.png){height="3.5in"}
 
 
-## Practice Problems
+## Practice Problems {#sec-pp01}
 
 
 :::{.callout-note icon=false}
@@ -425,7 +425,7 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     c)  HTML file
     d)  R Notebook
 
-\n
+<br />
 
 2.  Which type of red text in the console pane generally means that your code will not run?
 
@@ -433,14 +433,14 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     b)  warning
     c)  message
 
-\n
+<br />
 
 3.  If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.
 
     a)  TRUE
     b)  FALSE
 
-\n
+<br />
 
 5.  If you type $8/2 == 4$ into the console, what will the output be?
 
@@ -465,7 +465,8 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     c)  NA
     d)  8
     e)  15
-\n
+
+<br />
 
 8.  What does any ONE row in this flights dataset refer to?
 
@@ -474,7 +475,7 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     c)  Data on an airport
     d)  Data on multiple flights
 
-\n
+<br />
 
 9.  In the flights dataset, `air_time` and `arr_delay` are which type of variables?
 
@@ -484,8 +485,7 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
     d)  character
     e)  dataframe
 
-\n
-
+<br />
 
 :::{.callout-note icon=false}
 ## Application
@@ -493,14 +493,13 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
 
 10.  In a code chunk, first define a variable `z` to be the product of 12 and 31, then define a variable called `add_on` to be the number 12. Print the output of `z + add_on`.
 
-\n
+<br />
 
 11.  Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
 
     Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.
 
-\n
-
+<br />
 
 :::{.callout-note icon=false}
 ## Advanced
@@ -510,6 +509,6 @@ For the following problems we will use the `titanic` data set to learn additiona
 
 12.  Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
 
-\n
+<br />
 
 13. The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
