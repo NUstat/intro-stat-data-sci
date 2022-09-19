@@ -25,14 +25,13 @@ jobs:
         with:
           r-version: '4.2.0'
     
-      # - name: Install curl
-      #   run: |-
-      #     Rscript -e "install.packages(c('curl'), repos = 'https://demo.rstudiopm.com/all/__linux__/bionic/latest')"
+      - name: Install curl
+        run: |-
+          Rscript -e "install.packages(c('curl'), repos = 'https://demo.rstudiopm.com/all/__linux__/bionic/latest')"
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
         with:
-          extra-packages: curl
           cache-version: 1
 
       - name: Render and Publish
