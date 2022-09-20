@@ -1245,3 +1245,187 @@ ggplot(data = early_january_weather, mapping = aes(x = time_hour, y = temp)) +
 ```
 
 These two code segments were a preview of @sec-wrangling on data wrangling where we'll delve further into the `dplyr` package. Data wrangling is the process of transforming and modifying existing data with the intent of making it more appropriate for analysis purposes. For example, the two code segments used the `filter()` function to create new data frames (`alaska_flights` and `early_january_weather`) by choosing only a subset of rows of existing data frames (`flights` and `weather`). In this next chapter, we'll formally introduce the `filter()` and other data wrangling functions as well as the *pipe operator* `%>%` which allows you to combine multiple data wrangling actions into a single sequential *chain* of actions. On to @sec-wrangling on data wrangling!
+
+
+## Exercises {#sec-ex02}
+
+:::{.callout-note icon=false}
+## Concept
+:::
+
+::: {#exr-01}
+Which of the following layers could be added to create one of the five named graphs (5NG)? Select all that apply.
+
+a)  geom_smooth()
+b)  geom_line()
+c)  geom_col()
+d)  geom_box()
+e)  geom_histogram()
+f)  facet_wrap()
+:::
+
+::: {#exr-02}
+What layer is add to create a scatterplot?
+
+a)  geom_line()
+b)  geom_scatter()
+c)  geom_jitter()
+d)  geom_point()
+e)  none of the above
+:::
+
+::: {#exr-03}
+Which of the following options are solutions to overplotting? Select all that apply.
+
+a)  Changing the x and y variables
+b)  Changing the transparency
+c)  Changing the limits of the x and y axes
+d)  Plotting only some of the data
+e)  Jittering the points
+:::
+
+::: {#exr-04}
+When is it useful to facet your data?
+
+a)  When you want to see the shape of the entire distribution without separation
+b)  When you want to split a particular visualization of variables by another variable
+c)  When you are interested in looking at how your plot differs by year when year is a continuous variable
+d)  When you think your variables have incorrect data in them
+e)  When you have lots of missing values
+:::
+
+::: {#exr-05}
+Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each `player` had over their career?
+
+| player         | num_wins |
+|----------------|----------|
+| Kobe Bryant    | 1057     |
+| LeBron James   | 1089     |
+| Michael Jordan | 829      |
+
+a)  geom_bar()
+b)  geom_col()
+c)  all of the above
+d)  none of the above
+:::
+
+::: {#exr-06}
+Which of the following graphs would be MOST useful for comparing the distribution of weights for different species of cats?
+
+a)  grouped boxplot
+b)  histogram
+c)  stacked barplot
+d)  scatterplot
+e)  faceted barplot
+:::
+
+::: {#exr-07}
+Which of the following graphs would be MOST useful for visualizing the daily weather temperatures in January for Chicago?
+
+a)  scatterplot
+b)  linegraph
+c)  histogram
+d)  faceted scatterplot
+e)  grouped boxplot
+:::
+
+::: {#exr-08}
+Which of the following graphs would be MOST useful for visualizing the relationship between bank account balances and annual incomes?
+
+a)  faceted histogram
+b)  linegraph
+c)  scatterplot
+d)  stacked barplot
+e)  boxplot
+:::
+
+::: {#exr-09}
+Which of the following graphs would be MOST useful for finding outliers?
+
+a)  scatterplot
+b)  linegraph
+c)  histogram
+d)  boxplot
+e)  barplot
+:::
+
+::: {#exr-10}
+Below is a scatterplot of a fictional dataset depicting the amount of money spent in a grocery store by the amount of time in the store. Describe the relationship.
+
+![](images/exercises/ch02_scatter.png){height="2in"}
+:::
+
+::: {#exr-11}
+Describe the modality and skew of the histogram below.
+
+![](images/exercises/ch02_match_hist.png){height="2in"}
+:::
+
+::: {#exr-12}
+Match the histogram with the corresponding boxplot.
+
+![](images/exercises/ch02_match_hist.png){height="2in"}
+![](images/exercises/ch02_match_box.png){height="2in"}
+
+:::
+
+:::{.callout-note icon=false}
+## Application
+:::
+
+Use the `covid_sub` dataset created below for the following problem. The dataset is derived from the `covid_states` dataset in the `ISDSdatasets` package.
+
+```{r, eval = FALSE}
+covid_sub <- covid_states %>% 
+  filter(state_abbr == "IL" | state_abbr == "FL",
+         date >= "2021-07-01", date <= "2021-08-31",
+         wday != "Sat", wday != "Sun")
+```
+
+You will learn about data wrangling in the next Chapter. The code reads as follows: take the dataset `covid_states` and then subset the data to only include observations in the states "IL" or "FL", and only include observations between July 1, 2021 and August 31, 2021 (inclusive), and only observations not recorded on Saturday, and observations not recorded on Sunday. Note: COVID reporting was not done on weekends or holidays in these states.
+
+::: {#exr-02covid}
+Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the `color` aesthetic to have separate lines for each state. Compare and describe the linegraph.
+:::
+
+\hline
+Use the `nba` dataset in the `ISDSdatasets` package for exercises @exr-02bar, @exr-02scatter, and @exr-02box.
+
+::: {#exr-02bar}
+Describe and compare the number of wins and losses faceted by player using a barplot.
+:::
+
+::: {#exr-02scatter}
+Plot and describe the relationship between field goal percentage (`fg_percent`) and free throw percentage (`ft_percent`). Adjust for overplotting if need be.
+:::
+
+::: {#exr-02box}
+Compare the center, spread, and shape of the distribution of `pts` scored per game by `player` for regular season games and playoff games. In other words, facet the plot of `pts` by `player` based on `season`.
+:::
+
+:::{.callout-note icon=false}
+## Advanced
+:::
+
+Let's learn some advanced plotting features.
+
+::: {#exr-02covid-adv}
+Start with your plot from @exr-02covid. Let's clean up the graph a little by adding the following layers:
+
+a)  add on `theme_minimal()`
+b)  remove the x-axis label by setting `x = NULL` in the `labs()`
+c)  To make the x-axis text easier to read we will rotate it 45 degrees and horizontally align it on the right. Add the layer `theme(axis.text.x = element_text(angle = ?, hjust = ?))` but replace the ? with the appropriate values.
+:::
+
+::: {#exr-02nba-adv}
+Use the `nba_pct` dataset created below to plot the average free throw percent for each player.
+
+```{r, eval = FALSE}
+nba_pct <- nba %>% 
+    group_by(player) %>%
+    summarize(avg_ft_pct = mean(ft_percent, na.rm = TRUE))
+```
+
+a)   Change the y-axis label to percents by adding the following layer `scale_y_*(labels = scales::percent)`. Replace the * with the data type. May be useful to check the help documentation.
+b)   Reorder the x-axis from highest to lowest with the following layer: `scale_x_*(limits = c("Kobe Bryant", "Michael Jordan", "LeBron James"))`. Again replace the * with the appropriate data type.
+:::
