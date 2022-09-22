@@ -537,6 +537,7 @@ Let's look at summary measures of this `gain` variable and even plot it in the f
 
 ```{r}
 #| eval: false
+
 gain_summary <- flights %>% 
   summarize(
     min = min(gain, na.rm = TRUE),
@@ -554,6 +555,7 @@ gain_summary
 
 ```{r}
 #| echo: false
+
 gain_summary <- flights %>% 
   summarize(
     min = min(gain, na.rm = TRUE),
@@ -578,6 +580,7 @@ We've recreated the `summary` function we saw in @sec-viz here using the `summar
 ```{r}
 #| label: fig-hist-gain-variable
 #| fig-cap: "Histogram of gain variable"
+
 ggplot(data = flights, mapping = aes(x = gain)) +
   geom_histogram(color = "white", bins = 20)
 ```
