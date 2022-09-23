@@ -1412,7 +1412,6 @@ Note in the following plot there are 3 points marked with dots along with:
 ```{r}
 #| label: fig-three-lines
 #| fig-cap: "Regression line and two others"
-#| out-width: "80%"
 #| echo: false
 
 example <- tibble(
