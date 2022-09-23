@@ -1729,7 +1729,7 @@ Group variables            None
 <h2 data-number="5.3" class="anchored" data-anchor-id="related-topics"><span class="header-section-number">5.3</span> Related topics</h2>
 <section id="sec-correlationcoefficient" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-correlationcoefficient"><span class="header-section-number">5.3.1</span> Correlation coefficient</h3>
-<p>Let’s re-plot F@fig-correlation1, but now consider a broader range of correlation coefficient values in <a href="#fig-correlation2">Figure&nbsp;<span>5.11</span></a>.</p>
+<p>Let’s re-plot <a href="#fig-correlation1">Figure&nbsp;<span>5.1</span></a>, but now consider a broader range of correlation coefficient values in <a href="#fig-correlation2">Figure&nbsp;<span>5.11</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-correlation2" class="quarto-figure quarto-figure-center anchored">
@@ -1791,6 +1791,38 @@ Group variables            None
 </div>
 </div>
 </div>
+<p>Now say we repeated this process of computing residuals for all 463 courses’ instructors, then we squared all the residuals, and then we summed them. We call this quantity the <em>sum of squared residuals</em> and it is a measure of the <em>lack of fit</em> of a model. Larger values of the sum of squared residuals indicate a bigger lack of fit. This corresponds to a worse fitting model.</p>
+<p>If the regression line fits all the points perfectly, then the sum of squared residuals is 0. This is because if the regression line fits all the points perfectly, then the fitted value <span class="math inline">\(\widehat{y}\)</span> equals the observed value <span class="math inline">\(y\)</span> in all cases, and hence the residual <span class="math inline">\(y-\widehat{y}\)</span> = 0 in all cases, and the sum of even a large number of 0’s is still 0.</p>
+<p>Furthermore, of all possible lines we can draw through the cloud of 463 points, the regression line minimizes this value. In other words, the regression and its corresponding fitted values <span class="math inline">\(\widehat{y}\)</span> minimizes the sum of the squared residuals:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n}(y_i - \widehat{y}_i)^2
+\]</span></p>
+<p>Let’s use our data wrangling tools from <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> to compute the sum of squared residuals exactly:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>score_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> bty_avg, <span class="at">data =</span> evals_ch5)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression points:</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>score_model_data <span class="ot">&lt;-</span> evals_ch5 <span class="sc">%&gt;%</span> </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, bty_avg) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model),</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">residuals</span>(score_model)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute sum of squared residuals</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>score_model_data <span class="sc">%&gt;%</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">squared_residuals =</span> residual<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sum_of_squared_residuals =</span> <span class="fu">sum</span>(squared_residuals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  sum_of_squared_residuals
+                     &lt;dbl&gt;
+1                     132.</code></pre>
+</div>
+</div>
+<p>Any other straight line drawn in the figure would yield a sum of squared residuals greater than 132. This is a mathematically guaranteed fact that you can prove using calculus and linear algebra. That’s why alternative names for the linear regression line are the <em>best-fitting line</em> as well as the <em>least-squares line</em>. Why do we square the residuals (i.e.&nbsp;the arrow lengths)? We do this so that both positive and negative deviations of the same amount are treated equally.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
