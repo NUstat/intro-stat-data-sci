@@ -1050,12 +1050,12 @@ coefs %>%
 Just as before, we're only interested in the "Estimate" column, but unlike before, we now have 5 rows corresponding to 5 outputs in our table: an intercept like before, but also `continentAmericas`, `continentAsia`, `continentEurope`, and `continentOceania`. What are these values? First, we must describe the equation for fitted value $\widehat{y}$, which is a little more complicated when the $x$ explanatory variable is categorical:
 
 $$
-\begin{align}
+\begin{aligned}
 \widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
 + b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
 &= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
 + 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)
-\end{align}
+\end{aligned}
 $$
 
 Let's break this down. First, $\mathbb{1}_{A}(x)$ is what's known in mathematics as an "indicator function" that takes one of two possible values:
@@ -1081,14 +1081,14 @@ $$
 Now let's interpret the terms in the estimate column of the regression table. First $b_0 =$ `intercept = 54.8` corresponds to the mean life expectancy for countries in Africa, since for country $x$ in Africa we have the following equation:
 
 $$
-\begin{align}
+\begin{aligned}
 \widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
 + b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
 &= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
 + 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
 &= 54.8 + 18.8\cdot 0 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
 &= 54.8
-\end{align}
+\end{aligned}
 $$
 
 Meaning, all four of the indicator variables are equal to 0. Recall we stated earlier that we would treat Africa as the baseline for comparison group. Furthermore, this value corresponds to the group mean life expectancy for all African countries in @tbl-continent-mean-life-expectancies.
@@ -1096,7 +1096,7 @@ Meaning, all four of the indicator variables are equal to 0. Recall we stated ea
 Next, $b_{\text{Amer}}$ = `continentAmericas = 18.8` is the difference in mean life expectancy of countries in the Americas relative to Africa, or in other words, on average countries in the Americas had life expectancy 18.8 years greater. The fitted value yielded by this equation is:
 
 $$
-\begin{align}
+\begin{aligned}
 \widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
 + b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
 &= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
@@ -1104,7 +1104,7 @@ $$
 &= 54.8 + 18.8\cdot 1 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
 &= 54.8 + 18.8\\
 &= 73.6
-\end{align}
+\end{aligned}
 $$
 
 i.e. in this case, only the indicator function $\mathbb{1}_{\mbox{Amer}}(x)$ is equal to 1, but all others are 0. Recall that 73.6 corresponds to the group mean life expectancy for all countries in the Americas in @tbl-continent-mean-life-expectancies.
@@ -1112,7 +1112,7 @@ i.e. in this case, only the indicator function $\mathbb{1}_{\mbox{Amer}}(x)$ is 
 Similarly, $b_{\text{Asia}}$ = `continentAsia = 15.9` is the difference in mean life expectancy of Asian countries relative to Africa countries, or in other words, on average countries in the Asia had life expectancy 15.9 years greater than Africa. The fitted value yielded by this equation is:
 
 $$
-\begin{align}
+\begin{aligned}
 \widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
 + b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
 &= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
@@ -1120,7 +1120,7 @@ $$
 &= 54.8 + 18.8\cdot 0 + 15.9\cdot 1 + 22.8\cdot 0 + 25.9\cdot 0\\
 &= 54.8 + 15.9\\
 &= 70.7
-\end{align}
+\end{aligned}
 $$
 
 i.e. in this case, only the indicator function $\mathbb{1}_{\mbox{Asia}}(x)$ is equal to 1, but all others are 0. Recall that 70.7 corresponds to the group mean life expectancy for all countries in Asia in @tbl-continent-mean-life-expectancies. The same logic applies to $b_{\text{Euro}} = 22.8$ and $b_{\text{Ocean}} = 25.9$; they correspond to the "offset" in mean life expectancy for countries in Europe and Oceania, relative to the mean life expectancy of the baseline group for comparison of African countries.
