@@ -666,7 +666,11 @@ score_model_data %>%
     caption = "Regression points (for only 21st through 24th instructor)",
     booktabs = TRUE,
     format = "markdown"
-  )
+  ) %>% 
+  kable_styling(
+    font_size = ifelse(knitr:::is_latex_output(), 10, 16), 
+                latex_options = c("HOLD_position")
+    )
 ```
 
 Let's recap what we're seeing in @tbl-reg-points in terms of the linear regression model (`score_model`) that we fit to the `evals_ch5` data:
@@ -787,6 +791,10 @@ gapminder2007 %>%
   kable_styling(
     font_size = ifelse(knitr:::is_latex_output(), 10, 16),
     latex_options = c("hold_position")
+    ) %>% 
+  kable_styling(
+    font_size = ifelse(knitr:::is_latex_output(), 10, 16), 
+                latex_options = c("HOLD_position")
     )
 ```
 
@@ -929,7 +937,11 @@ lifeExp_by_continent %>%
     caption = "Life expectancy by continent",
     booktabs = TRUE,
     format = "markdown"
-  )
+  ) %>% 
+  kable_styling(
+    font_size = ifelse(knitr:::is_latex_output(), 10, 16), 
+                latex_options = c("HOLD_position")
+    )
 ```
 
 Observe the order of the second column `median` life expectancy: Africa is lowest, the Americas and Asia are next with similar medians, then Europe, then Oceania. This ordering corresponds to the ordering of the solid black lines inside the boxes in our side-by-side boxplot in @fig-catxplot1. 
