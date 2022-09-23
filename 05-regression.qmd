@@ -214,3 +214,29 @@ evals_ch5 %>%
 ```
 
 However, what if we want other summary statistics as well, such as the standard deviation (a measure of spread), the minimum and maximum values, and various percentiles? Typing out all these summary statistic functions in `summarize()` would be long and tedious. Instead, let's use the convenient `skim()` function from the `skimr` package. This function takes in a data frame, "skims" it, and returns commonly used summary statistics. Let's take our `evals_ch5` data frame, `select()` only the outcome and explanatory variables teaching `score` and `bty_avg`, and pipe them into the `skim()` function:
+
+
+```{r}
+#| eval: false
+evals_ch5 %>%
+  select(score, bty_avg) %>%
+  skim()
+```
+
+```
+── Data Summary ────────────────────────
+                           Values    
+Name                       Piped data
+Number of rows             463       
+Number of columns          2         
+_______________________              
+Column type frequency:               
+  numeric                  2         
+________________________             
+Group variables            None      
+
+── Variable type: numeric ──────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate mean    sd   p0  p25  p50 p75 p100 hist 
+1 score                 0             1 4.17 0.544 2.3  3.8  4.3  4.6 5    ▁▁▅▇▇
+2 bty_avg               0             1 4.42 1.53  1.67 3.17 4.33 5.5 8.17 ▃▇▇▃▂ 
+```
