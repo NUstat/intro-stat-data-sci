@@ -1105,3 +1105,47 @@ $$
 &= 54.8
 \end{aligned}
 $$
+
+Meaning, all four of the indicator variables are equal to 0. Recall we stated earlier that we would treat Africa as the baseline for comparison group. Furthermore, this value corresponds to the group mean life expectancy for all African countries in @tbl-continent-mean-life-expectancies.
+
+Next, $b_{\text{Amer}}$ = `continentAmericas = 18.8` is the difference in mean life expectancy of countries in the Americas relative to Africa, or in other words, on average countries in the Americas had life expectancy 18.8 years greater. The fitted value yielded by this equation is:
+
+$$
+\begin{aligned}
+\widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot 1 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
+&= 54.8 + 18.8\\
+&= 73.6
+\end{aligned}
+$$
+
+i.e. in this case, only the indicator function $\mathbb{1}_{\mbox{Amer}}(x)$ is equal to 1, but all others are 0. Recall that 73.6 corresponds to the group mean life expectancy for all countries in the Americas in @tbl-continent-mean-life-expectancies.
+
+Similarly, $b_{\text{Asia}}$ = `continentAsia = 15.9` is the difference in mean life expectancy of Asian countries relative to Africa countries, or in other words, on average countries in the Asia had life expectancy 15.9 years greater than Africa. The fitted value yielded by this equation is:
+
+$$
+\begin{aligned}
+\widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot 0 + 15.9\cdot 1 + 22.8\cdot 0 + 25.9\cdot 0\\
+&= 54.8 + 15.9\\
+&= 70.7
+\end{aligned}
+$$
+
+Meaning, in this case, only the indicator function $\mathbb{1}_{\mbox{Asia}}(x)$ is equal to 1, but all others are 0. Recall that 70.7 corresponds to the group mean life expectancy for all countries in Asia in @tbl-continent-mean-life-expectancies. The same logic applies to $b_{\text{Euro}} = 22.8$ and $b_{\text{Ocean}} = 25.9$; they correspond to the "offset" in mean life expectancy for countries in Europe and Oceania, relative to the mean life expectancy of the baseline group for comparison of African countries.
+
+Let's generalize this idea a bit. If we fit a linear regression model using a categorical explanatory variable $x$ that has $k$ levels, a regression model will return an intercept and $k - 1$ "slope" coefficients. When $x$ is a numerical explanatory variable the interpretation is of a "slope" coefficient, but when $x$ is categorical the meaning is a little trickier. They are *offsets* relative to the baseline. 
+
+In our case, since there are $k = 5$ continents, the regression model returns an intercept corresponding to the baseline for comparison Africa and $k - 1 = 4$ slope coefficients corresponding to the Americas, Asia, Europe, and Oceania. Africa was chosen as the baseline by R for no other reason than it is first alphabetically of the 5 continents. You can manually specify which continent to use as baseline instead of the default choice of whichever comes first alphabetically, but we leave that to a more advanced course. (The `forcats` package is particularly nice for doing this and we encourage you to explore using it.)
+
+:::{.callout-tip icon=false collapse=true}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
+
+Fit a new linear regression using `lm(gdpPercap ~ continent, data = gapminder2007)` where `gdpPercap` is the new outcome variable $y$. Get information about the "best-fitting" line from the regression table by applying the `summary()` function. How do the regression results match up with the results from your exploratory data analysis above? 
+:::
