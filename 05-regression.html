@@ -584,6 +584,26 @@ div.csl-indent {
 </div>
 </div>
 <p>However, what if we want other summary statistics as well, such as the standard deviation (a measure of spread), the minimum and maximum values, and various percentiles? Typing out all these summary statistic functions in <code>summarize()</code> would be long and tedious. Instead, let’s use the convenient <code>skim()</code> function from the <code>skimr</code> package. This function takes in a data frame, “skims” it, and returns commonly used summary statistics. Let’s take our <code>evals_ch5</code> data frame, <code>select()</code> only the outcome and explanatory variables teaching <code>score</code> and <code>bty_avg</code>, and pipe them into the <code>skim()</code> function:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, bty_avg) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>── Data Summary ────────────────────────
+                           Values    
+Name                       Piped data
+Number of rows             463       
+Number of columns          2         
+_______________________              
+Column type frequency:               
+  numeric                  2         
+________________________             
+Group variables            None      
+
+── Variable type: numeric ──────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate mean    sd   p0  p25  p50 p75 p100 hist 
+1 score                 0             1 4.17 0.544 2.3  3.8  4.3  4.6 5    ▁▁▅▇▇
+2 bty_avg               0             1 4.42 1.53  1.67 3.17 4.33 5.5 8.17 ▃▇▇▃▂ </code></pre>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
