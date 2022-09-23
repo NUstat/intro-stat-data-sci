@@ -363,6 +363,13 @@ div.csl-indent {
   <li><a href="#sec-model1" id="toc-sec-model1" class="nav-link" data-scroll-target="#sec-model1"><span class="toc-section-number">5.1</span>  One numerical explanatory variable</a>
   <ul class="collapse">
   <li><a href="#sec-model1EDA" id="toc-sec-model1EDA" class="nav-link" data-scroll-target="#sec-model1EDA"><span class="toc-section-number">5.1.1</span>  Exploratory data analysis</a></li>
+  <li><a href="#sec-model1table" id="toc-sec-model1table" class="nav-link" data-scroll-target="#sec-model1table"><span class="toc-section-number">5.1.2</span>  Simple linear regression</a></li>
+  <li><a href="#sec-model1points" id="toc-sec-model1points" class="nav-link" data-scroll-target="#sec-model1points"><span class="toc-section-number">5.1.3</span>  Observed/fitted values and residuals</a></li>
+  </ul></li>
+  <li><a href="#sec-model2" id="toc-sec-model2" class="nav-link" data-scroll-target="#sec-model2"><span class="toc-section-number">5.2</span>  One categorical explanatory variable</a>
+  <ul class="collapse">
+  <li><a href="#sec-model2EDA" id="toc-sec-model2EDA" class="nav-link" data-scroll-target="#sec-model2EDA"><span class="toc-section-number">5.2.1</span>  Exploratory data analysis</a></li>
+  <li><a href="#sec-model2table" id="toc-sec-model2table" class="nav-link" data-scroll-target="#sec-model2table"><span class="toc-section-number">5.2.2</span>  Linear regression</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -406,7 +413,7 @@ div.csl-indent {
 <li>In this current chapter on basic regression, we’ll always have only one explanatory variable.
 <ul>
 <li>In <a href="#sec-model1"><span>Section&nbsp;5.1</span></a>, this explanatory variable will be a single numerical explanatory variable <span class="math inline">\(x\)</span>. This scenario is known as <em>simple linear regression</em>.</li>
-<li>In <span class="quarto-unresolved-ref">?sec-model2</span>, this explanatory variable will be a categorical explanatory variable <span class="math inline">\(x\)</span>.</li>
+<li>In <a href="#sec-model2"><span>Section&nbsp;5.2</span></a>, this explanatory variable will be a categorical explanatory variable <span class="math inline">\(x\)</span>.</li>
 </ul></li>
 <li>In the next chapter, <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a> on <em>multiple regression</em>, we’ll have more than one explanatory variable:
 <ul>
@@ -604,6 +611,897 @@ Group variables            None
   skim_variable n_missing complete_rate mean    sd   p0  p25  p50 p75 p100 hist 
 1 score                 0             1 4.17 0.544 2.3  3.8  4.3  4.6 5    ▁▁▅▇▇
 2 bty_avg               0             1 4.42 1.53  1.67 3.17 4.33 5.5 8.17 ▃▇▇▃▂ </code></pre>
+<p>For our two numerical variables teaching <code>score</code> and “beauty” score <code>bty_avg</code> it returns:</p>
+<ul>
+<li><code>n_missing</code>: the number of missing values</li>
+<li><code>complete_rate</code>: the proportion of non-missing or complete values</li>
+<li><code>mean</code>: the average</li>
+<li><code>sd</code>: the standard deviation</li>
+<li><code>p0</code>: the 0<sup>th</sup> percentile: the value at which 0% of observations are smaller than it (the <em>minimum</em> value)</li>
+<li><code>p25</code>: the 25<sup>th</sup> percentile: the value at which 25% of observations are smaller than it (the <em>1<sup>st</sup> quartile</em>)</li>
+<li><code>p50</code>: the 50<sup>th</sup> percentile: the value at which 50% of observations are smaller than it (the <em>2<sup>nd</sup></em> quartile and more commonly called the <em>median</em>)</li>
+<li><code>p75</code>: the 75<sup>th</sup> percentile: the value at which 75% of observations are smaller than it (the <em>3<sup>rd</sup> quartile</em>)</li>
+<li><code>p100</code>: the 100<sup>th</sup> percentile: the value at which 100% of observations are smaller than it (the <em>maximum</em> value)</li>
+</ul>
+<p>Looking at this output, we get an idea of how the values of both variables distribute. For example, the mean teaching score was 4.17 out of 5 whereas the mean “beauty” score was 4.42 out of 10. Furthermore, the middle 50% of teaching scores were between 3.80 and 4.6 (the first and third quartiles) whereas the middle 50% of “beauty” scores were between 3.17 and 5.5 out of 10.</p>
+<p>The <code>skim()</code> function only returns what are known as <em>univariate</em> summary statistics: functions that take a single variable and return some numerical summary of that variable. However, there also exist <em>bivariate</em> summary statistics: functions that take in two variables and return some summary of those two variables. In particular, when the two variables are numerical, we can compute the <em>correlation coefficient</em>. Generally speaking, <em>coefficients</em> are quantitative expressions of a specific phenomenon. A <em>correlation coefficient</em> is a quantitative expression of the <em>strength of the linear relationship between two numerical variables</em>. Its value ranges between -1 and 1 where:</p>
+<ul>
+<li>-1 indicates a perfect <em>negative relationship</em>: As the value of one variable goes up, the value of the other variable tends to go down following along a straight line.</li>
+<li>0 indicates no relationship: The values of both variables go up/down independently of each other.</li>
+<li>+1 indicates a perfect <em>positive relationship</em>: As the value of one variable goes up, the value of the other variable tends to go up as well in a linear fashion.</li>
+</ul>
+<p><a href="#fig-correlation1">Figure&nbsp;<span>5.1</span></a> gives examples of different correlation coefficient values for hypothetical numerical variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. We see that while for a correlation coefficient of -0.75 there is still a negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, it is not as strong as the negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> when the correlation coefficient is -1.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-correlation1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-correlation1-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.1: Different correlation coefficients</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The correlation coefficient is computed using the <code>cor()</code> function, where the inputs to the function are the two numerical variables for which we want to quantify the strength of the linear relationship.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, bty_avg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  correlation
+        &lt;dbl&gt;
+1       0.187</code></pre>
+</div>
+</div>
+<p>You can also use the <code>cor()</code> function directly instead of using it inside <code>summarise</code>, but you will need to use the <code>$</code> syntax to access the specific variables within a data frame (See <a href="01-getting-started.html#sec-exploredataframes">Subsection&nbsp;<span>1.4.3</span></a>):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(<span class="at">x =</span> evals_ch5<span class="sc">$</span>bty_avg, <span class="at">y =</span> evals_ch5<span class="sc">$</span>score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.187</code></pre>
+</div>
+</div>
+<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection -<span class="quarto-unresolved-ref">?sec-correlationcoefficient</span> below.</p>
+<p>Let’s now proceed by visualizing this data. Since both the <code>score</code> and <code>bty_avg</code> variables are numerical, a scatterplot is an appropriate graph to visualize this data. Let’s do this using <code>geom_point()</code> and set informative axes labels and title and display the result in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Beauty Score"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relationship of teaching and beauty scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-numxplot1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-numxplot1-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.2: Instructor evaluation scores at UT Austin</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe the following:</p>
+<ol type="1">
+<li><p>Most “beauty” scores lie between 2 and 8.</p></li>
+<li><p>Most teaching scores lie between 3 and 5.</p></li>
+<li><p>Recall our earlier computation of the correlation coefficient, which describes the strength of the linear relationship between two numerical variables. Looking at <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>, it is not immediately apparent that these two variables are positively related. This is to be expected given the positive, but rather weak (close to 0), correlation coefficient of 0.187.</p></li>
+</ol>
+<p>Before we continue, we bring to light an important fact about this dataset: it suffers from <em>overplotting</em>. Recall from the data visualization [Subsection -<a href="02-visualization.html#sec-overplotting"><span>Section&nbsp;2.3.2</span></a> that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let’s focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as <em>ties</em>. Let’s break up these ties with a little random “jitter” added to the points in <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-numxplot2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-numxplot2-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.3: Instructor evaluation scores at UT Austin: Jittered</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Jittering adds a little random bump to each of the points to break up these ties: just enough so you can distinguish them, but not so much that the plot is overly altered. Furthermore, jittering is strictly a visualization tool; it does not alter the original values in the dataset.</p>
+<p>Let’s compare side-by-side the regular scatterplot in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a> with the jittered scatterplot <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-numxplot2-a" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-numxplot2-a-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.4: Comparing regular and jittered scatterplots</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We make several further observations:</p>
+<ol type="1">
+<li><p>Focusing our attention on the top-right of the plot again, as noted earlier where there seemed to only be 6 points in the regular scatterplot, we see there were in fact really 9 as seen in the jittered scatterplot.</p></li>
+<li><p>A further interesting trend is that the jittering revealed a large number of instructors with beauty scores of between 3 and 4.5, towards the lower end of the beauty scale.</p></li>
+</ol>
+<p>To keep things simple in this chapter, we’ll present regular scatterplots rather than the jittered scatterplots, though we’ll keep the overplotting in mind whenever looking at such plots. Going back to scatterplot in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>, let’s improve on it by adding a “regression line” in <a href="#fig-numxplot3">Figure&nbsp;<span>5.5</span></a>. This is easily done by adding a new layer to the <code>ggplot</code> code that created <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>: <code>+ geom_smooth(method = "lm")</code>. A regression line is a “best fitting” line in that of all possible lines you could draw on this plot, it is “best” in terms of some mathematical criteria. We discuss the criteria for “best” in <span class="quarto-unresolved-ref">?sec-leastsquares</span> below, but we suggest you read this only after covering the concept of a <em>residual</em> coming up in <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a>.</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Beauty Score"</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Teaching Score"</span>, </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship of teaching and beauty scores"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span>  </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-numxplot3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-numxplot3-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.5: Regression line</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When viewed on this plot, the regression line is a visual summary of the relationship between two numerical variables, in our case the outcome variable <code>score</code> and the explanatory variable <code>bty_avg</code>. The positive slope of the blue line is consistent with our observed correlation coefficient of 0.187 suggesting that there is a positive relationship between <code>score</code> and <code>bty_avg</code>. We’ll see later however that while the correlation coefficient is not equal to the slope of this line, they always have the same sign: positive or negative.</p>
+<p>What are the grey bands surrounding the blue line? These are <em>standard error</em> bands, which can be thought of as error/uncertainty bands. Let’s skip this idea for now and suppress these grey bars by adding the argument <code>se = FALSE</code> to <code>geom_smooth(method = "lm")</code>. We’ll introduce standard errors when covering sampling distributions (<a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>). We also will use standard errors to construct <em>confidence intervals</em> (<a href="10-confidence-intervals.html"><span>Chapter&nbsp;10</span></a>) and conduct <em>hypothesis tests</em> (<a href="12-hypothesis-tests.html"><span>Chapter&nbsp;12</span></a>). Standard errors are really important!</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Beauty Score"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Teaching Score"</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship of teaching and beauty scores"</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-numxplot4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-numxplot4-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.6: Regression line without error bands</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Conduct a new exploratory data analysis with the same outcome variable <span class="math inline">\(y\)</span> being <code>score</code> but with <code>age</code> as the new explanatory variable <span class="math inline">\(x\)</span>. Remember, this involves three things:</p>
+<ol type="a">
+<li>Looking at the raw values.</li>
+<li>Computing summary statistics of the variables of interest.</li>
+<li>Creating informative visualizations.</li>
+</ol>
+<p>What can you say about the relationship between age and teaching scores based on this exploration?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-model1table" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="sec-model1table"><span class="header-section-number">5.1.2</span> Simple linear regression</h3>
+<p>You may recall from secondary school / high school algebra, in general, the equation of a line is <span class="math inline">\(y = a + bx\)</span>, which is defined by two coefficients. Recall we defined this earlier as “quantitative expressions of a specific property of a phenomenon.” These two coefficients are:</p>
+<ul>
+<li>the intercept coefficient <span class="math inline">\(a\)</span>, or the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span>, and</li>
+<li>the slope coefficient <span class="math inline">\(b\)</span>, or the increase in <span class="math inline">\(y\)</span> for every increase of one in <span class="math inline">\(x\)</span>.</li>
+</ul>
+<p>However, when defining a line specifically for regression, like the blue regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>, we use slightly different notation: the equation of the regression line is <span class="math inline">\(\widehat{y} = b_0 + b_1 \cdot x\)</span> where</p>
+<ul>
+<li>the intercept coefficient is <span class="math inline">\(b_0\)</span>, or the value of <span class="math inline">\(\widehat{y}\)</span> when <span class="math inline">\(x=0\)</span>, and</li>
+<li>the slope coefficient <span class="math inline">\(b_1\)</span>, or the increase in <span class="math inline">\(\widehat{y}\)</span> for every increase of one in <span class="math inline">\(x\)</span>.</li>
+</ul>
+<p>Why do we put a “hat” on top of the <span class="math inline">\(y\)</span>? It’s a form of notation commonly used in regression, which we’ll introduce in the next <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a> when we discuss <em>fitted values</em>. For now, let’s ignore the hat and treat the equation of the line as you would from secondary school / high school algebra recognizing the slope and the intercept. We know looking at <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> that the slope coefficient corresponding to <code>bty_avg</code> should be positive. Why? Because as <code>bty_avg</code> increases, professors tend to roughly have higher teaching evaluation <code>scores</code>. However, what are the specific values of the intercept and slope coefficients? Let’s not worry about computing these by hand, but instead let the computer do the work for us. Specifically, let’s use R!</p>
+<p>Let’s get the value of the intercept and slope coefficients by outputting something called the <em>linear regression table</em>. We will fit the linear regression model to the <code>data</code> using the <code>lm()</code> function and save this to <code>score_model</code>. <code>lm</code> stands for “linear model.” When we say “fit”, we are saying find the best fitting line to this data.</p>
+<p>The <code>lm()</code> function that “fits” the linear regression model is typically used as <code>lm(y ~ x, data = data_frame_name)</code> where:</p>
+<ul>
+<li><p><code>y</code> is the outcome variable, followed by a tilde (<code>~</code>). This is likely the key to the left of “1” on your keyboard. In our case, <code>y</code> is set to <code>score</code>.</p></li>
+<li><p><code>x</code> is the explanatory variable. In our case, <code>x</code> is set to <code>bty_avg</code>. We call the combination <code>y ~ x</code> a <em>model formula</em>.</p></li>
+<li><p><code>data_frame_name</code> is the name of the data frame that contains the variables <code>y</code> and <code>x</code>. In our case, <code>data_frame_name</code> is the <code>evals_ch5</code> data frame.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>score_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> bty_avg, <span class="at">data =</span> evals_ch5)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>score_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = score ~ bty_avg, data = evals_ch5)
+
+Coefficients:
+(Intercept)      bty_avg  
+     3.8803       0.0666  </code></pre>
+</div>
+</div>
+<p>This output is telling us that the <code>Intercept</code> coefficient <span class="math inline">\(b_0\)</span> of the regression line is 3.8803, and the slope coefficient for <code>by_avg</code> is 0.0666. Therefore the blue regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> is</p>
+<p><span class="math display">\[\widehat{\text{score}} = b_0 + b_{\text{bty avg}} \cdot\text{bty avg} = 3.8803 + 0.0666\cdot\text{ bty avg}\]</span></p>
+<p>where</p>
+<ul>
+<li><p>The intercept coefficient <span class="math inline">\(b_0 = 3.8803\)</span> means for instructors that had a hypothetical beauty score of 0, we would expect them to have on average a teaching score of 3.8803. In this case however, while the intercept has a mathematical interpretation when defining the regression line, there is no <em>practical</em> interpretation since <code>score</code> is an average of a panel of 6 students’ ratings from 1 to 10, a <code>bty_avg</code> of 0 would be impossible. Furthermore, no instructors had a beauty score anywhere near 0 in this data.</p></li>
+<li><p>Of more interest is the slope coefficient associated with <code>bty_avg</code>: <span class="math inline">\(b_{\text{bty avg}} = +0.0666\)</span>. This is a numerical quantity that summarizes the relationship between the outcome and explanatory variables. Note that the sign is positive, suggesting a positive relationship between beauty scores and teaching scores, meaning as beauty scores go up, so also do teaching scores go up. The slope’s precise interpretation is:</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>For every increase of 1 unit in <code>bty_avg</code>, there is an <em>associated</em> increase of, <em>on average</em>, 0.0666 units of <code>score</code>.</p>
+</blockquote>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Such interpretations need be carefully worded:</strong></p>
+<ul>
+<li><p>We only stated that there is an <em>associated</em> increase, and not necessarily a <em>causal</em> increase. For example, perhaps it’s not that beauty directly affects teaching scores, but instead younger instructors tend to be perceived as better teachers (perhaps because they are more energetic or use more modern techniques), and younger instructors are also perceived to be more beautiful. Avoiding such reasoning can be summarized by the adage “correlation is not necessarily causation.” In other words, just because two variables are correlated, it doesn’t mean one directly causes the other. We discuss these ideas more in <span class="quarto-unresolved-ref">?sec-correlation-is-not-causation</span> and in <a href="07-causality.html"><span>Chapter&nbsp;7</span></a>.</p></li>
+<li><p>We say that this associated increase is <em>on average</em> 0.0666 units of teaching <code>score</code> and not that the associated increase is <em>exactly</em> 0.0666 units of <code>score</code> across all values of <code>bty_avg</code>. This is because the slope is the average increase across all points as shown by the regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>.</p></li>
+</ul>
+</div>
+</div>
+<p>Now that we’ve learned how to compute the equation for the blue regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> and interpreted all its terms, let’s take our modeling one step further. This time after fitting the model using the <code>lm()</code>, let’s get something called the <em>regression table</em> using the <code>summary()</code> function:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>score_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> bty_avg, <span class="at">data =</span> evals_ch5)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression results:</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = score ~ bty_avg, data = evals_ch5)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-1.925 -0.369  0.142  0.398  0.931 
+
+Coefficients:
+            Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)   3.8803     0.0761   50.96 &lt; 0.0000000000000002 ***
+bty_avg       0.0666     0.0163    4.09             0.000051 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.535 on 461 degrees of freedom
+Multiple R-squared:  0.035, Adjusted R-squared:  0.0329 
+F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Note how we took the output of the model fit saved in <code>score_model</code> and used it as an input to the subsequent <code>summary()</code> function. The raw output of the <code>summary()</code> function above gives lots of information about the regression model that we won’t cover in this introductory course (e.g., Multiple R-squared, F-statistic, etc.). We will only consider the “Coefficients” section of the output. We can print these relevant results only by accessing the <code>coefficients</code> object stored in the summary results.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-numxplot4b" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.2: Linear regression table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">3.880</td>
+<td style="text-align: right;">0.076</td>
+<td style="text-align: right;">50.96</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">bty_avg</td>
+<td style="text-align: right;">0.067</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">4.09</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>For now since we are only using regression as an exploratory data analysis tool, we will only focus on the “Estimate” column that contains the estimates of the intercept and slope for the best fit line for our data. The remaining three columns refer to statistical concepts known as standard errors, t-statistics, and p-values, which we will cover in Parts III and IV of the book when we talk about statistical theory and inference.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fit a new simple linear regression using <code>lm(score ~ age, data = evals_ch5)</code> where <code>age</code> is the new explanatory variable <span class="math inline">\(x\)</span>. Get information about the “best-fitting” line from the regression table by applying the <code>summary()</code> function. How do the regression results match up with the results from your exploratory data analysis above?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-model1points" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="sec-model1points"><span class="header-section-number">5.1.3</span> Observed/fitted values and residuals</h3>
+<p>We just saw how to get the value of the intercept and the slope of the regression line from the regression table generated by <code>summary()</code>. Now instead, say we want information on individual points. In this case, we focus on one of the <span class="math inline">\(n = 463\)</span> instructors in this dataset, corresponding to a single row of <code>evals_ch5</code>.</p>
+<p>For example, say we are interested in the 21st instructor in this dataset:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Data for 21st instructor</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">score</th>
+<th style="text-align: right;">bty_avg</th>
+<th style="text-align: right;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">7.33</td>
+<td style="text-align: right;">31</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>What is the value on the blue line corresponding to this instructor’s <code>bty_avg</code> of 7.333? In <a href="#fig-numxplot5">Figure&nbsp;<span>5.7</span></a> we mark three values in particular corresponding to this instructor.</p>
+<ul>
+<li><p>Red circle: This is the <em>observed value</em> <span class="math inline">\(y\)</span> = 4.9 and corresponds to this instructor’s actual teaching score.</p></li>
+<li><p>Red square: This is the <em>fitted value</em> <span class="math inline">\(\widehat{y}\)</span> and corresponds to the value on the regression line for <span class="math inline">\(x\)</span> = 7.333. This value is computed using the intercept and slope in the regression table above: <span class="math display">\[\widehat{y} = b_0 + b_1 \cdot x = 3.88 + 0.067 * 7.333 = 4.369\]</span></p></li>
+<li><p>Blue arrow: The length of this arrow is the <em>residual</em> and is computed by subtracting the fitted value <span class="math inline">\(\widehat{y}\)</span> from the observed value <span class="math inline">\(y\)</span>. The residual can be thought of as the error or “lack of fit” of the regression line. In the case of this instructor, it is <span class="math inline">\(y - \widehat{y}\)</span> = 4.9 - 4.369 = 0.531. In other words, the model was off by 0.531 teaching score units for this instructor.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-numxplot5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-numxplot5-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.7: Example of observed value, fitted value, and residual</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What if we want both</p>
+<ol type="1">
+<li>the fitted value <span class="math inline">\(\widehat{y} = b_0 + b_1 \cdot x\)</span> and</li>
+<li>the residual <span class="math inline">\(y - \widehat{y}\)</span></li>
+</ol>
+<p>for not only the 21st instructor but for all 463 instructors in the study? Recall that each instructor corresponds to one of the 463 rows in the <code>evals_ch5</code> data frame and also one of the 463 points in the regression plot in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>.</p>
+<p>We could repeat the above calculations by hand 463 times, but that would be tedious and time consuming. Instead, let’s use our data wrangling tools from <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> and the functions <code>fitted()</code> and <code>residuals()</code> to create a data frame with these values. Similar to the <code>summary()</code> function, the <code>fitted()</code> and <code>residuals()</code> functions also take a model object as their input. <code>fitted()</code> calculates all the <em>fitted</em> <span class="math inline">\(\hat{y}\)</span> values by plugging in each observed <span class="math inline">\(x\)</span> value in the dataset into the regression equation, and <code>residuals()</code> similarly calculates all the residuals (<span class="math inline">\(y - \hat{y}\)</span>) for each observation in the dataset. The following code will store these new <span class="math inline">\(\hat{y}\)</span> and residual variables, which we will name <code>score_hat</code> and <code>residual</code> respectively, along with their corresponding <code>score</code> and <code>bty_avg</code> values from the original data <code>evals_ch5</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>score_model_data <span class="ot">&lt;-</span> evals_ch5 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, bty_avg) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">residuals</span>(score_model)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that we also used the <code>rownames_to_column()</code> function from the <code>tibble</code> package (part of the <code>tidyverse</code> suite) to create a convenient ID column from the rownames. In the table below we only present the results for the 21st through the 24th instructors.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-reg-points" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">ID</th>
+<th style="text-align: right;">score</th>
+<th style="text-align: right;">bty_avg</th>
+<th style="text-align: right;">score_hat</th>
+<th style="text-align: right;">residual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">7.33</td>
+<td style="text-align: right;">4.37</td>
+<td style="text-align: right;">0.531</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">7.33</td>
+<td style="text-align: right;">4.37</td>
+<td style="text-align: right;">0.231</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">7.33</td>
+<td style="text-align: right;">4.37</td>
+<td style="text-align: right;">0.131</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">5.50</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">0.153</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Let’s recap what we’re seeing in <a href="#tbl-reg-points">Table&nbsp;<span>5.3</span></a> in terms of the linear regression model (<code>score_model</code>) that we fit to the <code>evals_ch5</code> data:</p>
+<ul>
+<li><p>The <code>ID</code> column represents the row number where this observation appears in the original <code>evals_ch5</code> data</p></li>
+<li><p>The <code>score</code> column represents the observed value of the outcome variable <span class="math inline">\(y\)</span>.</p></li>
+<li><p>The <code>bty_avg</code> column represents the values of the explanatory variable <span class="math inline">\(x\)</span>.</p></li>
+<li><p>The <code>score_hat</code> column represents the fitted values <span class="math inline">\(\widehat{y}\)</span>.</p></li>
+<li><p>The <code>residual</code> column represents the residuals <span class="math inline">\(y - \widehat{y}\)</span>.</p></li>
+</ul>
+<p>Just as we did for the 21st instructor in the <code>evals_ch5</code> dataset (in the first row of the table above), let’s repeat the above calculations for the 24th instructor in the <code>evals_ch5</code> dataset (in the fourth row of the table above):</p>
+<ul>
+<li><p><code>score</code> = 4.4 is the observed value <span class="math inline">\(y\)</span> for this instructor.</p></li>
+<li><p><code>bty_avg</code> = 5.50 is the value of the explanatory variable <span class="math inline">\(x\)</span> for this instructor.</p></li>
+<li><p><code>score_hat</code> = 4.25 = 3.88 + 0.067 * <span class="math inline">\(x\)</span> = 3.88 + 0.067 * 5.50 is the fitted value <span class="math inline">\(\widehat{y}\)</span> for this instructor.</p></li>
+<li><p><code>residual</code> = 0.153 = 4.4 - 4.25 is the value of the residual for this instructor. In other words, the model was off by 0.153 teaching score units for this instructor.</p></li>
+</ul>
+<p>More development of this idea appears in <span class="quarto-unresolved-ref">?sec-leastsquares</span> and we encourage you to read that section after you investigate residuals.</p>
+</section>
+</section>
+<section id="sec-model2" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-model2"><span class="header-section-number">5.2</span> One categorical explanatory variable</h2>
+<p>It’s an unfortunate truth that life expectancy is not the same across various countries in the world; there are a multitude of factors that are associated with how long people live. International development agencies are very interested in studying these differences in the hope of understanding where governments should allocate resources to address this problem. In this section, we’ll explore differences in life expectancy in two ways:</p>
+<ol type="1">
+<li><p>Differences between continents: Are there significant differences in life expectancy, on average, between the five continents of the world: Africa, the Americas, Asia, Europe, and Oceania?</p></li>
+<li><p>Differences within continents: How does life expectancy vary within the world’s five continents? For example, is the spread of life expectancy among the countries of Africa larger than the spread of life expectancy among the countries of Asia?</p></li>
+</ol>
+<p>To answer such questions, we’ll study the <code>gapminder</code> dataset from the <code>gapminder</code> package. Recall we mentioned this dataset in <a href="02-visualization.html#sec-gapminder">Subsection&nbsp;<span>2.1.2</span></a> when we first introduced the “Grammar of Graphics” (<a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>). This dataset has international development statistics such as life expectancy, GDP per capita, and population by country (<span class="math inline">\(n\)</span> = 142) for 5-year intervals between 1952 and 2007.</p>
+<p>We’ll use this data for linear regression again, but note that our explanatory variable <span class="math inline">\(x\)</span> is now categorical, and not numerical like when we covered simple linear regression in <a href="#sec-model1"><span>Section&nbsp;5.1</span></a>. More precisely, we have:</p>
+<ol type="1">
+<li><p>A numerical outcome variable <span class="math inline">\(y\)</span>. In this case, life expectancy.</p></li>
+<li><p>A single categorical explanatory variable <span class="math inline">\(x\)</span>. In this case, the continent the country is part of.</p></li>
+</ol>
+<p>When the explanatory variable <span class="math inline">\(x\)</span> is categorical, the concept of a “best-fitting” line is a little different than the one we saw previously in <a href="#sec-model1"><span>Section&nbsp;5.1</span></a> where the explanatory variable <span class="math inline">\(x\)</span> was numerical. We’ll study these differences shortly in [Subsection -<a href="#sec-model2table"><span>Section&nbsp;5.2.2</span></a>, but first we conduct our exploratory data analysis.</p>
+<section id="sec-model2EDA" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-model2EDA"><span class="header-section-number">5.2.1</span> Exploratory data analysis</h3>
+<p>The data on the 142 countries can be found in the <code>gapminder</code> data frame included in the <code>gapminder</code> package. However, to keep things simple, let’s <code>filter()</code> for only those observations/rows corresponding to the year 2007. Additionally, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter. We’ll save this data in a new data frame called <code>gapminder2007</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>gapminder2007 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, continent, gdpPercap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Recall from <a href="#sec-model1EDA"><span>Section&nbsp;5.1.1</span></a> that there are three common steps in an exploratory data analysis:</p>
+<ol type="1">
+<li><p>Most crucially: Looking at the raw data values.</p></li>
+<li><p>Computing summary statistics, like means, medians, and interquartile ranges.</p></li>
+<li><p>Creating data visualizations.</p></li>
+</ol>
+<p>Let’s perform the first common step in an exploratory data analysis: looking at the raw data values. You can do this by using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> command as introduced in <a href="01-getting-started.html#sec-exploredataframes"><span>Section&nbsp;1.4.3</span></a> on exploring data frames:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gapminder2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 142
+Columns: 4
+$ country   &lt;fct&gt; "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", …
+$ lifeExp   &lt;dbl&gt; 43.8, 76.4, 72.3, 42.7, 75.3, 81.2, 79.8, 75.6, 64.1, 79.4, …
+$ continent &lt;fct&gt; Asia, Europe, Africa, Africa, Americas, Oceania, Europe, Asi…
+$ gdpPercap &lt;dbl&gt; 975, 5937, 6223, 4797, 12779, 34435, 36126, 29796, 1391, 336…</code></pre>
+</div>
+</div>
+<p>Observe that <code>Observations: 142</code> indicates that there are 142 rows/observations in <code>gapminder2007</code>, where each row corresponds to one country. In other words, the <em>observational unit</em> is an individual country. Furthermore, observe that the variable <code>continent</code> is of type <code>&lt;fct&gt;</code>, which stands for <em>factor</em>, which is R’s way of encoding categorical variables.</p>
+<p>A full description of all the variables included in <code>gapminder</code> can be found by reading the associated help file (run <code>?gapminder</code> in the console). However, let’s fully describe the 4 variables we selected in <code>gapminder2007</code>:</p>
+<ol type="1">
+<li><p><code>country</code>: An identification text variable used to distinguish the 142 countries in the dataset.</p></li>
+<li><p><code>lifeExp</code>: A numerical variable of that country’s life expectancy at birth. This is the outcome variable <span class="math inline">\(y\)</span> of interest.</p></li>
+<li><p><code>continent</code>: A categorical variable with five levels. Here “levels” corresponds to the possible categories: Africa, Asia, Americas, Europe, and Oceania. This is the explanatory variable <span class="math inline">\(x\)</span> of interest.</p></li>
+<li><p><code>gdpPercap</code>: A numerical variable of that country’s GDP per capita in US inflation-adjusted dollars that we’ll use as another outcome variable <span class="math inline">\(y\)</span> in the Learning Check at the end of this subsection.</p></li>
+</ol>
+<p>Furthermore, let’s look at a random sample of five out of the 142 countries in <a href="#tbl-model2-data-preview">Table&nbsp;<span>5.4</span></a>. Again, note due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gapminder2007 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-model2-data-preview" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.4: Random sample of 5 out of 142 countries</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Togo</td>
+<td style="text-align: right;">58.4</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">883</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sao Tome and Principe</td>
+<td style="text-align: right;">65.5</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1598</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Congo, Dem. Rep.</td>
+<td style="text-align: right;">46.5</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">278</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lesotho</td>
+<td style="text-align: right;">42.6</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1569</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bulgaria</td>
+<td style="text-align: right;">73.0</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">10681</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Now that we’ve looked at the raw values in our <code>gapminder2007</code> data frame and got a sense of the data, let’s move on to computing summary statistics. Let’s once again apply the <code>skim()</code> function from the <code>skimr</code> package. Recall from our previous EDA that this function takes in a data frame, “skims” it, and returns commonly used summary statistics. Let’s take our <code>gapminder2007</code> data frame, <code>select()</code> only the outcome and explanatory variables <code>lifeExp</code> and <code>continent</code>, and pipe them into the <code>skim()</code> function:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gapminder2007 <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lifeExp, continent) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>── Data Summary ────────────────────────
+                           Values    
+Name                       Piped data
+Number of rows             142       
+Number of columns          2         
+_______________________              
+Column type frequency:               
+  factor                   1         
+  numeric                  1         
+________________________             
+Group variables            None      
+
+── Variable type: factor ───────────────────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate ordered n_unique top_counts                        
+1 continent             0             1 FALSE          5 Afr: 52, Asi: 33, Eur: 30, Ame: 25
+
+── Variable type: numeric ──────────────────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate mean   sd   p0  p25  p50  p75 p100 hist 
+1 lifeExp               0             1 67.0 12.1 39.6 57.2 71.9 76.4 82.6 ▂▃▃▆▇</code></pre>
+<p>The <code>skim()</code> output now reports summaries for categorical variables (<code>Variable type:factor</code>) separately from the numerical variables (<code>Variable type:numeric</code>). For the categorical variable <code>continent</code>, it reports:</p>
+<ul>
+<li><p><code>n_missing</code> and <code>complete_rate</code>, which are the number of missing and proportion of non-missing values, respectively.</p></li>
+<li><p><code>n_unique</code>: The number of unique levels to this variable, corresponding to Africa, Asia, Americas, Europe, and Oceania. This refers to the how many countries are in the data for each continent.</p></li>
+<li><p><code>top_counts</code>: In this case the top four counts: <code>Africa</code> has 52 countries, <code>Asia</code> has 33, <code>Europe</code> has 30, and <code>Americas</code> has 25. Not displayed is <code>Oceania</code> with 2 countries.</p></li>
+</ul>
+<p>Turning our attention to the summary statistics of the numerical variable <code>lifeExp</code>, we observe that the global median life expectancy in 2007 was 71.94. Thus, half of the world’s countries (71 countries) had a life expectancy less than 71.94. The mean life expectancy of 67.01 is lower however. Why is the mean life expectancy lower than the median?</p>
+<p>We can answer this question by performing the last of the three common steps in an exploratory data analysis: creating data visualizations. Let’s visualize the distribution of our outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> in <a href="#fig-lifeExp2007hist">Figure&nbsp;<span>5.8</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2007, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Life expectancy"</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of countries"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogram of distribution of worldwide life expectancies"</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-lifeExp2007hist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-lifeExp2007hist-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.8: Histogram of Life Expectancy in 2007</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see that this data is <em>left-skewed</em>, also known as <em>negatively</em> skewed: there are a few countries with low life expectancy that are bringing down the mean life expectancy. However, the median is less sensitive to the effects of such outliers; hence, the median is greater than the mean in this case.</p>
+<p>Remember, however, that we want to compare life expectancies both between continents and within continents. In other words, our visualizations need to incorporate some notion of the variable <code>continent</code>. We can do this easily with a faceted histogram. Recall from <a href="02-visualization.html#sec-facets"><span>Section&nbsp;2.6</span></a> that facets allow us to split a visualization by the different values of another variable. We display the resulting visualization in <a href="#fig-catxplot0b">Figure&nbsp;<span>5.9</span></a> by adding a <code>facet_wrap(~ continent, nrow = 2)</code> layer.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2007, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Life expectancy"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of countries"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogram of distribution of worldwide life expectancies"</span>) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> continent, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-catxplot0b" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-catxplot0b-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.9: Life expectancy in 2007</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe that unfortunately the distribution of African life expectancies is much lower than the other continents, while in Europe life expectancies tend to be higher and furthermore do not vary as much. On the other hand, both Asia and Africa have the most variation in life expectancies. There is the least variation in Oceania, but keep in mind that there are only two countries in Oceania: Australia and New Zealand.</p>
+<p>Recall that an alternative method to visualize the distribution of a numerical variable split by a categorical variable is by using a side-by-side boxplot. We map the categorical variable <code>continent</code> to the <span class="math inline">\(x\)</span>-axis and the different life expectancies within each continent on the <span class="math inline">\(y\)</span>-axis in <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2007, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Continent"</span>, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Life expectancy (years)"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Life expectancy by continent"</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-catxplot1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-catxplot1-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.10: Life expectancy in 2007</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Some people prefer comparing the distributions of a numerical variable between different levels of a categorical variable using a boxplot instead of a faceted histogram. This is because we can make quick comparisons between the categorical variable’s levels with imaginary horizontal lines. For example, observe in <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a> that we can quickly convince ourselves that Oceania has the highest median life expectancies by drawing an imaginary horizontal line at <span class="math inline">\(y\)</span> = 80. Furthermore, as we observed in the faceted histogram in <a href="#fig-catxplot0b">Figure&nbsp;<span>5.9</span></a>, Africa and Asia have the largest variation in life expectancy as evidenced by their large interquartile ranges (the heights of the boxes).</p>
+<p>It’s important to remember however that the solid lines in the middle of the boxes correspond to the medians (the middle value) rather than the mean (the average). So for example, if you look at Asia, the solid line denotes the median life expectancy of around 72 years. This tells us that half of all countries in Asia have a life expectancy below 72 years whereas half have a life expectancy above 72 years.</p>
+<p>Let’s compute the median and mean life expectancy for each continent with a little more data wrangling and display the results in <a href="#tbl-catxplot0">Table&nbsp;<span>5.5</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lifeExp_by_continent <span class="ot">&lt;-</span> gapminder2007 <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(lifeExp), <span class="at">mean =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tbl-catxplot0" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;5.5: <strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-catxplot0-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-catxplot0" style="flex-basis: 100.0%;justify-content: center;">
+<table class="table table-sm table-striped">
+<caption>(a) Life expectancy by continent</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">52.9</td>
+<td style="text-align: right;">54.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">72.9</td>
+<td style="text-align: right;">73.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">72.4</td>
+<td style="text-align: right;">70.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">78.6</td>
+<td style="text-align: right;">77.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oceania</td>
+<td style="text-align: right;">80.7</td>
+<td style="text-align: right;">80.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Observe the order of the second column <code>median</code> life expectancy: Africa is lowest, the Americas and Asia are next with similar medians, then Europe, then Oceania. This ordering corresponds to the ordering of the solid black lines inside the boxes in our side-by-side boxplot in <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a>.</p>
+<p>Let’s now turn our attention to the values in the third column <code>mean</code>. Using Africa’s mean life expectancy of 54.8 as a <em>baseline for comparison</em>, let’s start making relative comparisons to the life expectancies of the other four continents:</p>
+<ol type="1">
+<li><p>The mean life expectancy of the Americas is 73.6 - 54.8 = 18.8 years higher.</p></li>
+<li><p>The mean life expectancy of Asia is 70.7 - 54.8 = 15.9 years higher.</p></li>
+<li><p>The mean life expectancy of Europe is 77.6 - 54.8 = 22.8 years higher.</p></li>
+<li><p>The mean life expectancy of Oceania is 80.7 - 54.8 = 25.9 years higher.</p></li>
+</ol>
+<p>Let’s put these values in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>, which we’ll revisit later on in this section.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-continent-mean-life-expectancies" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.6: Mean life expectancy by continent and relative differences from mean for Africa</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">Difference versus Africa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">54.8</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">73.6</td>
+<td style="text-align: right;">18.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">15.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">77.6</td>
+<td style="text-align: right;">22.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oceania</td>
+<td style="text-align: right;">80.7</td>
+<td style="text-align: right;">25.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.3
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Conduct a new exploratory data analysis with the same explanatory variable <span class="math inline">\(x\)</span> being <code>continent</code> but with <code>gdpPercap</code> as the new outcome variable <span class="math inline">\(y\)</span>. Remember, this involves three things:</p>
+<ol type="1">
+<li>Most crucially: Looking at the raw data values.</li>
+<li>Computing summary statistics, such as means, medians, and interquartile ranges.</li>
+<li>Creating data visualizations.</li>
+</ol>
+<p>What can you say about the differences in GDP per capita between continents based on this exploration?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-model2table" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-model2table"><span class="header-section-number">5.2.2</span> Linear regression</h3>
+<p>In <a href="#sec-model1table">Subsection&nbsp;<span>5.1.2</span></a> we introduced <em>simple</em> linear regression, which involves modeling the relationship between a numerical outcome variable <span class="math inline">\(y\)</span> as a function of a numerical explanatory variable <span class="math inline">\(x\)</span>, in our life expectancy example, we now have a categorical explanatory variable <span class="math inline">\(x\)</span> <code>continent</code>. While we still can fit a regression model, given our categorical explanatory variable we no longer have a concept of a “best-fitting” line, but rather “differences relative to a baseline for comparison.”</p>
+<p>Before we fit our regression model, let’s create a table similar to <a href="#tbl-catxplot0">Table&nbsp;<span>5.5</span></a>, but</p>
+<ol type="1">
+<li><p>Report the mean life expectancy for each continent.</p></li>
+<li><p>Report the difference in mean life expectancy <em>relative</em> to Africa’s mean life expectancy of 54.806 in the column “mean vs Africa”; this column is simply the “mean” column minus 54.806.</p></li>
+</ol>
+<p>Think back to your observations from the eyeball test of <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a> at the end of the last subsection. The column “mean vs Africa” is the same idea of comparing a summary statistic to a baseline for comparison, in this case the countries of Africa, but using means instead of medians.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-continent-mean-life-expectancies-" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.7: Mean life expectancy by continent</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">mean vs Africa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">54.8</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">73.6</td>
+<td style="text-align: right;">18.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">15.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">77.6</td>
+<td style="text-align: right;">22.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oceania</td>
+<td style="text-align: right;">80.7</td>
+<td style="text-align: right;">25.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Now, let’s use the <code>summary()</code> function again to get the <em>regression table</em> for the <code>gapminder2007</code> analysis:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>lifeExp_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> continent, <span class="at">data =</span> gapminder2007)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lifeExp_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-catxplot4b" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.8: Linear regression table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">54.8</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">53.45</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">continentAmericas</td>
+<td style="text-align: right;">18.8</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">10.45</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">continentAsia</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: right;">1.65</td>
+<td style="text-align: right;">9.68</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">continentEurope</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">13.47</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">continentOceania</td>
+<td style="text-align: right;">25.9</td>
+<td style="text-align: right;">5.33</td>
+<td style="text-align: right;">4.86</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Just as before, we’re only interested in the “Estimate” column, but unlike before, we now have 5 rows corresponding to 5 outputs in our table: an intercept like before, but also <code>continentAmericas</code>, <code>continentAsia</code>, <code>continentEurope</code>, and <code>continentOceania</code>. What are these values? First, we must describe the equation for fitted value <span class="math inline">\(\widehat{y}\)</span>, which is a little more complicated when the <span class="math inline">\(x\)</span> explanatory variable is categorical:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{\text{life exp}} &amp;= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)
+\end{aligned}
+\]</span></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
