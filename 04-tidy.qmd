@@ -483,7 +483,7 @@ Read in the life expectancy data stored at <https://moderndive.com/data/le_mess.
 
 ## Conclusion {#tidy-conclusion}
 
-### `tidyverse` package
+### `tidyverse` package {#sec-tidyverse-package}
 
 Notice at the beginning of the chapter we loaded the following four packages, which are among the four of the most frequently used R packages for data science:
 
