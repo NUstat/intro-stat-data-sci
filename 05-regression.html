@@ -376,6 +376,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#sec-correlationcoefficient" id="toc-sec-correlationcoefficient" class="nav-link" data-scroll-target="#sec-correlationcoefficient"><span class="toc-section-number">5.3.1</span>  Correlation coefficient</a></li>
   <li><a href="#sec-correlation-is-not-causation" id="toc-sec-correlation-is-not-causation" class="nav-link" data-scroll-target="#sec-correlation-is-not-causation"><span class="toc-section-number">5.3.2</span>  Correlation is not necessarily causation</a></li>
+  <li><a href="#sec-leastsquares" id="toc-sec-leastsquares" class="nav-link" data-scroll-target="#sec-leastsquares"><span class="toc-section-number">5.3.3</span>  Best-fitting line</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -715,7 +716,7 @@ Group variables            None
 <li><p>Focusing our attention on the top-right of the plot again, as noted earlier where there seemed to only be 6 points in the regular scatterplot, we see there were in fact really 9 as seen in the jittered scatterplot.</p></li>
 <li><p>A further interesting trend is that the jittering revealed a large number of instructors with beauty scores of between 3 and 4.5, towards the lower end of the beauty scale.</p></li>
 </ol>
-<p>To keep things simple in this chapter, we’ll present regular scatterplots rather than the jittered scatterplots, though we’ll keep the overplotting in mind whenever looking at such plots. Going back to scatterplot in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>, let’s improve on it by adding a “regression line” in <a href="#fig-numxplot3">Figure&nbsp;<span>5.5</span></a>. This is easily done by adding a new layer to the <code>ggplot</code> code that created <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>: <code>+ geom_smooth(method = "lm")</code>. A regression line is a “best fitting” line in that of all possible lines you could draw on this plot, it is “best” in terms of some mathematical criteria. We discuss the criteria for “best” in <span class="quarto-unresolved-ref">?sec-leastsquares</span> below, but we suggest you read this only after covering the concept of a <em>residual</em> coming up in <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a>.</p>
+<p>To keep things simple in this chapter, we’ll present regular scatterplots rather than the jittered scatterplots, though we’ll keep the overplotting in mind whenever looking at such plots. Going back to scatterplot in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>, let’s improve on it by adding a “regression line” in <a href="#fig-numxplot3">Figure&nbsp;<span>5.5</span></a>. This is easily done by adding a new layer to the <code>ggplot</code> code that created <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>: <code>+ geom_smooth(method = "lm")</code>. A regression line is a “best fitting” line in that of all possible lines you could draw on this plot, it is “best” in terms of some mathematical criteria. We discuss the criteria for “best” in <a href="#sec-leastsquares">Subsection&nbsp;<span>5.3.3</span></a> below, but we suggest you read this only after covering the concept of a <em>residual</em> coming up in <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 
 </div>
@@ -1054,7 +1055,7 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <li><p><code>score_hat</code> = 4.25 = 3.88 + 0.067 * <span class="math inline">\(x\)</span> = 3.88 + 0.067 * 5.50 is the fitted value <span class="math inline">\(\widehat{y}\)</span> for this instructor.</p></li>
 <li><p><code>residual</code> = 0.153 = 4.4 - 4.25 is the value of the residual for this instructor. In other words, the model was off by 0.153 teaching score units for this instructor.</p></li>
 </ul>
-<p>More development of this idea appears in <span class="quarto-unresolved-ref">?sec-leastsquares</span> and we encourage you to read that section after you investigate residuals.</p>
+<p>More development of this idea appears in <a href="#sec-leastsquares"><span>Section&nbsp;5.3.3</span></a> and we encourage you to read that section after you investigate residuals.</p>
 </section>
 </section>
 <section id="sec-model2" class="level2" data-number="5.2">
@@ -1770,6 +1771,26 @@ Group variables            None
 </ul>
 <p>So as we said, alcohol will both cause people to be more likely to sleep with their shoes on as well as more likely to wake up with a headache. Thus when evaluating what causes one to wake up with a headache, its hard to tease out the effect of sleeping with shoes on versus just the alcohol. Thus our model needs to also use Z as an explanatory/predictor variable as well, in other words our doctor needs to take into account who had been drinking the night before. We’ll start covering multiple regression models that allows us to incorporate more than one variable in the next chapter.</p>
 <p>Establishing causation is a tricky problem and frequently takes either carefully designed experiments or methods to control for the effects of potential confounding variables. Both these approaches attempt either to remove all confounding variables or take them into account as best they can, and only focus on the behavior of an outcome variable in the presence of the levels of the other variable(s). Be careful as you read studies to make sure that the writers aren’t falling into this fallacy of correlation implying causation. If you spot one, you may want to send them a link to <a href="http://www.tylervigen.com/spurious-correlations">Spurious Correlations</a>.</p>
+</section>
+<section id="sec-leastsquares" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-leastsquares"><span class="header-section-number">5.3.3</span> Best-fitting line</h3>
+<p>Regression lines are also known as “best-fitting” lines. But what do we mean by “best”? Let’s unpack the criteria that is used in regression to determine “best.” Recall <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>, where for an instructor with a beauty score of <span class="math inline">\(x = 7.333\)</span> we mark the <em>observed value</em> <span class="math inline">\(y\)</span> with a circle, the <em>fitted value</em> <span class="math inline">\(\widehat{y}\)</span> with a square, and the <em>residual</em> <span class="math inline">\(y - \widehat{y}\)</span> with an arrow.</p>
+<p>We re-display <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> in the top-left plot of <a href="#fig-best-fitting-line">Figure&nbsp;<span>5.14</span></a>. Furthermore, let’s repeat this for three more arbitrarily chosen course’s instructors:</p>
+<ol type="1">
+<li><p>A course whose instructor had a “beauty” score <span class="math inline">\(x\)</span> = 2.333 and teaching score <span class="math inline">\(y\)</span> = 2.7. The residual in this case is <span class="math inline">\(2.7 - 4.036 = -1.336\)</span>, which we mark with a new blue arrow in the top-right plot.</p></li>
+<li><p>A course whose instructor had a “beauty” score <span class="math inline">\(x = 3.667\)</span> and teaching score <span class="math inline">\(y = 4.4\)</span>. The residual in this case is <span class="math inline">\(4.4 - 4.125 = 0.2753\)</span>, which we mark with a new blue arrow in the bottom-left plot.</p></li>
+<li><p>A course whose instructor had a “beauty” score <span class="math inline">\(x = 6\)</span> and teaching score <span class="math inline">\(y = 3.8\)</span>. The residual in this case is <span class="math inline">\(3.8 - 4.28 = -0.4802\)</span>, which we mark with a new blue arrow in the bottom-right plot.</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-best-fitting-line" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-best-fitting-line-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.14: Example of observed value, fitted value, and residual</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
