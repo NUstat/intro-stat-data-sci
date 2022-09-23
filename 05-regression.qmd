@@ -1216,7 +1216,7 @@ Repeat this process, but identify the five countries with the five largest (most
 
 ### Correlation coefficient {#sec-correlationcoefficient}
 
-Let's re-plot F@fig-correlation1, but now consider a broader range of correlation coefficient values in @fig-correlation2. 
+Let's re-plot @fig-correlation1, but now consider a broader range of correlation coefficient values in @fig-correlation2. 
 
 ```{r}
 #| label: fig-correlation2
@@ -1366,3 +1366,36 @@ p4 <- best_fit_plot + labs(title = "Adding fourth instructor's residual")
 
 p1 + p2 + p3 + p4 + plot_layout(nrow = 2)
 ```
+
+Now say we repeated this process of computing residuals for all 463 courses' instructors, then we squared all the residuals, and then we summed them. We call this quantity the *sum of squared residuals* and it is a measure of the _lack of fit_ of a model. Larger values of the sum of squared residuals indicate a bigger lack of fit. This corresponds to a worse fitting model.
+
+If the regression line fits all the points perfectly, then the sum of squared residuals is 0. This is because if the regression line fits all the points perfectly, then the fitted value $\widehat{y}$ equals the observed value $y$ in all cases, and hence the residual $y-\widehat{y}$ = 0 in all cases, and the sum of even a large number of 0's is still 0.
+
+Furthermore, of all possible lines we can draw through the cloud of 463 points, the regression line minimizes this value. In other words, the regression and its corresponding fitted values $\widehat{y}$ minimizes the sum of the squared residuals:
+
+$$
+\sum_{i=1}^{n}(y_i - \widehat{y}_i)^2
+$$
+
+Let's use our data wrangling tools from @sec-wrangling to compute the sum of squared residuals exactly:
+
+```{r}
+# Fit regression model:
+score_model <- lm(score ~ bty_avg, data = evals_ch5)
+
+# Get regression points:
+score_model_data <- evals_ch5 %>% 
+  select(score, bty_avg) %>% 
+  mutate(
+    score_hat = fitted(score_model),
+    residual = residuals(score_model)
+    ) %>% 
+  rownames_to_column("ID")
+
+# Compute sum of squared residuals
+score_model_data %>%
+  mutate(squared_residuals = residual^2) %>%
+  summarize(sum_of_squared_residuals = sum(squared_residuals))
+```
+
+Any other straight line drawn in the figure would yield a sum of squared residuals greater than 132. This is a mathematically guaranteed fact that you can prove using calculus and linear algebra. That's why alternative names for the linear regression line are the *best-fitting line* as well as the *least-squares line*. Why do we square the residuals (i.e. the arrow lengths)? We do this so that both positive and negative deviations of the same amount are treated equally.
