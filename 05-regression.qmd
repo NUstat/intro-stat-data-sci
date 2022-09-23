@@ -1239,7 +1239,7 @@ As we suggested in [Subsection -@sec-model1EDA], interpreting coefficients that 
 
 ### Correlation is not necessarily causation {#sec-correlation-is-not-causation}
 
-You'll note throughout this chapter we've been very cautious in making statements of the "associated effect" of explanatory variables on the outcome variables, for example our statement from [Subsection -@secmodel1table] that "for every increase of 1 unit in `bty_avg`, there is an *associated* increase of, *on average*, `r coefs[2,1]` units of `score`." We stay this because we are careful not to make *causal* statements. So while beauty score `bty_avg` is positively correlated with teaching `score`, does it directly cause effects on teaching score.
+You'll note throughout this chapter we've been very cautious in making statements of the "associated effect" of explanatory variables on the outcome variables, for example our statement from [Subsection -@sec-model1table] that "for every increase of 1 unit in `bty_avg`, there is an *associated* increase of, *on average*, `r coefs[2,1]` units of `score`." We stay this because we are careful not to make *causal* statements. So while beauty score `bty_avg` is positively correlated with teaching `score`, does it directly cause effects on teaching score.
 
 For example, let's say an instructor has their `bty_avg` reevaluated, but only after taking steps to try to boost their beauty score. Does this mean that they will suddenly be a better instructor? Or will they suddenly get higher teaching scores? Maybe? 
 
