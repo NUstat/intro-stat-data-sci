@@ -20,6 +20,88 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -61,6 +143,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -272,7 +355,17 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#packages-needed" id="toc-packages-needed" class="nav-link active" data-scroll-target="#packages-needed">Packages Needed</a></li>
+  <li><a href="#sec-model1" id="toc-sec-model1" class="nav-link" data-scroll-target="#sec-model1"><span class="toc-section-number">5.1</span>  One numerical explanatory variable</a>
+  <ul class="collapse">
+  <li><a href="#sec-model1EDA" id="toc-sec-model1EDA" class="nav-link" data-scroll-target="#sec-model1EDA"><span class="toc-section-number">5.1.1</span>  Exploratory data analysis</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -293,21 +386,213 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>Now that we are equipped with data visualization skills from <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>, an understanding of the “tidy” data format from <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a>, and data wrangling skills from <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>, we now proceed with data modeling. The fundamental premise of data modeling is <em>to make explicit the relationship</em> between:</p>
+<ul>
+<li>an outcome variable <span class="math inline">\(y\)</span>, also called a dependent variable and</li>
+<li>an explanatory/predictor variable <span class="math inline">\(x\)</span>, also called an independent variable or covariate.</li>
+</ul>
+<p>Another way to state this is using mathematical terminology: we will model the outcome variable <span class="math inline">\(y\)</span> <em>as a function</em> of the explanatory/predictor variable <span class="math inline">\(x\)</span>. Why do we have two different labels, explanatory and predictor, for the variable <span class="math inline">\(x\)</span>? That’s because roughly speaking data modeling can be used for two purposes:</p>
+<ol type="1">
+<li><p><strong>Modeling for prediction</strong>: You want to predict an outcome variable <span class="math inline">\(y\)</span> based on the information contained in a set of predictor variables. You don’t care so much about understanding how all the variables relate and interact, but so long as you can make good predictions about <span class="math inline">\(y\)</span>, you’re fine. For example, if we know many individuals’ risk factors for lung cancer, such as smoking habits and age, can we predict whether or not they will develop lung cancer? Here we wouldn’t care so much about distinguishing the degree to which the different risk factors contribute to lung cancer, but instead only on whether or not they could be put together to make reliable predictions.</p></li>
+<li><p><strong>Modeling for explanation</strong>: You want to explicitly describe the relationship between an outcome variable <span class="math inline">\(y\)</span> and a set of explanatory variables, determine the significance of any found relationships, and have measures summarizing these. Continuing our example from above, we would now be interested in describing the individual effects of the different risk factors and quantifying the magnitude of these effects. One reason could be to design an intervention to reduce lung cancer cases in a population, such as targeting smokers of a specific age group with an advertisement for smoking cessation programs. In this book, we’ll focus more on this latter purpose.</p></li>
+</ol>
+<p>Data modeling is used in a wide variety of fields, including statistical inference, causal inference, artificial intelligence, and machine learning. There are many techniques for data modeling, such as tree-based models, neural networks and deep learning, and supervised learning. In this chapter, we’ll focus on one particular technique: <em>linear regression</em>, one of the most commonly-used and easy-to-understand approaches to modeling. Recall our discussion in <a href="01-getting-started.html#sec-exploredataframes">Subsection&nbsp;<span>1.4.3</span></a> on numerical and categorical variables. Linear regression involves:</p>
+<ul>
+<li>an outcome variable <span class="math inline">\(y\)</span> that is <em>numerical</em> and</li>
+<li>explanatory variables <span class="math inline">\(x_i\)</span> (e.g.&nbsp;<span class="math inline">\(x_1, x_2, ...\)</span>) that are either <em>numerical</em> or <em>categorical</em>.</li>
+</ul>
+<p>With linear regression there is always only one numerical outcome variable <span class="math inline">\(y\)</span> but we have choices on both the number and the type of explanatory variables to use. We’re going to cover the following regression scenarios:</p>
+<ul>
+<li>In this current chapter on basic regression, we’ll always have only one explanatory variable.
+<ul>
+<li>In <a href="#sec-model1"><span>Section&nbsp;5.1</span></a>, this explanatory variable will be a single numerical explanatory variable <span class="math inline">\(x\)</span>. This scenario is known as <em>simple linear regression</em>.</li>
+<li>In <span class="quarto-unresolved-ref">?sec-model2</span>, this explanatory variable will be a categorical explanatory variable <span class="math inline">\(x\)</span>.</li>
+</ul></li>
+<li>In the next chapter, <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a> on <em>multiple regression</em>, we’ll have more than one explanatory variable:
+<ul>
+<li>We’ll focus on two numerical explanatory variables, <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, in <span class="quarto-unresolved-ref">?sec-model3</span>.</li>
+<li>We’ll use one numerical and one categorical explanatory variable in <span class="quarto-unresolved-ref">?sec-model3</span>. We’ll also introduce <em>interaction models</em> here; there, the effect of one explanatory variable depends on the value of another.</li>
+</ul></li>
+</ul>
+<p>We’ll study all four of these regression scenarios using real data, all easily accessible via R packages!</p>
+<section id="packages-needed" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h2>
+<p>Let’s now load all the packages needed for this chapter (this assumes you’ve already installed them). In this chapter we introduce some new packages:</p>
+<ol type="1">
+<li><p>The <code>tidyverse</code> “umbrella” package. Recall from our discussion in <a href="04-tidy.html#sec-tidyverse-package"><span>Section&nbsp;4.4.1</span></a> that loading the <code>tidyverse</code> package by running <code>library(tidyverse)</code> loads the following commonly used data science packages all at once:</p>
+<ul>
+<li><code>ggplot2</code> for data visualization</li>
+<li><code>dplyr</code> for data wrangling</li>
+<li><code>tidyr</code> for converting data to “tidy” format</li>
+<li><code>readr</code> for importing spreadsheet data into R</li>
+<li>As well as the more advanced <code>purrr</code>, <code>tibble</code>, <code>stringr</code>, and <code>forcats</code> packages</li>
+</ul></li>
+<li><p>The <code>skimr</code> <span class="citation" data-cites="R-skimr">(<a href="references.html#ref-R-skimr" role="doc-biblioref">Waring et al. 2022</a>)</span> package, which provides a simple-to-use function to quickly compute a wide array of commonly-used summary statistics.</p></li>
+<li><p>The <code>gapminder</code> package, which provides excerpts of data available from <a href="https://gapminder.org">Gapminder.org</a></p></li>
+<li><p>The <code>moderndive</code> package, which includes data sets we will analyze</p></li>
+</ol>
+<p>If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-Under Construction
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+<section id="sec-model1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-model1"><span class="header-section-number">5.1</span> One numerical explanatory variable</h2>
+<p>Why do some professors and instructors at universities and colleges get high teaching evaluations from students while others don’t? What factors can explain these differences? Are there biases? These are questions that are of interest to university/college administrators, as teaching evaluations are among the many criteria considered in determining which professors and instructors should get promotions. Researchers at the University of Texas in Austin, Texas (UT Austin) tried to answer this question: what factors can explain differences in instructor’s teaching evaluation scores? To this end, they collected information on <span class="math inline">\(n = 463\)</span> instructors. A full description of the study can be found at <a href="https://www.openintro.org/stat/data/?data=evals">openintro.org</a>.</p>
+<p>We’ll keep things simple for now and try to explain differences in instructor evaluation scores as a function of one numerical variable: their “beauty score.” The specifics on how this score was calculated will be described shortly.</p>
+<p>Could it be that instructors with higher beauty scores also have higher teaching evaluations? Could it be instead that instructors with higher beauty scores tend to have lower teaching evaluations? Or could it be there is no relationship between beauty score and teaching evaluations?</p>
+<p>We’ll achieve ways to address these questions by modeling the relationship between these two variables with a particular kind of linear regression called <em>simple linear regression</em>. Simple linear regression is the most basic form of linear regression. With it we have</p>
+<ol type="1">
+<li><p>A numerical outcome variable <span class="math inline">\(y\)</span>. In this case, an instructor’s teaching score.</p></li>
+<li><p>A single numerical explanatory variable <span class="math inline">\(x\)</span>. In this case, an instructor’s beauty score.</p></li>
+</ol>
+<section id="sec-model1EDA" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="sec-model1EDA"><span class="header-section-number">5.1.1</span> Exploratory data analysis</h3>
+<p>A crucial step before doing any kind of modeling or analysis is performing an <em>exploratory data analysis</em>, or EDA, of all our data. Exploratory data analysis can give you a sense of the distribution of the data and whether there are outliers and/or missing values. Most importantly, it can inform how to build your model. There are many approaches to exploratory data analysis; here are three:</p>
+<ol type="1">
+<li><p>Most fundamentally: just looking at the raw values, in a spreadsheet for example. While this may seem trivial, many people ignore this crucial step!</p></li>
+<li><p>Computing summary statistics like means, medians, and standard deviations.</p></li>
+<li><p>Creating data visualizations.</p></li>
+</ol>
+<p>Let’s load the <code>evals</code> data (which is built into the <code>moderndive</code> package), <code>select</code> only a subset of the variables, and look at the raw values. Recall you can look at the raw values by running <code>View()</code> in the console in RStudio to pop-up the spreadsheet viewer with the data frame of interest as the argument to <code>View()</code>. Here, however, we present only a snapshot of five randomly chosen rows:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, bty_avg, age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Random sample of 5 instructors</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">score</th>
+<th style="text-align: right;">bty_avg</th>
+<th style="text-align: right;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">5.50</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.33</td>
+<td style="text-align: right;">64</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Currently working on content transfer from previous version of the book.</p>
+<p>While a full description of each of these variables can be found at <a href="https://www.openintro.org/stat/data/?data=evals">openintro.org</a>, let’s summarize what each of these variables represents.</p>
+<ol type="1">
+<li><p><code>score</code>: Numerical variable of the average teaching score based on students’ evaluations between 1 and 5. This is the outcome variable <span class="math inline">\(y\)</span> of interest.</p></li>
+<li><p><code>bty_avg</code>: Numerical variable of average “beauty” rating based on a panel of 6 students’ scores between 1 and 10. This is the numerical explanatory variable <span class="math inline">\(x\)</span> of interest. Here 1 corresponds to a low beauty rating and 10 to a high beauty rating.</p></li>
+<li><p><code>age</code>: A numerical variable of age in years as an integer value.</p></li>
+</ol>
+<p>An alternative way to look at the raw data values is by choosing a random sample of the rows in <code>evals_ch5</code> by piping it into the <code>slice_sample()</code> function from the <code>dplyr</code> package. Here we set the <code>n</code> argument to be <code>5</code>, indicating that we want a random sample of 5 rows. We display the results in <a href="#tbl-five-random-courses">Table&nbsp;<span>5.1</span></a>. Note that due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-five-random-courses" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.1: A random sample of 5 out of the 463 courses at UT Austin</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">score</th>
+<th style="text-align: right;">bty_avg</th>
+<th style="text-align: right;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">5.67</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">4.17</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">4.33</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">4.83</td>
+<td style="text-align: right;">52</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+</div>
+<p>Now that we’ve looked at the raw values in our <code>evals_ch5</code> data frame and got a preliminary sense of the data, let’s move on to the next common step in an exploratory data analysis: computing summary statistics. Let’s start by computing the mean and median of our numerical outcome variable <code>score</code> and our numerical explanatory variable “beauty” score denoted as <code>bty_avg</code>. We’ll do this by using the <code>summarize()</code> function from <code>dplyr</code> along with the <code>mean()</code> and <code>median()</code> summary functions we saw in <a href="03-wrangling.html#sec-summarize"><span>Section&nbsp;3.3</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_bty_avg =</span> <span class="fu">mean</span>(bty_avg),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_score =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_bty_avg =</span> <span class="fu">median</span>(bty_avg), </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_score =</span> <span class="fu">median</span>(score)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  mean_bty_avg mean_score median_bty_avg median_score
+         &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
+1         4.42       4.17           4.33          4.3</code></pre>
+</div>
+</div>
+<p>However, what if we want other summary statistics as well, such as the standard deviation (a measure of spread), the minimum and maximum values, and various percentiles? Typing out all these summary statistic functions in <code>summarize()</code> would be long and tedious. Instead, let’s use the convenient <code>skim()</code> function from the <code>skimr</code> package. This function takes in a data frame, “skims” it, and returns commonly used summary statistics. Let’s take our <code>evals_ch5</code> data frame, <code>select()</code> only the outcome and explanatory variables teaching <code>score</code> and <code>bty_avg</code>, and pipe them into the <code>skim()</code> function:</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-R-skimr" class="csl-entry" role="doc-biblioentry">
+Waring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, and Shannon Ellis. 2022. <em>Skimr: Compact and Flexible Summaries of Data</em>. <a href="https://CRAN.R-project.org/package=skimr">https://CRAN.R-project.org/package=skimr</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
