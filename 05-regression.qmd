@@ -1,7 +1,7 @@
 # Basic Regression {#sec-regression}
 
 ```{r}
-#| label: setup_tidy
+#| label: setup_regression
 #| include: false
 
 # for number learning checks
@@ -51,8 +51,8 @@ With linear regression there is always only one numerical outcome variable $y$ b
     + In @sec-model1, this explanatory variable will be a single numerical explanatory variable $x$. This scenario is known as *simple linear regression*. 
     + In @sec-model2, this explanatory variable will be a categorical explanatory variable $x$.
 * In the next chapter, @sec-multiple-regression on *multiple regression*, we'll have more than one explanatory variable:
-    + We'll focus on two numerical explanatory variables, $x_1$ and $x_2$, in Section \@ref(model3). 
-    + We'll use one numerical and one categorical explanatory variable in Section \@ref(model3). We'll also introduce *interaction models* here; there, the effect of one explanatory variable depends on the value of another. 
+    + We'll focus on two numerical explanatory variables, $x_1$ and $x_2$, in @sec-model3. 
+    + We'll use one numerical and one categorical explanatory variable in @sec-model3. We'll also introduce *interaction models* here; there, the effect of one explanatory variable depends on the value of another. 
 
 We'll study all four of these regression scenarios using real data, all easily accessible via R packages! 
 
