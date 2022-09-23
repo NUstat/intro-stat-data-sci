@@ -1529,6 +1529,51 @@ Group variables            None
 &amp;= 54.8
 \end{aligned}
 \]</span></p>
+<p>Meaning, all four of the indicator variables are equal to 0. Recall we stated earlier that we would treat Africa as the baseline for comparison group. Furthermore, this value corresponds to the group mean life expectancy for all African countries in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>.</p>
+<p>Next, <span class="math inline">\(b_{\text{Amer}}\)</span> = <code>continentAmericas = 18.8</code> is the difference in mean life expectancy of countries in the Americas relative to Africa, or in other words, on average countries in the Americas had life expectancy 18.8 years greater. The fitted value yielded by this equation is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{\text{life exp}} &amp;= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot 1 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
+&amp;= 54.8 + 18.8\\
+&amp;= 73.6
+\end{aligned}
+\]</span></p>
+<p>i.e.&nbsp;in this case, only the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{Amer}}(x)\)</span> is equal to 1, but all others are 0. Recall that 73.6 corresponds to the group mean life expectancy for all countries in the Americas in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>.</p>
+<p>Similarly, <span class="math inline">\(b_{\text{Asia}}\)</span> = <code>continentAsia = 15.9</code> is the difference in mean life expectancy of Asian countries relative to Africa countries, or in other words, on average countries in the Asia had life expectancy 15.9 years greater than Africa. The fitted value yielded by this equation is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{\text{life exp}} &amp;= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot 0 + 15.9\cdot 1 + 22.8\cdot 0 + 25.9\cdot 0\\
+&amp;= 54.8 + 15.9\\
+&amp;= 70.7
+\end{aligned}
+\]</span></p>
+<p>Meaning, in this case, only the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{Asia}}(x)\)</span> is equal to 1, but all others are 0. Recall that 70.7 corresponds to the group mean life expectancy for all countries in Asia in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>. The same logic applies to <span class="math inline">\(b_{\text{Euro}} = 22.8\)</span> and <span class="math inline">\(b_{\text{Ocean}} = 25.9\)</span>; they correspond to the “offset” in mean life expectancy for countries in Europe and Oceania, relative to the mean life expectancy of the baseline group for comparison of African countries.</p>
+<p>Let’s generalize this idea a bit. If we fit a linear regression model using a categorical explanatory variable <span class="math inline">\(x\)</span> that has <span class="math inline">\(k\)</span> levels, a regression model will return an intercept and <span class="math inline">\(k - 1\)</span> “slope” coefficients. When <span class="math inline">\(x\)</span> is a numerical explanatory variable the interpretation is of a “slope” coefficient, but when <span class="math inline">\(x\)</span> is categorical the meaning is a little trickier. They are <em>offsets</em> relative to the baseline.</p>
+<p>In our case, since there are <span class="math inline">\(k = 5\)</span> continents, the regression model returns an intercept corresponding to the baseline for comparison Africa and <span class="math inline">\(k - 1 = 4\)</span> slope coefficients corresponding to the Americas, Asia, Europe, and Oceania. Africa was chosen as the baseline by R for no other reason than it is first alphabetically of the 5 continents. You can manually specify which continent to use as baseline instead of the default choice of whichever comes first alphabetically, but we leave that to a more advanced course. (The <code>forcats</code> package is particularly nice for doing this and we encourage you to explore using it.)</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fit a new linear regression using <code>lm(gdpPercap ~ continent, data = gapminder2007)</code> where <code>gdpPercap</code> is the new outcome variable <span class="math inline">\(y\)</span>. Get information about the “best-fitting” line from the regression table by applying the <code>summary()</code> function. How do the regression results match up with the results from your exploratory data analysis above?</p>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
