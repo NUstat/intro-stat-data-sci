@@ -370,6 +370,12 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#sec-model2EDA" id="toc-sec-model2EDA" class="nav-link" data-scroll-target="#sec-model2EDA"><span class="toc-section-number">5.2.1</span>  Exploratory data analysis</a></li>
   <li><a href="#sec-model2table" id="toc-sec-model2table" class="nav-link" data-scroll-target="#sec-model2table"><span class="toc-section-number">5.2.2</span>  Linear regression</a></li>
+  <li><a href="#sec-model2points" id="toc-sec-model2points" class="nav-link" data-scroll-target="#sec-model2points"><span class="toc-section-number">5.2.3</span>  Observed/fitted values and residuals</a></li>
+  </ul></li>
+  <li><a href="#related-topics" id="toc-related-topics" class="nav-link" data-scroll-target="#related-topics"><span class="toc-section-number">5.3</span>  Related topics</a>
+  <ul class="collapse">
+  <li><a href="#sec-correlationcoefficient" id="toc-sec-correlationcoefficient" class="nav-link" data-scroll-target="#sec-correlationcoefficient"><span class="toc-section-number">5.3.1</span>  Correlation coefficient</a></li>
+  <li><a href="#sec-correlation-is-not-causation" id="toc-sec-correlation-is-not-causation" class="nav-link" data-scroll-target="#sec-correlation-is-not-causation"><span class="toc-section-number">5.3.2</span>  Correlation is not necessarily causation</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -659,7 +665,7 @@ Group variables            None
 <pre><code>[1] 0.187</code></pre>
 </div>
 </div>
-<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection -<span class="quarto-unresolved-ref">?sec-correlationcoefficient</span> below.</p>
+<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection -<a href="#sec-correlationcoefficient"><span>Section&nbsp;5.3.1</span></a> below.</p>
 <p>Let’s now proceed by visualizing this data. Since both the <code>score</code> and <code>bty_avg</code> variables are numerical, a scatterplot is an appropriate graph to visualize this data. Let’s do this using <code>geom_point()</code> and set informative axes labels and title and display the result in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
@@ -832,7 +838,7 @@ Important
 <div class="callout-body-container callout-body">
 <p><strong>Such interpretations need be carefully worded:</strong></p>
 <ul>
-<li><p>We only stated that there is an <em>associated</em> increase, and not necessarily a <em>causal</em> increase. For example, perhaps it’s not that beauty directly affects teaching scores, but instead younger instructors tend to be perceived as better teachers (perhaps because they are more energetic or use more modern techniques), and younger instructors are also perceived to be more beautiful. Avoiding such reasoning can be summarized by the adage “correlation is not necessarily causation.” In other words, just because two variables are correlated, it doesn’t mean one directly causes the other. We discuss these ideas more in <span class="quarto-unresolved-ref">?sec-correlation-is-not-causation</span> and in <a href="07-causality.html"><span>Chapter&nbsp;7</span></a>.</p></li>
+<li><p>We only stated that there is an <em>associated</em> increase, and not necessarily a <em>causal</em> increase. For example, perhaps it’s not that beauty directly affects teaching scores, but instead younger instructors tend to be perceived as better teachers (perhaps because they are more energetic or use more modern techniques), and younger instructors are also perceived to be more beautiful. Avoiding such reasoning can be summarized by the adage “correlation is not necessarily causation.” In other words, just because two variables are correlated, it doesn’t mean one directly causes the other. We discuss these ideas more in <a href="#sec-correlation-is-not-causation">Subsection&nbsp;<span>5.3.2</span></a> and in <a href="07-causality.html"><span>Chapter&nbsp;7</span></a>.</p></li>
 <li><p>We say that this associated increase is <em>on average</em> 0.0666 units of teaching <code>score</code> and not that the associated increase is <em>exactly</em> 0.0666 units of <code>score</code> across all values of <code>bty_avg</code>. This is because the slope is the average increase across all points as shown by the regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>.</p></li>
 </ul>
 </div>
@@ -1574,6 +1580,196 @@ Group variables            None
 </div>
 </div>
 </div>
+</section>
+<section id="sec-model2points" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-model2points"><span class="header-section-number">5.2.3</span> Observed/fitted values and residuals</h3>
+<p>Recall in <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a> we defined the following three concepts:</p>
+<ol type="1">
+<li><p>Observed values <span class="math inline">\(y\)</span>, or the observed value of the outcome variable</p></li>
+<li><p>Fitted values <span class="math inline">\(\widehat{y}\)</span>, or the value on the regression line for a given <span class="math inline">\(x\)</span> value</p></li>
+<li><p>Residuals <span class="math inline">\(y - \widehat{y}\)</span>, or the error between the observed value and the fitted value</p></li>
+</ol>
+<p>Let’s use similar code (from <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a>) to obtain these values for the <code>lifeExp_model</code> fit to the <code>gapminder2007</code> dataset:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lifeExp_model_data <span class="ot">&lt;-</span> gapminder2007 <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">lifeExp_hat =</span> <span class="fu">fitted</span>(lifeExp_model),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">residual =</span> <span class="fu">residuals</span>(lifeExp_model)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-lifeExp-reg-points" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.9: Regression points (First 10 out of 142 countries)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">lifeExp</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">lifeExp_hat</th>
+<th style="text-align: right;">residual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: right;">43.8</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">-26.900</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: right;">76.4</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">77.6</td>
+<td style="text-align: right;">-1.226</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Algeria</td>
+<td style="text-align: right;">72.3</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">54.8</td>
+<td style="text-align: right;">17.495</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: right;">42.7</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">54.8</td>
+<td style="text-align: right;">-12.075</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Argentina</td>
+<td style="text-align: right;">75.3</td>
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">73.6</td>
+<td style="text-align: right;">1.712</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Australia</td>
+<td style="text-align: right;">81.2</td>
+<td style="text-align: left;">Oceania</td>
+<td style="text-align: right;">80.7</td>
+<td style="text-align: right;">0.515</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Austria</td>
+<td style="text-align: right;">79.8</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">77.6</td>
+<td style="text-align: right;">2.180</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bahrain</td>
+<td style="text-align: right;">75.6</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">4.907</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bangladesh</td>
+<td style="text-align: right;">64.1</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">70.7</td>
+<td style="text-align: right;">-6.666</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: right;">79.4</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">77.6</td>
+<td style="text-align: right;">1.792</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Observe in <a href="#tbl-lifeExp-reg-points">Table&nbsp;<span>5.9</span></a> that <code>lifeExp_hat</code> contains the fitted values <span class="math inline">\(\hat{y} = \widehat{lifeExp}\)</span>. If you look closely, there are only 5 possible values for <code>lifeExp_hat</code>. These correspond to the five mean life expectancies for the 5 continents that we displayed in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a> and computed using the “Estimate” column of the regression results in @tbl-catxplot4b.</p>
+<p>The <code>residual</code> column is simply <span class="math inline">\(y - \widehat{y}\)</span> = <code>lifeexp - lifeexp_hat</code>. These values can be interpreted as that particular country’s deviation from the mean life expectancy of the respective continent’s mean. For example, the first row of Table @ref(tab:lifeExp-reg-points) corresponds to Afghanistan, and the residual of <span class="math inline">\(y - \widehat{y} = 43.8 - 70.7 = -26.9\)</span> is telling us that Afghanistan’s life expectancy is a whopping 26.9 years lower than the mean life expectancy of all Asian countries. This can in part be explained by the many years of war that country has suffered.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.5
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Using either the sorting functionality of RStudio’s spreadsheet viewer or using the data wrangling tools you learned in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>, identify the five countries with the five smallest (most negative) residuals? What do these negative residuals say about their life expectancy relative to their continents?</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.6
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Repeat this process, but identify the five countries with the five largest (most positive) residuals. What do these positive residuals say about their life expectancy relative to their continents?</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="related-topics" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="related-topics"><span class="header-section-number">5.3</span> Related topics</h2>
+<section id="sec-correlationcoefficient" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-correlationcoefficient"><span class="header-section-number">5.3.1</span> Correlation coefficient</h3>
+<p>Let’s re-plot F@fig-correlation1, but now consider a broader range of correlation coefficient values in <a href="#fig-correlation2">Figure&nbsp;<span>5.11</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-correlation2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-regression_files/figure-html/fig-correlation2-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.11: Different Correlation Coefficients</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As we suggested in <a href="#sec-model1EDA">Subsection&nbsp;<span>5.1.1</span></a>, interpreting coefficients that are not close to the extreme values of -1 and 1 can be subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80’s-style video game called “Guess the correlation” at <a href="http://guessthecorrelation.com/" class="uri">http://guessthecorrelation.com/</a>.</p>
+</section>
+<section id="sec-correlation-is-not-causation" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-correlation-is-not-causation"><span class="header-section-number">5.3.2</span> Correlation is not necessarily causation</h3>
+<p>You’ll note throughout this chapter we’ve been very cautious in making statements of the “associated effect” of explanatory variables on the outcome variables, for example our statement from <a href="#sec-model1table">Subsection&nbsp;<span>5.1.2</span></a> that “for every increase of 1 unit in <code>bty_avg</code>, there is an <em>associated</em> increase of, <em>on average</em>, 18.802 units of <code>score</code>.” We stay this because we are careful not to make <em>causal</em> statements. So while beauty score <code>bty_avg</code> is positively correlated with teaching <code>score</code>, does it directly cause effects on teaching score.</p>
+<p>For example, let’s say an instructor has their <code>bty_avg</code> reevaluated, but only after taking steps to try to boost their beauty score. Does this mean that they will suddenly be a better instructor? Or will they suddenly get higher teaching scores? Maybe?</p>
+<p>Here is another example, a not-so-great medical doctor goes through their medical records and finds that patients who slept with their shoes on tended to wake up more with headaches. So this doctor declares “Sleeping with shoes on cause headaches!”</p>
+<div id="fig-sleep-shoes-on" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/flowcharts/flowchart.010-cropped.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.12: Does sleeping with shoes on cause headaches?</figcaption><p></p>
+</figure>
+</div>
+<p>However as some of you might have guessed, if someone is sleeping with their shoes on it’s probably because they are intoxicated. Furthermore, drinking more tends to cause more hangovers, and hence more headaches.</p>
+<p>In this instance, alcohol is what’s known as a <em>confounding/lurking</em> variable. It “lurks” behind the scenes, confounding or making less apparent, the causal effect (if any) of “sleeping with shoes on” with waking up with a headache. We can summarize this notion in <a href="#fig-moderndive-figure-causal-graph">Figure&nbsp;<span>5.13</span></a> with a <em>causal graph</em> where:</p>
+<ul>
+<li>Y: Is an <em>outcome</em> variable, here “waking up with a headache.”</li>
+<li>X: Is a <em>treatment</em> variable whose causal effect we are interested in, here “sleeping with shoes on.”</li>
+</ul>
+<div id="fig-moderndive-figure-causal-graph" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/flowcharts/flowchart.009-cropped.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.13: Causal graph</figcaption><p></p>
+</figure>
+</div>
+<p>So for example, many such studies use regression modeling where the outcome variable is set to Y and the explanatory/predictor variable is X, much as you’ve started learning how to do in this chapter. However, <a href="#fig-moderndive-figure-causal-graph">Figure&nbsp;<span>5.13</span></a> also includes a third variable with arrows pointing at both X and Y.</p>
+<ul>
+<li>Z: Is a <em>confounding</em> variable that affects both X &amp; Y, thus “confounding” their relationship.</li>
+</ul>
+<p>So as we said, alcohol will both cause people to be more likely to sleep with their shoes on as well as more likely to wake up with a headache. Thus when evaluating what causes one to wake up with a headache, its hard to tease out the effect of sleeping with shoes on versus just the alcohol. Thus our model needs to also use Z as an explanatory/predictor variable as well, in other words our doctor needs to take into account who had been drinking the night before. We’ll start covering multiple regression models that allows us to incorporate more than one variable in the next chapter.</p>
+<p>Establishing causation is a tricky problem and frequently takes either carefully designed experiments or methods to control for the effects of potential confounding variables. Both these approaches attempt either to remove all confounding variables or take them into account as best they can, and only focus on the behavior of an outcome variable in the presence of the levels of the other variable(s). Be careful as you read studies to make sure that the writers aren’t falling into this fallacy of correlation implying causation. If you spot one, you may want to send them a link to <a href="http://www.tylervigen.com/spurious-correlations">Spurious Correlations</a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
