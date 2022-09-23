@@ -74,6 +74,7 @@ biblio-style: apalike
 format:
   html:
     theme: cosmo
+    html-math-method: katex
   pdf:
     documentclass: scrreprt
 
