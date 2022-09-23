@@ -1502,6 +1502,33 @@ Group variables            None
 + 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)
 \end{aligned}
 \]</span></p>
+<p>Let’s break this down. First, <span class="math inline">\(\mathbb{1}_{A}(x)\)</span> is what’s known in mathematics as an “indicator function” that takes one of two possible values:</p>
+<p><span class="math display">\[
+\mathbb{1}_{A}(x) = \left\{
+\begin{array}{ll}
+1 &amp; \text{if } x \text{ is in } A \\
+0 &amp; \text{otherwise} \end{array}
+\right.
+\]</span></p>
+<p>In a statistical modeling context this is also known as a “dummy variable”. In our case, let’s consider the first such indicator variable:</p>
+<p><span class="math display">\[
+\mathbb{1}_{\mbox{Amer}}(x) = \left\{
+\begin{array}{ll}
+1 &amp; \text{if } \text{country } x \text{ is in the Americas} \\
+0 &amp; \text{otherwise}\end{array}
+\right.
+\]</span></p>
+<p>Now let’s interpret the terms in the estimate column of the regression table. First <span class="math inline">\(b_0 =\)</span> <code>intercept = 54.8</code> corresponds to the mean life expectancy for countries in Africa, since for country <span class="math inline">\(x\)</span> in Africa we have the following equation:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{\text{life exp}} &amp;= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&amp;= 54.8 + 18.8\cdot 0 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
+&amp;= 54.8
+\end{aligned}
+\]</span></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
