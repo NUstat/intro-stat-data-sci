@@ -1280,3 +1280,89 @@ So for example, many such studies use regression modeling where the outcome vari
 So as we said, alcohol will both cause people to be more likely to sleep with their shoes on as well as more likely to wake up with a headache. Thus when evaluating what causes one to wake up with a headache, its hard to tease out the effect of sleeping with shoes on versus just the alcohol. Thus our model needs to also use Z as an explanatory/predictor variable as well, in other words our doctor needs to take into account who had been drinking the night before. We'll start covering multiple regression models that allows us to incorporate more than one variable in the next chapter.
 
 Establishing causation is a tricky problem and frequently takes either carefully designed experiments or methods to control for the effects of potential confounding variables.  Both these approaches attempt either to remove all confounding variables or take them into account as best they can, and only focus on the behavior of an outcome variable in the presence of the levels of the other variable(s). Be careful as you read studies to make sure that the writers aren't falling into this fallacy of correlation implying causation.  If you spot one, you may want to send them a link to [Spurious Correlations](http://www.tylervigen.com/spurious-correlations).
+
+### Best-fitting line {#sec-leastsquares}
+
+Regression lines are also known as "best-fitting" lines. But what do we mean by "best"? Let's unpack the criteria that is used in regression to determine "best." Recall @fig-numxplot4, where for an instructor with a beauty score of $x = 7.333$ we mark the *observed value* $y$ with a circle, the *fitted value* $\widehat{y}$ with a square, and the *residual* $y - \widehat{y}$ with an arrow.
+
+We re-display @fig-numxplot4 in the top-left plot of @fig-best-fitting-line. Furthermore, let's repeat this for three more arbitrarily chosen course's instructors:
+
+1. A course whose instructor had a "beauty" score $x$ = 2.333 and teaching score $y$ = 2.7. The residual in this case is $2.7 - 4.036 = -1.336$, which we mark with a new `r if_else(!knitr::is_latex_output(), "blue", "")` arrow in the top-right plot.
+
+1. A course whose instructor had a "beauty" score $x = 3.667$ and teaching score $y = 4.4$. The residual in this case is $4.4 - 4.125 = 0.2753$, which we mark with a new `r if_else(!knitr::is_latex_output(), "blue", "")` arrow in the bottom-left plot.
+
+1. A course whose instructor had a "beauty" score $x = 6$ and teaching score $y = 3.8$. The residual in this case is $3.8 - 4.28 = -0.4802$, which we mark with a new `r if_else(!knitr::is_latex_output(), "blue", "")` arrow in the bottom-right plot.
+
+```{r}
+#| label: fig-best-fitting-line
+#| fig-cap: "Example of observed value, fitted value, and residual"
+#| fig-height: 8
+#| fig-width: 8
+#| echo: false
+
+# First residual
+best_fit_plot <- ggplot(evals_ch5, aes(x = bty_avg, y = score)) +
+  geom_point(size = 0.8, color = "grey") +
+  labs(x = "Beauty Score", y = "Teaching Score") +
+  geom_smooth(method = "lm", se = FALSE) +
+  annotate("point", x = x, y = y, col = "red", size = 2) +
+  annotate("point", x = x, y = y_hat, col = "red", shape = 15, size = 2) +
+  annotate("segment", x = x, xend = x, y = y, yend = y_hat, color = "blue",
+           arrow = arrow(type = "closed", length = unit(0.02, "npc")))
+
+p1 <- best_fit_plot + labs(title = "First instructor's residual")
+
+# Second residual
+index <- which(evals_ch5$bty_avg == 2.333 & evals_ch5$score == 2.7)
+target_point <- score_model_data %>% 
+  slice(index)
+
+x <- target_point$bty_avg
+y <- target_point$score
+y_hat <- target_point$score_hat
+resid <- target_point$residual
+
+best_fit_plot <- best_fit_plot +
+  annotate("point", x = x, y = y, col = "red", size = 2) +
+  annotate("point", x = x, y = y_hat, col = "red", shape = 15, size = 2) +
+  annotate("segment", x = x, xend = x, y = y, yend = y_hat, color = "blue",
+           arrow = arrow(type = "closed", length = unit(0.02, "npc")))
+p2 <- best_fit_plot + labs(title = "Adding second instructor's residual")
+
+# Third residual
+index <- which(evals_ch5$bty_avg == 3.667 & evals_ch5$score == 4.4)
+target_point <- score_model_data %>% 
+  slice(index)
+
+x <- target_point$bty_avg
+y <- target_point$score
+y_hat <- target_point$score_hat
+resid <- target_point$residual
+
+best_fit_plot <- best_fit_plot +
+  annotate("point", x = x, y = y, col = "red", size = 2) +
+  annotate("point", x = x, y = y_hat, col = "red", shape = 15, size = 2) +
+  annotate("segment", x = x, xend = x, y = y, yend = y_hat,
+           color = "blue",
+           arrow = arrow(type = "closed", length = unit(0.02, "npc")))
+p3 <- best_fit_plot + labs(title = "Adding third instructor's residual")
+
+index <- which(evals_ch5$bty_avg == 6 & evals_ch5$score == 3.8)
+target_point <- score_model_data %>% 
+  slice(index)
+
+x <- target_point$bty_avg
+y <- target_point$score
+y_hat <- target_point$score_hat
+resid <- target_point$residual
+
+best_fit_plot <- best_fit_plot +
+  annotate("point", x = x, y = y, col = "red", size = 2) +
+  annotate("point", x = x, y = y_hat, col = "red", shape = 15, size = 2) +
+  annotate("segment", x = x, xend = x, y = y, yend = y_hat, color = "blue",
+           arrow = arrow(type = "closed", length = unit(0.02, "npc")))
+
+p4 <- best_fit_plot + labs(title = "Adding fourth instructor's residual")
+
+p1 + p2 + p3 + p4 + plot_layout(nrow = 2)
+```
