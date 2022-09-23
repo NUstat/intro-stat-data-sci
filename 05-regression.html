@@ -378,6 +378,11 @@ div.csl-indent {
   <li><a href="#sec-correlation-is-not-causation" id="toc-sec-correlation-is-not-causation" class="nav-link" data-scroll-target="#sec-correlation-is-not-causation"><span class="toc-section-number">5.3.2</span>  Correlation is not necessarily causation</a></li>
   <li><a href="#sec-leastsquares" id="toc-sec-leastsquares" class="nav-link" data-scroll-target="#sec-leastsquares"><span class="toc-section-number">5.3.3</span>  Best-fitting line</a></li>
   </ul></li>
+  <li><a href="#sec-basic-reg-conclusion" id="toc-sec-basic-reg-conclusion" class="nav-link" data-scroll-target="#sec-basic-reg-conclusion"><span class="toc-section-number">5.4</span>  Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#sec-additional-resources-basic-regression" id="toc-sec-additional-resources-basic-regression" class="nav-link" data-scroll-target="#sec-additional-resources-basic-regression"><span class="toc-section-number">5.4.1</span>  Additional resources</a></li>
+  <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="toc-section-number">5.4.2</span>  What’s to come?</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -1823,6 +1828,39 @@ Group variables            None
 </div>
 </div>
 <p>Any other straight line drawn in the figure would yield a sum of squared residuals greater than 132. This is a mathematically guaranteed fact that you can prove using calculus and linear algebra. That’s why alternative names for the linear regression line are the <em>best-fitting line</em> as well as the <em>least-squares line</em>. Why do we square the residuals (i.e.&nbsp;the arrow lengths)? We do this so that both positive and negative deviations of the same amount are treated equally.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<span class="emoji" data-emoji="dart">🎯</span> Learning Check 5.7
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Note in the following plot there are 3 points marked with dots along with:</p>
+<ul>
+<li>The “best” fitting solid regression line in blue</li>
+<li>An arbitrarily chosen dotted red line</li>
+<li>Another arbitrarily chosen dashed green line</li>
+</ul>
+<p>Compute the sum of squared residuals by hand for each line and show that of these three lines, the regression line in blue has the smallest value.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-basic-reg-conclusion" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-basic-reg-conclusion"><span class="header-section-number">5.4</span> Conclusion</h2>
+<section id="sec-additional-resources-basic-regression" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="sec-additional-resources-basic-regression"><span class="header-section-number">5.4.1</span> Additional resources</h3>
+<p>As we suggested in <a href="#sec-model1EDA">Subsection&nbsp;<span>5.1.1</span></a>, interpreting coefficients that are not close to the extreme values of -1, 0, and 1 can be somewhat subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80’s-style video game called “Guess the correlation” at <a href="http://guessthecorrelation.com/" class="uri">http://guessthecorrelation.com/</a>.</p>
+</section>
+<section id="whats-to-come" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">5.4.2</span> What’s to come?</h3>
+<p>In this chapter, you’ve studied the term <em>basic regression</em>, where you fit models that only have one explanatory variable. In <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a>, we’ll study <em>multiple regression</em>, where our regression models can now have more than one explanatory variable! In particular, we’ll consider two scenarios: regression models with one numerical and one categorical explanatory variable and regression models with two numerical explanatory variables. This will allow you to construct more sophisticated and more powerful models, all in the hopes of better explaining your outcome variable <span class="math inline">\(y\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
