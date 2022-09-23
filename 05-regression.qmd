@@ -1047,6 +1047,7 @@ coefs <- summary(lifeExp_model)$coefficients
 #| label: tbl-catxplot4b
 #| tbl-cap: "Linear regression table"
 #| echo: false
+
 coefs %>%
   knitr::kable(
     digits = 3,
@@ -1070,8 +1071,6 @@ $$
 + 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)
 \end{aligned}
 $$
-
-
 
 Let's break this down. First, $\mathbb{1}_{A}(x)$ is what's known in mathematics as an "indicator function" that takes one of two possible values:
 
@@ -1149,3 +1148,135 @@ In our case, since there are $k = 5$ continents, the regression model returns an
 
 Fit a new linear regression using `lm(gdpPercap ~ continent, data = gapminder2007)` where `gdpPercap` is the new outcome variable $y$. Get information about the "best-fitting" line from the regression table by applying the `summary()` function. How do the regression results match up with the results from your exploratory data analysis above? 
 :::
+
+
+
+### Observed/fitted values and residuals {#sec-model2points}
+
+Recall in [Subsection -@sec-model1points] we defined the following three concepts:
+
+1. Observed values $y$, or the observed value of the outcome variable
+
+1. Fitted values $\widehat{y}$, or the value on the regression line for a given $x$ value
+
+1. Residuals $y - \widehat{y}$, or the error between the observed value and the fitted value
+
+Let's use similar code (from [Subsection -@sec-model1points]) to obtain these values for the `lifeExp_model` fit to the `gapminder2007` dataset: 
+
+```{r}
+lifeExp_model_data <- gapminder2007 %>% 
+  select(country, lifeExp, continent) %>% 
+  mutate(
+    lifeExp_hat = fitted(lifeExp_model),
+    residual = residuals(lifeExp_model)
+    )
+```
+
+```{r}
+#| label: tbl-lifeExp-reg-points
+#| tbl-cap: "Regression points (First 10 out of 142 countries)"
+#| echo: false
+
+lifeExp_model_data %>%
+  slice(1:10) %>%
+  knitr::kable(
+    digits = 3,
+    caption = "Regression points (First 10 out of 142 countries)",
+    booktabs = TRUE,
+    format = "markdown"
+  ) %>% 
+  kable_styling(
+    font_size = ifelse(knitr:::is_latex_output(), 10, 16), 
+    latex_options = c("HOLD_position")
+    )
+```
+
+Observe in @tbl-lifeExp-reg-points that `lifeExp_hat` contains the fitted values $\hat{y} = \widehat{lifeExp}$. If you look closely, there are only 5 possible values for `lifeExp_hat`. These correspond to the five mean life expectancies for the 5 continents that we displayed in @tbl-continent-mean-life-expectancies and computed using the "Estimate" column of the regression results in \@tbl-catxplot4b. 
+
+The `residual` column is simply $y - \widehat{y}$ = `lifeexp - lifeexp_hat`.
+These values can be interpreted as that particular country's deviation from the
+mean life expectancy of the respective continent's mean. For example, the first
+row of Table \@ref(tab:lifeExp-reg-points) corresponds to Afghanistan, and the residual of 
+$y - \widehat{y} = 43.8 - 70.7 = -26.9$ is telling us that Afghanistan's life expectancy is a whopping 26.9 years lower than the mean life expectancy of all Asian countries. This can in part be explained by the many years of war that country has suffered.
+
+
+:::{.callout-tip icon=false collapse=true}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
+
+Using either the sorting functionality of RStudio's spreadsheet viewer or using the data wrangling tools you learned in @sec-wrangling, identify the five countries with the five smallest (most negative) residuals? What do these negative residuals say about their life expectancy relative to their continents?
+:::
+
+:::{.callout-tip icon=false collapse=true}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
+
+Repeat this process, but identify the five countries with the five largest (most positive) residuals. What do these positive residuals say about their life expectancy relative to their continents?
+:::
+
+## Related topics
+
+### Correlation coefficient {#sec-correlationcoefficient}
+
+Let's re-plot F@fig-correlation1, but now consider a broader range of correlation coefficient values in @fig-correlation2. 
+
+```{r}
+#| label: fig-correlation2
+#| fig-cap: "Different Correlation Coefficients"
+#| echo: false
+
+correlation <- c(-0.9999, -0.9, -0.75, -0.3, 0, 0.3, 0.75, 0.9, 0.9999)
+n_sim <- 100
+
+values <- NULL
+for(i in seq_len(length(correlation))){
+  rho <- correlation[i]
+  sigma <- matrix(c(5, rho * sqrt(50), rho * sqrt(50), 10), 2, 2) 
+  sim <- rmvnorm(
+    n = n_sim,
+    mean = c(20,40),
+    sigma = sigma
+    ) %>%
+    as_tibble() %>% 
+    mutate(correlation = round(rho,2))
+  
+  values <- bind_rows(values, sim)
+}
+
+ggplot(data = values, mapping = aes(V1, V2)) +
+  geom_point() +
+  facet_wrap(~ correlation, ncol = 3) +
+  labs(x = "x", y = "y") + 
+  theme(
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank()
+  )
+```
+
+As we suggested in [Subsection -@sec-model1EDA], interpreting coefficients that are not close to the extreme values of -1 and 1 can be subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80's-style video game called "Guess the correlation" at <http://guessthecorrelation.com/>.
+
+### Correlation is not necessarily causation {#sec-correlation-is-not-causation}
+
+You'll note throughout this chapter we've been very cautious in making statements of the "associated effect" of explanatory variables on the outcome variables, for example our statement from [Subsection -@sec-model1table] that "for every increase of 1 unit in `bty_avg`, there is an *associated* increase of, *on average*, `r coefs[2,1]` units of `score`." We stay this because we are careful not to make *causal* statements. So while beauty score `bty_avg` is positively correlated with teaching `score`, does it directly cause effects on teaching score.
+
+For example, let's say an instructor has their `bty_avg` reevaluated, but only after taking steps to try to boost their beauty score. Does this mean that they will suddenly be a better instructor? Or will they suddenly get higher teaching scores? Maybe? 
+
+Here is another example, a not-so-great medical doctor goes through their medical records and finds that patients who slept with their shoes on tended to wake up more with headaches. So this doctor declares "Sleeping with shoes on cause headaches!" 
+
+![Does sleeping with shoes on cause headaches?](images/flowcharts/flowchart.010-cropped.png){#fig-sleep-shoes-on}
+
+However as some of you might have guessed, if someone is sleeping with their shoes on it's probably because they are intoxicated. Furthermore, drinking more tends to cause more hangovers, and hence more headaches. 
+
+In this instance, alcohol is what's known as a *confounding/lurking* variable. It "lurks" behind the scenes, confounding or making less apparent, the causal effect (if any) of "sleeping with shoes on" with waking up with a headache. We can summarize this notion in @fig-moderndive-figure-causal-graph with a *causal graph* where:
+
+* Y: Is an *outcome* variable, here "waking up with a headache."
+* X: Is a *treatment* variable whose causal effect we are interested in, here "sleeping with shoes on."
+
+![Causal graph](images/flowcharts/flowchart.009-cropped.png){#fig-moderndive-figure-causal-graph}
+
+So for example, many such studies use regression modeling where the outcome variable is set to Y and the explanatory/predictor variable is X, much as you've started learning how to do in this chapter. However, @fig-moderndive-figure-causal-graph also includes a third variable with arrows pointing at both X and Y.
+
+* Z: Is a *confounding* variable that affects both X & Y, thus "confounding" their relationship.
+
+So as we said, alcohol will both cause people to be more likely to sleep with their shoes on as well as more likely to wake up with a headache. Thus when evaluating what causes one to wake up with a headache, its hard to tease out the effect of sleeping with shoes on versus just the alcohol. Thus our model needs to also use Z as an explanatory/predictor variable as well, in other words our doctor needs to take into account who had been drinking the night before. We'll start covering multiple regression models that allows us to incorporate more than one variable in the next chapter.
+
+Establishing causation is a tricky problem and frequently takes either carefully designed experiments or methods to control for the effects of potential confounding variables.  Both these approaches attempt either to remove all confounding variables or take them into account as best they can, and only focus on the behavior of an outcome variable in the presence of the levels of the other variable(s). Be careful as you read studies to make sure that the writers aren't falling into this fallacy of correlation implying causation.  If you spot one, you may want to send them a link to [Spurious Correlations](http://www.tylervigen.com/spurious-correlations).
