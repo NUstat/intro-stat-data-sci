@@ -1407,7 +1407,7 @@ Plot and describe the relationship between field goal percentage (`fg_percent`) 
 Compare the center, spread, and shape of the distribution of `pts` scored per game by `player` for regular season games and playoff games. In other words, facet the plot of `pts` by `player` based on `season`.
 :::
 
-## Advanced {#sec-ex02-advanced}
+### Advanced {#sec-ex02-advanced}
 
 Let's learn some advanced plotting features.
 
