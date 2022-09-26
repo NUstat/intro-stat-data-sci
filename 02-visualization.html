@@ -405,6 +405,7 @@ div.csl-indent {
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">2.9.3</span>  Additional resources</a></li>
   <li><a href="#sec-whats-to-come-3" id="toc-sec-whats-to-come-3" class="nav-link" data-scroll-target="#sec-whats-to-come-3"><span class="toc-section-number">2.9.4</span>  What’s to come</a></li>
   </ul></li>
+  <li><a href="#sec-ex02" id="toc-sec-ex02" class="nav-link" data-scroll-target="#sec-ex02"><span class="toc-section-number">2.10</span>  Exercises</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/02-visualization.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -1060,9 +1061,9 @@ div.csl-indent {
 <p>This gives us a general idea of how the values of <code>temp</code> distribute: observe that temperatures vary from around 11°F up to 100°F. Furthermore, there appear to be more recorded temperatures between 40°F and 60°F than outside this range. However, because of the high degree of overlap in the points, it’s hard to get a sense of exactly how many values are between, say, 50°F and 55°F.</p>
 <p>What is commonly produced instead of the above plot is known as a <em>histogram</em>. A histogram is a plot that visualizes the <em>distribution</em> of a numerical value as follows:</p>
 <ol type="1">
-<li>We first cut up the x-axis into a series of <em>bins</em>, where each bin represents a range of values.</li>
-<li>For each bin, we count the number of observations that fall in the range corresponding to that bin.</li>
-<li>Then for each bin, we draw a bar whose height marks the corresponding count.</li>
+<li><p>We first cut up the x-axis into a series of <em>bins</em>, where each bin represents a range of values.</p></li>
+<li><p>For each bin, we count the number of observations that fall in the range corresponding to that bin.</p></li>
+<li><p>Then for each bin, we draw a bar whose height marks the corresponding count.</p></li>
 </ol>
 <p>Let’s drill-down on an example of a histogram, shown in @fig-histogramexample.</p>
 <div class="cell" data-layout-align="center">
@@ -2081,6 +2082,218 @@ div.csl-indent {
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These two code segments were a preview of <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> on data wrangling where we’ll delve further into the <code>dplyr</code> package. Data wrangling is the process of transforming and modifying existing data with the intent of making it more appropriate for analysis purposes. For example, the two code segments used the <code>filter()</code> function to create new data frames (<code>alaska_flights</code> and <code>early_january_weather</code>) by choosing only a subset of rows of existing data frames (<code>flights</code> and <code>weather</code>). In this next chapter, we’ll formally introduce the <code>filter()</code> and other data wrangling functions as well as the <em>pipe operator</em> <code>%&gt;%</code> which allows you to combine multiple data wrangling actions into a single sequential <em>chain</em> of actions. On to <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> on data wrangling!</p>
+</section>
+</section>
+<section id="sec-ex02" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="sec-ex02"><span class="header-section-number">2.10</span> Exercises</h2>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Conceptual
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div id="exr-01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.1 </strong></span>Which of the following layers could be added to create one of the five named graphs (5NG)? Select all that apply.</p>
+<ol type="a">
+<li><code>geom_smooth()</code></li>
+<li><code>geom_line()</code></li>
+<li><code>geom_col()</code></li>
+<li><code>geom_box()</code></li>
+<li><code>geom_histogram()</code></li>
+<li><code>facet_wrap()</code></li>
+</ol>
+</div>
+<div id="exr-02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.2 </strong></span>What layer is add to create a scatterplot?</p>
+<ol type="a">
+<li><code>geom_line()</code></li>
+<li><code>geom_scatter()</code></li>
+<li><code>geom_jitter()</code></li>
+<li><code>geom_point()</code></li>
+<li>none of the above</li>
+</ol>
+</div>
+<div id="exr-03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.3 </strong></span>Which of the following options are solutions to overplotting? Select all that apply.</p>
+<ol type="a">
+<li>Changing the x and y variables</li>
+<li>Changing the transparency</li>
+<li>Changing the limits of the x and y axes</li>
+<li>Plotting only some of the data</li>
+<li>Jittering the points</li>
+</ol>
+</div>
+<div id="exr-04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.4 </strong></span>When is it useful to facet your data?</p>
+<ol type="a">
+<li>When you want to see the shape of the entire distribution without separation</li>
+<li>When you want to split a particular visualization of variables by another variable</li>
+<li>When you are interested in looking at how your plot differs by year when year is a continuous variable</li>
+<li>When you think your variables have incorrect data in them</li>
+<li>When you have lots of missing values</li>
+</ol>
+</div>
+<div id="exr-05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.5 </strong></span>Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each <code>player</code> had over their career?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>player</th>
+<th>num_wins</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kobe Bryant</td>
+<td>1057</td>
+</tr>
+<tr class="even">
+<td>LeBron James</td>
+<td>1089</td>
+</tr>
+<tr class="odd">
+<td>Michael Jordan</td>
+<td>829</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><code>geom_bar()</code></li>
+<li><code>geom_col()</code></li>
+<li>all of the above</li>
+<li>none of the above</li>
+</ol>
+</div>
+<div id="exr-06" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.6 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for comparing the distribution of weights for different species of cats?</p>
+<ol type="a">
+<li>grouped boxplot</li>
+<li>histogram</li>
+<li>stacked barplot</li>
+<li>scatterplot</li>
+<li>faceted barplot</li>
+</ol>
+</div>
+<div id="exr-07" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.7 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for visualizing the daily weather temperatures in January for Chicago?</p>
+<ol type="a">
+<li>scatterplot</li>
+<li>linegraph</li>
+<li>histogram</li>
+<li>faceted scatterplot</li>
+<li>grouped boxplot</li>
+</ol>
+</div>
+<div id="exr-08" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.8 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for visualizing the relationship between bank account balances and annual incomes?</p>
+<ol type="a">
+<li>faceted histogram</li>
+<li>linegraph</li>
+<li>scatterplot</li>
+<li>stacked barplot</li>
+<li>boxplot</li>
+</ol>
+</div>
+<div id="exr-09" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.9 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for finding outliers?</p>
+<ol type="a">
+<li>scatterplot</li>
+<li>linegraph</li>
+<li>histogram</li>
+<li>boxplot</li>
+<li>barplot</li>
+</ol>
+</div>
+<div id="exr-10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.10 </strong></span>Below is a scatterplot of a fictional dataset depicting the amount of money spent in a grocery store by the amount of time in the store. Describe the relationship.</p>
+<p><img src="images/exercises/ch02_scatter.png" style="height:2in"></p>
+</div>
+<div id="exr-11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.11 </strong></span>Describe the modality and skew of the histogram below.</p>
+<p><img src="images/exercises/ch02_match_hist.png" style="height:2in"></p>
+</div>
+<div id="exr-12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.12 </strong></span>Match the histogram with the corresponding boxplot.</p>
+<p><img src="images/exercises/ch02_match_hist.png" style="height:2in"> <img src="images/exercises/ch02_match_box.png" style="height:2in"></p>
+</div>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Application
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>Use the <code>covid_sub</code> dataset created below for the following problem. The dataset is derived from the <code>covid_states</code> dataset in the <code>ISDSdatasets</code> package.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>covid_sub <span class="ot">&lt;-</span> covid_states <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    state_abbr <span class="sc">==</span> <span class="st">"IL"</span> <span class="sc">|</span> state_abbr <span class="sc">==</span> <span class="st">"FL"</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    date <span class="sc">&gt;=</span> <span class="st">"2021-07-01"</span>, date <span class="sc">&lt;=</span> <span class="st">"2021-08-31"</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    wday <span class="sc">!=</span> <span class="st">"Sat"</span>, wday <span class="sc">!=</span> <span class="st">"Sun"</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You will learn about data wrangling in the next Chapter. The code reads as follows: take the dataset <code>covid_states</code> and then subset the data to only include observations in the states <code>"IL"</code> or <code>"FL"</code>, and only include observations between July 1, 2021 and August 31, 2021 (inclusive), and only observations not recorded on Saturday, and observations not recorded on Sunday. Note: COVID reporting was not done on weekends or holidays in these states.</p>
+<div id="exr-02covid" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.13 </strong></span>Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the <code>color</code> aesthetic to have separate lines for each state. Compare and describe the linegraph.</p>
+</div>
+<hr>
+<p>Use the <code>nba</code> dataset in the <code>ISDSdatasets</code> package for exercises <a href="#exr-02bar">Exercise&nbsp;<span>2.14</span></a>, <a href="#exr-02scatter">Exercise&nbsp;<span>2.15</span></a>, and <a href="#exr-02box">Exercise&nbsp;<span>2.16</span></a>.</p>
+<div id="exr-02bar" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.14 </strong></span>Describe and compare the number of wins and losses faceted by player using a barplot.</p>
+</div>
+<div id="exr-02scatter" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.15 </strong></span>Plot and describe the relationship between field goal percentage (<code>fg_percent</code>) and free throw percentage (<code>ft_percent</code>). Adjust for overplotting if need be.</p>
+</div>
+<div id="exr-02box" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.16 </strong></span>Compare the center, spread, and shape of the distribution of <code>pts</code> scored per game by <code>player</code> for regular season games and playoff games. In other words, facet the plot of <code>pts</code> by <code>player</code> based on <code>season</code>.</p>
+</div>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advanced
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>Let’s learn some advanced plotting features.</p>
+<div id="exr-02covid-adv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.17 </strong></span>Start with your plot from <a href="#exr-02covid">Exercise&nbsp;<span>2.13</span></a>. Let’s clean up the graph a little by adding the following layers:</p>
+<ol type="a">
+<li>add on <code>theme_minimal()</code></li>
+<li>remove the x-axis label by setting <code>x = NULL</code> in the <code>labs()</code></li>
+<li>To make the x-axis text easier to read we will rotate it 45 degrees and horizontally align it on the right. Add the layer <code>theme(axis.text.x = element_text(angle = ?, hjust = ?))</code> but replace the ? with the appropriate values.</li>
+</ol>
+</div>
+<div id="exr-02nba-adv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.18 </strong></span>Use the <code>nba_pct</code> dataset created below to plot the average free throw percent for each player.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>nba_pct <span class="ot">&lt;-</span> nba <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">avg_ft_pct =</span> <span class="fu">mean</span>(ft_percent, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Change the y-axis label to percents by adding the following layer <code>scale_y_*(labels = scales::percent)</code>. Replace the * with the data type. May be useful to check the help documentation.</li>
+<li>Reorder the x-axis from highest to lowest with the following layer: <code>scale_x_*(limits = c("Kobe Bryant", "Michael Jordan", "LeBron James"))</code>. Again replace the * with the appropriate data type.</li>
+</ol>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -2097,7 +2310,6 @@ Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takaha
 Wilkinson, Leland. 2005. <em>The Grammar of Graphics (Statistics and Computing)</em>. Secaucus, NJ, USA: Springer-Verlag New York, Inc.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->
