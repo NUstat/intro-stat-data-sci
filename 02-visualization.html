@@ -405,7 +405,12 @@ div.csl-indent {
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">2.9.3</span>  Additional resources</a></li>
   <li><a href="#sec-whats-to-come-3" id="toc-sec-whats-to-come-3" class="nav-link" data-scroll-target="#sec-whats-to-come-3"><span class="toc-section-number">2.9.4</span>  What’s to come</a></li>
   </ul></li>
-  <li><a href="#sec-ex02" id="toc-sec-ex02" class="nav-link" data-scroll-target="#sec-ex02"><span class="toc-section-number">2.10</span>  Exercises</a></li>
+  <li><a href="#sec-ex02" id="toc-sec-ex02" class="nav-link" data-scroll-target="#sec-ex02"><span class="toc-section-number">2.10</span>  Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex02-conceptual" id="toc-sec-ex02-conceptual" class="nav-link" data-scroll-target="#sec-ex02-conceptual"><span class="toc-section-number">2.10.1</span>  Conceptual</a></li>
+  <li><a href="#sec-ex02-application" id="toc-sec-ex02-application" class="nav-link" data-scroll-target="#sec-ex02-application"><span class="toc-section-number">2.10.2</span>  Application</a></li>
+  </ul></li>
+  <li><a href="#sec-ex02-advanced" id="toc-sec-ex02-advanced" class="nav-link" data-scroll-target="#sec-ex02-advanced"><span class="toc-section-number">2.11</span>  Advanced</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/02-visualization.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -2086,19 +2091,8 @@ div.csl-indent {
 </section>
 <section id="sec-ex02" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="sec-ex02"><span class="header-section-number">2.10</span> Exercises</h2>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Conceptual
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
+<section id="sec-ex02-conceptual" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="sec-ex02-conceptual"><span class="header-section-number">2.10.1</span> Conceptual</h3>
 <div id="exr-01" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1 </strong></span>Which of the following layers could be added to create one of the five named graphs (5NG)? Select all that apply.</p>
 <ol type="a">
@@ -2223,19 +2217,9 @@ Conceptual
 <p><span class="theorem-title"><strong>Exercise 2.12 </strong></span>Match the histogram with the corresponding boxplot.</p>
 <p><img src="images/exercises/ch02_match_hist.png" style="height:2in"> <img src="images/exercises/ch02_match_box.png" style="height:2in"></p>
 </div>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Application
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
+</section>
+<section id="sec-ex02-application" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="sec-ex02-application"><span class="header-section-number">2.10.2</span> Application</h3>
 <p>Use the <code>covid_sub</code> dataset created below for the following problem. The dataset is derived from the <code>covid_states</code> dataset in the <code>ISDSdatasets</code> package.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>covid_sub <span class="ot">&lt;-</span> covid_states <span class="sc">%&gt;%</span> </span>
@@ -2260,19 +2244,10 @@ Application
 <div id="exr-02box" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.16 </strong></span>Compare the center, spread, and shape of the distribution of <code>pts</code> scored per game by <code>player</code> for regular season games and playoff games. In other words, facet the plot of <code>pts</code> by <code>player</code> based on <code>season</code>.</p>
 </div>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Advanced
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
+</section>
+</section>
+<section id="sec-ex02-advanced" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="sec-ex02-advanced"><span class="header-section-number">2.11</span> Advanced</h2>
 <p>Let’s learn some advanced plotting features.</p>
 <div id="exr-02covid-adv" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.17 </strong></span>Start with your plot from <a href="#exr-02covid">Exercise&nbsp;<span>2.13</span></a>. Let’s clean up the graph a little by adding the following layers:</p>
