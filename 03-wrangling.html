@@ -1667,8 +1667,8 @@ div.csl-indent {
 <div id="exr-ch03-c02" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.2 </strong></span>Match the definition with the function name.</p>
 <ol type="a">
-<li><p>filter() &nbsp; &nbsp; &nbsp; b) select() &nbsp; &nbsp; c) top_n() &nbsp; &nbsp; d) mutate()</p></li>
-<li><p>summarize() &nbsp; &nbsp; f) arrange() &nbsp; &nbsp; g) group_by()</p>
+<li><p><code>top_n()</code> &nbsp; &nbsp; &nbsp; &nbsp; c.&nbsp;<code>mutate()</code> &nbsp; &nbsp; &nbsp; &nbsp; e. <code>group_by()</code> &nbsp; &nbsp; &nbsp; g. <code>filter()</code></p></li>
+<li><p><code>select()</code> &nbsp; &nbsp; &nbsp; d.&nbsp;<code>arrange()</code> &nbsp; &nbsp; &nbsp; f.&nbsp;<code>summarize()</code></p>
 <p>___ sort a data frame’s rows based on a specified variable</p>
 <p>___ only keep rows that match a criteria</p>
 <p>___ create new variables based on existing ones</p></li>
@@ -1811,9 +1811,9 @@ div.csl-indent {
 <div id="exr-ch03-c11" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.11 </strong></span>Which of the following will NOT count the number of passengers by <code>gender</code> and <code>day</code>. Select all that apply.</p>
 <ol type="a">
-<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender) %&gt;%</code> <code>&nbsp;&nbsp;&nbsp;summarize(n = n(day))</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = n(day))</code></p></li>
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;count(gender, day)</code></p></li>
-<li><p><code>blue_line %&gt;%</code> <code>&nbsp;&nbsp;&nbsp;group_by(gender, day) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = n())</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender, day) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = n())</code></p></li>
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;count(day)</code></p></li>
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender, day) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = sum(passengers))</code></p></li>
 </ol>
@@ -1821,9 +1821,29 @@ div.csl-indent {
 </section>
 <section id="sec-ex03-application" class="level3" data-number="3.10.2">
 <h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-ex03-application"><span class="header-section-number">3.10.2</span> Application</h3>
+<div id="exr-ch03-app1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.12 </strong></span>Recall our <code>nba</code> dataset that includes data from each game that Michael Jordan, Kobe Bryant and Lebron James played. Compute the average number of free throws made per game by each player.</p>
+</div>
+<div id="exr-ch03-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.13 </strong></span>Create a variable called <code>spread</code> calculated from <code>pts_tm</code> - <code>pts_opp</code>. Using code, determine who played the game with the largest win spread and how much they won by.</p>
+</div>
+<div id="exr-ch03-app3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.14 </strong></span>Using the <code>titanic</code> dataset, calculate the total revenue that the ship received from passengers in each class. Store the output in an object called <code>fare_calc</code>. Print the contents such that the total revenue is sorted from high to low.</p>
+</div>
+<div id="exr-ch03-app4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.15 </strong></span>Using the <code>covid_states</code> dataset, calculate the total <code>new_confirmed</code>, <code>new_deceased</code>, <code>new_recovered</code> and <code>new_tested</code> for each state. Then join this summarized dataset with the <code>covid_dem</code> dataset, join the two datasets into one dataset called <code>covid_joined</code>.</p>
+</div>
 </section>
 <section id="sec-ex03-advanced" class="level3" data-number="3.10.3">
 <h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-ex03-advanced"><span class="header-section-number">3.10.3</span> Advanced</h3>
+<div id="exr-ch03-adv1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.16 </strong></span>When you are using <code>filter</code>, you need to specify each criteria separately. This can get repetitive if you are trying to filter on multiple criteria for the same variable. Consider the <code>covid_states</code> dataset, what if we are interested in only the 4 most populous states? This would include <code>state_abbr</code> CA, TX, FL, and NY. Instead of listing <code>(state_abbr == "CA",</code> <code>state_abbr == "TX",</code> <code>state_abbr == "FL",</code> <code>state_abbr == "NY")</code> we can use the <code>%in%</code> function to condense this.</p>
+<p>Try typing <code>state_abbr %in%</code> followed by the vector of states within <code>filter</code> to subset the dataset. Call this new dataset <code>covid_pop</code>.</p>
+</div>
+<div id="exr-ch03-adv2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.17 </strong></span>Using the <code>covid_pop</code> dataset created in Problem 16, calculate the total weekly <code>new_confirmed</code> COVID cases in 2021 for each state. Plot the total weekly cases to determine if the 4 states had a similar trend.</p>
+<p>When working with dates you will want to use the <code>lubridate</code> package. Create a new variable <code>week</code> by using the function <code>week(date)</code>.</p>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
