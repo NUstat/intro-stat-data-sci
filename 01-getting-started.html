@@ -389,7 +389,12 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">1.5.1</span>  Additional resources</a></li>
   </ul></li>
-  <li><a href="#sec-pp01" id="toc-sec-pp01" class="nav-link" data-scroll-target="#sec-pp01"><span class="toc-section-number">1.6</span>  Practice Problems</a></li>
+  <li><a href="#sec-ex01" id="toc-sec-ex01" class="nav-link" data-scroll-target="#sec-ex01"><span class="toc-section-number">1.6</span>  Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex01-conceptual" id="toc-sec-ex01-conceptual" class="nav-link" data-scroll-target="#sec-ex01-conceptual"><span class="toc-section-number">1.6.1</span>  Conceptual</a></li>
+  <li><a href="#sec-ex01-application" id="toc-sec-ex01-application" class="nav-link" data-scroll-target="#sec-ex01-application"><span class="toc-section-number">1.6.2</span>  Application</a></li>
+  <li><a href="#sec-ex01-advanced" id="toc-sec-ex01-advanced" class="nav-link" data-scroll-target="#sec-ex01-advanced"><span class="toc-section-number">1.6.3</span>  Advanced</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/01-getting-started.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -418,7 +423,7 @@ div.csl-indent {
 <li>How do I code in R?</li>
 <li>What are R packages?</li>
 </ol>
-<p>We’ll introduce these concepts in upcoming Sections <a href="#sec-r-rstudio"><span>1.1</span></a> - <a href="#sec-packages"><span>1.3</span></a> If you are already somewhat familiar with these concepts, feel free to skip to <a href="#sec-nycflights13"><span>Section&nbsp;1.4</span></a> where we’ll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.</p>
+<p>We’ll introduce these concepts in upcoming <a href="#sec-r-rstudio">Sections&nbsp;<span>1.1</span></a> - <a href="#sec-packages"><span>1.3</span></a> If you are already somewhat familiar with these concepts, feel free to skip to <a href="#sec-nycflights13"><span>Section&nbsp;1.4</span></a> where we’ll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.</p>
 <section id="sec-r-rstudio" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-r-rstudio"><span class="header-section-number">1.1</span> What are R and RStudio?</h2>
 <p>For much of this book, we will assume that you are using R via RStudio. First time users often confuse the two. At its simplest:</p>
@@ -542,7 +547,7 @@ div.csl-indent {
 <ul>
 <li><p><em>Vectors</em>: A series of values. These are created using the <code>c()</code> function, where <code>c()</code> stands for “combine” or “concatenate”. For example: <code>c(6, 11, 13, 31, 90, 92)</code>.</p></li>
 <li><p><em>Factors</em>: <em>Categorical data</em> are represented in R as factors.</p></li>
-<li><p><em>Data frames</em>: Data frames are like rectangular spreadsheets: they are representations of datasets in R where the rows correspond to <em>observations</em> and the columns correspond to <em>variables</em> that describe the observations. We’ll cover data frames later in Section <a href="#sec-nycflights13"><span>Section&nbsp;1.4</span></a>.</p></li>
+<li><p><em>Data frames</em>: Data frames are like rectangular spreadsheets: they are representations of datasets in R where the rows correspond to <em>observations</em> and the columns correspond to <em>variables</em> that describe the observations. We’ll cover data frames later in <a href="#sec-nycflights13"><span>Section&nbsp;1.4</span></a>.</p></li>
 <li><p><em>Conditionals</em>:</p>
 <ul>
 <li>Testing for equality in R using <code>==</code> (and not <code>=</code> which is typically used for assignment). Ex: <code>2 + 1 == 3</code> compares <code>2 + 1</code> to <code>3</code> and is correct R code, while <code>2 + 1 = 3</code> will return an error.</li>
@@ -856,119 +861,103 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <p><img src="images/gettting-used-to-R.png" style="height:3.5in"></p>
 </section>
 </section>
-<section id="sec-pp01" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="sec-pp01"><span class="header-section-number">1.6</span> Practice Problems</h2>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Concept
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<ol type="1">
-<li><p>Which type of document do we use to both code and write explanations?</p>
+<section id="sec-ex01" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="sec-ex01"><span class="header-section-number">1.6</span> Exercises</h2>
+<section id="sec-ex01-conceptual" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="sec-ex01-conceptual"><span class="header-section-number">1.6.1</span> Conceptual</h3>
+<div id="exr-ch01-c01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.1 </strong></span>Which type of document do we use to both code and write explanations?</p>
 <ol type="a">
 <li>R Script</li>
 <li>Quarto Document</li>
 <li>HTML file</li>
 <li>R Notebook</li>
-</ol></li>
 </ol>
-<p><br></p>
-<ol start="2" type="1">
-<li><p>Which type of red text in the console pane generally means that your code will not run?</p>
+</div>
+<div id="exr-ch01-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.2 </strong></span>Which type of red text in the console pane generally means that your code will not run?</p>
 <ol type="a">
 <li>error</li>
 <li>warning</li>
 <li>message</li>
-</ol></li>
-<li><p>If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.</p>
+</ol>
+</div>
+<div id="exr-ch01-c03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3 </strong></span>If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.</p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
-</ol></li>
-<li><p>If you type <span class="math inline">\(8/2 == 4\)</span> into the console, what will the output be?</p>
+</ol>
+</div>
+<div id="exr-ch01-c04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4 </strong></span>If you type <code>8/2 == 4</code> into the console, what will the output be?</p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
 <li>NA</li>
 <li>0</li>
 <li>4</li>
-</ol></li>
-<li><p>If you type <span class="math inline">\(3^2 != 9\)</span> into the console, what will the output be?</p>
+</ol>
+</div>
+<div id="exr-ch01-c05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.5 </strong></span>If you type <code>3^2 != 9</code> into the console, what will the output be?</p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
 <li>NA</li>
 <li>0</li>
 <li>9</li>
-</ol></li>
-<li><p>If you type <span class="math inline">\(5*3\)</span> into the console, what will the output be?</p>
+</ol>
+</div>
+<div id="exr-ch01-c06" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.6 </strong></span>If you type <code>5*3</code> into the console, what will the output be?</p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
 <li>NA</li>
 <li>8</li>
 <li>15</li>
-</ol></li>
-<li><p>What does any ONE row in this flights dataset refer to?</p>
+</ol>
+</div>
+<div id="exr-ch01-c07" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.7 </strong></span>What does any ONE row in this flights dataset refer to?</p>
 <ol type="a">
 <li>Data on an airline</li>
 <li>Data on a flight</li>
 <li>Data on an airport</li>
 <li>Data on multiple flights</li>
-</ol></li>
-<li><p>In the flights dataset, <code>air_time</code> and <code>arr_delay</code> are which type of variables?</p>
+</ol>
+</div>
+<div id="exr-ch01-c08" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.8 </strong></span>In the flights dataset, <code>air_time</code> and <code>arr_delay</code> are which type of variables?</p>
 <ol type="a">
 <li>string</li>
 <li>categorical</li>
 <li>quantitative</li>
 <li>character</li>
 <li>dataframe</li>
-</ol></li>
 </ol>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Application
+</section>
+<section id="sec-ex01-application" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="sec-ex01-application"><span class="header-section-number">1.6.2</span> Application</h3>
+<div id="exr-ch01-app1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.9 </strong></span>In a code chunk, first define a variable <code>z</code> to be the product of 12 and 31, then define a variable called <code>add_on</code> to be the number 12. Print the output of <code>z + add_on</code>.</p>
 </div>
+<div id="exr-ch01-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.10 </strong></span>Consider the <code>titanic</code> data set included in the package <code>ISDSdatasets</code>. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.</p>
+<p>Use the <code>glimpse()</code> function from the <code>dplyr</code> package to explore and describe the dataset.</p>
 </div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<ol start="9" type="1">
-<li><p>In a code chunk, first define a variable <code>z</code> to be the product of 12 and 31, then define a variable called <code>add_on</code> to be the number 12. Print the output of <code>z + add_on</code>.</p></li>
-<li><p>Consider the <code>titanic</code> data set included in the package <code>ISDSdatasets</code>. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.</p></li>
-</ol>
-<pre><code>Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.</code></pre>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Advanced
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
+</section>
+<section id="sec-ex01-advanced" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="sec-ex01-advanced"><span class="header-section-number">1.6.3</span> Advanced</h3>
 <p>For the following problems we will use the <code>titanic</code> data set to learn additional data exploration techniques.</p>
-<ol start="11" type="1">
-<li><p>Use the function <code>head()</code> on the <code>titanic</code> dataset. What does it do? Based on this, what do you expect the function <code>tail()</code> does?</p></li>
-<li><p>The function <code>unique()</code>, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function <code>unique()</code> on the variable <code>Embarked</code>.</p></li>
-</ol>
+<div id="exr-ch01-adv1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.11 </strong></span>Use the function <code>head()</code> on the <code>titanic</code> dataset. What does it do? Based on this, what do you expect the function <code>tail()</code> does?</p>
+</div>
+<div id="exr-ch01-adv2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.12 </strong></span>The function <code>unique()</code>, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function <code>unique()</code> on the variable <code>Embarked</code>.</p>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -979,6 +968,7 @@ Ismay, Chester. 2016. <em>Getting Used to r, <span>RStudio</span>, and r Markdow
 Wickham, Hadley. 2021. <em>Nycflights13: Flights That Departed NYC in 2013</em>. <a href="https://github.com/hadley/nycflights13">https://github.com/hadley/nycflights13</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
