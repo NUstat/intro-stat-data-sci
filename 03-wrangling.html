@@ -388,6 +388,12 @@ div.csl-indent {
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">3.9.2</span>  Additional resources</a></li>
   <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="toc-section-number">3.9.3</span>  What’s to come?</a></li>
   </ul></li>
+  <li><a href="#sec-ex03" id="toc-sec-ex03" class="nav-link" data-scroll-target="#sec-ex03"><span class="toc-section-number">3.10</span>  Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex03-conceptual" id="toc-sec-ex03-conceptual" class="nav-link" data-scroll-target="#sec-ex03-conceptual"><span class="toc-section-number">3.10.1</span>  Conceptual</a></li>
+  <li><a href="#sec-ex03-application" id="toc-sec-ex03-application" class="nav-link" data-scroll-target="#sec-ex03-application"><span class="toc-section-number">3.10.2</span>  Application</a></li>
+  <li><a href="#sec-ex03-advanced" id="toc-sec-ex03-advanced" class="nav-link" data-scroll-target="#sec-ex03-advanced"><span class="toc-section-number">3.10.3</span>  Advanced</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/03-wrangling.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -418,7 +424,7 @@ div.csl-indent {
 <li>histograms via <code>geom_histogram()</code></li>
 <li>barplots via <code>geom_bar()</code> or <code>geom_col()</code></li>
 </ol>
-<p>We created these visualizations using the “Grammar of Graphics”, which maps variables in a data frame to the aesthetic attributes of one the above 5 <code>geom</code>etric objects. We can also control other aesthetic attributes of the geometric objects such as the size and color as seen in the Gapminder data example in Figure <a href="02-visualization.html#fig-gapminder">Figure&nbsp;<span>2.1</span></a>.</p>
+<p>We created these visualizations using the “Grammar of Graphics”, which maps variables in a data frame to the aesthetic attributes of one the above 5 <code>geom</code>etric objects. We can also control other aesthetic attributes of the geometric objects such as the size and color as seen in the Gapminder data example in <a href="02-visualization.html#fig-gapminder">Figure&nbsp;<span>2.1</span></a>.</p>
 <p>Recall however in <a href="02-visualization.html#sec-whats-to-come-3"><span>Section&nbsp;2.9.4</span></a> we discussed that for two of our visualizations we needed transformed/modified versions of existing data frames. Recall for example the scatterplot of departure and arrival delay <em>only</em> for Alaska Airlines flights. In order to create this visualization, we needed to first pare down the <code>flights</code> data frame to a new data frame <code>alaska_flights</code> consisting of only <code>carrier == "AS"</code> flights using the <code>filter()</code> function.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>alaska_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
@@ -909,7 +915,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p><strong>(LC3.6)</strong> Recall from Chapter @ref(viz) when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the <code>summary_monthly_temp</code> data frame tell us about temperatures in New York City throughout the year?</p>
+<p><strong>(LC3.6)</strong> Recall from <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a> when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the <code>summary_monthly_temp</code> data frame tell us about temperatures in New York City throughout the year?</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1554,7 +1560,7 @@ div.csl-indent {
 <h2 data-number="3.9" class="anchored" data-anchor-id="sec-wrangling-conclusion"><span class="header-section-number">3.9</span> Conclusion</h2>
 <section id="summary-table" class="level3" data-number="3.9.1">
 <h3 data-number="3.9.1" class="anchored" data-anchor-id="summary-table"><span class="header-section-number">3.9.1</span> Summary table</h3>
-<p>Let’s recap our data wrangling verbs in <a href="#tbl-wrangle-summary-table">Table&nbsp;<span>3.1</span></a>. Using these verbs and the pipe <code>%&gt;%</code> operator from @sec-piping, you’ll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.</p>
+<p>Let’s recap our data wrangling verbs in <a href="#tbl-wrangle-summary-table">Table&nbsp;<span>3.1</span></a>. Using these verbs and the pipe <code>%&gt;%</code> operator from <a href="#sec-piping"><span>Section&nbsp;3.1</span></a>, you’ll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-wrangle-summary-table" class="anchored">
@@ -1642,6 +1648,182 @@ div.csl-indent {
 <p>So far in this book, we’ve explored, visualized, and wrangled data saved in data frames that are in spreadsheet-type format: rectangular with a certain number of rows corresponding to observations and a certain number of columns corresponding to variables describing the observations.</p>
 <p>We’ll see in <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a> that there are actually two ways to represent data in spreadsheet-type rectangular format: 1) “wide” format and 2) “tall/narrow” format also known in R circles as “tidy” format. While the distinction between “tidy” and non-“tidy” formatted data is very subtle, it has very important implications for whether or not we can use the <code>ggplot2</code> package for data visualization and the <code>dplyr</code> package for data wrangling.</p>
 <p>Furthermore, we’ve only explored, visualized, and wrangled data saved within R packages. What if you have spreadsheet data saved in a Microsoft Excel, Google Sheets, or “Comma-Separated Values” (CSV) file that you would like to analyze? In <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a>, we’ll show you how to import this data into R using the <code>readr</code> package.</p>
+</section>
+</section>
+<section id="sec-ex03" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="sec-ex03"><span class="header-section-number">3.10</span> Exercises</h2>
+<section id="sec-ex03-conceptual" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="sec-ex03-conceptual"><span class="header-section-number">3.10.1</span> Conceptual</h3>
+<div id="exr-ch03-c01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.1 </strong></span>Consider the sequence of operations <code>a(b(c(x)))</code>. Which of the following would result in the output of this sequence?</p>
+<ol type="a">
+<li><code>x %&gt;% a() %&gt;% b() %&gt;% c()</code></li>
+<li><code>a() %&gt;% b() %&gt;% c() %&gt;% x</code></li>
+<li><code>x %&gt;% c() %&gt;% b() %&gt;% a()</code></li>
+<li><code>c() %&gt;% b() %&gt;% a() %&gt;% x</code></li>
+<li>none of the above</li>
+</ol>
+</div>
+<div id="exr-ch03-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.2 </strong></span>Match the definition with the function name.</p>
+<ol type="a">
+<li><p>filter() &nbsp; &nbsp; &nbsp; b) select() &nbsp; &nbsp; c) top_n() &nbsp; &nbsp; d) mutate()</p></li>
+<li><p>summarize() &nbsp; &nbsp; f) arrange() &nbsp; &nbsp; g) group_by()</p>
+<p>___ sort a data frame’s rows based on a specified variable</p>
+<p>___ only keep rows that match a criteria</p>
+<p>___ create new variables based on existing ones</p></li>
+</ol>
+</div>
+<div id="exr-ch03-c03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.3 </strong></span>How many rows and columns are outputted from the following code?</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>weather_summary <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span>  </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(month)<span class="sc">%&gt;%</span> </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">min =</span> <span class="fu">min</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),  </span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>weather_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>12 rows and 4 columns</li>
+<li>4 rows and 12 columns</li>
+<li>1 row and 4 columns</li>
+<li>4 rows and 1 column</li>
+<li>16 rows and 1 column</li>
+</ol>
+</div>
+<div id="exr-ch03-c04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.4 </strong></span>Why might we want to use the select function on a data frame?</p>
+<ol type="a">
+<li>To make exploring a data frame easier by removing all variables except the variables of interest from the data frame object</li>
+<li>To make exploring a data frame easier by sorting the rows in alphanumeric order</li>
+<li>To make exploring a data frame easier by only outputting the variables of interest</li>
+<li>To make exploring a data frame easier by filtering out only rows that match a specified criteria</li>
+</ol>
+</div>
+<div id="exr-ch03-c05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.5 </strong></span>How would the mean of a distribution change if the (positive) maximum value was doubled?</p>
+<ol type="a">
+<li>increase</li>
+<li>decrease</li>
+<li>stay the same</li>
+<li>not enough information</li>
+</ol>
+</div>
+<div id="exr-ch03-c06" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.6 </strong></span>The ___ are resistant to outliers/extreme values, whereas the ___ are not.</p>
+<ol type="a">
+<li>mean and standard deviation; median and interquartile range</li>
+<li>standard deviation and interquartile range; mean and median</li>
+<li>median and interquartile range; mean and standard deviation</li>
+<li>mean and median; standard deviation and interquartile range</li>
+<li>median and standard deviation; mean and interquartile range</li>
+</ol>
+</div>
+<div id="exr-ch03-c07" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.7 </strong></span>Consider a unimodal left skewed distribution. Which of the following is true?</p>
+<ol type="a">
+<li>mean &gt; median</li>
+<li>mean &lt; median</li>
+<li>mean = median</li>
+<li>not enough information</li>
+</ol>
+</div>
+<div id="exr-ch03-c08" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.8 </strong></span>Looking at <a href="#fig-flights-key-diagram">Figure&nbsp;<span>3.3</span></a>, when joining flights and weather (or, in other words, matching the hourly weather values with each flight), why do we need to join by all of year, month, day, hour, and origin, and not just hour?</p>
+<ol type="a">
+<li>These key variables uniquely identify the observational units</li>
+<li>These key variables provide a timestamp on when we accessed our data</li>
+<li>These variables refer to multiple observational units simultaneously</li>
+<li>These variables are not all necessary</li>
+</ol>
+</div>
+<p>For <a href="#exr-ch03-c09">Exercise&nbsp;<span>3.9</span></a> - <a href="#exr-ch03-c11">Exercise&nbsp;<span>3.11</span></a> consider a hypothetical dataset <code>blue_line</code>. This dataset documents all passenger train ride information on the Chicago blue line rail for one week. The variables include <code>day</code> of travel, passenger <code>gender</code>, passenger <code>age</code>, <code>duration</code> of ride, and whether the ride was <code>roundtrip</code> (1) or not (0). The first few observations are shown below.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>day</th>
+<th>gender</th>
+<th>age</th>
+<th>duration</th>
+<th>roundtrip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Monday</td>
+<td>female</td>
+<td>23</td>
+<td>33</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Thursday</td>
+<td>male</td>
+<td>48</td>
+<td>50</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Monday</td>
+<td>female</td>
+<td>35</td>
+<td>20</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Saturday</td>
+<td>other</td>
+<td>26</td>
+<td>42</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<div id="exr-ch03-c09" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.9 </strong></span>Compute the average length of a train ride for each day of the week.</p>
+<ol type="a">
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration))</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(day, duration) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration))</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration)) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(day)</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(day) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration))</code></p></li>
+<li><p>none of the above</p></li>
+</ol>
+</div>
+<div id="exr-ch03-c10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.10 </strong></span>The mean and standard deviation for <code>duration</code> of only female passengers?</p>
+<ol type="a">
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;select(gender == "female") %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration), sd = sd(duration))</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;filter(gender) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration), sd = sd(duration))</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration), sd = sd(duration)) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;filter(gender == "female")</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;filter(gender == "female") %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration)) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(sd = sd(duration))</code></p></li>
+<li><p>none of the above</p></li>
+</ol>
+</div>
+<div id="exr-ch03-c11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.11 </strong></span>Which of the following will NOT count the number of passengers by <code>gender</code> and <code>day</code>. Select all that apply.</p>
+<ol type="a">
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender) %&gt;%</code> <code>&nbsp;&nbsp;&nbsp;summarize(n = n(day))</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;count(gender, day)</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <code>&nbsp;&nbsp;&nbsp;group_by(gender, day) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = n())</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;count(day)</code></p></li>
+<li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender, day) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = sum(passengers))</code></p></li>
+</ol>
+</div>
+</section>
+<section id="sec-ex03-application" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-ex03-application"><span class="header-section-number">3.10.2</span> Application</h3>
+</section>
+<section id="sec-ex03-advanced" class="level3" data-number="3.10.3">
+<h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-ex03-advanced"><span class="header-section-number">3.10.3</span> Advanced</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
