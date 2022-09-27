@@ -32,7 +32,7 @@ Before we can start exploring data in R, there are some key concepts to understa
 2.  How do I code in R?
 3.  What are R packages?
 
-We'll introduce these concepts in upcoming Sections [-@sec-r-rstudio] - [-@sec-packages.] If you are already somewhat familiar with these concepts, feel free to skip to @sec-nycflights13 where we'll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.
+We'll introduce these concepts in upcoming [Sections -@sec-r-rstudio] - [-@sec-packages.] If you are already somewhat familiar with these concepts, feel free to skip to @sec-nycflights13 where we'll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.
 
 ## What are R and RStudio? {#sec-r-rstudio}
 
@@ -128,6 +128,8 @@ We now introduce some basic programming concepts and terminology. Instead of ask
 In RStudio try typing the following code into the console or code chunk.
 
 ```{r}
+#| label: basic-math
+
 x <- 44-20
 three <- 3
 x+three
@@ -139,7 +141,7 @@ You should see `x` and `three` appear as stored objects in the *Environment* pan
 
 -   *Factors*: *Categorical data* are represented in R as factors.
 
--   *Data frames*: Data frames are like rectangular spreadsheets: they are representations of datasets in R where the rows correspond to *observations* and the columns correspond to *variables* that describe the observations. \index{data frames} We'll cover data frames later in Section @sec-nycflights13.
+-   *Data frames*: Data frames are like rectangular spreadsheets: they are representations of datasets in R where the rows correspond to *observations* and the columns correspond to *variables* that describe the observations. \index{data frames} We'll cover data frames later in @sec-nycflights13.
 
 -   *Conditionals*:
 
@@ -241,6 +243,7 @@ Repeat the above installing steps for the `dplyr`, `nycflights13`, and `knitr` p
 Recall that after you've installed a package, you need to "load" it, in other words open it. We do this by using the `library()` command. For example, to load the `ggplot2` package, run the following code in the Console pane. What do we mean by "run the following code"? Either type or copy & paste the following code into the Console pane and then hit the enter key.
 
 ```{r}
+#| label: load-ggplot2
 #| eval: false
 
 library(ggplot2)
@@ -273,7 +276,9 @@ Let's put everything we've learned so far into practice and start exploring some
 Let's first load all the packages needed for this chapter, assuming you've already installed them. Read @sec-packages for information on how to install and load R packages if you haven't already.
 
 ```{r}
+#| label: pkgs-ch01
 #| message: false
+
 library(nycflights13)
 library(dplyr)
 library(knitr)
@@ -299,6 +304,7 @@ We will begin by exploring the `flights` data frame that is included in the `nyc
 
 ```{r}
 #| label: load_flights
+
 flights
 ```
 
@@ -350,6 +356,8 @@ Note that if you look in the leftmost column of the `View(flights)` output, you 
 The second way to explore a data frame is using the `glimpse()` function included in the `dplyr` package. Thus, you can only use the `glimpse()` function after you've loaded the `dplyr` package. This function provides us with an alternative method for exploring a data frame:
 
 ```{r}
+#| label: flights-glimpse
+
 glimpse(flights)
 ```
 
@@ -367,6 +375,7 @@ What are some examples in this dataset of **categorical** variables? What makes 
 The another way to explore the entirety of a data frame is using the `kable()` function from the `knitr` package. Let's explore the different carrier codes for all the airlines in our dataset two ways. Run both of these lines of code in your Console:
 
 ```{r}
+#| label: airline-kable
 #| eval: false
 
 airlines
@@ -380,6 +389,7 @@ At first glance, it may not appear that there is much difference in the outputs.
 Lastly, the `$` operator allows us to explore a single variable within a data frame. For example, run the following in your console
 
 ```{r}
+#| label: operator-ex
 #| eval: false
 
 airlines
@@ -393,6 +403,7 @@ We used the `$` operator to extract only the `name` variable and return it as a 
 Another nice feature of R is the help system. You can get help in R by entering a `?` before the name of a function or data frame in question and you will be presented with a page showing the documentation. For example, let's look at the help file for the `flights` data frame:
 
 ```{r}
+#| label: help-ex
 #| eval: false
 
 ?flights
@@ -411,88 +422,103 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
 ![](images/gettting-used-to-R.png){height="3.5in"}
 
 
-## Practice Problems {#sec-pp01}
+## Exercises {#sec-ex01}
 
+### Conceptual {#sec-ex01-conceptual}
 
-:::{.callout-note icon=false}
-## Concept
+::: {#exr-ch01-c01}
+Which type of document do we use to both code and write explanations?
+
+a)  R Script
+b)  Quarto Document
+c)  HTML file
+d)  R Notebook
 :::
 
-1.  Which type of document do we use to both code and write explanations?
+::: {#exr-ch01-c02}
+Which type of red text in the console pane generally means that your code will not run?
 
-    a)  R Script
-    b)  Quarto Document
-    c)  HTML file
-    d)  R Notebook
-
-<br />
-
-2.  Which type of red text in the console pane generally means that your code will not run?
-
-    a)  error
-    b)  warning
-    c)  message
-
-3.  If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.
-
-    a)  TRUE
-    b)  FALSE
-
-4.  If you type $8/2 == 4$ into the console, what will the output be?
-
-    a)  TRUE
-    b)  FALSE
-    c)  NA
-    d)  0
-    e)  4
-
-5.  If you type $3^2 != 9$ into the console, what will the output be?
-
-    a)  TRUE
-    b)  FALSE
-    c)  NA
-    d)  0
-    e)  9
-
-6.  If you type $5*3$ into the console, what will the output be?
-
-    a)  TRUE
-    b)  FALSE
-    c)  NA
-    d)  8
-    e)  15
-
-7.  What does any ONE row in this flights dataset refer to?
-
-    a)  Data on an airline
-    b)  Data on a flight
-    c)  Data on an airport
-    d)  Data on multiple flights
-
-8.  In the flights dataset, `air_time` and `arr_delay` are which type of variables?
-
-    a)  string
-    b)  categorical
-    c)  quantitative
-    d)  character
-    e)  dataframe
-
-:::{.callout-note icon=false}
-## Application
+a)  error
+b)  warning
+c)  message
 :::
 
-9.  In a code chunk, first define a variable `z` to be the product of 12 and 31, then define a variable called `add_on` to be the number 12. Print the output of `z + add_on`.
+::: {#exr-ch01-c03}
+If you place the operator ? before the name of a function or data frame, then you will be presented with a page showing the documentation for the respective function or data frame.
 
-10.  Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
-
-    Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.
-
-:::{.callout-note icon=false}
-## Advanced
+a)  TRUE
+b)  FALSE
 :::
+
+::: {#exr-ch01-c04}
+If you type `8/2 == 4` into the console, what will the output be?
+
+a)  TRUE
+b)  FALSE
+c)  NA
+d)  0
+e)  4
+:::
+
+::: {#exr-ch01-c05}
+If you type `3^2 != 9` into the console, what will the output be?
+
+a)  TRUE
+b)  FALSE
+c)  NA
+d)  0
+e)  9
+:::
+
+::: {#exr-ch01-c06}
+If you type `5*3` into the console, what will the output be?
+
+a)  TRUE
+b)  FALSE
+c)  NA
+d)  8
+e)  15
+:::
+
+::: {#exr-ch01-c07}
+What does any ONE row in this flights dataset refer to?
+
+a)  Data on an airline
+b)  Data on a flight
+c)  Data on an airport
+d)  Data on multiple flights
+:::
+
+::: {#exr-ch01-c08}
+In the flights dataset, `air_time` and `arr_delay` are which type of variables?
+
+a)  string
+b)  categorical
+c)  quantitative
+d)  character
+e)  dataframe
+:::
+
+### Application {#sec-ex01-application}
+
+::: {#exr-ch01-app1}
+In a code chunk, first define a variable `z` to be the product of 12 and 31, then define a variable called `add_on` to be the number 12. Print the output of `z + add_on`.
+:::
+
+::: {#exr-ch01-app2}
+Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
+
+Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.
+:::
+
+### Advanced {#sec-ex01-advanced}
 
 For the following problems we will use the `titanic` data set to learn additional data exploration techniques.
 
-11.  Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
+::: {#exr-ch01-adv1}
+Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
+:::
 
-12. The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
+::: {#exr-ch01-adv2}
+The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
+:::

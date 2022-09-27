@@ -40,6 +40,7 @@ As we will see, plots/graphics also help us to identify patterns and outliers in
 Let's load all the packages needed for this chapter (this assumes you've already installed them). Read @sec-packages for information on how to install and load R packages.
 
 ```{r}
+#| label: pkgs-ch02
 #| message: false
 
 library(nycflights13)
@@ -48,6 +49,7 @@ library(dplyr)
 ```
 
 ```{r}
+#| label: pkgs-ch01-internal
 #| message: false
 #| warning: false
 #| echo: false
@@ -1253,7 +1255,7 @@ These two code segments were a preview of @sec-wrangling on data wrangling where
 
 ### Conceptual {#sec-ex02-conceptual}
 
-::: {#exr-01}
+::: {#exr-ch02-c01}
 Which of the following layers could be added to create one of the five named graphs (5NG)? Select all that apply.
 
 a)  `geom_smooth()`
@@ -1264,7 +1266,7 @@ e)  `geom_histogram()`
 f)  `facet_wrap()`
 :::
 
-::: {#exr-02}
+::: {#exr-ch02-c02}
 What layer is add to create a scatterplot?
 
 a)  `geom_line()`
@@ -1274,7 +1276,7 @@ d)  `geom_point()`
 e)  none of the above
 :::
 
-::: {#exr-03}
+::: {#exr-ch02-c03}
 Which of the following options are solutions to overplotting? Select all that apply.
 
 a)  Changing the x and y variables
@@ -1284,7 +1286,7 @@ d)  Plotting only some of the data
 e)  Jittering the points
 :::
 
-::: {#exr-04}
+::: {#exr-ch02-c04}
 When is it useful to facet your data?
 
 a)  When you want to see the shape of the entire distribution without separation
@@ -1294,7 +1296,7 @@ d)  When you think your variables have incorrect data in them
 e)  When you have lots of missing values
 :::
 
-::: {#exr-05}
+::: {#exr-ch02-c05}
 Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each `player` had over their career?
 
 | player         | num_wins |
@@ -1309,7 +1311,7 @@ c)  all of the above
 d)  none of the above
 :::
 
-::: {#exr-06}
+::: {#exr-ch02-c06}
 Which of the following graphs would be **MOST** useful for comparing the distribution of weights for different species of cats?
 
 a)  grouped boxplot
@@ -1319,7 +1321,7 @@ d)  scatterplot
 e)  faceted barplot
 :::
 
-::: {#exr-07}
+::: {#exr-ch02-c07}
 Which of the following graphs would be **MOST** useful for visualizing the daily weather temperatures in January for Chicago?
 
 a)  scatterplot
@@ -1329,7 +1331,7 @@ d)  faceted scatterplot
 e)  grouped boxplot
 :::
 
-::: {#exr-08}
+::: {#exr-ch02-c08}
 Which of the following graphs would be **MOST** useful for visualizing the relationship between bank account balances and annual incomes?
 
 a)  faceted histogram
@@ -1339,7 +1341,7 @@ d)  stacked barplot
 e)  boxplot
 :::
 
-::: {#exr-09}
+::: {#exr-ch02-c09}
 Which of the following graphs would be **MOST** useful for finding outliers?
 
 a)  scatterplot
@@ -1349,19 +1351,19 @@ d)  boxplot
 e)  barplot
 :::
 
-::: {#exr-10}
+::: {#exr-ch02-c10}
 Below is a scatterplot of a fictional dataset depicting the amount of money spent in a grocery store by the amount of time in the store. Describe the relationship.
 
 ![](images/exercises/ch02_scatter.png){height="2in"}
 :::
 
-::: {#exr-11}
+::: {#exr-ch02-c11}
 Describe the modality and skew of the histogram below.
 
 ![](images/exercises/ch02_match_hist.png){height="2in"}
 :::
 
-::: {#exr-12}
+::: {#exr-ch02-c12}
 Match the histogram with the corresponding boxplot.
 
 ![](images/exercises/ch02_match_hist.png){height="2in"}
@@ -1374,7 +1376,7 @@ Match the histogram with the corresponding boxplot.
 Use the `covid_sub` dataset created below for the following problem. The dataset is derived from the `covid_states` dataset in the `ISDSdatasets` package.
 
 ```{r}
-#| label: exr-02covid
+#| label: ex02-covid-sub
 #| eval: false
 
 covid_sub <- covid_states %>% 
@@ -1387,23 +1389,23 @@ covid_sub <- covid_states %>%
 
 You will learn about data wrangling in the next Chapter. The code reads as follows: take the dataset `covid_states` and then subset the data to only include observations in the states `"IL"` or `"FL"`, and only include observations between July 1, 2021 and August 31, 2021 (inclusive), and only observations not recorded on Saturday, and observations not recorded on Sunday. Note: COVID reporting was not done on weekends or holidays in these states.
 
-::: {#exr-02covid}
+::: {#exr-ch02-app1}
 Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the `color` aesthetic to have separate lines for each state. Compare and describe the linegraph.
 :::
 
 ***
 
-Use the `nba` dataset in the `ISDSdatasets` package for exercises @exr-02bar, @exr-02scatter, and @exr-02box.
+Use the `nba` dataset in the `ISDSdatasets` package for exercises @exr-ch02-app2, @exr-ch02-app3, and @exr-ch02-app4.
 
-::: {#exr-02bar}
+::: {#exr-ch02-app2}
 Describe and compare the number of wins and losses faceted by player using a barplot.
 :::
 
-::: {#exr-02scatter}
+::: {#exr-ch02-app3}
 Plot and describe the relationship between field goal percentage (`fg_percent`) and free throw percentage (`ft_percent`). Adjust for overplotting if need be.
 :::
 
-::: {#exr-02box}
+::: {#exr-ch02-app4}
 Compare the center, spread, and shape of the distribution of `pts` scored per game by `player` for regular season games and playoff games. In other words, facet the plot of `pts` by `player` based on `season`.
 :::
 
@@ -1411,19 +1413,19 @@ Compare the center, spread, and shape of the distribution of `pts` scored per ga
 
 Let's learn some advanced plotting features.
 
-::: {#exr-02covid-adv}
-Start with your plot from @exr-02covid. Let's clean up the graph a little by adding the following layers:
+::: {#exr-ch02-adv1}
+Start with your plot from @exr-ch02-app1. Let's clean up the graph a little by adding the following layers:
 
 a)  add on `theme_minimal()`
 b)  remove the x-axis label by setting `x = NULL` in the `labs()`
 c)  To make the x-axis text easier to read we will rotate it 45 degrees and horizontally align it on the right. Add the layer `theme(axis.text.x = element_text(angle = ?, hjust = ?))` but replace the ? with the appropriate values.
 :::
 
-::: {#exr-02nba-adv}
+::: {#exr-ch02-adv2}
 Use the `nba_pct` dataset created below to plot the average free throw percent for each player.
 
 ```{r}
-#| label: exr-02nba-adv
+#| label: ex02-nba-pct
 #| eval: false
 
 nba_pct <- nba %>% 
