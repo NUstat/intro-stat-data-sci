@@ -38,7 +38,7 @@ So far in our journey, we've seen how to look at data saved in data frames using
 4.  histograms via `geom_histogram()`
 5.  barplots via `geom_bar()` or `geom_col()`
 
-We created these visualizations using the "Grammar of Graphics", which maps variables in a data frame to the aesthetic attributes of one the above 5 `geom`etric objects. We can also control other aesthetic attributes of the geometric objects such as the size and color as seen in the Gapminder data example in Figure @fig-gapminder.
+We created these visualizations using the "Grammar of Graphics", which maps variables in a data frame to the aesthetic attributes of one the above 5 `geom`etric objects. We can also control other aesthetic attributes of the geometric objects such as the size and color as seen in the Gapminder data example in @fig-gapminder.
 
 Recall however in @sec-whats-to-come-3 we discussed that for two of our visualizations we needed transformed/modified versions of existing data frames. Recall for example the scatterplot of departure and arrival delay *only* for Alaska Airlines flights. In order to create this visualization, we needed to first pare down the `flights` data frame to a new data frame `alaska_flights` consisting of only `carrier == "AS"` flights using the `filter()` function.
 
@@ -441,7 +441,7 @@ What happened here is that the second `group_by(month)` overrode the group struc
 
 :::
 
-**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Recall from Chapter \@ref(viz) when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the `summary_monthly_temp` data frame tell us about temperatures in New York City throughout the year?
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Recall from @sec-viz when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the `summary_monthly_temp` data frame tell us about temperatures in New York City throughout the year?
 
 :::{.callout-tip icon=false collapse=true}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
@@ -930,7 +930,7 @@ Create a new data frame that shows the top 5 airports with the largest arrival d
 
 ### Summary table
 
-Let's recap our data wrangling verbs in @tbl-wrangle-summary-table. Using these verbs and the pipe `%>%` operator from \@sec-piping, you'll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.
+Let's recap our data wrangling verbs in @tbl-wrangle-summary-table. Using these verbs and the pipe `%>%` operator from @sec-piping, you'll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.
 
 ```{r}
 #| label: tbl-wrangle-summary-table
@@ -995,3 +995,181 @@ So far in this book, we've explored, visualized, and wrangled data saved in data
 We'll see in @sec-tidy that there are actually two ways to represent data in spreadsheet-type rectangular format: 1) "wide" format and 2) "tall/narrow" format also known in R circles as "tidy" format. While the distinction between "tidy" and non-"tidy" formatted data is very subtle, it has very important implications for whether or not we can use the `ggplot2` package for data visualization and the `dplyr` package for data wrangling.
 
 Furthermore, we've only explored, visualized, and wrangled data saved within R packages. What if you have spreadsheet data saved in a Microsoft Excel, Google Sheets, or "Comma-Separated Values" (CSV) file that you would like to analyze? In @sec-tidy, we'll show you how to import this data into R using the `readr` package.
+
+## Exercises {#sec-ex03}
+
+### Conceptual {#sec-ex03-conceptual}
+
+::: {#exr-ch03-c01}
+Consider the sequence of operations `a(b(c(x)))`. Which of the following would result in the output of this sequence?
+
+a)  `x %>% a() %>% b() %>% c()`
+b)  `a() %>% b() %>% c() %>% x`
+c)  `x %>% c() %>% b() %>% a()`
+d)  `c() %>% b() %>% a() %>% x`
+e)  none of the above
+:::
+
+::: {#exr-ch03-c02}
+Match the definition with the function name.
+
+a) filter()       b) select()     c) top_n()     d) mutate()
+
+e) summarize()     f) arrange()     g) group_by()
+
+    \_\_\_ sort a data frame's rows based on a specified variable
+
+    \_\_\_ only keep rows that match a criteria
+
+    \_\_\_ create new variables based on existing ones
+:::
+
+::: {#exr-ch03-c03}
+How many rows and columns are outputted from the following code?
+
+```{r, eval = FALSE}
+weather_summary <- weather %>%  
+    group_by(month)%>% 
+    summarize(min = min(gain, na.rm = TRUE), 
+            max = max(gain, na.rm = TRUE),
+            mean = mean(gain, na.rm = TRUE),  
+            sd = sd(gain, na.rm = TRUE))
+weather_summary
+```
+
+a.  12 rows and 4 columns
+b.  4 rows and 12 columns
+c.  1 row and 4 columns
+d.  4 rows and 1 column
+e.  16 rows and 1 column
+:::
+
+::: {#exr-ch03-c04}
+Why might we want to use the select function on a data frame?
+
+a)  To make exploring a data frame easier by removing all variables except the variables of interest from the data frame object
+b)  To make exploring a data frame easier by sorting the rows in alphanumeric order
+c)  To make exploring a data frame easier by only outputting the variables of interest
+d)  To make exploring a data frame easier by filtering out only rows that match a specified criteria
+:::
+
+::: {#exr-ch03-c05}
+How would the mean of a distribution change if the (positive) maximum value was doubled?
+
+a)  increase
+b)  decrease
+c)  stay the same
+d)  not enough information
+:::
+
+::: {#exr-ch03-c06}
+The ___ are resistant to outliers/extreme values, whereas the ___ are not.
+
+a) mean and standard deviation; median and interquartile range
+b) standard deviation and interquartile range; mean and median
+c) median and interquartile range; mean and standard deviation
+d) mean and median; standard deviation and interquartile range
+e) median and standard deviation; mean and interquartile range
+:::
+
+::: {#exr-ch03-c07}
+Consider a unimodal left skewed distribution. Which of the following is true?
+    
+a) mean > median
+b) mean < median
+c) mean = median
+d) not enough information
+:::
+
+::: {#exr-ch03-c08}
+Looking at @fig-flights-key-diagram, when joining flights and weather (or, in other words, matching the hourly weather values with each flight), why do we need to join by all of year, month, day, hour, and origin, and not just hour?
+
+a)  These key variables uniquely identify the observational units
+b)  These key variables provide a timestamp on when we accessed our data
+c)  These variables refer to multiple observational units simultaneously
+d)  These variables are not all necessary
+:::
+
+
+For @exr-ch03-c09 - @exr-ch03-c11 consider a hypothetical dataset `blue_line`. This dataset documents all passenger train ride information on the Chicago blue line rail for one week. The variables include `day` of travel, passenger `gender`, passenger `age`, `duration` of ride, and whether the ride was `roundtrip` (1) or not (0). The first few observations are shown below.
+
+| day      | gender | age | duration | roundtrip |
+|----------|--------|-----|----------|-----------|
+| Monday   | female | 23  | 33       | 1         |
+| Thursday | male   | 48  | 50       | 0         |
+| Monday   | female | 35  | 20       | 1         |
+| Saturday | other  | 26  | 42       | 1         |
+| ...      | ...    | ... | ...      | ...       |
+
+
+::: {#exr-ch03-c09}
+Compute the average length of a train ride for each day of the week.
+
+a)  `blue_line %>%` <br>
+      `   summarize(mean = mean(duration))`
+
+b)  `blue_line %>%` <br>
+      `   group_by(day, duration) %>%` <br>
+      `   summarize(mean = mean(duration))`
+
+c)  `blue_line %>%` <br>
+      `   summarize(mean = mean(duration)) %>%` <br>
+      `   group_by(day)`
+
+d)  `blue_line %>%` <br>
+      `   group_by(day) %>%` <br>
+      `   summarize(mean = mean(duration))`
+
+e)  none of the above
+:::
+
+::: {#exr-ch03-c10}
+The mean and standard deviation for `duration` of only female passengers?
+
+a)  `blue_line %>%` <br>
+      `   select(gender == "female") %>%` <br>
+      `   summarize(mean = mean(duration), sd = sd(duration))`
+
+b)  `blue_line %>%` <br>
+      `   filter(gender) %>%` <br>
+      `   summarize(mean = mean(duration), sd = sd(duration))`
+
+c)  `blue_line %>%` <br>
+      `   summarize(mean = mean(duration), sd = sd(duration)) %>%` <br>
+      `   filter(gender == "female")`
+
+d)  `blue_line %>%` <br>
+      `   filter(gender == "female") %>%` <br>
+      `   summarize(mean = mean(duration)) %>%` <br>
+      `   summarize(sd = sd(duration))`
+
+e)  none of the above
+:::
+
+::: {#exr-ch03-c11}
+Which of the following will NOT count the number of passengers by `gender` and `day`. Select all that apply.
+
+a)  `blue_line %>%` <br>
+      `   group_by(gender) %>%`
+      `   summarize(n = n(day))`
+
+b)  `blue_line %>%` <br>
+      `   count(gender, day)`
+
+c)  `blue_line %>%`
+      `   group_by(gender, day) %>%` <br>
+      `   summarize(n = n())`
+
+d)  `blue_line %>%` <br>
+        `   group_by(gender) %>%` <br>
+        `   count(day)`
+
+e)  `blue_line %>%` <br>
+        `   group_by(gender, day) %>%` <br>
+        `   summarize(n = sum(passengers))`
+:::
+
+### Application {#sec-ex03-application}
+
+
+### Advanced {#sec-ex03-advanced}
