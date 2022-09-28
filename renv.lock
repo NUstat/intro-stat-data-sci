@@ -458,6 +458,14 @@
         "withr"
       ]
     },
+    "ggplot2movies": {
+      "Package": "ggplot2movies",
+      "Version": "0.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "df2c648760e7d07c45249c73ad5b95f9",
+      "Requirements": []
+    },
     "glue": {
       "Package": "glue",
       "Version": "1.6.2",
