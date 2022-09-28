@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -272,7 +336,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#needed-packages" id="toc-needed-packages" class="nav-link active" data-scroll-target="#needed-packages">Needed packages</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology"><span class="toc-section-number">8.1</span>  Terminology &amp; Notation</a></li>
+  <li><a href="#sample-selection" id="toc-sample-selection" class="nav-link" data-scroll-target="#sample-selection"><span class="toc-section-number">8.2</span>  Populations &amp; Sampling</a></li>
+  <li><a href="#movie-example" id="toc-movie-example" class="nav-link" data-scroll-target="#movie-example"><span class="toc-section-number">8.3</span>  Movies Example</a>
+  <ul class="collapse">
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="toc-section-number">8.3.1</span>  Research question</a></li>
+  <li><a href="#population-of-interest" id="toc-population-of-interest" class="nav-link" data-scroll-target="#population-of-interest"><span class="toc-section-number">8.3.2</span>  Population of interest</a></li>
+  <li><a href="#development-of-population-frame" id="toc-development-of-population-frame" class="nav-link" data-scroll-target="#development-of-population-frame"><span class="toc-section-number">8.3.3</span>  Development of population frame</a></li>
+  <li><a href="#sampling-plan" id="toc-sampling-plan" class="nav-link" data-scroll-target="#sampling-plan"><span class="toc-section-number">8.3.4</span>  Sampling plan</a></li>
+  </ul></li>
+  <li><a href="#samples" id="toc-samples" class="nav-link" data-scroll-target="#samples"><span class="toc-section-number">8.4</span>  Samples from Unclear Populations</a></li>
+  <li><a href="#causality-vs.-generalizability" id="toc-causality-vs.-generalizability" class="nav-link" data-scroll-target="#causality-vs.-generalizability"><span class="toc-section-number">8.5</span>  Causality vs.&nbsp;Generalizability</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/08-populations.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -293,21 +374,472 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>In this chapter we will continue our discussion of statistical theory, by learning about <strong>samples</strong> and <strong>populations</strong>. Until now, this book has focused on how to analyze data in a sample. In many instances, your goal is not to understand insights and trends in the sample but instead to make inferences from such insights and trends observed to trends in a larger population. This chapter provides a broad overview of the concepts of samples and populations and the links between them. In <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a> we will provide a more theoretical connection between these two based on the theory of repeated samples and properties of sampling distributions.</p>
+<section id="needed-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed packages</h3>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-Under Construction
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+<section id="terminology" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">8.1</span> Terminology &amp; Notation</h2>
+<p>In Parts I and II of this book, you were provided with sample data, methods for exploring this data visually, and methods for summarizing trends in this data. These methods are what we call <strong>descriptive statistics</strong>, as they are focused on describing the observed sample.</p>
+<p>In science and policy, the goal of analysis is typically not just to understand trends in a sample but instead to make inferences from this sample to trends in a population. For example, in order to understand the relationship between party affiliation and voting, you might conduct a poll in a sample of 100 (or 1,000) voters by mail, phone-call, or by stopping them on the street. Or, in order to determine if a new drug effectively reduces high blood pressure, you might conduct a randomized experiment in a sample of 200 patients experiencing high blood pressure.</p>
+<p>Why not use population data instead? While a <strong>census</strong> of every person (or unit) in a population would be ideal, it’s not hard to see that doing so is costly in many regards — financially and in terms of time and personnel.</p>
+<p>In order to understand the relationship between samples and populations, we begin by providing some vocabulary and notation that we will use throughout the remainder of the book.</p>
+<ol type="1">
+<li><p><strong>Population</strong>: A population is a collection of individuals or units about which we are interested. We mathematically denote the population’s size (i.e.&nbsp;the total number of individuals or units) using upper-case <span class="math inline">\(N\)</span>.</p></li>
+<li><p><strong>Sample</strong>: A sample is a collection of individuals or units from a population. These are the individuals or units about which we have (or will collect) data. We mathematically denote the sample’s size, the number of people or units we have (or will collect) data on, using lower-case <span class="math inline">\(n\)</span>.</p></li>
+<li><p><strong>Population parameter</strong>: A population parameter is a numerical value that summarizes the population. <em>In almost all cases the population parameter is unknown, but we wish to know it.</em> Population parameters are typically denoted mathematically using Greek letters. For example, you may want to know the population mean, which is typically written as <span class="math inline">\(\mu\)</span> (pronounced “mu”). Or, you might want to know the population proportion, which is typically written as <span class="math inline">\(\pi\)</span> (pronounced “pi”). Population size, <span class="math inline">\(N\)</span>, is a case where we do not follow the Greek letter convention to denote a population parameter.</p></li>
+<li><p><strong>Sample statistic / estimate </strong>: A sample statistic is a numerical value that summarizes the sample and can be used to estimate an unknown population parameter. It is common for a sample statistic to sometimes be called an estimate or <strong>point estimate</strong>. These are sometimes denoted mathematically using Roman letters (that correspond to Greek letters) or via inclusion of a “hat” above the population parameter (called hat-notation). For example, the population proportion <span class="math inline">\(\pi\)</span> can be estimated using a sample proportion which is denoted with <span class="math inline">\(\hat{\pi}\)</span> or <span class="math inline">\(p\)</span>. The population mean <span class="math inline">\(\mu\)</span> can be estimated using the sample mean which is denoted <span class="math inline">\(\hat{\mu}\)</span> or <span class="math inline">\(\overline{x}\)</span>. Obviously <span class="math inline">\(\overline{x}\)</span> doesn’t follow either the Greek letter or hat-notation conventions, but it is the standard notation for the sample mean.</p></li>
+<li><p><strong>Census</strong>: A census is an exhaustive collection of a measurement on all <span class="math inline">\(N\)</span> individuals or units in the population in order to compute the exact value of a population parameter for the given measure.</p></li>
+<li><p><strong>Random sampling</strong>: Random sampling is the act of using a random procedure to select individuals or units from a population that we will collect measurements on. Random sampling is extremely useful when we don’t have the means to perform a census. Here “random” means that every individual or unit in the population has a chance of being selected and that the process of selection is uncorrelated with the data itself. For example, a random procedure might involve rolling dice, selecting slips of paper out of a hat, or using a random number generator.</p></li>
+</ol>
+<p>The first two of these definitions makes clear that the data you have in hand (sample) is being used to make inferences to a larger set of data you don’t have (population). Definitions 3 and 4 refine these further, focusing on the specific numbers you wish you knew (population parameter) and the ones you are able to calculate using your data (estimate / sample statistic). Definitions 5 and 6 refer to how a sample is related to a population — either they are the same (census) or the mechanism through which they are related needs to be clear (random sampling).</p>
+<p>The goal is to use data in the sample to make <strong>inferences</strong> to a value in the population. The act of “inferring” is to deduce or conclude (information) from evidence and reasoning. <strong>Statistical inference</strong> is the theory, methods, and practice of forming judgments about the parameters of a population and the reliability of statistical relationships, typically on the basis of random sampling (Wikipedia). In other words, statistical inference is the act of inference via sampling.</p>
+<p><a href="#tbl-parameters-table">Table&nbsp;<span>8.1</span></a> gives some common population parameters we might be interested in and their corresponding estimators that we use to calculate estimates from our sample data. Note that we have used many of these estimators in Parts I and II of the book when we calculated summary statistics to describe our data (e.g.&nbsp;mean, standard deviation, correlation, regression coefficients). The next few chapters will help establish the statistical theory and conditions under which we can use these estimators to infer things about their corresponding population parameters.</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-parameters-table" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;8.1: Population Parameters and Sample Statistics</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statistic</th>
+<th style="text-align: left;">Population parameter</th>
+<th style="text-align: left;">Parameter pronunciation</th>
+<th style="text-align: left;">Estimator - Roman letter notation</th>
+<th style="text-align: left;">Estimator - “hat” notation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Proportion</td>
+<td style="text-align: left;"><span class="math inline">\(\pi\)</span></td>
+<td style="text-align: left;">“pi”</td>
+<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean</td>
+<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: left;">“mu”</td>
+<td style="text-align: left;"><span class="math inline">\(\overline{x}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\mu}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Standard deviation</td>
+<td style="text-align: left;"><span class="math inline">\(\sigma\)</span></td>
+<td style="text-align: left;">“sigma”</td>
+<td style="text-align: left;"><span class="math inline">\(s\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\hat{\sigma}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Correlation</td>
+<td style="text-align: left;"><span class="math inline">\(\rho\)</span></td>
+<td style="text-align: left;">“rho”</td>
+<td style="text-align: left;"><span class="math inline">\(r\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\hat{\rho}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regression intercept</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: left;">“beta zero” or “beta nought”</td>
+<td style="text-align: left;"><span class="math inline">\(b_0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\beta}_0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regression slope</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1\)</span></td>
+<td style="text-align: left;">“beta one”</td>
+<td style="text-align: left;"><span class="math inline">\(b_1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\beta}_1\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Currently working on content transfer from previous version of the book.</p>
+</div>
+<hr>
+</section>
+<section id="sample-selection" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sample-selection"><span class="header-section-number">8.2</span> Populations &amp; Sampling</h2>
+<p>Recall that a population is a collection of individuals or observations that you would like to make inferences about. Some examples of populations are:</p>
+<ul>
+<li>Citizens of voting age (18 or older) in the United States.</li>
+<li>Students in public elementary schools in Texas.</li>
+<li>Private hospitals receiving Medicaid funding in California.</li>
+<li>Fish in Lake Michigan.</li>
+</ul>
+<p>In each case, the definition of the population includes clear inclusion / exclusion criteria. These help to clarify where inferences are appropriate to be made and where they are not.</p>
+<p>In order to select a sample from a population, a <strong>population frame</strong> must be created. A population frame includes a list of all possible individuals or observations within the population. Sometimes this frame is difficult to make - and the result is that the population frame may not be exactly the same as the population. For example, for the above populations, population frames might be:</p>
+<ul>
+<li>A list of phone numbers registered to individuals in the United States. (Once contacted, only those that are citizens 18 and older would be able to be included.)</li>
+<li>A list of public elementary <em>schools</em> (not students), available for the prior year in the Texas public education state longitudinal data system.</li>
+<li>A list of private hospitals made available from the state of California government in a database collected every five years. (Once contacted, only those receiving &gt; $0 Medicaid would be included).</li>
+<li>Areas of Lake Michigan where it is possible to fish (e.g, excluding coves).</li>
+</ul>
+<p>When this population frame differs from the population, <strong>undercoverage</strong> can occur - i.e., there are parts of the population that may not be able to be studied. For example, citizens over 18 without phone numbers would have a 0% chance of being included in the sample even though they are part of the population of interest. It is important in research to make this clear and to understand how these differences might impact results.</p>
+<p>Once a population frame is defined, a <strong>sampling</strong> process is developed that, based upon a random procedure, allows for making clear inferences from the sample to the population. There are many possible sampling procedures, some of which include:</p>
+<ul>
+<li><strong>Simple random sampling</strong>: Individuals or observations are selected randomly from the population, each having an equal chance of being selected.</li>
+<li><strong>Random sampling with unequal probability</strong>: Individuals or observations are selected randomly, but the probability of selection varies proportional to size or some other relevant characteristic.</li>
+<li><strong>Cluster sampling</strong>: In order to reach individuals or observations, first clusters are selected (e.g.&nbsp;schools, neighborhoods, hospitals, etc.), and then within these clusters, individuals or observations are randomly selected.</li>
+<li><strong>Stratified sampling</strong>: In order to represent the population well, first the population is divided into sub-groups (strata) that are similar to one another, and then within these sub-groups (strata), individuals or observations are randomly selected.</li>
+</ul>
+<p>Observations or clusters can be selected with <strong>equal probability</strong> or <strong>unequal probability</strong> — the most important feature is that the probability of being selected is <em>known</em> and defined in <em>advance</em> of selection. In the above examples, these procedures might be used:</p>
+<ul>
+<li><strong>Simple random sampling</strong>: Phone numbers are randomly selected with equal probability.</li>
+<li><strong>Cluster sampling</strong>: First schools (clusters) are randomly selected with unequal probability (e.g., larger schools have a bigger chance of being selected), and then within those schools selected, students are randomly selected with equal probability.</li>
+<li><strong>Random sampling with unequal probability</strong>: Hospitals are selected randomly with unequal probability (e.g., larger hospitals have a bigger chance of being selected).</li>
+<li><strong>Stratified sampling</strong>: Lake Michigan is geographically divided into four regions (strata): those nearby to the shore in urban areas, those nearby the shore in non-urban areas, those in the middle north, and those in the middle south. It is expected that the number and kinds of fish differ across these regions. Within each region, fish are selected randomly based upon a catch-and-release procedure.</li>
+</ul>
+<p>In all of these cases, because the sample is selected randomly from the population, estimates from the sample can be used to make inferences regarding values of the population parameters. For example, a sample mean calculated in a random sample of a population can be used to make inferences regarding the value of the population mean. Without this random selection, these inferences would be unwarranted.</p>
+<p>Finally, note that in the examples and data we use in this book and course, we focus on <strong>random sampling with equal probabilities of selection</strong> (i.e.&nbsp;simple random sampling). Methods to account for clustering, stratification, and unequal selection probabilities require use of weights and, sometimes, more complicated models. Courses on survey sampling, regression, and hierarchical linear models will provide more background and details on these cases.</p>
+<hr>
+</section>
+<section id="movie-example" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="movie-example"><span class="header-section-number">8.3</span> Movies Example</h2>
+<section id="research-question" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="research-question"><span class="header-section-number">8.3.1</span> Research question</h3>
+<p>Perhaps we are interested in studying films from the 20th century. For example, say we want to answer the question: “What percentage of movies from the 20th century pass the Bechdel Test?” The Bechdel Test is a measure of the representation of women in fiction. For a movie to pass the Bechdel Test it must meet three criteria:</p>
+<ol type="1">
+<li>The movie must have at least two [named] women in it…</li>
+<li>who talk to each other…</li>
+<li>about something besides a man.</li>
+</ol>
+<p>Determining whether a film meets this criteria requires you to watch and pay attention to the dialogue in its entirety. It’s not hard to imagine why doing this for the whole population of movies is not feasible, because there are tens of thousands of them. You must take a <em>sample</em>. But how do you choose your sample in such a way that you can be confident that your results will generalize to the whole population of movies?</p>
+<p>Let’s discuss how we might go about developing a sampling plan to tackle this question, using the terminology from <span class="quarto-unresolved-ref">?sec-terminology</span> and <span class="quarto-unresolved-ref">?sec-sample-selection</span>.</p>
+</section>
+<section id="population-of-interest" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="population-of-interest"><span class="header-section-number">8.3.2</span> Population of interest</h3>
+<p>Our research question specifies that we are interested in the results of the Bechdel test for movies in the 20th century. Note that the earliest movies were all silent films, and dialogue in movies did not become the norm until the 1930s. This means that movies prior to the 1930s are irrelevant in terms of the Bechdel test. Therefore, we can define our <strong>population</strong> of interest to be all movies released between 1930 and 1999. The <strong>population parameter</strong> we are interested in is <span class="math inline">\(\pi\)</span>, the proportion of movies in this population that pass the Bechdel test.</p>
+</section>
+<section id="development-of-population-frame" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="development-of-population-frame"><span class="header-section-number">8.3.3</span> Development of population frame</h3>
+<p>We must develop a <strong>population frame</strong> that includes a list of all movies in our population of interest. Thankfully, the IMDb database functions as a <strong>census</strong> of movies, and that data is available in a dataset called <code>movies</code> in the <code>ggplot2movies</code> package. It includes 24 variables with information on 58788 movies and their ratings by users on IMDb. For now, we’ll look at a smaller subset of just 4 of these variables: the title of the movie, the year it was released, its length in minutes, and its average rating on IMDb (out of 10 stars). The full dataset contains information on movies released from 1893 to 2005, so we should filter only the rows for the years relevant to our population of interest. Let’s take a look at this data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>movies_30_99 <span class="ot">&lt;-</span> movies <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(title, year, length, rating) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1930</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">1999</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(movies_30_99)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<pre><code>Skim summary statistics
+ n obs: 46522 
+ n variables: 4 
+
+── Variable type:character ────────────────────────────────────────────────────────────────────────────
+ variable missing complete     n min max empty n_unique
+    title       0    46522 46522   1 110     0    44761
+
+── Variable type:integer ──────────────────────────────────────────────────────────────────────────────
+ variable missing complete     n    mean    sd   p0  p25  p50  p75 p100
+   length       0    46522 46522   84.38 44.72    1   76   90  100 5220
+     year       0    46522 46522 1971.94 20.73 1930 1955 1975 1991 1999
+
+── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────
+ variable missing complete     n mean   sd p0 p25 p50 p75 p100
+   rating       0    46522 46522 5.84 1.53  1 4.9   6 6.9  9.9</code></pre>
+<p>How well does this population frame match our population of interest? Should we be concerned about <em>undercoverage</em> here? The <a href="https://cran.r-project.org/web/packages/ggplot2movies/ggplot2movies.pdf">documentation</a> for the <code>ggplot2movies</code> package indicates that “movies were selected for inclusion if they had a known length and had been rated by at least one imdb user.” This means that any movies that don’t meet these critera will not appear in our population frame and therefore have no chance of ending up in our sample. We can acknowledge this potential source of undercoverage, but movies excluded by these criteria are not likely to be of interest for our question anyway, so we don’t need to be too concerned in this scenario.</p>
+<p>When we skimmed the data, we saw that one movie is as short as 1 minute and one is as long as 5220 minutes. Perhaps we feel like this list includes films that we would not classify as “standard movies,” so in order to eliminate some of these extremes, we decide to narrow our population of interest to any films that are at least 1 hour in length, but at most 3.5 hours in length.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>movies_30_99 <span class="ot">&lt;-</span> movies_30_99 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(length <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> length <span class="sc">&lt;=</span> <span class="dv">210</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(movies_30_99)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<pre><code>Skim summary statistics
+ n obs: 39123 
+ n variables: 4 
+
+── Variable type:character ────────────────────────────────────────────────────────────────────────────
+ variable missing complete     n min max empty n_unique
+    title       0    39123 39123   1 105     0    37740
+
+── Variable type:integer ──────────────────────────────────────────────────────────────────────────────
+ variable missing complete     n    mean    sd   p0  p25  p50  p75 p100
+   length       0    39123 39123   95.33 18.51   60   85   93  103  210
+     year       0    39123 39123 1973.4  19.7  1930 1958 1977 1991 1999
+
+── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────
+ variable missing complete     n mean   sd p0 p25 p50 p75 p100
+   rating       0    39123 39123 5.75 1.51  1 4.8 5.9 6.8  9.9</code></pre>
+<p>This is an example of how data in a population frame can actually help you to think more critically about your population of interest. Seeing the range of movies that are included in the frame prompted us to realize we were interested in something more specific than just “all movies,” and therefore we can refine our definition and create additional inclusion criteria. Note that as a researcher or analyst sometimes you have to make decisions about your data that seem somewhat arbitrary, but so long as you document each decision and are explicit and transparent about your inclusion criteria, you (and others) will be able to determine with clarity what kinds of generalizations can be made from your eventual results.</p>
+<p>Let’s list all of our inclusion criteria. Our population frame includes movies that:</p>
+<ol type="1">
+<li>are included in the IMDb database</li>
+<li>were released between 1930 and 1999</li>
+<li>have a known length between 60 and 210 minutes</li>
+<li>were rated by at least one IMDb user</li>
+</ol>
+<p>This results in a population of size <span class="math inline">\(N =\)</span> 39123 movies.</p>
+</section>
+<section id="sampling-plan" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="sampling-plan"><span class="header-section-number">8.3.4</span> Sampling plan</h3>
+<p>Now that we’ve solidified our population of interest and our population frame, we can establish a sampling plan for how to take a random sample from this population. Perhaps we decide it is feasible for our research team to watch and record data on 500 movies, so we decide to draw a sample of <span class="math inline">\(n = 500\)</span>. We will demonstrate 3 different random sampling plans, but note that in real life you will make a decision about the most appropriate and feasible plan and only draw one random sample.</p>
+<p><strong>Simple random sampling</strong></p>
+<p>Let’s start by drawing a simple random sample, where each of the 39123 movies have an equal probability of ending up in our sample. We can accomplish this in R using the <code>sample_n()</code> function.</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>movies_SRS <span class="ot">&lt;-</span> movies_30_99 <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">500</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(movies_SRS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 500
+Columns: 4
+$ title  &lt;chr&gt; "Anne of Green Gables", "Dark Age", "Tevya", "Cyclone on Horseb…
+$ year   &lt;int&gt; 1934, 1987, 1939, 1941, 1985, 1967, 1964, 1970, 1971, 1958, 198…
+$ length &lt;int&gt; 78, 91, 93, 60, 105, 98, 100, 102, 87, 78, 120, 122, 91, 87, 78…
+$ rating &lt;dbl&gt; 7.1, 4.5, 6.4, 5.6, 6.7, 4.6, 5.2, 3.4, 6.1, 3.5, 7.6, 6.8, 3.3…</code></pre>
 </div>
 </div>
+<p><strong>Stratified sampling with unequal probability</strong></p>
+<p>Perhaps we expect movies within a particular decade to be more similar to each other than to movies in other decades. In this case, we could take a <em>stratified sample</em> (instead of a simple random sample), where the population is partitioned into sub-groups (i.e.&nbsp;strata) by decade, and a random sample is taken within each decade. In order to accomplish this in R, let’s first create a new decade variable and then use <code>group_by()</code> in combination with <code>sample_n()</code> to take an independent random sample for each decade. Note that since there are 7 decades, we can sample 71 movies from each decade in order to end up with approximately 500 movies total in our sample (<span class="math inline">\(7 * 71 = 497\)</span>)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>movies_30_99 <span class="ot">&lt;-</span> movies_30_99 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decade =</span> <span class="fu">floor</span>(year <span class="sc">/</span> <span class="dv">10</span>) <span class="sc">*</span> <span class="dv">10</span>) </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>movies_strata <span class="ot">&lt;-</span> movies_30_99 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">71</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(movies_strata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 497
+Columns: 5
+Groups: decade [7]
+$ title  &lt;chr&gt; "Broken Lullaby", "Bonnie Scotland", "Charlie Chan at the Circu…
+$ year   &lt;int&gt; 1932, 1935, 1936, 1938, 1938, 1935, 1934, 1938, 1933, 1938, 193…
+$ length &lt;int&gt; 76, 80, 72, 93, 90, 67, 73, 66, 62, 63, 92, 78, 82, 80, 79, 63,…
+$ rating &lt;dbl&gt; 7.2, 6.7, 7.1, 6.5, 6.9, 4.5, 5.9, 5.9, 6.8, 6.4, 5.9, 6.9, 7.4…
+$ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 193…</code></pre>
+</div>
+</div>
+<p>Note that because there were not an equal number of movies per decade in the population, sampling a fixed number of movies per decade (e.g.&nbsp;71) is actually an example of sampling with <em>unequal probabilities</em>. For example, since there were only 2863 movies in the 1930s, each movie from this decade had a <span class="math inline">\(71 / 2863 * 100 =\)</span> 2.48% chance of being selected, but movies from the 1990s only had a <span class="math inline">\(71 / 10788 * 100 =\)</span> 0.658% chance of being selected. <a href="#tbl-strata-probs">Table&nbsp;<span>8.2</span></a> shows the selection probabilities for each strata.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>movies_30_99 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(decade) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="dv">71</span> <span class="sc">/</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-strata-probs" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;8.2: Selection probability by decade</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">decade</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1930</td>
+<td style="text-align: right;">2863</td>
+<td style="text-align: right;">0.025</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1940</td>
+<td style="text-align: right;">3226</td>
+<td style="text-align: right;">0.022</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1950</td>
+<td style="text-align: right;">4271</td>
+<td style="text-align: right;">0.017</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1960</td>
+<td style="text-align: right;">4782</td>
+<td style="text-align: right;">0.015</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1970</td>
+<td style="text-align: right;">5841</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1980</td>
+<td style="text-align: right;">7352</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1990</td>
+<td style="text-align: right;">10788</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Stratified sampling with equal probability</strong></p>
+<p>We could instead decide to draw a stratified sample with equal probabilities. Since overall we want a sample with <span class="math inline">\(n = 500\)</span>, and we have a population of size <span class="math inline">\(N =\)</span> 39123, we can choose to sample <span class="math inline">\(500 / 39123 *100 = 1.28\%\)</span> of the movies from each strata. Using the function <code>sample_frac()</code> instead of <code>sample_n()</code> allows us to do this.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>movies_strata_equal <span class="ot">&lt;-</span> movies_30_99 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_strata =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="co">#needed for later calculations</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.0128</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#tbl-strata-probs-equal">Table&nbsp;<span>8.3</span></a> shows the number of movies that were sampled per strata, <code>n_strata</code>. These numbers are proportional to the total number of movies in that decade in the population <code>N_strata</code>. This results in each movie in the population having equal probability of selection into the sample.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>movies_strata_equal <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_strata =</span> <span class="fu">n</span>(), <span class="at">N_strata =</span> <span class="fu">unique</span>(N_strata), </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">prob =</span> n_strata <span class="sc">/</span> N_strata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-strata-probs-equal" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;8.3: Stratified sampling with equal probabilities (i.e.&nbsp;proportional to stratum size)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">decade</th>
+<th style="text-align: right;">n_strata</th>
+<th style="text-align: right;">N_strata</th>
+<th style="text-align: right;">prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1930</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">2863</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1940</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">3226</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1950</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">4271</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1960</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">4782</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1970</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">5841</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1980</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">7352</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1990</td>
+<td style="text-align: right;">138</td>
+<td style="text-align: right;">10788</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Once we have our sample of <span class="math inline">\(n\)</span> movies, we could then begin data collection. For each movie, we would record whether or not it passed the Bechdel test. We would then calculate our <strong>point estimate</strong> <span class="math inline">\(\hat{\pi}\)</span>, the proportion of movies <em>in our sample</em> that pass the Bechdel test, which serves as our estimate of the population proportion <span class="math inline">\(\pi\)</span>. Recall that we mentioned in <span class="quarto-unresolved-ref">?sec-sample-selection</span> that using a more complicated sampling method, such as stratified sampling, also requires a more complicated formula for computing point estimates. In the simple random sampling case, however, we calculate the sample proportion in exactly the way you would expect: <span class="math inline">\(\hat{\pi} = \frac{x}{n}\)</span>, where <span class="math inline">\(x\)</span> is the number of movies in the sample passing the test, and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>In the next few chapters we will discuss how much uncertainty we would expect there to be in our estimate <span class="math inline">\(\hat{\pi}\)</span> due to the fact that we are only observing a sample and not the whole population.</p>
+</section>
+</section>
+<section id="samples" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="samples"><span class="header-section-number">8.4</span> Samples from Unclear Populations</h2>
+<p>As an analyst, you will often encounter samples of data that come from unspecified or unclear populations. For example, you:</p>
+<ul>
+<li>developed a survey regarding relationship preferences on SurveyMonkey and then promoted completing this survey on Facebook. Now you have a sample of <span class="math inline">\(n = 200\)</span> completed surveys - but what population do they come from?</li>
+<li>conducted an experiment in a psychology lab. The experiment is advertised to students in Introductory Psychology courses and in fliers around campus. You now have a sample of <span class="math inline">\(n = 50\)</span> participants in the experiment - but what population do they come from?</li>
+<li>scraped some data off the web regarding movie reviews on Rotten Tomatoes. You now have a huge sample of <span class="math inline">\(n = 10,000\)</span> reviews by people - but what population do these reviews come from?</li>
+</ul>
+<p>In these situations, statistically you do two things:</p>
+<ol type="1">
+<li><p>You can assume that the sample you have is a random sample from some population. You can thus make inferences to this larger population using the sampling theory we will develop in the next chapters.</p></li>
+<li><p>You need to define as clearly as you can what population this sample is from. This involves using clear inclusion / exclusion criteria.</p></li>
+</ol>
+<p>Finally, keep in mind that <strong>no study generalizes everywhere</strong>. It is your job as analyst to make clear where results might be useful for making inferences and where they may not. To do this requires describing characteristics of the sample clearly when interpreting results and making inferences. In general:</p>
+<ul>
+<li>Ask: Do the results apply to all individuals or observations? If not, think through how the results might be dependent upon the types of individuals or observations in your sample.</li>
+<li>Report clearly the characteristics that might affect interpretation and inferences (e.g., race, ethnicity, gender, age, education).</li>
+<li>Report clearly how the data was generated. Was it from on online survey? Report this. Was it from a lab study advertised in a college? Report this.</li>
+</ul>
+<hr>
+</section>
+<section id="causality-vs.-generalizability" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="causality-vs.-generalizability"><span class="header-section-number">8.5</span> Causality vs.&nbsp;Generalizability</h2>
+<p>In <a href="07-causality.html"><span>Chapter&nbsp;7</span></a> we talked about the process of <em>random assignment</em> (e.g.&nbsp;in randomized experiments), and in this chapter we talked about the process of <em>random sampling</em>. These two types of randomization processes are at the core of inferential statistics:</p>
+<ul>
+<li>Random assignment allows us to make <em>causal</em> claims</li>
+<li>Random sampling allows us to make <em>generalizable</em> claims</li>
+</ul>
+<p>The ideal experiment would have both <em>random assignment</em> and <em>random sampling</em> so that you could have a <em>casual</em> conclusion that is <em>generalizable</em> to the whole population. Figure @ref(fig:RA-RS) shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RA_vs_RS.png" class="img-fluid figure-img" style="width:110.0%"></p>
+<p></p><figcaption class="figure-caption">Random Assignment vs.&nbsp;Random Sampling</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s give an example of each.</p>
+<ul>
+<li><strong>Random assignment + random sampling</strong>
+<ul>
+<li>You take a random sample of students at your university to participate in your study on exercise and stress. You randomly assign half of the participants to a prescribed workout regimen of 30 minutes of cardio per day. You collect data on the stress levels in all participants via surveys and biomarkers such as cortisol. Your results can validly conclude that any differences in stress between the two groups were <em>caused</em> by the excersize regimen because it was randomly assigned, and those conclusions can be <em>generalized</em> to the whole student body because it was a random sample.</li>
+</ul></li>
+<li><strong>Random assignment only</strong>
+<ul>
+<li>You advertise your study on campus and ask volunteers to participate. Once you have recruited enough participants, you randomly assign half of them to the exercise treatment. Your results can validly conclude that the effects of exercise on stress are <em>causal</em> because you used random assignment, but you cannot generalize beyond your sample because you did not use random sampling. There could be characteristics about those that volunteered to particpate that influence how effective the treatment is likely to be as compared to those who chose not to participate.</li>
+</ul></li>
+<li><strong>Random sampling only</strong>
+<ul>
+<li>You take a random sample of students at the university to participate in your study. You collect data on their exercise habits and their stress. If your data indicates a negative relationship between exercise and stress (i.e.&nbsp;as exercise increases, stress decreases), you can conclude that relationship is <em>generalizable</em> to the whole student body, but you cannot claim that increased exercise <em>caused</em> reduced stress. There could be confounding characteristics about students who choose to exercise more that also reduce their stress (e.g.&nbsp;better sleep or nutrition habits).</li>
+</ul></li>
+<li><strong>Neither random assignment nor random sampling</strong>
+<ul>
+<li>You advertise your study on campus and ask volunteers to participate. You collect data on their exercise habits and their stress. If your data indicates a negative relationship between exercise and stress, you can only validly conclude that the relationship is <em>associational</em> and true for <em>your sample only</em>. There may differences between people in your sample who choose to exercise and those who do not, as well as differences between people who volunteered to participate in your study and those who did not.</li>
+</ul></li>
+</ul>
+<p>In <a href="07-causality.html"><span>Chapter&nbsp;7</span></a> we demonstrated the magic of randomization and why randomized experiments allow you to make causal claims. In this chapter we have introduced you to the idea that random sampling allows you to make <em>generalizable</em> claims from your sample to a population, but in <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a> we will introduce and demonstrate the statistical theory for <em>why</em> this is true.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
