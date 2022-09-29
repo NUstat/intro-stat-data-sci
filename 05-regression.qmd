@@ -1449,7 +1449,7 @@ In this chapter, you've studied the term _basic regression_, where you fit model
 ::: {#exr-ch05-c01}
 Match the following graph with the most appropriate correlation coefficient.
 
-![](cor_-0.7.png){height="1.5in"}
+![](images/cor_-0.7.png){height="1.5in"}
 
 a) -1
 b) -0.9
