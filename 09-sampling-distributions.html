@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -272,7 +336,48 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#needed-packages" id="toc-needed-packages" class="nav-link active" data-scroll-target="#needed-packages">Needed packages</a></li>
+  <li><a href="#sec-parametric" id="toc-sec-parametric" class="nav-link" data-scroll-target="#sec-parametric"><span class="toc-section-number">9.1</span>  Distributions</a>
+  <ul class="collapse">
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="toc-section-number">9.1.1</span>  Normal Distribution</a></li>
+  <li><a href="#empirical-rule" id="toc-empirical-rule" class="nav-link" data-scroll-target="#empirical-rule"><span class="toc-section-number">9.1.2</span>  Empirical Rule</a></li>
+  <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization"><span class="toc-section-number">9.1.3</span>  Standardization</a></li>
+  <li><a href="#t-distribution" id="toc-t-distribution" class="nav-link" data-scroll-target="#t-distribution"><span class="toc-section-number">9.1.4</span>  T-Distribution</a></li>
+  <li><a href="#normal-vs-t" id="toc-normal-vs-t" class="nav-link" data-scroll-target="#normal-vs-t"><span class="toc-section-number">9.1.5</span>  Normal vs T</a></li>
+  <li><a href="#chi-squared-distribution" id="toc-chi-squared-distribution" class="nav-link" data-scroll-target="#chi-squared-distribution"><span class="toc-section-number">9.1.6</span>  Chi-squared Distribution</a></li>
+  </ul></li>
+  <li><a href="#repeated-sampling" id="toc-repeated-sampling" class="nav-link" data-scroll-target="#repeated-sampling"><span class="toc-section-number">9.2</span>  Repeated Sampling</a>
+  <ul class="collapse">
+  <li><a href="#sec-theory" id="toc-sec-theory" class="nav-link" data-scroll-target="#sec-theory"><span class="toc-section-number">9.2.1</span>  Theory of Repeated Samples</a></li>
+  <li><a href="#sec-sampling-activity" id="toc-sec-sampling-activity" class="nav-link" data-scroll-target="#sec-sampling-activity"><span class="toc-section-number">9.2.2</span>  Sampling Activity</a></li>
+  <li><a href="#sec-sampling-simulation" id="toc-sec-sampling-simulation" class="nav-link" data-scroll-target="#sec-sampling-simulation"><span class="toc-section-number">9.2.3</span>  Computer simulation</a></li>
+  </ul></li>
+  <li><a href="#sec-properties_s" id="toc-sec-properties_s" class="nav-link" data-scroll-target="#sec-properties_s"><span class="toc-section-number">9.3</span>  Properties of Sampling Distributions</a>
+  <ul class="collapse">
+  <li><a href="#sec-bias" id="toc-sec-bias" class="nav-link" data-scroll-target="#sec-bias"><span class="toc-section-number">9.3.1</span>  Mean of the sampling distribution</a></li>
+  <li><a href="#sec-precision" id="toc-sec-precision" class="nav-link" data-scroll-target="#sec-precision"><span class="toc-section-number">9.3.2</span>  Standard deviation of the sampling distribution</a></li>
+  <li><a href="#sec-conf" id="toc-sec-conf" class="nav-link" data-scroll-target="#sec-conf"><span class="toc-section-number">9.3.3</span>  Confusing concepts</a></li>
+  </ul></li>
+  <li><a href="#sec-commonstat" id="toc-sec-commonstat" class="nav-link" data-scroll-target="#sec-commonstat"><span class="toc-section-number">9.4</span>  Common statistics and their theoretical distributions</a>
+  <ul class="collapse">
+  <li><a href="#standard-errors-based-on-theory" id="toc-standard-errors-based-on-theory" class="nav-link" data-scroll-target="#standard-errors-based-on-theory"><span class="toc-section-number">9.4.1</span>  Standard Errors based on Theory</a></li>
+  </ul></li>
+  <li><a href="#sec-size" id="toc-sec-size" class="nav-link" data-scroll-target="#sec-size"><span class="toc-section-number">9.5</span>  Sample Size and Sampling Distributions</a>
+  <ul class="collapse">
+  <li><a href="#sec-eg1" id="toc-sec-eg1" class="nav-link" data-scroll-target="#sec-eg1"><span class="toc-section-number">9.5.1</span>  Sampling balls with different sized shovels</a></li>
+  </ul></li>
+  <li><a href="#sec-clt" id="toc-sec-clt" class="nav-link" data-scroll-target="#sec-clt"><span class="toc-section-number">9.6</span>  Central Limit Theorem (CLT)</a>
+  <ul class="collapse">
+  <li><a href="#clt-conditions" id="toc-clt-conditions" class="nav-link" data-scroll-target="#clt-conditions"><span class="toc-section-number">9.6.1</span>  CLT conditions</a></li>
+  <li><a href="#sec-clt-example" id="toc-sec-clt-example" class="nav-link" data-scroll-target="#sec-clt-example"><span class="toc-section-number">9.6.2</span>  CLT example</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="toc-section-number">9.7</span>  Conclusion</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/09-sampling-distributions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -293,21 +398,1379 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>In <a href="08-populations.html"><span>Chapter&nbsp;8</span></a> we introduced inferential statistics by discussing several ways to take a <em>random sample</em> from a population and that estimates calculated from random samples can be used to make inferences regarding parameter values in populations. In this chapter we focus on how these inferences can be made using the theory of <strong>repeated sampling</strong>.</p>
+<section id="needed-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed packages</h3>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(UsingR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-Under Construction
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+<section id="sec-parametric" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="sec-parametric"><span class="header-section-number">9.1</span> Distributions</h2>
+<p>Recall from <a href="02-visualization.html#sec-histograms"><span>Section&nbsp;2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center, how they vary, and the shape in terms of modality and symmetry/skew. <a href="#fig-distribution">Figure&nbsp;<span>9.1</span></a> shows examples of some common distribution shapes.</p>
+<div id="fig-distribution" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/distribution.png" class="img-fluid figure-img" data-out.width="100%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.1: Common distribution shapes</figcaption><p></p>
+</figure>
+</div>
+<!-- retrieved diagram from previous 202 slides need to cite?-->
+<p>When you visualize your population or sample data in a histogram, often times it will follow what is called a parametric distribution. Or simply put, a distribution with a fixed set of parameters. There are many known discrete and continuous distributions, however we will only focus on three common distributions:</p>
+<ul>
+<li>Normal distribution</li>
+<li>T-distribution</li>
+<li>Chi-squared distribution.</li>
+</ul>
+<section id="normal-distribution" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">9.1.1</span> Normal Distribution</h3>
+<p>The <strong>Normal Distribution</strong> is the most common and important of all distributions. It is characterized by two parameters: <span class="math inline">\(\mu\)</span>, which determines the center of the distribution, and <span class="math inline">\(\sigma\)</span> which determines the spread. In <a href="#fig-samplingdistribution-virtual">Figure&nbsp;<span>9.16</span></a>, the solid- and dashed-line curves have the same standard deviation (i.e.&nbsp;<span class="math inline">\(\sigma = 1\)</span>), so they have identical spread, but they have different means, so the dashed curve is simply shifted to the right to be centered at <span class="math inline">\(\mu = 2\)</span>. On the other hand, the solid- and dotted-line curves are centered around the same value (i.e.&nbsp;<span class="math inline">\(\mu = 0\)</span>), but the dotted curve has a larger standard deviation and is therefore more spread out. The solid line is a special case of the Normal distribution called the <strong>Standard Normal distribution</strong>, which has mean 0 and standard deviation 1. Importantly, for all possible values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the Normal distribution is <strong>symmetric</strong> and <strong>unimodal</strong>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-normaldist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-normaldist-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.2: Normal distribution</figcaption><p></p>
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Currently working on content transfer from previous version of the book.</p>
+</div>
+<p>Normally distributed random variables arise naturally in many contexts. For examples, IQ, birth weight, height, shoe size, SAT scores, and the sum of two dice all tend to be Normally distributed. Let’s consider the birth weight of babies from the <code>babies</code> data frame included in the <code>UsingR</code> package. We will use a histogram to visualize the distribution of weight for babies. Note that it is often difficult to obtain population data, for the sake of this example let’s assume we have the entire population.</p>
+<!--cite usingr.-->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>babies <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_weight =</span> <span class="fu">mean</span>(wt),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_weight =</span> <span class="fu">sd</span>(wt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  mean_weight sd_weight
+        &lt;dbl&gt;     &lt;dbl&gt;
+1        120.      18.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(babies, <span class="fu">aes</span>(<span class="at">x=</span>wt))<span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>, <span class="at">color=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Birth Weight in Ounces"</span>, <span class="at">x=</span><span class="st">"weight"</span>)<span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
+</div>
+<p>Visually we can see that the distribution is bell-shaped, that is, unimodal and approximately symmetric. It clearly resembles a Normal distribution from the shape aspect with a mean weight of 119.6 ounces and standard deviation of 18.2 ounces. However, not all bell shaped distributions are Normally distributed.</p>
+<p>The Normal distribution has a very convenient property that says approximately 68%, 95%, and 99.7% of data fall within 1, 2, and 3 standard deviations of the mean, respectively. How can we confirm that the disbursement of birth weights adheres to this property? That would be difficult to visually check with a histogram. We could manually calculate the actual proportion of data that is within one, two, and three standard deviations of the mean, however that can be tedious. Luckily, a convenient tool exists for confirming that the disbursement of data is Normally distributed called a QQ plot, or quantile-quantile plot. A QQ plot is a scatterplot created by plotting two sets of quantiles (percentiles) against one another. That is, it plots the quantiles from our sample data against the theoretical quantiles of a Normal distribution. If the data really is Normally distributed, the sample (data) quantiles should match-up with the theoretical quantiles. The data should match up with theory! Graphically we should see the points fall along the line of identity, where data matches theory. Let’s see if the QQ plot of birth weights suggest that the distribution is Normal.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(babies, <span class="fu">aes</span>(<span class="at">sample =</span> wt)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>(<span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Normal Q-Q Plot"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Theoretical Quantiles"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sample Quantiles"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The points in the QQ plot appear to fall along the line of identity, for the most part. Notice points at each end deviate slightly from the line at the. Meaning sample quartiles deviate more from theoretical quartiles at the tails. The QQ plot is suggesting that our sample data has more extreme data in the tails than an exact Normal distribution would suggest. Similar to a histogram this is a visual check and not an airtight proof. Given that our birth weight data is unimodal, symmetric, and the points of the QQ plot fall close enough to the line of identity, we can say the data is approximately Normally distributed. It is common to drop the approximately and say Normally distributed.</p>
+</section>
+<section id="empirical-rule" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="empirical-rule"><span class="header-section-number">9.1.2</span> Empirical Rule</h3>
+<div id="fig-empirical-rule2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/empirical_rule.png" class="img-fluid figure-img" data-out.width="90%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.3: Empirical Rule: property of the Normal Distribution</figcaption><p></p>
+</figure>
+</div>
+<!-- retrieved diagram from previous 202 slides need to cite?-->
+<p>The property that approximately 68%, 95%, and 99.7% of data falls within 1, 2, and 3 standard deviations of the mean, respectively is known as the Empirical Rule. <a href="#fig-empirical-rule2">Figure&nbsp;<span>9.3</span></a> displays this phenomenon. Note this is a property of the Normal distribution in general, for all values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p>If you were to plot the distribution of a Normally distributed random variable, this means you would expect:</p>
+<ul>
+<li>Approximately 68% of values to fall between <span class="math inline">\(\mu-\sigma\)</span> and <span class="math inline">\(\mu+\sigma\)</span></li>
+<li>Approximately 95% of values to fall between <span class="math inline">\(\mu-2\sigma\)</span> and <span class="math inline">\(\mu+2\sigma\)</span></li>
+<li>Approximately 99.7% of values to fall between <span class="math inline">\(\mu-3\sigma\)</span> and <span class="math inline">\(\mu+3\sigma\)</span></li>
+</ul>
+<p>Let’s continue to consider our birth weight data from the <code>babies</code> data set. We calculated above a mean <span class="math inline">\(\mu= 119.6\)</span> ounces and standard deviation <span class="math inline">\(\sigma=18.2\)</span> ounces. Remember, we are assuming this is population data for this example. Using the empirical rule we expect 68% of data to fall between 101.4 and 137.8 ounces; 95% of data to fall between 83.2 and 155.6 ounces; and 99.7% of data to fall between 65 and 174.2 ounces. It is important to note that the total area under the distribution curve is 1 or 100%.</p>
+<p>We can validate the empirical rule by comparing it to the actual values.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>babies <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">observed_1_sd =</span> <span class="fu">ifelse</span>(<span class="fl">101.4</span> <span class="sc">&lt;</span> wt <span class="sc">&amp;</span> wt<span class="sc">&lt;</span> <span class="fl">137.8</span> ,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">observed_2_sd =</span> <span class="fu">ifelse</span>(<span class="fl">83.2</span> <span class="sc">&lt;</span> wt <span class="sc">&amp;</span> wt<span class="sc">&lt;</span> <span class="fl">155.6</span> ,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">observed_3_sd =</span> <span class="fu">ifelse</span>(<span class="dv">65</span> <span class="sc">&lt;</span> wt <span class="sc">&amp;</span> wt<span class="sc">&lt;</span> <span class="fl">174.2</span> ,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate actual proportion within 1, 2, and 3 sd</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">actual_1_sd =</span> <span class="fu">mean</span>(observed_1_sd),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">actual_2_sd =</span> <span class="fu">mean</span>(observed_2_sd),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">actual_3_sd =</span> <span class="fu">mean</span>(observed_3_sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  actual_1_sd actual_2_sd actual_3_sd
+        &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+1       0.697       0.947       0.994</code></pre>
+</div>
+</div>
+<p>We can see that the actual proportion of data within 1 standard deviation is 69.6% compared to the expected 68%; within 2 standard deviations is 94.7% compared to the expected 95%; within 3 standard deviations is 99.4% compared to the expected 99.7%. Since all proportions are reasonably close, we find that the empirical rule is a very convenient approximation.</p>
+</section>
+<section id="standardization" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="standardization"><span class="header-section-number">9.1.3</span> Standardization</h3>
+<p>A special case of the Normal distribution is called the <strong>Standard Normal distribution</strong>, which has mean 0 and standard deviation 1. Any Normally distributed random variable can be <strong>standardized</strong>, or in other words converted into a Standard Normal distribution using the formula:</p>
+<p><span class="math display">\[STAT = \frac{x-\mu}{\sigma}.\]</span></p>
+<p><a href="#fig-standardization1">Figure&nbsp;<span>9.4</span></a> demonstrates the relationship between a Normally distributed random variable, <span class="math inline">\(X\)</span>, and its standardized statistic.</p>
+<div id="fig-standardization1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/standardization.png" class="img-fluid figure-img" data-out.width="90%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.4: Converting normally distributed data to standard normal.</figcaption><p></p>
+</figure>
+</div>
+<p>In some literature, STAT is called a Z-score or test statistic. Standardization is a useful statistical tool as it allows us to put measures that are on different scales all onto the same scale. For example, if we have a STAT value of 2.5, we know it will fall fairly far out in the right tail of the distribution. Or if we have a STAT value of -0.5, we know it falls slightly to the left of center. This is displayed in <a href="#fig-STAT-values">Figure&nbsp;<span>9.5</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-STAT-values" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-STAT-values-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.5: N(0,1) example values: STAT = -0.5, STAT = 2.5</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Continuing our example of babies birth weight, let’s observe the relationship between weight and the standardized statistic, STAT.</p>
+<div id="fig-standardization2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/standardization2.png" class="img-fluid figure-img" data-out.width="90%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.6: Standardized birth weight distribution.</figcaption><p></p>
+</figure>
+</div>
+<p>What if we wanted to know the percent of babies that weigh less than 95 ounces at birth? Start by converting the value 95 to STAT.</p>
+<p><span class="math display">\[STAT = \frac{x-\mu}{\sigma} = \frac{95-119.6}{18.2}= -1.35\]</span> Meaning that 95 ounces is 1.35 standard deviations below the mean. The standardized statistic already gives us an idea for a range of babies that weight less than 95 ounces because it falls somewhere between -2 and -1 standard deviations. Based on the empirical rule we know this probability should be between 2.5% and 16%, see <a href="#fig-standardization3">Figure&nbsp;<span>9.7</span></a> for details.</p>
+<div id="fig-standardization3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/standardization3.png" class="img-fluid figure-img" data-out.width="90%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.7: Standardized birth weight distribution.</figcaption><p></p>
+</figure>
+</div>
+<p>We can calculate the exact probability of a baby weighing less than 95 ounces using the <code>pnorm()</code> function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">95</span>, <span class="at">mean=</span><span class="fl">119.6</span>, <span class="at">sd=</span><span class="fl">18.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0882</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="sc">-</span><span class="fl">1.35</span>, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0885</code></pre>
+</div>
+</div>
+<p>There is an 8.8% chance a baby weights less than 95 ounces. Notice that you can use either the data value or standardized value, the two functions give you the same results and any difference is simply due to rounding. By default, <code>pnorm()</code> calculates the area less than or to the left of a specified value.</p>
+<p>What if instead we want to calculate a value based on a percent. For example, 25% of babies weigh less than what weight? This is essentially the reverse of our previous question.</p>
+<div id="fig-standardization4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/standardization4.png" class="img-fluid figure-img" data-out.width="90%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.8: Standardized birth weight distribution.</figcaption><p></p>
+</figure>
+</div>
+<p>We will use the function <code>qnorm()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.25</span>, <span class="at">mean=</span><span class="fl">119.6</span>, <span class="at">sd=</span><span class="fl">18.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 107</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.25</span>, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.674</code></pre>
+</div>
+</div>
+<p>This returns the weight of 107.3 or STAT of -0.67. Meaning 25% of babies weigh less than 107.3 ounces or in other words are 0.67 standard deviations below the mean. Notice by default in <code>qnorm()</code> you are specifying the area less than or to the left of the value. If you need to calculate the area greater than a value or use a probability that is greater than a value, you can specify the upper tail by adding on the statement <code>lower.tail=FALSE</code>.</p>
+</section>
+<section id="t-distribution" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="t-distribution"><span class="header-section-number">9.1.4</span> T-Distribution</h3>
+<p>The <strong>t-distribution</strong> is a type of probability distribution that arises while sampling a normally distributed population when the sample size is small and the standard deviation of the population is unknown. The <strong>t-distribution</strong> (denoted <span class="math inline">\(t(df)\)</span>) depends on one parameter, <span class="math inline">\(df\)</span>, and has a mean of 0 and a standard deviation of <span class="math inline">\(\sqrt{\frac{df}{df-2}}\)</span>. Degrees of freedom are dependent on the sample size and statistic (e.g.&nbsp;<span class="math inline">\(df = n - 1\)</span>).</p>
+<p>In general, the t-distribution has the same shape as the Standard Normal distribution (symmetric, unimodal), but it has <strong>heavier tails</strong>. As sample size increases (and therefore degrees of freedom increases), the t-distribution becomes a very close approximation to the Normal distribution.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-t-dist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-t-dist-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.9: t-distribution with example 95% cutoff values</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Because the exact shape of the t-distribution depends on the sample size, we can’t define one nice rule like the Empirical Rule to know which “cutoff” values correspond to 95% of the data, for example. If <span class="math inline">\(df = 30\)</span>, for example, it can be shown that 95% of the data will fall between -2.04 and 2.04, but if <span class="math inline">\(df = 2\)</span>, 95% of the data will fall between -4.3 and 4.3. This is what we mean by the t-distribution having “heavier tails”; more of the observations fall farther out in the tails of the distribution, compared to the Normal distribution.</p>
+<p>Similar to the Normal distribution we can calculate probabilities and test statistics from a t-distribution using the <code>pt()</code> and <code>qt()</code> function, respectively. You must specify the <code>df</code> parameter which recall is a function of sample size, <span class="math inline">\(n\)</span>, and dependent on the statistic. We will learn more about the <code>df</code> of different statistics in <a href="#sec-commonstat"><span>Section&nbsp;9.4</span></a>.</p>
+</section>
+<section id="normal-vs-t" class="level3" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="normal-vs-t"><span class="header-section-number">9.1.5</span> Normal vs T</h3>
+<p>The Normal distribution and t-distribution are very closely related, how do we know when to use which one? The t-distribution is used when the standard deviation of the population, <span class="math inline">\(\sigma\)</span>, is unknown. The normal distribution is used when the population standard deviation, <span class="math inline">\(\sigma\)</span>, is known. The fatter tail in the t-distribution allows us to take into account the uncertainty in not knowing the true population standard deviation.</p>
+</section>
+<section id="chi-squared-distribution" class="level3" data-number="9.1.6">
+<h3 data-number="9.1.6" class="anchored" data-anchor-id="chi-squared-distribution"><span class="header-section-number">9.1.6</span> Chi-squared Distribution</h3>
+<p>The Chi-squared distribution is unimodal but skewed right. The Chi-squared distribution depends on one parameter <span class="math inline">\(df\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="repeated-sampling" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="repeated-sampling"><span class="header-section-number">9.2</span> Repeated Sampling</h2>
+<p>A vast majority of the time we do not have data for the entire population of interest. Instead we take a sample from the population and use this sample to make generalizations and inferences about the population. How certain can we be that our sample estimate is close to the true population? In order to answer that question we must first delve into a theoretical framework, and use the theory of repeated sampling to develop the Cental Limit Theorem (CLT) and confidence intervals for our estimates.</p>
+<section id="sec-theory" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="sec-theory"><span class="header-section-number">9.2.1</span> Theory of Repeated Samples</h3>
+<p>Imagine that you want to know the average age of individuals at a football game, so you take a random sample of <span class="math inline">\(n=100\)</span> people. In this sample, you find the average age is <span class="math inline">\(\bar{x} = 28.2\)</span>. This average age is an <strong>estimate</strong> of the population average age <span class="math inline">\(\mu\)</span>. Does this mean that the population mean is <span class="math inline">\(\mu = 28.2\)</span>? The sample was selected randomly, so inferences are straightforward, right?</p>
+<p>It’s not this simple! Statisticians approach this problem by focusing not on the sample in hand, but instead on <em>possible other samples</em>. We will call this <strong>counter-factual thinking</strong>. This means that in order to understand the relationship between a sample estimate we are able to compute in our data and the population parameter, we have to understand <em>how results might differ if instead of our sample, we had another possible (equally likely) sample</em>. That is,</p>
+<ul>
+<li>How would our estimate of the average age change if instead of these <span class="math inline">\(n = 100\)</span> individuals we had randomly selected a <em>different</em> <span class="math inline">\(n = 100\)</span> individuals?</li>
+</ul>
+<p>While it is not possible to travel back in time for this particular question, we could instead generate a way to study this exact question by creating a <strong>simulation</strong>. We will discuss simulations further in <a href="#sec-sampling-activity">Subsections&nbsp;<span>9.2.2</span></a> and <a href="#sec-sampling-simulation"><span>9.2.3</span></a> and actually conduct one, but for now, let’s just do a thought experiment. Imagine that we create a hypothetical situation in which we <em>know</em> the outcome (e.g., age) for every individual or observation in a population. As a result, we know what the population parameter value is (e.g., <span class="math inline">\(\mu = 32.4\)</span>). Then we would randomly select a sample of <span class="math inline">\(n = 100\)</span> observations and calculate the sample mean (e.g.&nbsp;<span class="math inline">\(\bar{x} = 28.2\)</span>). And then we could <strong>repeat</strong> this sampling process – each time selecting a different possible sample of <span class="math inline">\(n = 100\)</span> – many, many, many times (e.g., <span class="math inline">\(10,000\)</span> different samples of <span class="math inline">\(n = 100\)</span>), each time calculating the sample mean. At the end of this process, we would then have many different estimates of the population mean, each equally likely.</p>
+<p>We do this type of simulation in order to understand how close any one sample’s estimate is to the true population mean. For example, it may be that we are usually within <span class="math inline">\(\pm 2\)</span> years? Or maybe <span class="math inline">\(\pm 5\)</span> years? We can ask further questions, like: on average, is the sample mean the same as the population mean?</p>
+<p>It is important to emphasize here that this process is <em>theoretical</em>. In real life, you do not know the values for all individuals or observations in a population. (If you did, why sample?) And in real life, you will not take repeated samples. Instead, you will have in front of you a <strong>single sample</strong> that you will need to use to make inferences to a population. What simulation exercises provide are properties that can help you understand <em>how far off the sample estimate you have in hand might be for the population parameter you care about</em>.</p>
+</section>
+<section id="sec-sampling-activity" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="sec-sampling-activity"><span class="header-section-number">9.2.2</span> Sampling Activity</h3>
+<p>In the previous section, we provided an overview of repeated sampling and why the theoretical exercise is useful for understanding how to make inferences. This way of thinking, however, can be hard in the abstract.</p>
+<p style="font-family: times, serif; font-size:16pt; font-style:italic">
+</p><p><strong>What proportion of this bowl’s balls are red?</strong></p>
+<p></p>
+<p>In this section, we provide a concrete example, based upon a classroom activity completed in an introductory statistics class with 33 students. In the class, there is a large bowl of balls that contains red and white balls. <strong>Importantly, we know that 37.5% of the balls are red (someone counted this!).</strong></p>
+<div id="fig-sampling-exercise-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/sampling_bowl_1.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.10: A bowl with red and white balls.</figcaption><p></p>
+</figure>
+</div>
+<p>The goal of the activity is to understand what would happen if we didn’t actually count all of the red balls (a census), but instead estimated the proportion that are red based upon a smaller random sample (e.g., n = 50).</p>
+<p style="font-family: times, serif; font-size:16pt; font-style:italic">
+</p><p><strong>Taking one random sample</strong></p>
+<p></p>
+<p>We begin by taking a random sample of n = 50 balls. To do so, we insert a shovel into the bowl, as seen in <a href="#fig-sampling-exercise-2">Figure&nbsp;<span>9.11</span></a>.</p>
+<div id="fig-sampling-exercise-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/sampling_bowl_2.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.11: Inserting a shovel into the bowl.</figcaption><p></p>
+</figure>
+</div>
+<p>Using the shovel, we remove a number of balls as seen in <a href="#fig-sampling-exercise-3">Figure&nbsp;<span>9.12</span></a>.</p>
+<div id="fig-sampling-exercise-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/sampling_bowl_3_cropped.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.12: Fifty balls from the bowl.</figcaption><p></p>
+</figure>
+</div>
+<p>Observe that 17 of the balls are red. There are a total of 5 x 10 = 50 balls, and thus 0.34 = 34% of the shovel’s balls are red. We can view the proportion of balls that are red <em>in this shovel</em> as a guess of the proportion of balls that are red <em>in the entire bowl</em>. While not as exact as doing an exhaustive count, our guess of 34% took much less time and energy to obtain.</p>
+<p style="font-family: times, serif; font-size:16pt; font-style:italic">
+</p><p><strong>Everyone takes a random sample (i.e., repeating this 33 times)</strong></p>
+<p></p>
+<p>In our random sample, we estimated the proportion of red balls to be 34%. But what if we were to have gotten a different random sample? Would we remove exactly 17 red balls again? In other words, would our guess at the proportion of the bowl’s balls that are red be exactly 34% again? Maybe? What if we repeated this exercise several times? Would we obtain exactly 17 red balls each time? In other words, would our guess at the proportion of the bowl’s balls that are red be exactly 34% every time? Surely not.</p>
+<p>To explore this, every student in the introductory statistics class repeated the same activity. Each person:</p>
+<ul>
+<li>Used the shovel to remove 50 balls,</li>
+<li>Counted the number of red balls,</li>
+<li>Used this number to compute the proportion of the 50 balls they removed that are red,</li>
+<li>Returned the balls into the bowl, and</li>
+<li>Mixed the contents of the bowl a little to not let a previous group’s results influence the next group’s set of results.</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><img src="images/sampling/tactile_2_a.jpg" class="img-fluid" data-out.width="20%"></td>
+<td><img src="images/sampling/tactile_2_b.jpg" class="img-fluid" data-out.width="20%"></td>
+<td><img src="images/sampling/tactile_2_c.jpg" class="img-fluid" data-out.width="20%"></td>
+</tr>
+</tbody>
+</table>
+<p>However, before returning the balls into the bowl, they are going to mark the proportion of the 50 balls they removed that are red in a histogram as seen in <a href="#fig-sampling-exercise-4">Figure&nbsp;<span>9.13</span></a>.</p>
+<div id="fig-sampling-exercise-4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/sampling/tactile_3_a.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.13: Constructing a histogram of proportions.</figcaption><p></p>
+</figure>
+</div>
+<p>Recall from <a href="02-visualization.html#sec-histograms"><span>Section&nbsp;2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center and in particular how they vary. The resulting hand-drawn histogram can be seen in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>.</p>
+<div id="fig-sampling-exercise-5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/sampling/tactile_3_c.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.14: Hand-drawn histogram of 33 proportions.</figcaption><p></p>
+</figure>
+</div>
+<p>Observe the following about the histogram in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>:</p>
+<ul>
+<li>At the low end, one group removed 50 balls from the bowl with proportion between 0.20 = 20% and 0.25 = 25%</li>
+<li>At the high end, another group removed 50 balls from the bowl with proportion between 0.45 = 45% and 0.5 = 50% red.</li>
+<li>However the most frequently occurring proportions were between 0.30 = 30% and 0.35 = 35% red, right in the middle of the distribution.</li>
+<li>The shape of this distribution is somewhat bell-shaped.</li>
+</ul>
+<p>Let’s construct this same hand-drawn histogram in R using your data visualization skills that you honed in <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>. Each of the 33 student’s proportion red is saved in a data frame <code>tactile_prop_red</code> which is included in the <code>moderndive</code> package you loaded earlier.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tactile_prop_red</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(tactile_prop_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s display only the first 10 out of 33 rows of <code>tactile_prop_red</code>’s contents in <a href="#tbl-tactilered">Table&nbsp;<span>9.1</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-tactilered" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.1: First 10 out of 33 groups’ proportion of 50 balls that are red.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">student</th>
+<th style="text-align: right;">replicate</th>
+<th style="text-align: right;">red_balls</th>
+<th style="text-align: right;">prop_red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ilyas</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Morgan</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Martin</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clark</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Riddhi</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Andrew</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Julia</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rachel</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Daniel</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Josh</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.34</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Observe for each <code>student</code> we have their names, the number of <code>red_balls</code> they obtained, and the corresponding proportion out of 50 balls that were red named <code>prop_red</code>. Observe, we also have a variable <code>replicate</code> enumerating each of the 33 students; we chose this name because each row can be viewed as one instance of a replicated activity: using the shovel to remove 50 balls and computing the proportion of those balls that are red.</p>
+<p>We visualize the distribution of these 33 proportions using a <code>geom_histogram()</code> with <code>binwidth = 0.05</code> in <a href="#fig-samplingdistribution-tactile">Figure&nbsp;<span>9.15</span></a>, which is appropriate since the variable <code>prop_red</code> is numerical. This computer-generated histogram matches our hand-drawn histogram from the earlier <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tactile_prop_red, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Proportion of 50 balls that were red"</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribution of 33 proportions red"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-samplingdistribution-tactile" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-tactile-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.15: Distribution of 33 proportions based on 33 samples of size 50</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- Albert will make sure that the chalkboard histogram matches up 
+with the ggplot2 histogram so that `boundary` isn't needed. -->
+<p style="font-family: times, serif; font-size:16pt; font-style:italic">
+</p><p><strong>What are we doing here?</strong></p>
+<p></p>
+<p>We just worked through a <strong>thought experiment</strong> in which we imagined 33 different realities that could have occurred. In each, a different random sample of size 50 balls was selected and the proportion of balls that were red was calculated, providing an <strong>estimate of the true proportion</strong> of balls that are red in the entire bowl. We then compared these estimates to the true parameter value.</p>
+<p>We found that there is variation in these estimates – what we call <strong>sampling variability</strong> – and that while the estimates are somewhat near to the population parameter, they are not typically equal to the population parameter value. That is, in some of these realities, the sample estimate was larger than the population value, while in others, the sample estimate was smaller.</p>
+<p>But why did we do this? It may seem like a strange activity, since we already know the value of the population proportion. Why do we need to imagine these other realities? By understanding how close (or far) a sample estimate can be from a population parameter <strong>in a situation when we know the true value of the parameter</strong>, we are able to deduce properties of the estimator more generally, which we can use in real-life situations in which we do not know the value of the population parameter and have to estimate it.</p>
+<p>Unfortunately, the thought exercise we just completed wasn’t very precise – certainly there are more than 33 possible alternative realities and samples that we could have drawn. Put another way, if we really want to understand properties of an estimator, we need to repeat this activity <strong>thousands</strong> of times. Doing this by hand – as illustrated in this section – would take forever. For this reason, in <a href="#sec-sampling-simulation"><span>Section&nbsp;9.2.3</span></a> we’ll extend the hands-on sampling activity we just performed by using a <em>computer simulation</em>.</p>
+<p>Using a computer, not only will we be able to repeat the hands-on activity a very large number of times, but it will also allow us to use shovels with different numbers of slots than just 50. The purpose of these simulations is to develop an understanding of two key concepts relating to repeated sampling: understanding the concept of <strong>sampling variation</strong> and the role that <strong>sample size</strong> plays in this variation.</p>
+</section>
+<section id="sec-sampling-simulation" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="sec-sampling-simulation"><span class="header-section-number">9.2.3</span> Computer simulation</h3>
+<p>In the previous <a href="#sec-sampling-activity"><span>Section&nbsp;9.2.2</span></a>, we began imagining other realities and the other possible samples we could have gotten other than our own. To do so, we read about an activity in which a physical bowl of balls and a physical shovel were used by 33 members of a statistics class. We began with this approach so that we could develop a firm understanding of the root ideas behind the theory of repeated sampling.</p>
+<p>In this section, we’ll extend this activity to include 10,000 other realities and possible samples using a computer. We focus on 10,000 hypothetical samples since it is enough to get a strong understanding of the properties of an estimator, while remaining computationally simple to implement.</p>
+<p style="font-family: times, serif; font-size:16pt; font-style:italic">
+</p><p><strong>Using the virtual shovel once</strong></p>
+<p></p>
+<p>Let’s start by performing the virtual analogue of the tactile sampling simulation we performed in <a href="#sec-sampling-activity"><span>Section&nbsp;9.2.2</span></a>. We first need a virtual analogue of the bowl seen in <a href="#fig-sampling-exercise-1">Figure&nbsp;<span>9.10</span></a>. To this end, we included a data frame <code>bowl</code> in the <code>moderndive</code> package whose rows correspond exactly with the contents of the actual bowl.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>bowl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,400 × 2
+   ball_ID color
+     &lt;int&gt; &lt;chr&gt;
+ 1       1 white
+ 2       2 white
+ 3       3 white
+ 4       4 red  
+ 5       5 white
+ 6       6 white
+ 7       7 red  
+ 8       8 white
+ 9       9 red  
+10      10 white
+# … with 2,390 more rows</code></pre>
+</div>
+</div>
+<p>Observe in the output that <code>bowl</code> has 2400 rows, telling us that the bowl contains 2400 equally-sized balls. The first variable <code>ball_ID</code> is used merely as an “identification variable” for this data frame; none of the balls in the actual bowl are marked with numbers. The second variable <code>color</code> indicates whether a particular virtual ball is red or white. View the contents of the bowl in RStudio’s data viewer and scroll through the contents to convince yourselves that <code>bowl</code> is indeed a virtual version of the actual bowl in <a href="#fig-sampling-exercise-1">Figure&nbsp;<span>9.10</span></a>.</p>
+<p>Now that we have a virtual analogue of our bowl, we now need a virtual analogue for the shovel seen in <a href="#fig-sampling-exercise-2">Figure&nbsp;<span>9.11</span></a>; we’ll use this virtual shovel to generate our virtual random samples of 50 balls. We’re going to use the <code>rep_sample_n()</code> function included in the <code>moderndive</code> package. This function allows us to take <code>rep</code>eated, or <code>rep</code>licated, <code>samples</code> of size <code>n</code>. Run the following and explore <code>virtual_shovel</code>’s contents in the RStudio viewer.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_shovel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s display only the first 10 out of 50 rows of <code>virtual_shovel</code>’s contents in <a href="#tbl-virtual-shovel">Table&nbsp;<span>9.2</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-virtual-shovel" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.2: First 10 sampled balls of 50 in virtual sample</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">replicate</th>
+<th style="text-align: right;">ball_ID</th>
+<th style="text-align: right;">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1970</td>
+<td style="text-align: right;">white</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">842</td>
+<td style="text-align: right;">red</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2287</td>
+<td style="text-align: right;">white</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">599</td>
+<td style="text-align: right;">white</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">white</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">846</td>
+<td style="text-align: right;">red</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">390</td>
+<td style="text-align: right;">red</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">344</td>
+<td style="text-align: right;">white</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">910</td>
+<td style="text-align: right;">white</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1485</td>
+<td style="text-align: right;">white</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The <code>ball_ID</code> variable identifies which of the balls from <code>bowl</code> are included in our sample of 50 balls and <code>color</code> denotes its color. However what does the <code>replicate</code> variable indicate? In <code>virtual_shovel</code>’s case, <code>replicate</code> is equal to 1 for all 50 rows. This is telling us that these 50 rows correspond to a first repeated/replicated use of the shovel, in our case our first sample. We’ll see below when we “virtually” take 10,000 samples, <code>replicate</code> will take values between 1 and 10,000. Before we do this, let’s compute the proportion of balls in our virtual sample of size 50 that are red using the <code>dplyr</code> data wrangling verbs you learned in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>. Let’s breakdown the steps individually:</p>
+<p>First, for each of our 50 sampled balls, identify if it is red using a test for equality using <code>==</code>. For every row where <code>color == "red"</code>, the Boolean <code>TRUE</code> is returned and for every row where <code>color</code> is not equal to <code>"red"</code>, the Boolean <code>FALSE</code> is returned. Let’s create a new Boolean variable <code>is_red</code> using the <code>mutate()</code> function from <a href="03-wrangling.html#sec-mutate"><span>Section&nbsp;3.5</span></a>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_red =</span> (color <span class="sc">==</span> <span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 4
+# Groups:   replicate [1]
+   replicate ball_ID color is_red
+       &lt;int&gt;   &lt;int&gt; &lt;chr&gt; &lt;lgl&gt; 
+ 1         1    1970 white FALSE 
+ 2         1     842 red   TRUE  
+ 3         1    2287 white FALSE 
+ 4         1     599 white FALSE 
+ 5         1     108 white FALSE 
+ 6         1     846 red   TRUE  
+ 7         1     390 red   TRUE  
+ 8         1     344 white FALSE 
+ 9         1     910 white FALSE 
+10         1    1485 white FALSE 
+# … with 40 more rows</code></pre>
+</div>
+</div>
+<p>Second, we compute the number of balls out of 50 that are red using the <code>summarize()</code> function. Recall from <a href="03-wrangling.html#sec-summarize"><span>Section&nbsp;3.3</span></a> that <code>summarize()</code> takes a data frame with many rows and returns a data frame with a single row containing summary statistics that you specify, like <code>mean()</code> and <code>median()</code>. In this case we use the <code>sum()</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_red =</span> (color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_red =</span> <span class="fu">sum</span>(is_red))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  replicate num_red
+      &lt;int&gt;   &lt;int&gt;
+1         1      12</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Why does this work? Because R treats <code>TRUE</code> like the number <code>1</code> and <code>FALSE</code> like the number <code>0</code>. So summing the number of <code>TRUE</code>’s and <code>FALSE</code>’s is equivalent to summing <code>1</code>’s and <code>0</code>’s, which in the end counts the number of balls where <code>color</code> is <code>red</code>. In our case, 12 of the 50 balls were red.</p>
+<p>Third and last, we compute the proportion of the 50 sampled balls that are red by dividing <code>num_red</code> by 50:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_red =</span> color <span class="sc">==</span> <span class="st">"red"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_red =</span> <span class="fu">sum</span>(is_red)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> num_red <span class="sc">/</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  replicate num_red prop_red
+      &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
+1         1      12     0.24</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>In other words, this “virtual” sample’s balls were 24% red. Let’s make the above code a little more compact and succinct by combining the first <code>mutate()</code> and the <code>summarize()</code> as follows:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_red =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> num_red <span class="sc">/</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  replicate num_red prop_red
+      &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
+1         1      12     0.24</code></pre>
+</div>
+</div>
+<p>Great! 24% of <code>virtual_shovel</code>’s 50 balls were red! So based on this particular sample, our guess at the proportion of the <code>bowl</code>’s balls that are red is 24%. But remember from our earlier tactile sampling activity that if we repeated this sampling, we would not necessarily obtain a sample of 50 balls with 24% of them being red again; there will likely be some variation. In fact in <a href="#tbl-tactilered">Table&nbsp;<span>9.1</span></a> we displayed 33 such proportions based on 33 tactile samples and then in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a> we visualized the distribution of the 33 proportions in a histogram. Let’s now perform the virtual analogue of having 10,000 students use the sampling shovel!</p>
+<p style="font-family: times, serif; font-size:16pt; font-style:italic">
+</p><p><strong>Using the virtual shovel 10,000 times</strong></p>
+<p></p>
+<p>Recall that in our tactile sampling exercise in <a href="#sec-sampling-activity">Subsection&nbsp;<span>9.2.2</span></a> we had 33 students each use the shovel, yielding 33 samples of size 50 balls, which we then used to compute 33 proportions. In other words we repeated/replicated using the shovel 33 times. We can perform this repeated/replicated sampling virtually by once again using our virtual shovel function <code>rep_sample_n()</code>, but by adding the <code>reps = 10000</code> argument, indicating we want to repeat the sampling 10,000 times. Be sure to scroll through the contents of <code>virtual_samples</code> in RStudio’s viewer.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>virtual_samples <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Observe that while the first 50 rows of <code>replicate</code> are equal to <code>1</code>, the next 50 rows of <code>replicate</code> are equal to <code>2</code>. This is telling us that the first 50 rows correspond to the first sample of 50 balls while the next 50 correspond to the second sample of 50 balls. This pattern continues for all <code>reps = 10000</code> replicates and thus <code>virtual_samples</code> has 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows.</p>
+<p>Let’s now take the data frame <code>virtual_samples</code> with 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows corresponding to 10,000 samples of size 50 balls and compute the resulting 10,000 proportions red. We’ll use the same <code>dplyr</code> verbs as we did in the previous section, but this time with an additional <code>group_by()</code> of the <code>replicate</code> variable. Recall from <a href="03-wrangling.html#sec-groupby"><span>Section&nbsp;3.4</span></a> that by assigning the grouping variable “meta-data” before <code>summarizing()</code>, we’ll obtain 10,000 different proportions red:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>virtual_prop_red <span class="ot">&lt;-</span> virtual_samples <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">red =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> red <span class="sc">/</span> <span class="dv">50</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_prop_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s display only the first 10 out of 10,000 rows of <code>virtual_prop_red</code>’s contents in <a href="#tbl-tactilered">Table&nbsp;<span>9.1</span></a>. As one would expect, there is variation in the resulting <code>prop_red</code> proportions red for the first 10 out 10,000 repeated/replicated samples.</p>
+<!-- Albert will remove `boundary` here on updates to chalkboard image. -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-virtualred" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.3: First 10 out of 33 virtual proportion of 50 balls that are red.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">replicate</th>
+<th style="text-align: right;">red</th>
+<th style="text-align: right;">prop_red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">0.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.48</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.28</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Let’s visualize the distribution of these 10,000 proportions red based on 10,000 virtual samples using a histogram with <code>binwidth = 0.05</code> in <a href="#fig-samplingdistribution-virtual">Figure&nbsp;<span>9.16</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virtual_prop_red, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Proportion of 50 balls that were red"</span>, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribution of 10,000 proportions red"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-samplingdistribution-virtual" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-virtual-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.16: Distribution of 10,000 proportions based on 10,000 samples of size 50</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe that every now and then, we obtain proportions as low as between 20% and 25%, and others as high as between 55% and 60%. These are rare however. However, the most frequently occurring proportions red out of 50 balls were between 35% and 40%. Why do we have these differences in proportions red? Because of <em>sampling variation</em>.</p>
+<p>As a wrap up to this section, let’s reflect now on what we learned. First, we began with a situation in which we know the right answer – that the true proportion of red balls in the bowl (population) is 0.375 – and then we <strong>simulated</strong> drawing a random sample of size n = 50 balls and <strong>estimating</strong> the proportion of balls that are red from this sample. We then <strong>repeated</strong> this simulation another 9,999 times, each time randomly selecting a different sample and estimating the population proportion from the sample data. At the end, we collected 10,000 estimates of the proportion of balls that are red in the bowl (population) and created a histogram showing the distribution of these estimates. Just as in the case with the 33 samples of balls selected randomly by students (in Section 9.2), the resulting distribution indicates that there is <strong>sampling variability</strong> – that is, that some of the estimates are bigger and others smaller than the true proportion. In the next section, we will continue this discussion, providing new language and concepts for summarizing this distribution.</p>
+</section>
+</section>
+<section id="sec-properties_s" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-properties_s"><span class="header-section-number">9.3</span> Properties of Sampling Distributions</h2>
+<p>In the previous sections, you were introduced to <strong>sampling distributions</strong> via both an example of a hands-on activity and one using computer simulation. In both cases, you explored the idea that the sample you see in your data is one of many, many possible samples of data that you could observe. To do so, you conducted a thought experiment in which you began with a population parameter (the proportion of red balls) that you knew, and then simulated 10,000 different hypothetical random samples of the same size that you used to calculate 10,000 estimates of the population proportion. At the end, you produced a histogram of these estimated values.</p>
+<p>The histogram you produced is formally called a <strong>sampling distribution</strong>. While this is a nice visualization, it is not particularly helpful to summarize this only with a figure. For this reason, statisticians summarize the sampling distribution by answering three questions:</p>
+<ol type="1">
+<li>How can you characterize its distribution? (Also: Is it a known distribution?)</li>
+<li>What is the average value in this distribution? How does that compare to the population parameter?</li>
+<li>What is the standard deviation of this distribution? What range of values are likely to occur in samples of size <span class="math inline">\(n\)</span>?</li>
+</ol>
+<p>Hopefully you were able to see that in <a href="#fig-samplingdistribution-virtual">Figure&nbsp;<span>9.16</span></a> that the sampling distribution of <span class="math inline">\(\hat{\pi}\)</span> follows a Normal distribution. As a result of the Central Limit Theorem (CLT), when sample sizes are large, most sampling distributions will be approximated well by a Normal Distribution. We will discuss the CLT further in <a href="#sec-clt"><span>Section&nbsp;9.6</span></a>.</p>
+<p>Throughout this section, it is imperative that you remember that this is a theoretical exercise. By beginning with a situation in which we know the right answer, we will be able to deduce properties of estimators that we can leverage in cases in which we do not know the right answer (i.e., when you are conducting actual data analyses!).</p>
+<section id="sec-bias" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="sec-bias"><span class="header-section-number">9.3.1</span> Mean of the sampling distribution</h3>
+<p>If we were to summarize a dataset beyond the distribution, the first statistic we would likely report is the mean of the distribution. This is true with sampling distributions as well. With sampling distributions, however, we do not simply want to know what the mean is – we want to know how similar or different this is from the population parameter value that the sample statistic is estimating. Any difference in these two values is called <strong>bias</strong>. That is:</p>
+<p><span class="math display">\[Bias = Average \ \ value \ \ of \ \ sampling \ \ distribution - True \ \ population \ \ parameter \ \ value\]</span></p>
+<ul>
+<li>A sample statistic is a <strong>biased estimator</strong> of a population parameter if its average value is more or less than the population parameter it is meant to estimate.</li>
+<li>A sample statistic is an <strong>unbiased estimator</strong> of a population parameter if in the average sample it equals the population parameter value.</li>
+</ul>
+<p>We can calculate the mean of our simulated sampling distribution of proportion of red balls <span class="math inline">\(\hat{\pi}\)</span> and compare it to the true population proportion <span class="math inline">\(\pi\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean of sampling distribution of pi_hat</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>virtual_prop_red <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_pi_hat =</span> <span class="fu">mean</span>(prop_red))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  mean_pi_hat
+        &lt;dbl&gt;
+1       0.375</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#true population proportion</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>bowl <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">pi =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>) <span class="sc">/</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+     pi
+  &lt;dbl&gt;
+1 0.375</code></pre>
+</div>
+</div>
+<p>Here we see that <span class="math inline">\(\hat{\pi}=\)</span> 0.375, which is a good approximation to the true proportion of red balls in the bowl (<span class="math inline">\(\pi =\)</span> 0.375). This is because the sample proportion <span class="math inline">\(\hat{\pi} = \frac{\# \  of \ successes}{\# \ of \ trials}\)</span> is an unbiased estimator of the population proportion <span class="math inline">\(\pi\)</span>.</p>
+<p>The difficulty with introducing this idea of bias in an introductory course is that most statistics used at this level (e.g., proportions, means, regression coefficients) are unbiased. Examples of biased statistics are more common in more complex models. One example, however, that illustrates this bias concept is that of sample variance estimator.</p>
+<p>Recall that we have used <em>standard deviation</em> as a summary statistic for how spread out data is. <strong>Variance</strong> is simply standard deviation <em>squared</em>, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter <span class="math inline">\(s\)</span>, and sample variance by <span class="math inline">\(s^2\)</span>. These are estimators for the population standard deviation (denoted <span class="math inline">\(\sigma\)</span>) and the population variance (denoted <span class="math inline">\(\sigma^2\)</span>). We estimate the sample variance using <span class="math inline">\(s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}\)</span>, where <span class="math inline">\(n\)</span> is the sample size (check out <span class="quarto-unresolved-ref">?sec-appendixA</span>) if you are unfamiliar with the <span class="math inline">\(\sum\)</span> notation and using subscripts <span class="math inline">\(i\)</span>). When we use the <code>sd()</code> function in R, it is using the square root of this function in the background: <span class="math inline">\(s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}\)</span>. Until now, we have simply used this estimator without reason. You might ask: why is this divided by <span class="math inline">\(n – 1\)</span> instead of simply by <span class="math inline">\(n\)</span> like the formula for the mean (i.e.&nbsp;<span class="math inline">\(\frac{\sum x_i}{n}\)</span>)? To see why, let’s look at an example.</p>
+<p>The <code>gapminder</code> dataset in the <code>dslabs</code> package has life expectancy data on 185 countries in 2016. We will consider these 185 countries to be our population. The true variance of life expectancy in this population is <span class="math inline">\(\sigma^2 = 57.5\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"gapminder"</span>, <span class="at">package =</span> <span class="st">"dslabs"</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gapminder_2016 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, year <span class="sc">==</span> <span class="dv">2016</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>gapminder_2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sigma2 =</span> <span class="fu">var</span>(life_expectancy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sigma2
+1   57.5</code></pre>
+</div>
+</div>
+<p>Let’s draw 10,000 repeated samples of n = 5 countries from this population. The data for the first 2 samples (replicates) is shown in <a href="#tbl-s2-bias">Table&nbsp;<span>9.4</span></a>.</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">rep_sample_n</span>(gapminder_2016, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">reps =</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(replicate, country, year, life_expectancy, continent, region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-s2-bias" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.4: Life expectancy data for 2 out of 10,000 samples of size n = 5 countries</caption>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 7%">
+<col style="width: 23%">
+<col style="width: 14%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">replicate</th>
+<th style="text-align: left;">country</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">life_expectancy</th>
+<th style="text-align: left;">continent</th>
+<th style="text-align: left;">region</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Gambia</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">68.2</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: left;">Western Africa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Guyana</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">67.2</td>
+<td style="text-align: left;">Americas</td>
+<td style="text-align: left;">South America</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Kenya</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">65.2</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: left;">Eastern Africa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Moldova</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">74.2</td>
+<td style="text-align: left;">Europe</td>
+<td style="text-align: left;">Eastern Europe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Senegal</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">65.6</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: left;">Western Africa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Djibouti</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">64.5</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: left;">Eastern Africa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Aruba</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">75.8</td>
+<td style="text-align: left;">Americas</td>
+<td style="text-align: left;">Caribbean</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Bhutan</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">73.0</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: left;">Southern Asia</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Lebanon</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">79.1</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: left;">Western Asia</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Cape Verde</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">73.1</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: left;">Western Africa</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>We can then calculate the variance for each sample (replicate) using two different formulas:</p>
+<ol type="1">
+<li><p><span class="math inline">\(s_n^2= \frac{\sum(x_i - \bar{x})^2}{n}\)</span></p></li>
+<li><p><span class="math inline">\(s^2= \frac{\sum(x_i - \bar{x})^2}{(n-1)}\)</span></p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>variances <span class="ot">&lt;-</span> samples <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s2_n =</span> <span class="fu">sum</span>((life_expectancy <span class="sc">-</span> <span class="fu">mean</span>(life_expectancy))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> n, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">s2 =</span> <span class="fu">sum</span>((life_expectancy <span class="sc">-</span> <span class="fu">mean</span>(life_expectancy))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-s2-bias-2" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.5: Sample variances of life expectancy for first 10 samples</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">replicate</th>
+<th style="text-align: right;">s2_n</th>
+<th style="text-align: right;">s2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.54</td>
+<td style="text-align: right;">13.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">23.47</td>
+<td style="text-align: right;">29.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">38.71</td>
+<td style="text-align: right;">48.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9.59</td>
+<td style="text-align: right;">12.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">18.16</td>
+<td style="text-align: right;">22.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">72.46</td>
+<td style="text-align: right;">90.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">59.76</td>
+<td style="text-align: right;">74.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">34.65</td>
+<td style="text-align: right;">43.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">27.85</td>
+<td style="text-align: right;">34.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">13.32</td>
+<td style="text-align: right;">16.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><a href="#tbl-s2-bias-2">Table&nbsp;<span>9.5</span></a> shows the results for the first 10 samples. Let’s look at the average of <span class="math inline">\(s_n^2\)</span> and <span class="math inline">\(s^2\)</span> across all 10,000 samples.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>variances <span class="sc">%&gt;%</span>  </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_s2_n =</span> <span class="fu">mean</span>(s2_n),</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_s2   =</span> <span class="fu">mean</span>(s2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  mean_s2_n mean_s2
+      &lt;dbl&gt;   &lt;dbl&gt;
+1      45.9    57.4</code></pre>
+</div>
+</div>
+<p>Remember that the true value of the variance in this population is <span class="math inline">\(\sigma^2 = 57.5\)</span>. We can see that <span class="math inline">\(s_n^2\)</span> is biased; on average it is equal to 45.913. By dividing by <span class="math inline">\(n – 1\)</span> instead of <span class="math inline">\(n\)</span>, however, the bias is removed; the average value of <span class="math inline">\(s^2\)</span> = 57.391. Therefore we use <span class="math inline">\(s^2= \frac{\sum(x_i - \bar{x})^2}{(n-1)}\)</span> as our usual estimator for <span class="math inline">\(\sigma^2\)</span> because it is unbiased.</p>
+<p>In <a href="#fig-s2-bias-3">Figure&nbsp;<span>9.17</span></a> we visualize the sampling distribution of <span class="math inline">\(s_n^2\)</span> and <span class="math inline">\(s^2\)</span>. The black dotted line corresponds to the population variance (<span class="math inline">\(\sigma^2\)</span>), and we can see that the mean of the <span class="math inline">\(s^2\)</span>s line up with it very well (blue vertical line), but on average the <span class="math inline">\(s_n^2\)</span>s are an underestimate (red vertical line).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(variances) <span class="sc">+</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> s2_n, <span class="at">fill =</span> <span class="st">"red"</span>), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> s2, <span class="at">fill =</span> <span class="st">"blue"</span>), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(variances<span class="sc">$</span>s2_n), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(variances<span class="sc">$</span>s2), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">var</span>(gapminder_2016<span class="sc">$</span>life_expectancy), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name=</span><span class="st">"Estimator"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">'blue'</span> <span class="ot">=</span> <span class="st">'blue'</span>, <span class="st">'red'</span> <span class="ot">=</span> <span class="st">'red'</span>), </span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">expression</span>(s<span class="sc">^</span><span class="dv">2</span>, s[n]<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Sample variance estimate"</span>) <span class="sc">+</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of samples"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-s2-bias-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-s2-bias-3-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.17: Sample variance estimates for 10,000 samples of size n = 5</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that the sampling distribution of the sample variance shown in <a href="#fig-s2-bias-3">Figure&nbsp;<span>9.17</span></a> is not Normal but rather is skewed right; in fact, it follows a chi-square distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+</section>
+<section id="sec-precision" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="sec-precision"><span class="header-section-number">9.3.2</span> Standard deviation of the sampling distribution</h3>
+<p>In <a href="#sec-bias">Subsection&nbsp;<span>9.3.1</span></a> we mentioned that one desirable characteristic of an estimator is that it be <strong>unbiased</strong>. Another desirable characteristic of an estimator is that it be <strong>precise</strong>. An estimator is <em>precise</em> when the estimate is close to the average of its sampling distribution in most samples. In other words, the estimates do not vary greatly from one (theoretical) sample to another.</p>
+<p>If we were analyzing a dataset in general, we might characterize this precision by a measure of the distribution’s spread, such as the standard deviation. We can do this with sampling distributions, too. The <strong>standard error</strong> of an estimator is the standard deviation of its sampling distribution:</p>
+<ul>
+<li>A <em>large</em> standard error means that an estimate (e.g., in the sample you have) may be far from the average of its sampling distribution. This means the estimate is <em>imprecise</em>.</li>
+<li>A <em>small</em> standard error means an estimate (e.g., in the sample you have) is likely to be close to the average of its sampling distribution. This means the estimate is <em>precise</em>.</li>
+</ul>
+<p>In statistics, we prefer estimators that are precise over those that are not. Again, this is tricky to understand at an introductory level, since nearly all sample statistics at this level can be proven to be the most precise estimators (out of all possible estimators) of the population parameters they are estimating. In more complex models, however, there are often competing estimators, and statisticians spend time studying the behavior of these estimators in comparison to one another.</p>
+<p><a href="#fig-bias-precision">Figure&nbsp;<span>9.18</span></a> illustrates the concepts of bias and precision. Note that an estimator can be precise but also biased. That is, all of the estimates tend to be close to one another (i.e.&nbsp;the sampling distribution has a small standard error), but they are centered around the wrong average value. Conversely, it’s possible for an estimator to be unbiased (i.e.&nbsp;it’s centered around the true population parameter value) but imprecise (i.e.&nbsp;large standard error, the estimates vary quite a bit from one (theoretical) sample to another). Most of the estimators you use in this class (e.g.&nbsp;<span class="math inline">\(\bar{x}, s^2, \hat{\pi}\)</span>) are both precise and unbiased, which is clearly the preferred set of characteristics.</p>
+<div id="fig-bias-precision" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/bias-precision.png" class="img-fluid figure-img" data-out.width="100%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.18: Bias vs.&nbsp;Precision</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="sec-conf" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="sec-conf"><span class="header-section-number">9.3.3</span> Confusing concepts</h3>
+<p>On one level, sampling distributions should seem straightforward and like simple extensions to methods you’ve learned already in this course. That is, just like sample data you have in front of you, we can summarize these sampling distributions in terms of their shape (distribution), mean (bias), and standard deviation (standard error). But this similarity to data analysis is exactly what makes this tricky.</p>
+<p>It is imperative to remember that <strong>sampling distributions are inherently theoretical constructs</strong>:</p>
+<ul>
+<li>Even if your estimator is unbiased, the number you see in your data (the value of the estimator) may <em>not</em> be the value of the parameter in the population.</li>
+<li>The <strong>standard deviation</strong> is a measure of spread in your data. The <strong>standard error</strong> is a property of an estimator across repeated samples.</li>
+<li>The <strong>distribution</strong> of a variable is something you can directly examine in your data. The <strong>sampling distribution</strong> is a property of an estimator across repeated samples.</li>
+</ul>
+<p>Remember, a sample statistic is a tool we use to estimate a parameter value in a population. The sampling distribution tells us how good this tool is: Does it work on average (bias)? Does it work most of the time (standard error)? Does it tend to over- or under- estimate (distribution)?</p>
+</section>
+</section>
+<section id="sec-commonstat" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-commonstat"><span class="header-section-number">9.4</span> Common statistics and their theoretical distributions</h2>
+<p>In the previous sections, we demonstrated that every statistic has a sampling distribution and that this distribution is used to make inferences between a statistic (estimate) calculated in a sample and its unknown (parameter) value in the population. For example, you now know that the sample mean’s sampling distribution is a normal distribution and that the sample variance’s sampling distribution is a chi-squared distribution.</p>
+<section id="standard-errors-based-on-theory" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="standard-errors-based-on-theory"><span class="header-section-number">9.4.1</span> Standard Errors based on Theory</h3>
+<p>In <a href="#sec-precision">Subsection&nbsp;<span>9.3.2</span></a> we explained that the standard error gives you a sense of how far from the average value an estimate might be in an observed sample. In simulations, you could see that a wide distribution meant a large standard error, while a narrow distribution meant a small standard error. We could see this relationship by beginning with a case in which we knew the right answer (e.g., the population mean) and then simulating random samples of the same size, estimating this parameter in each possible sample.</p>
+<p>But we can be more precise than this. Using mathematical properties of the normal distribution, a formula can be derived for this standard error. For example, for the sample mean, the standard error is, <span class="math display">\[SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{s}{\sqrt{n}},\]</span> where <span class="math inline">\(s = \sqrt{\frac{\sum (x_i – \bar{x})^2}{n – 1}}\)</span> is the sample standard deviation.</p>
+<p>Note that this standard error is a function of both the spread of the underlying data (the <span class="math inline">\(x_i\)</span>’s) and the sample size (<span class="math inline">\(n\)</span>). We will discuss more about the role of sample size in <a href="#sec-size"><span>Section&nbsp;9.5</span></a>.</p>
+<p>In <a href="#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a> we provide properties of some estimators, including their standard errors, for many common statistics. Note that this is not exhaustive – there are many more estimators in the world of statistics, but the ones listed here are common and provide a solid introduction.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-SE-table-ch-9" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.6: Properties of Sample Statistics</caption>
+<colgroup>
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 4%">
+<col style="width: 44%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statistic</th>
+<th style="text-align: left;">Population parameter</th>
+<th style="text-align: left;">Estimator</th>
+<th style="text-align: left;">Biased?</th>
+<th style="text-align: left;">SE of estimator</th>
+<th style="text-align: left;">Sampling distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Proportion</td>
+<td style="text-align: left;"><span class="math inline">\(\pi\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}\)</span></td>
+<td style="text-align: left;">Unbiased</td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}\)</span></td>
+<td style="text-align: left;">Normal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean</td>
+<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overline{x}\)</span> or <span class="math inline">\(\widehat{\mu}\)</span></td>
+<td style="text-align: left;">Unbiased</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{s}{\sqrt{n}}\)</span></td>
+<td style="text-align: left;">T/Normal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Difference in proportions</td>
+<td style="text-align: left;"><span class="math inline">\(\pi_1 -\pi_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}_1 - \widehat{\pi}_2\)</span></td>
+<td style="text-align: left;">Unbiased</td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1} + \frac{\hat{\pi}_2(1 - \hat{\pi}_2)}{n_2}}\)</span></td>
+<td style="text-align: left;">Normal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Difference in means</td>
+<td style="text-align: left;"><span class="math inline">\(\mu_1 - \mu_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overline{x}_1 - \overline{x}_2\)</span></td>
+<td style="text-align: left;">Unbiased</td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\)</span></td>
+<td style="text-align: left;">T/Normal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regression intercept</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(b_0\)</span> or <span class="math inline">\(\widehat{\beta}_0\)</span></td>
+<td style="text-align: left;">Unbiased</td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{s_y^2[\frac{1}{n} + \frac{\bar{x}^2}{(n-1)s_x^2}]}\)</span></td>
+<td style="text-align: left;">T/Normal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regression slope</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(b_1\)</span> or <span class="math inline">\(\widehat{\beta}_1\)</span></td>
+<td style="text-align: left;">Unbiased</td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{\frac{s_y^2}{(n-1)s_x^2}}\)</span></td>
+<td style="text-align: left;">T/Normal</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Recall if the population standard deviation is unknown, we use <span class="math inline">\(s\)</span> and the sampling distribution is the t-distribution. If the population standard deviation is known we replace the <span class="math inline">\(s\)</span>’s in these formulas with <span class="math inline">\(\sigma's\)</span> and the sampling distribution is the Normal distribution.</p>
+<p>The fact that there is a formula for this standard error means that we can know properties of the sampling distribution <strong>without having to do a simulation</strong> and can use this knowledge to make inferences. For example, let’s pretend we’re estimating a population mean, which we don’t know. To do so, we take a random sample of the population and estimate the mean (<span class="math inline">\(\bar{x} = 5.2\)</span>) and standard deviation (<span class="math inline">\(s = 2.1\)</span>) based upon <span class="math inline">\(n = 10\)</span> observations. Now, looking at <a href="#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>, we know that the sample mean:</p>
+<ul>
+<li>Is an unbiased estimate of the population mean (so, on average, we get the right answer),</li>
+<li>That the sampling distribution is a t-distribution, and that</li>
+<li>The standard error (spread) of this distribution can be calculated as <span class="math inline">\(SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{s}{\sqrt{n}} = \frac{2.1}{\sqrt{10}} = 0.664\)</span>.</li>
+</ul>
+<p>At this point, this is all you know, but in <span class="quarto-unresolved-ref">?sec-CIs</span> - <a href="12-hypothesis-tests.html"><span>12</span></a>, we will put these properties to good use.</p>
+</section>
+</section>
+<section id="sec-size" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-size"><span class="header-section-number">9.5</span> Sample Size and Sampling Distributions</h2>
+<p>Let’s return to our football stadium thought experiment. Let’s say you could estimate the average age of fans by selecting a sample of <span class="math inline">\(n = 10\)</span> or by selecting a sample of <span class="math inline">\(n = 100\)</span>. Which would be better? Why? A larger sample will certainly cost more – is this worth it? What about a sample of <span class="math inline">\(n = 500\)</span>? Is that worth it?</p>
+<p>This question of appropriate sample size drives much of statistics. For example, you might be conducting an experiment in a psychology lab and ask: how many participants do I need to estimate this treatment effect precisely? Or you might be conducting a survey and need to know: how many respondents do I need in order to estimate the relationship between income and education well?</p>
+<p>These questions are inherently about how sample size affects sampling distributions, in general, and in particular, how sample size affects standard errors (precision).</p>
+<section id="sec-eg1" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="sec-eg1"><span class="header-section-number">9.5.1</span> Sampling balls with different sized shovels</h3>
+<p>Returning to our ball example, now say instead of just one shovel, you had three choices of shovels to extract a sample of balls with.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A shovel with 25 slots</th>
+<th style="text-align: center;">A shovel with 50 slots</th>
+<th style="text-align: center;">A shovel with 100 slots</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="images/sampling/shovel_025.jpg" style="height:1.7in"></td>
+<td style="text-align: center;"><img src="images/sampling/shovel_050.jpg" style="height:1.7in"></td>
+<td style="text-align: center;"><img src="images/sampling/shovel_100.jpg" style="height:1.7in"></td>
+</tr>
+</tbody>
+</table>
+<p>If your goal was still to estimate the proportion of the bowl’s balls that were red, which shovel would you choose? In our experience, most people would choose the shovel with 100 slots since it has the biggest sample size and hence would yield the “best” guess of the proportion of the bowl’s 2400 balls that are red. Using our newly developed tools for virtual sampling simulations, let’s unpack the effect of having different sample sizes! In other words, let’s use <code>rep_sample_n()</code> with <code>size = 25</code>, <code>size = 50</code>, and <code>size = 100</code>, while keeping the number of repeated/replicated samples at 10,000:</p>
+<ol type="1">
+<li>Virtually use the appropriate shovel to generate 10,000 samples with <code>size</code> balls.</li>
+<li>Compute the resulting 10,000 replicates of the proportion of the shovel’s balls that are red.</li>
+<li>Visualize the distribution of these 10,000 proportion red using a histogram.</li>
+</ol>
+<p>Run each of the following code segments individually and then compare the three resulting histograms.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Segment 1: sample size = 25 ------------------------------</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.a) Virtually use shovel 10,000 times</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>virtual_samples_25 <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">25</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.b) Compute resulting 10,000 replicates of proportion red</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_25 <span class="ot">&lt;-</span> virtual_samples_25 <span class="sc">%&gt;%</span> </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">red =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> red <span class="sc">/</span> <span class="dv">25</span>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.c) Plot distribution via a histogram</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virtual_prop_red_25, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Proportion of 25 balls that were red"</span>, <span class="at">title =</span> <span class="st">"25"</span>) </span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Segment 2: sample size = 50 ------------------------------</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 2.a) Virtually use shovel 10,000 times</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>virtual_samples_50 <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 2.b) Compute resulting 10,000 replicates of proportion red</span></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_50 <span class="ot">&lt;-</span> virtual_samples_50 <span class="sc">%&gt;%</span> </span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">red =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> red <span class="sc">/</span> <span class="dv">50</span>)</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 2.c) Plot distribution via a histogram</span></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virtual_prop_red_50, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Proportion of 50 balls that were red"</span>, <span class="at">title =</span> <span class="st">"50"</span>)  </span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Segment 3: sample size = 100 ------------------------------</span></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.a) Virtually using shovel with 100 slots 10,000 times</span></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>virtual_samples_100 <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">100</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.b) Compute resulting 10,000 replicates of proportion red</span></span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_100 <span class="ot">&lt;-</span> virtual_samples_100 <span class="sc">%&gt;%</span> </span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">red =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> red <span class="sc">/</span> <span class="dv">100</span>)</span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.c) Plot distribution via a histogram</span></span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virtual_prop_red_100, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Proportion of 100 balls that were red"</span>, <span class="at">title =</span> <span class="st">"100"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For easy comparison, we present the three resulting histograms in a single row with matching x and y axes in <a href="#fig-comparing-sampling-distributions">Figure&nbsp;<span>9.19</span></a>. What do you observe?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-comparing-sampling-distributions" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-comparing-sampling-distributions-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.19: Comparing the distributions of proportion red for different sample sizes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe that as the sample size increases, the spread of the 10,000 replicates of the proportion red decreases. In other words, as the sample size increases, there are less differences due to sampling variation and the distribution centers more tightly around the same value. Eyeballing <a href="#fig-comparing-sampling-distributions">Figure&nbsp;<span>9.19</span></a>, things appear to center tightly around roughly 40%.</p>
+<p>We can be numerically explicit about the amount of spread in our 3 sets of 10,000 values of <code>prop_red</code> by computing the standard deviation for each of the three sampling distributions. For all three sample sizes, let’s compute the standard deviation of the 10,000 proportions red by running the following data wrangling code that uses the <code>sd()</code> summary function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 25</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_25 <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">SE =</span> <span class="fu">sd</span>(prop_red))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 50</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_50 <span class="sc">%&gt;%</span> </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">SE =</span> <span class="fu">sd</span>(prop_red))</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 100</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_100 <span class="sc">%&gt;%</span> </span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">SE =</span> <span class="fu">sd</span>(prop_red))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s compare these 3 measures of spread of the distributions in <a href="#tbl-comparing-n">Table&nbsp;<span>9.7</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-comparing-n" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9.7: Comparing standard error of proportion red for 3 different shovels.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Number of slots in shovel</th>
+<th style="text-align: right;">Standard error of proportion red</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0.098</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0.047</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>As we observed visually in <a href="#fig-comparing-sampling-distributions">Figure&nbsp;<span>9.19</span></a>, as the sample size increases our numerical measure of spread (i.e.&nbsp;our standard error) decreases; there is less variation in our proportions red. In other words, as the sample size increases, our guesses at the true proportion of the bowl’s balls that are red get more consistent and precise. Remember that because we are computing the standard deviation of an estimator <span class="math inline">\(\hat{\pi}\)</span>’s sampling distribution, we call this the <strong>standard error</strong> of <span class="math inline">\(\hat{\pi}\)</span>.</p>
+<p>Overall, this simulation shows that compared to a smaller sample size (e.g., <span class="math inline">\(n = 10\)</span>), with a larger sample size (e.g., <span class="math inline">\(n = 100\)</span>), the sampling distribution has less spread and a smaller standard error. This means that an estimate from a larger sample is likely closer to the population parameter value than one from a smaller sample.</p>
+<p>Note that this is exactly what we would expect by looking at the standard error formulas in <a href="#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>. Sample size <span class="math inline">\(n\)</span> appears in some form on the denominator in each formula, and we know by simple arithmetic that dividing by a larger number causes the calculation to result in a smaller value. Therefore it is a general mathematical property that increasing sample size will decrease the standard error.</p>
+</section>
+</section>
+<section id="sec-clt" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sec-clt"><span class="header-section-number">9.6</span> Central Limit Theorem (CLT)</h2>
+<!--Some of this language comes straight from your old 202 slides. Does this need to be cited? Not sure if it orignially came from you or OpenIntro-->
+<p>There is a very useful result in statistics called the <strong>Central Limit Theorem</strong> which tells us that the sampling distribution of the sample mean is well approximated by the normal distribution. While not all variables follow a normal distribution, many estimators have sampling distributions that are normal. We have already seen this to be true with the sample proportion.</p>
+<p>More formally, the CLT tells us that <span class="math display">\[\bar{x} \sim N(mean = \mu, SE = \frac{\sigma}{\sqrt{n}}),\]</span> where <span class="math inline">\(\mu\)</span> is the population mean of X, <span class="math inline">\(\sigma\)</span> is the population standard deviation of X, and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>Note that we if we standardize the sample mean, it will follow the standard normal distribution. That is: <span class="math display">\[STAT = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1)\]</span>.</p>
+<section id="clt-conditions" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="clt-conditions"><span class="header-section-number">9.6.1</span> CLT conditions</h3>
+<p>Certain conditions must be met for the CLT to apply:</p>
+<!--same comment as above - citation needed for 202 slides?-->
+<p><strong>Independence</strong>: Sampled observations must be independent. This is difficult to verify, but is more likely if</p>
+<ul>
+<li>random sampling / assignment is used, and</li>
+<li>Sample size n &lt; 10% of the population</li>
+</ul>
+<p><strong>Sample size / skew</strong>: Either the population distribution is normal, or if the population distribution is skewed, the sample size is large.</p>
+<ul>
+<li>the more skewed the population distribution, the larger sample size we need for the CLT to apply</li>
+<li>for moderately skewed distributions n &gt; 30 is a widely used rule of thumb.</li>
+</ul>
+<p>This is also difficult to verify for the population, but we can check it using the sample data, and assume that the sample mirrors the population.</p>
+</section>
+<section id="sec-clt-example" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="sec-clt-example"><span class="header-section-number">9.6.2</span> CLT example</h3>
+<p>Let’s return to the <code>gapminder</code> dataset, this time looking at the variable <code>infant_mortality</code>. We’ll first subset our data to only include the year 2015, and we’ll exclude the 7 countries that have missing data for <code>infant_mortality</code>. <a href="#fig-infant-mortality">Figure&nbsp;<span>9.20</span></a> shows the distribution of <code>infant_mortality</code>, which is skewed right.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"gapminder"</span>, <span class="at">package =</span> <span class="st">"dslabs"</span>) </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>gapminder_2015 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span>, <span class="sc">!</span><span class="fu">is.na</span>(infant_mortality))</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder_2015) <span class="sc">+</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> infant_mortality), <span class="at">color =</span> <span class="st">"black"</span>)  <span class="sc">+</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Infant mortality per 1,000 live births"</span>) <span class="sc">+</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of countries"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-infant-mortality" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.20: Infant mortality rates per 1,000 live births across 178 countries in 2015</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s run 3 simulations where we take 10,000 samples of size <span class="math inline">\(n = 5\)</span>, <span class="math inline">\(n = 30\)</span> and <span class="math inline">\(n = 100\)</span> and plot the sampling distribution of the mean for each.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sample_5 <span class="ot">&lt;-</span> <span class="fu">rep_sample_n</span>(gapminder_2015, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">reps =</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_infant_mortality =</span> <span class="fu">mean</span>(infant_mortality)) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>sample_30 <span class="ot">&lt;-</span> <span class="fu">rep_sample_n</span>(gapminder_2015, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">reps =</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_infant_mortality =</span> <span class="fu">mean</span>(infant_mortality)) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">30</span>)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>sample_100 <span class="ot">&lt;-</span> <span class="fu">rep_sample_n</span>(gapminder_2015, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">reps =</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_infant_mortality =</span> <span class="fu">mean</span>(infant_mortality)) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="dv">100</span>)</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>all_samples <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sample_5, sample_30, sample_100)</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_samples) <span class="sc">+</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> mean_infant_mortality), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>n, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Mean infant mortality"</span>) <span class="sc">+</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of samples"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-infant-mortality-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-2-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for various sample sizes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p><a href="#fig-infant-mortality-2">Figure&nbsp;<span>9.21</span></a> shows that for samples of size <span class="math inline">\(n = 5\)</span>, the sampling distribution is still skewed slightly right. However, with even a moderate sample size of <span class="math inline">\(n = 30\)</span>, the Central Limit Theorem kicks in, and we see that the sampling distribution of the mean (<span class="math inline">\(\bar{x}\)</span>) is normal, even though the underlying data was skewed. We again see that the standard error of the estimate decreases as the sample size increases.</p>
+<p>Overall, this simulation shows that not only might the precision of an estimate differ as a result of a larger sample size, but also the sampling distribution might be different for a smaller sample size (e.g., <span class="math inline">\(n = 5\)</span>) than for a larger sample size (e.g., <span class="math inline">\(n=100\)</span>).</p>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">9.7</span> Conclusion</h2>
+<p>In this chapter, you’ve been introduced to the <strong>theory of repeated sampling</strong> that undergirds our ability to connect estimates from samples to parameters from populations that we wish to know about. In order to make these inferences, we need to understand how our results might change if – in a different reality – a different random sample was collected, or, more generally, how our results might differ across the many, many possible random samples we could have drawn. This led us to simulate the <strong>sampling distribution</strong> for our estimator of the population proportion.</p>
+<p>You also learned that statisticians summarize this sampling distribution in three ways. We showed that for the population proportion:</p>
+<ol type="1">
+<li>The sampling distribution of the sample proportion is symmetric, unimodal, and follows a <strong>normal distribution</strong> (when n = 50),</li>
+<li>The sample proportion is an <strong>unbiased estimate</strong> of the population proportion, and</li>
+<li>The sample proportion does not always equal the population proportion, i.e., there is some <strong>sampling variability</strong>, making it not uncommon to see values of the sample proportion larger or smaller than the population proportion.</li>
+</ol>
+<p>In the next section of the book, we will build upon this theoretical foundation, developing approaches – based upon these properties – that we can use to make inferences from the sample we have to the population we wish to know about.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
