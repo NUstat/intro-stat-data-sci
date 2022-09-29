@@ -383,6 +383,12 @@ div.csl-indent {
   <li><a href="#sec-additional-resources-basic-regression" id="toc-sec-additional-resources-basic-regression" class="nav-link" data-scroll-target="#sec-additional-resources-basic-regression"><span class="toc-section-number">5.4.1</span>  Additional resources</a></li>
   <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="toc-section-number">5.4.2</span>  What’s to come?</a></li>
   </ul></li>
+  <li><a href="#sec-ex05" id="toc-sec-ex05" class="nav-link" data-scroll-target="#sec-ex05"><span class="toc-section-number">5.5</span>  Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex05-conceptual" id="toc-sec-ex05-conceptual" class="nav-link" data-scroll-target="#sec-ex05-conceptual"><span class="toc-section-number">5.5.1</span>  Conceptual</a></li>
+  <li><a href="#sec-ex05-application" id="toc-sec-ex05-application" class="nav-link" data-scroll-target="#sec-ex05-application"><span class="toc-section-number">5.5.2</span>  Application</a></li>
+  <li><a href="#sec-ex05-advanced" id="toc-sec-ex05-advanced" class="nav-link" data-scroll-target="#sec-ex05-advanced"><span class="toc-section-number">5.5.3</span>  Advanced</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -438,7 +444,7 @@ div.csl-indent {
 <h2 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h2>
 <p>Let’s now load all the packages needed for this chapter (this assumes you’ve already installed them). In this chapter we introduce some new packages:</p>
 <ol type="1">
-<li><p>The <code>tidyverse</code> “umbrella” package. Recall from our discussion in <a href="04-tidy.html#sec-tidyverse-package"><span>Section&nbsp;4.4.1</span></a> that loading the <code>tidyverse</code> package by running <code>library(tidyverse)</code> loads the following commonly used data science packages all at once:</p>
+<li><p>The <code>tidyverse</code> “umbrella” package. Recall from our discussion in <a href="04-tidy.html#sec-tidyverse-package">Subsection&nbsp;<span>4.4.1</span></a> that loading the <code>tidyverse</code> package by running <code>library(tidyverse)</code> loads the following commonly used data science packages all at once:</p>
 <ul>
 <li><code>ggplot2</code> for data visualization</li>
 <li><code>dplyr</code> for data wrangling</li>
@@ -693,7 +699,7 @@ Group variables            None
 <li><p>Most teaching scores lie between 3 and 5.</p></li>
 <li><p>Recall our earlier computation of the correlation coefficient, which describes the strength of the linear relationship between two numerical variables. Looking at <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>, it is not immediately apparent that these two variables are positively related. This is to be expected given the positive, but rather weak (close to 0), correlation coefficient of 0.187.</p></li>
 </ol>
-<p>Before we continue, we bring to light an important fact about this dataset: it suffers from <em>overplotting</em>. Recall from the data visualization [Subsection -<a href="02-visualization.html#sec-overplotting"><span>Section&nbsp;2.3.2</span></a> that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let’s focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as <em>ties</em>. Let’s break up these ties with a little random “jitter” added to the points in <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>.</p>
+<p>Before we continue, we bring to light an important fact about this dataset: it suffers from <em>overplotting</em>. Recall from the data visualization <a href="02-visualization.html#sec-overplotting">Subsection&nbsp;<span>2.3.2</span></a> that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let’s focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as <em>ties</em>. Let’s break up these ties with a little random “jitter” added to the points in <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-numxplot2" class="quarto-figure quarto-figure-center anchored">
@@ -1060,7 +1066,7 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <li><p><code>score_hat</code> = 4.25 = 3.88 + 0.067 * <span class="math inline">\(x\)</span> = 3.88 + 0.067 * 5.50 is the fitted value <span class="math inline">\(\widehat{y}\)</span> for this instructor.</p></li>
 <li><p><code>residual</code> = 0.153 = 4.4 - 4.25 is the value of the residual for this instructor. In other words, the model was off by 0.153 teaching score units for this instructor.</p></li>
 </ul>
-<p>More development of this idea appears in <a href="#sec-leastsquares"><span>Section&nbsp;5.3.3</span></a> and we encourage you to read that section after you investigate residuals.</p>
+<p>More development of this idea appears in <a href="#sec-leastsquares">Subsection&nbsp;<span>5.3.3</span></a> and we encourage you to read that section after you investigate residuals.</p>
 </section>
 </section>
 <section id="sec-model2" class="level2" data-number="5.2">
@@ -1863,6 +1869,163 @@ Group variables            None
 <section id="whats-to-come" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">5.4.2</span> What’s to come?</h3>
 <p>In this chapter, you’ve studied the term <em>basic regression</em>, where you fit models that only have one explanatory variable. In <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a>, we’ll study <em>multiple regression</em>, where our regression models can now have more than one explanatory variable! In particular, we’ll consider two scenarios: regression models with one numerical and one categorical explanatory variable and regression models with two numerical explanatory variables. This will allow you to construct more sophisticated and more powerful models, all in the hopes of better explaining your outcome variable <span class="math inline">\(y\)</span>.</p>
+</section>
+</section>
+<section id="sec-ex05" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-ex05"><span class="header-section-number">5.5</span> Exercises</h2>
+<section id="sec-ex05-conceptual" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="sec-ex05-conceptual"><span class="header-section-number">5.5.1</span> Conceptual</h3>
+<div id="exr-ch05-c01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.1 </strong></span>Match the following graph with the most appropriate correlation coefficient.</p>
+<p><img src="images/cor_-0.7.png" style="height:1.5in"></p>
+<ol type="a">
+<li>-1</li>
+<li>-0.9</li>
+<li>-0.7</li>
+<li>-0.4</li>
+<li>None of the above, it is a positive association</li>
+</ol>
+</div>
+<div id="exr-ch05-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.2 </strong></span>What is the most appropriate correlation between an hourly employees paycheck and the number of hours worked?</p>
+<ol type="a">
+<li>Exactly -1</li>
+<li>Between -1 and 0</li>
+<li>About 0</li>
+<li>Between 0 and 1</li>
+<li>Exactly 1</li>
+</ol>
+</div>
+<div id="exr-ch05-c03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.3 </strong></span>What is the most appropriate correlation between the distance up a mountain and temperature?</p>
+<ol type="a">
+<li>Exactly -1</li>
+<li>Between -1 and 0</li>
+<li>About 0</li>
+<li>Between 0 and 1</li>
+<li>Exactly 1</li>
+</ol>
+</div>
+<div id="exr-ch05-c04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.4 </strong></span>Select all that apply to complete the following statement: The variable x is also called the ____</p>
+<ol type="a">
+<li>explanatory variable</li>
+<li>predictor variable</li>
+<li>outcome variable</li>
+<li>independent variable</li>
+<li>dependent variable</li>
+<li>covariate</li>
+</ol>
+</div>
+<div id="exr-ch05-c05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.5 </strong></span>Select all that apply to complete the following statement: The variable y is also called the ____</p>
+<ol type="a">
+<li>explanatory variable</li>
+<li>predictor variable</li>
+<li>outcome variable</li>
+<li>independent variable</li>
+<li>dependent variable</li>
+<li>covariate</li>
+</ol>
+</div>
+<div id="exr-ch05-c06" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.6 </strong></span>Consider the regression line <span class="math inline">\(\hat{y}=5.25+3.86x\)</span>. Which of the following does <span class="math inline">\(5.25\)</span> refer to? Select all that apply.</p>
+<ol type="a">
+<li>slope coefficient</li>
+<li>the increase in <span class="math inline">\(\hat{y}\)</span> for every increase of 1 in <span class="math inline">\(x\)</span></li>
+<li><span class="math inline">\(b_0\)</span></li>
+<li><span class="math inline">\(b_1\)</span></li>
+<li>the value of <span class="math inline">\(\hat{y}\)</span> when <span class="math inline">\(x=0\)</span></li>
+<li>intercept</li>
+</ol>
+</div>
+<div id="exr-ch05-c07" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.7 </strong></span>Consider the regression line <span class="math inline">\(\hat{y}=5.25+3.86x\)</span>. Which of the following is the correct interpretation of 3.86?</p>
+<ol type="a">
+<li>For every increase of 1 unit in y, there is an associated increase of 3.86 units of x.</li>
+<li>For every increase of 1 unit in x, there is an associated increase of 3.86 units of y.</li>
+<li>For every increase of 1 unit in y, there is an associated increase of, on average, 3.86 units of x.</li>
+<li>For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.</li>
+<li>For every increase of 1 unit in y, there is a causal increase of, on average, 3.86 units of x.</li>
+<li>For every increase of 1 unit in x, there is a causal increase of, on average, 3.86 units of y.</li>
+</ol>
+</div>
+<div id="exr-ch05-c08" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.8 </strong></span>The residual is the difference between the observed value and the predicted value. This can be thought of as the error in prediction from the regression line.</p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+</ol>
+</div>
+<div id="exr-ch05-c09" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.9 </strong></span>If a linear regression model <span class="math inline">\(y ~ x\)</span> is fitted where <span class="math inline">\(x\)</span> is a categorical variable, then <span class="math inline">\(b_1\)</span> is the mean of the baseline.</p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+</ol>
+</div>
+<div id="exr-ch05-c10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.10 </strong></span>The regression line minimizes the following equation <span class="math inline">\(\sum_{i=0}^{n}(y_i-\hat{y}_i)\)</span></p>
+<ol type="a">
+<li>TRUE</li>
+<li>FALSE</li>
+</ol>
+</div>
+<div id="exr-ch05-c11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.11 </strong></span>An ice cream company employee explores a data set with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?</p>
+<ol type="a">
+<li>Yes, the positive correlation shows that an increase in shark attacks causes ice cream sales to improve.</li>
+<li>Yes, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.</li>
+<li>No, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.</li>
+<li>No, the positive correlation does not necessarily imply causation.</li>
+</ol>
+</div>
+</section>
+<section id="sec-ex05-application" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="sec-ex05-application"><span class="header-section-number">5.5.2</span> Application</h3>
+<p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
+<div id="exr-ch05-app1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.12 </strong></span>Using the <code>covid_states</code> dataset…</p>
+<ol type="a">
+<li>Conduct an exploratory data analysis. That is, use the <code>skim</code> function to describe the number of variables, observations, any missingness issues, and any potential problematic features.</li>
+<li>Calculate the correlation between <code>new_tested</code> and <code>new_confirmed</code>.</li>
+<li>Plot the relationship of <code>new_confirmed</code> by <code>new_tested</code>. Add the line of best fit to the scatterplot.</li>
+<li>Fit a linear regression model to predict <code>new_confirmed</code> based on <code>new_tested</code>. What is the equation of the line?</li>
+<li>Interpret the intercept and slope in the context of the problem.</li>
+<li>If 20,000 people are tested for COVID, how many people do we expect to have COVID?</li>
+</ol>
+</div>
+<div id="exr-ch05-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.13 </strong></span>Using the <code>nba</code> dataset, fit a simple linear regression model to predict total team points using the total points the player scored.</p>
+<ol type="a">
+<li>What is the correlation between <code>pts_tm</code> and <code>pts</code>.</li>
+<li>Plot the relationship and line of best fit.</li>
+<li>What is the equation of the line of best fit?</li>
+<li>Interpret the intercept and slope in the context of the problem.</li>
+<li>If a player scored 50 points, what is the predicted team’s score?</li>
+</ol>
+</div>
+<div id="exr-ch05-app3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.14 </strong></span>Using the <code>titanic</code> dataset, fit a linear regression model to determine if the port that the passenger embarked on can predict the cost of the passenger’s ticket.</p>
+<ol type="a">
+<li>What is the model equation?</li>
+<li>Interpret the intercept in the context of the problem.</li>
+<li>Which port, on average, had the highest ticket cost?</li>
+<li>Which passenger did the model predict the worst?</li>
+</ol>
+</div>
+</section>
+<section id="sec-ex05-advanced" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="sec-ex05-advanced"><span class="header-section-number">5.5.3</span> Advanced</h3>
+<div id="exr-ch05-adv1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.15 </strong></span>The <code>summary</code> function and the <code>lm</code> function contain many values relevant to our analysis, including residuals and fitted values stored in the <code>lm</code> function and residuals, coefficients, R-squared and adjusted R-squared values all stored in the <code>summary</code> function.</p>
+<p>Sometimes, it can be useful to extract these values directly from the result of the functions. These values can be accessed using the $ operator that we learned about in <a href="01-getting-started.html"><span>Chapter&nbsp;1</span></a>.</p>
+<p>Using the model from <a href="#exr-ch05-app1">Exercise&nbsp;<span>5.12</span></a>…</p>
+<ol type="a">
+<li>extract the <code>coefficients</code> directly from the model</li>
+<li>extract the <code>r.squared</code> from the summary. This represents the proportion of variance in the dependent variable that can be explained by the independent variables. You will learn about this in detail in higher level regression courses.</li>
+</ol>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">

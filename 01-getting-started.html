@@ -374,7 +374,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#sec-packages" id="toc-sec-packages" class="nav-link" data-scroll-target="#sec-packages"><span class="toc-section-number">1.3</span>  What are R packages?</a>
   <ul class="collapse">
-  <li><a href="#package-installation" id="toc-package-installation" class="nav-link" data-scroll-target="#package-installation"><span class="toc-section-number">1.3.1</span>  Package installation</a></li>
+  <li><a href="#sec-package-installation" id="toc-sec-package-installation" class="nav-link" data-scroll-target="#sec-package-installation"><span class="toc-section-number">1.3.1</span>  Package installation</a></li>
   <li><a href="#sec-package-loading" id="toc-sec-package-loading" class="nav-link" data-scroll-target="#sec-package-loading"><span class="toc-section-number">1.3.2</span>  Package loading</a></li>
   <li><a href="#sec-package-use" id="toc-sec-package-use" class="nav-link" data-scroll-target="#sec-package-use"><span class="toc-section-number">1.3.3</span>  Package use</a></li>
   </ul></li>
@@ -391,9 +391,10 @@ div.csl-indent {
   </ul></li>
   <li><a href="#sec-ex01" id="toc-sec-ex01" class="nav-link" data-scroll-target="#sec-ex01"><span class="toc-section-number">1.6</span>  Exercises</a>
   <ul class="collapse">
-  <li><a href="#sec-ex01-conceptual" id="toc-sec-ex01-conceptual" class="nav-link" data-scroll-target="#sec-ex01-conceptual"><span class="toc-section-number">1.6.1</span>  Conceptual</a></li>
-  <li><a href="#sec-ex01-application" id="toc-sec-ex01-application" class="nav-link" data-scroll-target="#sec-ex01-application"><span class="toc-section-number">1.6.2</span>  Application</a></li>
-  <li><a href="#sec-ex01-advanced" id="toc-sec-ex01-advanced" class="nav-link" data-scroll-target="#sec-ex01-advanced"><span class="toc-section-number">1.6.3</span>  Advanced</a></li>
+  <li><a href="#sec-ex00-explained" id="toc-sec-ex00-explained" class="nav-link" data-scroll-target="#sec-ex00-explained"><span class="toc-section-number">1.6.1</span>  Exercises explained</a></li>
+  <li><a href="#sec-ex01-conceptual" id="toc-sec-ex01-conceptual" class="nav-link" data-scroll-target="#sec-ex01-conceptual"><span class="toc-section-number">1.6.2</span>  Conceptual</a></li>
+  <li><a href="#sec-ex01-application" id="toc-sec-ex01-application" class="nav-link" data-scroll-target="#sec-ex01-application"><span class="toc-section-number">1.6.3</span>  Application</a></li>
+  <li><a href="#sec-ex01-advanced" id="toc-sec-ex01-advanced" class="nav-link" data-scroll-target="#sec-ex01-advanced"><span class="toc-section-number">1.6.4</span>  Advanced</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/01-getting-started.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -620,8 +621,8 @@ div.csl-indent {
 <li><p><em>“Load” the package</em>: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio on your computer; you need to “load” each package you want to use every time you start RStudio.</p></li>
 </ol>
 <p>Let’s now show you how to perform these two steps for the <code>ggplot2</code> package for data visualization.</p>
-<section id="package-installation" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="package-installation"><span class="header-section-number">1.3.1</span> Package installation</h3>
+<section id="sec-package-installation" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-package-installation"><span class="header-section-number">1.3.1</span> Package installation</h3>
 <blockquote class="blockquote">
 <p><strong>Note about RStudio Server/Cloud</strong>: If your instructor has provided you with a link and access to RStudio Server/Cloud, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server/Cloud, but rather RStudio Desktop on your own computer.</p>
 </blockquote>
@@ -863,8 +864,14 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="sec-ex01" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="sec-ex01"><span class="header-section-number">1.6</span> Exercises</h2>
-<section id="sec-ex01-conceptual" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="sec-ex01-conceptual"><span class="header-section-number">1.6.1</span> Conceptual</h3>
+<section id="sec-ex00-explained" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="sec-ex00-explained"><span class="header-section-number">1.6.1</span> Exercises explained</h3>
+<p>Following each chapter, there are a set of Exercises for you to practice what you have learned. The <strong>Conceptual</strong> questions are multiple choice or short answer questions focusing on the major concepts learned throughout the chapter. The <strong>Application</strong> questions focus on practical skills learned throughout the chapter. And the <strong>Advanced</strong> questions teach new and useful skills beyond what was taught in the chapter.</p>
+<p>The chapter exercises use the <code>covid_states</code>, <code>nba</code>, and <code>titanic</code> datasets which are included in the <code>ISDSdatasets</code> package. To install <code>ISDSdatasets</code> on your computer, type <code>remotes::install_github("NUstat/ISDSdatasets")</code> in your <strong>Console</strong>. You may need to install the <code>remotes</code> package first. See <a href="#sec-package-installation"><span>Section&nbsp;1.3.1</span></a> for how to install the <code>remotes</code> package. If you are using RStudio Cloud, your instructor probably already installed all of this for you. You can see what packages you have installed by clicking on the <strong>Packages</strong> tab in the lower right pane.</p>
+<p>To use the package make sure you load it using <code>library(ISDSdatasets)</code>. To explore a dataset within the package you can use the <code>View()</code> or <code>data()</code> function in your <strong>Console</strong>. For example, try typing <code>data(titanic)</code> in the <strong>Console</strong>. This will load the <code>titanic</code> data into the <strong>Environment</strong>.</p>
+</section>
+<section id="sec-ex01-conceptual" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="sec-ex01-conceptual"><span class="header-section-number">1.6.2</span> Conceptual</h3>
 <div id="exr-ch01-c01" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.1 </strong></span>Which type of document do we use to both code and write explanations?</p>
 <ol type="a">
@@ -939,8 +946,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </ol>
 </div>
 </section>
-<section id="sec-ex01-application" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="sec-ex01-application"><span class="header-section-number">1.6.2</span> Application</h3>
+<section id="sec-ex01-application" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="sec-ex01-application"><span class="header-section-number">1.6.3</span> Application</h3>
 <div id="exr-ch01-app1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.9 </strong></span>In a code chunk, first define a variable <code>z</code> to be the product of 12 and 31, then define a variable called <code>add_on</code> to be the number 12. Print the output of <code>z + add_on</code>.</p>
 </div>
@@ -949,8 +956,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <p>Use the <code>glimpse()</code> function from the <code>dplyr</code> package to explore and describe the dataset.</p>
 </div>
 </section>
-<section id="sec-ex01-advanced" class="level3" data-number="1.6.3">
-<h3 data-number="1.6.3" class="anchored" data-anchor-id="sec-ex01-advanced"><span class="header-section-number">1.6.3</span> Advanced</h3>
+<section id="sec-ex01-advanced" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="sec-ex01-advanced"><span class="header-section-number">1.6.4</span> Advanced</h3>
 <p>For the following problems we will use the <code>titanic</code> data set to learn additional data exploration techniques.</p>
 <div id="exr-ch01-adv1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.11 </strong></span>Use the function <code>head()</code> on the <code>titanic</code> dataset. What does it do? Based on this, what do you expect the function <code>tail()</code> does?</p>
