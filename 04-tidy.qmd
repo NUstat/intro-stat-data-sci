@@ -37,7 +37,7 @@ Although knowledge of this type of data formatting was not necessary for our tre
 
 ## Packages Needed {.unnumbered}
 
-Let's load all the packages needed for this chapter (this assumes you've already installed them). If needed, read Section \@ref(packages) for information on how to install and load R packages.
+Let's load all the packages needed for this chapter (this assumes you've already installed them). If needed, read @sec-packages for information on how to install and load R packages.
 
 ```{r}
 library(dplyr)
@@ -266,10 +266,11 @@ stocks_tidy %>%
                 latex_options = c("HOLD_position"))
 ```
 
-Now we have the requisite three columns Date, Stock Name, and Stock Price. On the other hand, consider the data in  Table \@ref(tab:tidy-stocks-2).
+Now we have the requisite three columns Date, Stock Name, and Stock Price. On the other hand, consider the data in @tbl-tidy-stocks-2.
 
 ```{r}
-#| label: tidy-stocks-2
+#| label: tbl-tidy-stocks-2
+#| tbl-cap: "Date, Boeing Price, Weather Data"
 #| echo: false
 stocks <- tibble(
   Date = as.Date('2009-01-01') + 0:4,
@@ -279,6 +280,7 @@ stocks <- tibble(
   slice(1:2)
 stocks %>% 
   kable(
+    format = "markdown",
     digits = 2,
     caption = "Date, Boeing Price, Weather Data", 
     booktabs = TRUE

@@ -1220,7 +1220,7 @@ If you want to further unlock the power of the `ggplot2` package for data visual
 
 You can access this cheatsheet by going to the RStudio Menu Bar -\> Help -\> Cheatsheets -\> "Data Visualization with ggplot2":
 
-![](images/ggplot_cheatsheet-1.png){#fig-ggplot-cheatsheet fig-cap="Data Visualization with ggplot2 cheatsheat"}
+![Data Visualization with ggplot2 cheatsheat](images/ggplot_cheatsheet-1.png){#fig-ggplot-cheatsheet}
 
 ### What's to come {#sec-whats-to-come-3}
 
