@@ -60,7 +60,7 @@ We'll study all four of these regression scenarios using real data, all easily a
 
 Let's now load all the packages needed for this chapter (this assumes you've already installed them). In this chapter we introduce some new packages:
 
-1. The `tidyverse` "umbrella" package. Recall from our discussion in @sec-tidyverse-package that loading the `tidyverse` package by running `library(tidyverse)` loads the following commonly used data science packages all at once:
+1. The `tidyverse` "umbrella" package. Recall from our discussion in [Subsection -@sec-tidyverse-package] that loading the `tidyverse` package by running `library(tidyverse)` loads the following commonly used data science packages all at once:
     + `ggplot2` for data visualization
     + `dplyr` for data wrangling
     + `tidyr` for converting data to "tidy" format
@@ -333,7 +333,7 @@ Observe the following:
 
 1. Recall our earlier computation of the correlation coefficient, which describes the strength of the linear relationship between two numerical variables. Looking at @fig-numxplot2, it is not immediately apparent that these two variables are positively related. This is to be expected given the positive, but rather weak (close to 0), correlation coefficient of `r cor(evals_ch5$score, evals_ch5$bty_avg) %>% round(3)`.
 
-Before we continue, we bring to light an important fact about this dataset: it suffers from *overplotting*. Recall from the data visualization [Subsection -@sec-overplotting that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let's focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as *ties*. Let's break up these ties with a little random "jitter" added to the points in @fig-numxplot2. 
+Before we continue, we bring to light an important fact about this dataset: it suffers from *overplotting*. Recall from the data visualization [Subsection -@sec-overplotting] that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let's focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as *ties*. Let's break up these ties with a little random "jitter" added to the points in @fig-numxplot2. 
 
 ```{r}
 #| label: fig-numxplot2
@@ -696,7 +696,7 @@ Just as we did for the 21st instructor in the `evals_ch5` dataset (in the first 
 
 * `residual` = 0.153 =  4.4 - 4.25 is the value of the residual for this instructor. In other words, the model was off by 0.153 teaching score units for this instructor.
 
-More development of this idea appears in @sec-leastsquares and we encourage you to read that section after you investigate residuals.
+More development of this idea appears in [Subsection -@sec-leastsquares] and we encourage you to read that section after you investigate residuals.
 
 ## One categorical explanatory variable {#sec-model2}
 
@@ -1440,3 +1440,164 @@ As we suggested in [Subsection -@sec-model1EDA], interpreting coefficients that 
 ### What's to come?
 
 In this chapter, you've studied the term _basic regression_, where you fit models that only have one explanatory variable. In @sec-multiple-regression, we'll study *multiple regression*, where our regression models can now have more than one explanatory variable! In particular, we'll consider two scenarios: regression models with one numerical and one categorical explanatory variable and regression models with two numerical explanatory variables. This will allow you to construct more sophisticated and more powerful models, all in the hopes of better explaining your outcome variable $y$.
+
+
+## Exercises {#sec-ex05}
+
+### Conceptual {#sec-ex05-conceptual}
+
+::: {#exr-ch05-c01}
+Match the following graph with the most appropriate correlation coefficient.
+
+![](cor_-0.7.png){height="1.5in"}
+
+a) -1
+b) -0.9
+c) -0.7
+d) -0.4
+e) None of the above, it is a positive association
+:::
+
+::: {#exr-ch05-c02}
+What is the most appropriate correlation between an hourly employees paycheck and the number of hours worked?
+
+a) Exactly -1
+b) Between -1 and 0
+c) About 0
+d) Between 0 and 1
+e) Exactly 1
+:::
+
+::: {#exr-ch05-c03}
+What is the most appropriate correlation between the distance up a mountain and temperature?
+
+a) Exactly -1
+b) Between -1 and 0
+c) About 0
+d) Between 0 and 1
+e) Exactly 1
+:::
+
+::: {#exr-ch05-c04}
+Select all that apply to complete the following statement: The variable x is also called the ____
+
+a) explanatory variable
+b) predictor variable
+c) outcome variable
+d) independent variable
+e) dependent variable
+f) covariate
+:::
+
+::: {#exr-ch05-c05}
+Select all that apply to complete the following statement: The variable y is also called the ____
+
+a) explanatory variable
+b) predictor variable
+c) outcome variable
+d) independent variable
+e) dependent variable
+f) covariate
+:::
+
+::: {#exr-ch05-c06}
+Consider the regression line 
+$\hat{y}=5.25+3.86x$.
+Which of the following does $5.25$ refer to? Select all that apply.
+
+a) slope coefficient
+b) the increase in $\hat{y}$ for every increase of 1 in $x$
+c) $b_0$
+d) $b_1$
+e) the value of $\hat{y}$ when $x=0$
+f) intercept
+:::
+
+::: {#exr-ch05-c07}
+Consider the regression line 
+$\hat{y}=5.25+3.86x$. Which of the following is the correct interpretation of 3.86?
+
+a) For every increase of 1 unit in y, there is an associated increase of 3.86 units of x.
+b) For every increase of 1 unit in x, there is an associated increase of 3.86 units of y.
+c) For every increase of 1 unit in y, there is an associated increase of, on average, 3.86 units of x.
+d) For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.
+e) For every increase of 1 unit in y, there is a causal increase of, on average, 3.86 units of x.
+f) For every increase of 1 unit in x, there is a causal increase of, on average, 3.86 units of y.
+:::
+
+::: {#exr-ch05-c08}
+The residual is the difference between the observed value and the predicted value. This can be thought of as the error in prediction from the regression line.
+  
+a) TRUE
+b) FALSE
+:::
+
+::: {#exr-ch05-c09}
+If a linear regression model $y ~ x$ is fitted where $x$ is a categorical variable, then $b_1$ is the mean of the baseline.
+
+a) TRUE
+b) FALSE
+:::
+
+::: {#exr-ch05-c10}
+The regression line minimizes the following equation $\sum_{i=0}^{n}(y_i-\hat{y}_i)$
+
+a) TRUE
+b) FALSE
+:::
+
+::: {#exr-ch05-c11}
+An ice cream company employee explores a data set with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?
+
+a) Yes, the positive correlation shows that an increase in shark attacks causes ice cream sales to improve.
+b) Yes, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.
+c) No, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.
+d) No, the positive correlation does not necessarily imply causation.
+:::
+
+### Application {#sec-ex05-application}
+
+The application exercises use datasets from the `ISDSdatasets` package.
+
+::: {#exr-ch05-app1}
+Using the `covid_states` dataset...
+
+a) Conduct an exploratory data analysis. That is, use the `skim` function to describe the number of variables, observations, any missingness issues, and any potential problematic features.
+b) Calculate the correlation between `new_tested` and `new_confirmed`.
+c) Plot the relationship of `new_confirmed` by `new_tested`. Add the line of best fit to the scatterplot.
+d) Fit a linear regression model to predict `new_confirmed` based on `new_tested`. What is the equation of the line?
+e) Interpret the intercept and slope in the context of the problem.
+f) If 20,000 people are tested for COVID, how many people do we expect to have COVID?
+:::
+
+::: {#exr-ch05-app2}
+Using the `nba` dataset, fit a simple linear regression model to predict total team points using the total points the player scored.
+    
+a) What is the correlation between `pts_tm` and `pts`.
+b) Plot the relationship and line of best fit.
+c) What is the equation of the line of best fit?
+d) Interpret the intercept and slope in the context of the problem.
+e) If a player scored 50 points, what is the predicted team's score?
+:::
+
+::: {#exr-ch05-app3}
+Using the `titanic` dataset, fit a linear regression model to determine if the port that the passenger embarked on can predict the cost of the passenger’s ticket. 
+
+a) What is the model equation?
+b) Interpret the intercept in the context of the problem.
+c) Which port, on average, had the highest ticket cost?
+d) Which passenger did the model predict the worst?
+:::
+    
+### Advanced {#sec-ex05-advanced}
+
+::: {#exr-ch05-adv1}
+The `summary` function and the `lm` function contain many values relevant to our analysis, including residuals and fitted values stored in the `lm` function and residuals, coefficients, R-squared and adjusted R-squared values all stored in the `summary` function.
+
+Sometimes, it can be useful to extract these values directly from the result of the functions. These values can be accessed using the $ operator that we learned about in @sec-getting-started.
+
+Using the model from @exr-ch05-app1...
+    
+a) extract the `coefficients` directly from the model
+b) extract the `r.squared` from the summary. This represents the proportion of variance in the dependent variable that can be explained by the independent variables. You will learn about this in detail in higher level regression courses.
+:::

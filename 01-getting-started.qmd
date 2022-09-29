@@ -213,7 +213,7 @@ Once Instagram is open on your phone, you can then proceed to share your photo w
 
 Let's now show you how to perform these two steps for the `ggplot2` package for data visualization.
 
-### Package installation {#package-installation}
+### Package installation {#sec-package-installation}
 
 > **Note about RStudio Server/Cloud**: If your instructor has provided you with a link and access to RStudio Server/Cloud, you probably will not need to install packages, as they have likely been pre-installed for you by your instructor. That being said, it is still a good idea to know this process for later on when you are not using RStudio Server/Cloud, but rather RStudio Desktop on your own computer.
 
@@ -423,6 +423,14 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
 
 
 ## Exercises {#sec-ex01}
+
+### Exercises explained {#sec-ex00-explained}
+
+Following each chapter, there are a set of Exercises for you to practice what you have learned. The **Conceptual** questions are multiple choice or short answer questions focusing on the major concepts learned throughout the chapter. The **Application** questions focus on practical skills learned throughout the chapter. And the **Advanced** questions teach new and useful skills beyond what was taught in the chapter.
+
+The chapter exercises use the `covid_states`, `nba`, and `titanic` datasets which are included in the `ISDSdatasets` package. To install `ISDSdatasets` on your computer, type `remotes::install_github("NUstat/ISDSdatasets")` in your **Console**. You may need to install the `remotes` package first. See @sec-package-installation for how to install the `remotes` package. If you are using RStudio Cloud, your instructor probably already installed all of this for you. You can see what packages you have installed by clicking on the **Packages** tab in the lower right pane.
+
+To use the package make sure you load it using `library(ISDSdatasets)`. To explore a dataset within the package you can use the `View()` or `data()` function in your **Console**. For example, try typing `data(titanic)` in the **Console**. This will load the `titanic` data into the **Environment**.
 
 ### Conceptual {#sec-ex01-conceptual}
 
