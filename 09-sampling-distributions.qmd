@@ -1,9 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-
 # Sampling Distributions {#sec-sampling}
 
 ```{r}
@@ -305,7 +299,7 @@ pF <- ggplot(data.frame(x = c(0, 10)), aes(x = x)) +
         legend.position = c(0.6, 0.7))
 ```
 
-## Repeated Sampling
+## Repeated Sampling {#sec-repeat-sample}
 
 A vast majority of the time we do not have data for the entire population of interest. Instead we take a sample from the population and use this sample to make generalizations and inferences about the population. How certain can we be that our sample estimate is close to the true population? In order to answer that question we must first delve into a theoretical framework, and use the theory of repeated sampling to develop the Cental Limit Theorem (CLT) and confidence intervals for our estimates.
 
@@ -871,7 +865,7 @@ The fact that there is a formula for this standard error means that we can know 
 -   That the sampling distribution is a t-distribution, and that
 -   The standard error (spread) of this distribution can be calculated as $SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{s}{\sqrt{n}} = \frac{2.1}{\sqrt{10}} = 0.664$.
 
-At this point, this is all you know, but in [Chapters -@sec-CIs] - [-@sec-hypothesis-tests], we will put these properties to good use.
+At this point, this is all you know, but in [Chapters -@sec-confidence-int] - [-@sec-hypothesis-tests], we will put these properties to good use.
 
 ## Sample Size and Sampling Distributions {#sec-size}
 
