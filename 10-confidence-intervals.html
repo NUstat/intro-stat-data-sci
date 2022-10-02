@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -272,7 +336,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#needed-packages" id="toc-needed-packages" class="nav-link active" data-scroll-target="#needed-packages">Needed Packages</a></li>
+  <li><a href="#combining-an-estimate-with-its-precision" id="toc-combining-an-estimate-with-its-precision" class="nav-link" data-scroll-target="#combining-an-estimate-with-its-precision"><span class="toc-section-number">10.1</span>  Combining an estimate with its precision</a>
+  <ul class="collapse">
+  <li><a href="#sampling-distributions-of-standardized-statistics" id="toc-sampling-distributions-of-standardized-statistics" class="nav-link" data-scroll-target="#sampling-distributions-of-standardized-statistics"><span class="toc-section-number">10.1.1</span>  Sampling distributions of standardized statistics</a></li>
+  <li><a href="#confidence-interval-with-the-normal-distribution" id="toc-confidence-interval-with-the-normal-distribution" class="nav-link" data-scroll-target="#confidence-interval-with-the-normal-distribution"><span class="toc-section-number">10.1.2</span>  Confidence Interval with the Normal distribution</a></li>
+  <li><a href="#general-form-for-constructing-a-confidence-interval" id="toc-general-form-for-constructing-a-confidence-interval" class="nav-link" data-scroll-target="#general-form-for-constructing-a-confidence-interval"><span class="toc-section-number">10.1.3</span>  General Form for Constructing a Confidence Interval</a></li>
+  <li><a href="#finding-critical-values" id="toc-finding-critical-values" class="nav-link" data-scroll-target="#finding-critical-values"><span class="toc-section-number">10.1.4</span>  Finding critical values</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="toc-section-number">10.1.5</span>  Example</a></li>
+  </ul></li>
+  <li><a href="#interpreting-a-confidence-interval" id="toc-interpreting-a-confidence-interval" class="nav-link" data-scroll-target="#interpreting-a-confidence-interval"><span class="toc-section-number">10.2</span>  Interpreting a Confidence Interval</a></li>
+  <li><a href="#margin-of-error-and-width-of-an-interval" id="toc-margin-of-error-and-width-of-an-interval" class="nav-link" data-scroll-target="#margin-of-error-and-width-of-an-interval"><span class="toc-section-number">10.3</span>  Margin of Error and Width of an Interval</a></li>
+  <li><a href="#sec-one-prop-ci" id="toc-sec-one-prop-ci" class="nav-link" data-scroll-target="#sec-one-prop-ci"><span class="toc-section-number">10.4</span>  Example: One proportion</a>
+  <ul class="collapse">
+  <li><a href="#observed-statistic" id="toc-observed-statistic" class="nav-link" data-scroll-target="#observed-statistic"><span class="toc-section-number">10.4.1</span>  Observed Statistic</a></li>
+  </ul></li>
+  <li><a href="#example-comparing-two-proportions" id="toc-example-comparing-two-proportions" class="nav-link" data-scroll-target="#example-comparing-two-proportions"><span class="toc-section-number">10.5</span>  Example: Comparing two proportions</a>
+  <ul class="collapse">
+  <li><a href="#compute-the-point-estimate" id="toc-compute-the-point-estimate" class="nav-link" data-scroll-target="#compute-the-point-estimate"><span class="toc-section-number">10.5.1</span>  Compute the point estimate</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/10-confidence-intervals.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -293,21 +381,612 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>In <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>, we developed a theory of repeated samples. But what does this mean for your data analysis? If you only have one sample in front of you, how are you supposed to understand properties of the sampling distribution and your estimators? In this chapter we use the mathematical theory we introduced in <a href="09-sampling-distributions.html#sec-commonstat">Sections&nbsp;<span>9.4</span></a> - <a href="09-sampling-distributions.html#sec-clt"><span>9.6</span></a> to tackle this question.</p>
+<section id="needed-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed Packages</h3>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-Under Construction
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+<section id="combining-an-estimate-with-its-precision" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="combining-an-estimate-with-its-precision"><span class="header-section-number">10.1</span> Combining an estimate with its precision</h2>
+<p>A <strong>confidence interval</strong> gives a range of plausible values for a parameter. It allows us to combine an estimate (e.g.&nbsp;<span class="math inline">\(\bar{x}\)</span>) with a measure of its precision (i.e.&nbsp;its standard error). Confidence intervals depend on a specified confidence level (e.g.&nbsp;90%, 95%, 99%), with higher confidence levels corresponding to wider confidence intervals and lower confidence levels corresponding to narrower confidence intervals.</p>
+<p>Usually we don’t just begin sections with a definition, but <em>confidence intervals</em> are simple to define and play an important role in the sciences and any field that uses data.</p>
+<p>You can think of a confidence interval as playing the role of a net when fishing. Using a single point-estimate to estimate an unknown parameter is like trying to catch a fish in a murky lake with a single spear, and using a confidence interval is like fishing with a net. We can throw a spear where we saw a fish, but we will probably miss. If we toss a net in that area, we have a good chance of catching the fish. Analogously, if we report a point estimate, we probably won’t hit the exact population parameter, but if we report a range of plausible values based around our statistic, we have a good shot at catching the parameter.</p>
+<!--want to include the pic from the old slides to accompany the analogy? Also took language from the slides- need to be cited?-->
+<section id="sampling-distributions-of-standardized-statistics" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="sampling-distributions-of-standardized-statistics"><span class="header-section-number">10.1.1</span> Sampling distributions of standardized statistics</h3>
+<p>In order to construct a confidence interval, we need to know the sampling distribution of a <em>standardized</em> statistic. We can standardize an estimate by subtracting its mean and dividing by its standard error:</p>
+<p><span class="math display">\[STAT = \frac{Estimate - Mean(Estimate)}{SE(Estimate)}\]</span> While we have seen that the sampling distribution of many common estimators are normally distributed (see <a href="09-sampling-distributions.html#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>), this is not always the case for the <em>standardized estimate</em> computed by <span class="math inline">\(STAT\)</span>. This is because the standard errors of many estimators, which appear on the denominator of <span class="math inline">\(STAT\)</span>, are a function of an additional estimated quantity – the sample variance <span class="math inline">\(s^2\)</span>. When this is the case, the sampling distribution for <strong>STAT is a t-distribution with a specified degrees of freedom (df)</strong>. <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> shows the distribution of the standardized statistics for many of the common statistics we have seen previously.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-samp-dist-table-ch-10" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;10.1: Properties of Sample Statistics</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 52%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Statistic</th>
+<th style="text-align: left;">Population parameter</th>
+<th style="text-align: left;">Estimator</th>
+<th style="text-align: left;">Standardized statistic</th>
+<th style="text-align: left;">Sampling distribution of standardized statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Proportion</td>
+<td style="text-align: left;"><span class="math inline">\(\pi\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\hat{\pi} - \pi}{\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(N(0,1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean</td>
+<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overline{x}\)</span> or <span class="math inline">\(\widehat{\mu}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(t(df = n-1)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Difference in proportions</td>
+<td style="text-align: left;"><span class="math inline">\(\pi_1 -\pi_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}_1 - \widehat{\pi}_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{(\hat{\pi}_1 - \hat{\pi}_2) - {(\pi_1 - \pi_2)}}{\sqrt{\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1} + \frac{\hat{\pi}_2(1 - \hat{\pi}_2)}{n_2}}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(N(0,1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Difference in means</td>
+<td style="text-align: left;"><span class="math inline">\(\mu_1 - \mu_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overline{x}_1 - \overline{x}_2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(t(df = min(n_1 - 1, n_2 - 1))\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regression intercept</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(b_0\)</span> or <span class="math inline">\(\widehat{\beta}_0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{b_0 - \hat{\beta}_0}{\sqrt{s_y^2[\frac{1}{n} + \frac{\bar{x}^2}{(n-1)s_x^2}]}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(t(df = n-2)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regression slope</td>
+<td style="text-align: left;"><span class="math inline">\(\beta_1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(b_1\)</span> or <span class="math inline">\(\widehat{\beta}_1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{b_1 - \beta_1}{\sqrt{\frac{s_y^2}{(n-1)s_x^2}}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(t(df = n-2)\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Currently working on content transfer from previous version of the book.</p>
+</div>
+<p>If in fact the population standard variance was known and didn’t have to be estimated, we could replace the <span class="math inline">\(s^2\)</span>’s in these formulas with <span class="math inline">\(\sigma^2\)</span>’s, and the sampling distribution of <span class="math inline">\(STAT\)</span> would follow a <span class="math inline">\(N(0,1)\)</span> distribution.</p>
+</section>
+<section id="confidence-interval-with-the-normal-distribution" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="confidence-interval-with-the-normal-distribution"><span class="header-section-number">10.1.2</span> Confidence Interval with the Normal distribution</h3>
+<p>If the sampling distribution of a standardized statistic is normally distributed, then we can use properties of the standard normal distribution to create a confidence interval. Recall that in the standard normal distribution:</p>
+<ul>
+<li>90% of values are between -1.645 and +1.645.</li>
+<li>95% of the values are between -1.96 and +1.96.</li>
+<li>99% of values are between -2.575 and +2.575</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-N-CIs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-confidence-intervals_files/figure-html/fig-N-CIs-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.1: N(0,1) 95% cutoff values</figcaption><p></p>
+</figure>
 </div>
 </div>
+</div>
+<p>Using this, we can define a 95% confidence interval for a population parameter as, <span class="math display">\[Estimate \ \pm 1.96*SE(Estimate),\]</span> or written in interval notation as <span class="math display">\[[Estimate \ \ – \ 1.96*SE(Estimate),\ \ \ Estimate + 1.96*SE(Estimate)]\]</span></p>
+<p>For example, a 95% confidence interval for the population mean <span class="math inline">\(\mu\)</span> can be constructed based upon the sample mean as, <span class="math display">\[[\bar{x} - 1.96\frac{\sigma}{\sqrt{n}}, \ \bar{x} + 1.96\frac{\sigma}{\sqrt{n}}],\]</span> when the population standard deviation is known. We will show later on in this section how to construct a confidence interval for the mean using a t-distribution when the population standard deviation is unknown.</p>
+<p>Let’s return to our football fan example. Imagine that we have data on the population of 40,000 fans, their ages and whether or not they are cheering for the home team. This simulated data exists in the data frame <code>football_fans</code>.</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>football_fans <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">home_fan =</span> <span class="fu">rbinom</span>(<span class="dv">40000</span>, <span class="dv">1</span>, <span class="fl">0.91</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">age =</span> <span class="fu">rnorm</span>(<span class="dv">40000</span>, <span class="dv">30</span>, <span class="dv">8</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">case_when</span>(age <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         age <span class="sc">&gt;=</span><span class="dv">0</span> <span class="sc">~</span> age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We see that the average age in this population is <span class="math inline">\(\mu =\)</span> 30.064 and the standard deviation is <span class="math inline">\(\sigma =\)</span> 8.017.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mu =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sigma =</span> <span class="fu">sd</span>(age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mu sigma
+1 30.1  8.02</code></pre>
+</div>
+</div>
+<p>Let’s take a sample of 100 fans from this population and compute the average age, <span class="math inline">\(\bar{x}\)</span> and its standard error <span class="math inline">\(SE(\bar{x})\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_100_fans <span class="ot">&lt;-</span> football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">100</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mean_age_stats <span class="ot">&lt;-</span> sample_100_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">xbar =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">sigma =</span> <span class="fu">sd</span>(football_fans<span class="sc">$</span>age),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_xbar =</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>mean_age_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    n xbar sigma SE_xbar
+1 100 29.7  8.02   0.802</code></pre>
+</div>
+</div>
+<p>Because the population standard deviation is known and therefore the standarized mean follows a <span class="math inline">\(N(0,1)\)</span> distribution, we can construct a 95% confidence interval for <span class="math inline">\(\bar{x}\)</span> by</p>
+<p><span class="math display">\[29.7 \pm 1.96*\frac{8.02}{\sqrt{100}},\]</span> which results in the interval <span class="math inline">\([28.1, 31.3]\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> mean_age_stats <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> xbar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> xbar <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  lower upper
+1  28.1  31.3</code></pre>
+</div>
+</div>
+<p>A few properties are worth keeping in mind:</p>
+<ul>
+<li>This interval is <em>symmetric</em>. This symmetry follows from the fact that the normal distribution is a symmetric distribution. <em>If the sampling distribution does not follow the normal or t-distributions, the confidence interval may not be symmetric</em>.</li>
+<li>The multiplier 1.96 used in this interval corresponding to 95% comes directly from properties of the normal distribution. <em>If the sampling distribution is not normal, this multiplier might be different</em>. For example, this multiplier is <em>larger</em> when the distribution has heavy tails, as with the t-distribution. The multiplier will also be different if you want to use a level of confidence other than 95%. We will discuss this further in the next section.</li>
+<li>Rather than simply reporting our sample mean <span class="math inline">\(\bar{x} = 29.7\)</span> as a single value, reporting a range of values via a confidence interval takes into account the uncertainty associated with the fact that we are observing a random sample and not the whole population. We saw in <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a> that there is <em>sampling variation</em> inherent in taking random samples, and that (even unbiased) estimates will not be exactly equal to the population parameter in every sample. We know how much uncertainty/sampling variation to account for in our confidence intervals because we have known formulas for the sampling distributions of our estimators that tell us how much we expect these estimates to vary across repeated samples.</li>
+</ul>
+</section>
+<section id="general-form-for-constructing-a-confidence-interval" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="general-form-for-constructing-a-confidence-interval"><span class="header-section-number">10.1.3</span> General Form for Constructing a Confidence Interval</h3>
+<p>In general, we construct a confidence interval using what we know about an estimator’s standardized sampling distribution. Above, we used the multiplier 1.96 because we know that <span class="math inline">\(\frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}\)</span> follows a standard Normal distribution, and we wanted our “level of confidence” to be 95%. Note that the multiplier in a confidence interval, often called a <strong>critical value</strong>, is simply a cutoff value from either the <span class="math inline">\(t\)</span> or standard normal distribution that corresponds to the desired level of confidence for the interval (e.g.&nbsp;90%, 95%, 99%).</p>
+<p>In general, a confidence interval is of the form:</p>
+<p><span class="math display">\[\text{Estimate} \pm \text{Critical Value} * SE(\text{Estimate})\]</span></p>
+<p>In order to construct a confidence interval you need to:</p>
+<ol type="1">
+<li>Calculate the estimate from your sample</li>
+<li>Calculate the standard error of your estimate (using formulas found in <a href="09-sampling-distributions.html#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>)</li>
+<li>Determine the appropriate sampling distribution for your standardized estimate (usually <span class="math inline">\(t(df)\)</span> or <span class="math inline">\(N(0,1)\)</span>. Refer to <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a>)</li>
+<li>Determine your desired level of confidence (e.g.&nbsp;90%, 95%, 99%)</li>
+<li>Use 3 and 4 to determine the correct critical value</li>
+</ol>
+</section>
+<section id="finding-critical-values" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="finding-critical-values"><span class="header-section-number">10.1.4</span> Finding critical values</h3>
+<p>Suppose we have a sample of <span class="math inline">\(n = 20\)</span> and are using a t-distribution to construct a 95% confidence interval for the mean. Remember that the t-distribution is characterized by its degrees of freedom; here the appropriate degrees of freedom are <span class="math inline">\(df = n - 1 = 19\)</span>. We can find the appropriate critical value using the <code>qt()</code> function in R. Recall that in order for 95% of the data to fall in the middle, this means that 2.5% of the data must fall in each tail, respectively. We therefore want to find the critical value that has a probability of 0.025 to the <em>left</em> (i.e.&nbsp;in the <em>lower tail</em>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">025</span>, <span class="at">df =</span> <span class="dv">19</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.09</code></pre>
+</div>
+</div>
+<p>Note that because the t-distribution is symmetric, we know that the upper cutoff value will be +2.09 and therefore it’s not necessary to calculate it separately. For demonstration purposes, however, we’ll show how to calculate it in two ways in R: by specifying that we want the value that gives 2.5% in the upper tail (i.e.&nbsp;<code>lower.tail = FALSE</code>) or by specifying that we want the value that gives 97.5% in the lower tail. Note these two are logically equivalent.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">025</span>, <span class="at">df =</span> <span class="dv">19</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.09</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">975</span>, <span class="at">df =</span> <span class="dv">19</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.09</code></pre>
+</div>
+</div>
+<p>Importantly, changing the degrees of freedom (by having a different sample size) will change the critical value for the t-distribution. For example, if instead we have <span class="math inline">\(n = 50\)</span>, the correct critical value would be <span class="math inline">\(\pm 2.01\)</span>. The larger the sample size for the t-distribution, the closer the critical value gets to the corresponding critical value in the N(0,1) distribution (in the 95% case, 1.96).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">025</span>, <span class="at">df =</span> <span class="dv">49</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.01</code></pre>
+</div>
+</div>
+<p>Recall that the critical values for 99%, 95%, and 90% confidence intervals for the <span class="math inline">\(N(0,1)\)</span> are given by <span class="math inline">\(\pm 2.575, \pm 1.96,\)</span>and <span class="math inline">\(\pm 1.645\)</span> respectively. These are likely numbers you will memorize from using frequently, but they can also be calculated using the <code>rnorm()</code> function in R.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">005</span>) <span class="co">#99% (i.e. 0.5% in each tail)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.58</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">025</span>) <span class="co">#95% (i.e. 2.5% in each tail)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.96</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">05</span>) <span class="co">#90% (i.e. 5% in each tail)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.64</code></pre>
+</div>
+</div>
+</section>
+<section id="example" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="example"><span class="header-section-number">10.1.5</span> Example</h3>
+<p>Returning to our football fans example, let’s assume we don’t know the true population standard deviation <span class="math inline">\(\sigma\)</span>, but instead we have to estimate it by <span class="math inline">\(s\)</span>, the standard deviation calculated in our sample. This means we need to calculate <span class="math inline">\(SE(\bar{x})\)</span> using <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span> instead of <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mean_age_stats_unknown_sd <span class="ot">&lt;-</span> sample_100_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xbar =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(age),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_xbar =</span> s<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>mean_age_stats_unknown_sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    n xbar    s SE_xbar
+1 100 29.7 7.78   0.778</code></pre>
+</div>
+</div>
+<p>In this case, we should use the t-distribution to construct our confidence interval because - refering back to <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> - we know <span class="math inline">\(\frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} \sim t(df = n-1)\)</span>. Recall that we took a sample of size <span class="math inline">\(n = 100\)</span>, so our degrees of freedom here are <span class="math inline">\(df = 99\)</span>, and the appropriate critical value for a 95% confidence interval is -1.984.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">025</span>, <span class="at">df =</span> <span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.98</code></pre>
+</div>
+</div>
+<p>Therefore, our confidence interval is given by</p>
+<p><span class="math display">\[29.7 \pm 1.98*\frac{7.78}{\sqrt{100}},\]</span> which results in the interval <span class="math inline">\([28.1, 31.2]\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> mean_age_stats_unknown_sd <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> xbar <span class="sc">-</span> <span class="fl">1.98</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> xbar <span class="sc">+</span> <span class="fl">1.98</span><span class="sc">*</span>SE_xbar)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  lower upper
+1  28.1  31.2</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="interpreting-a-confidence-interval" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="interpreting-a-confidence-interval"><span class="header-section-number">10.2</span> Interpreting a Confidence Interval</h2>
+<p>Like many statistics, while a confidence interval is fairly straightforward to construct, it is very easy to interpret incorrectly. In fact, many researchers – statisticians included – get the interpretation of confidence intervals wrong. This goes back to the idea of <strong>counterfactual thinking</strong> that we introduced previously: a confidence interval is a property of a population and estimator, not a particular sample. It asks: if I constructed this interval in every possible sample, in what percentage of samples would I correctly include the true population parameter? For a 99% confidence interval, this answer is 99% of samples; for a 95% confidence interval, the answer is 95% of samples, etc.</p>
+<p>To see this, let’s return to the football fans example and consider the sampling distribution of the sample mean age. Recall that we have population data for all 40,000 fans. Below we take 10,000 repeated samples of size 100 and display the sampling distribution of the sample mean in <a href="#fig-samp-dist-mean">Figure&nbsp;<span>10.2</span></a>. Recall that the true population mean is 30.064</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>samples_football_fans <span class="ot">&lt;-</span> football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span>  <span class="dv">100</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>samp_means_football_fans <span class="ot">&lt;-</span> samples_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(age),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">sigma =</span> <span class="fu">sd</span>(football_fans<span class="sc">$</span>age),</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_xbar =</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>samp_dist_plot <span class="ot">&lt;-</span> </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(samp_means_football_fans) <span class="sc">+</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> xbar), <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(football_fans<span class="sc">$</span>age), <span class="at">color =</span> <span class="st">"blue"</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>samp_dist_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-samp-dist-mean" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.2: Sampling Distribution of Average Age of Fans at a Football Game</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Assume that the sample we actually observed was <code>replicate = 77</code>, which had <span class="math inline">\(\bar{x} =\)</span> 29.7. If we used this sample mean to construct a 95% confidence interval, the population mean would be in this interval, right? <a href="#fig-samp-dist-mean-2">Figure&nbsp;<span>10.3</span></a> shows a confidence interval shaded around <span class="math inline">\(\bar{x} =\)</span> 29.7, which is indicated by the red line. This confidence interval successfully includes the true population mean.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(replicate <span class="sc">==</span> <span class="dv">77</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> xbar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> xbar <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  lower upper
+  &lt;dbl&gt; &lt;dbl&gt;
+1  28.1  31.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(replicate <span class="sc">==</span> <span class="dv">77</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(xbar) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>samp_dist_plot <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_ci</span>(CI) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xbar, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-samp-dist-mean-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-2-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.3: Confidence Interval shaded for an observed sample mean of 29.8</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Assume now that we were unlucky and drew a sample with a mean far from the population mean. One such case is <code>replicate =</code> 545, which had <span class="math inline">\(\bar{x} =\)</span> 32.3. In this case, is the population mean in this interval? <a href="#fig-samp-dist-mean-3">Figure&nbsp;<span>10.4</span></a> displays this scenario.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(replicate <span class="sc">==</span> <span class="dv">545</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> xbar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> xbar <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  lower upper
+  &lt;dbl&gt; &lt;dbl&gt;
+1  30.7  33.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(replicate <span class="sc">==</span> <span class="dv">545</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(xbar) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>samp_dist_plot <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_ci</span>(CI) <span class="sc">+</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xbar, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-samp-dist-mean-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-3-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.4: Confidence Interval shaded for an observed sample mean of 32.3</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this case, the confidence interval does not include the true population mean. Importantly, remember that in real life we only have the data in front of us from one sample. <em>We don’t know what the population mean is</em>, and we don’t know if our estimate is the value near to the mean (<a href="#fig-samp-dist-mean-2">Figure&nbsp;<span>10.3</span></a>) or far from the mean (<a href="#fig-samp-dist-mean-3">Figure&nbsp;<span>10.4</span></a>). Also recall <code>replicate =</code> 545 was a legitimate random sample drawn from the population of 40,000 football fans. Just by chance, it is possible to observe a sample mean that is far from the true population mean.</p>
+<p>We could compute 95% confidence intervals for all 10,000 of our repeated samples, and we would expect approximately 95% of them to contain the true mean; this is the definition of what it means to be “95% confident” in statistics. Another way to think about it, when constructing 95% confidence intervals, we expect that we’ll only end up with an “unlucky” sample- that is, a sample whose mean is far enough from the population mean such that the confidence interval doesn’t capture it - just 5% of the time.</p>
+<p>For each of our 10,000 samples, let’s create a new variable <code>captured_95</code> to indicate whether the true population mean <span class="math inline">\(\mu\)</span> is captured between the lower and upper values of the confidence interval for the given sample. Let’s look at the results for the first 5 samples.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(age)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>CIs_football_fans <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower =</span> xbar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper =</span> xbar <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">captured_95 =</span> lower <span class="sc">&lt;=</span> mu <span class="sc">&amp;</span> mu <span class="sc">&lt;=</span> upper)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>CIs_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 8
+  replicate  xbar sigma     n SE_xbar lower upper captured_95
+      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;      
+1         1  30.7  8.02   100   0.802  29.2  32.3 TRUE       
+2         2  29.7  8.02   100   0.802  28.2  31.3 TRUE       
+3         3  29.5  8.02   100   0.802  28.0  31.1 TRUE       
+4         4  30.7  8.02   100   0.802  29.1  32.2 TRUE       
+5         5  30.2  8.02   100   0.802  28.6  31.7 TRUE       </code></pre>
+</div>
+</div>
+<p>We see that each of the first 5 confidence intervals do contain <span class="math inline">\(\mu\)</span>. Let’s look across all 10,000 confidence intervals (from our 10,000 repeated samples), and see what proportion contain <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>CIs_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">sum</span>(captured_95)<span class="sc">/</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `sum(captured_95)/n()`
+                   &lt;dbl&gt;
+1                  0.951</code></pre>
+</div>
+</div>
+<p>In fact, 95.06% of the 10,000 do capture the true mean. If we were to take an infinite number of repeated samples, we would see this number approach exactly 95%.</p>
+<p>For visualization purposes, we’ll take a smaller subset of 100 of these confidence intervals and display the results in <a href="#fig-CI-fig">Figure&nbsp;<span>10.5</span></a>. In this smaller subset, 96 of the 100 95% confidence intervals contain the true population mean.</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>CI_subset <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(CIs_football_fans, <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">replicate_id =</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(CI_subset) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> xbar, <span class="at">y =</span> replicate_id, <span class="at">color =</span> captured_95)) <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> replicate_id, <span class="at">yend =</span> replicate_id, <span class="at">x =</span> lower, <span class="at">xend =</span> upper, </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> captured_95)) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Age"</span>),</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Replicate ID"</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"95% percentile-based confidence intervals for "</span>, </span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>                             mu, <span class="at">sep =</span> <span class="st">""</span>))) <span class="sc">+</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"orange"</span>)) <span class="sc">+</span> </span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mu, <span class="at">color =</span> <span class="st">"red"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-CI-fig" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-confidence-intervals_files/figure-html/fig-CI-fig-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.5: Confidence Interval for Average Age from 100 repeated samples of size 100</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What if we instead constructed 90% confidence intervals? That is, we instead used 1.645 as our critical value instead of 1.96.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>CIs_90_football_fans <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower =</span> xbar <span class="sc">-</span> <span class="fl">1.645</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper =</span> xbar <span class="sc">+</span> <span class="fl">1.645</span><span class="sc">*</span>SE_xbar,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">captured_90 =</span> lower <span class="sc">&lt;=</span> mu <span class="sc">&amp;</span> mu <span class="sc">&lt;=</span> upper)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>CIs_90_football_fans <span class="sc">%&gt;%</span> </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">sum</span>(captured_90)<span class="sc">/</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  `sum(captured_90)/n()`
+                   &lt;dbl&gt;
+1                  0.901</code></pre>
+</div>
+</div>
+<p>As expected, when we use the 90% critical value, approximately 90% of the confidence intervals contain the true mean. Note that because we are using a smaller multiplier (1.645 vs.&nbsp;1.96), our intervals are <em>narrower</em>, which makes it more likely that some of our intervals will not capture the true mean. Think back to the fishing analogy: you will probably capture the fish fewer times when using a small net versus a large net.</p>
+</section>
+<section id="margin-of-error-and-width-of-an-interval" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="margin-of-error-and-width-of-an-interval"><span class="header-section-number">10.3</span> Margin of Error and Width of an Interval</h2>
+<p>Recall that we said in general, a confidence interal is of the form:</p>
+<p><span class="math display">\[\text{Estimate} \pm \text{Critical Value} * SE(\text{Estimate})\]</span></p>
+<p>The second element of the confidence interval (<span class="math inline">\(\text{Critical Value} * SE(\text{Estimate}\)</span>) is often called the <strong>margin of error</strong>. Therefore, another general way of writing the confidence interval is <span class="math display">\[\text{Estimate} \pm \text{Margin of Error}\]</span></p>
+<p>Note that as the <em>margin of error</em> decreases, the <em>width of the interval</em> also decreases. But what makes the margin of error decrease? We’ve already discussed one way: by decreasing the level of confidence. That is, using a lower confidence level (e.g.&nbsp;90% instead of 95%) will decrease the critical value (e.g.&nbsp;1.645 instead of 1.96) and thus result in a smaller margin of error and narrower confidence interval.</p>
+<p>There is a trade-off here between the width of an interval and the level of confidence. In general we might think narrower intervals are preferrable to wider ones, but by narrowing your interval, you are increasing the chance that your interval will not capture the true mean. That is, a 90% confidence interval is narrower than a 95% confidence interval, but it has a 10% chance of missing the mean as opposed to just a 5% chance of missing it. The trade-off in the other direction is this: a 99% confidence level has a higher chance of capturing the true mean, but it might be too wide of an interval to be practically useful. This Garfield comic demonstrates how there are drawbacks to using a higher-confidence (and therefore wider) interval.</p>
+<p><img src="images/garfield_comic.png" id="garfield" class="img-fluid" data-out.width="80%"></p>
+<p>A second way you can decrease the margin of error is by <em>increasing sample size</em>. Recall that all of our formulas for standard errors involve <span class="math inline">\(n\)</span> on the denominator (see <a href="09-sampling-distributions.html#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>), so by increasing sample size on the denominator, we decrease our standard error. We also saw this demonstrated via simulations in <a href="09-sampling-distributions.html#sec-size"><span>Section&nbsp;9.5</span></a>. Because our margin of error formula involves standard error, increasing the sample size decreases the standard error and thus decreases the margin of error. This fits with our intuition that having more infomation (i.e.&nbsp;a larger sample size) will give us a more precise estimate (i.e.&nbsp;a narrower confidence interval) of the parameter we’re interested in.</p>
+</section>
+<section id="sec-one-prop-ci" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="sec-one-prop-ci"><span class="header-section-number">10.4</span> Example: One proportion</h2>
+<p>Let’s revisit our exercise of trying to estimate the proportion of red balls in the bowl from <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>. We are now interested in determining a confidence interval for population parameter <span class="math inline">\(\pi\)</span>, the proportion of balls that are red out of the total <span class="math inline">\(N = 2400\)</span> red and white balls.</p>
+<p>We will use the first sample reported from Ilyas and Yohan in <a href="09-sampling-distributions.html#sec-sampling-activity">Subsection&nbsp;<span>9.2.2</span></a> for our point estimate. They observed 21 red balls out of the 50 in their shovel. This data is stored in the <code>tactile_shovel1</code> data frame in the <code>moderndive</code> package.</p>
+<!-- Need to include this in the pkg! -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>tactile_shovel1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 1
+   color
+   &lt;chr&gt;
+ 1 white
+ 2 red  
+ 3 red  
+ 4 red  
+ 5 red  
+ 6 red  
+ 7 red  
+ 8 white
+ 9 red  
+10 white
+# … with 40 more rows</code></pre>
+</div>
+</div>
+<section id="observed-statistic" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="observed-statistic"><span class="header-section-number">10.4.1</span> Observed Statistic</h3>
+<p>We can use our data wrangling tools to compute the proportion that are red in this data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>prop_red_stats <span class="ot">&lt;-</span> tactile_shovel1 <span class="sc">%&gt;%</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pi_hat =</span> <span class="fu">sum</span>(color <span class="sc">==</span> <span class="st">"red"</span>) <span class="sc">/</span> n,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_pi_hat =</span> <span class="fu">sqrt</span>(pi_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_hat)<span class="sc">/</span>n))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>prop_red_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+      n pi_hat SE_pi_hat
+  &lt;int&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+1    50   0.42    0.0698</code></pre>
+</div>
+</div>
+<p>As shown in <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a>, the appropriate distribution for a confidence interval of <span class="math inline">\(\hat{\pi}\)</span> is <span class="math inline">\(N(0,1)\)</span>, so we can use the critical value 1.96 to construct a 95% confidence interval.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> prop_red_stats <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> pi_hat <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_pi_hat,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> pi_hat <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE_pi_hat)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  lower upper
+  &lt;dbl&gt; &lt;dbl&gt;
+1 0.283 0.557</code></pre>
+</div>
+</div>
+<p>We are 95% confident that the true proportion of red balls in the bowl is between 0.283 and 0.557. Recall that if we were to construct many, many 95% confidence intervals across repeated samples, 95% of them would contain the true mean; so there is a 95% chance that our one confidence interval (from our one observed sample) does contain the true mean.</p>
+</section>
+</section>
+<section id="example-comparing-two-proportions" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="example-comparing-two-proportions"><span class="header-section-number">10.5</span> Example: Comparing two proportions</h2>
+<p>If you see someone else yawn, are you more likely to yawn? In an <a href="http://www.discovery.com/tv-shows/mythbusters/mythbusters-database/yawning-contagious/">episode</a> of the show <em>Mythbusters</em>, they tested the myth that yawning is contagious. The snippet from the show is available to view in the United States on the Discovery Network website <a href="https://www.discovery.com/tv-shows/mythbusters/videos/is-yawning-contagious">here</a>. More information about the episode is also available on IMDb <a href="https://www.imdb.com/title/tt0768479/">here</a>.</p>
+<p>Fifty adults who thought they were being considered for an appearance on the show were interviewed by a show recruiter (“confederate”) who either yawned or did not. Participants then sat by themselves in a large van and were asked to wait. While in the van, the Mythbusters watched via hidden camera to see if the unaware participants yawned. The data frame containing the results is available at <code>mythbusters_yawn</code> in the <code>moderndive</code> package. Let’s check it out.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mythbusters_yawn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 3
+    subj group   yawn 
+   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;
+ 1     1 seed    yes  
+ 2     2 control yes  
+ 3     3 seed    no   
+ 4     4 seed    yes  
+ 5     5 seed    no   
+ 6     6 control no   
+ 7     7 seed    yes  
+ 8     8 control no   
+ 9     9 control no   
+10    10 seed    no   
+# … with 40 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>The participant ID is stored in the <code>subj</code> variable with values of 1 to 50.</li>
+<li>The <code>group</code> variable is either <code>"seed"</code> for when a confederate was trying to influence the participant or <code>"control"</code> if a confederate did not interact with the participant.</li>
+<li>The <code>yawn</code> variable is either <code>"yes"</code> if the participant yawned or <code>"no"</code> if the participant did not yawn.</li>
+</ul>
+<p>We can use the <code>janitor</code> package to get a glimpse into this data in a table format:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mythbusters_yawn <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(group, yawn) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To show original counts</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   group         no        yes
+ control 75.0% (12) 25.0%  (4)
+    seed 70.6% (24) 29.4% (10)</code></pre>
+</div>
+</div>
+<p>We are interested in comparing the proportion of those that yawned after seeing a seed versus those that yawned with no seed interaction. We’d like to see if the difference between these two proportions is significantly larger than 0. If so, we’d have evidence to support the claim that yawning is contagious based on this study.</p>
+<p>We can make note of some important details in how we’re formulating this problem:</p>
+<ul>
+<li>The response variable we are interested in calculating proportions for is <code>yawn</code></li>
+<li>We are calling a <code>success</code> having a <code>yawn</code> value of <code>"yes"</code>.</li>
+<li>We want to compare the proportion of yeses by <code>group</code>.</li>
+</ul>
+<p>To summarize, we are looking to examine the relationship between yawning and whether or not the participant saw a seed yawn or not.</p>
+<section id="compute-the-point-estimate" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="compute-the-point-estimate"><span class="header-section-number">10.5.1</span> Compute the point estimate</h3>
+<p>Note that the parameter we are interested in here is <span class="math inline">\(\pi_1 - \pi_2\)</span>, which we will estimate by <span class="math inline">\(\hat{\pi_1} - \hat{\pi_2}\)</span>. Recall that the standard error is given by <span class="math inline">\(\sqrt{\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1} + \frac{\hat{\pi}_2(1 - \hat{\pi}_2)}{n_2}} = \sqrt{Var(\hat{\pi}_1) + Var(\hat{\pi}_2)}\)</span>. We can use <code>group_by()</code> to calculate <span class="math inline">\(\hat{\pi}\)</span> for each group (i.e.&nbsp;<span class="math inline">\(\hat{\pi}_1\)</span> and <span class="math inline">\(\hat{\pi}_2\)</span>) as well as the corresponding variance components for each group (i.e.&nbsp;<span class="math inline">\(Var(\hat{\pi}_1)\)</span> and <span class="math inline">\(Var(\hat{\pi}_2)\)</span>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>prop_yes_stats <span class="ot">&lt;-</span> mythbusters_yawn <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">pi_hat =</span> <span class="fu">sum</span>(yawn <span class="sc">==</span> <span class="st">"yes"</span>)<span class="sc">/</span>n,</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">var_pi_hat =</span> pi_hat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_hat)<span class="sc">/</span>n) </span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>prop_yes_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  group       n pi_hat var_pi_hat
+  &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 control    16  0.25     0.0117 
+2 seed       34  0.294    0.00611</code></pre>
+</div>
+</div>
+<p>We can then combine these estimates to obtain estimates for <span class="math inline">\(\hat{\pi_1} - \hat{\pi_2}\)</span> and <span class="math inline">\(SE(\hat{\pi_1} - \hat{\pi_2})\)</span>, which are needed for our confidence interval.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>diff_prop_yes_stats <span class="ot">&lt;-</span> prop_yes_stats <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">diff_in_props =</span> <span class="fu">diff</span>(pi_hat),</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_diff =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(var_pi_hat))) </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>diff_prop_yes_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  diff_in_props SE_diff
+          &lt;dbl&gt;   &lt;dbl&gt;
+1        0.0441   0.134</code></pre>
+</div>
+</div>
+<p>This <code>diff_in_props</code> value represents the proportion of those that yawned after seeing a seed yawn (0.2941) minus the proportion of those that yawned with not seeing a seed (0.25). Using the <span class="math inline">\(N(0,1)\)</span> distribution, we can construct the following 95% confidence interval.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> diff_prop_yes_stats <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> diff_in_props <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_diff,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> diff_in_props <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE_diff)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>CI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+   lower upper
+   &lt;dbl&gt; &lt;dbl&gt;
+1 -0.218 0.306</code></pre>
+</div>
+</div>
+<p>The confidence interval shown here includes the value of 0. We’ll see in <a href="12-hypothesis-tests.html"><span>Chapter&nbsp;12</span></a> further what this means in terms of this difference being statistically significant or not, but let’s examine a bit here first. The range of plausible values for the difference in the proportion of those that yawned with and without a seed is between -0.218 and 0.306.</p>
+<p>Therefore, we are not sure which proportion is larger. If the confidence interval was entirely above zero, we would be relatively sure (about “95% confident”) that the seed group had a higher proportion of yawning than the control group. We, therefore, have evidence via this confidence interval suggesting that the conclusion from the Mythbusters show that “yawning is contagious” being “confirmed” is not statistically appropriate.</p>
+<!-- nothing in here yet about how sample size affects width of interval. should either include it or have it as an activity for them to explore in class/homework. I also have a shiny app for this https://kgfitz.shinyapps.io/confidence_intervals/ -->
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
