@@ -345,7 +345,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./statistical-background.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></a>
+  <a href="./0a-statistical-background.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./0b-solutions-exercise.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></a>
   </div>
 </li>
       </ul>
@@ -615,7 +620,7 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Another summarize diagram from Data Wrangling with dplyr and tidyr</figcaption><p></p>
 </figure>
 </div>
-<p>Let’s calculate the mean and the standard deviation of the temperature variable <code>temp</code> in the <code>weather</code> data frame included in the <code>nycflights13</code> package (See <a href="statistical-background.html">Appendix&nbsp;<span>A</span></a>). We’ll do this in one step using the <code>summarize()</code> function from the <code>dplyr</code> package and save the results in a new data frame <code>summary_temp</code> with columns/variables <code>mean</code> and the <code>std_dev</code>. Note you can also use the UK spelling of <code>summarise()</code>.</p>
+<p>Let’s calculate the mean and the standard deviation of the temperature variable <code>temp</code> in the <code>weather</code> data frame included in the <code>nycflights13</code> package (See <a href="0a-statistical-background.html">Appendix&nbsp;<span>A</span></a>). We’ll do this in one step using the <code>summarize()</code> function from the <code>dplyr</code> package and save the results in a new data frame <code>summary_temp</code> with columns/variables <code>mean</code> and the <code>std_dev</code>. Note you can also use the UK spelling of <code>summarise()</code>.</p>
 <p>The <code>weather</code> data frame’s many rows will bow be collapsed into a single row of just the summary values, in this case the mean and standard deviation:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>summary_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
