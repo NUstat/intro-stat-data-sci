@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,6 +124,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -272,7 +336,29 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#packages-needed" id="toc-packages-needed" class="nav-link active" data-scroll-target="#packages-needed">Packages Needed</a></li>
+  <li><a href="#sec-decision-making" id="toc-sec-decision-making" class="nav-link" data-scroll-target="#sec-decision-making"><span class="toc-section-number">12.1</span>  Decision making</a></li>
+  <li><a href="#sec-trade-offs" id="toc-sec-trade-offs" class="nav-link" data-scroll-target="#sec-trade-offs"><span class="toc-section-number">12.2</span>  Decision making trade-offs</a>
+  <ul class="collapse">
+  <li><a href="#sec-medicine" id="toc-sec-medicine" class="nav-link" data-scroll-target="#sec-medicine"><span class="toc-section-number">12.2.1</span>  Medicine</a></li>
+  <li><a href="#sec-law" id="toc-sec-law" class="nav-link" data-scroll-target="#sec-law"><span class="toc-section-number">12.2.2</span>  Law</a></li>
+  <li><a href="#commonalities" id="toc-commonalities" class="nav-link" data-scroll-target="#commonalities"><span class="toc-section-number">12.2.3</span>  Commonalities</a></li>
+  </ul></li>
+  <li><a href="#sec-ht" id="toc-sec-ht" class="nav-link" data-scroll-target="#sec-ht"><span class="toc-section-number">12.3</span>  Hypothesis test: Decision making in statistics</a></li>
+  <li><a href="#conducting-hypothesis-tests" id="toc-conducting-hypothesis-tests" class="nav-link" data-scroll-target="#conducting-hypothesis-tests"><span class="toc-section-number">12.4</span>  Conducting Hypothesis Tests</a>
+  <ul class="collapse">
+  <li><a href="#sec-ht-activity" id="toc-sec-ht-activity" class="nav-link" data-scroll-target="#sec-ht-activity"><span class="toc-section-number">12.4.1</span>  Promotions Example</a></li>
+  <li><a href="#movies-example-revisited" id="toc-movies-example-revisited" class="nav-link" data-scroll-target="#movies-example-revisited"><span class="toc-section-number">12.4.2</span>  Movies example revisited</a></li>
+  <li><a href="#ride-share-example-revisited" id="toc-ride-share-example-revisited" class="nav-link" data-scroll-target="#ride-share-example-revisited"><span class="toc-section-number">12.4.3</span>  Ride share example revisited</a></li>
+  </ul></li>
+  <li><a href="#more-advanced-points-to-consider" id="toc-more-advanced-points-to-consider" class="nav-link" data-scroll-target="#more-advanced-points-to-consider"><span class="toc-section-number">12.5</span>  More advanced points to consider</a></li>
+  <li><a href="#american-statistical-association-asa-statistical-standards" id="toc-american-statistical-association-asa-statistical-standards" class="nav-link" data-scroll-target="#american-statistical-association-asa-statistical-standards"><span class="toc-section-number">12.6</span>  American Statistical Association (ASA) Statistical Standards</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/12-hypothesis-tests.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -293,21 +379,527 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>In <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a>, we introduced the p-value, which provides analysts with a probability (between 0 and 1) that the observed data would be found if the null hypothesis were true. Readers familiar with the use of statistics may have noticed, however, that <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a> did not refer to any criteria (e.g., p &lt; .05) or use the phrase “statistically significant”. This is because the concept of a p-value is distinct from the use of a p-value to make a decision. In this chapter, we introduce hypothesis testing, which can be used for just this purpose.</p>
+<section id="packages-needed" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h3>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-Under Construction
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+<section id="sec-decision-making" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-decision-making"><span class="header-section-number">12.1</span> Decision making</h2>
+<p>Remember that a p-value is a probabilistic proof by contradiction. It might show that the chance that the observed data would occur under the null hypothesis is 2%, 20%, or 50%. But at what level is the evidence enough that we would decide that the null hypothesis must not be true?</p>
+<p>Conventional wisdom is to use <span class="math inline">\(p &lt; 0.05\)</span> as this threshold, where <span class="math inline">\(p\)</span> denotes the p-value. But as many have pointed out – particularly in the current ‘replication crisis’ era – this threshold is arbitrary. Why is 5% considered small enough? Why not 0.5%? Why not 0.05%? Decisions regarding these thresholds require substantive knowledge of a field, the role of statistics in science, and some important trade-offs, which we will introduce next.</p>
+<!-- link to a replication crisis article? -->
+</section>
+<section id="sec-trade-offs" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="sec-trade-offs"><span class="header-section-number">12.2</span> Decision making trade-offs</h2>
+<p>Imagine that you’ve been invited to a party, and you are trying to decide if you should go. On the one hand, the party might be a good time, and you’d be happy that you went. On the other hand, it might not be that much fun and you’d be unhappy that you went. In advance, you don’t know which kind of party it will be. How do you decide? We can formalize this decision making in terms of a 2x2 table crossing your decision (left) with information about the party (top):</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-party-table" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;12.1: Party decision making</caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">-</th>
+<th style="text-align: left;">Party is fun</th>
+<th style="text-align: left;">Party is not fun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Go to party</strong></td>
+<td style="text-align: left;">Great decision!</td>
+<td style="text-align: left;">Type I error (wasted time)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Stay home</strong></td>
+<td style="text-align: left;">Type II error (missed out)</td>
+<td style="text-align: left;">Great decision!</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Currently working on content transfer from previous version of the book.</p>
+</div>
+<p>As you can see from this table, there are 4 possible combinations. If you decide to go to the party and it is in fact fun, you’re happy. If you decide to stay home and you hear from your friends that it was terrible, you’re happy. But in the other two cases you are <em>not happy</em>:</p>
+<ul>
+<li>Type I error: You decide to go to the party and the party is lame. You’ve now wasted your time and are unhappy.</li>
+<li>Type II error: You decide to forgo the party and stay home, but you later hear that the party was awesome. You’ve now missed out and are unhappy.</li>
+</ul>
+<p>In life, we often have to make decisions like this. In making these decisions, there are trade-offs. Perhaps you are the type of person that has FOMO – in that case, you may really want to minimize your Type II error, but at the expense of attending some boring parties and wasting your time (a higher Type I error). Or perhaps you are risk averse and hate wasting time – in which case you want to minimize your Type I error, at the expense of missing out on some really great parties (a higher Type II error).</p>
+<p>There are a few important points here:</p>
+<ul>
+<li>When making a decision, you cannot know in advance what the actual outcome will be.</li>
+<li>Sometimes your decision will be the right one. Ideally, you’d like this to be most of the time.</li>
+<li>But, sometimes your decision will be the wrong one. Importantly, you cannot minimize both Type I and II errors at the same time. One will be minimized at the expense of the other.</li>
+<li>Depending upon the context, you may decide that minimizing Type I or II errors is more important to you.</li>
+</ul>
+<p>These features of decision-making play out again and again in life. In the next sections, we provide two common examples, one in medicine, the other in law.</p>
+<section id="sec-medicine" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="sec-medicine"><span class="header-section-number">12.2.1</span> Medicine</h3>
+<p>Imagine that you might be pregnant and take a pregnancy test. This test is based upon levels of HcG in your urine, and when these levels are “high enough” (determined by the pregnancy test maker), the test will tell you that you are pregnant (+). If the levels are not “high enough”, the test will tell you that you are not pregnant (-). Depending upon how the test determines “high enough” levels of HcG, however, the test might be wrong. To see how, examine the following table.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-medicine-table" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;12.2: Pregnancy test decision making</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 42%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">-</th>
+<th style="text-align: left;">Pregnant</th>
+<th style="text-align: left;">Not pregnant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Test +</strong></td>
+<td style="text-align: left;">Correct</td>
+<td style="text-align: left;">Type I error: False Positive</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Test -</strong></td>
+<td style="text-align: left;">Type II error: False Negative</td>
+<td style="text-align: left;">Correct</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+</div>
+<p>As the table notes, in two of the cases, the test correctly determines that you are either pregnant or not pregnant. But there are also two cases in which the test (a decision) is incorrect:</p>
+<ul>
+<li>Type I error: False Positive. In this case, the test tells you that you are pregnant when in fact you are not. This would occur if the level of HcG required to indicate positive is too low.</li>
+<li>Type II error: False Negative. In this case, the test tells you that you are not pregnant but you actually are. This would occur if the level of HcG required to indicate positive is too high.</li>
+</ul>
+<p>When a pregnancy test manufacturer develops the test, they have to pay attention to these two possible error types and think through the trade-offs of each. For example, if they wanted to minimize the Type II error (False Negative), they could just create a test that always tells people they are pregnant (i.e., HcG &gt;= 0). Conversely, if they wanted to minimize the Type I error (False Positive), they could set the HcG level to be very high, so that it only detects pregnancy for those that are 6 months pregnant. Of course, the trade-off here is that certainly many who took the test would actually be pregnant, and yet the test would tell them otherwise.</p>
+<p>In developing these tests, which do you think test manufacturers focus on minimizing: Type I or II errors?</p>
+</section>
+<section id="sec-law" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="sec-law"><span class="header-section-number">12.2.2</span> Law</h3>
+<p>Imagine that you are on the jury of a criminal trial. You are presented with evidence that a crime has been committed and must make a decision regarding the guilt of the defendant. But you were not there when the crime was committed, so it is impossible to know with 100% accuracy that your decision is correct. Instead, you again encounter this 2x2 table:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-law-table" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;12.3: Criminal trial decision making</caption>
+<colgroup>
+<col style="width: 26%">
+<col style="width: 39%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">-</th>
+<th style="text-align: left;">Guilty</th>
+<th style="text-align: left;">Innocent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>“Guilty” verdict</strong></td>
+<td style="text-align: left;">Correct</td>
+<td style="text-align: left;">Type I error: Wrongly Convicted</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>“Not Guilty” verdict</strong></td>
+<td style="text-align: left;">Type II error: Insufficient Evidence</td>
+<td style="text-align: left;">Correct</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>As the table notes, in two of the cases, the jury correctly determines that the defendant is either guilty or not. But there are also two cases in which the jury’s decision is incorrect:</p>
+<ul>
+<li>Type I error: Wrongly Convicted. In this case, the jury decides that the defendant is guilty when in fact they are not. This might be because evidence that was presented was falsified or because prejudices and discrimination affect how the jury perceives the defendant.</li>
+<li>Type II error: Insufficient Evidence. In this case, the jury decides that the defendant is “not guilty” when in fact they are. This is typically because there is insufficient evidence.</li>
+</ul>
+<p>In the US court system, the assumption is supposed to be that a defendant is innocent until proven guilty, meaning that a high burden of proof is required to find a defendant guilty. This means that the system is designed to have a low Type I error. The trade-off implicit in this is that the Type II error may be higher – that is, that because the burden of proof is high, some perpetrators will “get off”. (Note, of course, that we’re describing the ideal; as the <a href="https://www.innocenceproject.org">Innocence Project’s work</a> shows, Type I errors are more common than we’d like, particularly among racial minorities).</p>
+</section>
+<section id="commonalities" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="commonalities"><span class="header-section-number">12.2.3</span> Commonalities</h3>
+<p>Before connecting these to statistical decision making, it’s interesting to note that in all three of the cases we’ve introduced here – party attendance, medicine, and law – the minimization of Type I error is often primary. That is, we’d prefer a decision rule that doesn’t send us to parties we don’t like, doesn’t tell us we are pregnant when we aren’t, and doesn’t wrongfully convict people of crimes. This is not to say Type II error doesn’t matter, but that it is often seen as secondary to Type I.</p>
+</section>
+</section>
+<section id="sec-ht" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sec-ht"><span class="header-section-number">12.3</span> Hypothesis test: Decision making in statistics</h2>
+<p>The same sort of decision making problems face statistics as well: based on some p-value criterion, we could either reject the null hypothesis or not. And either the null hypothesis is true, or it is not – in which case some <em>alternative</em> hypothesis must be true.</p>
+<p>This is the first time we have mentioned an <strong>alternative hypothesis</strong>. This hypothesis is what we are seeking evidence to prove when we are conducting what is called a <strong>hypothesis test</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-ht-table" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;12.4: Hypothesis test decision making</caption>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">-</th>
+<th style="text-align: left;">Alternative Model is True</th>
+<th style="text-align: left;">Null Model is True</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Reject Null Hypothesis</strong></td>
+<td style="text-align: left;">Correct</td>
+<td style="text-align: left;"><span class="math inline">\(\alpha =\)</span> Type I error</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Do Not Reject Null Hypothesis</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\beta =\)</span> Type II error</td>
+<td style="text-align: left;">Correct</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>There is a lot of new information here to define: * We <strong>reject</strong> the null hypothesis if the p-value is smaller than some threshold (i.e., p &lt; threshold). * We <strong>do not reject</strong> the null hypothesis if the p-value is larger than this threshold (i.e., p &gt; threshold). * The <strong>null model</strong> is as we’ve defined it in <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a>. In most cases it is that there is no effect, no difference, or no relationship. (Other null hypotheses are possible, these are just the most common.) * The <strong>alternative model</strong> is a model we are seeking evidence to prove is correct. For example, the alternative model may be that there is an average non-zero difference between men and women’s SAT scores. Or that there is a correlation between income and education. Specifying an alternative can be tricky – usually this is based both on substantive knowledge and findings from prior studies.</p>
+<p>Just as in the other decision-making context, there are two cases in which these decisions are correct, and two cases in which they are not:</p>
+<ul>
+<li><span class="math inline">\(\boldsymbol{\alpha} =\)</span> <strong>Type I error:</strong> The test rejects the null hypothesis (because p &lt; threshold), yet the null hypothesis is actually true. For example, the test indicates that there is a relationship between education and income when in fact there is not.</li>
+<li><span class="math inline">\(\boldsymbol{\beta =}\)</span> <strong>Type II error:</strong> The test does not reject the null hypothesis (because p &gt; threshold), but the alternative hypothesis is actually true. For example, the test indicates that there is not enough evidence to indicate a relationship between education and income, yet in fact there is a relationship.</li>
+</ul>
+<p>Just as in your social life, medicine, and law, these two error types are in conflict with one another. A test that minimizes Type I error completely (by setting the threshold to 0) <em>never</em> rejects the null hypothesis, thus maximizing the Type II error. And vice versa, a test that minimizes Type II error completely (by setting the threshold to 1) <em>always</em> rejects the null hypothesis, thus maximizing the Type I error.</p>
+<p>In science, these values have been somewhat arbitrarily set as:</p>
+<ul>
+<li><span class="math inline">\(\boldsymbol{\alpha} =\)</span> <strong>Type I error:</strong> set the threshold to 0.05. Thus, finding that there is a 5% or smaller chance under the null hypothesis that a sample would produce a result this extreme is deemed sufficient evidence to decide the null hypothesis is not true.</li>
+<li><span class="math inline">\(\boldsymbol{\beta =}\)</span> <strong>Type II error:</strong> 0.20. That is, we are willing to accept that there is a 20% chance that we do not reject the null hypothesis when in fact the alternative hypothesis is true.</li>
+</ul>
+<p>This use of a threshold for rejecting a null hypothesis gives rise to some important language:</p>
+<ul>
+<li>When <span class="math inline">\(p &lt; 0.05\)</span> (or whatever <span class="math inline">\(\alpha\)</span> threshold is used), we say that we <strong>reject the null hypothesis</strong>. This is often referred to as a “statistically significant” effect.</li>
+<li>When <span class="math inline">\(p &gt; 0.05\)</span> (or whatever <span class="math inline">\(\alpha\)</span> threshold is used), we say that we <strong>do not have enough evidence to reject the null hypothesis</strong>. Note that it is not appropriate to say that we <em>accept</em> the null hypothesis.</li>
+</ul>
+<p>Finally, there is one more piece of vocabulary that is important:</p>
+<ul>
+<li><strong>Power</strong> = 1 – Type II error = <span class="math inline">\(1-\beta\)</span>.</li>
+</ul>
+<p><strong>Power</strong> is the probability that we will reject the null hypothesis when in fact it is false. For example, if our Type II error is 0.20, then we can say our test has 80% power for rejecting the null hypothesis when the alternative hypothesis is true. Conversely, if a study has not been designed well, it may be <strong>under-powered</strong> to detect an effect that is substantively important. The power of a hypothesis test depends on:</p>
+<ul>
+<li>The magnitude of the effect (e.g.&nbsp;how big the true parameter value is in the population)</li>
+<li>Sample size (n)</li>
+<li>The type I error rate (<span class="math inline">\(\alpha\)</span>)</li>
+<li>Sometimes other sample statistics</li>
+</ul>
+</section>
+<section id="conducting-hypothesis-tests" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="conducting-hypothesis-tests"><span class="header-section-number">12.4</span> Conducting Hypothesis Tests</h2>
+<!-- In data analysis, hypothesis tests can be broken down into the following framework given by Allen Downey [here](http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html): -->
+<!-- ```{r ht-framework, echo=FALSE, fig.cap="Hypothesis Testing Framework", purl=FALSE} -->
+<!-- knitr::include_graphics("images/ht.png") -->
+<!-- ``` -->
+<p>In practice, conducting a hypothesis test is straightforward:</p>
+<ul>
+<li>Specify your null and alternative hypotheses based upon your research question</li>
+<li>Specify an <span class="math inline">\(\alpha\)</span> level based upon the Type I error rate you are willing to tolerate in the context of your research question</li>
+<li>Determine the sampling distribution of the relevant estimator based upon the null hypothesis</li>
+<li>Compute the test-statistic value observed in your data</li>
+<li>Calculate a p-value</li>
+<li>Reject the null hypothesis if the p-value is less than your pre-defined threshold <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+<p>This last point is important – for the hypothesis test to be valid, <strong>you must pre-specify your threshold, not after you have seen the p-value in your data.</strong></p>
+<section id="sec-ht-activity" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="sec-ht-activity"><span class="header-section-number">12.4.1</span> Promotions Example</h3>
+<p>Let’s consider a study that investigated gender discrimination in the workplace that was published in the “Journal of Applied Psychology” in 1974. This data is also used in the <a href="https://www.openintro.org/">OpenIntro</a> series of statistics textbooks. Study participants included 48 male bank supervisors who attended a management institute at University of North Carolina in 1972. The supervisors were asked to assume the hypothetical role of a personnel director at the bank. Each supervisor was given a job candidate’s personnel file and asked to decide whether or not the candidate should be promoted to a manager position at the bank.</p>
+<p>Each of the personnel files given to the supervisors were identical except that half of them indicated that the candidate was female and half indicated the candidate was male. Personnel files were randomly distributed to the 48 supervisors. Because only the candidate’s gender varied from file to file, and the files were randomly assigned to study participants, the researchers were able to isolate the effect of gender on promotion rates.</p>
+<p>The <code>moderndive</code> package contains the data on the 48 candidates in the <code>promotions</code> data frame. Let’s explore this data first:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>promotions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 3
+      id decision gender
+   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt; 
+ 1     1 promoted male  
+ 2     2 promoted male  
+ 3     3 promoted male  
+ 4     4 promoted male  
+ 5     5 promoted male  
+ 6     6 promoted male  
+ 7     7 promoted male  
+ 8     8 promoted male  
+ 9     9 promoted male  
+10    10 promoted male  
+# … with 38 more rows</code></pre>
+</div>
+</div>
+<p>The variable <code>id</code> acts as an identification variable for all 48 rows, the <code>decision</code> variable indicates whether the candidate was selected for promotion or not, while the <code>gender</code> variable indicates the gender of the candidate indicated on the personnel file. Recall that this data does not pertain to 24 actual men and 24 actual women, but rather 48 identical personnel files of which 24 were indicated to be male candidates and 24 were indicated to be female candidates.</p>
+<p>Let’s perform an exploratory data analysis of the relationship between the two categorical variables <code>decision</code> and <code>gender</code>. Recall that we saw in <a href="02-visualization.html#sec-two-categ-barplot"><span>Section&nbsp;2.8.3</span></a> that one way we can visualize such a relationship is using a stacked barplot.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions, <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> decision)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender on personnel file"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-promotions-barplot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-hypothesis-tests_files/figure-html/fig-promotions-barplot-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.1: Barplot of relationship between gender and promotion decision.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe in <a href="#fig-promotions-barplot">Figure&nbsp;<span>12.1</span></a> that it appears that female personnel files were much less likely to be accepted for promotion (even though they were identical to the male personnel files). Let’s quantify these promotion rates by computing the proportion of personnel files accepted for promotion for each group using the <code>dplyr</code> package for data wrangling:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>promotion_props <span class="ot">&lt;-</span> promotions <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">num_promoted =</span> <span class="fu">sum</span>(decision <span class="sc">==</span> <span class="st">"promoted"</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">pi_hat =</span> num_promoted <span class="sc">/</span> n)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>promotion_props</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  gender     n num_promoted pi_hat
+  &lt;fct&gt;  &lt;int&gt;        &lt;int&gt;  &lt;dbl&gt;
+1 male      24           21  0.875
+2 female    24           14  0.583</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>So of the 24 male files, 21 were selected for promotion, for a proportion of 21/24 = 0.875 = 87.5%. On the other hand, of the 24 female files, 14 were selected for promotion, for a proportion of 14/24 = 0.583 = 58.3%. Comparing these two rates of promotion, it appears that males were selected for promotion at a rate 0.875 - 0.583 = 0.292 = 29.2 percentage points higher than females.</p>
+<p>The question is however, does this provide <em>conclusive</em> evidence that there is gender discrimination in this context? Could a difference in promotion rates of 29.2% still occur by chance, even in a hypothetical world where no gender-based discrimination existed? To answer this question, we can conduct the following hypothesis test:</p>
+<p><span class="math display">\[H_0: \pi_m = \pi_f\]</span> <span class="math display">\[H_A: \pi_m \neq \pi_f,\]</span> where <span class="math inline">\(\pi_f\)</span> is the proportion of female files selected for promotion and <span class="math inline">\(\pi_m\)</span> is the proportion of male files selected for promotion. Here the null hypothesis corresponds to the scenario in which there is <em>no gender discrimination</em>; that is, males and females are promoted at identical rates. We will specify this test ahead of time to have <span class="math inline">\(\alpha = 0.05\)</span>. That is, we are comfortable with a 5% Type I error rate, and we will reject the null hypothesis if <span class="math inline">\(p &lt; 0.05\)</span>.</p>
+<p>Note the null hypothesis can be rewritten as <span class="math display">\[H_0: \pi_m - \pi_f = 0\]</span> by subtracting <span class="math inline">\(\pi_f\)</span> from both sides. Therefore, the population parameter we are interested in estimating is <span class="math inline">\(\pi_m - \pi_f\)</span>.</p>
+<p>Recall from <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a> that we calculate the standardized statistic under the null hypothesis by subtracting the null value from the estimate and dividing by the standard error. Within the context of hypothesis tests, where we are actually <em>testing</em> the null hypothesis to make a decision (rather than simply computing a p-value), we usually refer to the t-statistic as a <em>test-statistic</em>.</p>
+<p><span class="math display">\[test\_stat = \frac{Estimate - Null \ \ value}{SE(Estimate)}\]</span></p>
+<p>In this example, we have <span class="math display">\[test\_stat = \frac{(\hat{\pi}_m - \hat{\pi}_f) - 0}{\sqrt{\frac{\pi_m(1-\pi_m)}{n_m} + \frac{\pi_f(1-\pi_f)}{n_f}}}\]</span> Because our null hypothesis states <span class="math inline">\(\pi_m - \pi_f = 0\)</span>, we plug in 0 for our null value. In the hypothesis test context, because we are assuming <span class="math inline">\(\pi_m = \pi_f\)</span>, we can use all of the data to compute one <em>pooled</em> proportion to plug in for <span class="math inline">\(\pi_m\)</span> and <span class="math inline">\(\pi_f\)</span> in the standard error formula instead of using separate estimates <span class="math inline">\(\hat{\pi}_m\)</span> and <span class="math inline">\(\hat{\pi}_f\)</span>. This pooled estimate, which we will denote <span class="math inline">\(\hat{\pi}_0\)</span> can be calculated by <span class="math display">\[\hat{\pi}_0 = \frac{\# \ of \ successes_1 + \# of successes_2}{n_1 + n_2}.\]</span> Therefore, the test statistic is computed by <span class="math display">\[test\_stat = \frac{(\hat{\pi}_m - \hat{\pi}_f) - (\pi_m - \pi_f)}{\sqrt{\frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_m} + \frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_f}}}=\frac{(\hat{\pi}_m - \hat{\pi}_f) - 0}{\sqrt{\frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_m} + \frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_f}}}\]</span></p>
+<p>Think about this intuition for a second: since we are working under the hypothesis that the two parameters <span class="math inline">\(\pi_m\)</span> and <span class="math inline">\(\pi_f\)</span> are equal, it is more efficient to use <em>all</em> of the information to estimate <em>one</em> parameter than to use half of the data to estimate <span class="math inline">\(\pi_m\)</span> and the other half of the data to estimate <span class="math inline">\(\pi_f\)</span>.</p>
+<p>In the promotions example, <span class="math display">\[\hat{\pi}_0 = \frac{21 + 14}{24 + 24} = 0.729.\]</span> We can compute the test statistic with the following code.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="ot">&lt;-</span> promotion_props <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">diff_pi_hat =</span> <span class="fu">abs</span>(<span class="fu">diff</span>(pi_hat)),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pi_0 =</span> <span class="fu">sum</span>(num_promoted)<span class="sc">/</span><span class="fu">sum</span>(n),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE =</span> <span class="fu">sqrt</span>(pi_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_0)<span class="sc">/</span><span class="dv">24</span> <span class="sc">+</span> pi_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_0)<span class="sc">/</span><span class="dv">24</span>)) </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>estimates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  diff_pi_hat  pi_0    SE
+        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1       0.292 0.729 0.128</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">test_stat =</span> diff_pi_hat<span class="sc">/</span>SE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  test_stat
+      &lt;dbl&gt;
+1      2.27</code></pre>
+</div>
+</div>
+<p>Our test statistic is equal to 2.27, which we can now use to compute our p-value. Recall from <a href="10-confidence-intervals.html#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> that the standardized statistic for a difference in proportions follows a N(0,1) distribution, so we can use <code>pnorm()</code> to compute the p-value.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="fl">2.27</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0232</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-promotions-p-value" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-hypothesis-tests_files/figure-html/fig-promotions-p-value-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.2: P-value for Promotions Hypothesis Test</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that we set <code>lower.tail = FALSE</code> so that it gives us the probability in the upper tail of the distribution to the right of our observed test-statistic, and we multiply by 2 because we are conducting a two-sided hypothesis test (and the N(0,1) distribution is symmetric). The p-value = 0.02 is represented by the shaded region in <a href="#fig-promotions-p-value">Figure&nbsp;<span>12.2</span></a>.</p>
+<p>We could also find the p-value using the function called <code>prop.test()</code>, similar to <code>t.test()</code>, which will perform all of the above calculations for us when dealing with proportions. <code>prop.test()</code> needs you to specify <code>x</code>, a vector (or column) of data containing the number of successes (in this case promotions) for each group, and <code>n</code>, a vector (or column) of data containing the total number of trials per group. Recall that we computed this information in <code>promotion_props</code>. There is a something called the Yates’ continuity correction that is applied by default to tests of proportions in <code>prop.test()</code>, but because we did not use this correction when conducting the test “by hand”, we will override this default by setting <code>correct = FALSE</code> for now. Let’s see <code>prop.test()</code> in action on our promotions data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>promotion_test <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x =</span> promotion_props<span class="sc">$</span>num_promoted, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">n =</span> promotion_props<span class="sc">$</span>n, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>promotion_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions without continuity correction
+
+data:  promotion_props$num_promoted out of promotion_props$n
+X-squared = 5, df = 1, p-value = 0.02
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ 0.0542 0.5292
+sample estimates:
+prop 1 prop 2 
+ 0.875  0.583 </code></pre>
+</div>
+</div>
+<p>Note that <code>prop.test()</code> returns values for <span class="math inline">\(\hat{\pi}_m\)</span> (<code>prop 1</code>) and <span class="math inline">\(\hat{\pi}_f\)</span> (<code>prop 2</code>), a 95% confidence interval, and a p-value for a <code>two.sided</code> alternative hypothesis. We can verify that this returns the same p-value of 0.023.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>promotion_test<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.023</code></pre>
+</div>
+</div>
+<p>The p-value indicates that if gender discrimination did not exist (i.e.&nbsp;if the null hypothesis is true that <span class="math inline">\(\pi_m = \pi_f\)</span>), then we would only expect to see a difference in proportions as large as we did about 2% of the time. Because our p-value is less than our pre-specified level of <span class="math inline">\(\alpha = 0.05\)</span>, we <strong>reject the null hypothesis</strong> and conclude that there is sufficient evidence of gender discrimination in this context.</p>
+</section>
+<section id="movies-example-revisited" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="movies-example-revisited"><span class="header-section-number">12.4.2</span> Movies example revisited</h3>
+<p>Let’s return to our movies example from <a href="11-p-values.html#sec-imdb"><span>Section&nbsp;11.3.1</span></a>, and this time set up a formal hypothesis test. Recall that we were interested in the question of whether or not average IMDB ratings differed for <code>action</code> movies (<span class="math inline">\(\mu_1\)</span>) vs.&nbsp;<code>romance</code> movies (<span class="math inline">\(\mu_2\)</span>). We can set up our hypotheses as follows:</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span> <span class="math display">\[H_A: \mu_1 \neq \mu_2\]</span></p>
+<p>Note that we can re-write these as</p>
+<p><span class="math display">\[H_0: \mu_1 - \mu_2 = 0\]</span> <span class="math display">\[H_A: \mu_1 - \mu_2 \neq 0,\]</span> so that it’s clear our parameter of interest is a difference in two means. We will test this hypothesis at the 95% confidence level (i.e.&nbsp;with <span class="math inline">\(\alpha = 0.05\)</span>).</p>
+<p>Recall that we already computed all the relevant values in <a href="11-p-values.html#sec-t-test"><span>Section&nbsp;11.3.3</span></a> using <code>t.test</code>, but we show the code again here.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>romance <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Romance"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>action <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Action"</span>) </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>movies_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> romance<span class="sc">$</span>rating, <span class="at">y =</span> action<span class="sc">$</span>rating)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>movies_t.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  romance$rating and action$rating
+t = 3, df = 66, p-value = 0.005
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.328 1.767
+sample estimates:
+mean of x mean of y 
+     6.32      5.28 </code></pre>
+</div>
+</div>
+<p>Because we obtain a p-value of <span class="math inline">\(0.005 &lt; \alpha = 0.05\)</span>, we <em>reject the null hypothesis</em> and conclude there is sufficient evidence that action and romance movies do not recieve the same average ratings in the IMDB population database.</p>
+<p>We could also conduct a hypothesis test for this same problem in the regression framework we demonstrated in <a href="11-p-values.html#sec-pvalues-regression"><span>Section&nbsp;11.3.4</span></a>. Recall we fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> and said <span class="math inline">\(b_1\)</span> could be interpreted as the difference in means. Recall that the slope <span class="math inline">\(b_1\)</span> in our sample is an estimate of the <em>population slope</em> <span class="math inline">\(\beta_1\)</span>. Note that assuming there is no difference in means implies <span class="math inline">\(\beta_1 = 0\)</span>. Therefore in this framework, our hypotheses would be:</p>
+<p><span class="math display">\[H_0: \beta_1 = 0\]</span> <span class="math display">\[H_A: \beta_1 \neq 0\]</span> Let’s look again at the results of this model.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(movies_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rating ~ genre, data = movies_sample)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-4.022 -1.135  0.101  1.078  3.278 
+
+Coefficients:
+             Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept)     5.275      0.265   19.92 &lt;0.0000000000000002 ***
+genreRomance    1.047      0.364    2.88              0.0054 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.5 on 66 degrees of freedom
+Multiple R-squared:  0.111, Adjusted R-squared:  0.098 
+F-statistic: 8.28 on 1 and 66 DF,  p-value: 0.0054</code></pre>
+</div>
+</div>
+<p>We again see the p-value of 0.005, which leads us to conclude there is a true difference in means in the population.</p>
+</section>
+<section id="ride-share-example-revisited" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="ride-share-example-revisited"><span class="header-section-number">12.4.3</span> Ride share example revisited</h3>
+<p>Let’s return to our ride share price example from <a href="11-p-values.html#sec-ride-share"><span>Section&nbsp;11.4</span></a>. Recall that we wanted to know whether <span class="math inline">\(\mu_B = \$19.50\)</span>. We could test this with the following hypotheses, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance:</p>
+<p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span></p>
+<div class="cell" data-layout-align="center" data-warnings="false">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&amp;single=true&amp;output=csv"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>rides_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   t 
+1.53 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.13</code></pre>
+</div>
+</div>
+<p>Recall that this produced a test-statistic of 1.529 and a p-value of 0.13. Therefore because <span class="math inline">\(p\_value = 0.13 &gt; \alpha = 0.05\)</span>, we <em>do not reject</em> the null hypothesis. It is important to note that we do not conclude that the null hypothesis is true; we can only simply state that there is <em>not sufficient evidence</em> to overturn it.</p>
+<p>We also considered this problem in the regression framework with the <em>intercept only model</em> <span class="math inline">\(\widehat{price} = b_0\)</span>. In this case, our hypotheses are:</p>
+<p><span class="math display">\[H_0: \beta_0 = 19.50\]</span> <span class="math display">\[H_A: \beta_0 \neq 19.50\]</span> Recall that in order to get the correct test statistic and p-value for this null value (as opposed to the defaul null value of zero in regression), we had to <em>center</em> our variable.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> rides_B <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_centered =</span> price <span class="sc">-</span> <span class="fl">19.5</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>ride_model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price_centered <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> rides_B)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = price_centered ~ 1, data = rides_B)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-12.878  -3.789   0.315   3.934  10.873 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)    0.792      0.518    1.53     0.13
+
+Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
+</div>
+</div>
+<p>This again gives the p-value of <span class="math inline">\(0.13\)</span> which leads us to <em>fail to reject <span class="math inline">\(H_0\)</span></em>. There is insufficient evidence to conclude that company B’s prices differ from $19.50 on average.</p>
+</section>
+</section>
+<section id="more-advanced-points-to-consider" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="more-advanced-points-to-consider"><span class="header-section-number">12.5</span> More advanced points to consider</h2>
+<p>As this is an introductory book, we have introduced some concepts but not developed them in full detail. This does not mean that there are not things to say about these – more that there is simply too much to say at this time. These topics include:</p>
+<ul>
+<li><strong>Planning studies:</strong> If you are planning a study, you need to determine the sample size <span class="math inline">\(n\)</span> that is sufficient for minimizing Type II error (i.e, maximizing power). To do so, you will need to know the sampling distribution of the estimator not just under the null hypothesis, but also under the alternative hypothesis. You will need to specify the size of the outcome, difference, or relationship you are seeking to understand. From this, for a given Type II error level, you can determine the minimum sample size you will need.</li>
+<li><strong>Multiple testing:</strong> We introduced the use of hypothesis testing here with a single test. When you are analyzing data, however, you often conduct multiple hypothesis tests on the same data. By conducting multiple hypothesis tests, in combination Type I error (what is called “familywise error rate”) is typically higher, and sometimes much higher, than the Type I error of each test in isolation. There are procedures you can use to adjust for this.</li>
+</ul>
+</section>
+<section id="american-statistical-association-asa-statistical-standards" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="american-statistical-association-asa-statistical-standards"><span class="header-section-number">12.6</span> American Statistical Association (ASA) Statistical Standards</h2>
+<p>In the past several years, the use of p-values for decision making has come under increased scrutiny by both the statistical and applied research communities. The problem is with the use of the criteria “p &lt; .05” to determine if an effect is “statistically significant”, and the use of this threshold to determine if research is worthy of publication in scientific journals. In many fields, publication standards have focused on the novelty of results (disincentivizing researchers to replicate previous findings) and have required that there be “an effect” found (meaning, statistically significant effect). There have been several negative effects of this scientific system as a result, including:</p>
+<ul>
+<li><strong>Publication bias</strong>: This results when only statistically significant results are published and non-significant results are not published. This biases findings towards non-null effects. For example, it means that a paper showing that an intervention is effective (p &lt; .05) is likely to be published, while one showing that the intervention has no effect (p &gt; .05) is not.</li>
+<li><strong>P-hacking</strong>: Researchers often measure and collect multiple outcomes when conducting a study and often estimate many different models. The incentive is thus to find <em>something</em> with p &lt; .05, even if the initially hypothesized finding is not significant. But conducting many different hypothesis tests results is statistically unsound.</li>
+<li><strong>HARK-ing</strong>: This acronym means ’Hypothesizing After Results are Known”. In the theory of hypothesis testing, a researcher first defines a null hypothesis, designs a study to test this (with a pre-specified p-value threshold), and then decides based upon these findings. Scientific publishing standards have in many fields focused on writing up reported findings in this framework, with the beginning of a paper stating hypotheses based on the previous literature, followed by methods and results, with little room for exploratory findings. Thus, if a researcher collected many measures and conducted many analyses and found an interesting <em>exploratory</em> result, the only way to write about this result for publication was to pretend that the finding was hypothesized in advance and to present the results in this light.</li>
+</ul>
+<p>In response to these concerns, an <strong>Open Science</strong> movement has formed, urging researchers to:</p>
+<ul>
+<li>Ensure that their results are <strong>reproducible</strong> by providing both their data and code for others to check. (Note that the use of R Markdown for report writing is one way to make this practice easy to implement in practice.)</li>
+<li><strong>Pre-register studies</strong> and hypotheses in advance of analysis. This holds scientists accountable for which outcomes and results were actually hypothesized (confirmatory analyses) versus those that are exploratory.</li>
+<li>Focus publication less on the results of a study and more on the design of a study. Many journals have moved towards <strong>registered reports</strong> – a process through which a paper is submitted to a journal <em>before</em> the study has begun or the data has been collected, specifying the study design and analytical models that will be used. This report goes under peer review and, if accepted, the results are later accepted to the journal regardless of their statistical significance.</li>
+</ul>
+<p>In response to this movement, the American Statistical Association has convened several working groups and journal issues devoted to discussing improvements for practice. In an overview of a special issue in the American Statistician, the ASA president (Wasserstein) and colleagues Shirm and Lazar (2019) provide the following suggested guideline for practice:</p>
+<blockquote class="blockquote">
+<p><strong>ATOM</strong>: <strong>A</strong>ccept uncertainty. Be <strong>t</strong>houghtful, <strong>o</strong>pen, and <strong>m</strong>odest.</p>
+</blockquote>
+<p>Briefly, what they mean here is:</p>
+<ul>
+<li><strong>A</strong>: Uncertainty exists everywhere in the world. Statistical methods do not rid the world of uncertainty. Accepting uncertainty requires us to view statistical analyses as incomplete and less certain than is the norm in much of scientific practice.</li>
+<li><strong>T</strong>: Statistical thoughtfulness requires researchers to be clear when their goals are confirmatory versus exploratory, to invest in collecting solid data, and to consider the sensitivity of their findings to different analysis methods.</li>
+<li><strong>O</strong>: Researchers should embrace the open-science approaches given above, as well as the role that expert judgement plays in the interpretation of results. While objectivity is the goal of science, the process of conducting science includes subjectivity at every stage, including analyses.</li>
+<li><strong>M</strong>: Researchers should clearly convey the limitations of their work. All statistical methods require assumptions and have limitations. Remember that scientific significance is broader than statistical significance – that statistics is only one part of the scientific process.</li>
+</ul>
+<p>These ATOM ideas have undergirded the introduction to statistics we provided in this book. We began by giving you a solid foundation in exploratory data analysis – not focused on statistical significance – and then proceeded to introduce statistical theory, including questions of causality, generalizability, and uncertainty. Only after all of this did we introduce you to p-values, and we save decision-making – the p &lt; .05 criterion – until last. We did so in hopes that with a strong foundation, you’d be able to think critically when applying statistical decision-making criterion, and would understand when descriptive versus inferential statistics are required.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
