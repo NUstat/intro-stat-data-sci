@@ -62,7 +62,8 @@ book:
       - references.qmd
   
   appendices:
-  - statistical-background.qmd
+  - 0a-statistical-background.qmd
+  - 0b-solutions-exercise.qmd
 
 bibliography:
   - bib/references.bib

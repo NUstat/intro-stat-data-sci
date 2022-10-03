@@ -11,6 +11,7 @@
 *_cache/
 /.quarto/
 /_book/
+*_files/
 
 # Probably not needed unless we embed interactive tutorials or apps
 rsconnect

@@ -1,0 +1,84 @@
+# Exercise solutions {#sec-exr-sol}
+
+```{r}
+library(ISDSdatasets)
+```
+
+## Chapter 1 {#sec-ex01-sol}
+
+@exr-ch01-c01 b. Quarto Document
+
+@exr-ch01-c03 a. TRUE
+
+@exr-ch01-c05 b. FALSE
+
+@exr-ch01-c07 b. Data on a flight
+
+@exr-ch01-app1
+
+```{r}
+z <- 12*31
+add_on <- 12
+z + add_on
+```
+
+@exr-ch01-adv1
+
+```{r}
+head(titanic)
+```
+
+The `head()` function shows the first 6 rows of the dataset. Based on this, I expect the `tail()` function to show the last 6 rows of the dataset.
+
+@exr-ch01-adv2
+
+```{r}
+unique(titanic$Embarked)
+```
+
+There are 3 unique ports of embarkation: Q, S, C (Queenstown, Southampton, Cherbourg). 
+
+## Chapter 2 {#sec-ex02-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 3 {#sec-ex03-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 4 {#sec-ex04-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+
+## Chapter 5 {#sec-ex05-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 6 {#sec-ex06-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
