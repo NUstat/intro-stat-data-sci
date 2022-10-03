@@ -58,6 +58,21 @@
         "viridis"
       ]
     },
+    "ISDSdatasets": {
+      "Package": "ISDSdatasets",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ISDSdatasets",
+      "RemoteUsername": "NUstat",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "2d10e69e5dd2db1a6dfe06a4677a5a3226ae0b0b",
+      "Hash": "b4d98ddb4c0b99424ad44eb4fbc49167",
+      "Requirements": [
+        "tibble"
+      ]
+    },
     "ISLR": {
       "Package": "ISLR",
       "Version": "1.4",
