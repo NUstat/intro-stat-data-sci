@@ -369,6 +369,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="toc-section-number">6.4.1</span>  What’s to come?</a></li>
   </ul></li>
+  <li><a href="#sec-ex06" id="toc-sec-ex06" class="nav-link" data-scroll-target="#sec-ex06"><span class="toc-section-number">6.5</span>  Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex06-conceptual" id="toc-sec-ex06-conceptual" class="nav-link" data-scroll-target="#sec-ex06-conceptual"><span class="toc-section-number">6.5.1</span>  Conceptual</a></li>
+  <li><a href="#sec-ex06-application" id="toc-sec-ex06-application" class="nav-link" data-scroll-target="#sec-ex06-application"><span class="toc-section-number">6.5.2</span>  Application</a></li>
+  <li><a href="#sec-ex06-advanced" id="toc-sec-ex06-advanced" class="nav-link" data-scroll-target="#sec-ex06-advanced"><span class="toc-section-number">6.5.3</span>  Advanced</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/06-multiple-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -1842,6 +1848,83 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">6.4.1</span> What’s to come?</h3>
 <p>Congratulations! We’ve completed the “Data modeling” portion of this book. We’re ready to proceed to the next part of the book: “Statistical Theory.” These chapters will lay the foundation for key ideas in statistics such as randomization (<a href="07-causality.html"><span>Chapter&nbsp;7</span></a>), populations and samples (<a href="08-populations.html"><span>Chapter&nbsp;8</span></a>), and sampling distributions (<a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>).</p>
 <p>In Parts I and II of the book, we’ve been focusing only on exploratory data analysis and exploring relationships that exist <em>in our observed dataset</em>. Once we’ve established some of the statistical theory in Part III, we will be able to move beyond exploratory data analysis and into “statistical inference” in Part IV, where we will learn how (and when it is appropirate) to make inferences about statistical relationships <em>in a population beyond our dataset</em>.</p>
+</section>
+</section>
+<section id="sec-ex06" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="sec-ex06"><span class="header-section-number">6.5</span> Exercises</h2>
+<section id="sec-ex06-conceptual" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="sec-ex06-conceptual"><span class="header-section-number">6.5.1</span> Conceptual</h3>
+<div id="exr-ch06-c01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.1 </strong></span>In modeling a numerical and a categorical variable, the parallel slopes model and the interaction model are very similar. Which type of model should you choose?</p>
+<ol type="a">
+<li>Simple linear regression model. Since the two models are similar, we don’t need both the categorical variable and the numerical variable.</li>
+<li>The interaction model. Since the two models are very similar, the additional complexity of the parallel slopes model isn’t necessary</li>
+<li>The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary</li>
+<li>The interaction model. Since two models are very similar, the offsets of the slopes are rather large so the interaction model fits best.</li>
+<li>The parallel slopes model. Since two models are very similar, the offsets of the slopes are rather large so the parallel slopes model fits best.</li>
+</ol>
+</div>
+<div id="exr-ch06-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.2 </strong></span>The correlation between variable <span class="math inline">\(y\)</span> and variable <span class="math inline">\(z\)</span> is 0.47. Consider variable h where <span class="math inline">\(h = 6.4y - 2.1\)</span>. What is the correlation between variables <span class="math inline">\(h\)</span> and <span class="math inline">\(z\)</span>?</p>
+<ol type="a">
+<li>-0.89</li>
+<li>0.23</li>
+<li>6.4</li>
+<li>0.47</li>
+<li>-2.1</li>
+<li>none of the above</li>
+</ol>
+</div>
+<div id="exr-ch06-c03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.3 </strong></span>An interaction effect exists if the associated effect of one variable is independent of the value of another variable.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch06-c04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.4 </strong></span>An example of simpson’s paradox is when you see a trend in several separate groups of data, but when you combine these groups, the trend changes or disappears.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch06-c05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.5 </strong></span>Why does Simpson’s Paradox occur? Select all that apply.</p>
+<ol type="a">
+<li>Splitting up your data can result in unequal balance in representation of some groups compared to others.</li>
+<li>Splitting up your data always results in Simpson’s Paradox.</li>
+<li>Simpson’s Paradox is the result of data aggregation and develops new trends when groups are combined in the correct manner.</li>
+<li>Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.</li>
+</ol>
+</div>
+</section>
+<section id="sec-ex06-application" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-ex06-application"><span class="header-section-number">6.5.2</span> Application</h3>
+<p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
+<div id="exr-ch06-app1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.6 </strong></span>Using the <code>covid_states</code> dataset, predict <code>new_confirmed</code> using <code>new_recovered</code> and <code>new_deceased</code>.</p>
+</div>
+<div id="exr-ch06-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.7 </strong></span>Using the <code>covid_states</code> and the <code>covid_dem</code> datasets, predict <code>new_confirmed</code> using <code>population</code> and <code>new_tested</code>.</p>
+</div>
+<div id="exr-ch06-app3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.8 </strong></span>Consider the <code>nba</code> dataset. It is known that teams tend to play better on their home courts, so the variable <code>location</code> is likely useful in predicting total points scored by a team (<code>pts_tm</code>). Additionally we assume that the number of points scored by the star player (<code>pts</code>) likely impacts the team’s total points scored.</p>
+<p>Use a parallel slopes model to predict the total points scored by the team using <code>location</code> and <code>pts</code>. Plot the resulting model and interpret the coefficients.</p>
+</div>
+<div id="exr-ch06-app4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.9 </strong></span>Using the same variables from <a href="#exr-ch06-app3">Exercise&nbsp;<span>6.8</span></a>, this time fit an interaction model to predict the total points scored by the team. Plot the resulting model and interpret the coefficients.</p>
+</div>
+</section>
+<section id="sec-ex06-advanced" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="sec-ex06-advanced"><span class="header-section-number">6.5.3</span> Advanced</h3>
+<div id="exr-ch06-adv1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.10 </strong></span>A lot of times analysts will compare model performance using what is called the “mean squared error” (MSE). This is calculated by first squaring each residual, then take the mean of those squared residuals. The model with the lower MSE is generally considered “better”.</p>
+<p>Determine if the model in <a href="#exr-ch06-app3">Exercise&nbsp;<span>6.8</span></a> or <a href="#exr-ch06-app4">Exercise&nbsp;<span>6.9</span></a> is better using the MSE as the evaluation criteria.</p>
+</div>
+<div id="exr-ch06-adv2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.11 </strong></span>Using any two variables from the <code>nba</code> dataset, build a model to predict <code>pts_tm</code> that has a better MSE than the ones reported in <a href="#exr-ch06-app3">Exercise&nbsp;<span>6.8</span></a>.</p>
+</div>
 
 
 </section>
