@@ -1186,3 +1186,86 @@ In this example of Simpson's Paradox, the credit limit is a *confounding variabl
 Congratulations! We've completed the "Data modeling" portion of this book. We're ready to proceed to the next part of the book: "Statistical Theory." These chapters will lay the foundation for key ideas in statistics such as randomization (@sec-causality), populations and samples (@sec-populations), and sampling distributions (@sec-sampling). 
 
 In Parts I and II of the book, we've been focusing only on exploratory data analysis and exploring relationships that exist *in our observed dataset*. Once we've established some of the statistical theory in Part III, we will be able to move beyond exploratory data analysis and into "statistical inference" in Part IV, where we will learn how (and when it is appropirate) to make inferences about statistical relationships *in a population beyond our dataset*.
+
+
+## Exercises {#sec-ex06}
+
+### Conceptual {#sec-ex06-conceptual}
+
+::: {#exr-ch06-c01}
+In modeling a numerical and a categorical variable, the parallel slopes model and the interaction model are very similar. Which type of model should you choose?
+
+a) Simple linear regression model. Since the two models are similar, we don't need both the categorical variable and the numerical variable.
+b) The interaction model. Since the two models are very similar, the additional complexity of the parallel slopes model isn't necessary
+c) The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn't necessary
+d) The interaction model. Since two models are very similar, the offsets of the slopes are rather large so the interaction model fits best.
+e) The parallel slopes model. Since two models are very similar, the offsets of the slopes are rather large so the parallel slopes model fits best.
+:::
+
+::: {#exr-ch06-c02}
+The correlation between variable $y$ and variable $z$ is 0.47. Consider variable h where $h = 6.4y - 2.1$. What is the correlation between variables $h$ and $z$?
+    
+a) -0.89
+b) 0.23
+c) 6.4
+d) 0.47
+e) -2.1
+f) none of the above
+:::
+
+::: {#exr-ch06-c03}
+An interaction effect exists if the associated effect of one variable is independent of the value of another variable.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch06-c04}
+An example of simpson's paradox is when you see a trend in several separate groups of data, but when you combine these groups, the trend changes or disappears.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch06-c05}
+Why does Simpson's Paradox occur? Select all that apply.
+    
+a) Splitting up your data can result in unequal balance in representation of some groups compared to others.
+b) Splitting up your data always results in Simpson's Paradox.
+c) Simpson's Paradox is the result of data aggregation and develops new trends when groups are combined in the correct manner.
+d) Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.
+:::
+
+### Application {#sec-ex06-application}
+
+The application exercises use datasets from the `ISDSdatasets` package.
+
+::: {#exr-ch06-app1}
+Using the `covid_states` dataset, predict `new_confirmed` using `new_recovered` and `new_deceased`.
+:::
+
+::: {#exr-ch06-app2}
+Using the `covid_states` and the `covid_dem` datasets, predict `new_confirmed` using `population` and `new_tested`.
+:::
+
+::: {#exr-ch06-app3}
+Consider the `nba` dataset. It is known that teams tend to play better on their home courts, so the variable `location` is likely useful in predicting total points scored by a team (`pts_tm`). Additionally we assume that the number of points scored by the star player (`pts`) likely impacts the team's total points scored.
+
+Use a parallel slopes model to predict the total points scored by the team using `location` and `pts`. Plot the resulting model and interpret the coefficients.
+:::
+
+::: {#exr-ch06-app4}
+Using the same variables from @exr-ch06-app3, this time fit an interaction model to predict the total points scored by the team. Plot the resulting model and interpret the coefficients.
+:::
+
+### Advanced {#sec-ex06-advanced}
+
+::: {#exr-ch06-adv1}
+A lot of times analysts will compare model performance using what is called the "mean squared error" (MSE). This is calculated by first squaring each residual, then take the mean of those squared residuals. The model with the lower MSE is generally considered "better".
+
+Determine if the model in @exr-ch06-app3 or @exr-ch06-app4 is better using the MSE as the evaluation criteria.
+:::
+
+::: {#exr-ch06-adv2}
+Using any two variables from the `nba` dataset, build a model to predict `pts_tm` that has a better MSE than the ones reported in @exr-ch06-app3.
+:::

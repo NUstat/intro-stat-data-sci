@@ -359,3 +359,27 @@ In situations in which treatment is **randomly assigned** or a sample is **rando
 Finally, we would be remiss to end this chapter without including this XKCD comic, which every statistician loves:
 
 ![](images/causation.png)
+
+
+## Exercises {#sec-ex07}
+
+### Conceptual {#sec-ex07-conceptual}
+
+::: {#exr-ch07-c01}
+
+:::
+
+
+### Application {#sec-ex07-application}
+
+The application exercises use datasets from the `ISDSdatasets` package.
+
+::: {#exr-ch07-app1}
+
+:::
+
+### Advanced {#sec-ex07-advanced}
+
+::: {#exr-ch07-adv1}
+
+:::

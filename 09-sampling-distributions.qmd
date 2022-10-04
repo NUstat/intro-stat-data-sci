@@ -1122,3 +1122,27 @@ You also learned that statisticians summarize this sampling distribution in thre
 3.  The sample proportion does not always equal the population proportion, i.e., there is some **sampling variability**, making it not uncommon to see values of the sample proportion larger or smaller than the population proportion.
 
 In the next section of the book, we will build upon this theoretical foundation, developing approaches -- based upon these properties -- that we can use to make inferences from the sample we have to the population we wish to know about.
+
+
+## Exercises {#sec-ex09}
+
+### Conceptual {#sec-ex09-conceptual}
+
+::: {#exr-ch09-c01}
+
+:::
+
+
+### Application {#sec-ex09-application}
+
+The application exercises use datasets from the `ISDSdatasets` package.
+
+::: {#exr-ch09-app1}
+
+:::
+
+### Advanced {#sec-ex09-advanced}
+
+::: {#exr-ch09-adv1}
+
+:::

@@ -421,3 +421,26 @@ Let's give an example of each.
     
 In @sec-causality we demonstrated the magic of randomization and why randomized experiments allow you to make causal claims. In this chapter we have introduced you to the idea that random sampling allows you to make *generalizable* claims from your sample to a population, but in @sec-sampling we will introduce and demonstrate the statistical theory for *why* this is true. 
   
+  
+## Exercises {#sec-ex08}
+
+### Conceptual {#sec-ex08-conceptual}
+
+::: {#exr-ch08-c01}
+
+:::
+
+
+### Application {#sec-ex08-application}
+
+The application exercises use datasets from the `ISDSdatasets` package.
+
+::: {#exr-ch08-app1}
+
+:::
+
+### Advanced {#sec-ex08-advanced}
+
+::: {#exr-ch08-adv1}
+
+:::

@@ -575,3 +575,27 @@ The confidence interval shown here includes the value of 0. We'll see in @sec-hy
 Therefore, we are not sure which proportion is larger. If the confidence interval was entirely above zero, we would be relatively sure (about "95% confident") that the seed group had a higher proportion of yawning than the control group. We, therefore, have evidence via this confidence interval suggesting that the conclusion from the Mythbusters show that "yawning is contagious" being "confirmed" is not statistically appropriate.
 
 <!-- nothing in here yet about how sample size affects width of interval. should either include it or have it as an activity for them to explore in class/homework. I also have a shiny app for this https://kgfitz.shinyapps.io/confidence_intervals/ -->
+
+
+## Exercises {#sec-ex10}
+
+### Conceptual {#sec-ex10-conceptual}
+
+::: {#exr-ch10-c01}
+
+:::
+
+
+### Application {#sec-ex10-application}
+
+The application exercises use datasets from the `ISDSdatasets` package.
+
+::: {#exr-ch10-app1}
+
+:::
+
+### Advanced {#sec-ex10-advanced}
+
+::: {#exr-ch10-adv1}
+
+:::
