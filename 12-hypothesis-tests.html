@@ -354,14 +354,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#commonalities" id="toc-commonalities" class="nav-link" data-scroll-target="#commonalities"><span class="toc-section-number">12.2.3</span>  Commonalities</a></li>
   </ul></li>
   <li><a href="#sec-ht" id="toc-sec-ht" class="nav-link" data-scroll-target="#sec-ht"><span class="toc-section-number">12.3</span>  Hypothesis test: Decision making in statistics</a></li>
-  <li><a href="#conducting-hypothesis-tests" id="toc-conducting-hypothesis-tests" class="nav-link" data-scroll-target="#conducting-hypothesis-tests"><span class="toc-section-number">12.4</span>  Conducting Hypothesis Tests</a>
+  <li><a href="#sec-two-tailed" id="toc-sec-two-tailed" class="nav-link" data-scroll-target="#sec-two-tailed"><span class="toc-section-number">12.4</span>  Conducting Hypothesis Tests</a>
   <ul class="collapse">
   <li><a href="#sec-ht-activity" id="toc-sec-ht-activity" class="nav-link" data-scroll-target="#sec-ht-activity"><span class="toc-section-number">12.4.1</span>  Promotions Example</a></li>
   <li><a href="#movies-example-revisited" id="toc-movies-example-revisited" class="nav-link" data-scroll-target="#movies-example-revisited"><span class="toc-section-number">12.4.2</span>  Movies example revisited</a></li>
-  <li><a href="#ride-share-example-revisited" id="toc-ride-share-example-revisited" class="nav-link" data-scroll-target="#ride-share-example-revisited"><span class="toc-section-number">12.4.3</span>  Ride share example revisited</a></li>
+  <li><a href="#sec-ride-two-tail" id="toc-sec-ride-two-tail" class="nav-link" data-scroll-target="#sec-ride-two-tail"><span class="toc-section-number">12.4.3</span>  Ride share example revisited</a></li>
   </ul></li>
-  <li><a href="#more-advanced-points-to-consider" id="toc-more-advanced-points-to-consider" class="nav-link" data-scroll-target="#more-advanced-points-to-consider"><span class="toc-section-number">12.5</span>  More advanced points to consider</a></li>
-  <li><a href="#american-statistical-association-asa-statistical-standards" id="toc-american-statistical-association-asa-statistical-standards" class="nav-link" data-scroll-target="#american-statistical-association-asa-statistical-standards"><span class="toc-section-number">12.6</span>  American Statistical Association (ASA) Statistical Standards</a></li>
+  <li><a href="#one-tailed-hypothesis-tests" id="toc-one-tailed-hypothesis-tests" class="nav-link" data-scroll-target="#one-tailed-hypothesis-tests"><span class="toc-section-number">12.5</span>  One-tailed hypothesis tests</a>
+  <ul class="collapse">
+  <li><a href="#ride-share-example-revisited-again" id="toc-ride-share-example-revisited-again" class="nav-link" data-scroll-target="#ride-share-example-revisited-again"><span class="toc-section-number">12.5.1</span>  Ride share example revisited again</a></li>
+  <li><a href="#formulating-the-hypotheses-overview" id="toc-formulating-the-hypotheses-overview" class="nav-link" data-scroll-target="#formulating-the-hypotheses-overview"><span class="toc-section-number">12.5.2</span>  Formulating the Hypotheses Overview</a></li>
+  </ul></li>
+  <li><a href="#more-advanced-points-to-consider" id="toc-more-advanced-points-to-consider" class="nav-link" data-scroll-target="#more-advanced-points-to-consider"><span class="toc-section-number">12.6</span>  More advanced points to consider</a></li>
+  <li><a href="#american-statistical-association-asa-statistical-standards" id="toc-american-statistical-association-asa-statistical-standards" class="nav-link" data-scroll-target="#american-statistical-association-asa-statistical-standards"><span class="toc-section-number">12.7</span>  American Statistical Association (ASA) Statistical Standards</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/12-hypothesis-tests.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -611,8 +616,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Sometimes other sample statistics</li>
 </ul>
 </section>
-<section id="conducting-hypothesis-tests" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="conducting-hypothesis-tests"><span class="header-section-number">12.4</span> Conducting Hypothesis Tests</h2>
+<section id="sec-two-tailed" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-two-tailed"><span class="header-section-number">12.4</span> Conducting Hypothesis Tests</h2>
 <!-- In data analysis, hypothesis tests can be broken down into the following framework given by Allen Downey [here](http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html): -->
 <!-- ```{r ht-framework, echo=FALSE, fig.cap="Hypothesis Testing Framework", purl=FALSE} -->
 <!-- knitr::include_graphics("images/ht.png") -->
@@ -687,7 +692,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>So of the 24 male files, 21 were selected for promotion, for a proportion of 21/24 = 0.875 = 87.5%. On the other hand, of the 24 female files, 14 were selected for promotion, for a proportion of 14/24 = 0.583 = 58.3%. Comparing these two rates of promotion, it appears that males were selected for promotion at a rate 0.875 - 0.583 = 0.292 = 29.2 percentage points higher than females.</p>
 <p>The question is however, does this provide <em>conclusive</em> evidence that there is gender discrimination in this context? Could a difference in promotion rates of 29.2% still occur by chance, even in a hypothetical world where no gender-based discrimination existed? To answer this question, we can conduct the following hypothesis test:</p>
-<p><span class="math display">\[H_0: \pi_m = \pi_f\]</span> <span class="math display">\[H_A: \pi_m \neq \pi_f,\]</span> where <span class="math inline">\(\pi_f\)</span> is the proportion of female files selected for promotion and <span class="math inline">\(\pi_m\)</span> is the proportion of male files selected for promotion. Here the null hypothesis corresponds to the scenario in which there is <em>no gender discrimination</em>; that is, males and females are promoted at identical rates. We will specify this test ahead of time to have <span class="math inline">\(\alpha = 0.05\)</span>. That is, we are comfortable with a 5% Type I error rate, and we will reject the null hypothesis if <span class="math inline">\(p &lt; 0.05\)</span>.</p>
+<p><span class="math display">\[H_0: \pi_m = \pi_f\]</span> <span class="math display">\[H_A: \pi_m \neq \pi_f,\]</span></p>
+<p>where <span class="math inline">\(\pi_f\)</span> is the proportion of female files selected for promotion and <span class="math inline">\(\pi_m\)</span> is the proportion of male files selected for promotion. Here the null hypothesis corresponds to the scenario in which there is <em>no gender discrimination</em>; that is, males and females are promoted at identical rates. We will specify this test ahead of time to have <span class="math inline">\(\alpha = 0.05\)</span>. That is, we are comfortable with a 5% Type I error rate, and we will reject the null hypothesis if <span class="math inline">\(p &lt; 0.05\)</span>.</p>
 <p>Note the null hypothesis can be rewritten as <span class="math display">\[H_0: \pi_m - \pi_f = 0\]</span> by subtracting <span class="math inline">\(\pi_f\)</span> from both sides. Therefore, the population parameter we are interested in estimating is <span class="math inline">\(\pi_m - \pi_f\)</span>.</p>
 <p>Recall from <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a> that we calculate the standardized statistic under the null hypothesis by subtracting the null value from the estimate and dividing by the standard error. Within the context of hypothesis tests, where we are actually <em>testing</em> the null hypothesis to make a decision (rather than simply computing a p-value), we usually refer to the t-statistic as a <em>test-statistic</em>.</p>
 <p><span class="math display">\[test\_stat = \frac{Estimate - Null \ \ value}{SE(Estimate)}\]</span></p>
@@ -822,8 +828,8 @@ F-statistic: 8.28 on 1 and 66 DF,  p-value: 0.0054</code></pre>
 </div>
 <p>We again see the p-value of 0.005, which leads us to conclude there is a true difference in means in the population.</p>
 </section>
-<section id="ride-share-example-revisited" class="level3" data-number="12.4.3">
-<h3 data-number="12.4.3" class="anchored" data-anchor-id="ride-share-example-revisited"><span class="header-section-number">12.4.3</span> Ride share example revisited</h3>
+<section id="sec-ride-two-tail" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="sec-ride-two-tail"><span class="header-section-number">12.4.3</span> Ride share example revisited</h3>
 <p>Let’s return to our ride share price example from <a href="11-p-values.html#sec-ride-share"><span>Section&nbsp;11.4</span></a>. Recall that we wanted to know whether <span class="math inline">\(\mu_B = \$19.50\)</span>. We could test this with the following hypotheses, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance:</p>
 <p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span></p>
 <div class="cell" data-layout-align="center" data-warnings="false">
@@ -868,16 +874,77 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 <p>This again gives the p-value of <span class="math inline">\(0.13\)</span> which leads us to <em>fail to reject <span class="math inline">\(H_0\)</span></em>. There is insufficient evidence to conclude that company B’s prices differ from $19.50 on average.</p>
 </section>
 </section>
-<section id="more-advanced-points-to-consider" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="more-advanced-points-to-consider"><span class="header-section-number">12.5</span> More advanced points to consider</h2>
+<section id="one-tailed-hypothesis-tests" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="one-tailed-hypothesis-tests"><span class="header-section-number">12.5</span> One-tailed hypothesis tests</h2>
+<p>All the examples in <a href="#sec-two-tailed"><span>Section&nbsp;12.4</span></a> were what are call two-tailed hypothesis tests. This means that the rejection region is split into both the upper and lower tail. A two-tailed test is used when the hypothesis claim includes equality. Then we are concerned with the chance of being either above or below the claim.</p>
+<p>But what if our hypothesis is that the test statistic is less than a claimed value or greater than a claimed value? In that case we are only concerned with one direction and it is more appropriate to use a one-tailed hypothesis test.</p>
+<section id="ride-share-example-revisited-again" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="ride-share-example-revisited-again"><span class="header-section-number">12.5.1</span> Ride share example revisited again</h3>
+<p>Consider the ride share example from <a href="11-p-values.html#sec-ride-share">Sections&nbsp;<span>11.4</span></a> and <a href="#sec-ride-two-tail"><span>12.4.3</span></a>. We want to test the claim if the average price of rides at company B is equal to $19.50. To test this claim we obtain a random sample of 100 rides and compare the sample mean. Our claim again is <span class="math inline">\(\mu_B = 19.50\)</span>, meaning we are concerned if their price is different in either direction. Recall, we write our hypothesis test as:</p>
+<p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span> What if instead, we want to test the claim that the average price of rides at company B is <strong>greater than</strong> <span class="math inline">\(\$19.50\)</span>? In mathematical notation this claim is <span class="math inline">\(\mu_B &gt; 19.50\)</span>. We formulate the hypothesis as follows:</p>
+<p><span class="math display">\[H_0: \mu_B \leq 19.50\]</span> <span class="math display">\[H_A: \mu_B &gt; 19.50\]</span> It’s important to note that the null hypothesis always contains equality! Now our rejection region is strictly in the upper tail of the distribution. Let’s test this claim, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance.</p>
+<div class="cell" data-layout-align="center" data-warnings="false">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rides_one.tail <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rides_one.tail<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   t 
+1.53 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>rides_one.tail<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0648</code></pre>
+</div>
+</div>
+<p>The test-statistic is 1.529, the same test statistic from our two-tailed test in <a href="#sec-ride-two-tail"><span>Section&nbsp;12.4.3</span></a>. This means the test-statistic for a one-tailed test compared to a two-tailed test will always be the same. What is different is our p-value of 0.065. The p-value for a one-tailed test is half the p-value of a two-tailed test. We still compare our <span class="math inline">\(p\_value\)</span> to our pre-defined <span class="math inline">\(\alpha\)</span>. Since our <span class="math inline">\(p\_value = 0.065 &gt; \alpha = 0.05\)</span>, we <em>do not reject</em> the null hypothesis. In this instance we came to the same conclusions, but that is not always the case.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-rideshare-p-value" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-hypothesis-tests_files/figure-html/fig-rideshare-p-value-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.3: P-value for Ride Share Hypothesis in Two-tail and One-tail Test</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="formulating-the-hypotheses-overview" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="formulating-the-hypotheses-overview"><span class="header-section-number">12.5.2</span> Formulating the Hypotheses Overview</h3>
+<p>When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. <span class="quarto-unresolved-ref">?tbl-tail-ch-12</span> provides an overview of the three possible scenarios.</p>
+<!-- ```{r} -->
+<!-- #| label: tbl-tail-ch-12 -->
+<!-- #| tbl-cap: "Formulating the Null and Alternative Hypothesis" -->
+<!-- #| echo: false -->
+<!-- #| message: false -->
+<!-- tails <- read_rds("rds/ch12_tails.rds") -->
+<!-- #rownames(tails) <- c("$H_{0}$", "$H_{A}$", "p-value") -->
+<!-- tails %>%  -->
+<!--   kable( -->
+<!--     format = "markdown", -->
+<!--     caption = "Formulating the Null and Alternative Hypothesis",  -->
+<!--     booktabs = TRUE, -->
+<!--     escape = FALSE,  -->
+<!--     align = c('c', 'c', 'c') -->
+<!--   ) %>%  -->
+<!--   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16), -->
+<!--                 latex_options = c("HOLD_position")) %>% -->
+<!--   column_spec(1, width = "1in") %>%  -->
+<!--   column_spec(2, width = "2in") %>% -->
+<!--   column_spec(3, width = "2in") %>% -->
+<!--   column_spec(4, width = "2in") -->
+<!-- ``` -->
+<p>Choosing a one-tailed test for the sole purpose of attaining significance is not appropriate. For example, if you formulate a two-tailed test at the <span class="math inline">\(\alpha = 0.05\)</span> significance level and obtain a p-value of 0.051 you fail to reject the null. You cannot then change the test to a one-tail test in order to obtain significance. This will lead to questionable and invalid results.</p>
+</section>
+</section>
+<section id="more-advanced-points-to-consider" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="more-advanced-points-to-consider"><span class="header-section-number">12.6</span> More advanced points to consider</h2>
 <p>As this is an introductory book, we have introduced some concepts but not developed them in full detail. This does not mean that there are not things to say about these – more that there is simply too much to say at this time. These topics include:</p>
 <ul>
 <li><strong>Planning studies:</strong> If you are planning a study, you need to determine the sample size <span class="math inline">\(n\)</span> that is sufficient for minimizing Type II error (i.e, maximizing power). To do so, you will need to know the sampling distribution of the estimator not just under the null hypothesis, but also under the alternative hypothesis. You will need to specify the size of the outcome, difference, or relationship you are seeking to understand. From this, for a given Type II error level, you can determine the minimum sample size you will need.</li>
 <li><strong>Multiple testing:</strong> We introduced the use of hypothesis testing here with a single test. When you are analyzing data, however, you often conduct multiple hypothesis tests on the same data. By conducting multiple hypothesis tests, in combination Type I error (what is called “familywise error rate”) is typically higher, and sometimes much higher, than the Type I error of each test in isolation. There are procedures you can use to adjust for this.</li>
 </ul>
 </section>
-<section id="american-statistical-association-asa-statistical-standards" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="american-statistical-association-asa-statistical-standards"><span class="header-section-number">12.6</span> American Statistical Association (ASA) Statistical Standards</h2>
+<section id="american-statistical-association-asa-statistical-standards" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="american-statistical-association-asa-statistical-standards"><span class="header-section-number">12.7</span> American Statistical Association (ASA) Statistical Standards</h2>
 <p>In the past several years, the use of p-values for decision making has come under increased scrutiny by both the statistical and applied research communities. The problem is with the use of the criteria “p &lt; .05” to determine if an effect is “statistically significant”, and the use of this threshold to determine if research is worthy of publication in scientific journals. In many fields, publication standards have focused on the novelty of results (disincentivizing researchers to replicate previous findings) and have required that there be “an effect” found (meaning, statistically significant effect). There have been several negative effects of this scientific system as a result, including:</p>
 <ul>
 <li><strong>Publication bias</strong>: This results when only statistically significant results are published and non-significant results are not published. This biases findings towards non-null effects. For example, it means that a paper showing that an intervention is effective (p &lt; .05) is likely to be published, while one showing that the intervention has no effect (p &gt; .05) is not.</li>
