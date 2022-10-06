@@ -209,6 +209,7 @@ ht_table %>%
 ```
 
 There is a lot of new information here to define:
+
 * We **reject** the null hypothesis if the p-value is smaller than some threshold (i.e., p < threshold).
 * We **do not reject** the null hypothesis if the p-value is larger than this threshold (i.e., p > threshold).
 * The **null model** is as we’ve defined it in @sec-pvalues. In most cases it is that there is no effect, no difference, or no relationship. (Other null hypotheses are possible, these are just the most common.)
