@@ -40,11 +40,65 @@ There are 3 unique ports of embarkation: Q, S, C (Queenstown, Southampton, Cherb
 
 ## Chapter 2 {#sec-ex02-sol}
 
-::: callout-caution
-## Under Construction
+@exr-ch02-c01 b. geom_line(), c. geom_col(), e. geom_histogram()
 
-Currently working on exercise solutions.
-:::
+@exr-ch02-c03 b. changing the transparency, e. jittering the points
+
+@exr-ch02-c05 b. geom_col()
+
+@exr-ch02-c07 b. linegraph
+
+@exr-ch02-c09 d. boxplot
+
+@exr-ch02-c11 The histogram is unimodal and left skewed.
+
+@exr-ch02-app1
+
+```{r}
+#| include: false
+library(ggplot2)
+library(dplyr)
+library(ISDSdatasets)
+
+covid_sub <- covid_states %>% 
+  filter(
+    state_abbr == "IL" | state_abbr == "FL",
+    date >= "2021-07-01", date <= "2021-08-31",
+    wday != "Sat", wday != "Sun"
+    )
+```
+
+```{r}
+ggplot(
+  covid_sub, 
+  aes(x = date, y = new_confirmed, color = state_abbr)
+  ) +
+  geom_line()
+```
+
+Florida has significantly more covid cases than Illinois in the months of July and August 2021. The spikes to 0 could indicate testing did not occur on those days. Illinois has a positive "fairly linear" trend. Florida has a nonlinear trend where cases are increasing until around August 15th, at which point cases start to decrease.
+
+@exr-ch02-app3
+
+```{r}
+ggplot(nba, aes(x = ft_percent, y = fg_percent)) +
+  geom_jitter(alpha=0.1)
+```
+
+The relationship between the field goal percentage and free throw percentage seems to have no association. This means that whether a player made all of their free throws or only 50% of their free throws, it will not impact their shooting during the game (field goal percent). If we draw a circle around the points it is fairly horizontal (indicating no positive or negative trend) and a large oval. 
+
+@exr-ch02-adv1
+
+```{r}
+ggplot(
+  covid_sub, 
+  aes(x = date, y = new_confirmed, color = state_abbr)
+  ) +
+  geom_line() +
+  theme_minimal() +
+  labs(x = NULL) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
 
 
 ## Chapter 3 {#sec-ex03-sol}
