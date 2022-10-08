@@ -1047,10 +1047,9 @@ e.  16 rows and 1 column
 ::: {#exr-ch03-c04}
 Why might we want to use the select function on a data frame?
 
-a)  To make exploring a data frame easier by removing all variables except the variables of interest from the data frame object
-b)  To make exploring a data frame easier by sorting the rows in alphanumeric order
-c)  To make exploring a data frame easier by only outputting the variables of interest
-d)  To make exploring a data frame easier by filtering out only rows that match a specified criteria
+a)  To make exploring a data frame easier by sorting the rows in alphanumeric order
+b)  To make exploring a data frame easier by only outputting the variables of interest
+c)  To make exploring a data frame easier by filtering out only rows that match a specified criteria
 :::
 
 ::: {#exr-ch03-c05}
@@ -1196,7 +1195,7 @@ Try typing `state_abbr %in%` followed by the vector of states within `filter` to
 :::
 
 ::: {#exr-ch03-adv2}
-Using the `covid_pop` dataset created in Problem 16, calculate the total weekly `new_confirmed` COVID cases in 2021 for each state. Plot the total weekly cases to determine if the 4 states had a similar trend.
+Using the `covid_pop` dataset created in @exr-ch03-adv1, calculate the total weekly `new_confirmed` COVID cases in 2021 for each state. Plot the total weekly cases to determine if the 4 states had a similar trend.
 
 When working with dates you will want to use the `lubridate` package. Create a new variable `week` by using the function `week(date)`.
 :::

@@ -103,12 +103,81 @@ ggplot(
 
 ## Chapter 3 {#sec-ex03-sol}
 
-::: callout-caution
-## Under Construction
 
-Currently working on exercise solutions.
-:::
+@exr-ch03-c01 b.  `a() %>% b() %>% c() %>% x`
 
+@exr-ch03-c03 c. 1 row and 4 columns
+
+@exr-ch03-c05 a.  increase
+
+@exr-ch03-c07 b.  $mean < median$
+
+@exr-ch03-c09 d.
+
+@exr-ch03-c11 a. e. (there is no variable called `passenger`)
+
+
+@exr-ch03-app2
+
+```{r}
+library(ISDSdatasets)
+```
+```{r}
+nba %>%
+  group_by(player) %>%
+  mutate(spread = pts_tm - pts_opp ) %>%
+  ungroup() %>%
+  slice_max(spread) %>% 
+  select(player, pts_tm, pts_opp, spread)
+
+# Alternate code
+nba_spread <- nba %>%
+  group_by(player) %>%
+  mutate(spread = pts_tm - pts_opp ) %>% 
+  select(player, pts_tm, pts_opp, spread)
+
+nba_spread %>% arrange(desc(spread))
+```
+Kobe Bryant had the largest win spread, winning the game by 55 points.
+
+@exr-ch03-app4
+
+```{r}
+covid_join <- covid_states %>%
+ group_by(location_key, state) %>%
+ summarize(total_new_confirmed=sum(new_confirmed, na.rm=TRUE),
+           total_new_deceased=sum(new_deceased, na.rm=TRUE),
+           total_new_recovered=sum(new_recovered, na.rm=TRUE),
+           total_new_tested=sum(new_tested, na.rm=TRUE))
+
+covid_joined <- covid_join %>%
+  inner_join(covid_dem, by= "location_key")
+
+covid_joined
+```
+
+@exr-ch03-adv1
+
+```{r}
+covid_pop <- covid_states %>% 
+  filter(state_abbr %in% c("CA", "TX", "FL", "NY"))
+```
+
+@exr-ch03-adv2
+```{r}
+library(lubridate)
+covid_confirmed <- covid_pop %>%
+  filter(date<="2021-12-31", date>="2021-01-01") %>%
+  mutate(week = week(date)) %>% 
+  group_by(week, state) %>% 
+  summarize(total_confirmed = sum(new_confirmed))
+
+ggplot(data=covid_confirmed, 
+       aes(x=week, y=total_confirmed, color=state)) +
+  geom_line()
+```
+
+The linegraph shows that the states had the similar pattern overall. The peaks seem to correspond to weeks of holidays and school starting where people are gathering.
 
 ## Chapter 4 {#sec-ex04-sol}
 
