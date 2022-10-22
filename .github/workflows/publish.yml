@@ -28,17 +28,17 @@ jobs:
       - name: Install curl
         run: |-
           Rscript -e "install.packages(c('curl'), repos = 'https://demo.rstudiopm.com/all/__linux__/bionic/latest')"
-
-      - name: Install R Dependencies
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          cache-version: 1
           
       - name: Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install libcurl4-openssl-dev libssl-dev
           make requirements
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
