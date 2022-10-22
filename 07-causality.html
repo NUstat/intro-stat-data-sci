@@ -824,20 +824,102 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 <section id="sec-ex07-conceptual" class="level3" data-number="7.8.1">
 <h3 data-number="7.8.1" class="anchored" data-anchor-id="sec-ex07-conceptual"><span class="header-section-number">7.8.1</span> Conceptual</h3>
 <div id="exr-ch07-c01" class="theorem exercise">
-<span class="theorem-title"><strong>Exercise 7.1 </strong></span>
+<p><span class="theorem-title"><strong>Exercise 7.1 </strong></span>Which of the following are necessary components of a randomized experiment? Select all that apply.</p>
+<ol type="a">
+<li>There is a non-zero probability of being selected into the treatment or control group for every unit</li>
+<li>Every unit of the population is selected into the treatment or control group</li>
+<li>A random process is used for selection</li>
+<li>A random process is used for understanding the results</li>
+<li>A random process is used for administration of the treatments</li>
+</ol>
+</div>
+<div id="exr-ch07-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.2 </strong></span>You are interested in determining how often a 4-sided die (with sides numbered 1-4) rolls the number <code>2</code>. Which of the following lines of code could you use to simulate 1000 rolls for this experiment?</p>
+<ol type="a">
+<li>1000*rbernoulli(n = 1, p = 0.25)</li>
+<li>rep( rbernoulli(n = 1, p = 0.25), 1000)</li>
+<li>rbernoulli(n = 0.25, p = 2)</li>
+<li>rbernoulli(n = 1000, p = 0.25)</li>
+<li>rbernoulli(n = 1000, p = 2)</li>
+<li>rbernoulli(n = 1000, p = 1/6)</li>
+</ol>
+</div>
+<div id="exr-ch07-c03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.3 </strong></span>The more times the random procedure is conducted, the further our experimental probability diverges from the true probability.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch07-c04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.4 </strong></span>Randomization allows you to determine causation because the treatment and control groups do not differ by any pre-treatment variables.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch07-c05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.5 </strong></span>In most real life studies, selection of treatment is not based on a single variable. Which of the following are components of the best approach in this case?</p>
+<ol type="a">
+<li>Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment</li>
+<li>Add additional treatment variables to ensure further randomization</li>
+<li>Look for variables you can use to control for confounding</li>
+<li>State your assumptions and limitations</li>
+</ol>
+</div>
+<div id="exr-ch07-c06" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.6 </strong></span>Consider the following headline: “Students at private colleges have higher GPAs”. What conclusions can you infer?</p>
+<ol type="a">
+<li>private colleges causes higher GPAs, because this would be an observational study</li>
+<li>private colleges are only correlated with higher GPAs, because this would be an observational study</li>
+<li>private colleges causes higher GPAs, because this would be a randomized experiment</li>
+<li>private colleges are only correlated with higher GPAs, because this would be a randomized experiment</li>
+</ol>
+</div>
+<div id="exr-ch07-c07" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.7 </strong></span>Consider the following headline: “Video games cause violent behavior”. What conclusions can you infer?</p>
+<ol type="a">
+<li>video games cause violent behavior, because this would be an observational study</li>
+<li>video games are only correlated with violent behavior, because this would be an observational study</li>
+<li>video games cause violent behavior, because this would be a randomized experiment</li>
+<li>video games are only correlated with violent behavior, because this would be a randomized experiment</li>
+</ol>
+</div>
+<div id="exr-ch07-c08" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.8 </strong></span>Name a potential confounding variable for <a href="#exr-ch07-c06">Exercise&nbsp;<span>7.6</span></a>. Name a potential confounding variable for <a href="#exr-ch07-c07">Exercise&nbsp;<span>7.7</span></a>.</p>
+</div>
+<div id="exr-ch07-c09" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.9 </strong></span>You are designing an experiment where you provide the eastern half of a city with recommendations to decrease water consumption (treatment group), with the aim of determining the effectiveness of these recommendations. The western half of the city does not receive water consumption recommendations (control group). Would we expect that, on average, the pre-treatment characteristics are the same between the treatment and control groups?</p>
+<ol type="a">
+<li>Yes, because we have no reason to believe that different halves of the city differ</li>
+<li>Yes, because the treatment itself is very mild</li>
+<li>No, because we are not looking at characteristics other than water consumption</li>
+<li>No, because the treatment and control groups were not randomized</li>
+</ol>
+</div>
+<div id="exr-ch07-c10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.10 </strong></span>A doctor is curious if a new drug he has just learned about is effective in improving symptoms for patients with illness <code>A</code>. To determine the effectiveness of this drug, the doctor randomizes his patients and prescribes half of these patients with the drug of interest, while leaving the other half to continue with existing methods. Simultaneously, however, the physical therapist for all the doctor’s patients is running his own study where he too randomized the doctor’s patients (independently of the doctor’s study) and prescribed half of the patients to a new pain relief therapy program.</p>
+<p>In the context of the doctor’s study on the drug, the new pain relief therapy program is what type of variable?</p>
 </div>
 </section>
 <section id="sec-ex07-application" class="level3" data-number="7.8.2">
 <h3 data-number="7.8.2" class="anchored" data-anchor-id="sec-ex07-application"><span class="header-section-number">7.8.2</span> Application</h3>
-<p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
 <div id="exr-ch07-app1" class="theorem exercise">
-<span class="theorem-title"><strong>Exercise 7.2 </strong></span>
+<p><span class="theorem-title"><strong>Exercise 7.11 </strong></span>Consider the following scenario:</p>
+<p>At a large high school, the administrative personnel want to start an after school program for mathematics help for students. To determine if the program is effective, the administration asks all the math teachers at the school to provide recommendations of which students they believe would benefit from the program, and randomly selects 200 of these students. The trial mathematics program is implemented for the duration of the spring semester, and the administrative personnel consider the outcome to be the change in student’s percentile math score from the fall semester final to the spring semester final.</p>
+<p>Based on the setup of this design, can the administrative personnel conclude that the after school program <strong>caused</strong> students to improve in mathematics? Discuss whether or not randomization was achieved and any limitations of the study.</p>
+</div>
+<div id="exr-ch07-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.12 </strong></span>Consider the following scenario:</p>
+<p>You are working for a potato chip company, and are tasked with designing an experiment to determine if potential customers across the US are more receptive to a more complicated graphic on the product compared to the original simple graphic. Due to production and shipping issues, however, the product with the original graphic can only be distributed on the Eastern half of the US and the product with the more complicated graphic can only be distributed on the Western half of the US.</p>
+<p>How would you handle the confounding variable of <code>geography</code> if you know that the process by which customers select the product is only based on the graphic and on geography? How would you handle the variable <code>geography</code> if the selection process were not based only on the graphic and on geography?</p>
 </div>
 </section>
 <section id="sec-ex07-advanced" class="level3" data-number="7.8.3">
 <h3 data-number="7.8.3" class="anchored" data-anchor-id="sec-ex07-advanced"><span class="header-section-number">7.8.3</span> Advanced</h3>
 <div id="exr-ch07-adv1" class="theorem exercise">
-<span class="theorem-title"><strong>Exercise 7.3 </strong></span>
+<p><span class="theorem-title"><strong>Exercise 7.13 </strong></span>A new study is published claiming that patients are more receptive to rehabilitation of spinal injuries if one wall in the treatment room is painted purple. The hospital you work for is fascinated by the study and wants to implement the study in their own location, but the study provides no empirical evidence of the effectiveness of the treatment.</p>
+<p>You are tasked with designing a (randomized) experiment to determine the validity of this claim. Design a study and discuss the limitations of your study.</p>
 </div>
 
 
