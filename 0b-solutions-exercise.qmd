@@ -104,7 +104,7 @@ ggplot(
 ## Chapter 3 {#sec-ex03-sol}
 
 
-@exr-ch03-c01 b.  `a() %>% b() %>% c() %>% x`
+@exr-ch03-c01 c)  `x %>% c() %>% b() %>% a()`
 
 @exr-ch03-c03 c. 1 row and 4 columns
 

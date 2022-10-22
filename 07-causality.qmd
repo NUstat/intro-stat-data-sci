@@ -363,23 +363,115 @@ Finally, we would be remiss to end this chapter without including this XKCD comi
 
 ## Exercises {#sec-ex07}
 
+
 ### Conceptual {#sec-ex07-conceptual}
 
 ::: {#exr-ch07-c01}
+Which of the following are necessary components of a randomized experiment? Select all that apply.
+
+a) There is a non-zero probability of being selected into the treatment or control group for every unit
+b) Every unit of the population is selected into the treatment or control group
+c) A random process is used for selection
+d) A random process is used for understanding the results
+e) A random process is used for administration of the treatments
+:::
+
+::: {#exr-ch07-c02}
+You are interested in determining how often a 4-sided die (with sides numbered 1-4) rolls the number `2`. Which of the following lines of code could you use to simulate 1000 rolls for this experiment?
+
+a) 1000*rbernoulli(n = 1, p = 0.25)
+b) rep( rbernoulli(n = 1, p = 0.25), 1000)
+c) rbernoulli(n = 0.25, p = 2)
+d) rbernoulli(n = 1000, p = 0.25)
+e) rbernoulli(n = 1000, p = 2)
+f) rbernoulli(n = 1000, p = 1/6)
+:::
+
+::: {#exr-ch07-c03}
+The more times the random procedure is conducted, the further our experimental probability diverges from the true probability.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch07-c04}
+Randomization allows you to determine causation because the treatment and control groups do not differ by any pre-treatment variables.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch07-c05}
+In most real life studies, selection of treatment is not based on a single variable. Which of the following are components of the best approach in this case?
+
+a) Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment
+b) Add additional treatment variables to ensure further randomization
+c) Look for variables you can use to control for confounding
+d) State your assumptions and limitations
+:::
+
+::: {#exr-ch07-c06}
+Consider the following headline: "Students at private colleges have higher GPAs". What conclusions can you infer?
+
+a) private colleges causes higher GPAs, because this would be an observational study
+b) private colleges are only correlated with higher GPAs, because this would be an observational study
+c) private colleges causes higher GPAs, because this would be a randomized experiment
+d) private colleges are only correlated with higher GPAs, because this would be a randomized experiment
+:::
+
+::: {#exr-ch07-c07}
+Consider the following headline: "Video games cause violent behavior". What conclusions can you infer?
+
+a) video games cause violent behavior, because this would be an observational study
+b) video games are only correlated with violent behavior, because this would be an observational study
+c) video games cause violent behavior, because this would be a randomized experiment
+e) video games are only correlated with violent behavior, because this would be a randomized experiment
 
 :::
 
+::: {#exr-ch07-c08}
+Name a potential confounding variable for @exr-ch07-c06. Name a potential confounding variable for @exr-ch07-c07.
+:::
+
+::: {#exr-ch07-c09}
+You are designing an experiment where you provide the eastern half of a city with recommendations to decrease water consumption (treatment group), with the aim of determining the effectiveness of these recommendations. The western half of the city does not receive water consumption recommendations (control group). Would we expect that, on average, the pre-treatment characteristics are the same between the treatment and control groups?
+
+a) Yes, because we have no reason to believe that different halves of the city differ
+b) Yes, because the treatment itself is very mild
+c) No, because we are not looking at characteristics other than water consumption
+d) No, because the treatment and control groups were not randomized
+:::
+
+::: {#exr-ch07-c10}
+A doctor is curious if a new drug he has just learned about is effective in improving symptoms for patients with illness `A`. To determine the effectiveness of this drug, the doctor randomizes his patients and prescribes half of these patients with the drug of interest, while leaving the other half to continue with existing methods. 
+Simultaneously, however, the physical therapist for all the doctor's patients is running his own study where he too randomized the doctor's patients (independently of the doctor's study) and prescribed half of the patients to a new pain relief therapy program.
+
+In the context of the doctor's study on the drug, the new pain relief therapy program is what type of variable?
+:::
 
 ### Application {#sec-ex07-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
-
 ::: {#exr-ch07-app1}
+Consider the following scenario: 
 
+At a large high school, the administrative personnel want to start an after school program for mathematics help for students. To determine if the program is effective, the administration asks all the math teachers at the school to provide recommendations of which students they believe would benefit from the program, and randomly selects 200 of these students. The trial mathematics program is implemented for the duration of the spring semester, and the administrative personnel consider the outcome to be the change in student's percentile math score from the fall semester final to the spring semester final.
+
+Based on the setup of this design, can the administrative personnel conclude that the after school program **caused** students to improve in mathematics? Discuss whether or not randomization was achieved and any limitations of the study.
+:::
+
+::: {#exr-ch07-app2}
+Consider the following scenario: 
+
+You are working for a potato chip company, and are tasked with designing an experiment to determine if potential customers across the US are more receptive to a more complicated graphic on the product compared to the original simple graphic. Due to production and shipping issues, however, the product with the original graphic can only be distributed on the Eastern half of the US and the product with the more complicated graphic can only be distributed on the Western half of the US. 
+
+How would you handle the confounding variable of `geography` if you know that the process by which customers select the product is only based on the graphic and on geography? How would you handle the variable `geography` if the selection process were not based only on the graphic and on geography?
 :::
 
 ### Advanced {#sec-ex07-advanced}
 
 ::: {#exr-ch07-adv1}
 
+A new study is published claiming that patients are more receptive to rehabilitation of spinal injuries if one wall in the treatment room is painted purple. The hospital you work for is fascinated by the study and wants to implement the study in their own location, but the study provides no empirical evidence of the effectiveness of the treatment. 
+
+You are tasked with designing a (randomized) experiment to determine the validity of this claim. Design a study and discuss the limitations of your study.
 :::
