@@ -427,20 +427,115 @@ In @sec-causality we demonstrated the magic of randomization and why randomized 
 ### Conceptual {#sec-ex08-conceptual}
 
 ::: {#exr-ch08-c01}
+The US Census is performed once every 10 years. Which of the following describes the exact value that results from this endeavor?
 
+a) a sample statistic
+b) a sample estimate
+c) a population
+d) a population parameter
+e) a random sample
+f) a random count
 :::
 
+::: {#exr-ch08-c02}
+Which of the following denote sample statistics? Select all that apply.
+
+a) $\mu$         d. $\bar{x}$         g. $p$         j. $\sigma$
+b) $\hat{\mu}$         e. $\pi$         h. $\hat{p}$         k. $\hat{\sigma}$
+c) $x$         f. $\hat{\pi}$         i. $s$
+:::
+
+::: {#exr-ch08-c03}
+Which of the following types of sampling involve random selection? Select all that apply.
+
+a) Simple random sampling
+b) Random sampling with unequal probability
+c) Cluster sampling
+d) Stratified sampling
+:::
+
+::: {#exr-ch08-c04}
+Farmer Henry owns an apple picking orchard and wants to estimate the total number of apples on his lot so that he can calculate his potential earnings. It would not be time or cost efficient to count every single apple in the orchard. Instead Farmer Henry divides his land into 20 regions and randomly selects one region to count. What type of sampling is this?
+
+a) Simple random sampling
+b) Cluster sampling
+c) Stratified sampling
+d) Systematic sampling
+e) None of the above
+:::
+
+::: {#exr-ch08-c05}
+You are interested in opening an ice cream parlor and want to determine what flavors to offer. You sit outside Baskin Robins and ask every 8th customer what their favorite ice cream flavor is. What type of sampling is this?
+
+a) Simple random sampling
+b) Cluster sampling
+c) Stratified sampling
+d) Systematic sampling
+e) None of the above
+:::
+
+::: {#exr-ch08-c06}
+As an upcoming politician, you want to determine if daylight savings time should be removed. You obtain a list of all citizens in the United States and randomly sample 500 citizens from each state. What type of sampling is this?
+
+a) Simple random sampling
+b) Cluster sampling
+c) Stratified sampling
+d) Systematic sampling
+e) None of the above
+:::
+
+::: {#exr-ch08-c07}
+In a study, towns in the state of Illinois are chosen with their probability of selection based on the size of the town. Then, individuals living in these towns are randomly selected (with equal probability) to participate in an Illinois wellness survey. What type of sampling is this?
+
+a) Simple random sampling
+b) Random sampling with unequal probability
+c) Cluster sampling
+d) Stratified sampling
+:::
+
+::: {#exr-ch08-c08}
+True or False: Random assignment allows us to make generalizable claims and random sampling allows us to make causal claims.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch08-c09}
+A generalizable correlation statement for the whole population that does not allow for a causal conclusion is the result of which type of experiment/observational study?
+
+a) An experiment with random assignment and random sampling
+b) An experiment with random assignment and but no random sampling
+c) An observational study with random sampling but no random assignment
+d) An observational study with no random sampling and no random assignment
+:::
+
+::: {#exr-ch08-c10}
+You are an employee at Walmart and want to determine customer satisfaction in regards to opening and closing times. To determine this, you stand out front of the store right when it opens and survey the first 100 (willing) customers that enter the store. Can you make causal and generalizable claims from the results of your survey?
+
+a) Yes, you can make causal and generalizable claims from the results of your survey
+b) No, you can make causal claims but you cannot make generalizable claims from the results of your survey
+c) No, you can make generalizable claims but you cannot make causal claims from the results of your survey
+d) No, you cannot make causal or generalizable claims from the results of your survey
+:::
 
 ### Application {#sec-ex08-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
-
 ::: {#exr-ch08-app1}
+You are tasked with surveying the general populace of the US to determine if US citizens think the government is doing an adequate job of supporting climate change endeavors. To do so, you are provided with a master list of all addresses in the US and are asked to use this to perform a simple random sample of 50,000 households, sending one survey to each household for completion.
 
+Define your population of interest, population parameter, population frame and point estimate. Describe any limitations of the study (does undercoverage exist?).
+:::
+
+::: {#exr-ch08-app2}
+Consider the scenario from @exr-ch08-app1 again. The organization tasking you with the survey believes that states are similar, and asks you to randomly sample 1,000 households within each state (using the state-wide master lists of addresses), sending one survey to each household for completion. 
+
+What type of sample is this and how would this sample differ from the simple random sample you performed in @exr-ch08-app1? Describe any limitations of the study (does undercoverage exist?) and compare any limitations to that of the design in @exr-ch08-app1.
 :::
 
 ### Advanced {#sec-ex08-advanced}
 
 ::: {#exr-ch08-adv1}
+You work for an organization that aims to raise money to protect the Amazon rainforest. The organization wants to talk about endangered species that live within the Amazon rainforest at an upcoming benefit, but the previously hired statistician was terrified of jaguars so he/she was unable to perform the study to estimate the jaguar population. Consequently, your organization cannot say for certain if jaguars are endangered or not. 
 
+Develop a sampling plan to estimate the total number of jaguars in the world. What type of sample would you perform? Define your population of interest, population parameter, population frame and point estimate. Describe any limitations of the study (does undercoverage exist?).
 :::
