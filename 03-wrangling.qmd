@@ -758,7 +758,7 @@ What surprises you about the top 10 destinations from NYC in 2013?
 
 ### Normal forms
 
-The data frames included in the `nycflights13` package are in a form that minimizes redundancy of data. For example, the `flights` data frame only saves the `carrier` code of the airline company; it does not include the actual name of the airline. For example the first row of `flights` has `carrier` equal to `UA`, but does it does not include the airline name "United Air Lines Inc." The names of the airline companies are included in the `name` variable of the `airlines` data frame. In order to have the airline company name included in `flights`, we could join these two data frames as follows:
+The data frames included in the `nycflights13` package are in a form that minimizes redundancy of data. For example, the `flights` data frame only saves the `carrier` code of the airline company; it does not include the actual name of the airline. For example the first row of `flights` has `carrier` equal to `UA`, but it does not include the airline name "United Air Lines Inc." The names of the airline companies are included in the `name` variable of the `airlines` data frame. In order to have the airline company name included in `flights`, we could join these two data frames as follows:
 
 ```{r}
 #| eval: false
@@ -891,7 +891,7 @@ Note that in this case we used a single `=` sign within the `rename()`, for exam
 
 ### `slice()` data by a variable
 
-We can return observations with maximum or minimum values of a variable using the `slice_mac()` or `slice_min()`. For example, we can get the observations  the top 10 destination airports using the example from @sec-diff-key. Observe that we set the number of values to return to `n = 10` and `wt = num_flights` to indicate that we want the rows of corresponding to the top 10 values of `num_flights`. See the help file for `top_n()` by running `?top_n` for more information.
+We can return observations with maximum or minimum values of a variable using the `slice_max()` or `slice_min()`. For example, we can get the observations  the top 10 destination airports using the example from @sec-diff-key. Observe that we set the number of values to return to `n = 10` and `wt = num_flights` to indicate that we want the rows of corresponding to the top 10 values of `num_flights`. See the help file for `top_n()` by running `?top_n` for more information.
 
 ```{r}
 #| eval: false
