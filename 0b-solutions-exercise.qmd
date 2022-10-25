@@ -2,6 +2,7 @@
 
 ```{r}
 library(ISDSdatasets)
+library(tidyverse)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -191,11 +192,64 @@ Currently working on exercise solutions.
 
 ## Chapter 5 {#sec-ex05-sol}
 
-::: callout-caution
-## Under Construction
 
-Currently working on exercise solutions.
-:::
+@exr-ch05-c01 c) -0.7
+
+@exr-ch05-c03 b) Between -1 and 0
+
+@exr-ch05-c05 b) predictor variable & c) outcome variable & e) dependent variable
+
+@exr-ch05-c07 d) For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.
+
+@exr-ch05-c09 b) FALSE
+
+@exr-ch05-c11 d) No, the positive correlation does not necessarily imply causation.
+
+
+@exr-ch05-app2
+```{r}
+model_pts <- lm(pts_tm ~ pts, data = nba)
+
+summary(model_pts)
+```
+
+**a)** 0.272
+```{r}
+nba %>% 
+  summarize(cor = cor(pts_tm, pts, use = "complete.obs"))
+```
+
+**b)**
+```{r}
+ggplot(nba, aes(x = pts, y = pts_tm)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+**c)**
+$$\widehat{pts tm} = 92.80 + 0.345*pts$$
+**d)**
+
+**Intercept**: When the individual player scored 0 points in a game, we expect their team to score 92.80 points.
+
+**Slope:**: For every 1 additional point the individual player scores, we expect the number of total points the team scores to increase by 0.345.
+
+**e)** We predict the team will have a total of 110 points.
+```{r}
+92.80 + 0.345*50
+```
+
+
+@exr-ch05-adv1
+```{r}
+# coefficients
+summary(model_pts)$coefficients
+# or
+model_pts$coefficients
+
+# r.squared
+summary(model_pts)$r.squared
+```
 
 
 ## Chapter 6 {#sec-ex06-sol}
