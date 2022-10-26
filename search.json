@@ -767,7 +767,7 @@
     "href": "0b-solutions-exercise.html",
     "title": "Appendix B — Exercise solutions",
     "section": "",
-    "text": "library(ISDSdatasets)\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6      ✔ purrr   0.3.4 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.4.1 \n✔ readr   2.1.2      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()"
+    "text": "library(ISDSdatasets)\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6      ✔ purrr   0.3.4 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.4.1 \n✔ readr   2.1.2      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(moderndive)"
   },
   {
     "objectID": "0b-solutions-exercise.html#sec-ex01-sol",
@@ -809,6 +809,27 @@
     "href": "0b-solutions-exercise.html#sec-ex06-sol",
     "title": "Appendix B — Exercise solutions",
     "section": "B.6 Chapter 6",
-    "text": "B.6 Chapter 6\n\n\n\n\n\n\nUnder Construction\n\n\n\nCurrently working on exercise solutions."
+    "text": "B.6 Chapter 6\nExercise 6.1 c. The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary\nExercise 6.3 b. False\nExercise 6.5 a. Splitting up your data can result in unequal balance in representation of some groups compared to others. & d. Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.\nExercise 6.7\n\ncovid_merge <- covid_states %>% \n  left_join(covid_dem)\n\nJoining, by = \"location_key\"\n\ncovid_pred2 <- lm(new_confirmed ~ population + new_tested, \n                  data = covid_merge)\n\nsummary(covid_pred2)$coefficients\n\n                Estimate   Std. Error   t value     Pr(>|t|)\n(Intercept) 1.704474e+02 4.211070e+01  4.047604 5.191359e-05\npopulation  3.711377e-05 5.333525e-06  6.958581 3.529293e-12\nnew_tested  5.272425e-02 8.645625e-04 60.983732 0.000000e+00\n\n\nExercise 6.9\n\nmodel_pts_int <- lm(pts_tm ~ pts*location, \n                   data = nba)\n\nsummary(model_pts_int)$coefficients\n\n                   Estimate Std. Error    t value     Pr(>|t|)\n(Intercept)      88.5705162 0.75138008 117.877115 0.000000e+00\npts               0.4305969 0.02579626  16.692224 1.072315e-60\nlocationHome      8.3693493 1.05745823   7.914591 3.117298e-15\npts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06\n\nggplot(nba, aes(x = pts, y = pts_tm, color = location)) +\n  geom_point() +\n  geom_smooth(se = FALSE)\n\n`geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 354 rows containing non-finite values (stat_smooth).\n\n\nWarning: Removed 354 rows containing missing values (geom_point).\n\n\n\n\n\nb_0 When the star player scores 0 points and the game is away, the team is predicted to score 88.57 points.\nb_1 For every additional point the star player scores, the associated expected increase in team points is 0.431 for away games.\nb_2 When the star player scores 0 points, the team is expected to score on average 8.37 more points when the game is home compared to when the game is away.\nb_3 For every additional point the star player scores, the associated expected increase in team points will be 0.169 less for home games than away games.\nExercise 6.10\n\n# parallel slopes\nmean(model_pts_parallel$residuals^2)\n\n[1] 136.5566\n\n# interaction\nmean(model_pts_int$residuals^2)\n\n[1] 135.8881\n\n\nThe MSE of the parallel slopes is 136.6 and the MSE of the interaction is 135.9. Since the MSE for the interaction model is smaller it appears to be slightly better.\nExercise 6.11\nMany different possible answers\n\nmodel_better <- lm(pts_tm ~ pts_opp + pts, data = nba)\n\nmean(model_better$residuals^2)\n\n[1] 116.9488\n\n\nThis model which uses the opponents points and star player points has an MSE of 116.9 which is better."
+  },
+  {
+    "objectID": "0b-solutions-exercise.html#sec-ex07-sol",
+    "href": "0b-solutions-exercise.html#sec-ex07-sol",
+    "title": "Appendix B — Exercise solutions",
+    "section": "B.7 Chapter 7",
+    "text": "B.7 Chapter 7\n\n\n\n\n\n\nUnder Construction\n\n\n\nCurrently working on exercise solutions."
+  },
+  {
+    "objectID": "0b-solutions-exercise.html#sec-ex08-sol",
+    "href": "0b-solutions-exercise.html#sec-ex08-sol",
+    "title": "Appendix B — Exercise solutions",
+    "section": "B.8 Chapter 8",
+    "text": "B.8 Chapter 8\n\n\n\n\n\n\nUnder Construction\n\n\n\nCurrently working on exercise solutions."
+  },
+  {
+    "objectID": "0b-solutions-exercise.html#sec-ex09-sol",
+    "href": "0b-solutions-exercise.html#sec-ex09-sol",
+    "title": "Appendix B — Exercise solutions",
+    "section": "B.9 Chapter 9",
+    "text": "B.9 Chapter 9\n\n\n\n\n\n\nUnder Construction\n\n\n\nCurrently working on exercise solutions."
   }
 ]
