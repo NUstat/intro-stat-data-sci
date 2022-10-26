@@ -3,6 +3,7 @@
 ```{r}
 library(ISDSdatasets)
 library(tidyverse)
+library(moderndive)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -253,6 +254,104 @@ summary(model_pts)$r.squared
 
 
 ## Chapter 6 {#sec-ex06-sol}
+
+
+@exr-ch06-c01 c. The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary
+
+@exr-ch06-c03 b. False
+
+@exr-ch06-c05 a. Splitting up your data can result in unequal balance in representation of some groups compared to others. & d. Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.
+
+
+@exr-ch06-app2
+
+```{r}
+covid_merge <- covid_states %>% 
+  left_join(covid_dem)
+
+covid_pred2 <- lm(new_confirmed ~ population + new_tested, 
+                  data = covid_merge)
+
+summary(covid_pred2)$coefficients
+```
+
+
+
+@exr-ch06-app4
+
+```{r}
+#| include: false
+model_pts_parallel <- lm(pts_tm ~ pts + location, 
+                   data = nba)
+
+summary(model_pts_parallel)$coefficients
+
+ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
+```
+
+
+```{r}
+model_pts_int <- lm(pts_tm ~ pts*location, 
+                   data = nba)
+
+summary(model_pts_int)$coefficients
+
+ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+```
+
+**b_0** When the star player scores 0 points and the game is away, the team is predicted to score 88.57 points.
+
+**b_1** For every additional point the star player scores, the associated expected increase in team points is 0.431 for away games.
+
+**b_2** When the star player scores 0 points, the team is expected to score on average 8.37 more points when the game is home compared to when the game is away.
+
+**b_3** For every additional point the star player scores, the associated expected increase in team points will be 0.169 less for home games than away games.
+
+@exr-ch06-adv1
+
+```{r}
+# parallel slopes
+mean(model_pts_parallel$residuals^2)
+
+# interaction
+mean(model_pts_int$residuals^2)
+```
+The MSE of the parallel slopes is 136.6 and the MSE of the interaction is 135.9. Since the MSE for the interaction model is smaller it appears to be slightly better.
+
+@exr-ch06-adv2
+
+**Many different possible answers**
+
+```{r}
+model_better <- lm(pts_tm ~ pts_opp + pts, data = nba)
+
+mean(model_better$residuals^2)
+```
+This model which uses the opponents points and star player points has an MSE of 116.9 which is better.
+
+## Chapter 7 {#sec-ex07-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 8 {#sec-ex08-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 9 {#sec-ex09-sol}
 
 ::: callout-caution
 ## Under Construction
