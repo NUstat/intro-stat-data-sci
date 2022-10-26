@@ -464,7 +464,7 @@ Consider the following scenario:
 
 You are working for a potato chip company, and are tasked with designing an experiment to determine if potential customers across the US are more receptive to a more complicated graphic on the product compared to the original simple graphic. Due to production and shipping issues, however, the product with the original graphic can only be distributed on the Eastern half of the US and the product with the more complicated graphic can only be distributed on the Western half of the US. 
 
-How would you handle the confounding variable of `geography` if you know that the process by which customers select the product is only based on the graphic and on geography? How would you handle the variable `geography` if the selection process were not based only on the graphic and on geography?
+How and why might the confounding variable geography impact your results and conclusions? Can you brainstorm any ways to reduce the impact of this confounding variable?
 :::
 
 ### Advanced {#sec-ex07-advanced}
