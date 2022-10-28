@@ -1,9 +1,13 @@
 # Exercise solutions {#sec-exr-sol}
 
 ```{r}
+#| warning: false
+#| message: false
+
 library(ISDSdatasets)
 library(tidyverse)
 library(moderndive)
+library(lubridate)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -71,6 +75,9 @@ covid_sub <- covid_states %>%
 ```
 
 ```{r}
+#| warning: false
+#| message: false
+
 ggplot(
   covid_sub, 
   aes(x = date, y = new_confirmed, color = state_abbr)
@@ -83,6 +90,9 @@ Florida has significantly more covid cases than Illinois in the months of July a
 @exr-ch02-app3
 
 ```{r}
+#| warning: false
+#| message: false
+
 ggplot(nba, aes(x = ft_percent, y = fg_percent)) +
   geom_jitter(alpha=0.1)
 ```
@@ -92,6 +102,9 @@ The relationship between the field goal percentage and free throw percentage see
 @exr-ch02-adv1
 
 ```{r}
+#| warning: false
+#| message: false
+
 ggplot(
   covid_sub, 
   aes(x = date, y = new_confirmed, color = state_abbr)
@@ -122,9 +135,9 @@ ggplot(
 @exr-ch03-app2
 
 ```{r}
-library(ISDSdatasets)
-```
-```{r}
+#| warning: false
+#| message: false
+
 nba %>%
   group_by(player) %>%
   mutate(spread = pts_tm - pts_opp ) %>%
@@ -145,6 +158,9 @@ Kobe Bryant had the largest win spread, winning the game by 55 points.
 @exr-ch03-app4
 
 ```{r}
+#| warning: false
+#| message: false
+
 covid_join <- covid_states %>%
  group_by(location_key, state) %>%
  summarize(total_new_confirmed=sum(new_confirmed, na.rm=TRUE),
@@ -161,13 +177,18 @@ covid_joined
 @exr-ch03-adv1
 
 ```{r}
+#| warning: false
+#| message: false
+
 covid_pop <- covid_states %>% 
   filter(state_abbr %in% c("CA", "TX", "FL", "NY"))
 ```
 
 @exr-ch03-adv2
 ```{r}
-library(lubridate)
+#| warning: false
+#| message: false
+
 covid_confirmed <- covid_pop %>%
   filter(date<="2021-12-31", date>="2021-01-01") %>%
   mutate(week = week(date)) %>% 
@@ -209,6 +230,9 @@ Currently working on exercise solutions.
 
 @exr-ch05-app2
 ```{r}
+#| warning: false
+#| message: false
+
 model_pts <- lm(pts_tm ~ pts, data = nba)
 
 summary(model_pts)
@@ -216,12 +240,18 @@ summary(model_pts)
 
 **a)** 0.272
 ```{r}
+#| warning: false
+#| message: false
+
 nba %>% 
   summarize(cor = cor(pts_tm, pts, use = "complete.obs"))
 ```
 
 **b)**
 ```{r}
+#| warning: false
+#| message: false
+
 ggplot(nba, aes(x = pts, y = pts_tm)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
@@ -243,6 +273,9 @@ $$\widehat{pts tm} = 92.80 + 0.345*pts$$
 
 @exr-ch05-adv1
 ```{r}
+#| warning: false
+#| message: false
+
 # coefficients
 summary(model_pts)$coefficients
 # or
@@ -266,6 +299,9 @@ summary(model_pts)$r.squared
 @exr-ch06-app2
 
 ```{r}
+#| warning: false
+#| message: false
+
 covid_merge <- covid_states %>% 
   left_join(covid_dem)
 
@@ -293,6 +329,9 @@ ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
 
 
 ```{r}
+#| warning: false
+#| message: false
+
 model_pts_int <- lm(pts_tm ~ pts*location, 
                    data = nba)
 
@@ -314,6 +353,9 @@ ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
 @exr-ch06-adv1
 
 ```{r}
+#| warning: false
+#| message: false
+
 # parallel slopes
 mean(model_pts_parallel$residuals^2)
 
@@ -327,6 +369,9 @@ The MSE of the parallel slopes is 136.6 and the MSE of the interaction is 135.9.
 **Many different possible answers**
 
 ```{r}
+#| warning: false
+#| message: false
+
 model_better <- lm(pts_tm ~ pts_opp + pts, data = nba)
 
 mean(model_better$residuals^2)
@@ -335,20 +380,39 @@ This model which uses the opponents points and star player points has an MSE of 
 
 ## Chapter 7 {#sec-ex07-sol}
 
-::: callout-caution
-## Under Construction
 
-Currently working on exercise solutions.
-:::
+@exr-ch07-c01 a) There is a non-zero probability of being selected into the treatment or control group for every unit & c) A random process is used for selection & e) A random process is used for administration of the treatments
+
+@exr-ch07-c03 b) False
+
+@exr-ch07-c05 a) Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment & c) Look for variables you can use to control for confounding & d) State your assumptions and limitations
+
+@exr-ch07-c07 b) video games are only correlated with violent behavior, because this would be an observational study
+
+@exr-ch07-c09 d) No, because the treatment and control groups were not randomized
+
+@exr-ch07-app1 No the administration cannot conclude the after-school program caused student improvement. While this was a randomized selection of a subset of students we cannot generalize to all students because all students were not considered. Also, this was a before and after study where it is likely the material from the fall semester is likely different from the material in the spring semester. Perhaps these students were just better at the topics covered in the spring.
 
 
 ## Chapter 8 {#sec-ex08-sol}
 
-::: callout-caution
-## Under Construction
+@exr-ch08-c01 d) a population parameter
 
-Currently working on exercise solutions.
-:::
+@exr-ch08-c03 all of them (a, b, c, d)
+
+@exr-ch08-c05 d) Systematic sampling
+
+@exr-ch08-c07 c) Cluster sampling (with unequal probability) choosing towns is based on random cluster selection
+
+@exr-ch08-c09 c) An observational study with random sampling but no random assignment
+
+
+@exr-ch08-app1
+population: US citizens
+
+parameter: proportion (most likely a Yes or No question)
+
+undercoverage: citizens that do not own a house, if there are multiple citizens in one household only one person will receive the survey.
 
 
 ## Chapter 9 {#sec-ex09-sol}
