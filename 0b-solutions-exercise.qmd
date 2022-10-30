@@ -422,3 +422,30 @@ undercoverage: citizens that do not own a house, if there are multiple citizens 
 
 Currently working on exercise solutions.
 :::
+
+
+## Chapter 10 {#sec-ex10-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 11 {#sec-ex11-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::
+
+
+## Chapter 12 {#sec-ex12-sol}
+
+::: callout-caution
+## Under Construction
+
+Currently working on exercise solutions.
+:::

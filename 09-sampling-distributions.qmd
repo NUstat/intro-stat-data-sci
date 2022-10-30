@@ -690,7 +690,7 @@ Here we see that $\hat{\pi}=$ `r mean(virtual_prop_red$prop_red)`, which is a go
 
 The difficulty with introducing this idea of bias in an introductory course is that most statistics used at this level (e.g., proportions, means, regression coefficients) are unbiased. Examples of biased statistics are more common in more complex models. One example, however, that illustrates this bias concept is that of sample variance estimator.
 
-Recall that we have used *standard deviation* as a summary statistic for how spread out data is. **Variance** is simply standard deviation *squared*, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter $s$, and sample variance by $s^2$. These are estimators for the population standard deviation (denoted $\sigma$) and the population variance (denoted $\sigma^2$). We estimate the sample variance using $s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}$, where $n$ is the sample size (check out @sec-appendixA) if you are unfamiliar with the $\sum$ notation and using subscripts $i$). When we use the `sd()` function in R, it is using the square root of this function in the background: $s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}$. Until now, we have simply used this estimator without reason. You might ask: why is this divided by $n – 1$ instead of simply by $n$ like the formula for the mean (i.e. $\frac{\sum x_i}{n}$)? To see why, let's look at an example.
+Recall that we have used *standard deviation* as a summary statistic for how spread out data is. **Variance** is simply standard deviation *squared*, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter $s$, and sample variance by $s^2$. These are estimators for the population standard deviation (denoted $\sigma$) and the population variance (denoted $\sigma^2$). We estimate the sample variance using $s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}$, where $n$ is the sample size (check out @sec-stat-background if you are unfamiliar with the $\sum$ notation and using subscripts $i$). When we use the `sd()` function in R, it is using the square root of this function in the background: $s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}$. Until now, we have simply used this estimator without reason. You might ask: why is this divided by $n – 1$ instead of simply by $n$ like the formula for the mean (i.e. $\frac{\sum x_i}{n}$)? To see why, let's look at an example.
 
 The `gapminder` dataset in the `dslabs` package has life expectancy data on 185 countries in 2016. We will consider these 185 countries to be our population. The true variance of life expectancy in this population is $\sigma^2 = 57.5$.
 
@@ -1129,20 +1129,157 @@ In the next section of the book, we will build upon this theoretical foundation,
 ### Conceptual {#sec-ex09-conceptual}
 
 ::: {#exr-ch09-c01}
+Which of the following properties do the Normal distribution and the T distribution share? Select all that apply.
 
+a) depends on degrees of freedom
+b) unimodal
+c) bimodal
+d) multimodal
+e) uniform
+f) right skewed
+g) left skewed
+h) symmetric
+:::
+
+::: {#exr-ch09-c02}
+Standardization is a useful statistical tool as it allows us to put measures that are on the same scale onto different scales.
+
+a) True
+b) False
+:::
+
+:::{#exr-ch09-03}
+The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women is shorter than 60 inches?
+
+a) `qnorm(p = 60, mean = 64, sd = 3)`
+b) `pnorm(q = 60, mu = 64, sigma = 3)`
+c) `1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)`
+d) `qnorm(p = 60, mean = 64, sd = 3, lower.tail = FALSE)`
+e) `pnorm(q = 64, mean = 60, sd = 3)`
+:::
+
+:::{#exr-ch09-04}
+The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women between 60 and 72 inches? Select all that apply.
+
+a) `pnorm(q = -1.33) - pnorm(q = 2.67)`
+b) `pnorm(q = 72, mean = 64, sd = 3) - pnorm(q = 60, mean = 64, sd = 3)`
+c) `1 - pnorm(q = -1.33) - pnorm(q = 2.67, lower.tail = FALSE)`
+d) `pnorm(q = 60, mean = 64, sd = 3) + pnorm(q = 72, mean = 64, sd = 3, lower.tail = FALSE)`
+e) `1 - 2*pnorm(q = 60, mean = 64, sd = 3)`
+:::
+
+:::{#exr-ch09-05}
+Suppose we want to compare apples to oranges. Specifically, let’s compare their weights. Apples are known to follow a normal distribution with a mean weight of 100 grams and standard deviation of 15 grams. Oranges are known to follow a normal distribution with a mean weight of 140 grams and standard deviation of 25 grams.
+
+You have an apple that weighs 110 grams and your sister has an orange that weighs 160 grams. She claims her orange is bigger than your apple. But you state that is not a fair comparison because you think your apple is big compared to other apples. Who's fruit is bigger when measured on a standardized scale?
+
+a) apple
+b) orange
 :::
 
 
+::: {#exr-ch09-c06}
+When `n` is at least 50, the sampling distribution of the sample proportion follows a Normal distribution, and so it is both symmetric and unimodal.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch09-c07}
+Which of the following statements regarding sample statistics are true? Select all that apply.
+
+a) All sample statistics are biased estimators of the population parameter
+b) The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the T distribution
+c) The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the Chi-Squared Distribution
+d) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution
+e) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the Chi-Squared distribution
+f) The regression slope and regression intercept both follow the T distribution
+g) The regression slope and regression intercept both follow the Chi-Squared distribution
+:::
+
+::: {#exr-ch09-c08}
+The distribution of the population will always have a larger spread than the distribution of a sampling distribution.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch09-c09}
+As sample size (n) increases the spread of the distribution also increases.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch09-c10}
+Which of the following describes the estimator $\bar(x)$?
+
+a) biased and imprecise
+b) biased and precise
+c) unbiased and imprecise
+d) unbiased and precise
+:::
+
+::: {#exr-ch09-c11}
+Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter $\\pi$.
+
+a) True
+b) False
+:::
+
+
+::: {#exr-ch09-c12}
+Every statistic has a sampling distribution.
+What is the sampling distribution of a...
+
+- sample mean?
+- sample proportion?
+- sample variance?
+:::
+
 ### Application {#sec-ex09-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
-
 ::: {#exr-ch09-app1}
+It is found that the average male adult shoe size is normally distributed with a mean of size 10.5 and standard deviation of 1.5. 
 
+a) Using the empirical rule, approximately what percent of men have a shoe size between 6 and 15?
+b) What percent of men have a shoe size larger than 13?
+c) You walk up to a random male, what is the probability his shoe size is between 10 and 12?
+d) A male has a shoe size in the 60th percentile (ie: shoe size is larger than 60% of men). What is his shoe size?
+:::
+
+::: {#exr-ch09-app2}
+You are a chef at a steakhouse restaurant that serves 6oz filets. When preparing filets there is some variability in the actual weight of each filet served. You prepare 18 filets and measure their average weight to be 6.02oz with a standard deviation of 0.03oz. The distribution appears to be bell shaped. 
+
+a) What percent of filets are prepared under the advertised weight of 6oz?
+b) A filet is considered large if it is in the top 10%. What is the weight of a large filet?
+c) The company has a high standard of excellence and will not serve a filet if it is under 5.95oz or over 6.05oz. What percent of filet's are not served?
 :::
 
 ### Advanced {#sec-ex09-advanced}
 
 ::: {#exr-ch09-adv1}
+You work for a weather company and are tasked with determining the proportion of days that are `sunny` in a town with a mixed variety of weather conditions. You are provided with a data frame (`weather`) containing weather descriptors (`daily_weather`) for each day for the last six years. 
 
+
+```{r}
+weather <- tibble(
+  daily_weather = c(rep("sunny",476), 
+                    rep("cloudy",558), 
+                    rep("partly cloudy",487), 
+                    rep("rainy",312), 
+                    rep("thuderstorms",28), 
+                    rep("snowy",329))
+  )
+```
+
+a) Use repeated sampling to collect 50 samples of size 30. Store this as `samples_1`.
+b) Use repeated sampling to collect 5,000 samples of size 30. Store this as `samples_2`.
+c) Use repeated sampling to collect 5,000 samples of size 50. Store this as `samples_3`.
+
+Then calculate the proportion of `sunny` days by replicate for each sample.
+
+Plot the sampling distribution of each using a histogram.
+
+Compare and contrast the three repeated samples, were they biased? Were they precise? Etc.
 :::
