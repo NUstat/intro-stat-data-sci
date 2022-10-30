@@ -1173,7 +1173,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </div>
 <p>Here we see that <span class="math inline">\(\hat{\pi}=\)</span> 0.375, which is a good approximation to the true proportion of red balls in the bowl (<span class="math inline">\(\pi =\)</span> 0.375). This is because the sample proportion <span class="math inline">\(\hat{\pi} = \frac{\# \  of \ successes}{\# \ of \ trials}\)</span> is an unbiased estimator of the population proportion <span class="math inline">\(\pi\)</span>.</p>
 <p>The difficulty with introducing this idea of bias in an introductory course is that most statistics used at this level (e.g., proportions, means, regression coefficients) are unbiased. Examples of biased statistics are more common in more complex models. One example, however, that illustrates this bias concept is that of sample variance estimator.</p>
-<p>Recall that we have used <em>standard deviation</em> as a summary statistic for how spread out data is. <strong>Variance</strong> is simply standard deviation <em>squared</em>, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter <span class="math inline">\(s\)</span>, and sample variance by <span class="math inline">\(s^2\)</span>. These are estimators for the population standard deviation (denoted <span class="math inline">\(\sigma\)</span>) and the population variance (denoted <span class="math inline">\(\sigma^2\)</span>). We estimate the sample variance using <span class="math inline">\(s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}\)</span>, where <span class="math inline">\(n\)</span> is the sample size (check out <span class="quarto-unresolved-ref">?sec-appendixA</span>) if you are unfamiliar with the <span class="math inline">\(\sum\)</span> notation and using subscripts <span class="math inline">\(i\)</span>). When we use the <code>sd()</code> function in R, it is using the square root of this function in the background: <span class="math inline">\(s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}\)</span>. Until now, we have simply used this estimator without reason. You might ask: why is this divided by <span class="math inline">\(n – 1\)</span> instead of simply by <span class="math inline">\(n\)</span> like the formula for the mean (i.e.&nbsp;<span class="math inline">\(\frac{\sum x_i}{n}\)</span>)? To see why, let’s look at an example.</p>
+<p>Recall that we have used <em>standard deviation</em> as a summary statistic for how spread out data is. <strong>Variance</strong> is simply standard deviation <em>squared</em>, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter <span class="math inline">\(s\)</span>, and sample variance by <span class="math inline">\(s^2\)</span>. These are estimators for the population standard deviation (denoted <span class="math inline">\(\sigma\)</span>) and the population variance (denoted <span class="math inline">\(\sigma^2\)</span>). We estimate the sample variance using <span class="math inline">\(s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}\)</span>, where <span class="math inline">\(n\)</span> is the sample size (check out <a href="0a-statistical-background.html"><span>Appendix&nbsp;A</span></a> if you are unfamiliar with the <span class="math inline">\(\sum\)</span> notation and using subscripts <span class="math inline">\(i\)</span>). When we use the <code>sd()</code> function in R, it is using the square root of this function in the background: <span class="math inline">\(s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}\)</span>. Until now, we have simply used this estimator without reason. You might ask: why is this divided by <span class="math inline">\(n – 1\)</span> instead of simply by <span class="math inline">\(n\)</span> like the formula for the mean (i.e.&nbsp;<span class="math inline">\(\frac{\sum x_i}{n}\)</span>)? To see why, let’s look at an example.</p>
 <p>The <code>gapminder</code> dataset in the <code>dslabs</code> package has life expectancy data on 185 countries in 2016. We will consider these 185 countries to be our population. The true variance of life expectancy in this population is <span class="math inline">\(\sigma^2 = 57.5\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"gapminder"</span>, <span class="at">package =</span> <span class="st">"dslabs"</span>)</span>
@@ -1785,20 +1785,153 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <section id="sec-ex09-conceptual" class="level3" data-number="9.8.1">
 <h3 data-number="9.8.1" class="anchored" data-anchor-id="sec-ex09-conceptual"><span class="header-section-number">9.8.1</span> Conceptual</h3>
 <div id="exr-ch09-c01" class="theorem exercise">
-<span class="theorem-title"><strong>Exercise 9.1 </strong></span>
+<p><span class="theorem-title"><strong>Exercise 9.1 </strong></span>Which of the following properties do the Normal distribution and the T distribution share? Select all that apply.</p>
+<ol type="a">
+<li>depends on degrees of freedom</li>
+<li>unimodal</li>
+<li>bimodal</li>
+<li>multimodal</li>
+<li>uniform</li>
+<li>right skewed</li>
+<li>left skewed</li>
+<li>symmetric</li>
+</ol>
+</div>
+<div id="exr-ch09-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.2 </strong></span>Standardization is a useful statistical tool as it allows us to put measures that are on the same scale onto different scales.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch09-03" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.3 </strong></span>The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women is shorter than 60 inches?</p>
+<ol type="a">
+<li><code>qnorm(p = 60, mean = 64, sd = 3)</code></li>
+<li><code>pnorm(q = 60, mu = 64, sigma = 3)</code></li>
+<li><code>1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)</code></li>
+<li><code>qnorm(p = 60, mean = 64, sd = 3, lower.tail = FALSE)</code></li>
+<li><code>pnorm(q = 64, mean = 60, sd = 3)</code></li>
+</ol>
+</div>
+<div id="exr-ch09-04" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.4 </strong></span>The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women between 60 and 72 inches? Select all that apply.</p>
+<ol type="a">
+<li><code>pnorm(q = -1.33) - pnorm(q = 2.67)</code></li>
+<li><code>pnorm(q = 72, mean = 64, sd = 3) - pnorm(q = 60, mean = 64, sd = 3)</code></li>
+<li><code>1 - pnorm(q = -1.33) - pnorm(q = 2.67, lower.tail = FALSE)</code></li>
+<li><code>pnorm(q = 60, mean = 64, sd = 3) + pnorm(q = 72, mean = 64, sd = 3, lower.tail = FALSE)</code></li>
+<li><code>1 - 2*pnorm(q = 60, mean = 64, sd = 3)</code></li>
+</ol>
+</div>
+<div id="exr-ch09-05" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.5 </strong></span>Suppose we want to compare apples to oranges. Specifically, let’s compare their weights. Apples are known to follow a normal distribution with a mean weight of 100 grams and standard deviation of 15 grams. Oranges are known to follow a normal distribution with a mean weight of 140 grams and standard deviation of 25 grams.</p>
+<p>You have an apple that weighs 110 grams and your sister has an orange that weighs 160 grams. She claims her orange is bigger than your apple. But you state that is not a fair comparison because you think your apple is big compared to other apples. Who’s fruit is bigger when measured on a standardized scale?</p>
+<ol type="a">
+<li>apple</li>
+<li>orange</li>
+</ol>
+</div>
+<div id="exr-ch09-c06" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.6 </strong></span>When <code>n</code> is at least 50, the sampling distribution of the sample proportion follows a Normal distribution, and so it is both symmetric and unimodal.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch09-c07" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.7 </strong></span>Which of the following statements regarding sample statistics are true? Select all that apply.</p>
+<ol type="a">
+<li>All sample statistics are biased estimators of the population parameter</li>
+<li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the T distribution</li>
+<li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the Chi-Squared Distribution</li>
+<li>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution</li>
+<li>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the Chi-Squared distribution</li>
+<li>The regression slope and regression intercept both follow the T distribution</li>
+<li>The regression slope and regression intercept both follow the Chi-Squared distribution</li>
+</ol>
+</div>
+<div id="exr-ch09-c08" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.8 </strong></span>The distribution of the population will always have a larger spread than the distribution of a sampling distribution.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch09-c09" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.9 </strong></span>As sample size (n) increases the spread of the distribution also increases.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch09-c10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.10 </strong></span>Which of the following describes the estimator <span class="math inline">\(\bar(x)\)</span>?</p>
+<ol type="a">
+<li>biased and imprecise</li>
+<li>biased and precise</li>
+<li>unbiased and imprecise</li>
+<li>unbiased and precise</li>
+</ol>
+</div>
+<div id="exr-ch09-c11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.11 </strong></span>Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter <span class="math inline">\(\\pi\)</span>.</p>
+<ol type="a">
+<li>True</li>
+<li>False</li>
+</ol>
+</div>
+<div id="exr-ch09-c12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.12 </strong></span>Every statistic has a sampling distribution. What is the sampling distribution of a…</p>
+<ul>
+<li>sample mean?</li>
+<li>sample proportion?</li>
+<li>sample variance?</li>
+</ul>
 </div>
 </section>
 <section id="sec-ex09-application" class="level3" data-number="9.8.2">
 <h3 data-number="9.8.2" class="anchored" data-anchor-id="sec-ex09-application"><span class="header-section-number">9.8.2</span> Application</h3>
-<p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
 <div id="exr-ch09-app1" class="theorem exercise">
-<span class="theorem-title"><strong>Exercise 9.2 </strong></span>
+<p><span class="theorem-title"><strong>Exercise 9.13 </strong></span>It is found that the average male adult shoe size is normally distributed with a mean of size 10.5 and standard deviation of 1.5.</p>
+<ol type="a">
+<li>Using the empirical rule, approximately what percent of men have a shoe size between 6 and 15?</li>
+<li>What percent of men have a shoe size larger than 13?</li>
+<li>You walk up to a random male, what is the probability his shoe size is between 10 and 12?</li>
+<li>A male has a shoe size in the 60th percentile (ie: shoe size is larger than 60% of men). What is his shoe size?</li>
+</ol>
+</div>
+<div id="exr-ch09-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 9.14 </strong></span>You are a chef at a steakhouse restaurant that serves 6oz filets. When preparing filets there is some variability in the actual weight of each filet served. You prepare 18 filets and measure their average weight to be 6.02oz with a standard deviation of 0.03oz. The distribution appears to be bell shaped.</p>
+<ol type="a">
+<li>What percent of filets are prepared under the advertised weight of 6oz?</li>
+<li>A filet is considered large if it is in the top 10%. What is the weight of a large filet?</li>
+<li>The company has a high standard of excellence and will not serve a filet if it is under 5.95oz or over 6.05oz. What percent of filet’s are not served?</li>
+</ol>
 </div>
 </section>
 <section id="sec-ex09-advanced" class="level3" data-number="9.8.3">
 <h3 data-number="9.8.3" class="anchored" data-anchor-id="sec-ex09-advanced"><span class="header-section-number">9.8.3</span> Advanced</h3>
 <div id="exr-ch09-adv1" class="theorem exercise">
-<span class="theorem-title"><strong>Exercise 9.3 </strong></span>
+<p><span class="theorem-title"><strong>Exercise 9.15 </strong></span>You work for a weather company and are tasked with determining the proportion of days that are <code>sunny</code> in a town with a mixed variety of weather conditions. You are provided with a data frame (<code>weather</code>) containing weather descriptors (<code>daily_weather</code>) for each day for the last six years.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">daily_weather =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"sunny"</span>,<span class="dv">476</span>), </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"cloudy"</span>,<span class="dv">558</span>), </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"partly cloudy"</span>,<span class="dv">487</span>), </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"rainy"</span>,<span class="dv">312</span>), </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"thuderstorms"</span>,<span class="dv">28</span>), </span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"snowy"</span>,<span class="dv">329</span>))</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Use repeated sampling to collect 50 samples of size 30. Store this as <code>samples_1</code>.</li>
+<li>Use repeated sampling to collect 5,000 samples of size 30. Store this as <code>samples_2</code>.</li>
+<li>Use repeated sampling to collect 5,000 samples of size 50. Store this as <code>samples_3</code>.</li>
+</ol>
+<p>Then calculate the proportion of <code>sunny</code> days by replicate for each sample.</p>
+<p>Plot the sampling distribution of each using a histogram.</p>
+<p>Compare and contrast the three repeated samples, were they biased? Were they precise? Etc.</p>
 </div>
 
 
