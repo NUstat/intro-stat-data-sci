@@ -582,20 +582,121 @@ Therefore, we are not sure which proportion is larger. If the confidence interva
 ### Conceptual {#sec-ex10-conceptual}
 
 ::: {#exr-ch10-c01}
+Which of the following is the correct general form for constructing a confidence interval?
 
+a) Critical Value $\pm$ Estimate*SD(Estimate)
+b) Critical Value $\pm$ Estimate*SE(Estimate)
+c) Estimate $\pm$ Critical Value*SD(Estimate)
+d) Estimate $\pm$ Critical Value*SE(Estimate)
+e) SD(Estimate) $\pm$ Critical Value*Estimate
+f) SE(Estimate) $\pm$ Critical Value*Estimate
+:::
+
+::: {#exr-ch10-c02}
+Which of the following are correct regarding a 90% confidence interval? Select all that apply.
+
+a) We are 90% confident that the true mean is within any given 90% confidence interval
+b) There is a 90% chance that the true mean is within any given 90% confidence interval
+c) 90% of all of the data values in the population fall within the 90% confidence interval
+d) Approximately 90% of confidence intervals contain the true mean
+:::
+
+::: {#exr-ch10-c03}
+As the margin of error decreases, the width of the confidence interval increases.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch10-c04}
+As sample size increases, the margin of error decreases.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch10-c05}
+How will the margin of error change if you both increase the sample size and decrease the confidence level?
+
+a) decrease
+b) increase
+c) stay the same
+d) impossible to tell
+:::
+
+::: {#exr-ch10-c06} 
+You are trying to calculate the standard error but don't know the true population standard deviation. Which of the following formulas should you use to calculate $SE(\\bar{x})$ ?
+
+a) $SE(\bar{x}) = s$
+b) $SE(\bar{x}) = \frac{s}{n}$
+c) $SE(\bar{x}) = \frac{s}{\sqrt{n}}$
+d) $SE(\bar{x}) = \frac{\sigma}{\sqrt{n-1}}$
+e) $SE(\bar{x}) = \frac{s}{\sqrt{n-1}}$
+:::
+
+
+::: {#exr-ch10-c07}
+You are calculating a confidence interval for the difference in average ACT scores between private high schools and public high schools in Illinois. Upon surveying 15 private high schools you calculate an average ACT score of 25 with a standard deviation of 2. And for 35 public high schools you calculate an average ACT score of 23 with a standard deviation of 3. Which of the following is used to calculate one of the 90% critical values?
+
+a) `qnorm(p = 0.10)`
+b) `qnorm(p = 0.05)`
+c) `qt(p = 0.10, df = 24)`
+d) `qt(p = 0.05, df = 24)`
+e) `qt(p = 0.10, df = 34)`
+f) `qt(p = 0.05, df = 34)`
+:::
+
+::: {#exr-ch10-c08}
+You are calculating a confidence interval for the proportion of US citizens who have never left their home state. In a random survey, you found 14 out of 200 people have not left their home state. Which of the following is used to calculate one of the 97% critical values?
+
+a) `qt(p = 0.07, df = 199)`
+b) `qnorm(p = 0.97)`
+c) `qnorm(p = 0.03)`
+d) `qnorm(p = 0.015)`
+e) `qt(p = 0.03, df = 199)`
+:::
+
+::: {#exr-ch10-c09}
+What is the standard error of the estimator in @exr-ch10-c08?
+
+a) 0.00033
+b) 0.01814
+c) 0.03915
+d) 3.87992
+e) 0.06819
 :::
 
 
 ### Application {#sec-ex10-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
+The application exercises use the `nba_sample` dataset from the `ISDSdatasets` package. This is a random sample obtained from the `nba` dataset.
+
+:::{.callout-warning}
+This dataset was recently added to the package. If you are working in an old project you will need to update the package by typing `remotes::install_github("NUstat/ISDSdatasets")` in your console.
+:::
 
 ::: {#exr-ch10-app1}
+Using `nba_sample`, we are interested in determining the number of points that Michael Jordan scored per game (`pts`) on average. Develop an 85% confidence interval for this variable. 
+:::
 
+::: {#exr-ch10-app2}
+Using `nba_sample` determine the proportion of `Wins` for LeBron James. Develop a 99% confidence interval for this variable. 
+:::
+
+::: {#exr-ch10-app3}
+Using `nba_sample` determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (`ft_percent`) between Michael Jordan and Kobe Bryant. 
+:::
+
+::: {#exr-ch10-app4}
+Using `nba_sample` determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (`win`) between LeBron James and Kobe Bryant.
 :::
 
 ### Advanced {#sec-ex10-advanced}
 
 ::: {#exr-ch10-adv1}
+Using the `nba_sample` dataset, determine if our players play better at home or away games. Specify how you chose to evaluate what constitutes "playing better" and specify your confidence level used.
+:::
 
+::: {#exr-ch10-adv2}
+Basketball reference keeps very diligent and accurate records for basketball games, so this is one of the rare instances when we have the entire population of games played for Michael Jordan, Kobe Bryant, and LeBron James through the 2021 season. This census is our `nba` dataset. In the above problems we used a random sample to demonstrate how a sample is used to approximate the population parameters. Calculate the population parameters relevant to @exr-ch10-app1, @exr-ch10-app2, @exr-ch10-app3, and @exr-ch10-app4 using the `nba` dataset and specify if your confidence interval captured the true population.
 :::
