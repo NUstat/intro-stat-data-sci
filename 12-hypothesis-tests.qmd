@@ -543,7 +543,14 @@ plot_grid(two_tail, one_tail, ncol=2)
 
 ### Formulating the Hypotheses Overview
 
-When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. @tbl-tail-ch-12 provides an overview of the three possible scenarios.
+When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. The three possible scenarios are shown below.
+<!-- Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. @tbl-tail-ch-12 provides an overview of the three possible scenarios. -->
+
+|         |         Two-tailed         |         Right-tailed         |         Left-tailed         |
+|----------------|:------------------:|:------------------:|:------------------:|
+| $H_0$   |            $=$             |            $\leq$            |           $\geq$            |
+| $H_A$   |           $\neq$           |            $\gt$             |            $\lt$            |
+| p-value | ![](images/tail_two.png){width="90%"} | ![](images/tail_right.png){width="90%"} | ![](images/tail_left.png){width="90%"} |
 
 <!-- ```{r} -->
 <!-- #| label: tbl-tail-ch-12 -->
