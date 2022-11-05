@@ -915,53 +915,28 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </section>
 <section id="formulating-the-hypotheses-overview" class="level3" data-number="12.5.2">
 <h3 data-number="12.5.2" class="anchored" data-anchor-id="formulating-the-hypotheses-overview"><span class="header-section-number">12.5.2</span> Formulating the Hypotheses Overview</h3>
-<p>When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. The three possible scenarios are shown below. <!-- Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. @tbl-tail-ch-12 provides an overview of the three possible scenarios. --></p>
-<table class="table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 26%">
-<col style="width: 26%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Two-tailed</th>
-<th style="text-align: center;">Right-tailed</th>
-<th style="text-align: center;">Left-tailed</th>
-</tr>
-</thead>
+<p>When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. <a href="#tbl-tail-ch-12">Table&nbsp;<span>12.5</span></a> provides an overview of the three possible scenarios.</p>
+<!-- |         |         Two-tailed         |         Right-tailed         |         Left-tailed         | -->
+<!-- |----------------|:------------------:|:------------------:|:------------------:| -->
+<!-- | $H_0$   |            $=$             |            $\leq$            |           $\geq$            | -->
+<!-- | $H_A$   |           $\neq$           |            $\gt$             |            $\lt$            | -->
+<!-- | p-value | ![](images/tail_two.png){width="90%"} | ![](images/tail_right.png){width="90%"} | ![](images/tail_left.png){width="90%"} | -->
+
+<!-- Saved above table as png because rendering issue with ch12_tails.rds -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="tbl-tail-ch-12" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;12.5: Formulating the Null and Alternative Hypothesis</caption>
 <tbody>
 <tr class="odd">
-<td>p-value</td>
-<td style="text-align: center;"><img src="images/tail_two.png" class="img-fluid" style="width:90.0%"></td>
-<td style="text-align: center;"><img src="images/tail_right.png" class="img-fluid" style="width:90.0%"></td>
-<td style="text-align: center;"><img src="images/tail_left.png" class="img-fluid" style="width:90.0%"></td>
+<td style="text-align: left;"><img src="images/ch12_tails.png" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
-<!-- ```{r} -->
-<!-- #| label: tbl-tail-ch-12 -->
-<!-- #| tbl-cap: "Formulating the Null and Alternative Hypothesis" -->
-<!-- #| echo: false -->
-<!-- #| message: false -->
-<!-- tails <- read_rds("rds/ch12_tails.rds") -->
-<!-- #rownames(tails) <- c("$H_{0}$", "$H_{A}$", "p-value") -->
-<!-- tails %>%  -->
-<!--   kable( -->
-<!--     format = "markdown", -->
-<!--     caption = "Formulating the Null and Alternative Hypothesis",  -->
-<!--     booktabs = TRUE, -->
-<!--     escape = FALSE,  -->
-<!--     align = c('c', 'c', 'c') -->
-<!--   ) %>%  -->
-<!--   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16), -->
-<!--                 latex_options = c("HOLD_position")) %>% -->
-<!--   column_spec(1, width = "1in") %>%  -->
-<!--   column_spec(2, width = "2in") %>% -->
-<!--   column_spec(3, width = "2in") %>% -->
-<!--   column_spec(4, width = "2in") -->
-<!-- ``` -->
+</div>
+</div>
+</div>
 <p>Choosing a one-tailed test for the sole purpose of attaining significance is not appropriate. For example, if you formulate a two-tailed test at the <span class="math inline">\(\alpha = 0.05\)</span> significance level and obtain a p-value of 0.051 you fail to reject the null. You cannot then change the test to a one-tail test in order to obtain significance. This will lead to questionable and invalid results.</p>
 </section>
 </section>
