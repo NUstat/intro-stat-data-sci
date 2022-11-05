@@ -548,8 +548,6 @@ When formulating the hypothesis you first want to state the claim in mathematica
 
 |         |         Two-tailed         |         Right-tailed         |         Left-tailed         |
 |----------------|:------------------:|:------------------:|:------------------:|
-| $H_0$   |            $=$             |            $\leq$            |           $\geq$            |
-| $H_A$   |           $\neq$           |            $\gt$             |            $\lt$            |
 | p-value | ![](images/tail_two.png){width="90%"} | ![](images/tail_right.png){width="90%"} | ![](images/tail_left.png){width="90%"} |
 
 <!-- ```{r} -->
