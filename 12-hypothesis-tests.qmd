@@ -543,38 +543,46 @@ plot_grid(two_tail, one_tail, ncol=2)
 
 ### Formulating the Hypotheses Overview
 
-When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. The three possible scenarios are shown below.
-<!-- Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. @tbl-tail-ch-12 provides an overview of the three possible scenarios. -->
+When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. @tbl-tail-ch-12 provides an overview of the three possible scenarios.
 
-|         |         Two-tailed         |         Right-tailed         |         Left-tailed         |
-|----------------|:------------------:|:------------------:|:------------------:|
-| p-value | ![](images/tail_two.png){width="90%"} | ![](images/tail_right.png){width="90%"} | ![](images/tail_left.png){width="90%"} |
 
-<!-- ```{r} -->
-<!-- #| label: tbl-tail-ch-12 -->
-<!-- #| tbl-cap: "Formulating the Null and Alternative Hypothesis" -->
-<!-- #| echo: false -->
-<!-- #| message: false -->
 
-<!-- tails <- read_rds("rds/ch12_tails.rds") -->
-<!-- #rownames(tails) <- c("$H_{0}$", "$H_{A}$", "p-value") -->
+<!-- |         |         Two-tailed         |         Right-tailed         |         Left-tailed         | -->
+<!-- |----------------|:------------------:|:------------------:|:------------------:| -->
+<!-- | $H_0$   |            $=$             |            $\leq$            |           $\geq$            | -->
+<!-- | $H_A$   |           $\neq$           |            $\gt$             |            $\lt$            | -->
+<!-- | p-value | ![](images/tail_two.png){width="90%"} | ![](images/tail_right.png){width="90%"} | ![](images/tail_left.png){width="90%"} | -->
+<!-- Saved above table as png because rendering issue with ch12_tails.rds -->
 
-<!-- tails %>%  -->
-<!--   kable( -->
-<!--     format = "markdown", -->
-<!--     caption = "Formulating the Null and Alternative Hypothesis",  -->
-<!--     booktabs = TRUE, -->
-<!--     escape = FALSE,  -->
-<!--     align = c('c', 'c', 'c') -->
-<!--   ) %>%  -->
-<!--   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16), -->
-<!--                 latex_options = c("HOLD_position")) %>% -->
-<!--   column_spec(1, width = "1in") %>%  -->
-<!--   column_spec(2, width = "2in") %>% -->
-<!--   column_spec(3, width = "2in") %>% -->
-<!--   column_spec(4, width = "2in") -->
 
-<!-- ``` -->
+```{r}
+#| label: tbl-tail-ch-12
+#| tbl-cap: "Formulating the Null and Alternative Hypothesis"
+#| echo: false
+#| message: false
+
+#tails <- read_rds("rds/ch12_tails.rds")
+#NEED TO FIGURE OUT HOW TO GET MATH TO RENDER IN TABLE
+#TEMPORARY FIX IS USING IMAGE
+tails <- tibble("![](images/ch12_tails.png)")
+
+tails %>%
+  kable(
+    format = "markdown",
+    caption = "Formulating the Null and Alternative Hypothesis",
+    booktabs = TRUE,
+    escape = FALSE,
+    col.names = NULL
+    #align = c('c', 'c', 'c')
+  ) %>%
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                 latex_options = c("HOLD_position")) #%>%
+  # column_spec(1, width = "1in") %>%
+  # column_spec(2, width = "2in") %>%
+  # column_spec(3, width = "2in") %>%
+  # column_spec(4, width = "2in")
+
+```
 
 Choosing a one-tailed test for the sole purpose of attaining significance is not appropriate. For example, if you formulate a two-tailed test at the $\alpha = 0.05$ significance level and obtain a p-value of 0.051 you fail to reject the null. You cannot then change the test to a one-tail test in order to obtain significance. This will lead to questionable and invalid results.
 
