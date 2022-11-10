@@ -619,3 +619,122 @@ Briefly, what they mean here is:
 * **M**: Researchers should clearly convey the limitations of their work. All statistical methods require assumptions and have limitations. Remember that scientific significance is broader than statistical significance – that statistics is only one part of the scientific process. 
 
 These ATOM ideas have undergirded the introduction to statistics we provided in this book. We began by giving you a solid foundation in exploratory data analysis – not focused on statistical significance – and then proceeded to introduce statistical theory, including questions of causality, generalizability, and uncertainty. Only after all of this did we introduce you to p-values, and we save decision-making – the p < .05 criterion – until last. We did so in hopes that with a strong foundation, you’d be able to think critically when applying statistical decision-making criterion, and would understand when descriptive versus inferential statistics are required. 
+
+
+## Exercises {#sec-ex12}
+
+### Conceptual {#sec-ex12-conceptual}
+
+::: {#exr-ch12-c01}
+You reject the null hypothesis when the null hypothesis is true. What type of error did you make?
+
+a) Type I Error
+b) Type II Error
+:::
+
+::: {#exr-ch12-c02}
+Can you minimize both Type I and II errors at the same time?
+
+a) Yes, Type I and Type II errors are independent
+b) Yes, Type I and Type II errors increase and decrease together
+c) No, Type I errors are always smaller than Type II errors
+d) No, one type of error will be minimized at the expense of the other type
+:::
+
+
+::: {#exr-ch12-c03}
+Let's say we choose an alpha level of $\alpha = 0.01$. Then, when $p > 0.01$ we accept the null hypothesis.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch12-c04}
+You must specify your $\alpha$ level before calculating your p-value to ensure the validity of your hypothesis test.
+
+a) True
+b) False
+:::
+
+::: {#exr-ch12-c05}
+Which of the following does the power of a hypothesis test depend upon? Select all that apply.
+
+a) $\alpha$
+b) $n$
+c) $\gamma$
+d) $s$
+:::
+
+::: {#exr-ch12-c06}
+If the alternative hypothesis is true, which type of error could you still make?
+
+a) Type I Error
+b) Type II Error
+c) Both a Type I and a Type II error
+d) You cannot make an error if the alternative hypothesis is true
+:::
+
+
+::: {#exr-ch12-c07}
+Consider a two-tailed hypothesis test to determine if there is a difference between two proportions with a significance value in terms of the critical value of $\pm 1.96$. Your computed test statistic is 1.99. What is your decision?
+
+a) Fail to reject the null, there is no difference between the proportions.
+b) Fail to reject the null, there is a difference between the proportions.
+c) Reject the null, there is no difference between the proportions.
+d) Reject the null, there is a difference between the proportions.
+:::
+
+
+::: {#exr-ch12-c08}
+In a two-tailed hypothesis test for a mean, what happens to the test statistic when we decrease the sample size from 200 to 50? Assuming no other alterations happen except size.
+
+a) becomes larger
+b) becomes smaller
+c) no change
+d) impossible to tell with given information
+:::
+
+
+::: {#exr-ch12-c09}
+You construct a hypothesis test to determine if a plant is able to grow taller with a new fertilized soil treatment compared to untreated soil. You compute the average height of the plants after one month for the treatment plants and the average height of the plants after one month for the control (untreated) plants and compare their differences. Which of the following could be your null hypothesis?
+
+a) $\bar{x}_{treat} - \bar{x}_{control} = 0$
+b) $\bar{x}_{treat} - \bar{x}_{control} > 0$
+c) $\mu_{treat} - \mu_{control} = 0$
+d) $\mu_{treat} - \mu_{control} >0$
+:::
+
+
+::: {#exr-ch12-c10}
+Suppose a person is being tested for HIV. Specify the null and alternative hypotheses. After that describe the 4 possible scenarios and their consequences.
+:::
+
+### Application {#sec-ex12-application}
+
+For the following problems, state your hypothesis test and interpret your results in the context of the problem.
+
+::: {#exr-ch12-app1}
+Using the `nba` dataset, determine if the player's teams scored more than 100 points per game on average. Evaluate at the $\alpha = 0.02$ significance level.
+:::
+
+::: {#exr-ch12-app2}
+A basketball superfan claims that Michael Jordan scored more points per game on average than LeBron James. 
+Use the `nba` dataset to determine if this superfan is correct.
+:::
+
+::: {#exr-ch12-app3}
+Using the `nba` dataset, determine if Kobe Bryant won a majority of his games. Evaluate at the $\alpha = 0.1$ significance level. 
+:::
+
+::: {#exr-ch12-app4}
+Using the `titanic` dataset, determine if the 1st class ticket passengers or 3rd class ticket passengers had a higher survival rate.
+:::
+
+### Advanced {#sec-ex12-advanced}
+
+::: {#exr-ch12-adv1}
+Pick one player, is there a linear relationship between the player's points scored and game score? If there is one, then what is the magnitude of the relationship?
+
+Evaluate using the following linear model:
+$$ \widehat{gm_sc} = \beta_0 + \beta_1(pts)$$
+:::
