@@ -640,8 +640,8 @@ You are calculating a confidence interval for the difference in average ACT scor
 
 a) `qnorm(p = 0.10)`
 b) `qnorm(p = 0.05)`
-c) `qt(p = 0.10, df = 24)`
-d) `qt(p = 0.05, df = 24)`
+c) `qt(p = 0.10, df = 14)`
+d) `qt(p = 0.05, df = 14)`
 e) `qt(p = 0.10, df = 34)`
 f) `qt(p = 0.05, df = 34)`
 :::
