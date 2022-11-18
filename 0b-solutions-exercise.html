@@ -877,14 +877,105 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 <section id="sec-ex10-sol" class="level2" data-number="B.10">
 <h2 data-number="B.10" class="anchored" data-anchor-id="sec-ex10-sol"><span class="header-section-number">B.10</span> Chapter 10</h2>
 <p><a href="10-confidence-intervals.html#exr-ch10-c01">Exercise&nbsp;<span>10.1</span></a> Estimate <span class="math inline">\(\\pm\)</span> Critical Value*SE(Estimate)</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c02">Exercise&nbsp;<span>10.2</span></a> a) We are 90% confident that the true mean is within any given 90% confidence interval</p>
-<ol start="4" type="a">
-<li>Approximately 90% of confidence intervals contain the true mean</li>
-</ol>
 <p><a href="10-confidence-intervals.html#exr-ch10-c03">Exercise&nbsp;<span>10.3</span></a> b) False</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c04">Exercise&nbsp;<span>10.4</span></a></p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c05">Exercise&nbsp;<span>10.5</span></a></p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c06">Exercise&nbsp;<span>10.6</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c05">Exercise&nbsp;<span>10.5</span></a> a) decrease</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c07">Exercise&nbsp;<span>10.7</span></a> d) qt(p = 0.05, df = 14)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c09">Exercise&nbsp;<span>10.9</span></a> 0.01804</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app2">Exercise&nbsp;<span>10.11</span></a></p>
+<p>Let’s consider only the games that Kobe Bryant <strong>played in</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win, player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+    win player             n
+  &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt;
+1     0 Kobe Bryant       33
+2     0 LeBron James      32
+3     0 Michael Jordan    33
+4     1 Kobe Bryant       56
+5     1 LeBron James      59
+6     1 Michael Jordan    66</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">56</span>, <span class="at">n =</span> (<span class="dv">56</span> <span class="sc">+</span> <span class="dv">33</span>), <span class="at">conf.level =</span> <span class="fl">0.99</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test without continuity correction
+
+data:  56 out of (56 + 33), null probability 0.5
+X-squared = 5.9438, df = 1, p-value = 0.01477
+alternative hypothesis: true p is not equal to 0.5
+99 percent confidence interval:
+ 0.4927093 0.7477887
+sample estimates:
+        p 
+0.6292135 </code></pre>
+</div>
+</div>
+<p>We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app4">Exercise&nbsp;<span>10.13</span></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>nba_kobe <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> nba_mj<span class="sc">$</span>ft_percent, <span class="at">y =</span> nba_kobe<span class="sc">$</span>ft_percent, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  nba_mj$ft_percent and nba_kobe$ft_percent
+t = 1.2643, df = 172.42, p-value = 0.2078
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.01552775  0.07086917
+sample estimates:
+mean of x mean of y 
+0.8460825 0.8184118 </code></pre>
+</div>
+</div>
+<p>We are 95% confident that the difference in free throw percentage between Michael Jordan and Kobe Bryant is between -0.0155 and 0.071.</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-adv2">Exercise&nbsp;<span>10.15</span></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs), player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+    win     n
+  &lt;dbl&gt; &lt;int&gt;
+1     0   595
+2     1   971</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="dv">971</span><span class="sc">/</span>(<span class="dv">971</span><span class="sc">+</span><span class="dv">595</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6200511</code></pre>
+</div>
+</div>
+<p>Yes, 0.620 is between our 99% CI [0.493, 0.748]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(ft_percent, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  player          mean
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Kobe Bryant    0.829
+2 LeBron James   0.727
+3 Michael Jordan 0.828</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8279-0.8286</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -7e-04</code></pre>
+</div>
+</div>
+<p>Yes, -0.0007 is between our 95% CI [-0.0155, 0.071]</p>
 </section>
 <section id="sec-ex11-sol" class="level2" data-number="B.11">
 <h2 data-number="B.11" class="anchored" data-anchor-id="sec-ex11-sol"><span class="header-section-number">B.11</span> Chapter 11</h2>

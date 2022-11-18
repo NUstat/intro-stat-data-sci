@@ -1036,7 +1036,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="exr-ch10-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.5 </strong></span>How will the margin of error change if you both increase the sample size and decrease the confidence level?</p>
+<p><span class="theorem-title"><strong>Exercise 10.5 </strong></span>How will the margin of error change if you both increase the sample size and decrease the confidence level (ex: from 95% down to 90%)?</p>
 <ol type="a">
 <li>decrease</li>
 <li>increase</li>
@@ -1045,7 +1045,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="exr-ch10-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.6 </strong></span>You are trying to calculate the standard error but don’t know the true population standard deviation. Which of the following formulas should you use to calculate <span class="math inline">\(SE(\\bar{x})\)</span> ?</p>
+<p><span class="theorem-title"><strong>Exercise 10.6 </strong></span>You are trying to calculate the standard error but don’t know the true population standard deviation. Which of the following formulas should you use to calculate <span class="math inline">\(SE(\bar{x})\)</span> ?</p>
 <ol type="a">
 <li><span class="math inline">\(SE(\bar{x}) = s\)</span></li>
 <li><span class="math inline">\(SE(\bar{x}) = \frac{s}{n}\)</span></li>
@@ -1089,30 +1089,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="sec-ex10-application" class="level3" data-number="10.6.2">
 <h3 data-number="10.6.2" class="anchored" data-anchor-id="sec-ex10-application"><span class="header-section-number">10.6.2</span> Application</h3>
 <p>The application exercises use the <code>nba_sample</code> dataset from the <code>ISDSdatasets</code> package. This is a random sample obtained from the <code>nba</code> dataset.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This dataset was recently added to the package. If you are working in an old project you will need to update the package by typing <code>remotes::install_github("NUstat/ISDSdatasets")</code> in your console.</p>
-</div>
-</div>
 <div id="exr-ch10-app1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 10.10 </strong></span>Using <code>nba_sample</code>, we are interested in determining the number of points that Michael Jordan scored per game (<code>pts</code>) on average. Develop an 85% confidence interval for this variable.</p>
 </div>
 <div id="exr-ch10-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.11 </strong></span>Using <code>nba_sample</code> determine the proportion of <code>Wins</code> for LeBron James. Develop a 99% confidence interval for this variable.</p>
+<p><span class="theorem-title"><strong>Exercise 10.11 </strong></span>Using <code>nba_sample</code> determine the proportion of <code>win</code>s for LeBron James. Develop a 99% confidence interval for this variable.</p>
 </div>
 <div id="exr-ch10-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.12 </strong></span>Using <code>nba_sample</code> determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (<code>ft_percent</code>) between Michael Jordan and Kobe Bryant.</p>
+<p><span class="theorem-title"><strong>Exercise 10.12 </strong></span>Using <code>nba_sample</code> determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (<code>win</code>) between LeBron James and Kobe Bryant.</p>
 </div>
 <div id="exr-ch10-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.13 </strong></span>Using <code>nba_sample</code> determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (<code>win</code>) between LeBron James and Kobe Bryant.</p>
+<p><span class="theorem-title"><strong>Exercise 10.13 </strong></span>Using <code>nba_sample</code> determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (<code>ft_percent</code>) between Michael Jordan and Kobe Bryant.</p>
 </div>
 </section>
 <section id="sec-ex10-advanced" class="level3" data-number="10.6.3">
