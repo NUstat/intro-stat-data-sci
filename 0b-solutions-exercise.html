@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -145,7 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./" class="sidebar-logo-link">
+      <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
@@ -372,6 +372,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -382,7 +383,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISDSdatasets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sec-ex01-sol" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="sec-ex01-sol"><span class="header-section-number">B.1</span> Chapter 1</h2>
@@ -772,35 +774,117 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 </section>
 <section id="sec-ex09-sol" class="level2" data-number="B.9">
 <h2 data-number="B.9" class="anchored" data-anchor-id="sec-ex09-sol"><span class="header-section-number">B.9</span> Chapter 9</h2>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><a href="09-sampling-distributions.html#exr-ch09-c01">Exercise&nbsp;<span>9.1</span></a> b) unimodal &amp; h) symmetric</p>
+<p><span class="quarto-unresolved-ref">?exr-ch09-c03</span> c) <code>1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)</code></p>
+<p><span class="quarto-unresolved-ref">?exr-ch09-c05</span> a) apple</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c07">Exercise&nbsp;<span>9.7</span></a></p>
+<ol start="4" type="a">
+<li><p>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution</p></li>
+<li><p>The regression slope and regression intercept both follow the T distribution</p></li>
+</ol>
+<p><a href="09-sampling-distributions.html#exr-ch09-c09">Exercise&nbsp;<span>9.9</span></a> b) False</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c11">Exercise&nbsp;<span>9.11</span></a></p>
+<ol start="2" type="a">
+<li>False</li>
+</ol>
+<p><span class="quarto-unresolved-ref">?exr-ch09-c13</span></p>
+<ol type="a">
+<li><p>99.7% (3 standard deviations)</p></li>
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">13</span>, <span class="at">mean =</span> <span class="fl">10.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>, </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04779035</code></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-Under Construction
+</div>
+<p>4.78% of men have a shoe size larger than 13.</p>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">12</span>, <span class="at">mean =</span> <span class="fl">10.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">10.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4719034</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Currently working on exercise solutions.</p>
+<p>47.19% of males have a shoe size between 10 and 12. So assuming this is a random male where everyone has an equal chance of selection there is a 47.19% chance.</p>
+<ol start="4" type="a">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.6</span>, <span class="at">mean =</span> <span class="fl">10.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.11998</code></pre>
+</div>
+</div>
+<p>His shoe size is 10.12 (which is not an actual shoe size so his shoe size would be 10)</p>
+<p><span class="quarto-unresolved-ref">?exr-ch09-c15</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">daily_weather =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"sunny"</span>,<span class="dv">476</span>), </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"cloudy"</span>,<span class="dv">558</span>), </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"partly cloudy"</span>,<span class="dv">487</span>), </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"rainy"</span>,<span class="dv">312</span>), </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"thuderstorms"</span>,<span class="dv">28</span>), </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">"snowy"</span>,<span class="dv">329</span>))</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">52</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>samples_1 <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">30</span>, <span class="at">reps =</span> <span class="dv">50</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>samples_2 <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">30</span>, <span class="at">reps =</span> <span class="dv">5000</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>samples_3 <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>summary_1 <span class="ot">&lt;-</span> samples_1 <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sunny =</span> <span class="fu">sum</span>(daily_weather <span class="sc">==</span> <span class="st">"sunny"</span>),</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">prop =</span> sunny<span class="sc">/</span><span class="fu">n</span>())</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>summary_2 <span class="ot">&lt;-</span> samples_2 <span class="sc">%&gt;%</span> </span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sunny =</span> <span class="fu">sum</span>(daily_weather <span class="sc">==</span> <span class="st">"sunny"</span>),</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">prop =</span> sunny<span class="sc">/</span><span class="fu">n</span>())</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>summary_3 <span class="ot">&lt;-</span> samples_3 <span class="sc">%&gt;%</span> </span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sunny =</span> <span class="fu">sum</span>(daily_weather <span class="sc">==</span> <span class="st">"sunny"</span>),</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">prop =</span> sunny<span class="sc">/</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary_1, <span class="fu">aes</span>(<span class="at">x =</span> prop)) <span class="sc">+</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">5</span>)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>plot_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary_2, <span class="fu">aes</span>(<span class="at">x =</span> prop)) <span class="sc">+</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">17</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>plot_3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary_3, <span class="fu">aes</span>(<span class="at">x =</span> prop)) <span class="sc">+</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">22</span>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>plot_1 <span class="sc">+</span> plot_2 <span class="sc">+</span> plot_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="sec-ex10-sol" class="level2" data-number="B.10">
 <h2 data-number="B.10" class="anchored" data-anchor-id="sec-ex10-sol"><span class="header-section-number">B.10</span> Chapter 10</h2>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Under Construction
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Currently working on exercise solutions.</p>
-</div>
-</div>
+<p><a href="10-confidence-intervals.html#exr-ch10-c01">Exercise&nbsp;<span>10.1</span></a> Estimate <span class="math inline">\(\\pm\)</span> Critical Value*SE(Estimate)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c02">Exercise&nbsp;<span>10.2</span></a> a) We are 90% confident that the true mean is within any given 90% confidence interval</p>
+<ol start="4" type="a">
+<li>Approximately 90% of confidence intervals contain the true mean</li>
+</ol>
+<p><a href="10-confidence-intervals.html#exr-ch10-c03">Exercise&nbsp;<span>10.3</span></a> b) False</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c04">Exercise&nbsp;<span>10.4</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c05">Exercise&nbsp;<span>10.5</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c06">Exercise&nbsp;<span>10.6</span></a></p>
 </section>
 <section id="sec-ex11-sol" class="level2" data-number="B.11">
 <h2 data-number="B.11" class="anchored" data-anchor-id="sec-ex11-sol"><span class="header-section-number">B.11</span> Chapter 11</h2>
@@ -820,19 +904,15 @@ Under Construction
 </section>
 <section id="sec-ex12-sol" class="level2" data-number="B.12">
 <h2 data-number="B.12" class="anchored" data-anchor-id="sec-ex12-sol"><span class="header-section-number">B.12</span> Chapter 12</h2>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Under Construction
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Currently working on exercise solutions.</p>
-</div>
-</div>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c01">Exercise&nbsp;<span>12.1</span></a> a) Type I Error</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c02">Exercise&nbsp;<span>12.2</span></a> d) No, one type of error will be minimized at the expense of the other type</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c03">Exercise&nbsp;<span>12.3</span></a> b) False</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c04">Exercise&nbsp;<span>12.4</span></a> a) True</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c05">Exercise&nbsp;<span>12.5</span></a> a) <span class="math inline">\(\alpha\)</span> b) <span class="math inline">\(n\)</span></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c06">Exercise&nbsp;<span>12.6</span></a> b) Type II Error</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c07">Exercise&nbsp;<span>12.7</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c08">Exercise&nbsp;<span>12.8</span></a> <a href="12-hypothesis-tests.html#exr-ch12-c09">Exercise&nbsp;<span>12.9</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c10">Exercise&nbsp;<span>12.10</span></a></p>
 
 
 </section>
@@ -879,7 +959,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -915,24 +1012,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
