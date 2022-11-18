@@ -524,20 +524,67 @@ plot_1 + plot_2 + plot_3
 @exr-ch10-c01
 Estimate $\\pm$ Critical Value*SE(Estimate)
 
-@exr-ch10-c02
-a) We are 90% confident that the true mean is within any given 90% confidence interval
-
-d) Approximately 90% of confidence intervals contain the true mean
-
 @exr-ch10-c03
 b) False
 
-@exr-ch10-c04
-
 @exr-ch10-c05
+a) decrease
 
-@exr-ch10-c06
+@exr-ch10-c07
+d) qt(p = 0.05, df = 14)
 
+@exr-ch10-c09
+0.01804
+
+@exr-ch10-app2
+
+Let's consider only the games that Kobe Bryant **played in**.
+
+```{r}
+nba_sample %>% 
+  filter(!is.na(gs)) %>% 
+  count(win, player)
+
+prop.test(x = 56, n = (56 + 33), conf.level = 0.99, correct = FALSE)
+```
+We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.
+
+@exr-ch10-app4
+
+```{r}
+nba_mj <- nba_sample %>% 
+  filter(player == "Michael Jordan")
+
+nba_kobe <- nba_sample %>% 
+  filter(player == "Kobe Bryant")
+
+t.test(x = nba_mj$ft_percent, y = nba_kobe$ft_percent, conf.level = 0.95)
+```
+
+We are 95% confident that the difference in free throw percentage between Michael Jordan and Kobe Bryant is between -0.0155 and 0.071.
+
+@exr-ch10-adv2
+
+```{r}
+# 2
+nba %>% 
+  filter(!is.na(gs), player == "Kobe Bryant") %>% 
+  count(win)
+971/(971+595)
+```
+Yes, 0.620 is between our 99% CI [0.493, 0.748]
+
+
+
+```{r}
+# 4
+nba %>% 
+  group_by(player) %>% 
+  summarize(mean = mean(ft_percent, na.rm = TRUE))
+
+0.8279-0.8286
+```
+Yes, -0.0007 is between our 95% CI [-0.0155, 0.071]
 
 ## Chapter 11 {#sec-ex11-sol}
 

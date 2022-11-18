@@ -616,7 +616,7 @@ b) False
 :::
 
 ::: {#exr-ch10-c05}
-How will the margin of error change if you both increase the sample size and decrease the confidence level?
+How will the margin of error change if you both increase the sample size and decrease the confidence level (ex: from 95% down to 90%)?
 
 a) decrease
 b) increase
@@ -625,7 +625,7 @@ d) impossible to tell
 :::
 
 ::: {#exr-ch10-c06} 
-You are trying to calculate the standard error but don't know the true population standard deviation. Which of the following formulas should you use to calculate $SE(\\bar{x})$ ?
+You are trying to calculate the standard error but don't know the true population standard deviation. Which of the following formulas should you use to calculate $SE(\bar{x})$ ?
 
 a) $SE(\bar{x}) = s$
 b) $SE(\bar{x}) = \frac{s}{n}$
@@ -671,25 +671,22 @@ e) 0.06819
 
 The application exercises use the `nba_sample` dataset from the `ISDSdatasets` package. This is a random sample obtained from the `nba` dataset.
 
-:::{.callout-warning}
-This dataset was recently added to the package. If you are working in an old project you will need to update the package by typing `remotes::install_github("NUstat/ISDSdatasets")` in your console.
-:::
-
 ::: {#exr-ch10-app1}
 Using `nba_sample`, we are interested in determining the number of points that Michael Jordan scored per game (`pts`) on average. Develop an 85% confidence interval for this variable. 
 :::
 
 ::: {#exr-ch10-app2}
-Using `nba_sample` determine the proportion of `Wins` for LeBron James. Develop a 99% confidence interval for this variable. 
+Using `nba_sample` determine the proportion of `win`s for LeBron James. Develop a 99% confidence interval for this variable. 
 :::
 
 ::: {#exr-ch10-app3}
-Using `nba_sample` determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (`ft_percent`) between Michael Jordan and Kobe Bryant. 
+Using `nba_sample` determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (`win`) between LeBron James and Kobe Bryant.
 :::
 
 ::: {#exr-ch10-app4}
-Using `nba_sample` determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (`win`) between LeBron James and Kobe Bryant.
+Using `nba_sample` determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (`ft_percent`) between Michael Jordan and Kobe Bryant. 
 :::
+
 
 ### Advanced {#sec-ex10-advanced}
 
