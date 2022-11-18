@@ -1149,7 +1149,7 @@ b) False
 :::
 
 :::{#exr-ch09-03}
-The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women is shorter than 60 inches?
+The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women that are shorter than 60 inches?
 
 a) `qnorm(p = 60, mean = 64, sd = 3)`
 b) `pnorm(q = 60, mu = 64, sigma = 3)`

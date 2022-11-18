@@ -8,6 +8,7 @@ library(ISDSdatasets)
 library(tidyverse)
 library(moderndive)
 library(lubridate)
+library(patchwork)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -417,20 +418,125 @@ undercoverage: citizens that do not own a house, if there are multiple citizens 
 
 ## Chapter 9 {#sec-ex09-sol}
 
-::: callout-caution
-## Under Construction
+@exr-ch09-c01
+b) unimodal & h) symmetric
 
-Currently working on exercise solutions.
-:::
 
+@exr-ch09-c03
+c) `1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)`
+
+@exr-ch09-c05
+a) apple
+
+@exr-ch09-c07
+
+d) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution
+
+f) The regression slope and regression intercept both follow the T distribution
+
+@exr-ch09-c09
+b) False
+
+@exr-ch09-c11
+
+b) False
+
+@exr-ch09-c13
+
+a) 99.7% (3 standard deviations)
+
+b)
+```{r}
+pnorm(q = 13, mean = 10.5, sd = 1.5, 
+      lower.tail = FALSE)
+```
+4.78% of men have a shoe size larger than 13.
+
+c) 
+```{r}
+pnorm(q = 12, mean = 10.5, sd = 1.5) - pnorm(q = 10, mean = 10.5, sd = 1.5)
+```
+47.19% of males have a shoe size between 10 and 12. So assuming this is a random male where everyone has an equal chance of selection there is a 47.19% chance.
+
+d) 
+```{r}
+qnorm(p = 0.6, mean = 10.5, sd = 1.5, lower.tail = FALSE)
+```
+His shoe size is 10.12 (which is not an actual shoe size so his shoe size would be 10)
+
+@exr-ch09-c15
+
+```{r}
+weather <- tibble(
+  daily_weather = c(rep("sunny",476), 
+                    rep("cloudy",558), 
+                    rep("partly cloudy",487), 
+                    rep("rainy",312), 
+                    rep("thuderstorms",28), 
+                    rep("snowy",329))
+  )
+```
+
+```{r}
+set.seed(52)
+samples_1 <- weather %>% 
+  rep_sample_n(size = 30, reps = 50)
+
+samples_2 <- weather %>% 
+  rep_sample_n(size = 30, reps = 5000)
+
+samples_3 <- weather %>% 
+  rep_sample_n(size = 50, reps = 5000)
+```
+
+```{r}
+summary_1 <- samples_1 %>% 
+  group_by(replicate) %>% 
+  summarize(sunny = sum(daily_weather == "sunny"),
+            prop = sunny/n())
+
+summary_2 <- samples_2 %>% 
+  group_by(replicate) %>% 
+  summarize(sunny = sum(daily_weather == "sunny"),
+            prop = sunny/n())
+
+summary_3 <- samples_3 %>% 
+  group_by(replicate) %>% 
+  summarize(sunny = sum(daily_weather == "sunny"),
+            prop = sunny/n())
+```
+
+```{r}
+plot_1 <- ggplot(summary_1, aes(x = prop)) +
+  geom_histogram(color = "white", bins = 5)
+
+plot_2 <- ggplot(summary_2, aes(x = prop)) +
+  geom_histogram(color = "white", bins = 17)
+
+plot_3 <- ggplot(summary_3, aes(x = prop)) +
+  geom_histogram(color = "white", bins = 22)
+
+plot_1 + plot_2 + plot_3
+```
 
 ## Chapter 10 {#sec-ex10-sol}
 
-::: callout-caution
-## Under Construction
+@exr-ch10-c01
+Estimate $\\pm$ Critical Value*SE(Estimate)
 
-Currently working on exercise solutions.
-:::
+@exr-ch10-c02
+a) We are 90% confident that the true mean is within any given 90% confidence interval
+
+d) Approximately 90% of confidence intervals contain the true mean
+
+@exr-ch10-c03
+b) False
+
+@exr-ch10-c04
+
+@exr-ch10-c05
+
+@exr-ch10-c06
 
 
 ## Chapter 11 {#sec-ex11-sol}
@@ -444,8 +550,32 @@ Currently working on exercise solutions.
 
 ## Chapter 12 {#sec-ex12-sol}
 
-::: callout-caution
-## Under Construction
 
-Currently working on exercise solutions.
-:::
+@exr-ch12-c01
+a) Type I Error
+
+
+@exr-ch12-c02
+d) No, one type of error will be minimized at the expense of the other type
+
+@exr-ch12-c03
+b) False
+
+@exr-ch12-c04
+a) True
+
+@exr-ch12-c05
+a) $\alpha$
+b) $n$
+
+@exr-ch12-c06
+b) Type II Error
+
+@exr-ch12-c07
+
+
+@exr-ch12-c08
+@exr-ch12-c09
+
+
+@exr-ch12-c10
