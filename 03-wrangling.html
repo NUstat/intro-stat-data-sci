@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -1488,7 +1488,7 @@ div.csl-indent {
 </section>
 <section id="slice-data-by-a-variable" class="level3" data-number="3.8.3">
 <h3 data-number="3.8.3" class="anchored" data-anchor-id="slice-data-by-a-variable"><span class="header-section-number">3.8.3</span> <code>slice()</code> data by a variable</h3>
-<p>We can return observations with maximum or minimum values of a variable using the <code>slice_max()</code> or <code>slice_min()</code>. For example, we can get the observations the top 10 destination airports using the example from <a href="#sec-diff-key"><span>Section&nbsp;3.7.2</span></a>. Observe that we set the number of values to return to <code>n = 10</code> and <code>wt = num_flights</code> to indicate that we want the rows of corresponding to the top 10 values of <code>num_flights</code>. See the help file for <code>top_n()</code> by running <code>?top_n</code> for more information.</p>
+<p>We can return observations with maximum or minimum values of a variable using the <code>slice_max()</code> or <code>slice_min()</code>. For example, we can get the observations the top 10 destination airports using the example from <a href="#sec-diff-key"><span>Section&nbsp;3.7.2</span></a>. Observe that we set the number of values to return to <code>n = 10</code> and <code>order_by = num_flights</code> to indicate that we want the rows corresponding to the top 10 values of <code>num_flights</code>. See the help file for the different <code>slice_*()</code> functions by running <code>?slice</code> for more information.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>named_dests <span class="sc">%&gt;%</span> </span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span>  num_flights)</span>
@@ -1609,30 +1609,6 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<span class="emoji" data-emoji="dart">🎯</span> Learning Check 3.21
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let’s now put your newly acquired data wrangling skills to the test!</p>
-<p>An airline industry measure of a passenger airline’s capacity is the <a href="https://en.wikipedia.org/wiki/Available_seat_miles">available seat miles</a>, which is equal to the number of seats available multiplied by the number of miles or kilometers flown summed over all flights. So for example say an airline had 2 flights using a plane with 10 seats that flew 500 miles and 3 flights using a plane with 20 seats that flew 1000 miles, the available seat miles would be 2 <span class="math inline">\(\times\)</span> 10 <span class="math inline">\(\times\)</span> 500 <span class="math inline">\(+\)</span> 3 <span class="math inline">\(\times\)</span> 20 <span class="math inline">\(\times\)</span> 1000 = 70,000 seat miles.</p>
-<p>Using the datasets included in the <code>nycflights13</code> package, compute the available seat miles for each airline sorted in descending order. After completing all the necessary data wrangling steps, the resulting data frame should have 16 rows (one for each airline) and 2 columns (airline name and available seat miles). Here are some hints:</p>
-<ol type="1">
-<li><p><strong>Crucial</strong>: Unless you are very confident in what you are doing, it is worthwhile to not start coding right away, but rather first sketch out on paper all the necessary data wrangling steps not using exact code, but rather high-level <em>pseudocode</em> that is informal yet detailed enough to articulate what you are doing. This way you won’t confuse <em>what</em> you are trying to do (the algorithm) with <em>how</em> you are going to do it (writing <code>dplyr</code> code).</p></li>
-<li><p>Take a close look at all the datasets using the <code>View()</code> function: <code>flights</code>, <code>weather</code>, <code>planes</code>, <code>airports</code>, and <code>airlines</code> to identify which variables are necessary to compute available seat miles.</p></li>
-<li><p><a href="#fig-flights-key-diagram">Figure&nbsp;<span>3.3</span></a> above showing how the various datasets can be joined will also be useful.</p></li>
-<li><p>Consider the data wrangling verbs in <a href="#tbl-wrangle-summary-table">Table&nbsp;<span>3.1</span></a>) as your toolbox!</p></li>
-</ol>
 </div>
 </div>
 </div>
