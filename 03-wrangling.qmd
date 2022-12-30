@@ -891,7 +891,7 @@ Note that in this case we used a single `=` sign within the `rename()`, for exam
 
 ### `slice()` data by a variable
 
-We can return observations with maximum or minimum values of a variable using the `slice_max()` or `slice_min()`. For example, we can get the observations  the top 10 destination airports using the example from @sec-diff-key. Observe that we set the number of values to return to `n = 10` and `wt = num_flights` to indicate that we want the rows of corresponding to the top 10 values of `num_flights`. See the help file for `top_n()` by running `?top_n` for more information.
+We can return observations with maximum or minimum values of a variable using the `slice_max()` or `slice_min()`. For example, we can get the observations  the top 10 destination airports using the example from @sec-diff-key. Observe that we set the number of values to return to `n = 10` and `order_by = num_flights` to indicate that we want the rows corresponding to the top 10 values of `num_flights`. See the help file for the different `slice_*()` functions by running `?slice` for more information.
 
 ```{r}
 #| eval: false
@@ -960,23 +960,6 @@ temp %>%
   column_spec(2, width = "3.3in")
 ```
 
-:::{.callout-tip icon=false collapse=true}
-## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
-
-Let's now put your newly acquired data wrangling skills to the test!
-
-An airline industry measure of a passenger airline's capacity is the [available seat miles](https://en.wikipedia.org/wiki/Available_seat_miles), which is equal to the number of seats available multiplied by the number of miles or kilometers flown summed over all flights. So for example say an airline had 2 flights using a plane with 10 seats that flew 500 miles and 3 flights using a plane with 20 seats that flew 1000 miles, the available seat miles would be 2 $\times$ 10 $\times$ 500 $+$ 3 $\times$ 20 $\times$ 1000 = 70,000 seat miles.
-
-Using the datasets included in the `nycflights13` package, compute the available seat miles for each airline sorted in descending order. After completing all the necessary data wrangling steps, the resulting data frame should have 16 rows (one for each airline) and 2 columns (airline name and available seat miles). Here are some hints:
-
-1.  **Crucial**: Unless you are very confident in what you are doing, it is worthwhile to not start coding right away, but rather first sketch out on paper all the necessary data wrangling steps not using exact code, but rather high-level *pseudocode* that is informal yet detailed enough to articulate what you are doing. This way you won't confuse *what* you are trying to do (the algorithm) with *how* you are going to do it (writing `dplyr` code).
-
-2.  Take a close look at all the datasets using the `View()` function: `flights`, `weather`, `planes`, `airports`, and `airlines` to identify which variables are necessary to compute available seat miles.
-
-3.  @fig-flights-key-diagram above showing how the various datasets can be joined will also be useful.
-
-4.  Consider the data wrangling verbs in @tbl-wrangle-summary-table) as your toolbox!
-:::
 
 ### Additional resources
 
