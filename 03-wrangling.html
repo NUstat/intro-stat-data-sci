@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -622,7 +622,7 @@ div.csl-indent {
 </figure>
 </div>
 <p>Let’s calculate the mean and the standard deviation of the temperature variable <code>temp</code> in the <code>weather</code> data frame included in the <code>nycflights13</code> package (See <a href="0a-statistical-background.html">Appendix&nbsp;<span>A</span></a>). We’ll do this in one step using the <code>summarize()</code> function from the <code>dplyr</code> package and save the results in a new data frame <code>summary_temp</code> with columns/variables <code>mean</code> and the <code>std_dev</code>. Note you can also use the UK spelling of <code>summarise()</code>.</p>
-<p>The <code>weather</code> data frame’s many rows will bow be collapsed into a single row of just the summary values, in this case the mean and standard deviation:</p>
+<p>The <code>weather</code> data frame’s many rows will now be collapsed into a single row of just the summary values, in this case the mean and standard deviation:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>summary_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temp), <span class="at">std_dev =</span> <span class="fu">sd</span>(temp))</span>
