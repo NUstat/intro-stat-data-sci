@@ -276,7 +276,7 @@ The next common task when working with data is to return *summary statistics*: a
 
 Let's calculate the mean and the standard deviation of the temperature variable `temp` in the `weather` data frame included in the `nycflights13` package (See [Appendix -@sec-stat-background]). We'll do this in one step using the `summarize()` function from the `dplyr` package and save the results in a new data frame `summary_temp` with columns/variables `mean` and the `std_dev`. Note you can also use the UK spelling of `summarise()`.
 
-The `weather` data frame's many rows will bow be collapsed into a single row of just the summary values, in this case the mean and standard deviation:
+The `weather` data frame's many rows will now be collapsed into a single row of just the summary values, in this case the mean and standard deviation:
 
 ```{r}
 #| eval: true
