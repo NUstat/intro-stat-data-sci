@@ -1114,7 +1114,7 @@ What kinds of questions are not easily answered by looking at the above figure?
 What can you say, if anything, about the relationship between airline and airport in NYC in 2013 in regards to the number of departing flights?
 :::
 
-Another alternative to stacked barplots are *side-by-side barplots*, also known as a *dodged barplot*. The code to created a side-by-side barplot is identical to the code to create a stacked barplot, but with a `position = "dodge"` argument added to `geom_bar()`. In other words, we are overriding the default barplot type, which is a stacked barplot, and specifying it to be a side-by-side barplot.
+Another alternative to stacked barplots are *side-by-side barplots*, also known as a *dodged barplot*. The code to create a side-by-side barplot is identical to the code to create a stacked barplot, but with a `position = "dodge"` argument added to `geom_bar()`. In other words, we are overriding the default barplot type, which is a stacked barplot, and specifying it to be a side-by-side barplot.
 
 ```{r}
 #| label: fig-flights-bar-dodge
