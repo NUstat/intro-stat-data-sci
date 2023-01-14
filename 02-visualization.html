@@ -1891,7 +1891,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Another alternative to stacked barplots are <em>side-by-side barplots</em>, also known as a <em>dodged barplot</em>. The code to created a side-by-side barplot is identical to the code to create a stacked barplot, but with a <code>position = "dodge"</code> argument added to <code>geom_bar()</code>. In other words, we are overriding the default barplot type, which is a stacked barplot, and specifying it to be a side-by-side barplot.</p>
+<p>Another alternative to stacked barplots are <em>side-by-side barplots</em>, also known as a <em>dodged barplot</em>. The code to create a side-by-side barplot is identical to the code to create a stacked barplot, but with a <code>position = "dodge"</code> argument added to <code>geom_bar()</code>. In other words, we are overriding the default barplot type, which is a stacked barplot, and specifying it to be a side-by-side barplot.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

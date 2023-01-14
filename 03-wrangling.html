@@ -712,7 +712,7 @@ div.csl-indent {
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">std_dev =</span> <span class="fu">sd</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><em>Hiint:</em> Run the code line by line instead of all at once, and then look at the data. In other words, run <code>summary_temp &lt;- weather %&gt;% summarize(mean = mean(temp, na.rm = TRUE))</code> first.</p>
+<p><em>Hint:</em> Run the code line by line instead of all at once, and then look at the data. In other words, run <code>summary_temp &lt;- weather %&gt;% summarize(mean = mean(temp, na.rm = TRUE))</code> first.</p>
 </div>
 </div>
 </div>
@@ -834,7 +834,7 @@ div.csl-indent {
 # … with 53,930 more rows</code></pre>
 </div>
 </div>
-<p>Let’s now revisit <code>n()</code> thw counting summary function introduced in the previous section. For example, suppose we’d like to count how many flights departed each of the three airports in New York City:</p>
+<p>Let’s now revisit <code>n()</code> the counting summary function introduced in the previous section. For example, suppose we’d like to count how many flights departed each of the three airports in New York City:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>by_origin <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span> </span>
@@ -997,7 +997,7 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Mutate diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption><p></p>
 </figure>
 </div>
-<p>Another common transformation of data is to create/compute new variables based on existing ones. For example, say you are more comfortable thinking of temperature in degrees Celsius °C and not degrees Farenheit °F. The formula to convert temperatures from °F to °C is:</p>
+<p>Another common transformation of data is to create/compute new variables based on existing ones. For example, say you are more comfortable thinking of temperature in degrees Celsius °C and not degrees Fahrenheit °F. The formula to convert temperatures from °F to °C is:</p>
 <p><span class="math display">\[
 \text{temp in C} = \frac{\text{temp in F} - 32}{1.8}
 \]</span></p>
@@ -1298,7 +1298,7 @@ div.csl-indent {
 <li>the <code>airports</code> data frame the airport code is in the variable <code>faa</code></li>
 <li>the <code>flights</code> data frame the airport codes are in the variables <code>origin</code> and <code>dest</code></li>
 </ul>
-<p>We need to join these two data frames soo that we can identify the destination cities. For example, our <code>inner_join()</code> operation will use the <code>by = c("dest" = "faa")</code> argument, which allows us to join two data frames where the key variable has a different name:</p>
+<p>We need to join these two data frames so that we can identify the destination cities. For example, our <code>inner_join()</code> operation will use the <code>by = c("dest" = "faa")</code> argument, which allows us to join two data frames where the key variable has a different name:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>flights_with_airport_names <span class="ot">&lt;-</span>  flights <span class="sc">%&gt;%</span> </span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>))</span>
