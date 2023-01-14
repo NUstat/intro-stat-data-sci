@@ -344,7 +344,7 @@ summary_temp <- weather %>%
   summarize(std_dev = sd(temp, na.rm = TRUE))
 ```
 
-*Hiint:* Run the code line by line instead of all at once, and then look at the data. In other words, run `summary_temp <- weather %>% summarize(mean = mean(temp, na.rm = TRUE))` first.
+*Hint:* Run the code line by line instead of all at once, and then look at the data. In other words, run `summary_temp <- weather %>% summarize(mean = mean(temp, na.rm = TRUE))` first.
 
 :::
 
@@ -398,7 +398,7 @@ diamonds %>%
   ungroup()
 ```
 
-Let's now revisit `n()` thw counting summary function introduced in the previous section. For example, suppose we'd like to count how many flights departed each of the three airports in New York City:
+Let's now revisit `n()` the counting summary function introduced in the previous section. For example, suppose we'd like to count how many flights departed each of the three airports in New York City:
 
 ```{r}
 by_origin <- flights %>% 
@@ -473,7 +473,7 @@ How does the `filter` operation differ from a `group_by` followed by a `summariz
 
 ![Mutate diagram from Data Wrangling with dplyr and tidyr cheatsheet](images/mutate.png)
 
-Another common transformation of data is to create/compute new variables based on existing ones. For example, say you are more comfortable thinking of temperature in degrees Celsius °C and not degrees Farenheit °F. The formula to convert temperatures from °F to °C is:
+Another common transformation of data is to create/compute new variables based on existing ones. For example, say you are more comfortable thinking of temperature in degrees Celsius °C and not degrees Fahrenheit °F. The formula to convert temperatures from °F to °C is:
 
 $$
 \text{temp in C} = \frac{\text{temp in F} - 32}{1.8}
@@ -703,7 +703,7 @@ However, considering the visual representation (@fig-flights-key-diagram) of the
 -   the `airports` data frame the airport code is in the variable `faa`
 -   the `flights` data frame the airport codes are in the variables `origin` and `dest`
 
-We need to join these two data frames soo that we can identify the destination cities. For example, our `inner_join()` operation will use the `by = c("dest" = "faa")` argument, which allows us to join two data frames where the key variable has a different name:
+We need to join these two data frames so that we can identify the destination cities. For example, our `inner_join()` operation will use the `by = c("dest" = "faa")` argument, which allows us to join two data frames where the key variable has a different name:
 
 ```{r}
 #| eval: false
