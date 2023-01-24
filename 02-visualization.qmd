@@ -522,7 +522,7 @@ What is commonly produced instead of the above plot is known as a *histogram*. A
 
 3.  Then for each bin, we draw a bar whose height marks the corresponding count.
 
-Let's drill-down on an example of a histogram, shown in \@fig-histogramexample.
+Let's drill-down on an example of a histogram, shown in @fig-histogramexample.
 
 ```{r}
 #| label: fig-histogramexample

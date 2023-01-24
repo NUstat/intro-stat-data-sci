@@ -258,7 +258,7 @@ View(many_airports)
 
 What this code is doing is filtering `flights` for all flights where `dest` is in the list of airports `c("BTV", "SEA", "PDX", "SFO", "BDL")`. Recall from @sec-getting-started that the `c()` function "combines" or "concatenates" values in a vector of values. Both outputs of `many_airports` are the same, but as you can see the latter takes much less time to code.
 
-As a final note we point out that `filter()` should often be among the first verbs you apply to your data. This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations your care about.
+As a final note we point out that `filter()` should often be among the first verbs you apply to your data. This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations you care about.
 
 :::{.callout-tip icon=false collapse=true}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
@@ -408,7 +408,7 @@ by_origin <- flights %>%
 by_origin
 ```
 
-We see that Newark (`"EWR"`) had the most flights departing in 2013 followed by `"JFK"` and lastly by LaGuardia (`"LGA"`). Note there is a subtle but important difference between `sum()` and `n()`; While `sum()` returns the sum of a numerical variable, `n()` returns counts of the the number of rows/observations.
+We see that Newark (`"EWR"`) had the most flights departing in 2013 followed by `"JFK"` and lastly by LaGuardia (`"LGA"`). Note there is a subtle but important difference between `sum()` and `n()`; While `sum()` returns the sum of a numerical variable, `n()` returns counts of the number of rows/observations.
 
 ### Grouping by more than one variable
 
