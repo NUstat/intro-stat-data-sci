@@ -588,7 +588,7 @@ div.csl-indent {
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(many_airports)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What this code is doing is filtering <code>flights</code> for all flights where <code>dest</code> is in the list of airports <code>c("BTV", "SEA", "PDX", "SFO", "BDL")</code>. Recall from <a href="01-getting-started.html"><span>Chapter&nbsp;1</span></a> that the <code>c()</code> function “combines” or “concatenates” values in a vector of values. Both outputs of <code>many_airports</code> are the same, but as you can see the latter takes much less time to code.</p>
-<p>As a final note we point out that <code>filter()</code> should often be among the first verbs you apply to your data. This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations your care about.</p>
+<p>As a final note we point out that <code>filter()</code> should often be among the first verbs you apply to your data. This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations you care about.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -850,7 +850,7 @@ div.csl-indent {
 3 LGA    104662</code></pre>
 </div>
 </div>
-<p>We see that Newark (<code>"EWR"</code>) had the most flights departing in 2013 followed by <code>"JFK"</code> and lastly by LaGuardia (<code>"LGA"</code>). Note there is a subtle but important difference between <code>sum()</code> and <code>n()</code>; While <code>sum()</code> returns the sum of a numerical variable, <code>n()</code> returns counts of the the number of rows/observations.</p>
+<p>We see that Newark (<code>"EWR"</code>) had the most flights departing in 2013 followed by <code>"JFK"</code> and lastly by LaGuardia (<code>"LGA"</code>). Note there is a subtle but important difference between <code>sum()</code> and <code>n()</code>; While <code>sum()</code> returns the sum of a numerical variable, <code>n()</code> returns counts of the number of rows/observations.</p>
 <section id="grouping-by-more-than-one-variable" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="grouping-by-more-than-one-variable"><span class="header-section-number">3.4.1</span> Grouping by more than one variable</h3>
 <p>You are not limited to grouping by one variable! Say you wanted to know the number of flights leaving each of the three New York City airports <em>for each month</em>, we can also group by a second variable <code>month</code>: <code>group_by(origin, month)</code>. We see there are 36 rows to <code>by_origin_monthly</code> because there are 12 months for 3 airports (<code>EWR</code>, <code>JFK</code>, and <code>LGA</code>).</p>
