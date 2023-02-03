@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -618,10 +618,6 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-2numxplot1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -679,10 +675,10 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 <li>We get the regression table by applying the <code>summary()</code> function to <code>debt_model</code>.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>debt_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(debt <span class="sc">~</span> credit_limit <span class="sc">+</span> income, <span class="at">data =</span> credit_ch6)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>debt_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(debt <span class="sc">~</span> credit_limit <span class="sc">+</span> income, <span class="at">data =</span> credit_ch6)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -764,11 +760,11 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 \end{aligned}
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>debt_model_data <span class="ot">&lt;-</span> credit_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">debt_hat =</span> <span class="fu">fitted</span>(debt_model),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(debt_model)) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>debt_model_data <span class="ot">&lt;-</span> credit_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">debt_hat =</span> <span class="fu">fitted</span>(debt_model),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(debt_model)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -898,12 +894,12 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-model4EDA"><span class="header-section-number">6.2.1</span> Exploratory data analysis</h3>
 <p>Recall that data on the 463 courses at UT Austin can be found in the <code>evals</code> data frame included in the <code>moderndive</code> package. However, to keep things simple, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>evals_ch6</code>. Note that these are different than the variables chosen in <a href="05-regression.html"><span>Chapter&nbsp;5</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, score, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, score, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s first look at the raw data values by either looking at <code>evals_ch6</code> using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(evals_ch6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(evals_ch6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 463
 Columns: 4
@@ -915,8 +911,8 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 </div>
 <p>Let’s also display a random sample of 5 rows of the 463 rows corresponding to different courses in <a href="#tbl-model4-data-preview">Table&nbsp;<span>6.5</span></a>. Remember due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -969,9 +965,9 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 </div>
 <p>Now that we’ve looked at the raw values in our <code>evals_ch6</code> data frame and have a sense of the data, let’s compute summary statistics.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>Skim summary statistics
  n obs: 463 
@@ -988,8 +984,8 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <p>Observe for example that we have no missing data, that there are 268 courses taught by male instructors and 195 courses taught by female instructors, and that the average instructor age is 48.37. Recall however that each row of our data represents a particular course and that the same instructor often teaches more than one course. Therefore the average age of the unique instructors may differ.</p>
 <p>Furthermore, let’s compute the correlation coefficient between our two numerical variables: <code>score</code> and <code>age</code>. Recall from <a href="05-regression.html#sec-model1EDA"><span>Section&nbsp;5.1.1</span></a> that correlation coefficients only exist between numerical variables. We observe that they are “weakly negatively” correlated.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correlation
@@ -999,10 +995,10 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 </div>
 <p>Let’s now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable <code>score</code> and explanatory variable <code>age</code> are both numerical, we’ll use a scatterplot to display their relationship. How can we incorporate the categorical variable <code>gender</code> however? By <code>mapping</code> the variable <code>gender</code> to the <code>color</code> aesthetic, thereby creating a <em>colored</em> scatterplot. The following code is similar to the code that created the scatterplot of teaching score over “beauty” score in <a href="05-regression.html#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>, but with <code>color = gender</code> added to the <code>aes()</code>thetic mapping.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> score, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> score, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1079,10 +1075,10 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <p>Going back to our multiple regression model for teaching <code>score</code> using <code>age</code> and <code>gender</code> in <a href="#fig-numxcatxplot1">Figure&nbsp;<span>6.3</span></a>, we generate the regression table using the same two-step approach from <a href="05-regression.html"><span>Chapter&nbsp;5</span></a>: we first “fit” the model using the <code>lm()</code> “linear model” function and then we apply the <code>summary()</code> function. This time however, our model formula won’t be of the form <code>y ~ x</code>, but rather of the form <code>y ~ x1 + x2 + x1 * x2</code>. In other words, we include a <em>main effect</em> for each of our two explanatory variables <code>x1</code> and <code>x2</code>, as well as an <em>interaction term</em> <code>x1 * x2</code>. In terms of the general mathematical equation, an interaction model with two explanatory variables is of the form:</p>
 <p><span class="math display">\[\widehat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2\]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>score_model_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">*</span> gender, <span class="at">data =</span> evals_ch6)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>score_model_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">*</span> gender, <span class="at">data =</span> evals_ch6)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1235,10 +1231,10 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <p>However, observe also in <a href="#fig-numxcatx-parallel">Figure&nbsp;<span>6.4</span></a> that these two lines have different intercepts as evidenced by the fact that the blue line corresponding to the male instructors is higher than the red line corresponding to the female instructors. This is telling us that irrespective of age, female instructors tended to receive lower teaching scores than male instructors.</p>
 <p>In order to obtain the precise numerical values of the two intercepts and the single common slope, we once again “fit” the model using the <code>lm()</code> “linear model” function and then apply the <code>summary()</code> function. Our model formula this time is of the form <code>y ~ x1 + x2</code>, where <code>x1</code> and <code>x2</code> represent the two predictor variables, <code>age</code> and <code>gender</code>, but we do not include the extra interaction term <code>x1 * x2</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>score_model_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender, <span class="at">data =</span> evals_ch6)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>score_model_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender, <span class="at">data =</span> evals_ch6)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1374,12 +1370,12 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <p>So our fitted values would be: 4.883 - 0.018 <span class="math inline">\(\cdot\)</span> 36 = 4.25 and 4.437 - 0.004 <span class="math inline">\(\cdot\)</span> 59 = 4.20 respectively.</p>
 <p>Now what if we want the fitted values not just for the instructors of these two courses, but for the instructors of all 463 courses included in the <code>evals_ch6</code> data frame? Doing this by hand would be long and tedious! This is where our data wrangling code from <a href="05-regression.html#sec-model1points"><span>Section&nbsp;5.1.3</span></a> can help: it will quickly automate this for all 463 courses. We present a preview of just the first 10 rows out of 463 in <a href="#tbl-model4-points-table">Table&nbsp;<span>6.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data <span class="ot">&lt;-</span> evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model_interaction),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(score_model_interaction)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data <span class="ot">&lt;-</span> evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model_interaction),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(score_model_interaction)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1550,9 +1546,9 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <p>Look closely at the left-hand plot of <a href="#fig-numxcatx-comparison-2">Figure&nbsp;<span>6.8</span></a> corresponding to an interaction model. While the slopes are indeed different, they do not differ <em>by much</em>. In other words, they are nearly identical. Now compare the left-hand plot with the right-hand plot corresponding to a parallel slopes model. The two models don’t appear all that different. Therefore in this case, it can be argued that the additional complexity of the interaction model is <em>not warranted</em>. Thus following Occam’s Razor, we should prefer the “simpler” parallel slopes model.</p>
 <p>Let’s explicitly define what “simpler” means in this case. Let’s compare the regression tables for the interaction and parallel slopes models in <a href="#tbl-model2-interaction">Tables&nbsp;<span>6.11</span></a> and -<a href="#tbl-model2-parallel-slopes">Table&nbsp;<span>6.12</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model_2_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">*</span> size, </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> MA_schools)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model_2_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">*</span> size, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> MA_schools)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1624,9 +1620,9 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>model_2_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">+</span> size, </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">data =</span> MA_schools)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model_2_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">+</span> size, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">data =</span> MA_schools)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1684,10 +1680,10 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-correlationcoefficient2"><span class="header-section-number">6.3.2</span> Correlation coefficient</h3>
 <p>Recall from <a href="#tbl-model3-correlation">Table&nbsp;<span>6.2</span></a> that the correlation coefficient between <code>income</code> in thousands of dollars and credit card <code>debt</code> was 0.464. What if instead we looked at the correlation coefficient between <code>income</code> and credit card <code>debt</code>, but where <code>income</code> was in dollars and not thousands of dollars? This can be done by multiplying <code>income</code> by 1000.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> income <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, income) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> income <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1723,9 +1719,6 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-simpsonsparadox"><span class="header-section-number">6.3.3</span> Simpson’s Paradox</h3>
 <p>Recall in <a href="#sec-model3"><span>Section&nbsp;6.1</span></a>, we saw the two seemingly contradictory results when studying the relationship between credit card debt and income. On the one hand, the right hand plot of <a href="#fig-2numxplot1">Figure&nbsp;<span>6.1</span></a> suggested that the relationship between credit card debt and income was <em>positive</em>. We re-display this plot in <a href="#fig-2numxplot1-repeat">Figure&nbsp;<span>6.9</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-2numxplot1-repeat" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1821,10 +1814,6 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <li>In other words, the location of the 400 points are the same in both scatterplots, but the right-hand plot shows an additional variable of information: credit limit bracket.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-2numxplot4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
