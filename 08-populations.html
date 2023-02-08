@@ -346,8 +346,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#needed-packages" id="toc-needed-packages" class="nav-link active" data-scroll-target="#needed-packages">Needed packages</a></li>
-  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology"><span class="toc-section-number">8.1</span>  Terminology &amp; Notation</a></li>
-  <li><a href="#sample-selection" id="toc-sample-selection" class="nav-link" data-scroll-target="#sample-selection"><span class="toc-section-number">8.2</span>  Populations &amp; Sampling</a></li>
+  <li><a href="#sec-terminology" id="toc-sec-terminology" class="nav-link" data-scroll-target="#sec-terminology"><span class="toc-section-number">8.1</span>  Terminology &amp; Notation</a></li>
+  <li><a href="#sec-sample-selection" id="toc-sec-sample-selection" class="nav-link" data-scroll-target="#sec-sample-selection"><span class="toc-section-number">8.2</span>  Populations &amp; Sampling</a></li>
   <li><a href="#movie-example" id="toc-movie-example" class="nav-link" data-scroll-target="#movie-example"><span class="toc-section-number">8.3</span>  Movies Example</a>
   <ul class="collapse">
   <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="toc-section-number">8.3.1</span>  Research question</a></li>
@@ -399,8 +399,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </section>
-<section id="terminology" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="terminology"><span class="header-section-number">8.1</span> Terminology &amp; Notation</h2>
+<section id="sec-terminology" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sec-terminology"><span class="header-section-number">8.1</span> Terminology &amp; Notation</h2>
 <p>In Parts I and II of this book, you were provided with sample data, methods for exploring this data visually, and methods for summarizing trends in this data. These methods are what we call <strong>descriptive statistics</strong>, as they are focused on describing the observed sample.</p>
 <p>In science and policy, the goal of analysis is typically not just to understand trends in a sample but instead to make inferences from this sample to trends in a population. For example, in order to understand the relationship between party affiliation and voting, you might conduct a poll in a sample of 100 (or 1,000) voters by mail, phone-call, or by stopping them on the street. Or, in order to determine if a new drug effectively reduces high blood pressure, you might conduct a randomized experiment in a sample of 200 patients experiencing high blood pressure.</p>
 <p>Why not use population data instead? While a <strong>census</strong> of every person (or unit) in a population would be ideal, it’s not hard to see that doing so is costly in many regards — financially and in terms of time and personnel.</p>
@@ -490,8 +490,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <hr>
 </section>
-<section id="sample-selection" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="sample-selection"><span class="header-section-number">8.2</span> Populations &amp; Sampling</h2>
+<section id="sec-sample-selection" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sec-sample-selection"><span class="header-section-number">8.2</span> Populations &amp; Sampling</h2>
 <p>Recall that a population is a collection of individuals or observations that you would like to make inferences about. Some examples of populations are:</p>
 <ul>
 <li>Citizens of voting age (18 or older) in the United States.</li>
@@ -537,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>about something besides a man.</li>
 </ol>
 <p>Determining whether a film meets this criteria requires you to watch and pay attention to the dialogue in its entirety. It’s not hard to imagine why doing this for the whole population of movies is not feasible, because there are tens of thousands of them. You must take a <em>sample</em>. But how do you choose your sample in such a way that you can be confident that your results will generalize to the whole population of movies?</p>
-<p>Let’s discuss how we might go about developing a sampling plan to tackle this question, using the terminology from <span class="quarto-unresolved-ref">?sec-terminology</span> and <span class="quarto-unresolved-ref">?sec-sample-selection</span>.</p>
+<p>Let’s discuss how we might go about developing a sampling plan to tackle this question, using the terminology from <a href="#sec-terminology">Sections&nbsp;<span>8.1</span></a> and <a href="#sec-sample-selection"><span>8.2</span></a>.</p>
 </section>
 <section id="population-of-interest" class="level3" data-number="8.3.2">
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="population-of-interest"><span class="header-section-number">8.3.2</span> Population of interest</h3>
@@ -786,7 +786,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </div>
 </div>
 </div>
-<p>Once we have our sample of <span class="math inline">\(n\)</span> movies, we could then begin data collection. For each movie, we would record whether or not it passed the Bechdel test. We would then calculate our <strong>point estimate</strong> <span class="math inline">\(\hat{\pi}\)</span>, the proportion of movies <em>in our sample</em> that pass the Bechdel test, which serves as our estimate of the population proportion <span class="math inline">\(\pi\)</span>. Recall that we mentioned in <span class="quarto-unresolved-ref">?sec-sample-selection</span> that using a more complicated sampling method, such as stratified sampling, also requires a more complicated formula for computing point estimates. In the simple random sampling case, however, we calculate the sample proportion in exactly the way you would expect: <span class="math inline">\(\hat{\pi} = \frac{x}{n}\)</span>, where <span class="math inline">\(x\)</span> is the number of movies in the sample passing the test, and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>Once we have our sample of <span class="math inline">\(n\)</span> movies, we could then begin data collection. For each movie, we would record whether or not it passed the Bechdel test. We would then calculate our <strong>point estimate</strong> <span class="math inline">\(\hat{\pi}\)</span>, the proportion of movies <em>in our sample</em> that pass the Bechdel test, which serves as our estimate of the population proportion <span class="math inline">\(\pi\)</span>. Recall that we mentioned in <a href="#sec-sample-selection"><span>Section&nbsp;8.2</span></a> that using a more complicated sampling method, such as stratified sampling, also requires a more complicated formula for computing point estimates. In the simple random sampling case, however, we calculate the sample proportion in exactly the way you would expect: <span class="math inline">\(\hat{\pi} = \frac{x}{n}\)</span>, where <span class="math inline">\(x\)</span> is the number of movies in the sample passing the test, and <span class="math inline">\(n\)</span> is the sample size.</p>
 <p>In the next few chapters we will discuss how much uncertainty we would expect there to be in our estimate <span class="math inline">\(\hat{\pi}\)</span> due to the fact that we are only observing a sample and not the whole population.</p>
 </section>
 </section>
@@ -818,13 +818,13 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 <li>Random assignment allows us to make <em>causal</em> claims</li>
 <li>Random sampling allows us to make <em>generalizable</em> claims</li>
 </ul>
-<p>The ideal experiment would have both <em>random assignment</em> and <em>random sampling</em> so that you could have a <em>casual</em> conclusion that is <em>generalizable</em> to the whole population. Figure @ref(fig:RA-RS) shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.</p>
+<p>The ideal experiment would have both <em>random assignment</em> and <em>random sampling</em> so that you could have a <em>casual</em> conclusion that is <em>generalizable</em> to the whole population. <a href="#fig-RA-RS">Figure&nbsp;<span>8.1</span></a> shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-RA-RS" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/RA_vs_RS.png" class="img-fluid figure-img" style="width:110.0%"></p>
-<p></p><figcaption class="figure-caption">Random Assignment vs.&nbsp;Random Sampling</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8.1: Random Assignment vs.&nbsp;Random Sampling</figcaption><p></p>
 </figure>
 </div>
 </div>
