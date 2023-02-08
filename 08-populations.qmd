@@ -55,7 +55,8 @@ library(knitr)
 library(kableExtra)
 library(readr)
 ```
-## Terminology & Notation {#terminology}
+
+## Terminology & Notation {#sec-terminology}
 
 In Parts I and II of this book, you were provided with sample data, methods for exploring this data visually, and methods for summarizing trends in this data. These methods are what we call **descriptive statistics**, as they are focused on describing the observed sample.
 
@@ -120,7 +121,7 @@ ch8_parameters %>%
 
 ---
 
-## Populations & Sampling {#sample-selection}
+## Populations & Sampling {#sec-sample-selection}
 
 Recall that a population is a collection of individuals or observations that you would like to make inferences about. Some examples of populations are:
 
@@ -397,10 +398,10 @@ In @sec-causality we talked about the process of *random assignment* (e.g. in ra
 * Random assignment allows us to make *causal* claims 
 * Random sampling allows us to make *generalizable* claims 
 
-The ideal experiment would have both *random assignment* and *random sampling* so that you could have a *casual* conclusion that is *generalizable* to the whole population. Figure \@ref(fig:RA-RS) shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.
+The ideal experiment would have both *random assignment* and *random sampling* so that you could have a *casual* conclusion that is *generalizable* to the whole population. @fig-RA-RS shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.
 
 ```{r}
-#| label: RA-RS
+#| label: fig-RA-RS
 #| echo: false
 #| fig.cap: Random Assignment vs. Random Sampling
 #| out.width: 110%
