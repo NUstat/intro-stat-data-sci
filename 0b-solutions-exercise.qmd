@@ -9,6 +9,7 @@ library(tidyverse)
 library(moderndive)
 library(lubridate)
 library(patchwork)
+library(skimr)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -216,24 +217,79 @@ Currently working on exercise solutions.
 ## Chapter 5 {#sec-ex05-sol}
 
 
+
 @exr-ch05-c01 c) -0.7
+
+@exr-ch05-c02 e) Exactly 1
 
 @exr-ch05-c03 b) Between -1 and 0
 
+@exr-ch05-c04 a) explanatory variable & d) independent variable
+
 @exr-ch05-c05 b) predictor variable & c) outcome variable & e) dependent variable
+
+@exr-ch05-c06 c) $b_0$ & e) the value of $\hat{y}$ when $x=0$ & f) intercept
 
 @exr-ch05-c07 d) For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.
 
+@exr-ch05-c08 a) TRUE
+
 @exr-ch05-c09 b) FALSE
+
+@exr-ch05-c10 a) TRUE
 
 @exr-ch05-c11 d) No, the positive correlation does not necessarily imply causation.
 
 
+@exr-ch05-app1
+
+**a)**
+
+```{r}
+skim(covid_states)
+```
+
+
+**b)**
+
+```{r}
+covid_states %>% 
+  select(new_tested, new_confirmed) %>% 
+  cor(use = "complete.obs")
+```
+The correlation is 0.514.
+
+
+**c)**
+
+```{r}
+ggplot(covid_states, aes(x = new_tested, y = new_confirmed)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+**d)**
+```{r}
+model_covid <- lm(new_confirmed ~ new_tested, data = covid_states)
+
+summary(model_covid)$coefficients
+```
+$$\widehat{newconfirmed} = 320.16 + 0.057*newtested$$
+**e)**
+
+**Intercept**: When there are 0 people newly tested for COVID, we expect there to 320.16 newly confirmed cases.
+
+**Slope:**: For every 1 additional person newly tested for COVID, we expect the number of new confirmed cases to increase by 0.057.
+
+
+**f)**
+```{r}
+320.16 + 0.057*20000
+```
+We would expect 1,460 people to have COVID.
+
 @exr-ch05-app2
 ```{r}
-#| warning: false
-#| message: false
-
 model_pts <- lm(pts_tm ~ pts, data = nba)
 
 summary(model_pts)
@@ -241,18 +297,12 @@ summary(model_pts)
 
 **a)** 0.272
 ```{r}
-#| warning: false
-#| message: false
-
 nba %>% 
   summarize(cor = cor(pts_tm, pts, use = "complete.obs"))
 ```
 
 **b)**
 ```{r}
-#| warning: false
-#| message: false
-
 ggplot(nba, aes(x = pts, y = pts_tm)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
@@ -272,6 +322,37 @@ $$\widehat{pts tm} = 92.80 + 0.345*pts$$
 ```
 
 
+@exr-ch05-app3
+
+```{r}
+model_fare <- lm(Fare ~ Embarked, data = titanic)
+
+summary(model_fare)$coefficients
+```
+**a)** $$\widehat{Fare} = 66.26 - 55.32*1_Q(x)-38.03*1_S(x)$$
+
+**b)** The expected fare for passengers that embarked from Cherbourg (C) is 66.26.
+
+**c)** On average, Cherbourg (C) had the highest ticket cost.
+
+**d)**
+
+```{r}
+titanic_error <- titanic %>% 
+  filter(!is.na(Fare)) %>% 
+  mutate(residuals = residuals(model_fare),
+         fitted = fitted.values(model_fare)) %>% 
+  select(PassengerId, Survived, Fare, 
+         Embarked, residuals, fitted)
+
+titanic_error %>% 
+  slice_max(residuals, n=1)
+titanic_error %>% 
+  slice_min(residuals, n=1)
+```
+
+The worst prediction will be the residual that is farthest from 0. We checked both the min (farthest negative) and max (farthest positive) residual. Passenger 1235 had the worst prediction with an observed value of 512.33 and predicted value of 66.26 (residual of 446.07).
+
 @exr-ch05-adv1
 ```{r}
 #| warning: false
@@ -290,12 +371,25 @@ summary(model_pts)$r.squared
 ## Chapter 6 {#sec-ex06-sol}
 
 
+
 @exr-ch06-c01 c. The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary
+
+@exr-ch06-c02 d. 0.47
 
 @exr-ch06-c03 b. False
 
+@exr-ch06-c04 a. True
+
 @exr-ch06-c05 a. Splitting up your data can result in unequal balance in representation of some groups compared to others. & d. Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.
 
+
+@exr-ch06-app1
+
+```{r}
+covid_pred <- lm(new_confirmed ~ new_recovered + new_deceased, data = covid_states)
+
+summary(covid_pred)$coefficients
+```
 
 @exr-ch06-app2
 
@@ -312,6 +406,25 @@ covid_pred2 <- lm(new_confirmed ~ population + new_tested,
 summary(covid_pred2)$coefficients
 ```
 
+
+@exr-ch06-app3
+
+```{r}
+model_pts_parallel <- lm(pts_tm ~ pts + location, 
+                   data = nba)
+
+summary(model_pts_parallel)$coefficients
+
+ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
+```
+
+**b_0** When the star player scores 0 points and the game is away, the team is predicted to score 90.9 points.
+
+**b_1** For every additional point the star player scores, the associated expected increase in team points is 0.345, regardless if the game is home or away.
+
+**b_2** The team is expected to score on average 3.74 more points when the game is home compared to when the game is away.
 
 
 @exr-ch06-app4
@@ -384,28 +497,57 @@ This model which uses the opponents points and star player points has an MSE of 
 
 @exr-ch07-c01 a) There is a non-zero probability of being selected into the treatment or control group for every unit & c) A random process is used for selection & e) A random process is used for administration of the treatments
 
+@exr-ch07-c02 d) rbernoulli(n = 1000, p = 0.25)
+
 @exr-ch07-c03 b) False
+
+@exr-ch07-c04 a) True
 
 @exr-ch07-c05 a) Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment & c) Look for variables you can use to control for confounding & d) State your assumptions and limitations
 
+@exr-ch07-c06 b) private colleges are only correlated with higher GPAs, because this would be an observational study
+
 @exr-ch07-c07 b) video games are only correlated with violent behavior, because this would be an observational study
 
+@exr-ch07-c08 Perhaps class size is a confounding variable for gpa, smaller sizes could lead to more individualized attention and higher grades. Perhaps parental control is a confounding variable for video games, children that play violent video games probably have less parental guidance or household rules leading to poor behavior choices.
+
 @exr-ch07-c09 d) No, because the treatment and control groups were not randomized
+
+@exr-ch07-c10 a confounding (or lurking) variable
+
 
 @exr-ch07-app1 No the administration cannot conclude the after-school program caused student improvement. While this was a randomized selection of a subset of students we cannot generalize to all students because all students were not considered. Also, this was a before and after study where it is likely the material from the fall semester is likely different from the material in the spring semester. Perhaps these students were just better at the topics covered in the spring.
 
 
+@exr-ch07-app2 Geography might impact the results because maybe the west has more rural cities than the east or perhaps there are different demographics of people that live in each region. Certain types of people/demographics might favor the 'traditional' label and deter from the new label because they don't recognize it while other types of people will see the new label and but it because it is 'new'. A way to reduce the impact of geography is to use "matching". Find a list of cities in the east that match on average with the cities in the west (perhaps New York City is very similar on average to Los Angeles etc.). Then randomly sample these pairs of cities to compare sales results (to measure if it is receptive).
+
+
 ## Chapter 8 {#sec-ex08-sol}
+
 
 @exr-ch08-c01 d) a population parameter
 
+@exr-ch08-c02 
+b) $\hat{\mu}$ & d) $\bar{x}$ & f) $\hat{\pi}$ & g) $p$ & h) $\hat{p}$ & i) $s$ & k) $\hat{\sigma}$  
+
+<!-- @exr-ch08-c03  -->
+<!-- a) $\mu$ &  e) $\pi$ & j) $\sigma$ -->
+
 @exr-ch08-c03 all of them (a, b, c, d)
+
+@exr-ch08-c04 b) Cluster sampling
 
 @exr-ch08-c05 d) Systematic sampling
 
+@exr-ch08-c06 c) Stratified sampling
+
 @exr-ch08-c07 c) Cluster sampling (with unequal probability) choosing towns is based on random cluster selection
 
+@exr-ch08-c08 b) False
+
 @exr-ch08-c09 c) An observational study with random sampling but no random assignment
+
+@exr-ch08-c10 d) No, you cannot make causal or generalizable claims from the results of your survey
 
 
 @exr-ch08-app1
@@ -416,17 +558,36 @@ parameter: proportion (most likely a Yes or No question)
 undercoverage: citizens that do not own a house, if there are multiple citizens in one household only one person will receive the survey.
 
 
+@exr-ch08-app2
+
+sampling method: stratified sampling
+
+Compared to simple random sampling, stratified sample is guaranteed to represent people from all 50 states. 
+
+While the stratified sampling would allow for better representation of people in different states, the same limitations in regards to citizens without addresses or if multiple citizens live in one household.
+
+
 ## Chapter 9 {#sec-ex09-sol}
+
 
 @exr-ch09-c01
 b) unimodal & h) symmetric
 
+@exr-ch09-c02
+b) False
 
 @exr-ch09-c03
 c) `1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)`
 
+@exr-ch09-c04
+b) `pnorm(q = 72, mean = 64, sd = 3) - pnorm(q = 60, mean = 64, sd = 3)`
+c) `1 - pnorm(q = -1.33) - pnorm(q = 2.67, lower.tail = FALSE)`
+
 @exr-ch09-c05
 a) apple
+
+@exr-ch09-c06
+a) True
 
 @exr-ch09-c07
 
@@ -434,12 +595,25 @@ d) The sampling distribution of the sample mean and the sampling distribution of
 
 f) The regression slope and regression intercept both follow the T distribution
 
+@exr-ch09-c08
+a) True
+
 @exr-ch09-c09
 b) False
+
+@exr-ch09-c10
+d) unbiased and precise
 
 @exr-ch09-c11
 
 b) False
+
+@exr-ch09-c12
+
+- normal/t distribution
+- normal/t distribution
+- chi-squared distribution
+
 
 @exr-ch09-c13
 
