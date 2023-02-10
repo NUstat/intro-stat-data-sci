@@ -9,7 +9,6 @@ library(tidyverse)
 library(moderndive)
 library(lubridate)
 library(patchwork)
-library(skimr)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -246,6 +245,7 @@ Currently working on exercise solutions.
 **a)**
 
 ```{r}
+#| eval: false
 skim(covid_states)
 ```
 
