@@ -13,13 +13,22 @@ library(patchwork)
 
 ## Chapter 1 {#sec-ex01-sol}
 
+
 @exr-ch01-c01 b. Quarto Document
+
+@exr-ch01-c02 a. error
 
 @exr-ch01-c03 a. TRUE
 
+@exr-ch01-c04 a. TRUE
+
 @exr-ch01-c05 b. FALSE
 
+@exr-ch01-c06 e. 15
+
 @exr-ch01-c07 b. Data on a flight
+
+@exr-ch01-c08 c. quantitative
 
 @exr-ch01-app1
 
@@ -28,6 +37,16 @@ z <- 12*31
 add_on <- 12
 z + add_on
 ```
+
+@exr-ch01-app2
+
+```{r}
+#| eval: false
+glimpse(titanic)
+```
+
+The dataset has 418 rows (passengers) and 11 variables. The variables identify various passenger information such as name, age, sex, ticket class, number of siblings/spouses on board, fare cost, port the left from, and whether or not they survived.
+
 
 @exr-ch01-adv1
 
@@ -49,15 +68,27 @@ There are 3 unique ports of embarkation: Q, S, C (Queenstown, Southampton, Cherb
 
 @exr-ch02-c01 b. geom_line(), c. geom_col(), e. geom_histogram()
 
+@exr-ch02-c02 d. geom_point()
+
 @exr-ch02-c03 b. changing the transparency, e. jittering the points
+
+@exr-ch02-c04 b. When you want to split a particular visualization of variables by another variable
 
 @exr-ch02-c05 b. geom_col()
 
+@exr-ch02-c06 a. grouped boxplot
+
 @exr-ch02-c07 b. linegraph
+
+@exr-ch02-c08 c. scatterplot
 
 @exr-ch02-c09 d. boxplot
 
+@exr-ch02-c10 There is a strong positive non-linear (exponential) relationship. We can see by the blue line (line of best fit) that the data does not match a linear line. This tells us that as someone spends more time in the grocery store, they also spend more money.
+
 @exr-ch02-c11 The histogram is unimodal and left skewed.
+
+@exr-ch02-c12 a.
 
 @exr-ch02-app1
 
@@ -76,9 +107,6 @@ covid_sub <- covid_states %>%
 ```
 
 ```{r}
-#| warning: false
-#| message: false
-
 ggplot(
   covid_sub, 
   aes(x = date, y = new_confirmed, color = state_abbr)
@@ -88,24 +116,43 @@ ggplot(
 
 Florida has significantly more covid cases than Illinois in the months of July and August 2021. The spikes to 0 could indicate testing did not occur on those days. Illinois has a positive "fairly linear" trend. Florida has a nonlinear trend where cases are increasing until around August 15th, at which point cases start to decrease.
 
+@exr-ch02-app2
+
+```{r}
+ggplot(nba, aes(x = factor(win)) ) +
+  geom_bar() +
+  facet_wrap(~ player)
+```
+
+A win is indicated with a "1". All three players have more wins than losses. LeBron has the most total wins and Jordan has the least total losses. But Jordan having less wins and losses is relative because he also played the least number of games.
+
 @exr-ch02-app3
 
 ```{r}
-#| warning: false
-#| message: false
-
 ggplot(nba, aes(x = ft_percent, y = fg_percent)) +
   geom_jitter(alpha=0.1)
 ```
 
 The relationship between the field goal percentage and free throw percentage seems to have no association. This means that whether a player made all of their free throws or only 50% of their free throws, it will not impact their shooting during the game (field goal percent). If we draw a circle around the points it is fairly horizontal (indicating no positive or negative trend) and a large oval. 
 
+@exr-ch02-app4
+
+```{r}
+ggplot(nba, aes(x = player, y = pts)) +
+  geom_boxplot() +
+  facet_wrap(~ season)
+```
+
+```{r}
+#Alternate way to visualize
+ggplot(nba, aes(x = pts)) +
+  geom_histogram() +
+  facet_grid(player ~ season, scales = "free")
+```
+
 @exr-ch02-adv1
 
 ```{r}
-#| warning: false
-#| message: false
-
 ggplot(
   covid_sub, 
   aes(x = date, y = new_confirmed, color = state_abbr)
@@ -119,26 +166,38 @@ ggplot(
 
 ## Chapter 3 {#sec-ex03-sol}
 
+@exr-ch03-c01 c.  `x %>% c() %>% b() %>% a()`
 
-@exr-ch03-c01 c)  `x %>% c() %>% b() %>% a()`
+@exr-ch03-c02 d. `arrange()` , g. `filter()` , c. `mutate()`
 
 @exr-ch03-c03 c. 1 row and 4 columns
 
+@exr-ch03-c04 b.  To make exploring a data frame easier by only outputting the variables of interest
+
 @exr-ch03-c05 a.  increase
+
+@exr-ch03-c06 c.  median and interquartile range; mean and standard deviation
 
 @exr-ch03-c07 b.  $mean < median$
 
+@exr-ch03-c08 a. These key variables uniquely identify the observational units
+
 @exr-ch03-c09 d.
+
+@exr-ch03-c10 d.
 
 @exr-ch03-c11 a. e. (there is no variable called `passenger`)
 
-
-@exr-ch03-app2
+@exr-ch03-app1
 
 ```{r}
-#| warning: false
-#| message: false
+nba %>%
+  group_by(player) %>%
+  summarize(avg_ft= mean(ft, na.rm=TRUE))
+```
 
+@exr-ch03-app2
+```{r}
 nba %>%
   group_by(player) %>%
   mutate(spread = pts_tm - pts_opp ) %>%
@@ -156,12 +215,17 @@ nba_spread %>% arrange(desc(spread))
 ```
 Kobe Bryant had the largest win spread, winning the game by 55 points.
 
+@exr-ch03-app3
+```{r}
+titanic %>%
+  group_by(Pclass) %>% 
+  summarize(fare_calc= sum(Fare, na.rm=TRUE)) %>%
+  arrange(desc(fare_calc))
+```
+
 @exr-ch03-app4
 
 ```{r}
-#| warning: false
-#| message: false
-
 covid_join <- covid_states %>%
  group_by(location_key, state) %>%
  summarize(total_new_confirmed=sum(new_confirmed, na.rm=TRUE),
@@ -178,18 +242,13 @@ covid_joined
 @exr-ch03-adv1
 
 ```{r}
-#| warning: false
-#| message: false
-
 covid_pop <- covid_states %>% 
   filter(state_abbr %in% c("CA", "TX", "FL", "NY"))
 ```
 
 @exr-ch03-adv2
 ```{r}
-#| warning: false
-#| message: false
-
+library(lubridate)
 covid_confirmed <- covid_pop %>%
   filter(date<="2021-12-31", date>="2021-01-01") %>%
   mutate(week = week(date)) %>% 
@@ -202,6 +261,7 @@ ggplot(data=covid_confirmed,
 ```
 
 The linegraph shows that the states had the similar pattern overall. The peaks seem to correspond to weeks of holidays and school starting where people are gathering.
+
 
 ## Chapter 4 {#sec-ex04-sol}
 
