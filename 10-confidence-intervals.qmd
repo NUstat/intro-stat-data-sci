@@ -443,7 +443,7 @@ As expected, when we use the 90% critical value, approximately 90% of the confid
 
 ## Margin of Error and Width of an Interval
 
-Recall that we said in general, a confidence interal is of the form: 
+Recall that we said in general, a confidence interval is of the form: 
 
 $$\text{Estimate} \pm \text{Critical Value} * SE(\text{Estimate})$$
 
