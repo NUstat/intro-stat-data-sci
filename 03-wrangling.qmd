@@ -438,10 +438,8 @@ What happened here is that the second `group_by(month)` overrode the group struc
 :::{.callout-tip icon=false collapse=true}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
-
+Recall from @sec-viz when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the `summary_monthly_temp` data frame tell us about temperatures in New York City throughout the year?
 :::
-
-**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Recall from @sec-viz when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the `summary_monthly_temp` data frame tell us about temperatures in New York City throughout the year?
 
 :::{.callout-tip icon=false collapse=true}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`

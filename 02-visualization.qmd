@@ -819,7 +819,7 @@ ggplot(data = weather, mapping = aes(x = month, y = temp)) +
     1: Continuous x aesthetic -- did you forget aes(group=...)? 
     2: Removed 1 rows containing non-finite values (stat_boxplot). 
 
-Observe in @fig-badbox that this plot does not provide information about temperature separated by month. The warning messages clue us in as to why. The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as `NA` missing. However, the first warning message is telling us that we have a "continuous", or numerical variable, on the x-position aesthetic. Boxplots however require a categorical variable on the x-axis.
+Observe in @fig-badbox that this plot does not provide information about temperature separated by month. The warning messages clue us in as to why. The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as `NA` missing. However, the first warning message is telling us that we have a "continuous", or numerical variable, on the x-position aesthetic. Side-by-side boxplots require one categorical variable and one numeric variable.
 
 We can convert the numerical variable `month` into a categorical variable by using the `factor()` function. So after applying `factor(month)`, month goes from having numerical values 1, 2, ..., 12 to having labels "1", "2", ..., "12."
 

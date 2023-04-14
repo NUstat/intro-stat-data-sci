@@ -336,7 +336,7 @@ We set the arguments to `pivot_longer()` as follows:
 
 1. `values_to` is the name of the column/variable in the "tidy" frame that contains the rows and columns of values in the original data frame you want to tidy. Observe how we set `values_to = "servings"` and in the resulting `drinks_smaller_tidy` the column `servings` contains the 4 $\times$ 3 = 12 numerical values.
 
-The first argument, `cols`, is a little nuanced, so let's consider another example. Note the code below is very similar, but now the first argument species which columns we'd want to tidy `c(beer, spirit, wine)`, instead of the columns we don't want to tidy `-country`. Note the use of `c()` to create a vector of the columns in `drinks_smaller` that we'd like to tidy. If you run the code below, you'll see that the result is as `drinks_smaller_tidy`.
+The first argument, `cols`, is a little nuanced, so let's consider another example. Note the code below is very similar, but now the first argument specifies which columns we'd want to tidy `c(beer, spirit, wine)`, instead of the columns we don't want to tidy `-country`. Note the use of `c()` to create a vector of the columns in `drinks_smaller` that we'd like to tidy. If you run the code below, you'll see that the result is as `drinks_smaller_tidy`.
 
 ```{r}
 #| eval: false
