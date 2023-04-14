@@ -1020,11 +1020,11 @@ weather_summary <- weather %>%
 weather_summary
 ```
 
-a.  12 rows and 4 columns
-b.  4 rows and 12 columns
+a.  12 rows and 5 columns
+b.  5 rows and 12 columns
 c.  1 row and 4 columns
-d.  4 rows and 1 column
-e.  16 rows and 1 column
+d.  4 rows and 12 column
+e.  12 rows and 4 column
 :::
 
 ::: {#exr-ch03-c04}

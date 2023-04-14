@@ -170,7 +170,7 @@ ggplot(
 
 @exr-ch03-c02 d. `arrange()` , g. `filter()` , c. `mutate()`
 
-@exr-ch03-c03 c. 1 row and 4 columns
+@exr-ch03-c03 a. 12 row and 5 columns
 
 @exr-ch03-c04 b.  To make exploring a data frame easier by only outputting the variables of interest
 
