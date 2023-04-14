@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -1424,7 +1424,7 @@ div.csl-indent {
 <pre><code>Warning messages:
 1: Continuous x aesthetic -- did you forget aes(group=...)? 
 2: Removed 1 rows containing non-finite values (stat_boxplot). </code></pre>
-<p>Observe in <a href="#fig-badbox">Figure&nbsp;<span>2.22</span></a> that this plot does not provide information about temperature separated by month. The warning messages clue us in as to why. The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as <code>NA</code> missing. However, the first warning message is telling us that we have a “continuous”, or numerical variable, on the x-position aesthetic. Boxplots however require a categorical variable on the x-axis.</p>
+<p>Observe in <a href="#fig-badbox">Figure&nbsp;<span>2.22</span></a> that this plot does not provide information about temperature separated by month. The warning messages clue us in as to why. The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as <code>NA</code> missing. However, the first warning message is telling us that we have a “continuous”, or numerical variable, on the x-position aesthetic. Side-by-side boxplots require one categorical variable and one numeric variable.</p>
 <p>We can convert the numerical variable <code>month</code> into a categorical variable by using the <code>factor()</code> function. So after applying <code>factor(month)</code>, month goes from having numerical values 1, 2, …, 12 to having labels “1”, “2”, …, “12.”</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(month), <span class="at">y =</span> temp)) <span class="sc">+</span></span>

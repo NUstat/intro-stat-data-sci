@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -809,7 +809,7 @@ div.csl-indent {
 <li><p><code>names_to</code> is the name of the column/variable in the new “tidy” frame that contains the column names of the original data frame that you want to tidy. Observe how we set <code>names_to = "type"</code> and in the resulting <code>drinks_smaller_tidy</code> the column <code>type</code> contains the three types of alcohol <code>beer</code>, <code>spirit</code>, and <code>wine</code>.</p></li>
 <li><p><code>values_to</code> is the name of the column/variable in the “tidy” frame that contains the rows and columns of values in the original data frame you want to tidy. Observe how we set <code>values_to = "servings"</code> and in the resulting <code>drinks_smaller_tidy</code> the column <code>servings</code> contains the 4 <span class="math inline">\(\times\)</span> 3 = 12 numerical values.</p></li>
 </ol>
-<p>The first argument, <code>cols</code>, is a little nuanced, so let’s consider another example. Note the code below is very similar, but now the first argument species which columns we’d want to tidy <code>c(beer, spirit, wine)</code>, instead of the columns we don’t want to tidy <code>-country</code>. Note the use of <code>c()</code> to create a vector of the columns in <code>drinks_smaller</code> that we’d like to tidy. If you run the code below, you’ll see that the result is as <code>drinks_smaller_tidy</code>.</p>
+<p>The first argument, <code>cols</code>, is a little nuanced, so let’s consider another example. Note the code below is very similar, but now the first argument specifies which columns we’d want to tidy <code>c(beer, spirit, wine)</code>, instead of the columns we don’t want to tidy <code>-country</code>. Note the use of <code>c()</code> to create a vector of the columns in <code>drinks_smaller</code> that we’d like to tidy. If you run the code below, you’ll see that the result is as <code>drinks_smaller_tidy</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy drinks_smaller</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>drinks_smaller <span class="sc">%&gt;%</span> </span>
