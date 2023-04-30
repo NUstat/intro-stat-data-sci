@@ -283,7 +283,7 @@ Currently working on exercise solutions.
 
 @exr-ch05-c03 b) Between -1 and 0
 
-@exr-ch05-c04 a) explanatory variable & b) predictor variable & d) independent variable
+@exr-ch05-c04 a) explanatory variable & b) predictor variable & d) independent variable f) covariate
 
 @exr-ch05-c05  c) outcome variable & e) dependent variable
 
