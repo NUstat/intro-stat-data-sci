@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -143,6 +114,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -151,11 +123,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./02-visualization.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,7 +140,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -171,186 +148,212 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-            <i class="bi bi-bi-twitter pe-1"></i>
-          Twitter
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-            <i class="bi bi-bi-facebook pe-1"></i>
-          Facebook
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-            <i class="bi bi-bi-linkedin pe-1"></i>
-          LinkedIn
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Getting started</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-getting-started.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with Data in R</span></a>
+  <a href="./01-getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with Data in R</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Data Exploration via the tidyverse</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Exploration via the tidyverse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-visualization.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></a>
+  <a href="./02-visualization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-wrangling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></a>
+  <a href="./03-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-tidy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></a>
+  <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Data Modeling</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Data Modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></a>
+  <a href="./05-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-multiple-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></a>
+  <a href="./06-multiple-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Statistical Theory</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Statistical Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a>
+  <a href="./07-causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-populations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></a>
+  <a href="./08-populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-sampling-distributions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a>
+  <a href="./09-sampling-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Statistical Inference</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Statistical Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-confidence-intervals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a>
+  <a href="./10-confidence-intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-p-values.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></a>
+  <a href="./11-p-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-hypothesis-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></a>
+  <a href="./12-hypothesis-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-putting-together.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Putting it all together</span></a>
+  <a href="./13-putting-together.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Putting it all together</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./0a-statistical-background.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></a>
+  <a href="./0a-statistical-background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./0b-solutions-exercise.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></a>
+  <a href="./0b-solutions-exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></span></a>
   </div>
 </li>
       </ul>
@@ -358,6 +361,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -365,56 +369,56 @@ div.csl-indent {
    
   <ul>
   <li><a href="#packages-needed" id="toc-packages-needed" class="nav-link active" data-scroll-target="#packages-needed">Packages Needed</a></li>
-  <li><a href="#sec-grammarofgraphics" id="toc-sec-grammarofgraphics" class="nav-link" data-scroll-target="#sec-grammarofgraphics"><span class="toc-section-number">2.1</span>  The Grammar of Graphics</a>
+  <li><a href="#sec-grammarofgraphics" id="toc-sec-grammarofgraphics" class="nav-link" data-scroll-target="#sec-grammarofgraphics"><span class="header-section-number">2.1</span> The Grammar of Graphics</a>
   <ul class="collapse">
-  <li><a href="#components-of-the-grammar" id="toc-components-of-the-grammar" class="nav-link" data-scroll-target="#components-of-the-grammar"><span class="toc-section-number">2.1.1</span>  Components of the Grammar</a></li>
-  <li><a href="#sec-gapminder" id="toc-sec-gapminder" class="nav-link" data-scroll-target="#sec-gapminder"><span class="toc-section-number">2.1.2</span>  Gapminder data</a></li>
-  <li><a href="#other-components" id="toc-other-components" class="nav-link" data-scroll-target="#other-components"><span class="toc-section-number">2.1.3</span>  Other components</a></li>
-  <li><a href="#ggplot2-package" id="toc-ggplot2-package" class="nav-link" data-scroll-target="#ggplot2-package"><span class="toc-section-number">2.1.4</span>  ggplot2 package</a></li>
+  <li><a href="#components-of-the-grammar" id="toc-components-of-the-grammar" class="nav-link" data-scroll-target="#components-of-the-grammar"><span class="header-section-number">2.1.1</span> Components of the Grammar</a></li>
+  <li><a href="#sec-gapminder" id="toc-sec-gapminder" class="nav-link" data-scroll-target="#sec-gapminder"><span class="header-section-number">2.1.2</span> Gapminder data</a></li>
+  <li><a href="#other-components" id="toc-other-components" class="nav-link" data-scroll-target="#other-components"><span class="header-section-number">2.1.3</span> Other components</a></li>
+  <li><a href="#ggplot2-package" id="toc-ggplot2-package" class="nav-link" data-scroll-target="#ggplot2-package"><span class="header-section-number">2.1.4</span> ggplot2 package</a></li>
   </ul></li>
-  <li><a href="#sec-five-ng" id="toc-sec-five-ng" class="nav-link" data-scroll-target="#sec-five-ng"><span class="toc-section-number">2.2</span>  Five Named Graphs - The 5NG</a></li>
-  <li><a href="#sec-scatterplots" id="toc-sec-scatterplots" class="nav-link" data-scroll-target="#sec-scatterplots"><span class="toc-section-number">2.3</span>  5NG#1: Scatterplots</a>
+  <li><a href="#sec-five-ng" id="toc-sec-five-ng" class="nav-link" data-scroll-target="#sec-five-ng"><span class="header-section-number">2.2</span> Five Named Graphs - The 5NG</a></li>
+  <li><a href="#sec-scatterplots" id="toc-sec-scatterplots" class="nav-link" data-scroll-target="#sec-scatterplots"><span class="header-section-number">2.3</span> 5NG#1: Scatterplots</a>
   <ul class="collapse">
-  <li><a href="#sec-geompoint" id="toc-sec-geompoint" class="nav-link" data-scroll-target="#sec-geompoint"><span class="toc-section-number">2.3.1</span>  Scatterplots via geom_point</a></li>
-  <li><a href="#sec-overplotting" id="toc-sec-overplotting" class="nav-link" data-scroll-target="#sec-overplotting"><span class="toc-section-number">2.3.2</span>  Over-plotting</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">2.3.3</span>  Summary</a></li>
+  <li><a href="#sec-geompoint" id="toc-sec-geompoint" class="nav-link" data-scroll-target="#sec-geompoint"><span class="header-section-number">2.3.1</span> Scatterplots via geom_point</a></li>
+  <li><a href="#sec-overplotting" id="toc-sec-overplotting" class="nav-link" data-scroll-target="#sec-overplotting"><span class="header-section-number">2.3.2</span> Over-plotting</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.3.3</span> Summary</a></li>
   </ul></li>
-  <li><a href="#sec-linegraphs" id="toc-sec-linegraphs" class="nav-link" data-scroll-target="#sec-linegraphs"><span class="toc-section-number">2.4</span>  5NG#2: Linegraphs</a>
+  <li><a href="#sec-linegraphs" id="toc-sec-linegraphs" class="nav-link" data-scroll-target="#sec-linegraphs"><span class="header-section-number">2.4</span> 5NG#2: Linegraphs</a>
   <ul class="collapse">
-  <li><a href="#sec-geomline" id="toc-sec-geomline" class="nav-link" data-scroll-target="#sec-geomline"><span class="toc-section-number">2.4.1</span>  Linegraphs via geom_line</a></li>
-  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1"><span class="toc-section-number">2.4.2</span>  Summary</a></li>
+  <li><a href="#sec-geomline" id="toc-sec-geomline" class="nav-link" data-scroll-target="#sec-geomline"><span class="header-section-number">2.4.1</span> Linegraphs via geom_line</a></li>
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1"><span class="header-section-number">2.4.2</span> Summary</a></li>
   </ul></li>
-  <li><a href="#sec-histograms" id="toc-sec-histograms" class="nav-link" data-scroll-target="#sec-histograms"><span class="toc-section-number">2.5</span>  5NG#3: Histograms</a>
+  <li><a href="#sec-histograms" id="toc-sec-histograms" class="nav-link" data-scroll-target="#sec-histograms"><span class="header-section-number">2.5</span> 5NG#3: Histograms</a>
   <ul class="collapse">
-  <li><a href="#sec-geomhistogram" id="toc-sec-geomhistogram" class="nav-link" data-scroll-target="#sec-geomhistogram"><span class="toc-section-number">2.5.1</span>  Histograms via geom_histogram</a></li>
-  <li><a href="#sec-adjustbins" id="toc-sec-adjustbins" class="nav-link" data-scroll-target="#sec-adjustbins"><span class="toc-section-number">2.5.2</span>  Adjusting the bins</a></li>
-  <li><a href="#summary-2" id="toc-summary-2" class="nav-link" data-scroll-target="#summary-2"><span class="toc-section-number">2.5.3</span>  Summary</a></li>
+  <li><a href="#sec-geomhistogram" id="toc-sec-geomhistogram" class="nav-link" data-scroll-target="#sec-geomhistogram"><span class="header-section-number">2.5.1</span> Histograms via geom_histogram</a></li>
+  <li><a href="#sec-adjustbins" id="toc-sec-adjustbins" class="nav-link" data-scroll-target="#sec-adjustbins"><span class="header-section-number">2.5.2</span> Adjusting the bins</a></li>
+  <li><a href="#summary-2" id="toc-summary-2" class="nav-link" data-scroll-target="#summary-2"><span class="header-section-number">2.5.3</span> Summary</a></li>
   </ul></li>
-  <li><a href="#sec-facets" id="toc-sec-facets" class="nav-link" data-scroll-target="#sec-facets"><span class="toc-section-number">2.6</span>  Facets</a></li>
-  <li><a href="#sec-boxplots" id="toc-sec-boxplots" class="nav-link" data-scroll-target="#sec-boxplots"><span class="toc-section-number">2.7</span>  5NG#4: Boxplots</a>
+  <li><a href="#sec-facets" id="toc-sec-facets" class="nav-link" data-scroll-target="#sec-facets"><span class="header-section-number">2.6</span> Facets</a></li>
+  <li><a href="#sec-boxplots" id="toc-sec-boxplots" class="nav-link" data-scroll-target="#sec-boxplots"><span class="header-section-number">2.7</span> 5NG#4: Boxplots</a>
   <ul class="collapse">
-  <li><a href="#sec-geomboxplot" id="toc-sec-geomboxplot" class="nav-link" data-scroll-target="#sec-geomboxplot"><span class="toc-section-number">2.7.1</span>  Boxplots via geom_boxplot</a></li>
-  <li><a href="#summary-3" id="toc-summary-3" class="nav-link" data-scroll-target="#summary-3"><span class="toc-section-number">2.7.2</span>  Summary</a></li>
+  <li><a href="#sec-geomboxplot" id="toc-sec-geomboxplot" class="nav-link" data-scroll-target="#sec-geomboxplot"><span class="header-section-number">2.7.1</span> Boxplots via geom_boxplot</a></li>
+  <li><a href="#summary-3" id="toc-summary-3" class="nav-link" data-scroll-target="#summary-3"><span class="header-section-number">2.7.2</span> Summary</a></li>
   </ul></li>
-  <li><a href="#sec-geombar" id="toc-sec-geombar" class="nav-link" data-scroll-target="#sec-geombar"><span class="toc-section-number">2.8</span>  5NG#5: Barplots</a>
+  <li><a href="#sec-geombar" id="toc-sec-geombar" class="nav-link" data-scroll-target="#sec-geombar"><span class="header-section-number">2.8</span> 5NG#5: Barplots</a>
   <ul class="collapse">
-  <li><a href="#barplots-via-geom_bar-or-geom_col" id="toc-barplots-via-geom_bar-or-geom_col" class="nav-link" data-scroll-target="#barplots-via-geom_bar-or-geom_col"><span class="toc-section-number">2.8.1</span>  Barplots via geom_bar or geom_col</a></li>
-  <li><a href="#must-avoid-pie-charts" id="toc-must-avoid-pie-charts" class="nav-link" data-scroll-target="#must-avoid-pie-charts"><span class="toc-section-number">2.8.2</span>  Must avoid pie charts!</a></li>
-  <li><a href="#sec-two-categ-barplot" id="toc-sec-two-categ-barplot" class="nav-link" data-scroll-target="#sec-two-categ-barplot"><span class="toc-section-number">2.8.3</span>  Two categorical variables</a></li>
-  <li><a href="#summary-4" id="toc-summary-4" class="nav-link" data-scroll-target="#summary-4"><span class="toc-section-number">2.8.4</span>  Summary</a></li>
+  <li><a href="#barplots-via-geom_bar-or-geom_col" id="toc-barplots-via-geom_bar-or-geom_col" class="nav-link" data-scroll-target="#barplots-via-geom_bar-or-geom_col"><span class="header-section-number">2.8.1</span> Barplots via geom_bar or geom_col</a></li>
+  <li><a href="#must-avoid-pie-charts" id="toc-must-avoid-pie-charts" class="nav-link" data-scroll-target="#must-avoid-pie-charts"><span class="header-section-number">2.8.2</span> Must avoid pie charts!</a></li>
+  <li><a href="#sec-two-categ-barplot" id="toc-sec-two-categ-barplot" class="nav-link" data-scroll-target="#sec-two-categ-barplot"><span class="header-section-number">2.8.3</span> Two categorical variables</a></li>
+  <li><a href="#summary-4" id="toc-summary-4" class="nav-link" data-scroll-target="#summary-4"><span class="header-section-number">2.8.4</span> Summary</a></li>
   </ul></li>
-  <li><a href="#sec-data-vis-conclusion" id="toc-sec-data-vis-conclusion" class="nav-link" data-scroll-target="#sec-data-vis-conclusion"><span class="toc-section-number">2.9</span>  Conclusion</a>
+  <li><a href="#sec-data-vis-conclusion" id="toc-sec-data-vis-conclusion" class="nav-link" data-scroll-target="#sec-data-vis-conclusion"><span class="header-section-number">2.9</span> Conclusion</a>
   <ul class="collapse">
-  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table"><span class="toc-section-number">2.9.1</span>  Summary table</a></li>
-  <li><a href="#argument-specification" id="toc-argument-specification" class="nav-link" data-scroll-target="#argument-specification"><span class="toc-section-number">2.9.2</span>  Argument specification</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="toc-section-number">2.9.3</span>  Additional resources</a></li>
-  <li><a href="#sec-whats-to-come-3" id="toc-sec-whats-to-come-3" class="nav-link" data-scroll-target="#sec-whats-to-come-3"><span class="toc-section-number">2.9.4</span>  What’s to come</a></li>
+  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table"><span class="header-section-number">2.9.1</span> Summary table</a></li>
+  <li><a href="#argument-specification" id="toc-argument-specification" class="nav-link" data-scroll-target="#argument-specification"><span class="header-section-number">2.9.2</span> Argument specification</a></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">2.9.3</span> Additional resources</a></li>
+  <li><a href="#sec-whats-to-come-3" id="toc-sec-whats-to-come-3" class="nav-link" data-scroll-target="#sec-whats-to-come-3"><span class="header-section-number">2.9.4</span> What’s to come</a></li>
   </ul></li>
-  <li><a href="#sec-ex02" id="toc-sec-ex02" class="nav-link" data-scroll-target="#sec-ex02"><span class="toc-section-number">2.10</span>  Exercises</a>
+  <li><a href="#sec-ex02" id="toc-sec-ex02" class="nav-link" data-scroll-target="#sec-ex02"><span class="header-section-number">2.10</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#sec-ex02-conceptual" id="toc-sec-ex02-conceptual" class="nav-link" data-scroll-target="#sec-ex02-conceptual"><span class="toc-section-number">2.10.1</span>  Conceptual</a></li>
-  <li><a href="#sec-ex02-application" id="toc-sec-ex02-application" class="nav-link" data-scroll-target="#sec-ex02-application"><span class="toc-section-number">2.10.2</span>  Application</a></li>
-  <li><a href="#sec-ex02-advanced" id="toc-sec-ex02-advanced" class="nav-link" data-scroll-target="#sec-ex02-advanced"><span class="toc-section-number">2.10.3</span>  Advanced</a></li>
+  <li><a href="#sec-ex02-conceptual" id="toc-sec-ex02-conceptual" class="nav-link" data-scroll-target="#sec-ex02-conceptual"><span class="header-section-number">2.10.1</span> Conceptual</a></li>
+  <li><a href="#sec-ex02-application" id="toc-sec-ex02-application" class="nav-link" data-scroll-target="#sec-ex02-application"><span class="header-section-number">2.10.2</span> Application</a></li>
+  <li><a href="#sec-ex02-advanced" id="toc-sec-ex02-advanced" class="nav-link" data-scroll-target="#sec-ex02-advanced"><span class="header-section-number">2.10.3</span> Advanced</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/02-visualization.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -424,7 +428,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-viz" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></h1>
+<h1 class="title"><span id="sec-viz" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></h1>
 </div>
 
 
@@ -450,9 +454,6 @@ div.csl-indent {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-
-</div>
 </section>
 <section id="sec-grammarofgraphics" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-grammarofgraphics"><span class="header-section-number">2.1</span> The Grammar of Graphics</h2>
@@ -473,14 +474,11 @@ div.csl-indent {
 </section>
 <section id="sec-gapminder" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-gapminder"><span class="header-section-number">2.1.2</span> Gapminder data</h3>
-<div class="cell" data-layout-align="center">
-
-</div>
 <p>In February 2006, a statistician named Hans Rosling gave a TED talk titled <a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">“The best stats you’ve ever seen”</a> where he presented global economic, health, and development data from the website <a href="http://www.gapminder.org/tools/#_locale_id=en;&amp;chart-type=bubbles">gapminder.org</a>. For example, for the 142 countries included from 2007, let’s consider only the first 6 countries when listed alphabetically in <a href="#tbl-gapminder-2007">Table&nbsp;<span>2.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-gapminder-2007" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.1: Gapminder 2007 Data: First 6 of 142 countries</caption>
 <thead>
 <tr class="header">
@@ -553,7 +551,7 @@ div.csl-indent {
 <div id="fig-gapminder" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-gapminder-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: Life Expectancy over GDP per Capita in 2007</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Life Expectancy over GDP per Capita in 2007</figcaption>
 </figure>
 </div>
 </div>
@@ -570,7 +568,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-summary-gapminder" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.2: Summary of Grammar of Graphics for this plot</caption>
 <thead>
 <tr class="header">
@@ -653,12 +651,12 @@ div.csl-indent {
 </div>
 <p>For now we suggest you ignore how this code works; we’ll explain this in detail in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> when we cover data wrangling. However, convince yourself that this code does what it is supposed to by running <code>View(alaska_flights)</code>: it creates a new data frame <code>alaska_flights</code> consisting of only the 714 Alaska Airlines flights.</p>
 <p>We’ll see later in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> on data wrangling that this code uses the <code>dplyr</code> package for data wrangling to achieve our goal: it takes the <code>flights</code> data frame and <code>filter</code>s it to only return the rows where <code>carrier</code> is equal to <code>"AS"</code>, Alaska Airlines’ carrier code. Other examples of carrier codes include “AA” for American Airlines and “UA” for United Airlines. Recall from <a href="01-getting-started.html#sec-code"><span>Section&nbsp;1.2</span></a> that testing for equality is specified with <code>==</code> and not <code>=</code>. Fasten your seat belts and sit tight for now however, we’ll introduce these ideas more fully in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -698,7 +696,7 @@ div.csl-indent {
 <div id="fig-noalpha" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-noalpha-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Arrival Delays vs Departure Delays for Alaska Airlines flights from NYC in 2013</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.2: Arrival Delays vs Departure Delays for Alaska Airlines flights from NYC in 2013</figcaption>
 </figure>
 </div>
 </div>
@@ -716,17 +714,17 @@ div.csl-indent {
 <div id="fig-nolayers" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-nolayers-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.3: Plot with no layers</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.3: Plot with no layers</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -737,12 +735,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -753,12 +751,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -769,12 +767,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.5
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -785,12 +783,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.6
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -818,7 +816,7 @@ div.csl-indent {
 <div id="fig-alpha" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-alpha-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: Delay scatterplot with alpha = 0.2</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.4: Delay scatterplot with alpha = 0.2</figcaption>
 </figure>
 </div>
 </div>
@@ -843,7 +841,7 @@ div.csl-indent {
 <div id="fig-jitter-example-plot-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-jitter-example-plot-1-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Regular scatterplot of jitter example data</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.5: Regular scatterplot of jitter example data</figcaption>
 </figure>
 </div>
 </div>
@@ -854,7 +852,7 @@ div.csl-indent {
 <div id="fig-jitter-example-plot-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-jitter-example-plot-2-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.6: Jittered scatterplot of jitter example data</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.6: Jittered scatterplot of jitter example data</figcaption>
 </figure>
 </div>
 </div>
@@ -867,19 +865,19 @@ div.csl-indent {
 <div id="fig-jitter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-jitter-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.7: Jittered delay scatterplot</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.7: Jittered delay scatterplot</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Observe how the above code is identical to the code that created the scatterplot with overplotting in <a href="#sec-geompoint">Subsection&nbsp;<span>2.3.1</span></a>, but with <code>geom_point()</code> replaced with <code>geom_jitter()</code>.</p>
 <p>The resulting plot in <a href="#fig-jitter">Figure&nbsp;<span>2.7</span></a> helps us a little bit in getting a sense for the overplotting, but with a relatively large data set like this one (714 flights), it can be argued that changing the transparency of the points by setting <code>alpha</code> proved more effective. In terms of how much jitter one should add using the <code>width</code> and <code>height</code> arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.7
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -890,12 +888,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.8
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -935,12 +933,12 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>early_january_weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">"EWR"</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> day <span class="sc">&lt;=</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.9
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -951,12 +949,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.10
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -977,7 +975,7 @@ div.csl-indent {
 <div id="fig-hourlytemp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-hourlytemp-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.8: Hourly Temperature in Newark for January 1-15, 2013</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.8: Hourly Temperature in Newark for January 1-15, 2013</figcaption>
 </figure>
 </div>
 </div>
@@ -995,12 +993,12 @@ div.csl-indent {
 </ol></li>
 <li>We add a layer to the <code>ggplot()</code> function call using the <code>+</code> sign. The layer in question specifies the third component of the grammar: the <code>geom</code>etric object in question. In this case the geometric object is a <code>line</code>, set by specifying <code>geom_line()</code>.</li>
 </ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.11
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1011,12 +1009,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.12
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1027,12 +1025,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.13
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1064,7 +1062,7 @@ div.csl-indent {
 <div id="fig-temp-on-line" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-temp-on-line-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.9: Plot of Hourly Temperature Recordings from NYC in 2013</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.9: Plot of Hourly Temperature Recordings from NYC in 2013</figcaption>
 </figure>
 </div>
 </div>
@@ -1082,7 +1080,7 @@ div.csl-indent {
 <div id="fig-histogramexample" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-histogramexample-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.10: Example histogram</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.10: Example histogram</figcaption>
 </figure>
 </div>
 </div>
@@ -1110,7 +1108,7 @@ div.csl-indent {
 <div id="fig-weather-histogram" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-weather-histogram-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.11: Histogram of hourly temperatures at three NYC airports</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.11: Histogram of hourly temperatures at three NYC airports</figcaption>
 </figure>
 </div>
 </div>
@@ -1124,7 +1122,7 @@ div.csl-indent {
 <div id="fig-weather-histogram-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-weather-histogram-2-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.12: Histogram of hourly temperatures at three NYC airports with white borders</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.12: Histogram of hourly temperatures at three NYC airports with white borders</figcaption>
 </figure>
 </div>
 </div>
@@ -1137,7 +1135,7 @@ div.csl-indent {
 <div id="fig-weather-histogram-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-weather-histogram-3-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.13: Histogram of hourly temperatures at three NYC airports with white borders</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.13: Histogram of hourly temperatures at three NYC airports with white borders</figcaption>
 </figure>
 </div>
 </div>
@@ -1158,7 +1156,7 @@ div.csl-indent {
 <div id="fig-hist-bins40" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-hist-bins40-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.14: Histogram with 40 bins</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.14: Histogram with 40 bins</figcaption>
 </figure>
 </div>
 </div>
@@ -1171,17 +1169,17 @@ div.csl-indent {
 <div id="fig-hist-binwidth10" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-hist-binwidth10-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.15: Histogram with binwidth 10</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.15: Histogram with binwidth 10</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.14
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1192,12 +1190,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.15
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1208,12 +1206,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.16
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1224,12 +1222,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.17
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1258,7 +1256,7 @@ div.csl-indent {
 <div id="fig-facethistogram" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-facethistogram-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.16: Faceted histogram</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.16: Faceted histogram</figcaption>
 </figure>
 </div>
 </div>
@@ -1272,18 +1270,18 @@ div.csl-indent {
 <div id="fig-facethistogram2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-facethistogram2-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.17: Faceted histogram with 4 instead of 3 rows</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.17: Faceted histogram with 4 instead of 3 rows</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Observe in both <a href="#fig-facethistogram">Figure&nbsp;<span>2.16</span></a> and <a href="#fig-facethistogram2">Figure&nbsp;<span>2.17</span></a> that as we might expect in the Northern Hemisphere, temperatures tend to be higher in the summer months, while they tend to be lower in the winter.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.18
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1294,12 +1292,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.19
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1310,12 +1308,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.20
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1326,12 +1324,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.21
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1351,7 +1349,7 @@ div.csl-indent {
 <div id="fig-nov1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-nov1-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.18: November temperatures</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.18: November temperatures</figcaption>
 </figure>
 </div>
 </div>
@@ -1370,7 +1368,7 @@ div.csl-indent {
 <div id="fig-nov2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-nov2-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.19: November temperatures</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.19: November temperatures</figcaption>
 </figure>
 </div>
 </div>
@@ -1381,7 +1379,7 @@ div.csl-indent {
 <div id="fig-nov3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-nov3-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.20: November temperatures</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.20: November temperatures</figcaption>
 </figure>
 </div>
 </div>
@@ -1400,7 +1398,7 @@ div.csl-indent {
 <div id="fig-nov4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-nov4-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.21: November temperatures</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.21: November temperatures</figcaption>
 </figure>
 </div>
 </div>
@@ -1416,7 +1414,7 @@ div.csl-indent {
 <div id="fig-badbox" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-badbox-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.22: Invalid boxplot specification</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.22: Invalid boxplot specification</figcaption>
 </figure>
 </div>
 </div>
@@ -1433,7 +1431,7 @@ div.csl-indent {
 <div id="fig-monthtempbox" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-monthtempbox-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.23: Temp by month boxplot</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.23: Temp by month boxplot</figcaption>
 </figure>
 </div>
 </div>
@@ -1446,12 +1444,12 @@ div.csl-indent {
 <li><p>The dots representing values falling outside the whiskers are called <em>outliers</em>. These can be thought of as anomalous values.</p></li>
 </ul>
 <p>It is important to keep in mind that the definition of an outlier is somewhat arbitrary and not absolute. In this case, they are defined by the length of the whiskers, which are no more than <span class="math inline">\(1.5 \times IQR\)</span> units long. Looking at this plot we can see, as expected, that summer months (6 through 8) have higher median temperatures as evidenced by the higher solid lines in the middle of the boxes. We can easily compare temperatures across months by drawing imaginary horizontal lines across the plot. Furthermore, the height of the 12 boxes as quantified by the interquartile ranges are informative too; they tell us about variability, or spread, of temperatures recorded in a given month.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.22
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1462,12 +1460,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.23
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1478,12 +1476,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.24
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1494,12 +1492,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.25
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1563,7 +1561,7 @@ div.csl-indent {
 <div id="fig-geombar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-geombar-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.24: Barplot when counts are not pre-counted</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.24: Barplot when counts are not pre-counted</figcaption>
 </figure>
 </div>
 </div>
@@ -1576,7 +1574,7 @@ div.csl-indent {
 <div id="fig-geomcol" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-geomcol-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.25: Barplot when counts are pre-counted</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.25: Barplot when counts are pre-counted</figcaption>
 </figure>
 </div>
 </div>
@@ -1594,7 +1592,7 @@ div.csl-indent {
 <div id="fig-flightsbar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-flightsbar-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.26: Number of flights departing NYC in 2013 by airline using <code>geom_bar()</code></figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.26: Number of flights departing NYC in 2013 by airline using <code>geom_bar()</code></figcaption>
 </figure>
 </div>
 </div>
@@ -1604,7 +1602,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-flights-counted" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.3: Number of flights pre-counted for each carrier</caption>
 <thead>
 <tr class="header">
@@ -1687,12 +1685,12 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights_table, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">y =</span> number)) <span class="sc">+</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.26
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1703,12 +1701,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.27
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1719,12 +1717,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.28
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1735,12 +1733,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.29
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1761,7 +1759,7 @@ div.csl-indent {
 <div id="fig-carrierpie" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-carrierpie-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.27: The dreaded pie chart</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.27: The dreaded pie chart</figcaption>
 </figure>
 </div>
 </div>
@@ -1777,15 +1775,15 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Pie-I-have-Eaten.jpg" class="img-fluid figure-img" style="width:3.79in"></p>
-<p></p><figcaption class="figure-caption">The only good pie chart</figcaption><p></p>
+<figcaption class="figure-caption">The only good pie chart</figcaption>
 </figure>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.30
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1796,12 +1794,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.31
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1835,7 +1833,7 @@ div.csl-indent {
 <div id="fig-flights-stacked-bar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-flights-stacked-bar-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.28: Stacked barplot comparing the number of flights by carrier and origin</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.28: Stacked barplot comparing the number of flights by carrier and origin</figcaption>
 </figure>
 </div>
 </div>
@@ -1854,17 +1852,17 @@ div.csl-indent {
 <div id="fig-flights-stacked-bar-color" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-flights-stacked-bar-color-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.29: Stacked barplot with color aesthetic used instead of fill</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.29: Stacked barplot with color aesthetic used instead of fill</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.32
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1875,12 +1873,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.33
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1899,17 +1897,17 @@ div.csl-indent {
 <div id="fig-flights-bar-dodge" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-flights-bar-dodge-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.30: Side-by-side AKA dodged barplot comparing the number of flights by carrier and origin</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.30: Side-by-side AKA dodged barplot comparing the number of flights by carrier and origin</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.34
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1920,12 +1918,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.35
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1945,17 +1943,17 @@ div.csl-indent {
 <div id="fig-facet-bar-vert" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-visualization_files/figure-html/fig-facet-bar-vert-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.31: Faceted barplot comparing the number of flights by carrier and origin</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.31: Faceted barplot comparing the number of flights by carrier and origin</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.36
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1966,12 +1964,12 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <span class="emoji" data-emoji="dart">🎯</span> Learning Check 2.37
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1996,7 +1994,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-viz-summary" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.4: Summary of 5NG</caption>
 <colgroup>
 <col style="width: 4%">
@@ -2071,7 +2069,7 @@ div.csl-indent {
 <div id="fig-ggplot-cheatsheet" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/ggplot_cheatsheet-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat</figcaption>
 </figure>
 </div>
 </section>
@@ -2277,17 +2275,17 @@ div.csl-indent {
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-rds2016" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-rds2016" class="csl-entry" role="listitem">
 Grolemund, Garrett, and Hadley Wickham. 2016. <em>R for Data Science</em>. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
 </div>
-<div id="ref-robbins2013" class="csl-entry" role="doc-biblioentry">
+<div id="ref-robbins2013" class="csl-entry" role="listitem">
 Robbins, Naomi. 2013. <em>Creating More Effective Graphs</em>. Chart House.
 </div>
-<div id="ref-R-ggplot2" class="csl-entry" role="doc-biblioentry">
+<div id="ref-R-ggplot2" class="csl-entry" role="listitem">
 Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2022. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
 </div>
-<div id="ref-wilkinson2005" class="csl-entry" role="doc-biblioentry">
+<div id="ref-wilkinson2005" class="csl-entry" role="listitem">
 Wilkinson, Leland. 2005. <em>The Grammar of Graphics (Statistics and Computing)</em>. Secaucus, NJ, USA: Springer-Verlag New York, Inc.
 </div>
 </div>
@@ -2322,9 +2320,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2389,6 +2401,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -124,6 +95,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -132,11 +104,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./09-sampling-distributions.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -144,7 +121,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -152,186 +129,212 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
-    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-            <i class="bi bi-bi-twitter pe-1"></i>
-          Twitter
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-            <i class="bi bi-bi-facebook pe-1"></i>
-          Facebook
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-            <i class="bi bi-bi-linkedin pe-1"></i>
-          LinkedIn
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Getting started</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-getting-started.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with Data in R</span></a>
+  <a href="./01-getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with Data in R</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Data Exploration via the tidyverse</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Exploration via the tidyverse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></a>
+  <a href="./02-visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-wrangling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></a>
+  <a href="./03-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-tidy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></a>
+  <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Data Modeling</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Data Modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></a>
+  <a href="./05-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-multiple-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></a>
+  <a href="./06-multiple-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Statistical Theory</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Statistical Theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-causality.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a>
+  <a href="./07-causality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-populations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></a>
+  <a href="./08-populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-sampling-distributions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a>
+  <a href="./09-sampling-distributions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Statistical Inference</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Statistical Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-confidence-intervals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a>
+  <a href="./10-confidence-intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-p-values.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></a>
+  <a href="./11-p-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-hypothesis-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></a>
+  <a href="./12-hypothesis-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-putting-together.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Putting it all together</span></a>
+  <a href="./13-putting-together.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Putting it all together</span></span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./0a-statistical-background.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></a>
+  <a href="./0a-statistical-background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./0b-solutions-exercise.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></a>
+  <a href="./0b-solutions-exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></span></a>
   </div>
 </li>
       </ul>
@@ -339,6 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -346,46 +350,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#needed-packages" id="toc-needed-packages" class="nav-link active" data-scroll-target="#needed-packages">Needed packages</a></li>
-  <li><a href="#sec-parametric" id="toc-sec-parametric" class="nav-link" data-scroll-target="#sec-parametric"><span class="toc-section-number">9.1</span>  Distributions</a>
+  <li><a href="#sec-parametric" id="toc-sec-parametric" class="nav-link" data-scroll-target="#sec-parametric"><span class="header-section-number">9.1</span> Distributions</a>
   <ul class="collapse">
-  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="toc-section-number">9.1.1</span>  Normal Distribution</a></li>
-  <li><a href="#empirical-rule" id="toc-empirical-rule" class="nav-link" data-scroll-target="#empirical-rule"><span class="toc-section-number">9.1.2</span>  Empirical Rule</a></li>
-  <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization"><span class="toc-section-number">9.1.3</span>  Standardization</a></li>
-  <li><a href="#t-distribution" id="toc-t-distribution" class="nav-link" data-scroll-target="#t-distribution"><span class="toc-section-number">9.1.4</span>  T-Distribution</a></li>
-  <li><a href="#normal-vs-t" id="toc-normal-vs-t" class="nav-link" data-scroll-target="#normal-vs-t"><span class="toc-section-number">9.1.5</span>  Normal vs T</a></li>
-  <li><a href="#chi-squared-distribution" id="toc-chi-squared-distribution" class="nav-link" data-scroll-target="#chi-squared-distribution"><span class="toc-section-number">9.1.6</span>  Chi-squared Distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">9.1.1</span> Normal Distribution</a></li>
+  <li><a href="#empirical-rule" id="toc-empirical-rule" class="nav-link" data-scroll-target="#empirical-rule"><span class="header-section-number">9.1.2</span> Empirical Rule</a></li>
+  <li><a href="#standardization" id="toc-standardization" class="nav-link" data-scroll-target="#standardization"><span class="header-section-number">9.1.3</span> Standardization</a></li>
+  <li><a href="#t-distribution" id="toc-t-distribution" class="nav-link" data-scroll-target="#t-distribution"><span class="header-section-number">9.1.4</span> T-Distribution</a></li>
+  <li><a href="#normal-vs-t" id="toc-normal-vs-t" class="nav-link" data-scroll-target="#normal-vs-t"><span class="header-section-number">9.1.5</span> Normal vs T</a></li>
+  <li><a href="#chi-squared-distribution" id="toc-chi-squared-distribution" class="nav-link" data-scroll-target="#chi-squared-distribution"><span class="header-section-number">9.1.6</span> Chi-squared Distribution</a></li>
   </ul></li>
-  <li><a href="#sec-repeat-sample" id="toc-sec-repeat-sample" class="nav-link" data-scroll-target="#sec-repeat-sample"><span class="toc-section-number">9.2</span>  Repeated Sampling</a>
+  <li><a href="#sec-repeat-sample" id="toc-sec-repeat-sample" class="nav-link" data-scroll-target="#sec-repeat-sample"><span class="header-section-number">9.2</span> Repeated Sampling</a>
   <ul class="collapse">
-  <li><a href="#sec-theory" id="toc-sec-theory" class="nav-link" data-scroll-target="#sec-theory"><span class="toc-section-number">9.2.1</span>  Theory of Repeated Samples</a></li>
-  <li><a href="#sec-sampling-activity" id="toc-sec-sampling-activity" class="nav-link" data-scroll-target="#sec-sampling-activity"><span class="toc-section-number">9.2.2</span>  Sampling Activity</a></li>
-  <li><a href="#sec-sampling-simulation" id="toc-sec-sampling-simulation" class="nav-link" data-scroll-target="#sec-sampling-simulation"><span class="toc-section-number">9.2.3</span>  Computer simulation</a></li>
+  <li><a href="#sec-theory" id="toc-sec-theory" class="nav-link" data-scroll-target="#sec-theory"><span class="header-section-number">9.2.1</span> Theory of Repeated Samples</a></li>
+  <li><a href="#sec-sampling-activity" id="toc-sec-sampling-activity" class="nav-link" data-scroll-target="#sec-sampling-activity"><span class="header-section-number">9.2.2</span> Sampling Activity</a></li>
+  <li><a href="#sec-sampling-simulation" id="toc-sec-sampling-simulation" class="nav-link" data-scroll-target="#sec-sampling-simulation"><span class="header-section-number">9.2.3</span> Computer simulation</a></li>
   </ul></li>
-  <li><a href="#sec-properties_s" id="toc-sec-properties_s" class="nav-link" data-scroll-target="#sec-properties_s"><span class="toc-section-number">9.3</span>  Properties of Sampling Distributions</a>
+  <li><a href="#sec-properties_s" id="toc-sec-properties_s" class="nav-link" data-scroll-target="#sec-properties_s"><span class="header-section-number">9.3</span> Properties of Sampling Distributions</a>
   <ul class="collapse">
-  <li><a href="#sec-bias" id="toc-sec-bias" class="nav-link" data-scroll-target="#sec-bias"><span class="toc-section-number">9.3.1</span>  Mean of the sampling distribution</a></li>
-  <li><a href="#sec-precision" id="toc-sec-precision" class="nav-link" data-scroll-target="#sec-precision"><span class="toc-section-number">9.3.2</span>  Standard deviation of the sampling distribution</a></li>
-  <li><a href="#sec-conf" id="toc-sec-conf" class="nav-link" data-scroll-target="#sec-conf"><span class="toc-section-number">9.3.3</span>  Confusing concepts</a></li>
+  <li><a href="#sec-bias" id="toc-sec-bias" class="nav-link" data-scroll-target="#sec-bias"><span class="header-section-number">9.3.1</span> Mean of the sampling distribution</a></li>
+  <li><a href="#sec-precision" id="toc-sec-precision" class="nav-link" data-scroll-target="#sec-precision"><span class="header-section-number">9.3.2</span> Standard deviation of the sampling distribution</a></li>
+  <li><a href="#sec-conf" id="toc-sec-conf" class="nav-link" data-scroll-target="#sec-conf"><span class="header-section-number">9.3.3</span> Confusing concepts</a></li>
   </ul></li>
-  <li><a href="#sec-commonstat" id="toc-sec-commonstat" class="nav-link" data-scroll-target="#sec-commonstat"><span class="toc-section-number">9.4</span>  Common statistics and their theoretical distributions</a>
+  <li><a href="#sec-commonstat" id="toc-sec-commonstat" class="nav-link" data-scroll-target="#sec-commonstat"><span class="header-section-number">9.4</span> Common statistics and their theoretical distributions</a>
   <ul class="collapse">
-  <li><a href="#standard-errors-based-on-theory" id="toc-standard-errors-based-on-theory" class="nav-link" data-scroll-target="#standard-errors-based-on-theory"><span class="toc-section-number">9.4.1</span>  Standard Errors based on Theory</a></li>
+  <li><a href="#standard-errors-based-on-theory" id="toc-standard-errors-based-on-theory" class="nav-link" data-scroll-target="#standard-errors-based-on-theory"><span class="header-section-number">9.4.1</span> Standard Errors based on Theory</a></li>
   </ul></li>
-  <li><a href="#sec-size" id="toc-sec-size" class="nav-link" data-scroll-target="#sec-size"><span class="toc-section-number">9.5</span>  Sample Size and Sampling Distributions</a>
+  <li><a href="#sec-size" id="toc-sec-size" class="nav-link" data-scroll-target="#sec-size"><span class="header-section-number">9.5</span> Sample Size and Sampling Distributions</a>
   <ul class="collapse">
-  <li><a href="#sec-eg1" id="toc-sec-eg1" class="nav-link" data-scroll-target="#sec-eg1"><span class="toc-section-number">9.5.1</span>  Sampling balls with different sized shovels</a></li>
+  <li><a href="#sec-eg1" id="toc-sec-eg1" class="nav-link" data-scroll-target="#sec-eg1"><span class="header-section-number">9.5.1</span> Sampling balls with different sized shovels</a></li>
   </ul></li>
-  <li><a href="#sec-clt" id="toc-sec-clt" class="nav-link" data-scroll-target="#sec-clt"><span class="toc-section-number">9.6</span>  Central Limit Theorem (CLT)</a>
+  <li><a href="#sec-clt" id="toc-sec-clt" class="nav-link" data-scroll-target="#sec-clt"><span class="header-section-number">9.6</span> Central Limit Theorem (CLT)</a>
   <ul class="collapse">
-  <li><a href="#clt-conditions" id="toc-clt-conditions" class="nav-link" data-scroll-target="#clt-conditions"><span class="toc-section-number">9.6.1</span>  CLT conditions</a></li>
-  <li><a href="#sec-clt-example" id="toc-sec-clt-example" class="nav-link" data-scroll-target="#sec-clt-example"><span class="toc-section-number">9.6.2</span>  CLT example</a></li>
+  <li><a href="#clt-conditions" id="toc-clt-conditions" class="nav-link" data-scroll-target="#clt-conditions"><span class="header-section-number">9.6.1</span> CLT conditions</a></li>
+  <li><a href="#sec-clt-example" id="toc-sec-clt-example" class="nav-link" data-scroll-target="#sec-clt-example"><span class="header-section-number">9.6.2</span> CLT example</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="toc-section-number">9.7</span>  Conclusion</a></li>
-  <li><a href="#sec-ex09" id="toc-sec-ex09" class="nav-link" data-scroll-target="#sec-ex09"><span class="toc-section-number">9.8</span>  Exercises</a>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">9.7</span> Conclusion</a></li>
+  <li><a href="#sec-ex09" id="toc-sec-ex09" class="nav-link" data-scroll-target="#sec-ex09"><span class="header-section-number">9.8</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#sec-ex09-conceptual" id="toc-sec-ex09-conceptual" class="nav-link" data-scroll-target="#sec-ex09-conceptual"><span class="toc-section-number">9.8.1</span>  Conceptual</a></li>
-  <li><a href="#sec-ex09-application" id="toc-sec-ex09-application" class="nav-link" data-scroll-target="#sec-ex09-application"><span class="toc-section-number">9.8.2</span>  Application</a></li>
-  <li><a href="#sec-ex09-advanced" id="toc-sec-ex09-advanced" class="nav-link" data-scroll-target="#sec-ex09-advanced"><span class="toc-section-number">9.8.3</span>  Advanced</a></li>
+  <li><a href="#sec-ex09-conceptual" id="toc-sec-ex09-conceptual" class="nav-link" data-scroll-target="#sec-ex09-conceptual"><span class="header-section-number">9.8.1</span> Conceptual</a></li>
+  <li><a href="#sec-ex09-application" id="toc-sec-ex09-application" class="nav-link" data-scroll-target="#sec-ex09-application"><span class="header-section-number">9.8.2</span> Application</a></li>
+  <li><a href="#sec-ex09-advanced" id="toc-sec-ex09-advanced" class="nav-link" data-scroll-target="#sec-ex09-advanced"><span class="header-section-number">9.8.3</span> Advanced</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/09-sampling-distributions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -395,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-sampling" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></h1>
+<h1 class="title"><span id="sec-sampling" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></h1>
 </div>
 
 
@@ -421,9 +425,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(UsingR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-
-</div>
 </section>
 <section id="sec-parametric" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="sec-parametric"><span class="header-section-number">9.1</span> Distributions</h2>
@@ -431,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-distribution" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/distribution.png" class="img-fluid figure-img" data-out.width="100%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.1: Common distribution shapes</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.1: Common distribution shapes</figcaption>
 </figure>
 </div>
 <!-- retrieved diagram from previous 202 slides need to cite?-->
@@ -449,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-normaldist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-normaldist-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.2: Normal distribution</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.2: Normal distribution</figcaption>
 </figure>
 </div>
 </div>
@@ -507,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-empirical-rule2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/empirical_rule.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.3: Empirical Rule: property of the Normal Distribution</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.3: Empirical Rule: property of the Normal Distribution</figcaption>
 </figure>
 </div>
 <!-- retrieved diagram from previous 202 slides need to cite?-->
@@ -546,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-standardization1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/standardization.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.4: Converting normally distributed data to standard normal.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.4: Converting normally distributed data to standard normal.</figcaption>
 </figure>
 </div>
 <p>In some literature, STAT is called a Z-score or test statistic. Standardization is a useful statistical tool as it allows us to put measures that are on different scales all onto the same scale. For example, if we have a STAT value of 2.5, we know it will fall fairly far out in the right tail of the distribution. Or if we have a STAT value of -0.5, we know it falls slightly to the left of center. This is displayed in <a href="#fig-STAT-values">Figure&nbsp;<span>9.5</span></a>.</p>
@@ -555,7 +556,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-STAT-values" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-STAT-values-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.5: N(0,1) example values: STAT = -0.5, STAT = 2.5</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.5: N(0,1) example values: STAT = -0.5, STAT = 2.5</figcaption>
 </figure>
 </div>
 </div>
@@ -564,7 +565,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-standardization2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/standardization2.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.6: Standardized birth weight distribution.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.6: Standardized birth weight distribution.</figcaption>
 </figure>
 </div>
 <p>What if we wanted to know the percent of babies that weigh less than 95 ounces at birth? Start by converting the value 95 to STAT.</p>
@@ -572,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-standardization3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/standardization3.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.7: Standardized birth weight distribution.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.7: Standardized birth weight distribution.</figcaption>
 </figure>
 </div>
 <p>We can calculate the exact probability of a baby weighing less than 95 ounces using the <code>pnorm()</code> function.</p>
@@ -591,7 +592,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-standardization4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/standardization4.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.8: Standardized birth weight distribution.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.8: Standardized birth weight distribution.</figcaption>
 </figure>
 </div>
 <p>We will use the function <code>qnorm()</code>.</p>
@@ -616,7 +617,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-t-dist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-t-dist-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.9: t-distribution with example 95% cutoff values</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.9: t-distribution with example 95% cutoff values</figcaption>
 </figure>
 </div>
 </div>
@@ -666,7 +667,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-sampling-exercise-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/sampling_bowl_1.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.10: A bowl with red and white balls.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.10: A bowl with red and white balls.</figcaption>
 </figure>
 </div>
 <p>The goal of the activity is to understand what would happen if we didn’t actually count all of the red balls (a census), but instead estimated the proportion that are red based upon a smaller random sample (e.g., n = 50).</p>
@@ -677,14 +678,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-sampling-exercise-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/sampling_bowl_2.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.11: Inserting a shovel into the bowl.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.11: Inserting a shovel into the bowl.</figcaption>
 </figure>
 </div>
 <p>Using the shovel, we remove a number of balls as seen in <a href="#fig-sampling-exercise-3">Figure&nbsp;<span>9.12</span></a>.</p>
 <div id="fig-sampling-exercise-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/sampling_bowl_3_cropped.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.12: Fifty balls from the bowl.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.12: Fifty balls from the bowl.</figcaption>
 </figure>
 </div>
 <p>Observe that 17 of the balls are red. There are a total of 5 x 10 = 50 balls, and thus 0.34 = 34% of the shovel’s balls are red. We can view the proportion of balls that are red <em>in this shovel</em> as a guess of the proportion of balls that are red <em>in the entire bowl</em>. While not as exact as doing an exhaustive count, our guess of 34% took much less time and energy to obtain.</p>
@@ -718,14 +719,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-sampling-exercise-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/sampling/tactile_3_a.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.13: Constructing a histogram of proportions.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.13: Constructing a histogram of proportions.</figcaption>
 </figure>
 </div>
 <p>Recall from <a href="02-visualization.html#sec-histograms"><span>Section&nbsp;2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center and in particular how they vary. The resulting hand-drawn histogram can be seen in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>.</p>
 <div id="fig-sampling-exercise-5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/sampling/tactile_3_c.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.14: Hand-drawn histogram of 33 proportions.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.14: Hand-drawn histogram of 33 proportions.</figcaption>
 </figure>
 </div>
 <p>Observe the following about the histogram in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>:</p>
@@ -744,7 +745,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-tactilered" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.1: First 10 out of 33 groups’ proportion of 50 balls that are red.</caption>
 <thead>
 <tr class="header">
@@ -833,7 +834,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fig-samplingdistribution-tactile" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-tactile-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.15: Distribution of 33 proportions based on 33 samples of size 50</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.15: Distribution of 33 proportions based on 33 samples of size 50</figcaption>
 </figure>
 </div>
 </div>
@@ -887,7 +888,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-virtual-shovel" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.2: First 10 sampled balls of 50 in virtual sample</caption>
 <thead>
 <tr class="header">
@@ -987,9 +988,6 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 1         1      12</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-
-</div>
 <p>Why does this work? Because R treats <code>TRUE</code> like the number <code>1</code> and <code>FALSE</code> like the number <code>0</code>. So summing the number of <code>TRUE</code>’s and <code>FALSE</code>’s is equivalent to summing <code>1</code>’s and <code>0</code>’s, which in the end counts the number of balls where <code>color</code> is <code>red</code>. In our case, 12 of the 50 balls were red.</p>
 <p>Third and last, we compute the proportion of the 50 sampled balls that are red by dividing <code>num_red</code> by 50:</p>
 <div class="cell" data-layout-align="center">
@@ -1003,9 +1001,6 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
       &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
 1         1      12     0.24</code></pre>
 </div>
-</div>
-<div class="cell" data-layout-align="center">
-
 </div>
 <p>In other words, this “virtual” sample’s balls were 24% red. Let’s make the above code a little more compact and succinct by combining the first <code>mutate()</code> and the <code>summarize()</code> as follows:</p>
 <div class="cell" data-layout-align="center">
@@ -1029,9 +1024,6 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-
-</div>
 <p>Observe that while the first 50 rows of <code>replicate</code> are equal to <code>1</code>, the next 50 rows of <code>replicate</code> are equal to <code>2</code>. This is telling us that the first 50 rows correspond to the first sample of 50 balls while the next 50 correspond to the second sample of 50 balls. This pattern continues for all <code>reps = 10000</code> replicates and thus <code>virtual_samples</code> has 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows.</p>
 <p>Let’s now take the data frame <code>virtual_samples</code> with 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows corresponding to 10,000 samples of size 50 balls and compute the resulting 10,000 proportions red. We’ll use the same <code>dplyr</code> verbs as we did in the previous section, but this time with an additional <code>group_by()</code> of the <code>replicate</code> variable. Recall from <a href="03-wrangling.html#sec-groupby"><span>Section&nbsp;3.4</span></a> that by assigning the grouping variable “meta-data” before <code>summarizing()</code>, we’ll obtain 10,000 different proportions red:</p>
 <div class="cell" data-layout-align="center">
@@ -1046,7 +1038,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-virtualred" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.3: First 10 out of 33 virtual proportion of 50 balls that are red.</caption>
 <thead>
 <tr class="header">
@@ -1123,7 +1115,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div id="fig-samplingdistribution-virtual" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-virtual-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.16: Distribution of 10,000 proportions based on 10,000 samples of size 50</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.16: Distribution of 10,000 proportions based on 10,000 samples of size 50</figcaption>
 </figure>
 </div>
 </div>
@@ -1188,16 +1180,13 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </div>
 <p>Let’s draw 10,000 repeated samples of n = 5 countries from this population. The data for the first 2 samples (replicates) is shown in <a href="#tbl-s2-bias">Table&nbsp;<span>9.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
-
-</div>
-<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">rep_sample_n</span>(gapminder_2016, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">reps =</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(replicate, country, year, life_expectancy, continent, region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-s2-bias" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.4: Life expectancy data for 2 out of 10,000 samples of size n = 5 countries</caption>
 <colgroup>
 <col style="width: 14%">
@@ -1318,7 +1307,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-s2-bias-2" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.5: Sample variances of life expectancy for first 10 samples</caption>
 <thead>
 <tr class="header">
@@ -1412,7 +1401,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div id="fig-s2-bias-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-s2-bias-3-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.17: Sample variance estimates for 10,000 samples of size n = 5</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.17: Sample variance estimates for 10,000 samples of size n = 5</figcaption>
 </figure>
 </div>
 </div>
@@ -1432,7 +1421,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div id="fig-bias-precision" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/bias-precision.png" class="img-fluid figure-img" data-out.width="100%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.18: Bias vs.&nbsp;Precision</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.18: Bias vs.&nbsp;Precision</figcaption>
 </figure>
 </div>
 </section>
@@ -1460,7 +1449,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-SE-table-ch-9" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.6: Properties of Sample Statistics</caption>
 <colgroup>
 <col style="width: 12%">
@@ -1635,7 +1624,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div id="fig-comparing-sampling-distributions" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-comparing-sampling-distributions-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.19: Comparing the distributions of proportion red for different sample sizes</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.19: Comparing the distributions of proportion red for different sample sizes</figcaption>
 </figure>
 </div>
 </div>
@@ -1657,7 +1646,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="tbl-comparing-n" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;9.7: Comparing standard error of proportion red for 3 different shovels.</caption>
 <thead>
 <tr class="header">
@@ -1725,7 +1714,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div id="fig-infant-mortality" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.20: Infant mortality rates per 1,000 live births across 178 countries in 2015</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.20: Infant mortality rates per 1,000 live births across 178 countries in 2015</figcaption>
 </figure>
 </div>
 </div>
@@ -1758,13 +1747,10 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <div id="fig-infant-mortality-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-2-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for various sample sizes</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for various sample sizes</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div class="cell" data-layout-align="center">
-
 </div>
 <p><a href="#fig-infant-mortality-2">Figure&nbsp;<span>9.21</span></a> shows that for samples of size <span class="math inline">\(n = 5\)</span>, the sampling distribution is still skewed slightly right. However, with even a moderate sample size of <span class="math inline">\(n = 30\)</span>, the Central Limit Theorem kicks in, and we see that the sampling distribution of the mean (<span class="math inline">\(\bar{x}\)</span>) is normal, even though the underlying data was skewed. We again see that the standard error of the estimate decreases as the sample size increases.</p>
 <p>Overall, this simulation shows that not only might the precision of an estimate differ as a result of a larger sample size, but also the sampling distribution might be different for a smaller sample size (e.g., <span class="math inline">\(n = 5\)</span>) than for a larger sample size (e.g., <span class="math inline">\(n=100\)</span>).</p>
@@ -1967,9 +1953,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2034,6 +2034,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
