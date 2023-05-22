@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -699,7 +699,7 @@ Under Construction
 <p><a href="05-regression.html#exr-ch05-c01">Exercise&nbsp;<span>5.1</span></a> c) -0.7</p>
 <p><a href="05-regression.html#exr-ch05-c02">Exercise&nbsp;<span>5.2</span></a> e) Exactly 1</p>
 <p><a href="05-regression.html#exr-ch05-c03">Exercise&nbsp;<span>5.3</span></a> b) Between -1 and 0</p>
-<p><a href="05-regression.html#exr-ch05-c04">Exercise&nbsp;<span>5.4</span></a> a) explanatory variable &amp; b) predictor variable &amp; d) independent variable</p>
+<p><a href="05-regression.html#exr-ch05-c04">Exercise&nbsp;<span>5.4</span></a> a) explanatory variable &amp; b) predictor variable &amp; d) independent variable f) covariate</p>
 <p><a href="05-regression.html#exr-ch05-c05">Exercise&nbsp;<span>5.5</span></a> c) outcome variable &amp; e) dependent variable</p>
 <p><a href="05-regression.html#exr-ch05-c06">Exercise&nbsp;<span>5.6</span></a> c) <span class="math inline">\(b_0\)</span> &amp; e) the value of <span class="math inline">\(\hat{y}\)</span> when <span class="math inline">\(x=0\)</span> &amp; f) intercept</p>
 <p><a href="05-regression.html#exr-ch05-c07">Exercise&nbsp;<span>5.7</span></a> d) For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.</p>
@@ -1162,16 +1162,43 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 <section id="sec-ex10-sol" class="level2" data-number="B.10">
 <h2 data-number="B.10" class="anchored" data-anchor-id="sec-ex10-sol"><span class="header-section-number">B.10</span> Chapter 10</h2>
 <p><a href="10-confidence-intervals.html#exr-ch10-c01">Exercise&nbsp;<span>10.1</span></a> Estimate <span class="math inline">\(\\pm\)</span> Critical Value*SE(Estimate)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c02">Exercise&nbsp;<span>10.2</span></a> a) We are 90% confident that the true mean is within any given 90% confidence interval</p>
+<ol start="4" type="a">
+<li>Approximately 90% of confidence intervals contain the true mean</li>
+</ol>
 <p><a href="10-confidence-intervals.html#exr-ch10-c03">Exercise&nbsp;<span>10.3</span></a> b) False</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c04">Exercise&nbsp;<span>10.4</span></a> a)</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-c05">Exercise&nbsp;<span>10.5</span></a> a) decrease</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c06">Exercise&nbsp;<span>10.6</span></a> c)</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-c07">Exercise&nbsp;<span>10.7</span></a> d) qt(p = 0.05, df = 14)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c08">Exercise&nbsp;<span>10.8</span></a> d) qnorm(p = 0.015)</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-c09">Exercise&nbsp;<span>10.9</span></a> 0.01804</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app1">Exercise&nbsp;<span>10.10</span></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(nba_mj<span class="sc">$</span>pts, <span class="at">conf.level =</span> <span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  nba_mj$pts
+t = 33.421, df = 98, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+85 percent confidence interval:
+ 30.30159 33.05194
+sample estimates:
+mean of x 
+ 31.67677 </code></pre>
+</div>
+</div>
 <p><a href="10-confidence-intervals.html#exr-ch10-app2">Exercise&nbsp;<span>10.11</span></a></p>
 <p>Let’s consider only the games that Kobe Bryant <strong>played in</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win, player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win, player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
     win player             n
@@ -1183,7 +1210,7 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 5     1 LeBron James      59
 6     1 Michael Jordan    66</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">56</span>, <span class="at">n =</span> (<span class="dv">56</span> <span class="sc">+</span> <span class="dv">33</span>), <span class="at">conf.level =</span> <span class="fl">0.99</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">56</span>, <span class="at">n =</span> (<span class="dv">56</span> <span class="sc">+</span> <span class="dv">33</span>), <span class="at">conf.level =</span> <span class="fl">0.99</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     1-sample proportions test without continuity correction
@@ -1199,15 +1226,46 @@ sample estimates:
 </div>
 </div>
 <p>We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app3">Exercise&nbsp;<span>10.12</span></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win, player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+    win player             n
+  &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt;
+1     0 Kobe Bryant       33
+2     0 LeBron James      32
+3     0 Michael Jordan    33
+4     1 Kobe Bryant       56
+5     1 LeBron James      59
+6     1 Michael Jordan    66</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">59</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">56</span> <span class="sc">+</span> <span class="dv">33</span>, <span class="dv">59</span><span class="sc">+</span><span class="dv">32</span>), <span class="at">conf.level =</span> <span class="fl">0.9</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions without continuity correction
+
+data:  c(56, 59) out of c(56 + 33, 59 + 32)
+X-squared = 0.071432, df = 1, p-value = 0.7893
+alternative hypothesis: two.sided
+90 percent confidence interval:
+ -0.13691240  0.09863607
+sample estimates:
+   prop 1    prop 2 
+0.6292135 0.6483516 </code></pre>
+</div>
+</div>
 <p><a href="10-confidence-intervals.html#exr-ch10-app4">Exercise&nbsp;<span>10.13</span></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>nba_kobe <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>)</span>
-<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> nba_mj<span class="sc">$</span>ft_percent, <span class="at">y =</span> nba_kobe<span class="sc">$</span>ft_percent, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>nba_kobe <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>)</span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> nba_mj<span class="sc">$</span>ft_percent, <span class="at">y =</span> nba_kobe<span class="sc">$</span>ft_percent, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1225,10 +1283,10 @@ mean of x mean of y
 <p>We are 95% confident that the difference in free throw percentage between Michael Jordan and Kobe Bryant is between -0.0155 and 0.071.</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-adv2">Exercise&nbsp;<span>10.15</span></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs), player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs), player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
     win     n
@@ -1236,17 +1294,17 @@ mean of x mean of y
 1     0   595
 2     1   971</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="dv">971</span><span class="sc">/</span>(<span class="dv">971</span><span class="sc">+</span><span class="dv">595</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="dv">971</span><span class="sc">/</span>(<span class="dv">971</span><span class="sc">+</span><span class="dv">595</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6200511</code></pre>
 </div>
 </div>
 <p>Yes, 0.620 is between our 99% CI [0.493, 0.748]</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span> </span>
-<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(ft_percent, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(ft_percent, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   player          mean
@@ -1255,7 +1313,7 @@ mean of x mean of y
 2 LeBron James   0.727
 3 Michael Jordan 0.828</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8279-0.8286</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8279-0.8286</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -7e-04</code></pre>
 </div>
@@ -1277,6 +1335,15 @@ Under Construction
 <p>Currently working on exercise solutions.</p>
 </div>
 </div>
+<p><a href="11-p-values.html#exr-ch11-c01">Exercise&nbsp;<span>11.1</span></a></p>
+<ol start="2" type="a">
+<li><span class="math inline">\(\\mu = \\mu_0\)</span></li>
+</ol>
+<p><span class="quarto-unresolved-ref">?exr-ch11-c02</span> a) If the p-value is small, then the probability of observing an estimate as extreme as the one you observed is unlikely.</p>
+<p><span class="quarto-unresolved-ref">?exr-ch11-c03</span> b) False</p>
+<p><span class="quarto-unresolved-ref">?exr-ch11-c04</span> a) True</p>
+<p><span class="quarto-unresolved-ref">?exr-ch11-c05</span> c) The mean of a variable</p>
+<p><span class="quarto-unresolved-ref">?exr-ch11-c06</span> d) A data point in the center of the distribution</p>
 </section>
 <section id="sec-ex12-sol" class="level2" data-number="B.12">
 <h2 data-number="B.12" class="anchored" data-anchor-id="sec-ex12-sol"><span class="header-section-number">B.12</span> Chapter 12</h2>
