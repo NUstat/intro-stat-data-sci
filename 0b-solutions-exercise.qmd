@@ -758,17 +758,41 @@ plot_1 + plot_2 + plot_3
 @exr-ch10-c01
 Estimate $\\pm$ Critical Value*SE(Estimate)
 
+@exr-ch10-c02
+a) We are 90% confident that the true mean is within any given 90% confidence interval
+
+d) Approximately 90% of confidence intervals contain the true mean
+
 @exr-ch10-c03
 b) False
+
+@exr-ch10-c04
+a)
 
 @exr-ch10-c05
 a) decrease
 
+@exr-ch10-c06
+c)
+
 @exr-ch10-c07
 d) qt(p = 0.05, df = 14)
 
+@exr-ch10-c08
+d) qnorm(p = 0.015)
+
 @exr-ch10-c09
 0.01804
+
+@exr-ch10-app1
+
+```{r}
+nba_mj <- nba_sample %>% 
+  filter(player == "Michael Jordan")
+
+t.test(nba_mj$pts, conf.level = 0.85)
+```
+
 
 @exr-ch10-app2
 
@@ -783,6 +807,15 @@ prop.test(x = 56, n = (56 + 33), conf.level = 0.99, correct = FALSE)
 ```
 We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.
 
+@exr-ch10-app3
+
+```{r}
+nba_sample %>% 
+  filter(!is.na(gs)) %>% 
+  count(win, player)
+
+prop.test(x = c(56, 59), n = c(56 + 33, 59+32), conf.level = 0.9, correct = FALSE)
+```
 @exr-ch10-app4
 
 ```{r}
@@ -829,12 +862,30 @@ Currently working on exercise solutions.
 :::
 
 
-## Chapter 12 {#sec-ex12-sol}
+@exr-ch11-c01
 
+b) $\\mu = \\mu_0$
+
+@exr-ch11-c02
+a) If the p-value is small, then the probability of observing an estimate as extreme as the one you observed is unlikely.
+
+@exr-ch11-c03
+b) False
+
+@exr-ch11-c04
+a) True
+
+@exr-ch11-c05
+c) The mean of a variable
+
+@exr-ch11-c06
+d) A data point in the center of the distribution
+
+
+## Chapter 12 {#sec-ex12-sol}
 
 @exr-ch12-c01
 a) Type I Error
-
 
 @exr-ch12-c02
 d) No, one type of error will be minimized at the expense of the other type
