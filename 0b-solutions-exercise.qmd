@@ -698,6 +698,38 @@ qnorm(p = 0.6, mean = 10.5, sd = 1.5, lower.tail = FALSE)
 ```
 His shoe size is 10.12 (which is not an actual shoe size so his shoe size would be 10)
 
+@exr-ch09-c14
+
+We have a sample mean and sample standard deviation so will use the t-distribution
+
+a) 
+```{r}
+stat = (6-6.02)/0.03
+pt(q = stat, df = 17)
+```
+
+b)
+```{r}
+qt(p = 0.1, df = 17, lower.tail = FALSE)
+
+# Solve for x in STAT = (x-mean)/s
+1.333379*0.03+6.02
+
+```
+
+
+c) 
+```{r}
+stat_5.95 = (5.95-6.02)/0.03
+pt(q = stat_5.95, df = 17)
+
+stat_6.05 = (6.05-6.02)/0.03
+pt(q = stat_6.05, df = 17, lower.tail= FALSE)
+
+#under 5.95 or over 6.05
+0.01608422 + 0.1656664
+```
+
 @exr-ch09-c15
 
 ```{r}
@@ -862,24 +894,6 @@ Currently working on exercise solutions.
 :::
 
 
-@exr-ch11-c01
-
-b) $\\mu = \\mu_0$
-
-@exr-ch11-c02
-a) If the p-value is small, then the probability of observing an estimate as extreme as the one you observed is unlikely.
-
-@exr-ch11-c03
-b) False
-
-@exr-ch11-c04
-a) True
-
-@exr-ch11-c05
-c) The mean of a variable
-
-@exr-ch11-c06
-d) A data point in the center of the distribution
 
 
 ## Chapter 12 {#sec-ex12-sol}
@@ -905,9 +919,86 @@ b) Type II Error
 
 @exr-ch12-c07
 
+d) Reject the null, there is a difference between the proportions.
 
 @exr-ch12-c08
+
+b) becomes smaller
+
 @exr-ch12-c09
 
+c)
 
 @exr-ch12-c10
+
+$$H_0:$$ the person does not have HIV
+
+$$H_A:$$ the person has HIV
+
+Scenario 1: The person tests positive for HIV and has HIV
+Scenario 2: The person tests positive for HIV but does not actually have HIV (Type I error)
+Scenario 3: The person tests negative for HIV but actually has HIV (Type II error)
+Scenario 4: The person tests negative for HIV and does not have HIV
+
+@exr-ch12-app1
+
+$$H_0: \mu_{team pts} = 100$$
+
+$$H_A: \mu_{team pts} \ne 100$$
+
+```{r}
+t.test(nba$pts_tm, mu = 100)
+```
+
+@exr-ch12-app2
+
+$$H_0: \mu_{jordan} - \mu_{lebron} = 0$$
+
+$$H_A: \mu_{jordan} - \mu_{lebron} \ne 0$$
+
+First we need to pre-specify an alpha level. Let's choose 0.05.
+
+```{r}
+mj <- nba %>% 
+  filter(player == "Michael Jordan")
+lebron <- nba %>% 
+  filter(player == "LeBron James")
+
+t.test(x = mj$pts, y = lebron$pts)
+```
+
+
+
+@exr-ch12-app3
+
+$$H_0: \pi_{win} = 0.5$$
+
+$$H_A: \pi_{win} \ne 0.5$$
+
+
+```{r}
+nba %>% 
+  filter(player == "Kobe Bryant") %>% 
+  count(win)
+
+prop.test(x = 1057, n = c(720+1057), p = 0.5, correct = FALSE)
+
+```
+
+
+@exr-ch12-app4
+
+
+$$H_0: \pi_{first} - \pi_{third} = 0$$
+
+$$H_A: \pi_{first} - \pi_{third} \ne 0$$
+
+First we need to pre-specify an alpha rate. For example let's pick 0.01.
+```{r}
+titanic %>% 
+  count(Survived, Pclass)
+
+prop.test(x = c(50, 72), n = c(50+57, 72+146))
+```
+
+
