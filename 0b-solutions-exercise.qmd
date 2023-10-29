@@ -644,7 +644,7 @@ b) `pnorm(q = 72, mean = 64, sd = 3) - pnorm(q = 60, mean = 64, sd = 3)`
 c) `1 - pnorm(q = -1.33) - pnorm(q = 2.67, lower.tail = FALSE)`
 
 @exr-ch09-c05
-a) apple
+b) orange
 
 @exr-ch09-c06
 a) True
