@@ -476,9 +476,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  8 '15'      2002     25     NA    6.7    24   4.5   4.5   4.5   4.5   4.5  14.5
  9 '38       1987     97     NA    6.6    18   4.5   4.5   4.5   0     0     0  
 10 '49-'17   1917     61     NA    6      51   4.5   0     4.5   4.5   4.5  44.5
-# … with 58,778 more rows, and 12 more variables: r7 &lt;dbl&gt;, r8 &lt;dbl&gt;, r9 &lt;dbl&gt;,
-#   r10 &lt;dbl&gt;, mpaa &lt;chr&gt;, Action &lt;int&gt;, Animation &lt;int&gt;, Comedy &lt;int&gt;,
-#   Drama &lt;int&gt;, Documentary &lt;int&gt;, Romance &lt;int&gt;, Short &lt;int&gt;</code></pre>
+# ℹ 58,778 more rows
+# ℹ 12 more variables: r7 &lt;dbl&gt;, r8 &lt;dbl&gt;, r9 &lt;dbl&gt;, r10 &lt;dbl&gt;, mpaa &lt;chr&gt;,
+#   Action &lt;int&gt;, Animation &lt;int&gt;, Comedy &lt;int&gt;, Drama &lt;int&gt;,
+#   Documentary &lt;int&gt;, Romance &lt;int&gt;, Short &lt;int&gt;</code></pre>
 </div>
 </div>
 <p>We’ll focus on a random sample of 68 movies that are classified as either “action” or “romance” movies but not both. We disregard movies that are classified as both so that we can assign all 68 movies into either category. Furthermore, since the original <code>movies</code> dataset was a little messy, we provided a pre-wrangled version of our data in the <code>movies_sample</code> data frame included in the <code>moderndive</code> package (you can look at the code to do this data wrangling <a href="https://github.com/moderndive/moderndive/blob/master/data-raw/process_data_sets.R#L14">here</a>):</p>
@@ -498,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  8 Illicit Dreams            1995    3.5 Action 
  9 Kabhi Kabhie              1976    7.7 Romance
 10 Electric Horseman, The    1979    5.8 Romance
-# … with 58 more rows</code></pre>
+# ℹ 58 more rows</code></pre>
 </div>
 </div>
 <p>The variables include the <code>title</code> and <code>year</code> the movie was filmed. Furthermore, we have a numerical variable <code>rating</code>, which is the IMDB rating out of 10 stars, and a binary categorical variable <code>genre</code> indicating if the movie was an <code>Action</code> or <code>Romance</code> movie. We are interested in whether there is a difference in average ratings between the <code>Action</code> and <code>Romance</code> genres.</p>

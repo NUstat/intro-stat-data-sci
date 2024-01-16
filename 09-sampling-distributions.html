@@ -875,7 +875,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
  8       8 white
  9       9 red  
 10      10 white
-# … with 2,390 more rows</code></pre>
+# ℹ 2,390 more rows</code></pre>
 </div>
 </div>
 <p>Observe in the output that <code>bowl</code> has 2400 rows, telling us that the bowl contains 2400 equally-sized balls. The first variable <code>ball_ID</code> is used merely as an “identification variable” for this data frame; none of the balls in the actual bowl are marked with numbers. The second variable <code>color</code> indicates whether a particular virtual ball is red or white. View the contents of the bowl in RStudio’s data viewer and scroll through the contents to convince yourselves that <code>bowl</code> is indeed a virtual version of the actual bowl in <a href="#fig-sampling-exercise-1">Figure&nbsp;<span>9.10</span></a>.</p>
@@ -974,7 +974,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
  8         1     344 white FALSE 
  9         1     910 white FALSE 
 10         1    1485 white FALSE 
-# … with 40 more rows</code></pre>
+# ℹ 40 more rows</code></pre>
 </div>
 </div>
 <p>Second, we compute the number of balls out of 50 that are red using the <code>summarize()</code> function. Recall from <a href="03-wrangling.html#sec-summarize"><span>Section&nbsp;3.3</span></a> that <code>summarize()</code> takes a data frame with many rows and returns a data frame with a single row containing summary statistics that you specify, like <code>mean()</code> and <code>median()</code>. In this case we use the <code>sum()</code>:</p>

@@ -771,7 +771,7 @@ div.csl-indent {
  8  0.26 Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
  9  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
 10  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
-# … with 53,930 more rows</code></pre>
+# ℹ 53,930 more rows</code></pre>
 </div>
 </div>
 <p>Observe that the first line of the output reads <code># A tibble: 53,940 x 10</code>. This is an example of meta-data, in this case the number of observations/rows and variables/columns in <code>diamonds</code>. The actual data itself are the subsequent table of values.</p>
@@ -794,7 +794,7 @@ div.csl-indent {
  8  0.26 Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
  9  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
 10  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
-# … with 53,930 more rows</code></pre>
+# ℹ 53,930 more rows</code></pre>
 </div>
 </div>
 <p>Observe that now there is additional meta-data: <code># Groups: cut [5]</code> indicating that the grouping structure meta-data has been set based on the 5 possible values AKA levels of the categorical variable <code>cut</code>: <code>"Fair"</code>, <code>"Good"</code>, <code>"Very Good"</code>, <code>"Premium"</code>, <code>"Ideal"</code>. On the other hand observe that the data has not changed: it is still a table of 53,940 <span class="math inline">\(\times\)</span> 10 values.</p>
@@ -833,7 +833,7 @@ div.csl-indent {
  8  0.26 Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
  9  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
 10  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
-# … with 53,930 more rows</code></pre>
+# ℹ 53,930 more rows</code></pre>
 </div>
 </div>
 <p>Let’s now revisit <code>n()</code> the counting summary function introduced in the previous section. For example, suppose we’d like to count how many flights departed each of the three airports in New York City:</p>
@@ -877,7 +877,7 @@ div.csl-indent {
  8 EWR        8 10359
  9 EWR        9  9550
 10 EWR       10 10104
-# … with 26 more rows</code></pre>
+# ℹ 26 more rows</code></pre>
 </div>
 </div>
 <p>Why do we <code>group_by(origin, month)</code> and not <code>group_by(origin)</code> and then <code>group_by(month)</code>? Let’s investigate:</p>
@@ -1199,7 +1199,7 @@ div.csl-indent {
  8 BDL           443
  9 BGR           375
 10 BHM           297
-# … with 95 more rows</code></pre>
+# ℹ 95 more rows</code></pre>
 </div>
 </div>
 <p>Observe that by default the rows of the resulting <code>freq_dest</code> data frame are sorted in alphabetical order of <code>dest</code> destination. Say instead we would like to see the same data, but sorted from the most to the least number of flights <code>num_flights</code> instead:</p>
@@ -1220,7 +1220,7 @@ div.csl-indent {
  8 PSP            19
  9 JAC            25
 10 BZN            36
-# … with 95 more rows</code></pre>
+# ℹ 95 more rows</code></pre>
 </div>
 </div>
 <p>This is actually giving us the opposite of what we are looking for: the rows are sorted with the least frequent destination airports displayed first. To switch the ordering to be descending instead of ascending we use the <code>desc()</code> function, which is short for “descending”:</p>
@@ -1241,7 +1241,7 @@ div.csl-indent {
  8 FLL         12055
  9 MIA         11728
 10 DCA          9705
-# … with 95 more rows</code></pre>
+# ℹ 95 more rows</code></pre>
 </div>
 </div>
 <p>In other words, <code>arrange()</code> sorts in ascending order by default unless you override this default behavior by using <code>desc()</code>.</p>
@@ -1327,7 +1327,7 @@ div.csl-indent {
  8 FLL         12055 Fort Lauderdale Holly…  26.1  -80.2     9    -5 A     Amer…
  9 MIA         11728 Miami Intl              25.8  -80.3     8    -5 A     Amer…
 10 DCA          9705 Ronald Reagan Washing…  38.9  -77.0    15    -5 A     Amer…
-# … with 91 more rows</code></pre>
+# ℹ 91 more rows</code></pre>
 </div>
 </div>
 <p>In case you didn’t know, <code>"ORD"</code> is the airport code of Chicago O’Hare airport and <code>"FLL"</code> is the main airport in Fort Lauderdale, Florida, which we can now see in the <code>airport_name</code> variable in the resulting <code>named_dests</code> data frame.</p>

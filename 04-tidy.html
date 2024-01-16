@@ -463,7 +463,7 @@ div.csl-indent {
  8 Belgium        10     10     10     10     10     10     10     10     10
  9 Bhutan        -10    -10    -10    -10    -10    -10    -10    -10    -10
 10 Bolivia        -4     -3     -3     -4     -7     -7      8      9      9
-# … with 86 more rows</code></pre>
+# ℹ 86 more rows</code></pre>
 </div>
 </div>
 <p>In this <code>dem_score</code> data frame, the minimum value of <code>-10</code> corresponds to a highly autocratic nation whereas a value of <code>10</code> corresponds to a highly democratic nation. We’ll revisit the <code>dem_score</code> data frame in a case study in the upcoming <a href="#sec-case-study-tidy"><span>Section&nbsp;4.3</span></a>.</p>
@@ -490,20 +490,20 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>drinks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 193 × 5
-   country           beer_servings spirit_servings wine_servings total_litres_…¹
-   &lt;chr&gt;                     &lt;int&gt;           &lt;int&gt;         &lt;int&gt;           &lt;dbl&gt;
- 1 Afghanistan                   0               0             0             0  
- 2 Albania                      89             132            54             4.9
- 3 Algeria                      25               0            14             0.7
- 4 Andorra                     245             138           312            12.4
- 5 Angola                      217              57            45             5.9
- 6 Antigua &amp; Barbuda           102             128            45             4.9
- 7 Argentina                   193              25           221             8.3
- 8 Armenia                      21             179            11             3.8
- 9 Australia                   261              72           212            10.4
-10 Austria                     279              75           191             9.7
-# … with 183 more rows, and abbreviated variable name
-#   ¹​total_litres_of_pure_alcohol</code></pre>
+   country    beer_servings spirit_servings wine_servings total_litres_of_pure…¹
+   &lt;chr&gt;              &lt;int&gt;           &lt;int&gt;         &lt;int&gt;                  &lt;dbl&gt;
+ 1 Afghanist…             0               0             0                    0  
+ 2 Albania               89             132            54                    4.9
+ 3 Algeria               25               0            14                    0.7
+ 4 Andorra              245             138           312                   12.4
+ 5 Angola               217              57            45                    5.9
+ 6 Antigua &amp;…           102             128            45                    4.9
+ 7 Argentina            193              25           221                    8.3
+ 8 Armenia               21             179            11                    3.8
+ 9 Australia            261              72           212                   10.4
+10 Austria              279              75           191                    9.7
+# ℹ 183 more rows
+# ℹ abbreviated name: ¹​total_litres_of_pure_alcohol</code></pre>
 </div>
 </div>
 <p>After reading the help file by running <code>?drinks</code>, we see that <code>drinks</code> is a data frame containing results from a survey of the average number of servings of beer, spirits, and wine consumed for 193 countries. This data was originally reported on the data journalism website FiveThirtyEight.com in Mona Chalabi’s article <a href="https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/">“Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?”</a></p>
@@ -858,21 +858,21 @@ div.csl-indent {
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>airline_safety_smaller</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 56 × 7
-   airline               incidents_85_99 fatal…¹ fatal…² incid…³ fatal…⁴ fatal…⁵
-   &lt;chr&gt;                           &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
- 1 Aer Lingus                          2       0       0       0       0       0
- 2 Aeroflot                           76      14     128       6       1      88
- 3 Aerolineas Argentinas               6       0       0       1       0       0
- 4 Aeromexico                          3       1      64       5       0       0
- 5 Air Canada                          2       0       0       2       0       0
- 6 Air France                         14       4      79       6       2     337
- 7 Air India                           2       1     329       4       1     158
- 8 Air New Zealand                     3       0       0       5       1       7
- 9 Alaska Airlines                     5       0       0       5       1      88
-10 Alitalia                            7       2      50       4       0       0
-# … with 46 more rows, and abbreviated variable names ¹​fatal_accidents_85_99,
-#   ²​fatalities_85_99, ³​incidents_00_14, ⁴​fatal_accidents_00_14,
-#   ⁵​fatalities_00_14</code></pre>
+   airline               incidents_85_99 fatal_accidents_85_99 fatalities_85_99
+   &lt;chr&gt;                           &lt;int&gt;                 &lt;int&gt;            &lt;int&gt;
+ 1 Aer Lingus                          2                     0                0
+ 2 Aeroflot                           76                    14              128
+ 3 Aerolineas Argentinas               6                     0                0
+ 4 Aeromexico                          3                     1               64
+ 5 Air Canada                          2                     0                0
+ 6 Air France                         14                     4               79
+ 7 Air India                           2                     1              329
+ 8 Air New Zealand                     3                     0                0
+ 9 Alaska Airlines                     5                     0                0
+10 Alitalia                            7                     2               50
+# ℹ 46 more rows
+# ℹ 3 more variables: incidents_00_14 &lt;int&gt;, fatal_accidents_00_14 &lt;int&gt;,
+#   fatalities_00_14 &lt;int&gt;</code></pre>
 </div>
 </div>
 <p>This data frame is not in “tidy” format. How would you convert this data frame to be in “tidy” format, in particular so that it has a variable <code>incident_type_years</code> indicating the incident type/year and a variable <code>count</code> of the counts?</p>
