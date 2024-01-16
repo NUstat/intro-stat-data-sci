@@ -64,6 +64,7 @@ book:
   appendices:
   - 0a-statistical-background.qmd
   - 0b-solutions-exercise.qmd
+  - 0c-solutions-learning-checks.qmd
 
 bibliography:
   - bib/references.bib
