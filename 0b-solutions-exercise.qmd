@@ -184,7 +184,7 @@ ggplot(
 
 @exr-ch03-c09 d.
 
-@exr-ch03-c10 a.
+@exr-ch03-c10 e.
 
 @exr-ch03-c11 a. e. (there is no variable called `passenger`)
 
