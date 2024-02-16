@@ -596,13 +596,13 @@ virtual_prop_red <- virtual_samples %>%
 View(virtual_prop_red)
 ```
 
-Let's display only the first 10 out of 10,000 rows of `virtual_prop_red`'s contents in @tbl-tactilered. As one would expect, there is variation in the resulting `prop_red` proportions red for the first 10 out 10,000 repeated/replicated samples.
+Let's display only the first 10 out of 10,000 rows of `virtual_prop_red`'s contents in @tbl-virtualred. As one would expect, there is variation in the resulting `prop_red` proportions red for the first 10 out 10,000 repeated/replicated samples.
 
 <!-- Albert will remove `boundary` here on updates to chalkboard image. -->
 
 ```{r}
 #| label: tbl-virtualred
-#| tbl-cap: "First 10 out of 33 virtual proportion of 50 balls that are red."
+#| tbl-cap: "First 10 out of 10,000 virtual proportion of 50 balls that are red."
 #| echo: false
 virtual_prop_red <- virtual_samples %>% 
   group_by(replicate) %>% 
