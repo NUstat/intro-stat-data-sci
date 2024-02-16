@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./08-populations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./08-populations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -375,12 +409,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex08-advanced" id="toc-sec-ex08-advanced" class="nav-link" data-scroll-target="#sec-ex08-advanced"><span class="header-section-number">8.6.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/08-populations.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/08-populations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./08-populations.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-populations" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></span></h1>
 </div>
@@ -395,12 +429,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>In this chapter we will continue our discussion of statistical theory, by learning about <strong>samples</strong> and <strong>populations</strong>. Until now, this book has focused on how to analyze data in a sample. In many instances, your goal is not to understand insights and trends in the sample but instead to make inferences from such insights and trends observed to trends in a larger population. This chapter provides a broad overview of the concepts of samples and populations and the links between them. In <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a> we will provide a more theoretical connection between these two based on the theory of repeated samples and properties of sampling distributions.</p>
+
+<p>In this chapter we will continue our discussion of statistical theory, by learning about <strong>samples</strong> and <strong>populations</strong>. Until now, this book has focused on how to analyze data in a sample. In many instances, your goal is not to understand insights and trends in the sample but instead to make inferences from such insights and trends observed to trends in a larger population. This chapter provides a broad overview of the concepts of samples and populations and the links between them. In <a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a> we will provide a more theoretical connection between these two based on the theory of repeated samples and properties of sampling distributions.</p>
 <section id="needed-packages" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed packages</h3>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
@@ -423,12 +459,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>The first two of these definitions makes clear that the data you have in hand (sample) is being used to make inferences to a larger set of data you don’t have (population). Definitions 3 and 4 refine these further, focusing on the specific numbers you wish you knew (population parameter) and the ones you are able to calculate using your data (estimate / sample statistic). Definitions 5 and 6 refer to how a sample is related to a population — either they are the same (census) or the mechanism through which they are related needs to be clear (random sampling).</p>
 <p>The goal is to use data in the sample to make <strong>inferences</strong> to a value in the population. The act of “inferring” is to deduce or conclude (information) from evidence and reasoning. <strong>Statistical inference</strong> is the theory, methods, and practice of forming judgments about the parameters of a population and the reliability of statistical relationships, typically on the basis of random sampling (Wikipedia). In other words, statistical inference is the act of inference via sampling.</p>
-<p><a href="#tbl-parameters-table">Table&nbsp;<span>8.1</span></a> gives some common population parameters we might be interested in and their corresponding estimators that we use to calculate estimates from our sample data. Note that we have used many of these estimators in Parts I and II of the book when we calculated summary statistics to describe our data (e.g.&nbsp;mean, standard deviation, correlation, regression coefficients). The next few chapters will help establish the statistical theory and conditions under which we can use these estimators to infer things about their corresponding population parameters.</p>
+<p><a href="#tbl-parameters-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> gives some common population parameters we might be interested in and their corresponding estimators that we use to calculate estimates from our sample data. Note that we have used many of these estimators in Parts I and II of the book when we calculated summary statistics to describe our data (e.g.&nbsp;mean, standard deviation, correlation, regression coefficients). The next few chapters will help establish the statistical theory and conditions under which we can use these estimators to infer things about their corresponding population parameters.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-parameters-table" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-parameters-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.1: Population Parameters and Sample Statistics
+</figcaption>
+<div aria-describedby="tbl-parameters-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-parameters-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;8.1: Population Parameters and Sample Statistics</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Population Parameters and Sample Statistics</caption>
 <colgroup>
 <col style="width: 15%">
 <col style="width: 15%">
@@ -492,6 +533,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <hr>
 </section>
@@ -542,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>about something besides a man.</li>
 </ol>
 <p>Determining whether a film meets this criteria requires you to watch and pay attention to the dialogue in its entirety. It’s not hard to imagine why doing this for the whole population of movies is not feasible, because there are tens of thousands of them. You must take a <em>sample</em>. But how do you choose your sample in such a way that you can be confident that your results will generalize to the whole population of movies?</p>
-<p>Let’s discuss how we might go about developing a sampling plan to tackle this question, using the terminology from <a href="#sec-terminology">Sections&nbsp;<span>8.1</span></a> and <a href="#sec-sample-selection"><span>8.2</span></a>.</p>
+<p>Let’s discuss how we might go about developing a sampling plan to tackle this question, using the terminology from <a href="#sec-terminology" class="quarto-xref">Sections&nbsp;<span>8.1</span></a> and <a href="#sec-sample-selection" class="quarto-xref"><span>8.2</span></a>.</p>
 </section>
 <section id="population-of-interest" class="level3" data-number="8.3.2">
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="population-of-interest"><span class="header-section-number">8.3.2</span> Population of interest</h3>
@@ -647,17 +690,22 @@ $ rating &lt;dbl&gt; 7.2, 6.7, 7.1, 6.5, 6.9, 4.5, 5.9, 5.9, 6.8, 6.4, 5.9, 6.9,
 $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 193…</code></pre>
 </div>
 </div>
-<p>Note that because there were not an equal number of movies per decade in the population, sampling a fixed number of movies per decade (e.g.&nbsp;71) is actually an example of sampling with <em>unequal probabilities</em>. For example, since there were only 2863 movies in the 1930s, each movie from this decade had a <span class="math inline">\(71 / 2863 * 100 =\)</span> 2.48% chance of being selected, but movies from the 1990s only had a <span class="math inline">\(71 / 10788 * 100 =\)</span> 0.658% chance of being selected. <a href="#tbl-strata-probs">Table&nbsp;<span>8.2</span></a> shows the selection probabilities for each strata.</p>
+<p>Note that because there were not an equal number of movies per decade in the population, sampling a fixed number of movies per decade (e.g.&nbsp;71) is actually an example of sampling with <em>unequal probabilities</em>. For example, since there were only 2863 movies in the 1930s, each movie from this decade had a <span class="math inline">\(71 / 2863 * 100 =\)</span> 2.48% chance of being selected, but movies from the 1990s only had a <span class="math inline">\(71 / 10788 * 100 =\)</span> 0.658% chance of being selected. <a href="#tbl-strata-probs" class="quarto-xref">Table&nbsp;<span>8.2</span></a> shows the selection probabilities for each strata.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>movies_30_99 <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(decade) <span class="sc">%&gt;%</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="dv">71</span> <span class="sc">/</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-strata-probs" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-strata-probs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.2: Selection probability by decade
+</figcaption>
+<div aria-describedby="tbl-strata-probs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-strata-probs" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;8.2: Selection probability by decade</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Selection probability by decade</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">decade</th>
@@ -705,6 +753,8 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Stratified sampling with equal probability</strong></p>
 <p>We could instead decide to draw a stratified sample with equal probabilities. Since overall we want a sample with <span class="math inline">\(n = 500\)</span>, and we have a population of size <span class="math inline">\(N =\)</span> 39123, we can choose to sample <span class="math inline">\(500 / 39123 *100 = 1.28\%\)</span> of the movies from each strata. Using the function <code>sample_frac()</code> instead of <code>sample_n()</code> allows us to do this.</p>
@@ -714,7 +764,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_strata =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="co">#needed for later calculations</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.0128</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#tbl-strata-probs-equal">Table&nbsp;<span>8.3</span></a> shows the number of movies that were sampled per strata, <code>n_strata</code>. These numbers are proportional to the total number of movies in that decade in the population <code>N_strata</code>. This results in each movie in the population having equal probability of selection into the sample.</p>
+<p><a href="#tbl-strata-probs-equal" class="quarto-xref">Table&nbsp;<span>8.3</span></a> shows the number of movies that were sampled per strata, <code>n_strata</code>. These numbers are proportional to the total number of movies in that decade in the population <code>N_strata</code>. This results in each movie in the population having equal probability of selection into the sample.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>movies_strata_equal <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">%&gt;%</span> </span>
@@ -722,10 +772,15 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">prob =</span> n_strata <span class="sc">/</span> N_strata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-strata-probs-equal" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-strata-probs-equal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.3: Stratified sampling with equal probabilities (i.e.&nbsp;proportional to stratum size)
+</figcaption>
+<div aria-describedby="tbl-strata-probs-equal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-strata-probs-equal" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;8.3: Stratified sampling with equal probabilities (i.e.&nbsp;proportional to stratum size)</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Stratified sampling with equal probabilities (i.e.&nbsp;proportional to stratum size)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">decade</th>
@@ -781,8 +836,10 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Once we have our sample of <span class="math inline">\(n\)</span> movies, we could then begin data collection. For each movie, we would record whether or not it passed the Bechdel test. We would then calculate our <strong>point estimate</strong> <span class="math inline">\(\hat{\pi}\)</span>, the proportion of movies <em>in our sample</em> that pass the Bechdel test, which serves as our estimate of the population proportion <span class="math inline">\(\pi\)</span>. Recall that we mentioned in <a href="#sec-sample-selection"><span>Section&nbsp;8.2</span></a> that using a more complicated sampling method, such as stratified sampling, also requires a more complicated formula for computing point estimates. In the simple random sampling case, however, we calculate the sample proportion in exactly the way you would expect: <span class="math inline">\(\hat{\pi} = \frac{x}{n}\)</span>, where <span class="math inline">\(x\)</span> is the number of movies in the sample passing the test, and <span class="math inline">\(n\)</span> is the sample size.</p>
+</div>
+<p>Once we have our sample of <span class="math inline">\(n\)</span> movies, we could then begin data collection. For each movie, we would record whether or not it passed the Bechdel test. We would then calculate our <strong>point estimate</strong> <span class="math inline">\(\hat{\pi}\)</span>, the proportion of movies <em>in our sample</em> that pass the Bechdel test, which serves as our estimate of the population proportion <span class="math inline">\(\pi\)</span>. Recall that we mentioned in <a href="#sec-sample-selection" class="quarto-xref"><span>Section 8.2</span></a> that using a more complicated sampling method, such as stratified sampling, also requires a more complicated formula for computing point estimates. In the simple random sampling case, however, we calculate the sample proportion in exactly the way you would expect: <span class="math inline">\(\hat{\pi} = \frac{x}{n}\)</span>, where <span class="math inline">\(x\)</span> is the number of movies in the sample passing the test, and <span class="math inline">\(n\)</span> is the sample size.</p>
 <p>In the next few chapters we will discuss how much uncertainty we would expect there to be in our estimate <span class="math inline">\(\hat{\pi}\)</span> due to the fact that we are only observing a sample and not the whole population.</p>
 </section>
 </section>
@@ -809,18 +866,22 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </section>
 <section id="causality-vs.-generalizability" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="causality-vs.-generalizability"><span class="header-section-number">8.5</span> Causality vs.&nbsp;Generalizability</h2>
-<p>In <a href="07-causality.html"><span>Chapter&nbsp;7</span></a> we talked about the process of <em>random assignment</em> (e.g.&nbsp;in randomized experiments), and in this chapter we talked about the process of <em>random sampling</em>. These two types of randomization processes are at the core of inferential statistics:</p>
+<p>In <a href="07-causality.html" class="quarto-xref"><span>Chapter 7</span></a> we talked about the process of <em>random assignment</em> (e.g.&nbsp;in randomized experiments), and in this chapter we talked about the process of <em>random sampling</em>. These two types of randomization processes are at the core of inferential statistics:</p>
 <ul>
 <li>Random assignment allows us to make <em>causal</em> claims</li>
 <li>Random sampling allows us to make <em>generalizable</em> claims</li>
 </ul>
-<p>The ideal experiment would have both <em>random assignment</em> and <em>random sampling</em> so that you could have a <em>casual</em> conclusion that is <em>generalizable</em> to the whole population. <a href="#fig-RA-RS">Figure&nbsp;<span>8.1</span></a> shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.</p>
+<p>The ideal experiment would have both <em>random assignment</em> and <em>random sampling</em> so that you could have a <em>casual</em> conclusion that is <em>generalizable</em> to the whole population. <a href="#fig-RA-RS" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows a 2 X 2 table of the possible experiment and observational study types and the conclusions that can be drawn from each.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-RA-RS" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/RA_vs_RS.png" class="img-fluid figure-img" style="width:110.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;8.1: Random Assignment vs.&nbsp;Random Sampling</figcaption>
+<div id="fig-RA-RS" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RA-RS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/RA_vs_RS.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:110.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RA-RS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Random Assignment vs.&nbsp;Random Sampling
+</figcaption>
 </figure>
 </div>
 </div>
@@ -844,14 +905,14 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 <li>You advertise your study on campus and ask volunteers to participate. You collect data on their exercise habits and their stress. If your data indicates a negative relationship between exercise and stress, you can only validly conclude that the relationship is <em>associational</em> and true for <em>your sample only</em>. There may differences between people in your sample who choose to exercise and those who do not, as well as differences between people who volunteered to participate in your study and those who did not.</li>
 </ul></li>
 </ul>
-<p>In <a href="07-causality.html"><span>Chapter&nbsp;7</span></a> we demonstrated the magic of randomization and why randomized experiments allow you to make causal claims. In this chapter we have introduced you to the idea that random sampling allows you to make <em>generalizable</em> claims from your sample to a population, but in <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a> we will introduce and demonstrate the statistical theory for <em>why</em> this is true.</p>
+<p>In <a href="07-causality.html" class="quarto-xref"><span>Chapter 7</span></a> we demonstrated the magic of randomization and why randomized experiments allow you to make causal claims. In this chapter we have introduced you to the idea that random sampling allows you to make <em>generalizable</em> claims from your sample to a population, but in <a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a> we will introduce and demonstrate the statistical theory for <em>why</em> this is true.</p>
 </section>
 <section id="sec-ex08" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="sec-ex08"><span class="header-section-number">8.6</span> Exercises</h2>
 <section id="sec-ex08-conceptual" class="level3" data-number="8.6.1">
 <h3 data-number="8.6.1" class="anchored" data-anchor-id="sec-ex08-conceptual"><span class="header-section-number">8.6.1</span> Conceptual</h3>
 <div id="exr-ch08-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.1 </strong></span>The US Census is performed once every 10 years. Which of the following describes the exact value that results from this endeavor?</p>
+<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> The US Census is performed once every 10 years. Which of the following describes the exact value that results from this endeavor?</p>
 <ol type="a">
 <li>a sample statistic</li>
 <li>a sample estimate</li>
@@ -862,7 +923,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.2 </strong></span>Which of the following denote sample statistics? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 8.2</strong></span> Which of the following denote sample statistics? Select all that apply.</p>
 <ol type="a">
 <li><span class="math inline">\(\mu\)</span> &nbsp; &nbsp; &nbsp; &nbsp; d.&nbsp;<span class="math inline">\(\bar{x}\)</span> &nbsp; &nbsp; &nbsp; &nbsp; g. <span class="math inline">\(p\)</span> &nbsp; &nbsp; &nbsp; &nbsp; j. <span class="math inline">\(\sigma\)</span></li>
 <li><span class="math inline">\(\hat{\mu}\)</span> &nbsp; &nbsp; &nbsp; &nbsp; e. <span class="math inline">\(\pi\)</span> &nbsp; &nbsp; &nbsp; &nbsp; h. <span class="math inline">\(\hat{p}\)</span> &nbsp; &nbsp; &nbsp; &nbsp; k. <span class="math inline">\(\hat{\sigma}\)</span></li>
@@ -870,7 +931,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.3 </strong></span>Which of the following types of sampling involve random selection? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> Which of the following types of sampling involve random selection? Select all that apply.</p>
 <ol type="a">
 <li>Simple random sampling</li>
 <li>Random sampling with unequal probability</li>
@@ -879,7 +940,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.4 </strong></span>Farmer Henry owns an apple picking orchard and wants to estimate the total number of apples on his lot so that he can calculate his potential earnings. It would not be time or cost efficient to count every single apple in the orchard. Instead Farmer Henry divides his land into 20 regions and randomly selects one region to count. What type of sampling is this?</p>
+<p><span class="theorem-title"><strong>Exercise 8.4</strong></span> Farmer Henry owns an apple picking orchard and wants to estimate the total number of apples on his lot so that he can calculate his potential earnings. It would not be time or cost efficient to count every single apple in the orchard. Instead Farmer Henry divides his land into 20 regions and randomly selects one region to count. What type of sampling is this?</p>
 <ol type="a">
 <li>Simple random sampling</li>
 <li>Cluster sampling</li>
@@ -889,7 +950,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.5 </strong></span>You are interested in opening an ice cream parlor and want to determine what flavors to offer. You sit outside Baskin Robins and ask every 8th customer what their favorite ice cream flavor is. What type of sampling is this?</p>
+<p><span class="theorem-title"><strong>Exercise 8.5</strong></span> You are interested in opening an ice cream parlor and want to determine what flavors to offer. You sit outside Baskin Robins and ask every 8th customer what their favorite ice cream flavor is. What type of sampling is this?</p>
 <ol type="a">
 <li>Simple random sampling</li>
 <li>Cluster sampling</li>
@@ -899,7 +960,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.6 </strong></span>As an upcoming politician, you want to determine if daylight savings time should be removed. You obtain a list of all citizens in the United States and randomly sample 500 citizens from each state. What type of sampling is this?</p>
+<p><span class="theorem-title"><strong>Exercise 8.6</strong></span> As an upcoming politician, you want to determine if daylight savings time should be removed. You obtain a list of all citizens in the United States and randomly sample 500 citizens from each state. What type of sampling is this?</p>
 <ol type="a">
 <li>Simple random sampling</li>
 <li>Cluster sampling</li>
@@ -909,7 +970,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.7 </strong></span>In a study, towns in the state of Illinois are chosen with their probability of selection based on the size of the town. Then, individuals living in these towns are randomly selected (with equal probability) to participate in an Illinois wellness survey. What type of sampling is this?</p>
+<p><span class="theorem-title"><strong>Exercise 8.7</strong></span> In a study, towns in the state of Illinois are chosen with their probability of selection based on the size of the town. Then, individuals living in these towns are randomly selected (with equal probability) to participate in an Illinois wellness survey. What type of sampling is this?</p>
 <ol type="a">
 <li>Simple random sampling</li>
 <li>Random sampling with unequal probability</li>
@@ -918,14 +979,14 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.8 </strong></span>True or False: Random assignment allows us to make generalizable claims and random sampling allows us to make causal claims.</p>
+<p><span class="theorem-title"><strong>Exercise 8.8</strong></span> True or False: Random assignment allows us to make generalizable claims and random sampling allows us to make causal claims.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch08-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.9 </strong></span>A generalizable correlation statement for the whole population that does not allow for a causal conclusion is the result of which type of experiment/observational study?</p>
+<p><span class="theorem-title"><strong>Exercise 8.9</strong></span> A generalizable correlation statement for the whole population that does not allow for a causal conclusion is the result of which type of experiment/observational study?</p>
 <ol type="a">
 <li>An experiment with random assignment and random sampling</li>
 <li>An experiment with random assignment and but no random sampling</li>
@@ -934,7 +995,7 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 </ol>
 </div>
 <div id="exr-ch08-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.10 </strong></span>You are an employee at Walmart and want to determine customer satisfaction in regards to opening and closing times. To determine this, you stand out front of the store right when it opens and survey the first 100 (willing) customers that enter the store. Can you make causal and generalizable claims from the results of your survey?</p>
+<p><span class="theorem-title"><strong>Exercise 8.10</strong></span> You are an employee at Walmart and want to determine customer satisfaction in regards to opening and closing times. To determine this, you stand out front of the store right when it opens and survey the first 100 (willing) customers that enter the store. Can you make causal and generalizable claims from the results of your survey?</p>
 <ol type="a">
 <li>Yes, you can make causal and generalizable claims from the results of your survey</li>
 <li>No, you can make causal claims but you cannot make generalizable claims from the results of your survey</li>
@@ -946,18 +1007,18 @@ $ decade &lt;dbl&gt; 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930, 1930,
 <section id="sec-ex08-application" class="level3" data-number="8.6.2">
 <h3 data-number="8.6.2" class="anchored" data-anchor-id="sec-ex08-application"><span class="header-section-number">8.6.2</span> Application</h3>
 <div id="exr-ch08-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.11 </strong></span>You are tasked with surveying the general populace of the US to determine if US citizens think the government is doing an adequate job of supporting climate change endeavors. To do so, you are provided with a master list of all addresses in the US and are asked to use this to perform a simple random sample of 50,000 households, sending one survey to each household for completion.</p>
+<p><span class="theorem-title"><strong>Exercise 8.11</strong></span> You are tasked with surveying the general populace of the US to determine if US citizens think the government is doing an adequate job of supporting climate change endeavors. To do so, you are provided with a master list of all addresses in the US and are asked to use this to perform a simple random sample of 50,000 households, sending one survey to each household for completion.</p>
 <p>Define your population of interest, population parameter, population frame and point estimate. Describe any limitations of the study (does undercoverage exist?).</p>
 </div>
 <div id="exr-ch08-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.12 </strong></span>Consider the scenario from <a href="#exr-ch08-app1">Exercise&nbsp;<span>8.11</span></a> again. The organization tasking you with the survey believes that states are similar, and asks you to randomly sample 1,000 households within each state (using the state-wide master lists of addresses), sending one survey to each household for completion.</p>
-<p>What type of sample is this and how would this sample differ from the simple random sample you performed in <a href="#exr-ch08-app1">Exercise&nbsp;<span>8.11</span></a>? Describe any limitations of the study (does undercoverage exist?) and compare any limitations to that of the design in <a href="#exr-ch08-app1">Exercise&nbsp;<span>8.11</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise 8.12</strong></span> Consider the scenario from <a href="#exr-ch08-app1" class="quarto-xref">Exercise&nbsp;<span>8.11</span></a> again. The organization tasking you with the survey believes that states are similar, and asks you to randomly sample 1,000 households within each state (using the state-wide master lists of addresses), sending one survey to each household for completion.</p>
+<p>What type of sample is this and how would this sample differ from the simple random sample you performed in <a href="#exr-ch08-app1" class="quarto-xref">Exercise&nbsp;<span>8.11</span></a>? Describe any limitations of the study (does undercoverage exist?) and compare any limitations to that of the design in <a href="#exr-ch08-app1" class="quarto-xref">Exercise&nbsp;<span>8.11</span></a>.</p>
 </div>
 </section>
 <section id="sec-ex08-advanced" class="level3" data-number="8.6.3">
 <h3 data-number="8.6.3" class="anchored" data-anchor-id="sec-ex08-advanced"><span class="header-section-number">8.6.3</span> Advanced</h3>
 <div id="exr-ch08-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.13 </strong></span>You work for an organization that aims to raise money to protect the Amazon rainforest. The organization wants to talk about endangered species that live within the Amazon rainforest at an upcoming benefit, but the previously hired statistician was terrified of jaguars so he/she was unable to perform the study to estimate the jaguar population. Consequently, your organization cannot say for certain if jaguars are endangered or not.</p>
+<p><span class="theorem-title"><strong>Exercise 8.13</strong></span> You work for an organization that aims to raise money to protect the Amazon rainforest. The organization wants to talk about endangered species that live within the Amazon rainforest at an upcoming benefit, but the previously hired statistician was terrified of jaguars so he/she was unable to perform the study to estimate the jaguar population. Consequently, your organization cannot say for certain if jaguars are endangered or not.</p>
 <p>Develop a sampling plan to estimate the total number of jaguars in the world. What type of sample would you perform? Define your population of interest, population parameter, population frame and point estimate. Describe any limitations of the study (does undercoverage exist?).</p>
 </div>
 
@@ -1045,10 +1106,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1058,8 +1118,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1072,6 +1141,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1115,6 +1303,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1140,6 +1329,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1201,12 +1416,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./07-causality.html" class="pagination-link">
+      <a href="./07-causality.html" class="pagination-link" aria-label="Randomization and Causality">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./09-sampling-distributions.html" class="pagination-link">
+      <a href="./09-sampling-distributions.html" class="pagination-link" aria-label="Sampling Distributions">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1215,4 +1430,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/08-populations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

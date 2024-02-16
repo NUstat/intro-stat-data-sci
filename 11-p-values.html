@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./11-p-values.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./11-p-values.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -384,12 +418,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex11-advanced" id="toc-sec-ex11-advanced" class="nav-link" data-scroll-target="#sec-ex11-advanced"><span class="header-section-number">11.6.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/11-p-values.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/11-p-values.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./11-p-values.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-pvalues" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></span></h1>
 </div>
@@ -404,12 +438,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>In <a href="10-confidence-intervals.html"><span>Chapter&nbsp;10</span></a>, we covered how to construct and interpret confidence intervals, which use the theory of repeated samples to make inferences from a sample (your data) to a population. To do so, we used counterfactual thinking that underpins statistical reasoning, wherein making inferences requires you to imagine alternative versions of your data that you might have under other possible samples selected in the same way. In this chapter, we extend this counterfactual reasoning to imagine other possible samples you might have seen if you knew the trend in the population. This way of thinking will lead us to define p-values.</p>
+
+<p>In <a href="10-confidence-intervals.html" class="quarto-xref"><span>Chapter 10</span></a>, we covered how to construct and interpret confidence intervals, which use the theory of repeated samples to make inferences from a sample (your data) to a population. To do so, we used counterfactual thinking that underpins statistical reasoning, wherein making inferences requires you to imagine alternative versions of your data that you might have under other possible samples selected in the same way. In this chapter, we extend this counterfactual reasoning to imagine other possible samples you might have seen if you knew the trend in the population. This way of thinking will lead us to define p-values.</p>
 <section id="packages-needed" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h3>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
@@ -447,10 +483,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="p-values"><span class="header-section-number">11.2.2</span> P-values</h3>
 <p>Once the distribution of the sample statistic under the null hypothesis is determined, to complete the stochastic proof by contradiction, you simply need to ask: Given this distribution, how likely is it that I would have drawn a random sample in which the estimated value is this extreme or more extreme?</p>
 <p>This is the <strong>p-value</strong>: The probability of your observing an estimate as extreme as the one you observed if the null hypothesis is true. If this p-value is small, it means that this data is unlikely to occur under the null hypothesis, and thus the null hypothesis is unlikely to be true. (See, proof by contradiction!)</p>
-<div id="fig-p-value-diagram" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/p-value-figure.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;11.1: P-value diagram</figcaption>
+<div id="fig-p-value-diagram" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p-value-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/p-value-figure.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p-value-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: P-value diagram
+</figcaption>
 </figure>
 </div>
 <!-- retrieved diagram from https://scientistseessquirrel.wordpress.com/2015/02/09/in-defence-of-the-p-value/  need to cite?-->
@@ -546,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="p-values-using-formulas" class="level3" data-number="11.3.2">
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="p-values-using-formulas"><span class="header-section-number">11.3.2</span> p-values using formulas</h3>
-<p>Recall from <a href="10-confidence-intervals.html"><span>Chapter&nbsp;10</span></a> that even though the sampling distribution of many estimators are normally distributed, the standardized statistic <span class="math inline">\(t\_stat\)</span> computed above often follows a <span class="math inline">\(t(df)\)</span> distribution because the formula for the standard error of many estimators involves an additional estimated quantity, <span class="math inline">\(s^2\)</span>, when the population variance is unknown. Recall that (differences in) proportions still follow the <span class="math inline">\(N(0,1)\)</span> distribution because they do not require <span class="math inline">\(s^2\)</span> to be estimated. An abbreviated version of <a href="10-confidence-intervals.html#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> with the relevant degrees of freedom for the t-distribution is given below:</p>
+<p>Recall from <a href="10-confidence-intervals.html" class="quarto-xref"><span>Chapter 10</span></a> that even though the sampling distribution of many estimators are normally distributed, the standardized statistic <span class="math inline">\(t\_stat\)</span> computed above often follows a <span class="math inline">\(t(df)\)</span> distribution because the formula for the standard error of many estimators involves an additional estimated quantity, <span class="math inline">\(s^2\)</span>, when the population variance is unknown. Recall that (differences in) proportions still follow the <span class="math inline">\(N(0,1)\)</span> distribution because they do not require <span class="math inline">\(s^2\)</span> to be estimated. An abbreviated version of <a href="10-confidence-intervals.html#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a> with the relevant degrees of freedom for the t-distribution is given below:</p>
 <table class="table">
 <colgroup>
 <col style="width: 17%">
@@ -591,18 +631,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Note that for difference in means, the exact degrees of freedom formula is much more complicated. We use <span class="math inline">\(min(n_1 -1, n_2 – 1)\)</span> as a conservative approximation when doing computations manually. For the regression parameters, <span class="math inline">\(k\)</span> is equal to the number of predictors in the model. So for a model with one predictor, <span class="math inline">\(k = 1\)</span> and the degrees of freedom would be <span class="math inline">\(n - 1 - 1 = n - 2\)</span>.</p>
 <p><strong>Caveat</strong>: It is important to note that the t-distribution is often referred to as a “small sample” distribution. That is because once the degrees of freedom are large enough (when the sample size is large), the t-distribution is actually quite similar to the normal distribution as we have seen previously. For analysis purposes, however, you don’t need to determine when to use one or the other as your sampling distribution: unless dealing with proportions, you can always use the t-distribution instead of the Normal distribution.</p>
-<p>We can calculate a p-value by asking: Assuming the null distribution, what is the probability that we will see a <span class="math inline">\(t\_stat\)</span> value as extreme as the one from our data? Typically, we want to calculate what is called a “two-sided” p-value, which calculates the probability that you would observe a <span class="math inline">\(t\_stat\)</span> value as extreme as the one observed <em>in either direction</em>. That is, we are interested in values of <span class="math inline">\(t\_stat\)</span> that are as large <em>in magnitude</em> as the one we observed, in both the positive and negative directions. For example, if we observe a <span class="math inline">\(t\_stat\)</span> value of 2.0, the appropriate two-sided p-value is represented by the probability shaded in <a href="#fig-t-two-tail">Figure&nbsp;<span>11.2</span></a>.</p>
+<p>We can calculate a p-value by asking: Assuming the null distribution, what is the probability that we will see a <span class="math inline">\(t\_stat\)</span> value as extreme as the one from our data? Typically, we want to calculate what is called a “two-sided” p-value, which calculates the probability that you would observe a <span class="math inline">\(t\_stat\)</span> value as extreme as the one observed <em>in either direction</em>. That is, we are interested in values of <span class="math inline">\(t\_stat\)</span> that are as large <em>in magnitude</em> as the one we observed, in both the positive and negative directions. For example, if we observe a <span class="math inline">\(t\_stat\)</span> value of 2.0, the appropriate two-sided p-value is represented by the probability shaded in <a href="#fig-t-two-tail" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-t-two-tail" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="11-p-values_files/figure-html/fig-t-two-tail-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;11.2: 2*pt(-2, df = 99)</figcaption>
+<div id="fig-t-two-tail" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t-two-tail-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="11-p-values_files/figure-html/fig-t-two-tail-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-two-tail-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.2: 2*pt(-2, df = 99)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>We can calculate this probability using the <code>pt()</code>function in R, where we plug in the appropriate degrees of freedom and our <code>t_stat</code> value as the quantile. Remember there is a default argument <code>lower.tail = TRUE</code> in the <code>pt()</code> function, which means it returns the probability <em>to the left</em> of the <code>t_stat</code> value you enter. Because the t-distribution is symmetric, you can simply multiply the probability in the lower tail by two to get the probability of falling in either tail. The p-value implied by <a href="#fig-t-two-tail">Figure&nbsp;<span>11.2</span></a> would therefore be calculated by <code>2*pt(-2, df = 99)</code>. Note that in general if you have positive <code>t_stat</code> value, you will want to either use <code>2*pt(-t_stat, 99)</code> or <code>2*pt(t_stat, 99, lower.tail = FALSE)</code>. A general form that will always work regardless of the sign of <code>t_stat</code> is to use <code>2*pt(-abs(t_stat), 99)</code>, where <code>abs()</code> is the absolute value function.</p>
+<p>We can calculate this probability using the <code>pt()</code>function in R, where we plug in the appropriate degrees of freedom and our <code>t_stat</code> value as the quantile. Remember there is a default argument <code>lower.tail = TRUE</code> in the <code>pt()</code> function, which means it returns the probability <em>to the left</em> of the <code>t_stat</code> value you enter. Because the t-distribution is symmetric, you can simply multiply the probability in the lower tail by two to get the probability of falling in either tail. The p-value implied by <a href="#fig-t-two-tail" class="quarto-xref">Figure&nbsp;<span>11.2</span></a> would therefore be calculated by <code>2*pt(-2, df = 99)</code>. Note that in general if you have positive <code>t_stat</code> value, you will want to either use <code>2*pt(-t_stat, 99)</code> or <code>2*pt(t_stat, 99, lower.tail = FALSE)</code>. A general form that will always work regardless of the sign of <code>t_stat</code> is to use <code>2*pt(-abs(t_stat), 99)</code>, where <code>abs()</code> is the absolute value function.</p>
 <p>In our IMDB movies example, we observe <code>t_stat = 2.91</code>, and we want to know what the probability of observing a <span class="math inline">\(t\_stat\)</span> value <em>as large in magnitude</em> as this would be under the null distribution. Note our approximate <span class="math inline">\(df = min(n_1 - 1, n_2 - 1) = min(36 - 1, 32 - 1) = 31\)</span>, so our p-value is given by <code>2*pt(-2.91, 31)</code> = 0.007. This tells us that if the null distribution is true (i.e.&nbsp;if there is no true difference between average ratings of romance and action movies on IMDB), we would only observe a difference as large as we did 0.7% of the time. This provides evidence - via proof by contradiction - that the null distribution is likely false; that is, there is likely a true difference in average ratings of romance and action movies on IMDB.</p>
 </section>
 <section id="sec-t-test" class="level3" data-number="11.3.3">
@@ -643,7 +687,7 @@ mean of x mean of y
 </section>
 <section id="sec-pvalues-regression" class="level3" data-number="11.3.4">
 <h3 data-number="11.3.4" class="anchored" data-anchor-id="sec-pvalues-regression"><span class="header-section-number">11.3.4</span> p-values using regression</h3>
-<p>We can also use a regression model to estimate the difference between means. We can fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> where <code>action</code> is the reference category (because it comes before <code>romance</code> in alphabetical order). Recalling what we learned in <a href="05-regression.html#sec-model2"><span>Section&nbsp;5.2</span></a>, <span class="math inline">\(b_0\)</span> is interpreted as the average rating for <code>action</code> movies, and <span class="math inline">\(b_1\)</span> is the <em>offset</em> in average rating for <code>romance</code> movies, relative to <code>action</code> movies. That is, <span class="math inline">\(b_1 = \bar{x}_{romance} - \bar{x}_{action}\)</span>, which is exactly the estimate we’re interested in. Let’s fit this model and take a look at its summary output.</p>
+<p>We can also use a regression model to estimate the difference between means. We can fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> where <code>action</code> is the reference category (because it comes before <code>romance</code> in alphabetical order). Recalling what we learned in <a href="05-regression.html#sec-model2" class="quarto-xref"><span>Section 5.2</span></a>, <span class="math inline">\(b_0\)</span> is interpreted as the average rating for <code>action</code> movies, and <span class="math inline">\(b_1\)</span> is the <em>offset</em> in average rating for <code>romance</code> movies, relative to <code>action</code> movies. That is, <span class="math inline">\(b_1 = \bar{x}_{romance} - \bar{x}_{action}\)</span>, which is exactly the estimate we’re interested in. Let’s fit this model and take a look at its summary output.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(movies_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -717,15 +761,19 @@ $ duration &lt;dbl&gt; 16.3, 13.5, 21.1, 22.4, 18.9, 25.1, 38.1, 21.8, 26.1, 15.
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-B-fig" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="11-p-values_files/figure-html/fig-B-fig-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;11.3: t-statistic for average price of Uber rides (n = 100)</figcaption>
+<div id="fig-B-fig" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="11-p-values_files/figure-html/fig-B-fig-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-B-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.3: t-statistic for average price of Uber rides (n = 100)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>By looking at <a href="#fig-B-fig">Figure&nbsp;<span>11.3</span></a> and computing the p-value using <code>pt()</code>, we see that if company B does in fact have the same true population average price as company A (i.e.&nbsp;if <span class="math inline">\(\mu_{\text{B}} = \$19.50\)</span>), we would expect to observe an average price as large or larger than the one we did (i.e.&nbsp;<span class="math inline">\(\bar{x}_{\text{B}} = 20.3\)</span>) about 13% of the time.</p>
+<p>By looking at <a href="#fig-B-fig" class="quarto-xref">Figure&nbsp;<span>11.3</span></a> and computing the p-value using <code>pt()</code>, we see that if company B does in fact have the same true population average price as company A (i.e.&nbsp;if <span class="math inline">\(\mu_{\text{B}} = \$19.50\)</span>), we would expect to observe an average price as large or larger than the one we did (i.e.&nbsp;<span class="math inline">\(\bar{x}_{\text{B}} = 20.3\)</span>) about 13% of the time.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">1.53</span>, <span class="at">df =</span> <span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -831,27 +879,27 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 <li>“Only 10% chance is small, which is unlikely. This must mean that the null hypothesis is not true,” or</li>
 <li>“But we don’t know that for sure: in 10% of possible samples, this does occur just by chance. The null hypothesis could be true.”</li>
 </ul>
-<p>This will be important to keep in mind as we move towards using p-values for decision making in <a href="12-hypothesis-tests.html"><span>Chapter&nbsp;12</span></a>.</p>
+<p>This will be important to keep in mind as we move towards using p-values for decision making in <a href="12-hypothesis-tests.html" class="quarto-xref"><span>Chapter 12</span></a>.</p>
 </section>
 <section id="sec-ex11" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="sec-ex11"><span class="header-section-number">11.6</span> Exercises</h2>
 <section id="sec-ex11-conceptual" class="level3" data-number="11.6.1">
 <h3 data-number="11.6.1" class="anchored" data-anchor-id="sec-ex11-conceptual"><span class="header-section-number">11.6.1</span> Conceptual</h3>
 <div id="exr-ch11-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 11.1 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Exercise 11.1</strong></span> &nbsp;</p>
 </div>
 </section>
 <section id="sec-ex11-application" class="level3" data-number="11.6.2">
 <h3 data-number="11.6.2" class="anchored" data-anchor-id="sec-ex11-application"><span class="header-section-number">11.6.2</span> Application</h3>
 <p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
 <div id="exr-ch11-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 11.2 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Exercise 11.2</strong></span> &nbsp;</p>
 </div>
 </section>
 <section id="sec-ex11-advanced" class="level3" data-number="11.6.3">
 <h3 data-number="11.6.3" class="anchored" data-anchor-id="sec-ex11-advanced"><span class="header-section-number">11.6.3</span> Advanced</h3>
 <div id="exr-ch11-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 11.3 </strong></span>&nbsp;</p>
+<p><span class="theorem-title"><strong>Exercise 11.3</strong></span> &nbsp;</p>
 </div>
 
 
@@ -938,10 +986,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -951,8 +998,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -965,6 +1021,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1008,6 +1183,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1033,6 +1209,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1094,12 +1296,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-confidence-intervals.html" class="pagination-link">
+      <a href="./10-confidence-intervals.html" class="pagination-link" aria-label="Confidence Intervals">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./12-hypothesis-tests.html" class="pagination-link">
+      <a href="./12-hypothesis-tests.html" class="pagination-link" aria-label="Hypothesis tests">
         <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1108,4 +1310,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/11-p-values.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

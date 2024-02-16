@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./07-causality.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./07-causality.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -378,12 +412,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex07-advanced" id="toc-sec-ex07-advanced" class="nav-link" data-scroll-target="#sec-ex07-advanced"><span class="header-section-number">7.8.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/07-causality.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/07-causality.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./07-causality.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-causality" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Randomization and Causality</span></span></h1>
 </div>
@@ -398,12 +432,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>In this chapter we kick off the third segment of this book: statistical theory. Up until this point, we have focused only on descriptive statistics and exploring the data we have in hand. Very often the data available to us is <strong>observational data</strong> – data that is collected via a survey in which nothing is manipulated or via a log of data (e.g., scraped from the web). As a result, any relationship we observe is limited to our specific sample of data, and the relationships are considered <strong>associational</strong>. In this chapter we introduce the idea of making inferences through a discussion of <strong>causality</strong> and <strong>randomization</strong>.</p>
 <section id="needed-packages" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed Packages</h3>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -440,12 +476,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Half of the sample of people is randomly assigned to the treatment group (T), and the other half is assigned to the control group (C).</li>
 <li>Those in the treatment group receive a treatment (e.g., a drug) and those in the control group receive something else (e.g., business as usual, a placebo).</li>
 <li>Outcomes (Y) in the two groups are observed for all people.</li>
-<li>The effect of the treatment is calculated using a simple regression model, <span class="math display">\[\hat{y} = b_0 + b_1T \]</span> where <span class="math inline">\(T\)</span> equals 1 when the individual is in the treatment group and 0 when they are in the control group. Note that using the notation introduced in <a href="05-regression.html#sec-model2table"><span>Section&nbsp;5.2.2</span></a>, this would be the same as writing <span class="math inline">\(\hat{y} = b_0 + b_1\mathbb{1}_{\mbox{Trt}}(x)\)</span>. We will stick with the <span class="math inline">\(T\)</span> notation for now, because this is more common in randomized experiments in practice.</li>
+<li>The effect of the treatment is calculated using a simple regression model, <span class="math display">\[\hat{y} = b_0 + b_1T \]</span> where <span class="math inline">\(T\)</span> equals 1 when the individual is in the treatment group and 0 when they are in the control group. Note that using the notation introduced in <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>, this would be the same as writing <span class="math inline">\(\hat{y} = b_0 + b_1\mathbb{1}_{\mbox{Trt}}(x)\)</span>. We will stick with the <span class="math inline">\(T\)</span> notation for now, because this is more common in randomized experiments in practice.</li>
 </ol>
 <p>For this simple regression model, <span class="math inline">\(b_1 = \bar{y}_T - \bar{y}_C\)</span> is the observed “treatment effect”, where <span class="math inline">\(\bar{y}_T\)</span> is the average of the outcomes in the treatment group and <span class="math inline">\(\bar{y}_C\)</span> is the average in the control group. This means that the “treatment effect” is simply the difference between the treatment and control group averages.</p>
 <section id="random-processes-in-r" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="random-processes-in-r"><span class="header-section-number">7.2.1</span> Random processes in R</h3>
-<p>There are several functions in R that mimic random processes. You have already seen one example in <a href="05-regression.html">Chapters&nbsp;<span>5</span></a> and <a href="06-multiple-regression.html"><span>6</span></a> when we used <code>sample_n</code> to randomly select a specifized number of rows from a dataset. The function <code>rbernoulli()</code> is another example, which allows us to mimic the results of a series of random coin flips. The first argument in the <code>rbernoulli()</code> function, <code>n</code>, specifies the number of trials (in this case, coin flips), and the argument <code>p</code> specifies the probability of “success”” for each trial. In our coin flip example, we can define “success” to be when the coin lands on heads. If we’re using a fair coin then the probability it lands on heads is 50%, so <code>p = 0.5</code>.</p>
+<p>There are several functions in R that mimic random processes. You have already seen one example in <a href="05-regression.html" class="quarto-xref">Chapters&nbsp;<span>5</span></a> and <a href="06-multiple-regression.html" class="quarto-xref"><span>6</span></a> when we used <code>sample_n</code> to randomly select a specifized number of rows from a dataset. The function <code>rbernoulli()</code> is another example, which allows us to mimic the results of a series of random coin flips. The first argument in the <code>rbernoulli()</code> function, <code>n</code>, specifies the number of trials (in this case, coin flips), and the argument <code>p</code> specifies the probability of “success”” for each trial. In our coin flip example, we can define “success” to be when the coin lands on heads. If we’re using a fair coin then the probability it lands on heads is 50%, so <code>p = 0.5</code>.</p>
 <p>Sometimes a random process can give results that don’t <em>look</em> random. For example, even though any given coin flip has a 50% chance of landing on heads, it’s possible to observe many tails in a row, just due to chance. In the example below, 10 coin flips resulted in only 3 heads, and the first 7 flips were tails. Note that TRUE corresponds to the notion of “success”, so here TRUE = heads and FALSE = tails.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>coin_flips <span class="ot">&lt;-</span> <span class="fu">rbernoulli</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>)</span>
@@ -482,8 +518,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sec-omitted-variables" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="sec-omitted-variables"><span class="header-section-number">7.3</span> Omitted variables</h2>
-<p>In a randomized experiment, we showed in <a href="#sec-randomized-experiments"><span>Section&nbsp;7.2</span></a> that we can calculate the estimated causal effect (<span class="math inline">\(b_1\)</span>) of a treatment using a simple regression model.</p>
-<p>Why can’t we use the same model to determine causality with observational data? Recall our discussion from <a href="05-regression.html#sec-correlation-is-not-causation"><span>Section&nbsp;5.3.2</span></a>. We have to be very careful not to make unwarranted causal claims from observational data, because there may be an <strong>omitted variable</strong> (Z), also known as a <strong>confounder</strong>:</p>
+<p>In a randomized experiment, we showed in <a href="#sec-randomized-experiments" class="quarto-xref"><span>Section 7.2</span></a> that we can calculate the estimated causal effect (<span class="math inline">\(b_1\)</span>) of a treatment using a simple regression model.</p>
+<p>Why can’t we use the same model to determine causality with observational data? Recall our discussion from <a href="05-regression.html#sec-correlation-is-not-causation" class="quarto-xref"><span>Section 5.3.2</span></a>. We have to be very careful not to make unwarranted causal claims from observational data, because there may be an <strong>omitted variable</strong> (Z), also known as a <strong>confounder</strong>:</p>
 <p><img src="images/confounder.png" class="img-fluid"></p>
 <p>Here are some examples:</p>
 <ul>
@@ -579,7 +615,7 @@ $ Trt_non_rand &lt;dbl&gt; 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">case_when</span>(Trt_non_rand <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> MATH_pre <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>), </span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                     Trt_non_rand <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> MATH_pre <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By looking at the first 10 rows of this data in <a href="#tbl-post-scores">Table&nbsp;<span>7.1</span></a>, we can convince ourselves that both the <code>MATH_post_trt_rand</code> and <code>MATH_post_trt_non_rand</code> scores reflect this truth that the treatment raises test scores by 10 points, on average. For example, we see that for student 1, they were assigned to the treatment group in both scenarios and their test scores increased from about 18 to about 28. Student 2, however, was only assigned to treatment in the second scenario, and their test scores increased from about 31 to 41, but in the first scenario since they did not receive the treatment, their score stayed at about 31. Remember that here we are showing two hypothetical scenarios that could have occurred for these students - one if they were part of a randomized experiment and one where they were part of an observational study - but in real life, the study would only be conducted one way on the students and not both.</p>
+<p>By looking at the first 10 rows of this data in <a href="#tbl-post-scores" class="quarto-xref">Table&nbsp;<span>7.1</span></a>, we can convince ourselves that both the <code>MATH_post_trt_rand</code> and <code>MATH_post_trt_non_rand</code> scores reflect this truth that the treatment raises test scores by 10 points, on average. For example, we see that for student 1, they were assigned to the treatment group in both scenarios and their test scores increased from about 18 to about 28. Student 2, however, was only assigned to treatment in the second scenario, and their test scores increased from about 31 to 41, but in the first scenario since they did not receive the treatment, their score stayed at about 31. Remember that here we are showing two hypothetical scenarios that could have occurred for these students - one if they were part of a randomized experiment and one where they were part of an observational study - but in real life, the study would only be conducted one way on the students and not both.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, MATH_pre, Trt_rand, </span>
@@ -588,10 +624,15 @@ $ Trt_non_rand &lt;dbl&gt; 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ID <span class="sc">&lt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-post-scores" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-post-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.1: Math scores for first 10 students, under random and non-random treatment assignment scenarios
+</figcaption>
+<div aria-describedby="tbl-post-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-post-scores" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;7.1: Math scores for first 10 students, under random and non-random treatment assignment scenarios</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Math scores for first 10 students, under random and non-random treatment assignment scenarios</caption>
 <colgroup>
 <col style="width: 3%">
 <col style="width: 11%">
@@ -695,6 +736,8 @@ $ Trt_non_rand &lt;dbl&gt; 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Let’s examine how students in each group performed on the post-treatment math assessment on average in the first scenario where they were randomly assigned (i.e.&nbsp;using <code>Trt_rand</code> and <code>MATH_post_trt_rand</code>).</p>
 <div class="cell" data-layout-align="center">
@@ -751,7 +794,7 @@ Trt_non_rand     2.18      1.234    1.76  7.89e-02</code></pre>
 <p>In the previous sections, we made clear that you cannot calculate the causal effect of a treatment using a <em>simple</em> linear regression model unless you have random assignment. What about a <em>multiple</em> regression model?</p>
 <p>The answer here is more complicated. We’ll give you an overview, but note that this is a tiny sliver of an introduction and that there is an entire <em>field</em> of methods devoted to this problem. The field is called <strong>causal inference methods</strong> and focuses on the conditions under and methods in which you can calculate causal effects in observational studies.</p>
 <p>Recall, we said before that in an observational study, the reason you can’t attribute causality between X and Y is because the relationship is <strong>confounded</strong> by an omitted variable Z. What if we included Z in the model (making it no longer omitted), as in:</p>
-<p><span class="math display">\[\hat{y} = b_0 + b_1T + b_2Z\]</span> As we learned in <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a>, we can now interpret the coefficient <span class="math inline">\(b_1\)</span> as <strong>the estimated effect of the treatment on outcomes, holding constant (or adjusting for) Z</strong>.</p>
+<p><span class="math display">\[\hat{y} = b_0 + b_1T + b_2Z\]</span> As we learned in <a href="06-multiple-regression.html" class="quarto-xref"><span>Chapter 6</span></a>, we can now interpret the coefficient <span class="math inline">\(b_1\)</span> as <strong>the estimated effect of the treatment on outcomes, holding constant (or adjusting for) Z</strong>.</p>
 <p>Importantly, the relationship between T and Y, adjusting for Z can be similar or different than the relationship between T and Y alone. In advance, you simply cannot know one from the other.</p>
 <p>Let’s again look at our model <code>fit1_non_rand</code> that looked at the relationship between treatment and math scores, and compare it to a model that adjusts for the confounding variable SES.</p>
 <div class="cell" data-layout-align="center">
@@ -809,7 +852,7 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 <section id="sec-causality-conclusion" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="sec-causality-conclusion"><span class="header-section-number">7.7</span> Conclusion</h2>
 <p>In this chapter we’ve focused on the role of randomization in our ability to make inferences – here about causation. As you will see in the next few chapters, randomization is also important for making inferences from outcomes observed in a sample to their values in a population. But the importance of randomization goes even deeper than this – one could say that <strong>randomization is at the core of inferential statistics</strong>.</p>
-<p>In situations in which treatment is <strong>randomly assigned</strong> or a sample is <strong>randomly selected</strong> from a population, as a result of <strong>knowing this mechanism</strong>, we are able to imagine and explore alternative realities – what we will call <strong>counter-factual thinking</strong> (<a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>) – and form ways of understanding when “effects” are likely (or unlikely) to be found simply by chance – what we will call <strong>proof by stochastic contradiction</strong> (<a href="11-p-values.html"><span>Chapter&nbsp;11</span></a>).</p>
+<p>In situations in which treatment is <strong>randomly assigned</strong> or a sample is <strong>randomly selected</strong> from a population, as a result of <strong>knowing this mechanism</strong>, we are able to imagine and explore alternative realities – what we will call <strong>counter-factual thinking</strong> (<a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a>) – and form ways of understanding when “effects” are likely (or unlikely) to be found simply by chance – what we will call <strong>proof by stochastic contradiction</strong> (<a href="11-p-values.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
 <p>Finally, we would be remiss to end this chapter without including this XKCD comic, which every statistician loves:</p>
 <p><img src="images/causation.png" class="img-fluid"></p>
 </section>
@@ -818,7 +861,7 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 <section id="sec-ex07-conceptual" class="level3" data-number="7.8.1">
 <h3 data-number="7.8.1" class="anchored" data-anchor-id="sec-ex07-conceptual"><span class="header-section-number">7.8.1</span> Conceptual</h3>
 <div id="exr-ch07-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.1 </strong></span>Which of the following are necessary components of a randomized experiment? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 7.1</strong></span> Which of the following are necessary components of a randomized experiment? Select all that apply.</p>
 <ol type="a">
 <li>There is a non-zero probability of being selected into the treatment or control group for every unit</li>
 <li>Every unit of the population is selected into the treatment or control group</li>
@@ -828,7 +871,7 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 </ol>
 </div>
 <div id="exr-ch07-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.2 </strong></span>You are interested in determining how often a 4-sided die (with sides numbered 1-4) rolls the number <code>2</code>. Which of the following lines of code could you use to simulate 1000 rolls for this experiment?</p>
+<p><span class="theorem-title"><strong>Exercise 7.2</strong></span> You are interested in determining how often a 4-sided die (with sides numbered 1-4) rolls the number <code>2</code>. Which of the following lines of code could you use to simulate 1000 rolls for this experiment?</p>
 <ol type="a">
 <li>1000*rbernoulli(n = 1, p = 0.25)</li>
 <li>rep( rbernoulli(n = 1, p = 0.25), 1000)</li>
@@ -839,21 +882,21 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 </ol>
 </div>
 <div id="exr-ch07-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.3 </strong></span>The more times the random procedure is conducted, the further our experimental probability diverges from the true probability.</p>
+<p><span class="theorem-title"><strong>Exercise 7.3</strong></span> The more times the random procedure is conducted, the further our experimental probability diverges from the true probability.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch07-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.4 </strong></span>Randomization allows you to determine causation because the treatment and control groups do not differ by any pre-treatment variables.</p>
+<p><span class="theorem-title"><strong>Exercise 7.4</strong></span> Randomization allows you to determine causation because the treatment and control groups do not differ by any pre-treatment variables.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch07-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.5 </strong></span>In most real life studies, selection of treatment is not based on a single variable. Which of the following are components of the best approach in this case?</p>
+<p><span class="theorem-title"><strong>Exercise 7.5</strong></span> In most real life studies, selection of treatment is not based on a single variable. Which of the following are components of the best approach in this case?</p>
 <ol type="a">
 <li>Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment</li>
 <li>Add additional treatment variables to ensure further randomization</li>
@@ -862,7 +905,7 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 </ol>
 </div>
 <div id="exr-ch07-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.6 </strong></span>Consider the following headline: “Students at private colleges have higher GPAs”. What conclusions can you infer?</p>
+<p><span class="theorem-title"><strong>Exercise 7.6</strong></span> Consider the following headline: “Students at private colleges have higher GPAs”. What conclusions can you infer?</p>
 <ol type="a">
 <li>private colleges causes higher GPAs, because this would be an observational study</li>
 <li>private colleges are only correlated with higher GPAs, because this would be an observational study</li>
@@ -871,7 +914,7 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 </ol>
 </div>
 <div id="exr-ch07-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.7 </strong></span>Consider the following headline: “Video games cause violent behavior”. What conclusions can you infer?</p>
+<p><span class="theorem-title"><strong>Exercise 7.7</strong></span> Consider the following headline: “Video games cause violent behavior”. What conclusions can you infer?</p>
 <ol type="a">
 <li>video games cause violent behavior, because this would be an observational study</li>
 <li>video games are only correlated with violent behavior, because this would be an observational study</li>
@@ -880,10 +923,10 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 </ol>
 </div>
 <div id="exr-ch07-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.8 </strong></span>Name a potential confounding variable for <a href="#exr-ch07-c06">Exercise&nbsp;<span>7.6</span></a>. Name a potential confounding variable for <a href="#exr-ch07-c07">Exercise&nbsp;<span>7.7</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise 7.8</strong></span> Name a potential confounding variable for <a href="#exr-ch07-c06" class="quarto-xref">Exercise&nbsp;<span>7.6</span></a>. Name a potential confounding variable for <a href="#exr-ch07-c07" class="quarto-xref">Exercise&nbsp;<span>7.7</span></a>.</p>
 </div>
 <div id="exr-ch07-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.9 </strong></span>You are designing an experiment where you provide the eastern half of a city with recommendations to decrease water consumption (treatment group), with the aim of determining the effectiveness of these recommendations. The western half of the city does not receive water consumption recommendations (control group). Would we expect that, on average, the pre-treatment characteristics are the same between the treatment and control groups?</p>
+<p><span class="theorem-title"><strong>Exercise 7.9</strong></span> You are designing an experiment where you provide the eastern half of a city with recommendations to decrease water consumption (treatment group), with the aim of determining the effectiveness of these recommendations. The western half of the city does not receive water consumption recommendations (control group). Would we expect that, on average, the pre-treatment characteristics are the same between the treatment and control groups?</p>
 <ol type="a">
 <li>Yes, because we have no reason to believe that different halves of the city differ</li>
 <li>Yes, because the treatment itself is very mild</li>
@@ -892,19 +935,19 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 </ol>
 </div>
 <div id="exr-ch07-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.10 </strong></span>A doctor is curious if a new drug he has just learned about is effective in improving symptoms for patients with illness <code>A</code>. To determine the effectiveness of this drug, the doctor randomizes his patients and prescribes half of these patients with the drug of interest, while leaving the other half to continue with existing methods. Simultaneously, however, the physical therapist for all the doctor’s patients is running his own study where he too randomized the doctor’s patients (independently of the doctor’s study) and prescribed half of the patients to a new pain relief therapy program.</p>
+<p><span class="theorem-title"><strong>Exercise 7.10</strong></span> A doctor is curious if a new drug he has just learned about is effective in improving symptoms for patients with illness <code>A</code>. To determine the effectiveness of this drug, the doctor randomizes his patients and prescribes half of these patients with the drug of interest, while leaving the other half to continue with existing methods. Simultaneously, however, the physical therapist for all the doctor’s patients is running his own study where he too randomized the doctor’s patients (independently of the doctor’s study) and prescribed half of the patients to a new pain relief therapy program.</p>
 <p>In the context of the doctor’s study on the drug, the new pain relief therapy program is what type of variable?</p>
 </div>
 </section>
 <section id="sec-ex07-application" class="level3" data-number="7.8.2">
 <h3 data-number="7.8.2" class="anchored" data-anchor-id="sec-ex07-application"><span class="header-section-number">7.8.2</span> Application</h3>
 <div id="exr-ch07-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.11 </strong></span>Consider the following scenario:</p>
+<p><span class="theorem-title"><strong>Exercise 7.11</strong></span> Consider the following scenario:</p>
 <p>At a large high school, the administrative personnel want to start an after school program for mathematics help for students. To determine if the program is effective, the administration asks all the math teachers at the school to provide recommendations of which students they believe would benefit from the program, and randomly selects 200 of these students. The trial mathematics program is implemented for the duration of the spring semester, and the administrative personnel consider the outcome to be the change in student’s percentile math score from the fall semester final to the spring semester final.</p>
 <p>Based on the setup of this design, can the administrative personnel conclude that the after school program <strong>caused</strong> students to improve in mathematics? Discuss whether or not randomization was achieved and any limitations of the study.</p>
 </div>
 <div id="exr-ch07-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.12 </strong></span>Consider the following scenario:</p>
+<p><span class="theorem-title"><strong>Exercise 7.12</strong></span> Consider the following scenario:</p>
 <p>You are working for a potato chip company, and are tasked with designing an experiment to determine if potential customers across the US are more receptive to a more complicated graphic on the product compared to the original simple graphic. Due to production and shipping issues, however, the product with the original graphic can only be distributed on the Eastern half of the US and the product with the more complicated graphic can only be distributed on the Western half of the US.</p>
 <p>How and why might the confounding variable geography impact your results and conclusions? Can you brainstorm any ways to reduce the impact of this confounding variable?</p>
 </div>
@@ -912,7 +955,7 @@ SES_CONT        6.37      0.798    7.98  2.37e-14</code></pre>
 <section id="sec-ex07-advanced" class="level3" data-number="7.8.3">
 <h3 data-number="7.8.3" class="anchored" data-anchor-id="sec-ex07-advanced"><span class="header-section-number">7.8.3</span> Advanced</h3>
 <div id="exr-ch07-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.13 </strong></span>A new study is published claiming that patients are more receptive to rehabilitation of spinal injuries if one wall in the treatment room is painted purple. The hospital you work for is fascinated by the study and wants to implement the study in their own location, but the study provides no empirical evidence of the effectiveness of the treatment.</p>
+<p><span class="theorem-title"><strong>Exercise 7.13</strong></span> A new study is published claiming that patients are more receptive to rehabilitation of spinal injuries if one wall in the treatment room is painted purple. The hospital you work for is fascinated by the study and wants to implement the study in their own location, but the study provides no empirical evidence of the effectiveness of the treatment.</p>
 <p>You are tasked with designing a (randomized) experiment to determine the validity of this claim. Design a study and discuss the limitations of your study.</p>
 </div>
 
@@ -1000,10 +1043,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1013,8 +1055,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1027,6 +1078,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1070,6 +1240,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1095,6 +1266,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1156,12 +1353,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-multiple-regression.html" class="pagination-link">
+      <a href="./06-multiple-regression.html" class="pagination-link" aria-label="Multiple Regression">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08-populations.html" class="pagination-link">
+      <a href="./08-populations.html" class="pagination-link" aria-label="Populations and Generalizability">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1170,4 +1367,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/07-causality.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

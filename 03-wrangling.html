@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -126,12 +161,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./03-wrangling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./03-wrangling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -141,7 +176,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -149,8 +184,8 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -237,7 +272,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,7 +403,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -411,12 +446,12 @@ div.csl-indent {
   <li><a href="#sec-ex03-advanced" id="toc-sec-ex03-advanced" class="nav-link" data-scroll-target="#sec-ex03-advanced"><span class="header-section-number">3.10.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/03-wrangling.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/03-wrangling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./03-wrangling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-wrangling" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></h1>
 </div>
@@ -431,9 +466,11 @@ div.csl-indent {
   </div>
   
 
+
 </header>
 
-<p>So far in our journey, we’ve seen how to look at data saved in data frames using the <code>glimpse()</code> and <code>View()</code> functions in <a href="01-getting-started.html"><span>Chapter&nbsp;1</span></a> on and how to create data visualizations using the <code>ggplot2</code> package in <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>. In particular we studied what we term the “five named graphs” (5NG):</p>
+
+<p>So far in our journey, we’ve seen how to look at data saved in data frames using the <code>glimpse()</code> and <code>View()</code> functions in <a href="01-getting-started.html" class="quarto-xref"><span>Chapter 1</span></a> on and how to create data visualizations using the <code>ggplot2</code> package in <a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a>. In particular we studied what we term the “five named graphs” (5NG):</p>
 <ol type="1">
 <li>scatterplots via <code>geom_point()</code></li>
 <li>linegraphs via <code>geom_line()</code></li>
@@ -441,8 +478,8 @@ div.csl-indent {
 <li>histograms via <code>geom_histogram()</code></li>
 <li>barplots via <code>geom_bar()</code> or <code>geom_col()</code></li>
 </ol>
-<p>We created these visualizations using the “Grammar of Graphics”, which maps variables in a data frame to the aesthetic attributes of one the above 5 <code>geom</code>etric objects. We can also control other aesthetic attributes of the geometric objects such as the size and color as seen in the Gapminder data example in <a href="02-visualization.html#fig-gapminder">Figure&nbsp;<span>2.1</span></a>.</p>
-<p>Recall however in <a href="02-visualization.html#sec-whats-to-come-3"><span>Section&nbsp;2.9.4</span></a> we discussed that for two of our visualizations we needed transformed/modified versions of existing data frames. Recall for example the scatterplot of departure and arrival delay <em>only</em> for Alaska Airlines flights. In order to create this visualization, we needed to first pare down the <code>flights</code> data frame to a new data frame <code>alaska_flights</code> consisting of only <code>carrier == "AS"</code> flights using the <code>filter()</code> function.</p>
+<p>We created these visualizations using the “Grammar of Graphics”, which maps variables in a data frame to the aesthetic attributes of one the above 5 <code>geom</code>etric objects. We can also control other aesthetic attributes of the geometric objects such as the size and color as seen in the Gapminder data example in <a href="02-visualization.html#fig-gapminder" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+<p>Recall however in <a href="02-visualization.html#sec-whats-to-come-3" class="quarto-xref"><span>Section 2.9.4</span></a> we discussed that for two of our visualizations we needed transformed/modified versions of existing data frames. Recall for example the scatterplot of departure and arrival delay <em>only</em> for Alaska Airlines flights. In order to create this visualization, we needed to first pare down the <code>flights</code> data frame to a new data frame <code>alaska_flights</code> consisting of only <code>carrier == "AS"</code> flights using the <code>filter()</code> function.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>alaska_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(carrier <span class="sc">==</span> <span class="st">"AS"</span>)</span>
@@ -453,7 +490,7 @@ div.csl-indent {
 <p>In this chapter, we’ll introduce a series of functions from the <code>dplyr</code> package that will allow you to take a data frame and</p>
 <ol type="1">
 <li><p><code>filter()</code> its existing rows to only pick out a subset of them. For example, the <code>alaska_flights</code> data frame above.</p></li>
-<li><p><code>summarize()</code> one of its columns/variables with a <em>summary statistic</em>. Examples include the median and interquartile range of temperatures as we saw in <a href="02-visualization.html#sec-boxplots"><span>Section&nbsp;2.7</span></a> on boxplots.</p></li>
+<li><p><code>summarize()</code> one of its columns/variables with a <em>summary statistic</em>. Examples include the median and interquartile range of temperatures as we saw in <a href="02-visualization.html#sec-boxplots" class="quarto-xref"><span>Section 2.7</span></a> on boxplots.</p></li>
 <li><p><code>group_by()</code> its rows. In other words assign different rows to be part of the same <em>group</em> and report summary statistics for each group separately. For example, say perhaps you don’t want a single overall average departure delay <code>dep_delay</code> for all three <code>origin</code> airports combined, but rather three separate average departure delays, one for each of the three <code>origin</code> airports.</p></li>
 <li><p><code>mutate()</code> its existing columns/variables to create new ones. For example, convert hourly temperature recordings from °F to °C.</p></li>
 <li><p><code>arrange()</code> its rows. For example, sort the rows of <code>weather</code> in ascending or descending order of <code>temp</code>.</p></li>
@@ -463,7 +500,7 @@ div.csl-indent {
 <p>We’ll start by introducing the pipe operator <code>%&gt;%</code>, which allows you to combine multiple data wrangling verb-named functions into a single sequential <em>chain</em> of actions.</p>
 <section id="packages-needed" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h2>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -508,14 +545,18 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>alaska_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(carrier <span class="sc">==</span> <span class="st">"AS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Keep in mind, there are many more advanced data wrangling functions than just the 6 listed in the introduction to this chapter; you’ll see some examples of these in <a href="#sec-other-verbs"><span>Section&nbsp;3.8</span></a>. However, just with these 6 verb-named functions you’ll be able to perform a broad array of data wrangling tasks for the rest of this book.</p>
+<p>Keep in mind, there are many more advanced data wrangling functions than just the 6 listed in the introduction to this chapter; you’ll see some examples of these in <a href="#sec-other-verbs" class="quarto-xref"><span>Section 3.8</span></a>. However, just with these 6 verb-named functions you’ll be able to perform a broad array of data wrangling tasks for the rest of this book.</p>
 </section>
 <section id="sec-filter" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sec-filter"><span class="header-section-number">3.2</span> <code>filter()</code> rows</h2>
-<div id="fig-filter" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/filter.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.1: Diagram of filter()</figcaption>
+<div id="fig-filter" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/filter.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Diagram of filter()
+</figcaption>
 </figure>
 </div>
 <p>The <code>filter()</code> function here works much like the “Filter” option in Microsoft Excel; it allows you to specify criteria about the values of a variable in your dataset and then filters out only those rows that match that criteria. We begin by focusing only on flights from New York City to Portland, Oregon. The <code>dest</code> code (or airport code) for Portland, Oregon is <code>"PDX"</code>. Run the following and look at the resulting spreadsheet to ensure that only flights heading to Portland are chosen here:</p>
@@ -595,7 +636,7 @@ div.csl-indent {
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(many_airports)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>What this code is doing is filtering <code>flights</code> for all flights where <code>dest</code> is in the list of airports <code>c("BTV", "SEA", "PDX", "SFO", "BDL")</code>. Recall from <a href="01-getting-started.html"><span>Chapter&nbsp;1</span></a> that the <code>c()</code> function “combines” or “concatenates” values in a vector of values. Both outputs of <code>many_airports</code> are the same, but as you can see the latter takes much less time to code.</p>
+<p>What this code is doing is filtering <code>flights</code> for all flights where <code>dest</code> is in the list of airports <code>c("BTV", "SEA", "PDX", "SFO", "BDL")</code>. Recall from <a href="01-getting-started.html" class="quarto-xref"><span>Chapter 1</span></a> that the <code>c()</code> function “combines” or “concatenates” values in a vector of values. Both outputs of <code>many_airports</code> are the same, but as you can see the latter takes much less time to code.</p>
 <p>As a final note we point out that <code>filter()</code> should often be among the first verbs you apply to your data. This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations you care about.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -620,16 +661,16 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/summarize1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Summarize diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
+<figcaption>Summarize diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/summary.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Another summarize diagram from Data Wrangling with dplyr and tidyr</figcaption>
+<figcaption>Another summarize diagram from Data Wrangling with dplyr and tidyr</figcaption>
 </figure>
 </div>
-<p>Let’s calculate the mean and the standard deviation of the temperature variable <code>temp</code> in the <code>weather</code> data frame included in the <code>nycflights13</code> package (See <a href="0a-statistical-background.html">Appendix&nbsp;<span>A</span></a>). We’ll do this in one step using the <code>summarize()</code> function from the <code>dplyr</code> package and save the results in a new data frame <code>summary_temp</code> with columns/variables <code>mean</code> and the <code>std_dev</code>. Note you can also use the UK spelling of <code>summarise()</code>.</p>
+<p>Let’s calculate the mean and the standard deviation of the temperature variable <code>temp</code> in the <code>weather</code> data frame included in the <code>nycflights13</code> package (See <a href="0a-statistical-background.html" class="quarto-xref">Appendix&nbsp;<span>A</span></a>). We’ll do this in one step using the <code>summarize()</code> function from the <code>dplyr</code> package and save the results in a new data frame <code>summary_temp</code> with columns/variables <code>mean</code> and the <code>std_dev</code>. Note you can also use the UK spelling of <code>summarise()</code>.</p>
 <p>The <code>weather</code> data frame’s many rows will now be collapsed into a single row of just the summary values, in this case the mean and standard deviation:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>summary_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
@@ -643,7 +684,7 @@ div.csl-indent {
 1    NA      NA</code></pre>
 </div>
 </div>
-<p>Why are the values returned <code>NA</code>? As we saw in <a href="02-visualization.html#sec-geompoint"><span>Section&nbsp;2.3.1</span></a> when creating the scatterplot of departure and arrival delays for <code>alaska_flights</code>, <code>NA</code> is how R encodes <em>missing values</em> where <code>NA</code> indicates “not available” or “not applicable.” If a value for a particular row and a particular column does not exist, <code>NA</code> is stored instead. Values can be missing for many reasons. Perhaps the data was collected but someone forgot to enter it? Perhaps the data was not collected at all because it was too difficult? Perhaps there was an erroneous value that someone entered that has been correct to read as missing? You’ll often encounter issues with missing values when working with real data.</p>
+<p>Why are the values returned <code>NA</code>? As we saw in <a href="02-visualization.html#sec-geompoint" class="quarto-xref"><span>Section 2.3.1</span></a> when creating the scatterplot of departure and arrival delays for <code>alaska_flights</code>, <code>NA</code> is how R encodes <em>missing values</em> where <code>NA</code> indicates “not available” or “not applicable.” If a value for a particular row and a particular column does not exist, <code>NA</code> is stored instead. Values can be missing for many reasons. Perhaps the data was collected but someone forgot to enter it? Perhaps the data was not collected at all because it was too difficult? Perhaps there was an erroneous value that someone entered that has been correct to read as missing? You’ll often encounter issues with missing values when working with real data.</p>
 <p>Going back to our <code>summary_temp</code> output above, by default any time you try to calculate a summary statistic of a variable that has one or more <code>NA</code> missing values in R, then <code>NA</code> is returned. To work around this fact, you can set the <code>na.rm</code> argument to <code>TRUE</code>, where <code>rm</code> is short for “remove”; this will ignore any <code>NA</code> missing values and only return the summary value for all non-missing values.</p>
 <p>The code below computes the mean and standard deviation of all non-missing values of <code>temp</code>. Notice how the <code>na.rm=TRUE</code> are used as arguments to the <code>mean()</code> and <code>sd()</code> functions individually, and not to the <code>summarize()</code> function.</p>
 <div class="cell" data-layout-align="center">
@@ -667,7 +708,7 @@ div.csl-indent {
 <li><p><code>min()</code> and <code>max()</code>: the minimum and maximum values respectively</p></li>
 <li><p><code>IQR()</code>: Interquartile range</p></li>
 <li><p><code>sum()</code>: the sum</p></li>
-<li><p><code>n()</code>: a count of the number of rows/observations in each group. This particular summary function will make more sense when <code>group_by()</code> is covered in <a href="#sec-groupby"><span>Section&nbsp;3.4</span></a>.</p></li>
+<li><p><code>n()</code>: a count of the number of rows/observations in each group. This particular summary function will make more sense when <code>group_by()</code> is covered in <a href="#sec-groupby" class="quarto-xref"><span>Section 3.4</span></a>.</p></li>
 </ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -730,7 +771,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/group_summary.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Group by and summarize diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
+<figcaption>Group by and summarize diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
 </figure>
 </div>
 <p>Say instead of the a single mean temperature for the whole year, you would like 12 mean temperatures, one for each of the 12 months separately? In other words, we would like to compute the mean temperature split by month AKA sliced by month AKA aggregated by month. We can do this by “grouping” temperature observations by the values of another variable, in this case by the 12 values of the variable <code>month</code>. Run the following code:</p>
@@ -925,7 +966,7 @@ div.csl-indent {
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Recall from <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a> when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the <code>summary_monthly_temp</code> data frame tell us about temperatures in New York City throughout the year?</p>
+<p>Recall from <a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a> when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the <code>summary_monthly_temp</code> data frame tell us about temperatures in New York City throughout the year?</p>
 </div>
 </div>
 </div>
@@ -1001,7 +1042,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/mutate.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Mutate diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
+<figcaption>Mutate diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
 </figure>
 </div>
 <p>Another common transformation of data is to create/compute new variables based on existing ones. For example, say you are more comfortable thinking of temperature in degrees Celsius °C and not degrees Fahrenheit °F. The formula to convert temperatures from °F to °C is:</p>
@@ -1110,15 +1151,19 @@ div.csl-indent {
 </table>
 </div>
 </div>
-<p>We’ve recreated the <code>summary</code> function we saw in <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a> here using the <code>summarize</code> function in <code>dplyr</code>.</p>
+<p>We’ve recreated the <code>summary</code> function we saw in <a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a> here using the <code>summarize</code> function in <code>dplyr</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gain)) <span class="sc">+</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-hist-gain-variable" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-wrangling_files/figure-html/fig-hist-gain-variable-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.2: Histogram of gain variable</figcaption>
+<div id="fig-hist-gain-variable" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-gain-variable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-wrangling_files/figure-html/fig-hist-gain-variable-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-gain-variable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Histogram of gain variable
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1260,10 +1305,14 @@ div.csl-indent {
 </div>
 <p>We see that in <code>airlines</code>, <code>carrier</code> is the carrier code while <code>name</code> is the full name of the airline company. Using this table, we can see that <code>"VX"</code>, <code>"HA"</code>, and <code>"B6"</code> correspond to Virgin America, Hawaiian Airlines, and JetBlue respectively. However, wouldn’t it be nice to have all this information in a single data frame instead of two separate data frames? We can do this by “joining” i.e.&nbsp;“merging” the <code>flights</code> and <code>airlines</code> data frames.</p>
 <p>Note that the values in the variable <code>carrier</code> in the <code>flights</code> data frame match the values in the variable <code>carrier</code> in the <code>airlines</code> data frame. In this case, we can use the variable <code>carrier</code> as a <em>key variable</em> to match the rows of the two data frames. Key variables are almost always identification variables that uniquely identify the observational units. This ensures that rows in both data frames are appropriately matched during the join. Hadley and Garrett <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span> created the following diagram to help us understand how the different datasets are linked by various key variables:</p>
-<div id="fig-flights-key-diagram" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/relational-nycflights.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.3: Data relationships in nycflights13 from R for Data Science</figcaption>
+<div id="fig-flights-key-diagram" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flights-key-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/relational-nycflights.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flights-key-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Data relationships in nycflights13 from R for Data Science
+</figcaption>
 </figure>
 </div>
 <section id="matching-key-variable-names" class="level3" data-number="3.7.1">
@@ -1278,10 +1327,14 @@ div.csl-indent {
 </div>
 <p>Observe that the <code>flights</code> and <code>flights_joined</code> data frames are identical except that <code>flights_joined</code> has an additional variable <code>name</code> whose values correspond to the airline company names drawn from the <code>airlines</code> data frame.</p>
 <p>A visual representation of the <code>inner_join()</code> is given below <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span>. There are other types of joins available (such as <code>left_join()</code>, <code>right_join()</code>, <code>outer_join()</code>, and <code>anti_join()</code>), but the <code>inner_join()</code> will solve nearly all of the problems you’ll encounter in this book.</p>
-<div id="fig-ij-diagram" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/join-inner.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.4: Diagram of inner join from R for Data Science</figcaption>
+<div id="fig-ij-diagram" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ij-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/join-inner.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ij-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Diagram of inner join from R for Data Science
+</figcaption>
 </figure>
 </div>
 </section>
@@ -1297,7 +1350,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(airports)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>However, considering the visual representation (<a href="#fig-flights-key-diagram">Figure&nbsp;<span>3.3</span></a>) of the relations between the datasets <code>airports</code> and <code>flights</code>, we see that:</p>
+<p>However, considering the visual representation (<a href="#fig-flights-key-diagram" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>) of the relations between the datasets <code>airports</code> and <code>flights</code>, we see that:</p>
 <ul>
 <li>the <code>airports</code> data frame the airport code is in the variable <code>faa</code></li>
 <li>the <code>flights</code> data frame the airport codes are in the variables <code>origin</code> and <code>dest</code></li>
@@ -1340,7 +1393,7 @@ div.csl-indent {
 </section>
 <section id="multiple-key-variables" class="level3" data-number="3.7.3">
 <h3 data-number="3.7.3" class="anchored" data-anchor-id="multiple-key-variables"><span class="header-section-number">3.7.3</span> Multiple “key” variables</h3>
-<p>Say instead we are in a situation where we need to join by multiple variables. For example, in <a href="#fig-flights-key-diagram">Figure&nbsp;<span>3.3</span></a> above we see that in order to join the <code>flights</code> and <code>weather</code> data frames, we need more than one key variable: <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, and <code>origin</code>. This is because the combination of these 5 variables act to uniquely identify each observational unit in the <code>weather</code> data frame: hourly weather recordings at each of the 3 NYC airports.</p>
+<p>Say instead we are in a situation where we need to join by multiple variables. For example, in <a href="#fig-flights-key-diagram" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> above we see that in order to join the <code>flights</code> and <code>weather</code> data frames, we need more than one key variable: <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, and <code>origin</code>. This is because the combination of these 5 variables act to uniquely identify each observational unit in the <code>weather</code> data frame: hourly weather recordings at each of the 3 NYC airports.</p>
 <p>We achieve this by specifying a vector of key variables to join by using the <code>c()</code> function for “combine” or “concatenate” that we saw earlier:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>flights_weather_joined <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
@@ -1360,7 +1413,7 @@ div.csl-indent {
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Looking at <a href="#fig-flights-key-diagram">Figure&nbsp;<span>3.3</span></a>, when joining <code>flights</code> and <code>weather</code> (or, in other words, matching the hourly weather values with each flight), why do we need to join by all of <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, and <code>origin</code>, and not just <code>hour</code>?</p>
+<p>Looking at <a href="#fig-flights-key-diagram" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>, when joining <code>flights</code> and <code>weather</code> (or, in other words, matching the hourly weather values with each flight), why do we need to join by all of <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, and <code>origin</code>, and not just <code>hour</code>?</p>
 </div>
 </div>
 </div>
@@ -1423,7 +1476,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/select.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Select diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
+<figcaption>Select diagram from Data Wrangling with dplyr and tidyr cheatsheet</figcaption>
 </figure>
 </div>
 <p>We’ve seen that the <code>flights</code> data frame in the <code>nycflights13</code> package contains 19 different variables. You can identify the names of these 19 variables by running the <code>glimpse()</code> function from the <code>dplyr</code> package:</p>
@@ -1492,7 +1545,7 @@ div.csl-indent {
 </section>
 <section id="slice-data-by-a-variable" class="level3" data-number="3.8.3">
 <h3 data-number="3.8.3" class="anchored" data-anchor-id="slice-data-by-a-variable"><span class="header-section-number">3.8.3</span> <code>slice()</code> data by a variable</h3>
-<p>We can return observations with maximum or minimum values of a variable using the <code>slice_max()</code> or <code>slice_min()</code>. For example, we can get the observations the top 10 destination airports using the example from <a href="#sec-diff-key"><span>Section&nbsp;3.7.2</span></a>. Observe that we set the number of values to return to <code>n = 10</code> and <code>order_by = num_flights</code> to indicate that we want the rows corresponding to the top 10 values of <code>num_flights</code>. See the help file for the different <code>slice_*()</code> functions by running <code>?slice</code> for more information.</p>
+<p>We can return observations with maximum or minimum values of a variable using the <code>slice_max()</code> or <code>slice_min()</code>. For example, we can get the observations the top 10 destination airports using the example from <a href="#sec-diff-key" class="quarto-xref"><span>Section 3.7.2</span></a>. Observe that we set the number of values to return to <code>n = 10</code> and <code>order_by = num_flights</code> to indicate that we want the rows corresponding to the top 10 values of <code>num_flights</code>. See the help file for the different <code>slice_*()</code> functions by running <code>?slice</code> for more information.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>named_dests <span class="sc">%&gt;%</span> </span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span>  num_flights)</span>
@@ -1570,12 +1623,17 @@ div.csl-indent {
 <h2 data-number="3.9" class="anchored" data-anchor-id="sec-wrangling-conclusion"><span class="header-section-number">3.9</span> Conclusion</h2>
 <section id="summary-table" class="level3" data-number="3.9.1">
 <h3 data-number="3.9.1" class="anchored" data-anchor-id="summary-table"><span class="header-section-number">3.9.1</span> Summary table</h3>
-<p>Let’s recap our data wrangling verbs in <a href="#tbl-wrangle-summary-table">Table&nbsp;<span>3.1</span></a>. Using these verbs and the pipe <code>%&gt;%</code> operator from <a href="#sec-piping"><span>Section&nbsp;3.1</span></a>, you’ll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.</p>
+<p>Let’s recap our data wrangling verbs in <a href="#tbl-wrangle-summary-table" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. Using these verbs and the pipe <code>%&gt;%</code> operator from <a href="#sec-piping" class="quarto-xref"><span>Section 3.1</span></a>, you’ll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-wrangle-summary-table" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wrangle-summary-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Summary of data wrangling verbs
+</figcaption>
+<div aria-describedby="tbl-wrangle-summary-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-wrangle-summary-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.1: Summary of data wrangling verbs</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Summary of data wrangling verbs</caption>
 <colgroup>
 <col style="width: 11%">
 <col style="width: 88%">
@@ -1615,6 +1673,8 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 </section>
 <section id="additional-resources" class="level3" data-number="3.9.2">
@@ -1624,7 +1684,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/dplyr_cheatsheet-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Data Transformation with dplyr cheatsheat</figcaption>
+<figcaption>Data Transformation with dplyr cheatsheat</figcaption>
 </figure>
 </div>
 <p>On top of data wrangling verbs and examples we presented in this section, if you’d like to see more examples of using the <code>dplyr</code> package for data wrangling check out <a href="http://r4ds.had.co.nz/transform.html">Chapter 5</a> of Garrett Grolemund and Hadley Wickham’s and Garrett’s book <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span>.</p>
@@ -1632,8 +1692,8 @@ div.csl-indent {
 <section id="whats-to-come" class="level3" data-number="3.9.3">
 <h3 data-number="3.9.3" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">3.9.3</span> What’s to come?</h3>
 <p>So far in this book, we’ve explored, visualized, and wrangled data saved in data frames that are in spreadsheet-type format: rectangular with a certain number of rows corresponding to observations and a certain number of columns corresponding to variables describing the observations.</p>
-<p>We’ll see in <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a> that there are actually two ways to represent data in spreadsheet-type rectangular format: 1) “wide” format and 2) “tall/narrow” format also known in R circles as “tidy” format. While the distinction between “tidy” and non-“tidy” formatted data is very subtle, it has very important implications for whether or not we can use the <code>ggplot2</code> package for data visualization and the <code>dplyr</code> package for data wrangling.</p>
-<p>Furthermore, we’ve only explored, visualized, and wrangled data saved within R packages. What if you have spreadsheet data saved in a Microsoft Excel, Google Sheets, or “Comma-Separated Values” (CSV) file that you would like to analyze? In <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a>, we’ll show you how to import this data into R using the <code>readr</code> package.</p>
+<p>We’ll see in <a href="04-tidy.html" class="quarto-xref"><span>Chapter 4</span></a> that there are actually two ways to represent data in spreadsheet-type rectangular format: 1) “wide” format and 2) “tall/narrow” format also known in R circles as “tidy” format. While the distinction between “tidy” and non-“tidy” formatted data is very subtle, it has very important implications for whether or not we can use the <code>ggplot2</code> package for data visualization and the <code>dplyr</code> package for data wrangling.</p>
+<p>Furthermore, we’ve only explored, visualized, and wrangled data saved within R packages. What if you have spreadsheet data saved in a Microsoft Excel, Google Sheets, or “Comma-Separated Values” (CSV) file that you would like to analyze? In <a href="04-tidy.html" class="quarto-xref"><span>Chapter 4</span></a>, we’ll show you how to import this data into R using the <code>readr</code> package.</p>
 </section>
 </section>
 <section id="sec-ex03" class="level2" data-number="3.10">
@@ -1641,7 +1701,7 @@ div.csl-indent {
 <section id="sec-ex03-conceptual" class="level3" data-number="3.10.1">
 <h3 data-number="3.10.1" class="anchored" data-anchor-id="sec-ex03-conceptual"><span class="header-section-number">3.10.1</span> Conceptual</h3>
 <div id="exr-ch03-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.1 </strong></span>Consider the sequence of operations <code>a(b(c(x)))</code>. Which of the following would result in the output of this sequence?</p>
+<p><span class="theorem-title"><strong>Exercise 3.1</strong></span> Consider the sequence of operations <code>a(b(c(x)))</code>. Which of the following would result in the output of this sequence?</p>
 <ol type="a">
 <li><code>x %&gt;% a() %&gt;% b() %&gt;% c()</code></li>
 <li><code>a() %&gt;% b() %&gt;% c() %&gt;% x</code></li>
@@ -1651,7 +1711,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.2 </strong></span>Match the definition with the function name.</p>
+<p><span class="theorem-title"><strong>Exercise 3.2</strong></span> Match the definition with the function name.</p>
 <ol type="a">
 <li><p><code>top_n()</code> &nbsp; &nbsp; &nbsp; &nbsp; c.&nbsp;<code>mutate()</code> &nbsp; &nbsp; &nbsp; &nbsp; e. <code>group_by()</code> &nbsp; &nbsp; &nbsp; g. <code>filter()</code></p></li>
 <li><p><code>select()</code> &nbsp; &nbsp; &nbsp; d.&nbsp;<code>arrange()</code> &nbsp; &nbsp; &nbsp; f.&nbsp;<code>summarize()</code></p>
@@ -1661,7 +1721,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.3 </strong></span>How many rows and columns are outputted from the following code?</p>
+<p><span class="theorem-title"><strong>Exercise 3.3</strong></span> How many rows and columns are outputted from the following code?</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>weather_summary <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span>  </span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(month)<span class="sc">%&gt;%</span> </span>
@@ -1680,7 +1740,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.4 </strong></span>Why might we want to use the select function on a data frame?</p>
+<p><span class="theorem-title"><strong>Exercise 3.4</strong></span> Why might we want to use the select function on a data frame?</p>
 <ol type="a">
 <li>To make exploring a data frame easier by sorting the rows in alphanumeric order</li>
 <li>To make exploring a data frame easier by only outputting the variables of interest</li>
@@ -1688,7 +1748,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.5 </strong></span>How would the mean of a distribution change if the (positive) maximum value was doubled?</p>
+<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> How would the mean of a distribution change if the (positive) maximum value was doubled?</p>
 <ol type="a">
 <li>increase</li>
 <li>decrease</li>
@@ -1697,7 +1757,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.6 </strong></span>The ___ are resistant to outliers/extreme values, whereas the ___ are not.</p>
+<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> The ___ are resistant to outliers/extreme values, whereas the ___ are not.</p>
 <ol type="a">
 <li>mean and standard deviation; median and interquartile range</li>
 <li>standard deviation and interquartile range; mean and median</li>
@@ -1707,7 +1767,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.7 </strong></span>Consider a unimodal left skewed distribution. Which of the following is true?</p>
+<p><span class="theorem-title"><strong>Exercise 3.7</strong></span> Consider a unimodal left skewed distribution. Which of the following is true?</p>
 <ol type="a">
 <li>mean &gt; median</li>
 <li>mean &lt; median</li>
@@ -1716,7 +1776,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.8 </strong></span>Looking at <a href="#fig-flights-key-diagram">Figure&nbsp;<span>3.3</span></a>, when joining flights and weather (or, in other words, matching the hourly weather values with each flight), why do we need to join by all of year, month, day, hour, and origin, and not just hour?</p>
+<p><span class="theorem-title"><strong>Exercise 3.8</strong></span> Looking at <a href="#fig-flights-key-diagram" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>, when joining flights and weather (or, in other words, matching the hourly weather values with each flight), why do we need to join by all of year, month, day, hour, and origin, and not just hour?</p>
 <ol type="a">
 <li>These key variables uniquely identify the observational units</li>
 <li>These key variables provide a timestamp on when we accessed our data</li>
@@ -1724,7 +1784,7 @@ div.csl-indent {
 <li>These variables are not all necessary</li>
 </ol>
 </div>
-<p>For <a href="#exr-ch03-c09">Exercise&nbsp;<span>3.9</span></a> - <a href="#exr-ch03-c11">Exercise&nbsp;<span>3.11</span></a> consider a hypothetical dataset <code>blue_line</code>. This dataset documents all passenger train ride information on the Chicago blue line rail for one week. The variables include <code>day</code> of travel, passenger <code>gender</code>, passenger <code>age</code>, <code>duration</code> of ride, and whether the ride was <code>roundtrip</code> (1) or not (0). The first few observations are shown below.</p>
+<p>For <a href="#exr-ch03-c09" class="quarto-xref">Exercise&nbsp;<span>3.9</span></a> - <a href="#exr-ch03-c11" class="quarto-xref">Exercise&nbsp;<span>3.11</span></a> consider a hypothetical dataset <code>blue_line</code>. This dataset documents all passenger train ride information on the Chicago blue line rail for one week. The variables include <code>day</code> of travel, passenger <code>gender</code>, passenger <code>age</code>, <code>duration</code> of ride, and whether the ride was <code>roundtrip</code> (1) or not (0). The first few observations are shown below.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -1774,7 +1834,7 @@ div.csl-indent {
 </tbody>
 </table>
 <div id="exr-ch03-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.9 </strong></span>Compute the average length of a train ride for each day of the week.</p>
+<p><span class="theorem-title"><strong>Exercise 3.9</strong></span> Compute the average length of a train ride for each day of the week.</p>
 <ol type="a">
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration))</code></p></li>
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(day, duration) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration))</code></p></li>
@@ -1784,7 +1844,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.10 </strong></span>The mean and standard deviation for <code>duration</code> of only female passengers?</p>
+<p><span class="theorem-title"><strong>Exercise 3.10</strong></span> The mean and standard deviation for <code>duration</code> of only female passengers?</p>
 <ol type="a">
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;select(gender == "female") %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration), sd = sd(duration))</code></p></li>
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;filter(gender) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(mean = mean(duration), sd = sd(duration))</code></p></li>
@@ -1794,7 +1854,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch03-c11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.11 </strong></span>Which of the following will NOT count the number of passengers by <code>gender</code> and <code>day</code>. Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 3.11</strong></span> Which of the following will NOT count the number of passengers by <code>gender</code> and <code>day</code>. Select all that apply.</p>
 <ol type="a">
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;group_by(gender) %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;summarize(n = n(day))</code></p></li>
 <li><p><code>blue_line %&gt;%</code> <br> <code>&nbsp;&nbsp;&nbsp;count(gender, day)</code></p></li>
@@ -1807,31 +1867,31 @@ div.csl-indent {
 <section id="sec-ex03-application" class="level3" data-number="3.10.2">
 <h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-ex03-application"><span class="header-section-number">3.10.2</span> Application</h3>
 <div id="exr-ch03-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.12 </strong></span>Recall our <code>nba</code> dataset that includes data from each game that Michael Jordan, Kobe Bryant and Lebron James played. Compute the average number of free throws made per game by each player.</p>
+<p><span class="theorem-title"><strong>Exercise 3.12</strong></span> Recall our <code>nba</code> dataset that includes data from each game that Michael Jordan, Kobe Bryant and Lebron James played. Compute the average number of free throws made per game by each player.</p>
 </div>
 <div id="exr-ch03-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.13 </strong></span>Create a variable called <code>spread</code> calculated from <code>pts_tm</code> - <code>pts_opp</code>. Using code, determine who played the game with the largest win spread and how much they won by.</p>
+<p><span class="theorem-title"><strong>Exercise 3.13</strong></span> Create a variable called <code>spread</code> calculated from <code>pts_tm</code> - <code>pts_opp</code>. Using code, determine who played the game with the largest win spread and how much they won by.</p>
 </div>
 <div id="exr-ch03-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.14 </strong></span>Using the <code>titanic</code> dataset, calculate the total revenue that the ship received from passengers in each class. Store the output in an object called <code>fare_calc</code>. Print the contents such that the total revenue is sorted from high to low.</p>
+<p><span class="theorem-title"><strong>Exercise 3.14</strong></span> Using the <code>titanic</code> dataset, calculate the total revenue that the ship received from passengers in each class. Store the output in an object called <code>fare_calc</code>. Print the contents such that the total revenue is sorted from high to low.</p>
 </div>
 <div id="exr-ch03-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.15 </strong></span>Using the <code>covid_states</code> dataset, calculate the total <code>new_confirmed</code>, <code>new_deceased</code>, <code>new_recovered</code> and <code>new_tested</code> for each state. Then join this summarized dataset with the <code>covid_dem</code> dataset, join the two datasets into one dataset called <code>covid_joined</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 3.15</strong></span> Using the <code>covid_states</code> dataset, calculate the total <code>new_confirmed</code>, <code>new_deceased</code>, <code>new_recovered</code> and <code>new_tested</code> for each state. Then join this summarized dataset with the <code>covid_dem</code> dataset, join the two datasets into one dataset called <code>covid_joined</code>.</p>
 </div>
 </section>
 <section id="sec-ex03-advanced" class="level3" data-number="3.10.3">
 <h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-ex03-advanced"><span class="header-section-number">3.10.3</span> Advanced</h3>
 <div id="exr-ch03-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.16 </strong></span>When you are using <code>filter</code>, you need to specify each criteria separately. This can get repetitive if you are trying to filter on multiple criteria for the same variable. Consider the <code>covid_states</code> dataset, what if we are interested in only the 4 most populous states? This would include <code>state_abbr</code> CA, TX, FL, and NY. Instead of listing <code>(state_abbr == "CA",</code> <code>state_abbr == "TX",</code> <code>state_abbr == "FL",</code> <code>state_abbr == "NY")</code> we can use the <code>%in%</code> function to condense this.</p>
+<p><span class="theorem-title"><strong>Exercise 3.16</strong></span> When you are using <code>filter</code>, you need to specify each criteria separately. This can get repetitive if you are trying to filter on multiple criteria for the same variable. Consider the <code>covid_states</code> dataset, what if we are interested in only the 4 most populous states? This would include <code>state_abbr</code> CA, TX, FL, and NY. Instead of listing <code>(state_abbr == "CA",</code> <code>state_abbr == "TX",</code> <code>state_abbr == "FL",</code> <code>state_abbr == "NY")</code> we can use the <code>%in%</code> function to condense this.</p>
 <p>Try typing <code>state_abbr %in%</code> followed by the vector of states within <code>filter</code> to subset the dataset. Call this new dataset <code>covid_pop</code>.</p>
 </div>
 <div id="exr-ch03-adv2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.17 </strong></span>Using the <code>covid_pop</code> dataset created in <a href="#exr-ch03-adv1">Exercise&nbsp;<span>3.16</span></a>, calculate the total weekly <code>new_confirmed</code> COVID cases in 2021 for each state. Plot the total weekly cases to determine if the 4 states had a similar trend.</p>
+<p><span class="theorem-title"><strong>Exercise 3.17</strong></span> Using the <code>covid_pop</code> dataset created in <a href="#exr-ch03-adv1" class="quarto-xref">Exercise&nbsp;<span>3.16</span></a>, calculate the total weekly <code>new_confirmed</code> COVID cases in 2021 for each state. Plot the total weekly cases to determine if the 4 states had a similar trend.</p>
 <p>When working with dates you will want to use the <code>lubridate</code> package. Create a new variable <code>week</code> by using the function <code>week(date)</code>.</p>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-rds2016" class="csl-entry" role="listitem">
 Grolemund, Garrett, and Hadley Wickham. 2016. <em>R for Data Science</em>. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
 </div>
@@ -1919,10 +1979,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1932,8 +1991,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1946,6 +2014,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1989,6 +2176,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2014,6 +2202,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2075,12 +2289,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-visualization.html" class="pagination-link">
+      <a href="./02-visualization.html" class="pagination-link" aria-label="Data Visualization">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-tidy.html" class="pagination-link">
+      <a href="./04-tidy.html" class="pagination-link" aria-label="Data Importing &amp; &quot;Tidy Data&quot;">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2089,4 +2303,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/03-wrangling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

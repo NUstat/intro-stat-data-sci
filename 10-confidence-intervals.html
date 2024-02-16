@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./10-confidence-intervals.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./10-confidence-intervals.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -382,12 +416,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex10-advanced" id="toc-sec-ex10-advanced" class="nav-link" data-scroll-target="#sec-ex10-advanced"><span class="header-section-number">10.6.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/10-confidence-intervals.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/10-confidence-intervals.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./10-confidence-intervals.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-confidence-int" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></h1>
 </div>
@@ -402,12 +436,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>In <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>, we developed a theory of repeated samples. But what does this mean for your data analysis? If you only have one sample in front of you, how are you supposed to understand properties of the sampling distribution and your estimators? In this chapter we use the mathematical theory we introduced in <a href="09-sampling-distributions.html#sec-commonstat">Sections&nbsp;<span>9.4</span></a> - <a href="09-sampling-distributions.html#sec-clt"><span>9.6</span></a> to tackle this question.</p>
+
+<p>In <a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a>, we developed a theory of repeated samples. But what does this mean for your data analysis? If you only have one sample in front of you, how are you supposed to understand properties of the sampling distribution and your estimators? In this chapter we use the mathematical theory we introduced in <a href="09-sampling-distributions.html#sec-commonstat" class="quarto-xref">Sections&nbsp;<span>9.4</span></a> - <a href="09-sampling-distributions.html#sec-clt" class="quarto-xref"><span>9.6</span></a> to tackle this question.</p>
 <section id="needed-packages" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed Packages</h3>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
@@ -425,12 +461,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sampling-distributions-of-standardized-statistics" class="level3" data-number="10.1.1">
 <h3 data-number="10.1.1" class="anchored" data-anchor-id="sampling-distributions-of-standardized-statistics"><span class="header-section-number">10.1.1</span> Sampling distributions of standardized statistics</h3>
 <p>In order to construct a confidence interval, we need to know the sampling distribution of a <em>standardized</em> statistic. We can standardize an estimate by subtracting its mean and dividing by its standard error:</p>
-<p><span class="math display">\[STAT = \frac{Estimate - Mean(Estimate)}{SE(Estimate)}\]</span> While we have seen that the sampling distribution of many common estimators are normally distributed (see <a href="09-sampling-distributions.html#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>), this is not always the case for the <em>standardized estimate</em> computed by <span class="math inline">\(STAT\)</span>. This is because the standard errors of many estimators, which appear on the denominator of <span class="math inline">\(STAT\)</span>, are a function of an additional estimated quantity – the sample variance <span class="math inline">\(s^2\)</span>. When this is the case, the sampling distribution for <strong>STAT is a t-distribution with a specified degrees of freedom (df)</strong>. <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> shows the distribution of the standardized statistics for many of the common statistics we have seen previously.</p>
+<p><span class="math display">\[STAT = \frac{Estimate - Mean(Estimate)}{SE(Estimate)}\]</span> While we have seen that the sampling distribution of many common estimators are normally distributed (see <a href="09-sampling-distributions.html#tbl-SE-table-ch-9" class="quarto-xref">Table&nbsp;<span>9.6</span></a>), this is not always the case for the <em>standardized estimate</em> computed by <span class="math inline">\(STAT\)</span>. This is because the standard errors of many estimators, which appear on the denominator of <span class="math inline">\(STAT\)</span>, are a function of an additional estimated quantity – the sample variance <span class="math inline">\(s^2\)</span>. When this is the case, the sampling distribution for <strong>STAT is a t-distribution with a specified degrees of freedom (df)</strong>. <a href="#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a> shows the distribution of the standardized statistics for many of the common statistics we have seen previously.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-samp-dist-table-ch-10" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samp-dist-table-ch-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.1: Properties of Sample Statistics
+</figcaption>
+<div aria-describedby="tbl-samp-dist-table-ch-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-samp-dist-table-ch-10" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;10.1: Properties of Sample Statistics</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Properties of Sample Statistics</caption>
 <colgroup>
 <col style="width: 9%">
 <col style="width: 7%">
@@ -494,6 +535,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>If in fact the population standard variance was known and didn’t have to be estimated, we could replace the <span class="math inline">\(s^2\)</span>’s in these formulas with <span class="math inline">\(\sigma^2\)</span>’s, and the sampling distribution of <span class="math inline">\(STAT\)</span> would follow a <span class="math inline">\(N(0,1)\)</span> distribution.</p>
 </section>
@@ -507,10 +550,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-N-CIs" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-confidence-intervals_files/figure-html/fig-N-CIs-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;10.1: N(0,1) 95% cutoff values</figcaption>
+<div id="fig-N-CIs" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-N-CIs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-confidence-intervals_files/figure-html/fig-N-CIs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-N-CIs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.1: N(0,1) 95% cutoff values
+</figcaption>
 </figure>
 </div>
 </div>
@@ -566,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>This interval is <em>symmetric</em>. This symmetry follows from the fact that the normal distribution is a symmetric distribution. <em>If the sampling distribution does not follow the normal or t-distributions, the confidence interval may not be symmetric</em>.</li>
 <li>The multiplier 1.96 used in this interval corresponding to 95% comes directly from properties of the normal distribution. <em>If the sampling distribution is not normal, this multiplier might be different</em>. For example, this multiplier is <em>larger</em> when the distribution has heavy tails, as with the t-distribution. The multiplier will also be different if you want to use a level of confidence other than 95%. We will discuss this further in the next section.</li>
-<li>Rather than simply reporting our sample mean <span class="math inline">\(\bar{x} = 29.7\)</span> as a single value, reporting a range of values via a confidence interval takes into account the uncertainty associated with the fact that we are observing a random sample and not the whole population. We saw in <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a> that there is <em>sampling variation</em> inherent in taking random samples, and that (even unbiased) estimates will not be exactly equal to the population parameter in every sample. We know how much uncertainty/sampling variation to account for in our confidence intervals because we have known formulas for the sampling distributions of our estimators that tell us how much we expect these estimates to vary across repeated samples.</li>
+<li>Rather than simply reporting our sample mean <span class="math inline">\(\bar{x} = 29.7\)</span> as a single value, reporting a range of values via a confidence interval takes into account the uncertainty associated with the fact that we are observing a random sample and not the whole population. We saw in <a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a> that there is <em>sampling variation</em> inherent in taking random samples, and that (even unbiased) estimates will not be exactly equal to the population parameter in every sample. We know how much uncertainty/sampling variation to account for in our confidence intervals because we have known formulas for the sampling distributions of our estimators that tell us how much we expect these estimates to vary across repeated samples.</li>
 </ul>
 </section>
 <section id="general-form-for-constructing-a-confidence-interval" class="level3" data-number="10.1.3">
@@ -577,8 +624,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In order to construct a confidence interval you need to:</p>
 <ol type="1">
 <li>Calculate the estimate from your sample</li>
-<li>Calculate the standard error of your estimate (using formulas found in <a href="09-sampling-distributions.html#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>)</li>
-<li>Determine the appropriate sampling distribution for your standardized estimate (usually <span class="math inline">\(t(df)\)</span> or <span class="math inline">\(N(0,1)\)</span>. Refer to <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a>)</li>
+<li>Calculate the standard error of your estimate (using formulas found in <a href="09-sampling-distributions.html#tbl-SE-table-ch-9" class="quarto-xref">Table&nbsp;<span>9.6</span></a>)</li>
+<li>Determine the appropriate sampling distribution for your standardized estimate (usually <span class="math inline">\(t(df)\)</span> or <span class="math inline">\(N(0,1)\)</span>. Refer to <a href="#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a>)</li>
 <li>Determine your desired level of confidence (e.g.&nbsp;90%, 95%, 99%)</li>
 <li>Use 3 and 4 to determine the correct critical value</li>
 </ol>
@@ -641,7 +688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1 100 29.7 7.78   0.778</code></pre>
 </div>
 </div>
-<p>In this case, we should use the t-distribution to construct our confidence interval because - refering back to <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> - we know <span class="math inline">\(\frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} \sim t(df = n-1)\)</span>. Recall that we took a sample of size <span class="math inline">\(n = 100\)</span>, so our degrees of freedom here are <span class="math inline">\(df = 99\)</span>, and the appropriate critical value for a 95% confidence interval is -1.984.</p>
+<p>In this case, we should use the t-distribution to construct our confidence interval because - refering back to <a href="#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a> - we know <span class="math inline">\(\frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} \sim t(df = n-1)\)</span>. Recall that we took a sample of size <span class="math inline">\(n = 100\)</span>, so our degrees of freedom here are <span class="math inline">\(df = 99\)</span>, and the appropriate critical value for a 95% confidence interval is -1.984.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">025</span>, <span class="at">df =</span> <span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -665,7 +712,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="interpreting-a-confidence-interval" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="interpreting-a-confidence-interval"><span class="header-section-number">10.2</span> Interpreting a Confidence Interval</h2>
 <p>Like many statistics, while a confidence interval is fairly straightforward to construct, it is very easy to interpret incorrectly. In fact, many researchers – statisticians included – get the interpretation of confidence intervals wrong. This goes back to the idea of <strong>counterfactual thinking</strong> that we introduced previously: a confidence interval is a property of a population and estimator, not a particular sample. It asks: if I constructed this interval in every possible sample, in what percentage of samples would I correctly include the true population parameter? For a 99% confidence interval, this answer is 99% of samples; for a 95% confidence interval, the answer is 95% of samples, etc.</p>
-<p>To see this, let’s return to the football fans example and consider the sampling distribution of the sample mean age. Recall that we have population data for all 40,000 fans. Below we take 10,000 repeated samples of size 100 and display the sampling distribution of the sample mean in <a href="#fig-samp-dist-mean">Figure&nbsp;<span>10.2</span></a>. Recall that the true population mean is 30.064</p>
+<p>To see this, let’s return to the football fans example and consider the sampling distribution of the sample mean age. Recall that we have population data for all 40,000 fans. Below we take 10,000 repeated samples of size 100 and display the sampling distribution of the sample mean in <a href="#fig-samp-dist-mean" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>. Recall that the true population mean is 30.064</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>samples_football_fans <span class="ot">&lt;-</span> football_fans <span class="sc">%&gt;%</span> </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span>  <span class="dv">100</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
@@ -683,15 +730,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(football_fans<span class="sc">$</span>age), <span class="at">color =</span> <span class="st">"blue"</span>)</span>
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>samp_dist_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-samp-dist-mean" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;10.2: Sampling Distribution of Average Age of Fans at a Football Game</figcaption>
+<div id="fig-samp-dist-mean" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-samp-dist-mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samp-dist-mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.2: Sampling Distribution of Average Age of Fans at a Football Game
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Assume that the sample we actually observed was <code>replicate = 77</code>, which had <span class="math inline">\(\bar{x} =\)</span> 29.7. If we used this sample mean to construct a 95% confidence interval, the population mean would be in this interval, right? <a href="#fig-samp-dist-mean-2">Figure&nbsp;<span>10.3</span></a> shows a confidence interval shaded around <span class="math inline">\(\bar{x} =\)</span> 29.7, which is indicated by the red line. This confidence interval successfully includes the true population mean.</p>
+<p>Assume that the sample we actually observed was <code>replicate = 77</code>, which had <span class="math inline">\(\bar{x} =\)</span> 29.7. If we used this sample mean to construct a 95% confidence interval, the population mean would be in this interval, right? <a href="#fig-samp-dist-mean-2" class="quarto-xref">Figure&nbsp;<span>10.3</span></a> shows a confidence interval shaded around <span class="math inline">\(\bar{x} =\)</span> 29.7, which is indicated by the red line. This confidence interval successfully includes the true population mean.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(replicate <span class="sc">==</span> <span class="dv">77</span>) <span class="sc">%&gt;%</span> </span>
@@ -713,15 +764,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_ci</span>(CI) <span class="sc">+</span></span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xbar, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-samp-dist-mean-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;10.3: Confidence Interval shaded for an observed sample mean of 29.8</figcaption>
+<div id="fig-samp-dist-mean-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-samp-dist-mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samp-dist-mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.3: Confidence Interval shaded for an observed sample mean of 29.8
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Assume now that we were unlucky and drew a sample with a mean far from the population mean. One such case is <code>replicate =</code> 545, which had <span class="math inline">\(\bar{x} =\)</span> 32.3. In this case, is the population mean in this interval? <a href="#fig-samp-dist-mean-3">Figure&nbsp;<span>10.4</span></a> displays this scenario.</p>
+<p>Assume now that we were unlucky and drew a sample with a mean far from the population mean. One such case is <code>replicate =</code> 545, which had <span class="math inline">\(\bar{x} =\)</span> 32.3. In this case, is the population mean in this interval? <a href="#fig-samp-dist-mean-3" class="quarto-xref">Figure&nbsp;<span>10.4</span></a> displays this scenario.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> samp_means_football_fans <span class="sc">%&gt;%</span> </span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(replicate <span class="sc">==</span> <span class="dv">545</span>) <span class="sc">%&gt;%</span> </span>
@@ -743,15 +798,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_ci</span>(CI) <span class="sc">+</span></span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> xbar, <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-samp-dist-mean-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-3-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;10.4: Confidence Interval shaded for an observed sample mean of 32.3</figcaption>
+<div id="fig-samp-dist-mean-3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-samp-dist-mean-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-confidence-intervals_files/figure-html/fig-samp-dist-mean-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samp-dist-mean-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.4: Confidence Interval shaded for an observed sample mean of 32.3
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In this case, the confidence interval does not include the true population mean. Importantly, remember that in real life we only have the data in front of us from one sample. <em>We don’t know what the population mean is</em>, and we don’t know if our estimate is the value near to the mean (<a href="#fig-samp-dist-mean-2">Figure&nbsp;<span>10.3</span></a>) or far from the mean (<a href="#fig-samp-dist-mean-3">Figure&nbsp;<span>10.4</span></a>). Also recall <code>replicate =</code> 545 was a legitimate random sample drawn from the population of 40,000 football fans. Just by chance, it is possible to observe a sample mean that is far from the true population mean.</p>
+<p>In this case, the confidence interval does not include the true population mean. Importantly, remember that in real life we only have the data in front of us from one sample. <em>We don’t know what the population mean is</em>, and we don’t know if our estimate is the value near to the mean (<a href="#fig-samp-dist-mean-2" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>) or far from the mean (<a href="#fig-samp-dist-mean-3" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>). Also recall <code>replicate =</code> 545 was a legitimate random sample drawn from the population of 40,000 football fans. Just by chance, it is possible to observe a sample mean that is far from the true population mean.</p>
 <p>We could compute 95% confidence intervals for all 10,000 of our repeated samples, and we would expect approximately 95% of them to contain the true mean; this is the definition of what it means to be “95% confident” in statistics. Another way to think about it, when constructing 95% confidence intervals, we expect that we’ll only end up with an “unlucky” sample- that is, a sample whose mean is far enough from the population mean such that the confidence interval doesn’t capture it - just 5% of the time.</p>
 <p>For each of our 10,000 samples, let’s create a new variable <code>captured_95</code> to indicate whether the true population mean <span class="math inline">\(\mu\)</span> is captured between the lower and upper values of the confidence interval for the given sample. Let’s look at the results for the first 5 samples.</p>
 <div class="cell" data-layout-align="center">
@@ -788,7 +847,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In fact, 95.06% of the 10,000 do capture the true mean. If we were to take an infinite number of repeated samples, we would see this number approach exactly 95%.</p>
-<p>For visualization purposes, we’ll take a smaller subset of 100 of these confidence intervals and display the results in <a href="#fig-CI-fig">Figure&nbsp;<span>10.5</span></a>. In this smaller subset, 96 of the 100 95% confidence intervals contain the true population mean.</p>
+<p>For visualization purposes, we’ll take a smaller subset of 100 of these confidence intervals and display the results in <a href="#fig-CI-fig" class="quarto-xref">Figure&nbsp;<span>10.5</span></a>. In this smaller subset, 96 of the 100 95% confidence intervals contain the true population mean.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>CI_subset <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(CIs_football_fans, <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">replicate_id =</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>))</span>
@@ -804,10 +863,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"orange"</span>)) <span class="sc">+</span> </span>
 <span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mu, <span class="at">color =</span> <span class="st">"red"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-CI-fig" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="10-confidence-intervals_files/figure-html/fig-CI-fig-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;10.5: Confidence Interval for Average Age from 100 repeated samples of size 100</figcaption>
+<div id="fig-CI-fig" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-CI-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10-confidence-intervals_files/figure-html/fig-CI-fig-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CI-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.5: Confidence Interval for Average Age from 100 repeated samples of size 100
+</figcaption>
 </figure>
 </div>
 </div>
@@ -838,12 +901,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Note that as the <em>margin of error</em> decreases, the <em>width of the interval</em> also decreases. But what makes the margin of error decrease? We’ve already discussed one way: by decreasing the level of confidence. That is, using a lower confidence level (e.g.&nbsp;90% instead of 95%) will decrease the critical value (e.g.&nbsp;1.645 instead of 1.96) and thus result in a smaller margin of error and narrower confidence interval.</p>
 <p>There is a trade-off here between the width of an interval and the level of confidence. In general we might think narrower intervals are preferrable to wider ones, but by narrowing your interval, you are increasing the chance that your interval will not capture the true mean. That is, a 90% confidence interval is narrower than a 95% confidence interval, but it has a 10% chance of missing the mean as opposed to just a 5% chance of missing it. The trade-off in the other direction is this: a 99% confidence level has a higher chance of capturing the true mean, but it might be too wide of an interval to be practically useful. This Garfield comic demonstrates how there are drawbacks to using a higher-confidence (and therefore wider) interval.</p>
 <p><img src="images/garfield_comic.png" id="garfield" class="img-fluid" data-out.width="80%"></p>
-<p>A second way you can decrease the margin of error is by <em>increasing sample size</em>. Recall that all of our formulas for standard errors involve <span class="math inline">\(n\)</span> on the denominator (see <a href="09-sampling-distributions.html#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>), so by increasing sample size on the denominator, we decrease our standard error. We also saw this demonstrated via simulations in <a href="09-sampling-distributions.html#sec-size"><span>Section&nbsp;9.5</span></a>. Because our margin of error formula involves standard error, increasing the sample size decreases the standard error and thus decreases the margin of error. This fits with our intuition that having more infomation (i.e.&nbsp;a larger sample size) will give us a more precise estimate (i.e.&nbsp;a narrower confidence interval) of the parameter we’re interested in.</p>
+<p>A second way you can decrease the margin of error is by <em>increasing sample size</em>. Recall that all of our formulas for standard errors involve <span class="math inline">\(n\)</span> on the denominator (see <a href="09-sampling-distributions.html#tbl-SE-table-ch-9" class="quarto-xref">Table&nbsp;<span>9.6</span></a>), so by increasing sample size on the denominator, we decrease our standard error. We also saw this demonstrated via simulations in <a href="09-sampling-distributions.html#sec-size" class="quarto-xref"><span>Section 9.5</span></a>. Because our margin of error formula involves standard error, increasing the sample size decreases the standard error and thus decreases the margin of error. This fits with our intuition that having more infomation (i.e.&nbsp;a larger sample size) will give us a more precise estimate (i.e.&nbsp;a narrower confidence interval) of the parameter we’re interested in.</p>
 </section>
 <section id="sec-one-prop-ci" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="sec-one-prop-ci"><span class="header-section-number">10.4</span> Example: One proportion</h2>
-<p>Let’s revisit our exercise of trying to estimate the proportion of red balls in the bowl from <a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>. We are now interested in determining a confidence interval for population parameter <span class="math inline">\(\pi\)</span>, the proportion of balls that are red out of the total <span class="math inline">\(N = 2400\)</span> red and white balls.</p>
-<p>We will use the first sample reported from Ilyas and Yohan in <a href="09-sampling-distributions.html#sec-sampling-activity">Subsection&nbsp;<span>9.2.2</span></a> for our point estimate. They observed 21 red balls out of the 50 in their shovel. This data is stored in the <code>tactile_shovel1</code> data frame in the <code>moderndive</code> package.</p>
+<p>Let’s revisit our exercise of trying to estimate the proportion of red balls in the bowl from <a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a>. We are now interested in determining a confidence interval for population parameter <span class="math inline">\(\pi\)</span>, the proportion of balls that are red out of the total <span class="math inline">\(N = 2400\)</span> red and white balls.</p>
+<p>We will use the first sample reported from Ilyas and Yohan in <a href="09-sampling-distributions.html#sec-sampling-activity" class="quarto-xref">Subsection&nbsp;<span>9.2.2</span></a> for our point estimate. They observed 21 red balls out of the 50 in their shovel. This data is stored in the <code>tactile_shovel1</code> data frame in the <code>moderndive</code> package.</p>
 <!-- Need to include this in the pkg! -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>tactile_shovel1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -880,7 +943,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1    50   0.42    0.0698</code></pre>
 </div>
 </div>
-<p>As shown in <a href="#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a>, the appropriate distribution for a confidence interval of <span class="math inline">\(\hat{\pi}\)</span> is <span class="math inline">\(N(0,1)\)</span>, so we can use the critical value 1.96 to construct a 95% confidence interval.</p>
+<p>As shown in <a href="#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, the appropriate distribution for a confidence interval of <span class="math inline">\(\hat{\pi}\)</span> is <span class="math inline">\(N(0,1)\)</span>, so we can use the critical value 1.96 to construct a 95% confidence interval.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>CI <span class="ot">&lt;-</span> prop_red_stats <span class="sc">%&gt;%</span> </span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> pi_hat <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE_pi_hat,</span>
@@ -991,7 +1054,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1 -0.218 0.306</code></pre>
 </div>
 </div>
-<p>The confidence interval shown here includes the value of 0. We’ll see in <a href="12-hypothesis-tests.html"><span>Chapter&nbsp;12</span></a> further what this means in terms of this difference being statistically significant or not, but let’s examine a bit here first. The range of plausible values for the difference in the proportion of those that yawned with and without a seed is between -0.218 and 0.306.</p>
+<p>The confidence interval shown here includes the value of 0. We’ll see in <a href="12-hypothesis-tests.html" class="quarto-xref"><span>Chapter 12</span></a> further what this means in terms of this difference being statistically significant or not, but let’s examine a bit here first. The range of plausible values for the difference in the proportion of those that yawned with and without a seed is between -0.218 and 0.306.</p>
 <p>Therefore, we are not sure which proportion is larger. If the confidence interval was entirely above zero, we would be relatively sure (about “95% confident”) that the seed group had a higher proportion of yawning than the control group. We, therefore, have evidence via this confidence interval suggesting that the conclusion from the Mythbusters show that “yawning is contagious” being “confirmed” is not statistically appropriate.</p>
 <!-- nothing in here yet about how sample size affects width of interval. should either include it or have it as an activity for them to explore in class/homework. I also have a shiny app for this https://kgfitz.shinyapps.io/confidence_intervals/ -->
 </section>
@@ -1001,7 +1064,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sec-ex10-conceptual" class="level3" data-number="10.6.1">
 <h3 data-number="10.6.1" class="anchored" data-anchor-id="sec-ex10-conceptual"><span class="header-section-number">10.6.1</span> Conceptual</h3>
 <div id="exr-ch10-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.1 </strong></span>Which of the following is the correct general form for constructing a confidence interval?</p>
+<p><span class="theorem-title"><strong>Exercise 10.1</strong></span> Which of the following is the correct general form for constructing a confidence interval?</p>
 <ol type="a">
 <li>Critical Value <span class="math inline">\(\pm\)</span> Estimate*SD(Estimate)</li>
 <li>Critical Value <span class="math inline">\(\pm\)</span> Estimate*SE(Estimate)</li>
@@ -1012,7 +1075,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </div>
 <div id="exr-ch10-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.2 </strong></span>Which of the following are correct regarding a 90% confidence interval? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 10.2</strong></span> Which of the following are correct regarding a 90% confidence interval? Select all that apply.</p>
 <ol type="a">
 <li>We are 90% confident that the true mean is within any given 90% confidence interval</li>
 <li>There is a 90% chance that the true mean is within any given 90% confidence interval</li>
@@ -1021,21 +1084,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </div>
 <div id="exr-ch10-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.3 </strong></span>As the margin of error decreases, the width of the confidence interval increases.</p>
+<p><span class="theorem-title"><strong>Exercise 10.3</strong></span> As the margin of error decreases, the width of the confidence interval increases.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch10-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.4 </strong></span>As sample size increases, the margin of error decreases.</p>
+<p><span class="theorem-title"><strong>Exercise 10.4</strong></span> As sample size increases, the margin of error decreases.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch10-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.5 </strong></span>How will the margin of error change if you both increase the sample size and decrease the confidence level (ex: from 95% down to 90%)?</p>
+<p><span class="theorem-title"><strong>Exercise 10.5</strong></span> How will the margin of error change if you both increase the sample size and decrease the confidence level (ex: from 95% down to 90%)?</p>
 <ol type="a">
 <li>decrease</li>
 <li>increase</li>
@@ -1044,7 +1107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </div>
 <div id="exr-ch10-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.6 </strong></span>You are trying to calculate the standard error but don’t know the true population standard deviation. Which of the following formulas should you use to calculate <span class="math inline">\(SE(\bar{x})\)</span> ?</p>
+<p><span class="theorem-title"><strong>Exercise 10.6</strong></span> You are trying to calculate the standard error but don’t know the true population standard deviation. Which of the following formulas should you use to calculate <span class="math inline">\(SE(\bar{x})\)</span> ?</p>
 <ol type="a">
 <li><span class="math inline">\(SE(\bar{x}) = s\)</span></li>
 <li><span class="math inline">\(SE(\bar{x}) = \frac{s}{n}\)</span></li>
@@ -1054,7 +1117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </div>
 <div id="exr-ch10-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.7 </strong></span>You are calculating a confidence interval for the difference in average ACT scores between private high schools and public high schools in Illinois. Upon surveying 15 private high schools you calculate an average ACT score of 25 with a standard deviation of 2. And for 35 public high schools you calculate an average ACT score of 23 with a standard deviation of 3. Which of the following is used to calculate one of the 90% critical values?</p>
+<p><span class="theorem-title"><strong>Exercise 10.7</strong></span> You are calculating a confidence interval for the difference in average ACT scores between private high schools and public high schools in Illinois. Upon surveying 15 private high schools you calculate an average ACT score of 25 with a standard deviation of 2. And for 35 public high schools you calculate an average ACT score of 23 with a standard deviation of 3. Which of the following is used to calculate one of the 90% critical values?</p>
 <ol type="a">
 <li><code>qnorm(p = 0.10)</code></li>
 <li><code>qnorm(p = 0.05)</code></li>
@@ -1065,7 +1128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </div>
 <div id="exr-ch10-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.8 </strong></span>You are calculating a confidence interval for the proportion of US citizens who have never left their home state. In a random survey, you found 14 out of 200 people have not left their home state. Which of the following is used to calculate one of the 97% critical values?</p>
+<p><span class="theorem-title"><strong>Exercise 10.8</strong></span> You are calculating a confidence interval for the proportion of US citizens who have never left their home state. In a random survey, you found 14 out of 200 people have not left their home state. Which of the following is used to calculate one of the 97% critical values?</p>
 <ol type="a">
 <li><code>qt(p = 0.07, df = 199)</code></li>
 <li><code>qnorm(p = 0.97)</code></li>
@@ -1075,7 +1138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </div>
 <div id="exr-ch10-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.9 </strong></span>What is the standard error of the estimator in <a href="#exr-ch10-c08">Exercise&nbsp;<span>10.8</span></a>?</p>
+<p><span class="theorem-title"><strong>Exercise 10.9</strong></span> What is the standard error of the estimator in <a href="#exr-ch10-c08" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a>?</p>
 <ol type="a">
 <li>0.00033</li>
 <li>0.01814</li>
@@ -1089,25 +1152,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="10.6.2" class="anchored" data-anchor-id="sec-ex10-application"><span class="header-section-number">10.6.2</span> Application</h3>
 <p>The application exercises use the <code>nba_sample</code> dataset from the <code>ISDSdatasets</code> package. This is a random sample obtained from the <code>nba</code> dataset.</p>
 <div id="exr-ch10-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.10 </strong></span>Using <code>nba_sample</code>, we are interested in determining the number of points that Michael Jordan scored per game (<code>pts</code>) on average. Develop an 85% confidence interval for this variable.</p>
+<p><span class="theorem-title"><strong>Exercise 10.10</strong></span> Using <code>nba_sample</code>, we are interested in determining the number of points that Michael Jordan scored per game (<code>pts</code>) on average. Develop an 85% confidence interval for this variable.</p>
 </div>
 <div id="exr-ch10-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.11 </strong></span>Using <code>nba_sample</code> determine the proportion of <code>win</code>s for LeBron James. Develop a 99% confidence interval for this variable.</p>
+<p><span class="theorem-title"><strong>Exercise 10.11</strong></span> Using <code>nba_sample</code> determine the proportion of <code>win</code>s for LeBron James. Develop a 99% confidence interval for this variable.</p>
 </div>
 <div id="exr-ch10-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.12 </strong></span>Using <code>nba_sample</code> determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (<code>win</code>) between LeBron James and Kobe Bryant.</p>
+<p><span class="theorem-title"><strong>Exercise 10.12</strong></span> Using <code>nba_sample</code> determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (<code>win</code>) between LeBron James and Kobe Bryant.</p>
 </div>
 <div id="exr-ch10-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.13 </strong></span>Using <code>nba_sample</code> determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (<code>ft_percent</code>) between Michael Jordan and Kobe Bryant.</p>
+<p><span class="theorem-title"><strong>Exercise 10.13</strong></span> Using <code>nba_sample</code> determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (<code>ft_percent</code>) between Michael Jordan and Kobe Bryant.</p>
 </div>
 </section>
 <section id="sec-ex10-advanced" class="level3" data-number="10.6.3">
 <h3 data-number="10.6.3" class="anchored" data-anchor-id="sec-ex10-advanced"><span class="header-section-number">10.6.3</span> Advanced</h3>
 <div id="exr-ch10-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.14 </strong></span>Using the <code>nba_sample</code> dataset, determine if our players play better at home or away games. Specify how you chose to evaluate what constitutes “playing better” and specify your confidence level used.</p>
+<p><span class="theorem-title"><strong>Exercise 10.14</strong></span> Using the <code>nba_sample</code> dataset, determine if our players play better at home or away games. Specify how you chose to evaluate what constitutes “playing better” and specify your confidence level used.</p>
 </div>
 <div id="exr-ch10-adv2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.15 </strong></span>Basketball reference keeps very diligent and accurate records for basketball games, so this is one of the rare instances when we have the entire population of games played for Michael Jordan, Kobe Bryant, and LeBron James through the 2021 season. This census is our <code>nba</code> dataset. In the above problems we used a random sample to demonstrate how a sample is used to approximate the population parameters. Calculate the population parameters relevant to <a href="#exr-ch10-app1">Exercise&nbsp;<span>10.10</span></a>, <a href="#exr-ch10-app2">Exercise&nbsp;<span>10.11</span></a>, <a href="#exr-ch10-app3">Exercise&nbsp;<span>10.12</span></a>, and <a href="#exr-ch10-app4">Exercise&nbsp;<span>10.13</span></a> using the <code>nba</code> dataset and specify if your confidence interval captured the true population.</p>
+<p><span class="theorem-title"><strong>Exercise 10.15</strong></span> Basketball reference keeps very diligent and accurate records for basketball games, so this is one of the rare instances when we have the entire population of games played for Michael Jordan, Kobe Bryant, and LeBron James through the 2021 season. This census is our <code>nba</code> dataset. In the above problems we used a random sample to demonstrate how a sample is used to approximate the population parameters. Calculate the population parameters relevant to <a href="#exr-ch10-app1" class="quarto-xref">Exercise&nbsp;<span>10.10</span></a>, <a href="#exr-ch10-app2" class="quarto-xref">Exercise&nbsp;<span>10.11</span></a>, <a href="#exr-ch10-app3" class="quarto-xref">Exercise&nbsp;<span>10.12</span></a>, and <a href="#exr-ch10-app4" class="quarto-xref">Exercise&nbsp;<span>10.13</span></a> using the <code>nba</code> dataset and specify if your confidence interval captured the true population.</p>
 </div>
 
 
@@ -1194,10 +1257,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1207,8 +1269,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1221,6 +1292,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1264,6 +1454,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1289,6 +1480,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1350,12 +1567,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./09-sampling-distributions.html" class="pagination-link">
+      <a href="./09-sampling-distributions.html" class="pagination-link" aria-label="Sampling Distributions">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./11-p-values.html" class="pagination-link">
+      <a href="./11-p-values.html" class="pagination-link" aria-label="P-values">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1364,4 +1581,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/10-confidence-intervals.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

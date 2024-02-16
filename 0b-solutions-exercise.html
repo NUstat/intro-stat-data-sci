@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./0a-statistical-background.html">Appendices</a></li><li class="breadcrumb-item"><a href="./0b-solutions-exercise.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./0a-statistical-background.html">Appendices</a></li><li class="breadcrumb-item"><a href="./0b-solutions-exercise.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -369,12 +403,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex11-sol" id="toc-sec-ex11-sol" class="nav-link" data-scroll-target="#sec-ex11-sol"><span class="header-section-number">B.11</span> Chapter 11</a></li>
   <li><a href="#sec-ex12-sol" id="toc-sec-ex12-sol" class="nav-link" data-scroll-target="#sec-ex12-sol"><span class="header-section-number">B.12</span> Chapter 12</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/0b-solutions-exercise.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/0b-solutions-exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./0a-statistical-background.html">Appendices</a></li><li class="breadcrumb-item"><a href="./0b-solutions-exercise.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise solutions</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-exr-sol" class="quarto-section-identifier">Appendix B — Exercise solutions</span></h1>
 </div>
@@ -389,7 +423,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISDSdatasets)</span>
@@ -400,15 +436,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="sec-ex01-sol" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="sec-ex01-sol"><span class="header-section-number">B.1</span> Chapter 1</h2>
-<p><a href="01-getting-started.html#exr-ch01-c01">Exercise&nbsp;<span>1.1</span></a> b. Quarto Document</p>
-<p><a href="01-getting-started.html#exr-ch01-c02">Exercise&nbsp;<span>1.2</span></a> a. error</p>
-<p><a href="01-getting-started.html#exr-ch01-c03">Exercise&nbsp;<span>1.3</span></a> a. TRUE</p>
-<p><a href="01-getting-started.html#exr-ch01-c04">Exercise&nbsp;<span>1.4</span></a> a. TRUE</p>
-<p><a href="01-getting-started.html#exr-ch01-c05">Exercise&nbsp;<span>1.5</span></a> b. FALSE</p>
-<p><a href="01-getting-started.html#exr-ch01-c06">Exercise&nbsp;<span>1.6</span></a> e. 15</p>
-<p><a href="01-getting-started.html#exr-ch01-c07">Exercise&nbsp;<span>1.7</span></a> b. Data on a flight</p>
-<p><a href="01-getting-started.html#exr-ch01-c08">Exercise&nbsp;<span>1.8</span></a> c.&nbsp;quantitative</p>
-<p><a href="01-getting-started.html#exr-ch01-app1">Exercise&nbsp;<span>1.9</span></a></p>
+<p><a href="01-getting-started.html#exr-ch01-c01" class="quarto-xref">Exercise&nbsp;<span>1.1</span></a> b. Quarto Document</p>
+<p><a href="01-getting-started.html#exr-ch01-c02" class="quarto-xref">Exercise&nbsp;<span>1.2</span></a> a. error</p>
+<p><a href="01-getting-started.html#exr-ch01-c03" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a> a. TRUE</p>
+<p><a href="01-getting-started.html#exr-ch01-c04" class="quarto-xref">Exercise&nbsp;<span>1.4</span></a> a. TRUE</p>
+<p><a href="01-getting-started.html#exr-ch01-c05" class="quarto-xref">Exercise&nbsp;<span>1.5</span></a> b. FALSE</p>
+<p><a href="01-getting-started.html#exr-ch01-c06" class="quarto-xref">Exercise&nbsp;<span>1.6</span></a> e. 15</p>
+<p><a href="01-getting-started.html#exr-ch01-c07" class="quarto-xref">Exercise&nbsp;<span>1.7</span></a> b. Data on a flight</p>
+<p><a href="01-getting-started.html#exr-ch01-c08" class="quarto-xref">Exercise&nbsp;<span>1.8</span></a> c.&nbsp;quantitative</p>
+<p><a href="01-getting-started.html#exr-ch01-app1" class="quarto-xref">Exercise&nbsp;<span>1.9</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">31</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>add_on <span class="ot">&lt;-</span> <span class="dv">12</span></span>
@@ -417,12 +453,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 384</code></pre>
 </div>
 </div>
-<p><a href="01-getting-started.html#exr-ch01-app2">Exercise&nbsp;<span>1.10</span></a></p>
+<p><a href="01-getting-started.html#exr-ch01-app2" class="quarto-xref">Exercise&nbsp;<span>1.10</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The dataset has 418 rows (passengers) and 11 variables. The variables identify various passenger information such as name, age, sex, ticket class, number of siblings/spouses on board, fare cost, port the left from, and whether or not they survived.</p>
-<p><a href="01-getting-started.html#exr-ch01-adv1">Exercise&nbsp;<span>1.11</span></a></p>
+<p><a href="01-getting-started.html#exr-ch01-adv1" class="quarto-xref">Exercise&nbsp;<span>1.11</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -439,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The <code>head()</code> function shows the first 6 rows of the dataset. Based on this, I expect the <code>tail()</code> function to show the last 6 rows of the dataset.</p>
-<p><a href="01-getting-started.html#exr-ch01-adv2">Exercise&nbsp;<span>1.12</span></a></p>
+<p><a href="01-getting-started.html#exr-ch01-adv2" class="quarto-xref">Exercise&nbsp;<span>1.12</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(titanic<span class="sc">$</span>Embarked)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -450,19 +486,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sec-ex02-sol" class="level2" data-number="B.2">
 <h2 data-number="B.2" class="anchored" data-anchor-id="sec-ex02-sol"><span class="header-section-number">B.2</span> Chapter 2</h2>
-<p><a href="02-visualization.html#exr-ch02-c01">Exercise&nbsp;<span>2.1</span></a> b. geom_line(), c.&nbsp;geom_col(), e. geom_histogram()</p>
-<p><a href="02-visualization.html#exr-ch02-c02">Exercise&nbsp;<span>2.2</span></a> d.&nbsp;geom_point()</p>
-<p><a href="02-visualization.html#exr-ch02-c03">Exercise&nbsp;<span>2.3</span></a> b. changing the transparency, e. jittering the points</p>
-<p><a href="02-visualization.html#exr-ch02-c04">Exercise&nbsp;<span>2.4</span></a> b. When you want to split a particular visualization of variables by another variable</p>
-<p><a href="02-visualization.html#exr-ch02-c05">Exercise&nbsp;<span>2.5</span></a> b. geom_col()</p>
-<p><a href="02-visualization.html#exr-ch02-c06">Exercise&nbsp;<span>2.6</span></a> a. grouped boxplot</p>
-<p><a href="02-visualization.html#exr-ch02-c07">Exercise&nbsp;<span>2.7</span></a> b. linegraph</p>
-<p><a href="02-visualization.html#exr-ch02-c08">Exercise&nbsp;<span>2.8</span></a> c.&nbsp;scatterplot</p>
-<p><a href="02-visualization.html#exr-ch02-c09">Exercise&nbsp;<span>2.9</span></a> d.&nbsp;boxplot</p>
-<p><a href="02-visualization.html#exr-ch02-c10">Exercise&nbsp;<span>2.10</span></a> There is a strong positive non-linear (exponential) relationship. We can see by the blue line (line of best fit) that the data does not match a linear line. This tells us that as someone spends more time in the grocery store, they also spend more money.</p>
-<p><a href="02-visualization.html#exr-ch02-c11">Exercise&nbsp;<span>2.11</span></a> The histogram is unimodal and left skewed.</p>
-<p><a href="02-visualization.html#exr-ch02-c12">Exercise&nbsp;<span>2.12</span></a> a.</p>
-<p><a href="02-visualization.html#exr-ch02-app1">Exercise&nbsp;<span>2.13</span></a></p>
+<p><a href="02-visualization.html#exr-ch02-c01" class="quarto-xref">Exercise&nbsp;<span>2.1</span></a> b. geom_line(), c.&nbsp;geom_col(), e. geom_histogram()</p>
+<p><a href="02-visualization.html#exr-ch02-c02" class="quarto-xref">Exercise&nbsp;<span>2.2</span></a> d.&nbsp;geom_point()</p>
+<p><a href="02-visualization.html#exr-ch02-c03" class="quarto-xref">Exercise&nbsp;<span>2.3</span></a> b. changing the transparency, e. jittering the points</p>
+<p><a href="02-visualization.html#exr-ch02-c04" class="quarto-xref">Exercise&nbsp;<span>2.4</span></a> b. When you want to split a particular visualization of variables by another variable</p>
+<p><a href="02-visualization.html#exr-ch02-c05" class="quarto-xref">Exercise&nbsp;<span>2.5</span></a> b. geom_col()</p>
+<p><a href="02-visualization.html#exr-ch02-c06" class="quarto-xref">Exercise&nbsp;<span>2.6</span></a> a. grouped boxplot</p>
+<p><a href="02-visualization.html#exr-ch02-c07" class="quarto-xref">Exercise&nbsp;<span>2.7</span></a> b. linegraph</p>
+<p><a href="02-visualization.html#exr-ch02-c08" class="quarto-xref">Exercise&nbsp;<span>2.8</span></a> c.&nbsp;scatterplot</p>
+<p><a href="02-visualization.html#exr-ch02-c09" class="quarto-xref">Exercise&nbsp;<span>2.9</span></a> d.&nbsp;boxplot</p>
+<p><a href="02-visualization.html#exr-ch02-c10" class="quarto-xref">Exercise&nbsp;<span>2.10</span></a> There is a strong positive non-linear (exponential) relationship. We can see by the blue line (line of best fit) that the data does not match a linear line. This tells us that as someone spends more time in the grocery store, they also spend more money.</p>
+<p><a href="02-visualization.html#exr-ch02-c11" class="quarto-xref">Exercise&nbsp;<span>2.11</span></a> The histogram is unimodal and left skewed.</p>
+<p><a href="02-visualization.html#exr-ch02-c12" class="quarto-xref">Exercise&nbsp;<span>2.12</span></a> a.</p>
+<p><a href="02-visualization.html#exr-ch02-app1" class="quarto-xref">Exercise&nbsp;<span>2.13</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  covid_sub, </span>
@@ -470,21 +506,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Florida has significantly more covid cases than Illinois in the months of July and August 2021. The spikes to 0 could indicate testing did not occur on those days. Illinois has a positive “fairly linear” trend. Florida has a nonlinear trend where cases are increasing until around August 15th, at which point cases start to decrease.</p>
-<p><a href="02-visualization.html#exr-ch02-app2">Exercise&nbsp;<span>2.14</span></a></p>
+<p><a href="02-visualization.html#exr-ch02-app2" class="quarto-xref">Exercise&nbsp;<span>2.14</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nba, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(win)) ) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>A win is indicated with a “1”. All three players have more wins than losses. LeBron has the most total wins and Jordan has the least total losses. But Jordan having less wins and losses is relative because he also played the least number of games.</p>
-<p><a href="02-visualization.html#exr-ch02-app3">Exercise&nbsp;<span>2.15</span></a></p>
+<p><a href="02-visualization.html#exr-ch02-app3" class="quarto-xref">Exercise&nbsp;<span>2.15</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nba, <span class="fu">aes</span>(<span class="at">x =</span> ft_percent, <span class="at">y =</span> fg_percent)) <span class="sc">+</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -492,11 +536,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Warning: Removed 490 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The relationship between the field goal percentage and free throw percentage seems to have no association. This means that whether a player made all of their free throws or only 50% of their free throws, it will not impact their shooting during the game (field goal percent). If we draw a circle around the points it is fairly horizontal (indicating no positive or negative trend) and a large oval.</p>
-<p><a href="02-visualization.html#exr-ch02-app4">Exercise&nbsp;<span>2.16</span></a></p>
+<p><a href="02-visualization.html#exr-ch02-app4" class="quarto-xref">Exercise&nbsp;<span>2.16</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nba, <span class="fu">aes</span>(<span class="at">x =</span> player, <span class="at">y =</span> pts)) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
@@ -505,7 +553,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Warning: Removed 354 rows containing non-finite values (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
@@ -520,10 +572,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Warning: Removed 354 rows containing non-finite values (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p><a href="02-visualization.html#exr-ch02-adv1">Exercise&nbsp;<span>2.17</span></a></p>
+</div>
+<p><a href="02-visualization.html#exr-ch02-adv1" class="quarto-xref">Exercise&nbsp;<span>2.17</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  covid_sub, </span>
@@ -534,24 +590,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="sec-ex03-sol" class="level2" data-number="B.3">
 <h2 data-number="B.3" class="anchored" data-anchor-id="sec-ex03-sol"><span class="header-section-number">B.3</span> Chapter 3</h2>
-<p><a href="03-wrangling.html#exr-ch03-c01">Exercise&nbsp;<span>3.1</span></a> c.&nbsp;<code>x %&gt;% c() %&gt;% b() %&gt;% a()</code></p>
-<p><a href="03-wrangling.html#exr-ch03-c02">Exercise&nbsp;<span>3.2</span></a> d.&nbsp;<code>arrange()</code> , g. <code>filter()</code> , c.&nbsp;<code>mutate()</code></p>
-<p><a href="03-wrangling.html#exr-ch03-c03">Exercise&nbsp;<span>3.3</span></a> a. 12 row and 5 columns</p>
-<p><a href="03-wrangling.html#exr-ch03-c04">Exercise&nbsp;<span>3.4</span></a> b. To make exploring a data frame easier by only outputting the variables of interest</p>
-<p><a href="03-wrangling.html#exr-ch03-c05">Exercise&nbsp;<span>3.5</span></a> a. increase</p>
-<p><a href="03-wrangling.html#exr-ch03-c06">Exercise&nbsp;<span>3.6</span></a> c.&nbsp;median and interquartile range; mean and standard deviation</p>
-<p><a href="03-wrangling.html#exr-ch03-c07">Exercise&nbsp;<span>3.7</span></a> b. <span class="math inline">\(mean &lt; median\)</span></p>
-<p><a href="03-wrangling.html#exr-ch03-c08">Exercise&nbsp;<span>3.8</span></a> a. These key variables uniquely identify the observational units</p>
-<p><a href="03-wrangling.html#exr-ch03-c09">Exercise&nbsp;<span>3.9</span></a> d.</p>
-<p><a href="03-wrangling.html#exr-ch03-c10">Exercise&nbsp;<span>3.10</span></a> e.</p>
-<p><a href="03-wrangling.html#exr-ch03-c11">Exercise&nbsp;<span>3.11</span></a> a. e. (there is no variable called <code>passenger</code>)</p>
-<p><a href="03-wrangling.html#exr-ch03-app1">Exercise&nbsp;<span>3.12</span></a></p>
+<p><a href="03-wrangling.html#exr-ch03-c01" class="quarto-xref">Exercise&nbsp;<span>3.1</span></a> c.&nbsp;<code>x %&gt;% c() %&gt;% b() %&gt;% a()</code></p>
+<p><a href="03-wrangling.html#exr-ch03-c02" class="quarto-xref">Exercise&nbsp;<span>3.2</span></a> d.&nbsp;<code>arrange()</code> , g. <code>filter()</code> , c.&nbsp;<code>mutate()</code></p>
+<p><a href="03-wrangling.html#exr-ch03-c03" class="quarto-xref">Exercise&nbsp;<span>3.3</span></a> a. 12 row and 5 columns</p>
+<p><a href="03-wrangling.html#exr-ch03-c04" class="quarto-xref">Exercise&nbsp;<span>3.4</span></a> b. To make exploring a data frame easier by only outputting the variables of interest</p>
+<p><a href="03-wrangling.html#exr-ch03-c05" class="quarto-xref">Exercise&nbsp;<span>3.5</span></a> a. increase</p>
+<p><a href="03-wrangling.html#exr-ch03-c06" class="quarto-xref">Exercise&nbsp;<span>3.6</span></a> c.&nbsp;median and interquartile range; mean and standard deviation</p>
+<p><a href="03-wrangling.html#exr-ch03-c07" class="quarto-xref">Exercise&nbsp;<span>3.7</span></a> b. <span class="math inline">\(mean &lt; median\)</span></p>
+<p><a href="03-wrangling.html#exr-ch03-c08" class="quarto-xref">Exercise&nbsp;<span>3.8</span></a> a. These key variables uniquely identify the observational units</p>
+<p><a href="03-wrangling.html#exr-ch03-c09" class="quarto-xref">Exercise&nbsp;<span>3.9</span></a> d.</p>
+<p><a href="03-wrangling.html#exr-ch03-c10" class="quarto-xref">Exercise&nbsp;<span>3.10</span></a> e.</p>
+<p><a href="03-wrangling.html#exr-ch03-c11" class="quarto-xref">Exercise&nbsp;<span>3.11</span></a> a. e. (there is no variable called <code>passenger</code>)</p>
+<p><a href="03-wrangling.html#exr-ch03-app1" class="quarto-xref">Exercise&nbsp;<span>3.12</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span></span>
@@ -565,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 Michael Jordan   7.03</code></pre>
 </div>
 </div>
-<p><a href="03-wrangling.html#exr-ch03-app2">Exercise&nbsp;<span>3.13</span></a></p>
+<p><a href="03-wrangling.html#exr-ch03-app2" class="quarto-xref">Exercise&nbsp;<span>3.13</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span></span>
@@ -605,7 +665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Kobe Bryant had the largest win spread, winning the game by 55 points.</p>
-<p><a href="03-wrangling.html#exr-ch03-app3">Exercise&nbsp;<span>3.14</span></a></p>
+<p><a href="03-wrangling.html#exr-ch03-app3" class="quarto-xref">Exercise&nbsp;<span>3.14</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Pclass) <span class="sc">%&gt;%</span> </span>
@@ -620,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3      2     2065.</code></pre>
 </div>
 </div>
-<p><a href="03-wrangling.html#exr-ch03-app4">Exercise&nbsp;<span>3.15</span></a></p>
+<p><a href="03-wrangling.html#exr-ch03-app4" class="quarto-xref">Exercise&nbsp;<span>3.15</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>covid_join <span class="ot">&lt;-</span> covid_states <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(location_key, state) <span class="sc">%&gt;%</span></span>
@@ -660,12 +720,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   population_age_70_79 &lt;dbl&gt;, population_age_80_and_older &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<p><a href="03-wrangling.html#exr-ch03-adv1">Exercise&nbsp;<span>3.16</span></a></p>
+<p><a href="03-wrangling.html#exr-ch03-adv1" class="quarto-xref">Exercise&nbsp;<span>3.16</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>covid_pop <span class="ot">&lt;-</span> covid_states <span class="sc">%&gt;%</span> </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_abbr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CA"</span>, <span class="st">"TX"</span>, <span class="st">"FL"</span>, <span class="st">"NY"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="03-wrangling.html#exr-ch03-adv2">Exercise&nbsp;<span>3.17</span></a></p>
+<p><a href="03-wrangling.html#exr-ch03-adv2" class="quarto-xref">Exercise&nbsp;<span>3.17</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>covid_confirmed <span class="ot">&lt;-</span> covid_pop <span class="sc">%&gt;%</span></span>
@@ -681,7 +741,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>week, <span class="at">y=</span>total_confirmed, <span class="at">color=</span>state)) <span class="sc">+</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The linegraph shows that the states had the similar pattern overall. The peaks seem to correspond to weeks of holidays and school starting where people are gathering.</p>
@@ -704,18 +768,18 @@ Under Construction
 </section>
 <section id="sec-ex05-sol" class="level2" data-number="B.5">
 <h2 data-number="B.5" class="anchored" data-anchor-id="sec-ex05-sol"><span class="header-section-number">B.5</span> Chapter 5</h2>
-<p><a href="05-regression.html#exr-ch05-c01">Exercise&nbsp;<span>5.1</span></a> c) -0.7</p>
-<p><a href="05-regression.html#exr-ch05-c02">Exercise&nbsp;<span>5.2</span></a> e) Exactly 1</p>
-<p><a href="05-regression.html#exr-ch05-c03">Exercise&nbsp;<span>5.3</span></a> b) Between -1 and 0</p>
-<p><a href="05-regression.html#exr-ch05-c04">Exercise&nbsp;<span>5.4</span></a> a) explanatory variable &amp; b) predictor variable &amp; d) independent variable f) covariate</p>
-<p><a href="05-regression.html#exr-ch05-c05">Exercise&nbsp;<span>5.5</span></a> c) outcome variable &amp; e) dependent variable</p>
-<p><a href="05-regression.html#exr-ch05-c06">Exercise&nbsp;<span>5.6</span></a> c) <span class="math inline">\(b_0\)</span> &amp; e) the value of <span class="math inline">\(\hat{y}\)</span> when <span class="math inline">\(x=0\)</span> &amp; f) intercept</p>
-<p><a href="05-regression.html#exr-ch05-c07">Exercise&nbsp;<span>5.7</span></a> d) For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.</p>
-<p><a href="05-regression.html#exr-ch05-c08">Exercise&nbsp;<span>5.8</span></a> a) TRUE</p>
-<p><a href="05-regression.html#exr-ch05-c09">Exercise&nbsp;<span>5.9</span></a> b) FALSE</p>
-<p><a href="05-regression.html#exr-ch05-c10">Exercise&nbsp;<span>5.10</span></a> a) TRUE</p>
-<p><a href="05-regression.html#exr-ch05-c11">Exercise&nbsp;<span>5.11</span></a> d) No, the positive correlation does not necessarily imply causation.</p>
-<p><a href="05-regression.html#exr-ch05-app1">Exercise&nbsp;<span>5.12</span></a></p>
+<p><a href="05-regression.html#exr-ch05-c01" class="quarto-xref">Exercise&nbsp;<span>5.1</span></a> c) -0.7</p>
+<p><a href="05-regression.html#exr-ch05-c02" class="quarto-xref">Exercise&nbsp;<span>5.2</span></a> e) Exactly 1</p>
+<p><a href="05-regression.html#exr-ch05-c03" class="quarto-xref">Exercise&nbsp;<span>5.3</span></a> b) Between -1 and 0</p>
+<p><a href="05-regression.html#exr-ch05-c04" class="quarto-xref">Exercise&nbsp;<span>5.4</span></a> a) explanatory variable &amp; b) predictor variable &amp; d) independent variable f) covariate</p>
+<p><a href="05-regression.html#exr-ch05-c05" class="quarto-xref">Exercise&nbsp;<span>5.5</span></a> c) outcome variable &amp; e) dependent variable</p>
+<p><a href="05-regression.html#exr-ch05-c06" class="quarto-xref">Exercise&nbsp;<span>5.6</span></a> c) <span class="math inline">\(b_0\)</span> &amp; e) the value of <span class="math inline">\(\hat{y}\)</span> when <span class="math inline">\(x=0\)</span> &amp; f) intercept</p>
+<p><a href="05-regression.html#exr-ch05-c07" class="quarto-xref">Exercise&nbsp;<span>5.7</span></a> d) For every increase of 1 unit in x, there is an associated increase of, on average, 3.86 units of y.</p>
+<p><a href="05-regression.html#exr-ch05-c08" class="quarto-xref">Exercise&nbsp;<span>5.8</span></a> a) TRUE</p>
+<p><a href="05-regression.html#exr-ch05-c09" class="quarto-xref">Exercise&nbsp;<span>5.9</span></a> b) FALSE</p>
+<p><a href="05-regression.html#exr-ch05-c10" class="quarto-xref">Exercise&nbsp;<span>5.10</span></a> a) TRUE</p>
+<p><a href="05-regression.html#exr-ch05-c11" class="quarto-xref">Exercise&nbsp;<span>5.11</span></a> d) No, the positive correlation does not necessarily imply causation.</p>
+<p><a href="05-regression.html#exr-ch05-app1" class="quarto-xref">Exercise&nbsp;<span>5.12</span></a></p>
 <p><strong>a)</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(covid_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -747,7 +811,11 @@ new_confirmed  0.5143968     1.0000000</code></pre>
 <pre><code>Warning: Removed 32479 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>d)</strong></p>
@@ -772,7 +840,7 @@ new_tested    0.05688714 6.248052e-04 91.047802 0.000000e+00</code></pre>
 </div>
 </div>
 <p>We would expect 1,460 people to have COVID.</p>
-<p><a href="05-regression.html#exr-ch05-app2">Exercise&nbsp;<span>5.13</span></a></p>
+<p><a href="05-regression.html#exr-ch05-app2" class="quarto-xref">Exercise&nbsp;<span>5.13</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>model_pts <span class="ot">&lt;-</span> <span class="fu">lm</span>(pts_tm <span class="sc">~</span> pts, <span class="at">data =</span> nba)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -825,7 +893,11 @@ F-statistic:   350 on 1 and 4391 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>Warning: Removed 354 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>c)</strong> <span class="math display">\[\widehat{pts tm} = 92.80 + 0.345*pts\]</span> <strong>d)</strong></p>
@@ -838,7 +910,7 @@ F-statistic:   350 on 1 and 4391 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>[1] 110.05</code></pre>
 </div>
 </div>
-<p><a href="05-regression.html#exr-ch05-app3">Exercise&nbsp;<span>5.14</span></a></p>
+<p><a href="05-regression.html#exr-ch05-app3" class="quarto-xref">Exercise&nbsp;<span>5.14</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>model_fare <span class="ot">&lt;-</span> <span class="fu">lm</span>(Fare <span class="sc">~</span> Embarked, <span class="at">data =</span> titanic)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -881,7 +953,7 @@ EmbarkedS   -38.02933   6.160066 -6.173526 1.594559e-09</code></pre>
 </div>
 </div>
 <p>The worst prediction will be the residual that is farthest from 0. We checked both the min (farthest negative) and max (farthest positive) residual. Passenger 1235 had the worst prediction with an observed value of 512.33 and predicted value of 66.26 (residual of 446.07).</p>
-<p><a href="05-regression.html#exr-ch05-adv1">Exercise&nbsp;<span>5.15</span></a></p>
+<p><a href="05-regression.html#exr-ch05-adv1" class="quarto-xref">Exercise&nbsp;<span>5.15</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coefficients</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_pts)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -905,12 +977,12 @@ pts          0.3449292 0.01843843  18.70708 3.387935e-75</code></pre>
 </section>
 <section id="sec-ex06-sol" class="level2" data-number="B.6">
 <h2 data-number="B.6" class="anchored" data-anchor-id="sec-ex06-sol"><span class="header-section-number">B.6</span> Chapter 6</h2>
-<p><a href="06-multiple-regression.html#exr-ch06-c01">Exercise&nbsp;<span>6.1</span></a> c.&nbsp;The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary</p>
-<p><a href="06-multiple-regression.html#exr-ch06-c02">Exercise&nbsp;<span>6.2</span></a> d.&nbsp;0.47</p>
-<p><a href="06-multiple-regression.html#exr-ch06-c03">Exercise&nbsp;<span>6.3</span></a> b. False</p>
-<p><a href="06-multiple-regression.html#exr-ch06-c04">Exercise&nbsp;<span>6.4</span></a> a. True</p>
-<p><a href="06-multiple-regression.html#exr-ch06-c05">Exercise&nbsp;<span>6.5</span></a> a. Splitting up your data can result in unequal balance in representation of some groups compared to others. &amp; d.&nbsp;Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.</p>
-<p><a href="06-multiple-regression.html#exr-ch06-app1">Exercise&nbsp;<span>6.6</span></a></p>
+<p><a href="06-multiple-regression.html#exr-ch06-c01" class="quarto-xref">Exercise&nbsp;<span>6.1</span></a> c.&nbsp;The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary</p>
+<p><a href="06-multiple-regression.html#exr-ch06-c02" class="quarto-xref">Exercise&nbsp;<span>6.2</span></a> d.&nbsp;0.47</p>
+<p><a href="06-multiple-regression.html#exr-ch06-c03" class="quarto-xref">Exercise&nbsp;<span>6.3</span></a> b. False</p>
+<p><a href="06-multiple-regression.html#exr-ch06-c04" class="quarto-xref">Exercise&nbsp;<span>6.4</span></a> a. True</p>
+<p><a href="06-multiple-regression.html#exr-ch06-c05" class="quarto-xref">Exercise&nbsp;<span>6.5</span></a> a. Splitting up your data can result in unequal balance in representation of some groups compared to others. &amp; d.&nbsp;Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.</p>
+<p><a href="06-multiple-regression.html#exr-ch06-app1" class="quarto-xref">Exercise&nbsp;<span>6.6</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>covid_pred <span class="ot">&lt;-</span> <span class="fu">lm</span>(new_confirmed <span class="sc">~</span> new_recovered <span class="sc">+</span> new_deceased, <span class="at">data =</span> covid_states)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -922,7 +994,7 @@ new_recovered   0.08351059  0.003615216 23.09975 1.353691e-115
 new_deceased   26.48933330  0.380325510 69.64911  0.000000e+00</code></pre>
 </div>
 </div>
-<p><a href="06-multiple-regression.html#exr-ch06-app2">Exercise&nbsp;<span>6.7</span></a></p>
+<p><a href="06-multiple-regression.html#exr-ch06-app2" class="quarto-xref">Exercise&nbsp;<span>6.7</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>covid_merge <span class="ot">&lt;-</span> covid_states <span class="sc">%&gt;%</span> </span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(covid_dem)</span>
@@ -938,7 +1010,7 @@ population  3.711377e-05 5.333525e-06  6.958581 3.529293e-12
 new_tested  5.272425e-02 8.645625e-04 60.983732 0.000000e+00</code></pre>
 </div>
 </div>
-<p><a href="06-multiple-regression.html#exr-ch06-app3">Exercise&nbsp;<span>6.8</span></a></p>
+<p><a href="06-multiple-regression.html#exr-ch06-app3" class="quarto-xref">Exercise&nbsp;<span>6.8</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>model_pts_parallel <span class="ot">&lt;-</span> <span class="fu">lm</span>(pts_tm <span class="sc">~</span> pts <span class="sc">+</span> location, </span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> nba)</span>
@@ -961,13 +1033,17 @@ locationHome  3.7359444 0.35274866  10.59095 6.723724e-26</code></pre>
 <pre><code>Warning: Removed 354 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>b_0</strong> When the star player scores 0 points and the game is away, the team is predicted to score 90.9 points.</p>
 <p><strong>b_1</strong> For every additional point the star player scores, the associated expected increase in team points is 0.345, regardless if the game is home or away.</p>
 <p><strong>b_2</strong> The team is expected to score on average 3.74 more points when the game is home compared to when the game is away.</p>
-<p><a href="06-multiple-regression.html#exr-ch06-app4">Exercise&nbsp;<span>6.9</span></a></p>
+<p><a href="06-multiple-regression.html#exr-ch06-app4" class="quarto-xref">Exercise&nbsp;<span>6.9</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>model_pts_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(pts_tm <span class="sc">~</span> pts<span class="sc">*</span>location, </span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> nba)</span>
@@ -984,14 +1060,18 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>b_0</strong> When the star player scores 0 points and the game is away, the team is predicted to score 88.57 points.</p>
 <p><strong>b_1</strong> For every additional point the star player scores, the associated expected increase in team points is 0.431 for away games.</p>
 <p><strong>b_2</strong> When the star player scores 0 points, the team is expected to score on average 8.37 more points when the game is home compared to when the game is away.</p>
 <p><strong>b_3</strong> For every additional point the star player scores, the associated expected increase in team points will be 0.169 less for home games than away games.</p>
-<p><a href="06-multiple-regression.html#exr-ch06-adv1">Exercise&nbsp;<span>6.10</span></a></p>
+<p><a href="06-multiple-regression.html#exr-ch06-adv1" class="quarto-xref">Exercise&nbsp;<span>6.10</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parallel slopes</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(model_pts_parallel<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1005,7 +1085,7 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 </div>
 </div>
 <p>The MSE of the parallel slopes is 136.6 and the MSE of the interaction is 135.9. Since the MSE for the interaction model is smaller it appears to be slightly better.</p>
-<p><a href="06-multiple-regression.html#exr-ch06-adv2">Exercise&nbsp;<span>6.11</span></a></p>
+<p><a href="06-multiple-regression.html#exr-ch06-adv2" class="quarto-xref">Exercise&nbsp;<span>6.11</span></a></p>
 <p><strong>Many different possible answers</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>model_better <span class="ot">&lt;-</span> <span class="fu">lm</span>(pts_tm <span class="sc">~</span> pts_opp <span class="sc">+</span> pts, <span class="at">data =</span> nba)</span>
@@ -1019,62 +1099,62 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 </section>
 <section id="sec-ex07-sol" class="level2" data-number="B.7">
 <h2 data-number="B.7" class="anchored" data-anchor-id="sec-ex07-sol"><span class="header-section-number">B.7</span> Chapter 7</h2>
-<p><a href="07-causality.html#exr-ch07-c01">Exercise&nbsp;<span>7.1</span></a> a) There is a non-zero probability of being selected into the treatment or control group for every unit &amp; c) A random process is used for selection &amp; e) A random process is used for administration of the treatments</p>
-<p><a href="07-causality.html#exr-ch07-c02">Exercise&nbsp;<span>7.2</span></a> d) rbernoulli(n = 1000, p = 0.25)</p>
-<p><a href="07-causality.html#exr-ch07-c03">Exercise&nbsp;<span>7.3</span></a> b) False</p>
-<p><a href="07-causality.html#exr-ch07-c04">Exercise&nbsp;<span>7.4</span></a> a) True</p>
-<p><a href="07-causality.html#exr-ch07-c05">Exercise&nbsp;<span>7.5</span></a> a) Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment &amp; c) Look for variables you can use to control for confounding &amp; d) State your assumptions and limitations</p>
-<p><a href="07-causality.html#exr-ch07-c06">Exercise&nbsp;<span>7.6</span></a> b) private colleges are only correlated with higher GPAs, because this would be an observational study</p>
-<p><a href="07-causality.html#exr-ch07-c07">Exercise&nbsp;<span>7.7</span></a> b) video games are only correlated with violent behavior, because this would be an observational study</p>
-<p><a href="07-causality.html#exr-ch07-c08">Exercise&nbsp;<span>7.8</span></a> Perhaps class size is a confounding variable for gpa, smaller sizes could lead to more individualized attention and higher grades. Perhaps parental control is a confounding variable for video games, children that play violent video games probably have less parental guidance or household rules leading to poor behavior choices.</p>
-<p><a href="07-causality.html#exr-ch07-c09">Exercise&nbsp;<span>7.9</span></a> d) No, because the treatment and control groups were not randomized</p>
-<p><a href="07-causality.html#exr-ch07-c10">Exercise&nbsp;<span>7.10</span></a> a confounding (or lurking) variable</p>
-<p><a href="07-causality.html#exr-ch07-app1">Exercise&nbsp;<span>7.11</span></a> No the administration cannot conclude the after-school program caused student improvement. While this was a randomized selection of a subset of students we cannot generalize to all students because all students were not considered. Also, this was a before and after study where it is likely the material from the fall semester is likely different from the material in the spring semester. Perhaps these students were just better at the topics covered in the spring.</p>
-<p><a href="07-causality.html#exr-ch07-app2">Exercise&nbsp;<span>7.12</span></a> Geography might impact the results because maybe the west has more rural cities than the east or perhaps there are different demographics of people that live in each region. Certain types of people/demographics might favor the ‘traditional’ label and deter from the new label because they don’t recognize it while other types of people will see the new label and but it because it is ‘new’. A way to reduce the impact of geography is to use “matching”. Find a list of cities in the east that match on average with the cities in the west (perhaps New York City is very similar on average to Los Angeles etc.). Then randomly sample these pairs of cities to compare sales results (to measure if it is receptive).</p>
+<p><a href="07-causality.html#exr-ch07-c01" class="quarto-xref">Exercise&nbsp;<span>7.1</span></a> a) There is a non-zero probability of being selected into the treatment or control group for every unit &amp; c) A random process is used for selection &amp; e) A random process is used for administration of the treatments</p>
+<p><a href="07-causality.html#exr-ch07-c02" class="quarto-xref">Exercise&nbsp;<span>7.2</span></a> d) rbernoulli(n = 1000, p = 0.25)</p>
+<p><a href="07-causality.html#exr-ch07-c03" class="quarto-xref">Exercise&nbsp;<span>7.3</span></a> b) False</p>
+<p><a href="07-causality.html#exr-ch07-c04" class="quarto-xref">Exercise&nbsp;<span>7.4</span></a> a) True</p>
+<p><a href="07-causality.html#exr-ch07-c05" class="quarto-xref">Exercise&nbsp;<span>7.5</span></a> a) Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment &amp; c) Look for variables you can use to control for confounding &amp; d) State your assumptions and limitations</p>
+<p><a href="07-causality.html#exr-ch07-c06" class="quarto-xref">Exercise&nbsp;<span>7.6</span></a> b) private colleges are only correlated with higher GPAs, because this would be an observational study</p>
+<p><a href="07-causality.html#exr-ch07-c07" class="quarto-xref">Exercise&nbsp;<span>7.7</span></a> b) video games are only correlated with violent behavior, because this would be an observational study</p>
+<p><a href="07-causality.html#exr-ch07-c08" class="quarto-xref">Exercise&nbsp;<span>7.8</span></a> Perhaps class size is a confounding variable for gpa, smaller sizes could lead to more individualized attention and higher grades. Perhaps parental control is a confounding variable for video games, children that play violent video games probably have less parental guidance or household rules leading to poor behavior choices.</p>
+<p><a href="07-causality.html#exr-ch07-c09" class="quarto-xref">Exercise&nbsp;<span>7.9</span></a> d) No, because the treatment and control groups were not randomized</p>
+<p><a href="07-causality.html#exr-ch07-c10" class="quarto-xref">Exercise&nbsp;<span>7.10</span></a> a confounding (or lurking) variable</p>
+<p><a href="07-causality.html#exr-ch07-app1" class="quarto-xref">Exercise&nbsp;<span>7.11</span></a> No the administration cannot conclude the after-school program caused student improvement. While this was a randomized selection of a subset of students we cannot generalize to all students because all students were not considered. Also, this was a before and after study where it is likely the material from the fall semester is likely different from the material in the spring semester. Perhaps these students were just better at the topics covered in the spring.</p>
+<p><a href="07-causality.html#exr-ch07-app2" class="quarto-xref">Exercise&nbsp;<span>7.12</span></a> Geography might impact the results because maybe the west has more rural cities than the east or perhaps there are different demographics of people that live in each region. Certain types of people/demographics might favor the ‘traditional’ label and deter from the new label because they don’t recognize it while other types of people will see the new label and but it because it is ‘new’. A way to reduce the impact of geography is to use “matching”. Find a list of cities in the east that match on average with the cities in the west (perhaps New York City is very similar on average to Los Angeles etc.). Then randomly sample these pairs of cities to compare sales results (to measure if it is receptive).</p>
 </section>
 <section id="sec-ex08-sol" class="level2" data-number="B.8">
 <h2 data-number="B.8" class="anchored" data-anchor-id="sec-ex08-sol"><span class="header-section-number">B.8</span> Chapter 8</h2>
-<p><a href="08-populations.html#exr-ch08-c01">Exercise&nbsp;<span>8.1</span></a> d) a population parameter</p>
-<p><a href="08-populations.html#exr-ch08-c02">Exercise&nbsp;<span>8.2</span></a> b) <span class="math inline">\(\hat{\mu}\)</span> &amp; d) <span class="math inline">\(\bar{x}\)</span> &amp; f) <span class="math inline">\(\hat{\pi}\)</span> &amp; g) <span class="math inline">\(p\)</span> &amp; h) <span class="math inline">\(\hat{p}\)</span> &amp; i) <span class="math inline">\(s\)</span> &amp; k) <span class="math inline">\(\hat{\sigma}\)</span></p>
+<p><a href="08-populations.html#exr-ch08-c01" class="quarto-xref">Exercise&nbsp;<span>8.1</span></a> d) a population parameter</p>
+<p><a href="08-populations.html#exr-ch08-c02" class="quarto-xref">Exercise&nbsp;<span>8.2</span></a> b) <span class="math inline">\(\hat{\mu}\)</span> &amp; d) <span class="math inline">\(\bar{x}\)</span> &amp; f) <span class="math inline">\(\hat{\pi}\)</span> &amp; g) <span class="math inline">\(p\)</span> &amp; h) <span class="math inline">\(\hat{p}\)</span> &amp; i) <span class="math inline">\(s\)</span> &amp; k) <span class="math inline">\(\hat{\sigma}\)</span></p>
 <!-- @exr-ch08-c03  -->
 <!-- a) $\mu$ &  e) $\pi$ & j) $\sigma$ -->
-<p><a href="08-populations.html#exr-ch08-c03">Exercise&nbsp;<span>8.3</span></a> all of them (a, b, c, d)</p>
-<p><a href="08-populations.html#exr-ch08-c04">Exercise&nbsp;<span>8.4</span></a> b) Cluster sampling</p>
-<p><a href="08-populations.html#exr-ch08-c05">Exercise&nbsp;<span>8.5</span></a> d) Systematic sampling</p>
-<p><a href="08-populations.html#exr-ch08-c06">Exercise&nbsp;<span>8.6</span></a> c) Stratified sampling</p>
-<p><a href="08-populations.html#exr-ch08-c07">Exercise&nbsp;<span>8.7</span></a> c) Cluster sampling (with unequal probability) choosing towns is based on random cluster selection</p>
-<p><a href="08-populations.html#exr-ch08-c08">Exercise&nbsp;<span>8.8</span></a> b) False</p>
-<p><a href="08-populations.html#exr-ch08-c09">Exercise&nbsp;<span>8.9</span></a> c) An observational study with random sampling but no random assignment</p>
-<p><a href="08-populations.html#exr-ch08-c10">Exercise&nbsp;<span>8.10</span></a> d) No, you cannot make causal or generalizable claims from the results of your survey</p>
-<p><a href="08-populations.html#exr-ch08-app1">Exercise&nbsp;<span>8.11</span></a> population: US citizens</p>
+<p><a href="08-populations.html#exr-ch08-c03" class="quarto-xref">Exercise&nbsp;<span>8.3</span></a> all of them (a, b, c, d)</p>
+<p><a href="08-populations.html#exr-ch08-c04" class="quarto-xref">Exercise&nbsp;<span>8.4</span></a> b) Cluster sampling</p>
+<p><a href="08-populations.html#exr-ch08-c05" class="quarto-xref">Exercise&nbsp;<span>8.5</span></a> d) Systematic sampling</p>
+<p><a href="08-populations.html#exr-ch08-c06" class="quarto-xref">Exercise&nbsp;<span>8.6</span></a> c) Stratified sampling</p>
+<p><a href="08-populations.html#exr-ch08-c07" class="quarto-xref">Exercise&nbsp;<span>8.7</span></a> c) Cluster sampling (with unequal probability) choosing towns is based on random cluster selection</p>
+<p><a href="08-populations.html#exr-ch08-c08" class="quarto-xref">Exercise&nbsp;<span>8.8</span></a> b) False</p>
+<p><a href="08-populations.html#exr-ch08-c09" class="quarto-xref">Exercise&nbsp;<span>8.9</span></a> c) An observational study with random sampling but no random assignment</p>
+<p><a href="08-populations.html#exr-ch08-c10" class="quarto-xref">Exercise&nbsp;<span>8.10</span></a> d) No, you cannot make causal or generalizable claims from the results of your survey</p>
+<p><a href="08-populations.html#exr-ch08-app1" class="quarto-xref">Exercise&nbsp;<span>8.11</span></a> population: US citizens</p>
 <p>parameter: proportion (most likely a Yes or No question)</p>
 <p>undercoverage: citizens that do not own a house, if there are multiple citizens in one household only one person will receive the survey.</p>
-<p><a href="08-populations.html#exr-ch08-app2">Exercise&nbsp;<span>8.12</span></a></p>
+<p><a href="08-populations.html#exr-ch08-app2" class="quarto-xref">Exercise&nbsp;<span>8.12</span></a></p>
 <p>sampling method: stratified sampling</p>
 <p>Compared to simple random sampling, stratified sample is guaranteed to represent people from all 50 states.</p>
 <p>While the stratified sampling would allow for better representation of people in different states, the same limitations in regards to citizens without addresses or if multiple citizens live in one household.</p>
 </section>
 <section id="sec-ex09-sol" class="level2" data-number="B.9">
 <h2 data-number="B.9" class="anchored" data-anchor-id="sec-ex09-sol"><span class="header-section-number">B.9</span> Chapter 9</h2>
-<p><a href="09-sampling-distributions.html#exr-ch09-c01">Exercise&nbsp;<span>9.1</span></a> b) unimodal &amp; h) symmetric</p>
-<p><a href="09-sampling-distributions.html#exr-ch09-c02">Exercise&nbsp;<span>9.2</span></a> b) False</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c01" class="quarto-xref">Exercise&nbsp;<span>9.1</span></a> b) unimodal &amp; h) symmetric</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c02" class="quarto-xref">Exercise&nbsp;<span>9.2</span></a> b) False</p>
 <p><span class="quarto-unresolved-ref">?exr-ch09-c03</span> c) <code>1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)</code></p>
 <p><span class="quarto-unresolved-ref">?exr-ch09-c04</span> b) <code>pnorm(q = 72, mean = 64, sd = 3) - pnorm(q = 60, mean = 64, sd = 3)</code> c) <code>1 - pnorm(q = -1.33) - pnorm(q = 2.67, lower.tail = FALSE)</code></p>
 <p><span class="quarto-unresolved-ref">?exr-ch09-c05</span> b) orange</p>
-<p><a href="09-sampling-distributions.html#exr-ch09-c06">Exercise&nbsp;<span>9.6</span></a> a) True</p>
-<p><a href="09-sampling-distributions.html#exr-ch09-c07">Exercise&nbsp;<span>9.7</span></a></p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c06" class="quarto-xref">Exercise&nbsp;<span>9.6</span></a> a) True</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c07" class="quarto-xref">Exercise&nbsp;<span>9.7</span></a></p>
 <ol start="4" type="a">
 <li><p>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution</p></li>
 <li><p>The regression slope and regression intercept both follow the T distribution</p></li>
 </ol>
-<p><a href="09-sampling-distributions.html#exr-ch09-c08">Exercise&nbsp;<span>9.8</span></a> a) True</p>
-<p><a href="09-sampling-distributions.html#exr-ch09-c09">Exercise&nbsp;<span>9.9</span></a> b) False</p>
-<p><a href="09-sampling-distributions.html#exr-ch09-c10">Exercise&nbsp;<span>9.10</span></a> d) unbiased and precise</p>
-<p><a href="09-sampling-distributions.html#exr-ch09-c11">Exercise&nbsp;<span>9.11</span></a></p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c08" class="quarto-xref">Exercise&nbsp;<span>9.8</span></a> a) True</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c09" class="quarto-xref">Exercise&nbsp;<span>9.9</span></a> b) False</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c10" class="quarto-xref">Exercise&nbsp;<span>9.10</span></a> d) unbiased and precise</p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c11" class="quarto-xref">Exercise&nbsp;<span>9.11</span></a></p>
 <ol start="2" type="a">
 <li>False</li>
 </ol>
-<p><a href="09-sampling-distributions.html#exr-ch09-c12">Exercise&nbsp;<span>9.12</span></a></p>
+<p><a href="09-sampling-distributions.html#exr-ch09-c12" class="quarto-xref">Exercise&nbsp;<span>9.12</span></a></p>
 <ul>
 <li>normal/t distribution</li>
 <li>normal/t distribution</li>
@@ -1209,25 +1289,29 @@ pts:locationHome -0.1688308 0.03633496  -4.646510 3.474887e-06</code></pre>
 <span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-10"><a href="#cb107-10" aria-hidden="true" tabindex="-1"></a>plot_1 <span class="sc">+</span> plot_2 <span class="sc">+</span> plot_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="0b-solutions-exercise_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="sec-ex10-sol" class="level2" data-number="B.10">
 <h2 data-number="B.10" class="anchored" data-anchor-id="sec-ex10-sol"><span class="header-section-number">B.10</span> Chapter 10</h2>
-<p><a href="10-confidence-intervals.html#exr-ch10-c01">Exercise&nbsp;<span>10.1</span></a> Estimate <span class="math inline">\(\\pm\)</span> Critical Value*SE(Estimate)</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c02">Exercise&nbsp;<span>10.2</span></a> a) We are 90% confident that the true mean is within any given 90% confidence interval</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c01" class="quarto-xref">Exercise&nbsp;<span>10.1</span></a> Estimate <span class="math inline">\(\\pm\)</span> Critical Value*SE(Estimate)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c02" class="quarto-xref">Exercise&nbsp;<span>10.2</span></a> a) We are 90% confident that the true mean is within any given 90% confidence interval</p>
 <ol start="4" type="a">
 <li>Approximately 90% of confidence intervals contain the true mean</li>
 </ol>
-<p><a href="10-confidence-intervals.html#exr-ch10-c03">Exercise&nbsp;<span>10.3</span></a> b) False</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c04">Exercise&nbsp;<span>10.4</span></a> a)</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c05">Exercise&nbsp;<span>10.5</span></a> a) decrease</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c06">Exercise&nbsp;<span>10.6</span></a> c)</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c07">Exercise&nbsp;<span>10.7</span></a> d) qt(p = 0.05, df = 14)</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c08">Exercise&nbsp;<span>10.8</span></a> d) qnorm(p = 0.015)</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-c09">Exercise&nbsp;<span>10.9</span></a> 0.01804</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-app1">Exercise&nbsp;<span>10.10</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c03" class="quarto-xref">Exercise&nbsp;<span>10.3</span></a> b) False</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c04" class="quarto-xref">Exercise&nbsp;<span>10.4</span></a> a)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c05" class="quarto-xref">Exercise&nbsp;<span>10.5</span></a> a) decrease</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c06" class="quarto-xref">Exercise&nbsp;<span>10.6</span></a> c)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c07" class="quarto-xref">Exercise&nbsp;<span>10.7</span></a> d) qt(p = 0.05, df = 14)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c08" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a> d) qnorm(p = 0.015)</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-c09" class="quarto-xref">Exercise&nbsp;<span>10.9</span></a> 0.01804</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app1" class="quarto-xref">Exercise&nbsp;<span>10.10</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
@@ -1247,7 +1331,7 @@ mean of x
  31.67677 </code></pre>
 </div>
 </div>
-<p><a href="10-confidence-intervals.html#exr-ch10-app2">Exercise&nbsp;<span>10.11</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app2" class="quarto-xref">Exercise&nbsp;<span>10.11</span></a></p>
 <p>Let’s consider only the games that Kobe Bryant <strong>played in</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
@@ -1280,7 +1364,7 @@ sample estimates:
 </div>
 </div>
 <p>We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-app3">Exercise&nbsp;<span>10.12</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app3" class="quarto-xref">Exercise&nbsp;<span>10.12</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
@@ -1311,7 +1395,7 @@ sample estimates:
 0.6292135 0.6483516 </code></pre>
 </div>
 </div>
-<p><a href="10-confidence-intervals.html#exr-ch10-app4">Exercise&nbsp;<span>10.13</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app4" class="quarto-xref">Exercise&nbsp;<span>10.13</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
@@ -1335,7 +1419,7 @@ mean of x mean of y
 </div>
 </div>
 <p>We are 95% confident that the difference in free throw percentage between Michael Jordan and Kobe Bryant is between -0.0155 and 0.071.</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-adv2">Exercise&nbsp;<span>10.15</span></a></p>
+<p><a href="10-confidence-intervals.html#exr-ch10-adv2" class="quarto-xref">Exercise&nbsp;<span>10.15</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
@@ -1392,29 +1476,29 @@ Under Construction
 </section>
 <section id="sec-ex12-sol" class="level2" data-number="B.12">
 <h2 data-number="B.12" class="anchored" data-anchor-id="sec-ex12-sol"><span class="header-section-number">B.12</span> Chapter 12</h2>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c01">Exercise&nbsp;<span>12.1</span></a> a) Type I Error</p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c02">Exercise&nbsp;<span>12.2</span></a> d) No, one type of error will be minimized at the expense of the other type</p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c03">Exercise&nbsp;<span>12.3</span></a> b) False</p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c04">Exercise&nbsp;<span>12.4</span></a> a) True</p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c05">Exercise&nbsp;<span>12.5</span></a> a) <span class="math inline">\(\alpha\)</span> b) <span class="math inline">\(n\)</span></p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c06">Exercise&nbsp;<span>12.6</span></a> b) Type II Error</p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c07">Exercise&nbsp;<span>12.7</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c01" class="quarto-xref">Exercise&nbsp;<span>12.1</span></a> a) Type I Error</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c02" class="quarto-xref">Exercise&nbsp;<span>12.2</span></a> d) No, one type of error will be minimized at the expense of the other type</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c03" class="quarto-xref">Exercise&nbsp;<span>12.3</span></a> b) False</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c04" class="quarto-xref">Exercise&nbsp;<span>12.4</span></a> a) True</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c05" class="quarto-xref">Exercise&nbsp;<span>12.5</span></a> a) <span class="math inline">\(\alpha\)</span> b) <span class="math inline">\(n\)</span></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c06" class="quarto-xref">Exercise&nbsp;<span>12.6</span></a> b) Type II Error</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c07" class="quarto-xref">Exercise&nbsp;<span>12.7</span></a></p>
 <ol start="4" type="a">
 <li>Reject the null, there is a difference between the proportions.</li>
 </ol>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c08">Exercise&nbsp;<span>12.8</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c08" class="quarto-xref">Exercise&nbsp;<span>12.8</span></a></p>
 <ol start="2" type="a">
 <li>becomes smaller</li>
 </ol>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c09">Exercise&nbsp;<span>12.9</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c09" class="quarto-xref">Exercise&nbsp;<span>12.9</span></a></p>
 <ol start="3" type="a">
 <li></li>
 </ol>
-<p><a href="12-hypothesis-tests.html#exr-ch12-c10">Exercise&nbsp;<span>12.10</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-c10" class="quarto-xref">Exercise&nbsp;<span>12.10</span></a></p>
 <p><span class="math display">\[H_0:\]</span> the person does not have HIV</p>
 <p><span class="math display">\[H_A:\]</span> the person has HIV</p>
 <p>Scenario 1: The person tests positive for HIV and has HIV Scenario 2: The person tests positive for HIV but does not actually have HIV (Type I error) Scenario 3: The person tests negative for HIV but actually has HIV (Type II error) Scenario 4: The person tests negative for HIV and does not have HIV</p>
-<p><a href="12-hypothesis-tests.html#exr-ch12-app1">Exercise&nbsp;<span>12.11</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-app1" class="quarto-xref">Exercise&nbsp;<span>12.11</span></a></p>
 <p><span class="math display">\[H_0: \mu_{team pts} = 100\]</span></p>
 <p><span class="math display">\[H_A: \mu_{team pts} \ne 100\]</span></p>
 <div class="cell">
@@ -1433,7 +1517,7 @@ mean of x
  102.0592 </code></pre>
 </div>
 </div>
-<p><a href="12-hypothesis-tests.html#exr-ch12-app2">Exercise&nbsp;<span>12.12</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-app2" class="quarto-xref">Exercise&nbsp;<span>12.12</span></a></p>
 <p><span class="math display">\[H_0: \mu_{jordan} - \mu_{lebron} = 0\]</span></p>
 <p><span class="math display">\[H_A: \mu_{jordan} - \mu_{lebron} \ne 0\]</span></p>
 <p>First we need to pre-specify an alpha level. Let’s choose 0.05.</p>
@@ -1458,7 +1542,7 @@ mean of x mean of y
  30.59872  27.28299 </code></pre>
 </div>
 </div>
-<p><a href="12-hypothesis-tests.html#exr-ch12-app3">Exercise&nbsp;<span>12.13</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-app3" class="quarto-xref">Exercise&nbsp;<span>12.13</span></a></p>
 <p><span class="math display">\[H_0: \pi_{win} = 0.5\]</span></p>
 <p><span class="math display">\[H_A: \pi_{win} \ne 0.5\]</span></p>
 <div class="cell">
@@ -1487,7 +1571,7 @@ sample estimates:
 0.5948227 </code></pre>
 </div>
 </div>
-<p><a href="12-hypothesis-tests.html#exr-ch12-app4">Exercise&nbsp;<span>12.14</span></a></p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-app4" class="quarto-xref">Exercise&nbsp;<span>12.14</span></a></p>
 <p><span class="math display">\[H_0: \pi_{first} - \pi_{third} = 0\]</span></p>
 <p><span class="math display">\[H_A: \pi_{first} - \pi_{third} \ne 0\]</span></p>
 <p>First we need to pre-specify an alpha rate. For example let’s pick 0.01.</p>
@@ -1604,10 +1688,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1617,8 +1700,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1631,6 +1723,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1674,6 +1885,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1699,6 +1911,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1760,12 +1998,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./0a-statistical-background.html" class="pagination-link">
+      <a href="./0a-statistical-background.html" class="pagination-link" aria-label="Statistical Background">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Statistical Background</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./0c-solutions-learning-checks.html" class="pagination-link">
+      <a href="./0c-solutions-learning-checks.html" class="pagination-link" aria-label="Learning check solutions">
         <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Learning check solutions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1774,4 +2012,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/0b-solutions-exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

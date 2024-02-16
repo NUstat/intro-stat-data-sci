@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -126,12 +161,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-regression.html">Data Modeling</a></li><li class="breadcrumb-item"><a href="./05-regression.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-regression.html">Data Modeling</a></li><li class="breadcrumb-item"><a href="./05-regression.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -141,7 +176,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -149,8 +184,8 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -237,7 +272,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,7 +403,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -406,12 +441,12 @@ div.csl-indent {
   <li><a href="#sec-ex05-advanced" id="toc-sec-ex05-advanced" class="nav-link" data-scroll-target="#sec-ex05-advanced"><span class="header-section-number">5.5.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-regression.html">Data Modeling</a></li><li class="breadcrumb-item"><a href="./05-regression.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-regression" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></span></h1>
 </div>
@@ -426,9 +461,11 @@ div.csl-indent {
   </div>
   
 
+
 </header>
 
-<p>Now that we are equipped with data visualization skills from <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>, an understanding of the “tidy” data format from <a href="04-tidy.html"><span>Chapter&nbsp;4</span></a>, and data wrangling skills from <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>, we now proceed with data modeling. The fundamental premise of data modeling is <em>to make explicit the relationship</em> between:</p>
+
+<p>Now that we are equipped with data visualization skills from <a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a>, an understanding of the “tidy” data format from <a href="04-tidy.html" class="quarto-xref"><span>Chapter 4</span></a>, and data wrangling skills from <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a>, we now proceed with data modeling. The fundamental premise of data modeling is <em>to make explicit the relationship</em> between:</p>
 <ul>
 <li>an outcome variable <span class="math inline">\(y\)</span>, also called a dependent variable and</li>
 <li>an explanatory/predictor variable <span class="math inline">\(x\)</span>, also called an independent variable or covariate.</li>
@@ -438,7 +475,7 @@ div.csl-indent {
 <li><p><strong>Modeling for prediction</strong>: You want to predict an outcome variable <span class="math inline">\(y\)</span> based on the information contained in a set of predictor variables. You don’t care so much about understanding how all the variables relate and interact, but so long as you can make good predictions about <span class="math inline">\(y\)</span>, you’re fine. For example, if we know many individuals’ risk factors for lung cancer, such as smoking habits and age, can we predict whether or not they will develop lung cancer? Here we wouldn’t care so much about distinguishing the degree to which the different risk factors contribute to lung cancer, but instead only on whether or not they could be put together to make reliable predictions.</p></li>
 <li><p><strong>Modeling for explanation</strong>: You want to explicitly describe the relationship between an outcome variable <span class="math inline">\(y\)</span> and a set of explanatory variables, determine the significance of any found relationships, and have measures summarizing these. Continuing our example from above, we would now be interested in describing the individual effects of the different risk factors and quantifying the magnitude of these effects. One reason could be to design an intervention to reduce lung cancer cases in a population, such as targeting smokers of a specific age group with an advertisement for smoking cessation programs. In this book, we’ll focus more on this latter purpose.</p></li>
 </ol>
-<p>Data modeling is used in a wide variety of fields, including statistical inference, causal inference, artificial intelligence, and machine learning. There are many techniques for data modeling, such as tree-based models, neural networks and deep learning, and supervised learning. In this chapter, we’ll focus on one particular technique: <em>linear regression</em>, one of the most commonly-used and easy-to-understand approaches to modeling. Recall our discussion in <a href="01-getting-started.html#sec-exploredataframes">Subsection&nbsp;<span>1.4.3</span></a> on numerical and categorical variables. Linear regression involves:</p>
+<p>Data modeling is used in a wide variety of fields, including statistical inference, causal inference, artificial intelligence, and machine learning. There are many techniques for data modeling, such as tree-based models, neural networks and deep learning, and supervised learning. In this chapter, we’ll focus on one particular technique: <em>linear regression</em>, one of the most commonly-used and easy-to-understand approaches to modeling. Recall our discussion in <a href="01-getting-started.html#sec-exploredataframes" class="quarto-xref">Subsection&nbsp;<span>1.4.3</span></a> on numerical and categorical variables. Linear regression involves:</p>
 <ul>
 <li>an outcome variable <span class="math inline">\(y\)</span> that is <em>numerical</em> and</li>
 <li>explanatory variables <span class="math inline">\(x_i\)</span> (e.g.&nbsp;<span class="math inline">\(x_1, x_2, ...\)</span>) that are either <em>numerical</em> or <em>categorical</em>.</li>
@@ -447,13 +484,13 @@ div.csl-indent {
 <ul>
 <li>In this current chapter on basic regression, we’ll always have only one explanatory variable.
 <ul>
-<li>In <a href="#sec-model1"><span>Section&nbsp;5.1</span></a>, this explanatory variable will be a single numerical explanatory variable <span class="math inline">\(x\)</span>. This scenario is known as <em>simple linear regression</em>.</li>
-<li>In <a href="#sec-model2"><span>Section&nbsp;5.2</span></a>, this explanatory variable will be a categorical explanatory variable <span class="math inline">\(x\)</span>.</li>
+<li>In <a href="#sec-model1" class="quarto-xref"><span>Section 5.1</span></a>, this explanatory variable will be a single numerical explanatory variable <span class="math inline">\(x\)</span>. This scenario is known as <em>simple linear regression</em>.</li>
+<li>In <a href="#sec-model2" class="quarto-xref"><span>Section 5.2</span></a>, this explanatory variable will be a categorical explanatory variable <span class="math inline">\(x\)</span>.</li>
 </ul></li>
-<li>In the next chapter, <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a> on <em>multiple regression</em>, we’ll have more than one explanatory variable:
+<li>In the next chapter, <a href="06-multiple-regression.html" class="quarto-xref"><span>Chapter 6</span></a> on <em>multiple regression</em>, we’ll have more than one explanatory variable:
 <ul>
-<li>We’ll focus on two numerical explanatory variables, <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, in <a href="06-multiple-regression.html#sec-model3"><span>Section&nbsp;6.1</span></a>.</li>
-<li>We’ll use one numerical and one categorical explanatory variable in <a href="06-multiple-regression.html#sec-model3"><span>Section&nbsp;6.1</span></a>. We’ll also introduce <em>interaction models</em> here; there, the effect of one explanatory variable depends on the value of another.</li>
+<li>We’ll focus on two numerical explanatory variables, <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, in <a href="06-multiple-regression.html#sec-model3" class="quarto-xref"><span>Section 6.1</span></a>.</li>
+<li>We’ll use one numerical and one categorical explanatory variable in <a href="06-multiple-regression.html#sec-model3" class="quarto-xref"><span>Section 6.1</span></a>. We’ll also introduce <em>interaction models</em> here; there, the effect of one explanatory variable depends on the value of another.</li>
 </ul></li>
 </ul>
 <p>We’ll study all four of these regression scenarios using real data, all easily accessible via R packages!</p>
@@ -461,7 +498,7 @@ div.csl-indent {
 <h2 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h2>
 <p>Let’s now load all the packages needed for this chapter (this assumes you’ve already installed them). In this chapter we introduce some new packages:</p>
 <ol type="1">
-<li><p>The <code>tidyverse</code> “umbrella” package. Recall from our discussion in <a href="04-tidy.html#sec-tidyverse-package">Subsection&nbsp;<span>4.4.1</span></a> that loading the <code>tidyverse</code> package by running <code>library(tidyverse)</code> loads the following commonly used data science packages all at once:</p>
+<li><p>The <code>tidyverse</code> “umbrella” package. Recall from our discussion in <a href="04-tidy.html#sec-tidyverse-package" class="quarto-xref">Subsection&nbsp;<span>4.4.1</span></a> that loading the <code>tidyverse</code> package by running <code>library(tidyverse)</code> loads the following commonly used data science packages all at once:</p>
 <ul>
 <li><code>ggplot2</code> for data visualization</li>
 <li><code>dplyr</code> for data wrangling</li>
@@ -473,7 +510,7 @@ div.csl-indent {
 <li><p>The <code>gapminder</code> package, which provides excerpts of data available from <a href="https://gapminder.org">Gapminder.org</a></p></li>
 <li><p>The <code>moderndive</code> package, which includes data sets we will analyze</p></li>
 </ol>
-<p>If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
@@ -555,16 +592,21 @@ div.csl-indent {
 <li><p><code>bty_avg</code>: Numerical variable of average “beauty” rating based on a panel of 6 students’ scores between 1 and 10. This is the numerical explanatory variable <span class="math inline">\(x\)</span> of interest. Here 1 corresponds to a low beauty rating and 10 to a high beauty rating.</p></li>
 <li><p><code>age</code>: A numerical variable of age in years as an integer value.</p></li>
 </ol>
-<p>An alternative way to look at the raw data values is by choosing a random sample of the rows in <code>evals_ch5</code> by piping it into the <code>slice_sample()</code> function from the <code>dplyr</code> package. Here we set the <code>n</code> argument to be <code>5</code>, indicating that we want a random sample of 5 rows. We display the results in <a href="#tbl-five-random-courses">Table&nbsp;<span>5.1</span></a>. Note that due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
+<p>An alternative way to look at the raw data values is by choosing a random sample of the rows in <code>evals_ch5</code> by piping it into the <code>slice_sample()</code> function from the <code>dplyr</code> package. Here we set the <code>n</code> argument to be <code>5</code>, indicating that we want a random sample of 5 rows. We display the results in <a href="#tbl-five-random-courses" class="quarto-xref">Table&nbsp;<span>5.1</span></a>. Note that due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-five-random-courses" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-five-random-courses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: A random sample of 5 out of the 463 courses at UT Austin
+</figcaption>
+<div aria-describedby="tbl-five-random-courses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-five-random-courses" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.1: A random sample of 5 out of the 463 courses at UT Austin</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>A random sample of 5 out of the 463 courses at UT Austin</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">score</th>
@@ -602,8 +644,10 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Now that we’ve looked at the raw values in our <code>evals_ch5</code> data frame and got a preliminary sense of the data, let’s move on to the next common step in an exploratory data analysis: computing summary statistics. Let’s start by computing the mean and median of our numerical outcome variable <code>score</code> and our numerical explanatory variable “beauty” score denoted as <code>bty_avg</code>. We’ll do this by using the <code>summarize()</code> function from <code>dplyr</code> along with the <code>mean()</code> and <code>median()</code> summary functions we saw in <a href="03-wrangling.html#sec-summarize"><span>Section&nbsp;3.3</span></a>.</p>
+</div>
+<p>Now that we’ve looked at the raw values in our <code>evals_ch5</code> data frame and got a preliminary sense of the data, let’s move on to the next common step in an exploratory data analysis: computing summary statistics. Let’s start by computing the mean and median of our numerical outcome variable <code>score</code> and our numerical explanatory variable “beauty” score denoted as <code>bty_avg</code>. We’ll do this by using the <code>summarize()</code> function from <code>dplyr</code> along with the <code>mean()</code> and <code>median()</code> summary functions we saw in <a href="03-wrangling.html#sec-summarize" class="quarto-xref"><span>Section 3.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>evals_ch5 <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
@@ -659,13 +703,17 @@ Group variables            None
 <li>0 indicates no relationship: The values of both variables go up/down independently of each other.</li>
 <li>+1 indicates a perfect <em>positive relationship</em>: As the value of one variable goes up, the value of the other variable tends to go up as well in a linear fashion.</li>
 </ul>
-<p><a href="#fig-correlation1">Figure&nbsp;<span>5.1</span></a> gives examples of different correlation coefficient values for hypothetical numerical variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. We see that while for a correlation coefficient of -0.75 there is still a negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, it is not as strong as the negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> when the correlation coefficient is -1.</p>
+<p><a href="#fig-correlation1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> gives examples of different correlation coefficient values for hypothetical numerical variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. We see that while for a correlation coefficient of -0.75 there is still a negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, it is not as strong as the negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> when the correlation coefficient is -1.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-correlation1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-correlation1-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.1: Different correlation coefficients</figcaption>
+<div id="fig-correlation1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlation1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-correlation1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Different correlation coefficients
+</figcaption>
 </figure>
 </div>
 </div>
@@ -681,25 +729,29 @@ Group variables            None
 1       0.187</code></pre>
 </div>
 </div>
-<p>You can also use the <code>cor()</code> function directly instead of using it inside <code>summarise</code>, but you will need to use the <code>$</code> syntax to access the specific variables within a data frame (See <a href="01-getting-started.html#sec-exploredataframes">Subsection&nbsp;<span>1.4.3</span></a>):</p>
+<p>You can also use the <code>cor()</code> function directly instead of using it inside <code>summarise</code>, but you will need to use the <code>$</code> syntax to access the specific variables within a data frame (See <a href="01-getting-started.html#sec-exploredataframes" class="quarto-xref">Subsection&nbsp;<span>1.4.3</span></a>):</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(<span class="at">x =</span> evals_ch5<span class="sc">$</span>bty_avg, <span class="at">y =</span> evals_ch5<span class="sc">$</span>score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.187</code></pre>
 </div>
 </div>
-<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection -<a href="#sec-correlationcoefficient"><span>Section&nbsp;5.3.1</span></a> below.</p>
-<p>Let’s now proceed by visualizing this data. Since both the <code>score</code> and <code>bty_avg</code> variables are numerical, a scatterplot is an appropriate graph to visualize this data. Let’s do this using <code>geom_point()</code> and set informative axes labels and title and display the result in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>.</p>
+<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection -<a href="#sec-correlationcoefficient" class="quarto-xref"><span>Section 5.3.1</span></a> below.</p>
+<p>Let’s now proceed by visualizing this data. Since both the <code>score</code> and <code>bty_avg</code> variables are numerical, a scatterplot is an appropriate graph to visualize this data. Let’s do this using <code>geom_point()</code> and set informative axes labels and title and display the result in <a href="#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Beauty Score"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relationship of teaching and beauty scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-numxplot1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-numxplot1-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.2: Instructor evaluation scores at UT Austin</figcaption>
+<div id="fig-numxplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-numxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Instructor evaluation scores at UT Austin
+</figcaption>
 </figure>
 </div>
 </div>
@@ -708,27 +760,35 @@ Group variables            None
 <ol type="1">
 <li><p>Most “beauty” scores lie between 2 and 8.</p></li>
 <li><p>Most teaching scores lie between 3 and 5.</p></li>
-<li><p>Recall our earlier computation of the correlation coefficient, which describes the strength of the linear relationship between two numerical variables. Looking at <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>, it is not immediately apparent that these two variables are positively related. This is to be expected given the positive, but rather weak (close to 0), correlation coefficient of 0.187.</p></li>
+<li><p>Recall our earlier computation of the correlation coefficient, which describes the strength of the linear relationship between two numerical variables. Looking at <a href="#fig-numxplot2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>, it is not immediately apparent that these two variables are positively related. This is to be expected given the positive, but rather weak (close to 0), correlation coefficient of 0.187.</p></li>
 </ol>
-<p>Before we continue, we bring to light an important fact about this dataset: it suffers from <em>overplotting</em>. Recall from the data visualization <a href="02-visualization.html#sec-overplotting">Subsection&nbsp;<span>2.3.2</span></a> that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let’s focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as <em>ties</em>. Let’s break up these ties with a little random “jitter” added to the points in <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>.</p>
+<p>Before we continue, we bring to light an important fact about this dataset: it suffers from <em>overplotting</em>. Recall from the data visualization <a href="02-visualization.html#sec-overplotting" class="quarto-xref">Subsection&nbsp;<span>2.3.2</span></a> that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let’s focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as <em>ties</em>. Let’s break up these ties with a little random “jitter” added to the points in <a href="#fig-numxplot2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxplot2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-numxplot2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.3: Instructor evaluation scores at UT Austin: Jittered</figcaption>
+<div id="fig-numxplot2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-numxplot2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Instructor evaluation scores at UT Austin: Jittered
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Jittering adds a little random bump to each of the points to break up these ties: just enough so you can distinguish them, but not so much that the plot is overly altered. Furthermore, jittering is strictly a visualization tool; it does not alter the original values in the dataset.</p>
-<p>Let’s compare side-by-side the regular scatterplot in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a> with the jittered scatterplot <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>.</p>
+<p>Let’s compare side-by-side the regular scatterplot in <a href="#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> with the jittered scatterplot <a href="#fig-numxplot2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxplot2-a" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-numxplot2-a-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.4: Comparing regular and jittered scatterplots</figcaption>
+<div id="fig-numxplot2-a" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxplot2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-numxplot2-a-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxplot2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Comparing regular and jittered scatterplots
+</figcaption>
 </figure>
 </div>
 </div>
@@ -738,7 +798,7 @@ Group variables            None
 <li><p>Focusing our attention on the top-right of the plot again, as noted earlier where there seemed to only be 6 points in the regular scatterplot, we see there were in fact really 9 as seen in the jittered scatterplot.</p></li>
 <li><p>A further interesting trend is that the jittering revealed a large number of instructors with beauty scores of between 3 and 4.5, towards the lower end of the beauty scale.</p></li>
 </ol>
-<p>To keep things simple in this chapter, we’ll present regular scatterplots rather than the jittered scatterplots, though we’ll keep the overplotting in mind whenever looking at such plots. Going back to scatterplot in <a href="#fig-numxplot1">Figure&nbsp;<span>5.2</span></a>, let’s improve on it by adding a “regression line” in <a href="#fig-numxplot3">Figure&nbsp;<span>5.5</span></a>. This is easily done by adding a new layer to the <code>ggplot</code> code that created <a href="#fig-numxplot2">Figure&nbsp;<span>5.3</span></a>: <code>+ geom_smooth(method = "lm")</code>. A regression line is a “best fitting” line in that of all possible lines you could draw on this plot, it is “best” in terms of some mathematical criteria. We discuss the criteria for “best” in <a href="#sec-leastsquares">Subsection&nbsp;<span>5.3.3</span></a> below, but we suggest you read this only after covering the concept of a <em>residual</em> coming up in <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a>.</p>
+<p>To keep things simple in this chapter, we’ll present regular scatterplots rather than the jittered scatterplots, though we’ll keep the overplotting in mind whenever looking at such plots. Going back to scatterplot in <a href="#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, let’s improve on it by adding a “regression line” in <a href="#fig-numxplot3" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>. This is easily done by adding a new layer to the <code>ggplot</code> code that created <a href="#fig-numxplot2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>: <code>+ geom_smooth(method = "lm")</code>. A regression line is a “best fitting” line in that of all possible lines you could draw on this plot, it is “best” in terms of some mathematical criteria. We discuss the criteria for “best” in <a href="#sec-leastsquares" class="quarto-xref">Subsection&nbsp;<span>5.3.3</span></a> below, but we suggest you read this only after covering the concept of a <em>residual</em> coming up in <a href="#sec-model1points" class="quarto-xref">Subsection&nbsp;<span>5.1.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -749,16 +809,20 @@ Group variables            None
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span>  </span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-numxplot3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-numxplot3-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.5: Regression line</figcaption>
+<div id="fig-numxplot3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxplot3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-numxplot3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxplot3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Regression line
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>When viewed on this plot, the regression line is a visual summary of the relationship between two numerical variables, in our case the outcome variable <code>score</code> and the explanatory variable <code>bty_avg</code>. The positive slope of the blue line is consistent with our observed correlation coefficient of 0.187 suggesting that there is a positive relationship between <code>score</code> and <code>bty_avg</code>. We’ll see later however that while the correlation coefficient is not equal to the slope of this line, they always have the same sign: positive or negative.</p>
-<p>What are the grey bands surrounding the blue line? These are <em>standard error</em> bands, which can be thought of as error/uncertainty bands. Let’s skip this idea for now and suppress these grey bars by adding the argument <code>se = FALSE</code> to <code>geom_smooth(method = "lm")</code>. We’ll introduce standard errors when covering sampling distributions (<a href="09-sampling-distributions.html"><span>Chapter&nbsp;9</span></a>). We also will use standard errors to construct <em>confidence intervals</em> (<a href="10-confidence-intervals.html"><span>Chapter&nbsp;10</span></a>) and conduct <em>hypothesis tests</em> (<a href="12-hypothesis-tests.html"><span>Chapter&nbsp;12</span></a>). Standard errors are really important!</p>
+<p>What are the grey bands surrounding the blue line? These are <em>standard error</em> bands, which can be thought of as error/uncertainty bands. Let’s skip this idea for now and suppress these grey bars by adding the argument <code>se = FALSE</code> to <code>geom_smooth(method = "lm")</code>. We’ll introduce standard errors when covering sampling distributions (<a href="09-sampling-distributions.html" class="quarto-xref"><span>Chapter 9</span></a>). We also will use standard errors to construct <em>confidence intervals</em> (<a href="10-confidence-intervals.html" class="quarto-xref"><span>Chapter 10</span></a>) and conduct <em>hypothesis tests</em> (<a href="12-hypothesis-tests.html" class="quarto-xref"><span>Chapter 12</span></a>). Standard errors are really important!</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -769,10 +833,14 @@ Group variables            None
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-numxplot4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-numxplot4-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.6: Regression line without error bands</figcaption>
+<div id="fig-numxplot4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxplot4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-numxplot4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxplot4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Regression line without error bands
+</figcaption>
 </figure>
 </div>
 </div>
@@ -807,12 +875,12 @@ Group variables            None
 <li>the intercept coefficient <span class="math inline">\(a\)</span>, or the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span>, and</li>
 <li>the slope coefficient <span class="math inline">\(b\)</span>, or the increase in <span class="math inline">\(y\)</span> for every increase of one in <span class="math inline">\(x\)</span>.</li>
 </ul>
-<p>However, when defining a line specifically for regression, like the blue regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>, we use slightly different notation: the equation of the regression line is <span class="math inline">\(\widehat{y} = b_0 + b_1 \cdot x\)</span> where</p>
+<p>However, when defining a line specifically for regression, like the blue regression line in <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>, we use slightly different notation: the equation of the regression line is <span class="math inline">\(\widehat{y} = b_0 + b_1 \cdot x\)</span> where</p>
 <ul>
 <li>the intercept coefficient is <span class="math inline">\(b_0\)</span>, or the value of <span class="math inline">\(\widehat{y}\)</span> when <span class="math inline">\(x=0\)</span>, and</li>
 <li>the slope coefficient <span class="math inline">\(b_1\)</span>, or the increase in <span class="math inline">\(\widehat{y}\)</span> for every increase of one in <span class="math inline">\(x\)</span>.</li>
 </ul>
-<p>Why do we put a “hat” on top of the <span class="math inline">\(y\)</span>? It’s a form of notation commonly used in regression, which we’ll introduce in the next <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a> when we discuss <em>fitted values</em>. For now, let’s ignore the hat and treat the equation of the line as you would from secondary school / high school algebra recognizing the slope and the intercept. We know looking at <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> that the slope coefficient corresponding to <code>bty_avg</code> should be positive. Why? Because as <code>bty_avg</code> increases, professors tend to roughly have higher teaching evaluation <code>scores</code>. However, what are the specific values of the intercept and slope coefficients? Let’s not worry about computing these by hand, but instead let the computer do the work for us. Specifically, let’s use R!</p>
+<p>Why do we put a “hat” on top of the <span class="math inline">\(y\)</span>? It’s a form of notation commonly used in regression, which we’ll introduce in the next <a href="#sec-model1points" class="quarto-xref">Subsection&nbsp;<span>5.1.3</span></a> when we discuss <em>fitted values</em>. For now, let’s ignore the hat and treat the equation of the line as you would from secondary school / high school algebra recognizing the slope and the intercept. We know looking at <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> that the slope coefficient corresponding to <code>bty_avg</code> should be positive. Why? Because as <code>bty_avg</code> increases, professors tend to roughly have higher teaching evaluation <code>scores</code>. However, what are the specific values of the intercept and slope coefficients? Let’s not worry about computing these by hand, but instead let the computer do the work for us. Specifically, let’s use R!</p>
 <p>Let’s get the value of the intercept and slope coefficients by outputting something called the <em>linear regression table</em>. We will fit the linear regression model to the <code>data</code> using the <code>lm()</code> function and save this to <code>score_model</code>. <code>lm</code> stands for “linear model.” When we say “fit”, we are saying find the best fitting line to this data.</p>
 <p>The <code>lm()</code> function that “fits” the linear regression model is typically used as <code>lm(y ~ x, data = data_frame_name)</code> where:</p>
 <ul>
@@ -833,7 +901,7 @@ Coefficients:
      3.8803       0.0666  </code></pre>
 </div>
 </div>
-<p>This output is telling us that the <code>Intercept</code> coefficient <span class="math inline">\(b_0\)</span> of the regression line is 3.8803, and the slope coefficient for <code>by_avg</code> is 0.0666. Therefore the blue regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> is</p>
+<p>This output is telling us that the <code>Intercept</code> coefficient <span class="math inline">\(b_0\)</span> of the regression line is 3.8803, and the slope coefficient for <code>by_avg</code> is 0.0666. Therefore the blue regression line in <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> is</p>
 <p><span class="math display">\[\widehat{\text{score}} = b_0 + b_{\text{bty avg}} \cdot\text{bty avg} = 3.8803 + 0.0666\cdot\text{ bty avg}\]</span></p>
 <p>where</p>
 <ul>
@@ -855,12 +923,12 @@ Important
 <div class="callout-body-container callout-body">
 <p><strong>Such interpretations need be carefully worded:</strong></p>
 <ul>
-<li><p>We only stated that there is an <em>associated</em> increase, and not necessarily a <em>causal</em> increase. For example, perhaps it’s not that beauty directly affects teaching scores, but instead younger instructors tend to be perceived as better teachers (perhaps because they are more energetic or use more modern techniques), and younger instructors are also perceived to be more beautiful. Avoiding such reasoning can be summarized by the adage “correlation is not necessarily causation.” In other words, just because two variables are correlated, it doesn’t mean one directly causes the other. We discuss these ideas more in <a href="#sec-correlation-is-not-causation">Subsection&nbsp;<span>5.3.2</span></a> and in <a href="07-causality.html"><span>Chapter&nbsp;7</span></a>.</p></li>
-<li><p>We say that this associated increase is <em>on average</em> 0.0666 units of teaching <code>score</code> and not that the associated increase is <em>exactly</em> 0.0666 units of <code>score</code> across all values of <code>bty_avg</code>. This is because the slope is the average increase across all points as shown by the regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>.</p></li>
+<li><p>We only stated that there is an <em>associated</em> increase, and not necessarily a <em>causal</em> increase. For example, perhaps it’s not that beauty directly affects teaching scores, but instead younger instructors tend to be perceived as better teachers (perhaps because they are more energetic or use more modern techniques), and younger instructors are also perceived to be more beautiful. Avoiding such reasoning can be summarized by the adage “correlation is not necessarily causation.” In other words, just because two variables are correlated, it doesn’t mean one directly causes the other. We discuss these ideas more in <a href="#sec-correlation-is-not-causation" class="quarto-xref">Subsection&nbsp;<span>5.3.2</span></a> and in <a href="07-causality.html" class="quarto-xref"><span>Chapter 7</span></a>.</p></li>
+<li><p>We say that this associated increase is <em>on average</em> 0.0666 units of teaching <code>score</code> and not that the associated increase is <em>exactly</em> 0.0666 units of <code>score</code> across all values of <code>bty_avg</code>. This is because the slope is the average increase across all points as shown by the regression line in <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>.</p></li>
 </ul>
 </div>
 </div>
-<p>Now that we’ve learned how to compute the equation for the blue regression line in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> and interpreted all its terms, let’s take our modeling one step further. This time after fitting the model using the <code>lm()</code>, let’s get something called the <em>regression table</em> using the <code>summary()</code> function:</p>
+<p>Now that we’ve learned how to compute the equation for the blue regression line in <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> and interpreted all its terms, let’s take our modeling one step further. This time after fitting the model using the <code>lm()</code>, let’s get something called the <em>regression table</em> using the <code>summary()</code> function:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>score_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> bty_avg, <span class="at">data =</span> evals_ch5)</span>
@@ -893,10 +961,15 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-numxplot4b" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-numxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: Linear regression table
+</figcaption>
+<div aria-describedby="tbl-numxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-numxplot4b" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.2: Linear regression table</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Linear regression table</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -924,6 +997,8 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>For now since we are only using regression as an exploratory data analysis tool, we will only focus on the “Estimate” column that contains the estimates of the intercept and slope for the best fit line for our data. The remaining three columns refer to statistical concepts known as standard errors, t-statistics, and p-values, which we will cover in Parts III and IV of the book when we talk about statistical theory and inference.</p>
@@ -969,7 +1044,7 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 </table>
 </div>
 </div>
-<p>What is the value on the blue line corresponding to this instructor’s <code>bty_avg</code> of 7.333? In <a href="#fig-numxplot5">Figure&nbsp;<span>5.7</span></a> we mark three values in particular corresponding to this instructor.</p>
+<p>What is the value on the blue line corresponding to this instructor’s <code>bty_avg</code> of 7.333? In <a href="#fig-numxplot5" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> we mark three values in particular corresponding to this instructor.</p>
 <ul>
 <li><p>Red circle: This is the <em>observed value</em> <span class="math inline">\(y\)</span> = 4.9 and corresponds to this instructor’s actual teaching score.</p></li>
 <li><p>Red square: This is the <em>fitted value</em> <span class="math inline">\(\widehat{y}\)</span> and corresponds to the value on the regression line for <span class="math inline">\(x\)</span> = 7.333. This value is computed using the intercept and slope in the regression table above: <span class="math display">\[\widehat{y} = b_0 + b_1 \cdot x = 3.88 + 0.067 * 7.333 = 4.369\]</span></p></li>
@@ -977,10 +1052,14 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxplot5" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-numxplot5-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.7: Example of observed value, fitted value, and residual</figcaption>
+<div id="fig-numxplot5" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxplot5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-numxplot5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxplot5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.7: Example of observed value, fitted value, and residual
+</figcaption>
 </figure>
 </div>
 </div>
@@ -990,8 +1069,8 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <li>the fitted value <span class="math inline">\(\widehat{y} = b_0 + b_1 \cdot x\)</span> and</li>
 <li>the residual <span class="math inline">\(y - \widehat{y}\)</span></li>
 </ol>
-<p>for not only the 21st instructor but for all 463 instructors in the study? Recall that each instructor corresponds to one of the 463 rows in the <code>evals_ch5</code> data frame and also one of the 463 points in the regression plot in <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>.</p>
-<p>We could repeat the above calculations by hand 463 times, but that would be tedious and time consuming. Instead, let’s use our data wrangling tools from <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> and the functions <code>fitted()</code> and <code>residuals()</code> to create a data frame with these values. Similar to the <code>summary()</code> function, the <code>fitted()</code> and <code>residuals()</code> functions also take a model object as their input. <code>fitted()</code> calculates all the <em>fitted</em> <span class="math inline">\(\hat{y}\)</span> values by plugging in each observed <span class="math inline">\(x\)</span> value in the dataset into the regression equation, and <code>residuals()</code> similarly calculates all the residuals (<span class="math inline">\(y - \hat{y}\)</span>) for each observation in the dataset. The following code will store these new <span class="math inline">\(\hat{y}\)</span> and residual variables, which we will name <code>score_hat</code> and <code>residual</code> respectively, along with their corresponding <code>score</code> and <code>bty_avg</code> values from the original data <code>evals_ch5</code>.</p>
+<p>for not only the 21st instructor but for all 463 instructors in the study? Recall that each instructor corresponds to one of the 463 rows in the <code>evals_ch5</code> data frame and also one of the 463 points in the regression plot in <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>.</p>
+<p>We could repeat the above calculations by hand 463 times, but that would be tedious and time consuming. Instead, let’s use our data wrangling tools from <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a> and the functions <code>fitted()</code> and <code>residuals()</code> to create a data frame with these values. Similar to the <code>summary()</code> function, the <code>fitted()</code> and <code>residuals()</code> functions also take a model object as their input. <code>fitted()</code> calculates all the <em>fitted</em> <span class="math inline">\(\hat{y}\)</span> values by plugging in each observed <span class="math inline">\(x\)</span> value in the dataset into the regression equation, and <code>residuals()</code> similarly calculates all the residuals (<span class="math inline">\(y - \hat{y}\)</span>) for each observation in the dataset. The following code will store these new <span class="math inline">\(\hat{y}\)</span> and residual variables, which we will name <code>score_hat</code> and <code>residual</code> respectively, along with their corresponding <code>score</code> and <code>bty_avg</code> values from the original data <code>evals_ch5</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>score_model_data <span class="ot">&lt;-</span> evals_ch5 <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, bty_avg) <span class="sc">%&gt;%</span> </span>
@@ -1003,10 +1082,15 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 </div>
 <p>Note that we also used the <code>rownames_to_column()</code> function from the <code>tibble</code> package (part of the <code>tidyverse</code> suite) to create a convenient ID column from the rownames. In the table below we only present the results for the 21st through the 24th instructors.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-reg-points" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)
+</figcaption>
+<div aria-describedby="tbl-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-reg-points" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Regression points (for only 21st through 24th instructor)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">ID</th>
@@ -1049,8 +1133,10 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Let’s recap what we’re seeing in <a href="#tbl-reg-points">Table&nbsp;<span>5.3</span></a> in terms of the linear regression model (<code>score_model</code>) that we fit to the <code>evals_ch5</code> data:</p>
+</div>
+<p>Let’s recap what we’re seeing in <a href="#tbl-reg-points" class="quarto-xref">Table&nbsp;<span>5.3</span></a> in terms of the linear regression model (<code>score_model</code>) that we fit to the <code>evals_ch5</code> data:</p>
 <ul>
 <li><p>The <code>ID</code> column represents the row number where this observation appears in the original <code>evals_ch5</code> data</p></li>
 <li><p>The <code>score</code> column represents the observed value of the outcome variable <span class="math inline">\(y\)</span>.</p></li>
@@ -1065,7 +1151,7 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <li><p><code>score_hat</code> = 4.25 = 3.88 + 0.067 * <span class="math inline">\(x\)</span> = 3.88 + 0.067 * 5.50 is the fitted value <span class="math inline">\(\widehat{y}\)</span> for this instructor.</p></li>
 <li><p><code>residual</code> = 0.153 = 4.4 - 4.25 is the value of the residual for this instructor. In other words, the model was off by 0.153 teaching score units for this instructor.</p></li>
 </ul>
-<p>More development of this idea appears in <a href="#sec-leastsquares">Subsection&nbsp;<span>5.3.3</span></a> and we encourage you to read that section after you investigate residuals.</p>
+<p>More development of this idea appears in <a href="#sec-leastsquares" class="quarto-xref">Subsection&nbsp;<span>5.3.3</span></a> and we encourage you to read that section after you investigate residuals.</p>
 </section>
 </section>
 <section id="sec-model2" class="level2" data-number="5.2">
@@ -1075,13 +1161,13 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <li><p>Differences between continents: Are there significant differences in life expectancy, on average, between the five continents of the world: Africa, the Americas, Asia, Europe, and Oceania?</p></li>
 <li><p>Differences within continents: How does life expectancy vary within the world’s five continents? For example, is the spread of life expectancy among the countries of Africa larger than the spread of life expectancy among the countries of Asia?</p></li>
 </ol>
-<p>To answer such questions, we’ll study the <code>gapminder</code> dataset from the <code>gapminder</code> package. Recall we mentioned this dataset in <a href="02-visualization.html#sec-gapminder">Subsection&nbsp;<span>2.1.2</span></a> when we first introduced the “Grammar of Graphics” (<a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>). This dataset has international development statistics such as life expectancy, GDP per capita, and population by country (<span class="math inline">\(n\)</span> = 142) for 5-year intervals between 1952 and 2007.</p>
-<p>We’ll use this data for linear regression again, but note that our explanatory variable <span class="math inline">\(x\)</span> is now categorical, and not numerical like when we covered simple linear regression in <a href="#sec-model1"><span>Section&nbsp;5.1</span></a>. More precisely, we have:</p>
+<p>To answer such questions, we’ll study the <code>gapminder</code> dataset from the <code>gapminder</code> package. Recall we mentioned this dataset in <a href="02-visualization.html#sec-gapminder" class="quarto-xref">Subsection&nbsp;<span>2.1.2</span></a> when we first introduced the “Grammar of Graphics” (<a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a>). This dataset has international development statistics such as life expectancy, GDP per capita, and population by country (<span class="math inline">\(n\)</span> = 142) for 5-year intervals between 1952 and 2007.</p>
+<p>We’ll use this data for linear regression again, but note that our explanatory variable <span class="math inline">\(x\)</span> is now categorical, and not numerical like when we covered simple linear regression in <a href="#sec-model1" class="quarto-xref"><span>Section 5.1</span></a>. More precisely, we have:</p>
 <ol type="1">
 <li><p>A numerical outcome variable <span class="math inline">\(y\)</span>. In this case, life expectancy.</p></li>
 <li><p>A single categorical explanatory variable <span class="math inline">\(x\)</span>. In this case, the continent the country is part of.</p></li>
 </ol>
-<p>When the explanatory variable <span class="math inline">\(x\)</span> is categorical, the concept of a “best-fitting” line is a little different than the one we saw previously in <a href="#sec-model1"><span>Section&nbsp;5.1</span></a> where the explanatory variable <span class="math inline">\(x\)</span> was numerical. We’ll study these differences shortly in [Subsection -<a href="#sec-model2table"><span>Section&nbsp;5.2.2</span></a>, but first we conduct our exploratory data analysis.</p>
+<p>When the explanatory variable <span class="math inline">\(x\)</span> is categorical, the concept of a “best-fitting” line is a little different than the one we saw previously in <a href="#sec-model1" class="quarto-xref"><span>Section 5.1</span></a> where the explanatory variable <span class="math inline">\(x\)</span> was numerical. We’ll study these differences shortly in [Subsection -<a href="#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>, but first we conduct our exploratory data analysis.</p>
 <section id="sec-model2EDA" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-model2EDA"><span class="header-section-number">5.2.1</span> Exploratory data analysis</h3>
 <p>The data on the 142 countries can be found in the <code>gapminder</code> data frame included in the <code>gapminder</code> package. However, to keep things simple, let’s <code>filter()</code> for only those observations/rows corresponding to the year 2007. Additionally, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter. We’ll save this data in a new data frame called <code>gapminder2007</code>:</p>
@@ -1092,13 +1178,13 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, continent, gdpPercap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Recall from <a href="#sec-model1EDA"><span>Section&nbsp;5.1.1</span></a> that there are three common steps in an exploratory data analysis:</p>
+<p>Recall from <a href="#sec-model1EDA" class="quarto-xref"><span>Section 5.1.1</span></a> that there are three common steps in an exploratory data analysis:</p>
 <ol type="1">
 <li><p>Most crucially: Looking at the raw data values.</p></li>
 <li><p>Computing summary statistics, like means, medians, and interquartile ranges.</p></li>
 <li><p>Creating data visualizations.</p></li>
 </ol>
-<p>Let’s perform the first common step in an exploratory data analysis: looking at the raw data values. You can do this by using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> command as introduced in <a href="01-getting-started.html#sec-exploredataframes"><span>Section&nbsp;1.4.3</span></a> on exploring data frames:</p>
+<p>Let’s perform the first common step in an exploratory data analysis: looking at the raw data values. You can do this by using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> command as introduced in <a href="01-getting-started.html#sec-exploredataframes" class="quarto-xref"><span>Section 1.4.3</span></a> on exploring data frames:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gapminder2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1118,16 +1204,21 @@ $ gdpPercap &lt;dbl&gt; 975, 5937, 6223, 4797, 12779, 34435, 36126, 29796, 1391,
 <li><p><code>continent</code>: A categorical variable with five levels. Here “levels” corresponds to the possible categories: Africa, Asia, Americas, Europe, and Oceania. This is the explanatory variable <span class="math inline">\(x\)</span> of interest.</p></li>
 <li><p><code>gdpPercap</code>: A numerical variable of that country’s GDP per capita in US inflation-adjusted dollars that we’ll use as another outcome variable <span class="math inline">\(y\)</span> in the Learning Check at the end of this subsection.</p></li>
 </ol>
-<p>Furthermore, let’s look at a random sample of five out of the 142 countries in <a href="#tbl-model2-data-preview">Table&nbsp;<span>5.4</span></a>. Again, note due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
+<p>Furthermore, let’s look at a random sample of five out of the 142 countries in <a href="#tbl-model2-data-preview" class="quarto-xref">Table&nbsp;<span>5.4</span></a>. Again, note due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gapminder2007 <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-model2-data-preview" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model2-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.4: Random sample of 5 out of 142 countries
+</figcaption>
+<div aria-describedby="tbl-model2-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-model2-data-preview" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.4: Random sample of 5 out of 142 countries</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Random sample of 5 out of 142 countries</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">country</th>
@@ -1171,6 +1262,8 @@ $ gdpPercap &lt;dbl&gt; 975, 5937, 6223, 4797, 12779, 34435, 36126, 29796, 1391,
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Now that we’ve looked at the raw values in our <code>gapminder2007</code> data frame and got a sense of the data, let’s move on to computing summary statistics. Let’s once again apply the <code>skim()</code> function from the <code>skimr</code> package. Recall from our previous EDA that this function takes in a data frame, “skims” it, and returns commonly used summary statistics. Let’s take our <code>gapminder2007</code> data frame, <code>select()</code> only the outcome and explanatory variables <code>lifeExp</code> and <code>continent</code>, and pipe them into the <code>skim()</code> function:</p>
 <div class="cell" data-layout-align="center">
@@ -1204,7 +1297,7 @@ Group variables            None
 <li><p><code>top_counts</code>: In this case the top four counts: <code>Africa</code> has 52 countries, <code>Asia</code> has 33, <code>Europe</code> has 30, and <code>Americas</code> has 25. Not displayed is <code>Oceania</code> with 2 countries.</p></li>
 </ul>
 <p>Turning our attention to the summary statistics of the numerical variable <code>lifeExp</code>, we observe that the global median life expectancy in 2007 was 71.94. Thus, half of the world’s countries (71 countries) had a life expectancy less than 71.94. The mean life expectancy of 67.01 is lower however. Why is the mean life expectancy lower than the median?</p>
-<p>We can answer this question by performing the last of the three common steps in an exploratory data analysis: creating data visualizations. Let’s visualize the distribution of our outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> in <a href="#fig-lifeExp2007hist">Figure&nbsp;<span>5.8</span></a>.</p>
+<p>We can answer this question by performing the last of the three common steps in an exploratory data analysis: creating data visualizations. Let’s visualize the distribution of our outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> in <a href="#fig-lifeExp2007hist" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2007, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
@@ -1214,16 +1307,20 @@ Group variables            None
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogram of distribution of worldwide life expectancies"</span></span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-lifeExp2007hist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-lifeExp2007hist-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.8: Histogram of Life Expectancy in 2007</figcaption>
+<div id="fig-lifeExp2007hist" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lifeExp2007hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-lifeExp2007hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lifeExp2007hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.8: Histogram of Life Expectancy in 2007
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>We see that this data is <em>left-skewed</em>, also known as <em>negatively</em> skewed: there are a few countries with low life expectancy that are bringing down the mean life expectancy. However, the median is less sensitive to the effects of such outliers; hence, the median is greater than the mean in this case.</p>
-<p>Remember, however, that we want to compare life expectancies both between continents and within continents. In other words, our visualizations need to incorporate some notion of the variable <code>continent</code>. We can do this easily with a faceted histogram. Recall from <a href="02-visualization.html#sec-facets"><span>Section&nbsp;2.6</span></a> that facets allow us to split a visualization by the different values of another variable. We display the resulting visualization in <a href="#fig-catxplot0b">Figure&nbsp;<span>5.9</span></a> by adding a <code>facet_wrap(~ continent, nrow = 2)</code> layer.</p>
+<p>Remember, however, that we want to compare life expectancies both between continents and within continents. In other words, our visualizations need to incorporate some notion of the variable <code>continent</code>. We can do this easily with a faceted histogram. Recall from <a href="02-visualization.html#sec-facets" class="quarto-xref"><span>Section 2.6</span></a> that facets allow us to split a visualization by the different values of another variable. We display the resulting visualization in <a href="#fig-catxplot0b" class="quarto-xref">Figure&nbsp;<span>5.9</span></a> by adding a <code>facet_wrap(~ continent, nrow = 2)</code> layer.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2007, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
@@ -1235,16 +1332,20 @@ Group variables            None
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-catxplot0b" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-catxplot0b-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.9: Life expectancy in 2007</figcaption>
+<div id="fig-catxplot0b" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-catxplot0b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-catxplot0b-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catxplot0b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.9: Life expectancy in 2007
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Observe that unfortunately the distribution of African life expectancies is much lower than the other continents, while in Europe life expectancies tend to be higher and furthermore do not vary as much. On the other hand, both Asia and Africa have the most variation in life expectancies. There is the least variation in Oceania, but keep in mind that there are only two countries in Oceania: Australia and New Zealand.</p>
-<p>Recall that an alternative method to visualize the distribution of a numerical variable split by a categorical variable is by using a side-by-side boxplot. We map the categorical variable <code>continent</code> to the <span class="math inline">\(x\)</span>-axis and the different life expectancies within each continent on the <span class="math inline">\(y\)</span>-axis in <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a>.</p>
+<p>Recall that an alternative method to visualize the distribution of a numerical variable split by a categorical variable is by using a side-by-side boxplot. We map the categorical variable <code>continent</code> to the <span class="math inline">\(x\)</span>-axis and the different life expectancies within each continent on the <span class="math inline">\(y\)</span>-axis in <a href="#fig-catxplot1" class="quarto-xref">Figure&nbsp;<span>5.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder2007, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
@@ -1254,30 +1355,35 @@ Group variables            None
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Life expectancy by continent"</span></span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-catxplot1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-catxplot1-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.10: Life expectancy in 2007</figcaption>
+<div id="fig-catxplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-catxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-catxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.10: Life expectancy in 2007
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Some people prefer comparing the distributions of a numerical variable between different levels of a categorical variable using a boxplot instead of a faceted histogram. This is because we can make quick comparisons between the categorical variable’s levels with imaginary horizontal lines. For example, observe in <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a> that we can quickly convince ourselves that Oceania has the highest median life expectancies by drawing an imaginary horizontal line at <span class="math inline">\(y\)</span> = 80. Furthermore, as we observed in the faceted histogram in <a href="#fig-catxplot0b">Figure&nbsp;<span>5.9</span></a>, Africa and Asia have the largest variation in life expectancy as evidenced by their large interquartile ranges (the heights of the boxes).</p>
+<p>Some people prefer comparing the distributions of a numerical variable between different levels of a categorical variable using a boxplot instead of a faceted histogram. This is because we can make quick comparisons between the categorical variable’s levels with imaginary horizontal lines. For example, observe in <a href="#fig-catxplot1" class="quarto-xref">Figure&nbsp;<span>5.10</span></a> that we can quickly convince ourselves that Oceania has the highest median life expectancies by drawing an imaginary horizontal line at <span class="math inline">\(y\)</span> = 80. Furthermore, as we observed in the faceted histogram in <a href="#fig-catxplot0b" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>, Africa and Asia have the largest variation in life expectancy as evidenced by their large interquartile ranges (the heights of the boxes).</p>
 <p>It’s important to remember however that the solid lines in the middle of the boxes correspond to the medians (the middle value) rather than the mean (the average). So for example, if you look at Asia, the solid line denotes the median life expectancy of around 72 years. This tells us that half of all countries in Asia have a life expectancy below 72 years whereas half have a life expectancy above 72 years.</p>
-<p>Let’s compute the median and mean life expectancy for each continent with a little more data wrangling and display the results in <a href="#tbl-catxplot0">Table&nbsp;<span>5.5</span></a>.</p>
+<p>Let’s compute the median and mean life expectancy for each continent with a little more data wrangling and display the results in <a href="#tbl-catxplot0" class="quarto-xref">Table&nbsp;<span>5.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lifeExp_by_continent <span class="ot">&lt;-</span> gapminder2007 <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(lifeExp), <span class="at">mean =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tbl-catxplot0" class="cell tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p>Table&nbsp;5.5: <strong>?(caption)</strong></p>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-catxplot0-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-catxplot0" style="flex-basis: 100.0%;justify-content: center;">
-<table class="table table-sm table-striped small">
-<caption>(a) Life expectancy by continent</caption>
+<div class="cell" data-layout-align="center">
+<div id="tbl-catxplot0" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-catxplot0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.5: Life expectancy by continent
+</figcaption>
+<div aria-describedby="tbl-catxplot0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">continent</th>
@@ -1315,8 +1421,10 @@ Group variables            None
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Observe the order of the second column <code>median</code> life expectancy: Africa is lowest, the Americas and Asia are next with similar medians, then Europe, then Oceania. This ordering corresponds to the ordering of the solid black lines inside the boxes in our side-by-side boxplot in <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a>.</p>
+</div>
+<p>Observe the order of the second column <code>median</code> life expectancy: Africa is lowest, the Americas and Asia are next with similar medians, then Europe, then Oceania. This ordering corresponds to the ordering of the solid black lines inside the boxes in our side-by-side boxplot in <a href="#fig-catxplot1" class="quarto-xref">Figure&nbsp;<span>5.10</span></a>.</p>
 <p>Let’s now turn our attention to the values in the third column <code>mean</code>. Using Africa’s mean life expectancy of 54.8 as a <em>baseline for comparison</em>, let’s start making relative comparisons to the life expectancies of the other four continents:</p>
 <ol type="1">
 <li><p>The mean life expectancy of the Americas is 73.6 - 54.8 = 18.8 years higher.</p></li>
@@ -1324,12 +1432,17 @@ Group variables            None
 <li><p>The mean life expectancy of Europe is 77.6 - 54.8 = 22.8 years higher.</p></li>
 <li><p>The mean life expectancy of Oceania is 80.7 - 54.8 = 25.9 years higher.</p></li>
 </ol>
-<p>Let’s put these values in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>, which we’ll revisit later on in this section.</p>
+<p>Let’s put these values in <a href="#tbl-continent-mean-life-expectancies" class="quarto-xref">Table&nbsp;<span>5.6</span></a>, which we’ll revisit later on in this section.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-continent-mean-life-expectancies" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-continent-mean-life-expectancies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.6: Mean life expectancy by continent and relative differences from mean for Africa
+</figcaption>
+<div aria-describedby="tbl-continent-mean-life-expectancies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-continent-mean-life-expectancies" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.6: Mean life expectancy by continent and relative differences from mean for Africa</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Mean life expectancy by continent and relative differences from mean for Africa</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">continent</th>
@@ -1367,6 +1480,8 @@ Group variables            None
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1393,18 +1508,23 @@ Group variables            None
 </section>
 <section id="sec-model2table" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-model2table"><span class="header-section-number">5.2.2</span> Linear regression</h3>
-<p>In <a href="#sec-model1table">Subsection&nbsp;<span>5.1.2</span></a> we introduced <em>simple</em> linear regression, which involves modeling the relationship between a numerical outcome variable <span class="math inline">\(y\)</span> as a function of a numerical explanatory variable <span class="math inline">\(x\)</span>, in our life expectancy example, we now have a categorical explanatory variable <span class="math inline">\(x\)</span> <code>continent</code>. While we still can fit a regression model, given our categorical explanatory variable we no longer have a concept of a “best-fitting” line, but rather “differences relative to a baseline for comparison.”</p>
-<p>Before we fit our regression model, let’s create a table similar to <a href="#tbl-catxplot0">Table&nbsp;<span>5.5</span></a>, but</p>
+<p>In <a href="#sec-model1table" class="quarto-xref">Subsection&nbsp;<span>5.1.2</span></a> we introduced <em>simple</em> linear regression, which involves modeling the relationship between a numerical outcome variable <span class="math inline">\(y\)</span> as a function of a numerical explanatory variable <span class="math inline">\(x\)</span>, in our life expectancy example, we now have a categorical explanatory variable <span class="math inline">\(x\)</span> <code>continent</code>. While we still can fit a regression model, given our categorical explanatory variable we no longer have a concept of a “best-fitting” line, but rather “differences relative to a baseline for comparison.”</p>
+<p>Before we fit our regression model, let’s create a table similar to <a href="#tbl-catxplot0" class="quarto-xref">Table&nbsp;<span>5.5</span></a>, but</p>
 <ol type="1">
 <li><p>Report the mean life expectancy for each continent.</p></li>
 <li><p>Report the difference in mean life expectancy <em>relative</em> to Africa’s mean life expectancy of 54.806 in the column “mean vs Africa”; this column is simply the “mean” column minus 54.806.</p></li>
 </ol>
-<p>Think back to your observations from the eyeball test of <a href="#fig-catxplot1">Figure&nbsp;<span>5.10</span></a> at the end of the last subsection. The column “mean vs Africa” is the same idea of comparing a summary statistic to a baseline for comparison, in this case the countries of Africa, but using means instead of medians.</p>
+<p>Think back to your observations from the eyeball test of <a href="#fig-catxplot1" class="quarto-xref">Figure&nbsp;<span>5.10</span></a> at the end of the last subsection. The column “mean vs Africa” is the same idea of comparing a summary statistic to a baseline for comparison, in this case the countries of Africa, but using means instead of medians.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-continent-mean-life-expectancies-" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-continent-mean-life-expectancies--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.7: Mean life expectancy by continent
+</figcaption>
+<div aria-describedby="tbl-continent-mean-life-expectancies--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-continent-mean-life-expectancies-" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.7: Mean life expectancy by continent</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Mean life expectancy by continent</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">continent</th>
@@ -1442,6 +1562,8 @@ Group variables            None
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Now, let’s use the <code>summary()</code> function again to get the <em>regression table</em> for the <code>gapminder2007</code> analysis:</p>
 <div class="cell" data-layout-align="center">
@@ -1450,10 +1572,15 @@ Group variables            None
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lifeExp_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-catxplot4b" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-catxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.8: Linear regression table
+</figcaption>
+<div aria-describedby="tbl-catxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-catxplot4b" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.8: Linear regression table</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Linear regression table</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1503,6 +1630,8 @@ Group variables            None
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Just as before, we’re only interested in the “Estimate” column, but unlike before, we now have 5 rows corresponding to 5 outputs in our table: an intercept like before, but also <code>continentAmericas</code>, <code>continentAsia</code>, <code>continentEurope</code>, and <code>continentOceania</code>. What are these values? First, we must describe the equation for fitted value <span class="math inline">\(\widehat{y}\)</span>, which is a little more complicated when the <span class="math inline">\(x\)</span> explanatory variable is categorical:</p>
 <p><span class="math display">\[
@@ -1540,7 +1669,7 @@ Group variables            None
 &amp;= 54.8
 \end{aligned}
 \]</span></p>
-<p>Meaning, all four of the indicator variables are equal to 0. Recall we stated earlier that we would treat Africa as the baseline for comparison group. Furthermore, this value corresponds to the group mean life expectancy for all African countries in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>.</p>
+<p>Meaning, all four of the indicator variables are equal to 0. Recall we stated earlier that we would treat Africa as the baseline for comparison group. Furthermore, this value corresponds to the group mean life expectancy for all African countries in <a href="#tbl-continent-mean-life-expectancies" class="quarto-xref">Table&nbsp;<span>5.6</span></a>.</p>
 <p>Next, <span class="math inline">\(b_{\text{Amer}}\)</span> = <code>continentAmericas = 18.8</code> is the difference in mean life expectancy of countries in the Americas relative to Africa, or in other words, on average countries in the Americas had life expectancy 18.8 years greater. The fitted value yielded by this equation is:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -1553,7 +1682,7 @@ Group variables            None
 &amp;= 73.6
 \end{aligned}
 \]</span></p>
-<p>i.e.&nbsp;in this case, only the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{Amer}}(x)\)</span> is equal to 1, but all others are 0. Recall that 73.6 corresponds to the group mean life expectancy for all countries in the Americas in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>.</p>
+<p>i.e.&nbsp;in this case, only the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{Amer}}(x)\)</span> is equal to 1, but all others are 0. Recall that 73.6 corresponds to the group mean life expectancy for all countries in the Americas in <a href="#tbl-continent-mean-life-expectancies" class="quarto-xref">Table&nbsp;<span>5.6</span></a>.</p>
 <p>Similarly, <span class="math inline">\(b_{\text{Asia}}\)</span> = <code>continentAsia = 15.9</code> is the difference in mean life expectancy of Asian countries relative to Africa countries, or in other words, on average countries in the Asia had life expectancy 15.9 years greater than Africa. The fitted value yielded by this equation is:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -1566,7 +1695,7 @@ Group variables            None
 &amp;= 70.7
 \end{aligned}
 \]</span></p>
-<p>Meaning, in this case, only the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{Asia}}(x)\)</span> is equal to 1, but all others are 0. Recall that 70.7 corresponds to the group mean life expectancy for all countries in Asia in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a>. The same logic applies to <span class="math inline">\(b_{\text{Euro}} = 22.8\)</span> and <span class="math inline">\(b_{\text{Ocean}} = 25.9\)</span>; they correspond to the “offset” in mean life expectancy for countries in Europe and Oceania, relative to the mean life expectancy of the baseline group for comparison of African countries.</p>
+<p>Meaning, in this case, only the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{Asia}}(x)\)</span> is equal to 1, but all others are 0. Recall that 70.7 corresponds to the group mean life expectancy for all countries in Asia in <a href="#tbl-continent-mean-life-expectancies" class="quarto-xref">Table&nbsp;<span>5.6</span></a>. The same logic applies to <span class="math inline">\(b_{\text{Euro}} = 22.8\)</span> and <span class="math inline">\(b_{\text{Ocean}} = 25.9\)</span>; they correspond to the “offset” in mean life expectancy for countries in Europe and Oceania, relative to the mean life expectancy of the baseline group for comparison of African countries.</p>
 <p>Let’s generalize this idea a bit. If we fit a linear regression model using a categorical explanatory variable <span class="math inline">\(x\)</span> that has <span class="math inline">\(k\)</span> levels, a regression model will return an intercept and <span class="math inline">\(k - 1\)</span> “slope” coefficients. When <span class="math inline">\(x\)</span> is a numerical explanatory variable the interpretation is of a “slope” coefficient, but when <span class="math inline">\(x\)</span> is categorical the meaning is a little trickier. They are <em>offsets</em> relative to the baseline.</p>
 <p>In our case, since there are <span class="math inline">\(k = 5\)</span> continents, the regression model returns an intercept corresponding to the baseline for comparison Africa and <span class="math inline">\(k - 1 = 4\)</span> slope coefficients corresponding to the Americas, Asia, Europe, and Oceania. Africa was chosen as the baseline by R for no other reason than it is first alphabetically of the 5 continents. You can manually specify which continent to use as baseline instead of the default choice of whichever comes first alphabetically, but we leave that to a more advanced course. (The <code>forcats</code> package is particularly nice for doing this and we encourage you to explore using it.)</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -1588,13 +1717,13 @@ Group variables            None
 </section>
 <section id="sec-model2points" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-model2points"><span class="header-section-number">5.2.3</span> Observed/fitted values and residuals</h3>
-<p>Recall in <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a> we defined the following three concepts:</p>
+<p>Recall in <a href="#sec-model1points" class="quarto-xref">Subsection&nbsp;<span>5.1.3</span></a> we defined the following three concepts:</p>
 <ol type="1">
 <li><p>Observed values <span class="math inline">\(y\)</span>, or the observed value of the outcome variable</p></li>
 <li><p>Fitted values <span class="math inline">\(\widehat{y}\)</span>, or the value on the regression line for a given <span class="math inline">\(x\)</span> value</p></li>
 <li><p>Residuals <span class="math inline">\(y - \widehat{y}\)</span>, or the error between the observed value and the fitted value</p></li>
 </ol>
-<p>Let’s use similar code (from <a href="#sec-model1points">Subsection&nbsp;<span>5.1.3</span></a>) to obtain these values for the <code>lifeExp_model</code> fit to the <code>gapminder2007</code> dataset:</p>
+<p>Let’s use similar code (from <a href="#sec-model1points" class="quarto-xref">Subsection&nbsp;<span>5.1.3</span></a>) to obtain these values for the <code>lifeExp_model</code> fit to the <code>gapminder2007</code> dataset:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lifeExp_model_data <span class="ot">&lt;-</span> gapminder2007 <span class="sc">%&gt;%</span> </span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, continent) <span class="sc">%&gt;%</span> </span>
@@ -1604,10 +1733,15 @@ Group variables            None
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-lifeExp-reg-points" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lifeExp-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.9: Regression points (First 10 out of 142 countries)
+</figcaption>
+<div aria-describedby="tbl-lifeExp-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-lifeExp-reg-points" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;5.9: Regression points (First 10 out of 142 countries)</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Regression points (First 10 out of 142 countries)</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">country</th>
@@ -1692,8 +1826,10 @@ Group variables            None
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Observe in <a href="#tbl-lifeExp-reg-points">Table&nbsp;<span>5.9</span></a> that <code>lifeExp_hat</code> contains the fitted values <span class="math inline">\(\hat{y} = \widehat{lifeExp}\)</span>. If you look closely, there are only 5 possible values for <code>lifeExp_hat</code>. These correspond to the five mean life expectancies for the 5 continents that we displayed in <a href="#tbl-continent-mean-life-expectancies">Table&nbsp;<span>5.6</span></a> and computed using the “Estimate” column of the regression results in @tbl-catxplot4b.</p>
+</div>
+<p>Observe in <a href="#tbl-lifeExp-reg-points" class="quarto-xref">Table&nbsp;<span>5.9</span></a> that <code>lifeExp_hat</code> contains the fitted values <span class="math inline">\(\hat{y} = \widehat{lifeExp}\)</span>. If you look closely, there are only 5 possible values for <code>lifeExp_hat</code>. These correspond to the five mean life expectancies for the 5 continents that we displayed in <a href="#tbl-continent-mean-life-expectancies" class="quarto-xref">Table&nbsp;<span>5.6</span></a> and computed using the “Estimate” column of the regression results in @tbl-catxplot4b.</p>
 <p>The <code>residual</code> column is simply <span class="math inline">\(y - \widehat{y}\)</span> = <code>lifeexp - lifeexp_hat</code>. These values can be interpreted as that particular country’s deviation from the mean life expectancy of the respective continent’s mean. For example, the first row of Table @ref(tab:lifeExp-reg-points) corresponds to Afghanistan, and the residual of <span class="math inline">\(y - \widehat{y} = 43.8 - 70.7 = -26.9\)</span> is telling us that Afghanistan’s life expectancy is a whopping 26.9 years lower than the mean life expectancy of all Asian countries. This can in part be explained by the many years of war that country has suffered.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -1707,7 +1843,7 @@ Group variables            None
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Using either the sorting functionality of RStudio’s spreadsheet viewer or using the data wrangling tools you learned in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>, identify the five countries with the five smallest (most negative) residuals? What do these negative residuals say about their life expectancy relative to their continents?</p>
+<p>Using either the sorting functionality of RStudio’s spreadsheet viewer or using the data wrangling tools you learned in <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a>, identify the five countries with the five smallest (most negative) residuals? What do these negative residuals say about their life expectancy relative to their continents?</p>
 </div>
 </div>
 </div>
@@ -1733,43 +1869,55 @@ Group variables            None
 <h2 data-number="5.3" class="anchored" data-anchor-id="related-topics"><span class="header-section-number">5.3</span> Related topics</h2>
 <section id="sec-correlationcoefficient" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-correlationcoefficient"><span class="header-section-number">5.3.1</span> Correlation coefficient</h3>
-<p>Let’s re-plot <a href="#fig-correlation1">Figure&nbsp;<span>5.1</span></a>, but now consider a broader range of correlation coefficient values in <a href="#fig-correlation2">Figure&nbsp;<span>5.11</span></a>.</p>
+<p>Let’s re-plot <a href="#fig-correlation1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, but now consider a broader range of correlation coefficient values in <a href="#fig-correlation2" class="quarto-xref">Figure&nbsp;<span>5.11</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-correlation2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-correlation2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.11: Different Correlation Coefficients</figcaption>
+<div id="fig-correlation2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-correlation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-correlation2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.11: Different Correlation Coefficients
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>As we suggested in <a href="#sec-model1EDA">Subsection&nbsp;<span>5.1.1</span></a>, interpreting coefficients that are not close to the extreme values of -1 and 1 can be subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80’s-style video game called “Guess the correlation” at <a href="http://guessthecorrelation.com/" class="uri">http://guessthecorrelation.com/</a>.</p>
+<p>As we suggested in <a href="#sec-model1EDA" class="quarto-xref">Subsection&nbsp;<span>5.1.1</span></a>, interpreting coefficients that are not close to the extreme values of -1 and 1 can be subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80’s-style video game called “Guess the correlation” at <a href="http://guessthecorrelation.com/" class="uri">http://guessthecorrelation.com/</a>.</p>
 </section>
 <section id="sec-correlation-is-not-causation" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-correlation-is-not-causation"><span class="header-section-number">5.3.2</span> Correlation is not necessarily causation</h3>
-<p>You’ll note throughout this chapter we’ve been very cautious in making statements of the “associated effect” of explanatory variables on the outcome variables, for example our statement from <a href="#sec-model1table">Subsection&nbsp;<span>5.1.2</span></a> that “for every increase of 1 unit in <code>bty_avg</code>, there is an <em>associated</em> increase of, <em>on average</em>, 18.802 units of <code>score</code>.” We stay this because we are careful not to make <em>causal</em> statements. So while beauty score <code>bty_avg</code> is positively correlated with teaching <code>score</code>, does it directly cause effects on teaching score.</p>
+<p>You’ll note throughout this chapter we’ve been very cautious in making statements of the “associated effect” of explanatory variables on the outcome variables, for example our statement from <a href="#sec-model1table" class="quarto-xref">Subsection&nbsp;<span>5.1.2</span></a> that “for every increase of 1 unit in <code>bty_avg</code>, there is an <em>associated</em> increase of, <em>on average</em>, 18.802 units of <code>score</code>.” We stay this because we are careful not to make <em>causal</em> statements. So while beauty score <code>bty_avg</code> is positively correlated with teaching <code>score</code>, does it directly cause effects on teaching score.</p>
 <p>For example, let’s say an instructor has their <code>bty_avg</code> reevaluated, but only after taking steps to try to boost their beauty score. Does this mean that they will suddenly be a better instructor? Or will they suddenly get higher teaching scores? Maybe?</p>
 <p>Here is another example, a not-so-great medical doctor goes through their medical records and finds that patients who slept with their shoes on tended to wake up more with headaches. So this doctor declares “Sleeping with shoes on cause headaches!”</p>
-<div id="fig-sleep-shoes-on" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/flowcharts/flowchart.010-cropped.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.12: Does sleeping with shoes on cause headaches?</figcaption>
+<div id="fig-sleep-shoes-on" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sleep-shoes-on-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/flowcharts/flowchart.010-cropped.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sleep-shoes-on-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.12: Does sleeping with shoes on cause headaches?
+</figcaption>
 </figure>
 </div>
 <p>However as some of you might have guessed, if someone is sleeping with their shoes on it’s probably because they are intoxicated. Furthermore, drinking more tends to cause more hangovers, and hence more headaches.</p>
-<p>In this instance, alcohol is what’s known as a <em>confounding/lurking</em> variable. It “lurks” behind the scenes, confounding or making less apparent, the causal effect (if any) of “sleeping with shoes on” with waking up with a headache. We can summarize this notion in <a href="#fig-moderndive-figure-causal-graph">Figure&nbsp;<span>5.13</span></a> with a <em>causal graph</em> where:</p>
+<p>In this instance, alcohol is what’s known as a <em>confounding/lurking</em> variable. It “lurks” behind the scenes, confounding or making less apparent, the causal effect (if any) of “sleeping with shoes on” with waking up with a headache. We can summarize this notion in <a href="#fig-moderndive-figure-causal-graph" class="quarto-xref">Figure&nbsp;<span>5.13</span></a> with a <em>causal graph</em> where:</p>
 <ul>
 <li>Y: Is an <em>outcome</em> variable, here “waking up with a headache.”</li>
 <li>X: Is a <em>treatment</em> variable whose causal effect we are interested in, here “sleeping with shoes on.”</li>
 </ul>
-<div id="fig-moderndive-figure-causal-graph" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/flowcharts/flowchart.009-cropped.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.13: Causal graph</figcaption>
+<div id="fig-moderndive-figure-causal-graph" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-moderndive-figure-causal-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/flowcharts/flowchart.009-cropped.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-moderndive-figure-causal-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.13: Causal graph
+</figcaption>
 </figure>
 </div>
-<p>So for example, many such studies use regression modeling where the outcome variable is set to Y and the explanatory/predictor variable is X, much as you’ve started learning how to do in this chapter. However, <a href="#fig-moderndive-figure-causal-graph">Figure&nbsp;<span>5.13</span></a> also includes a third variable with arrows pointing at both X and Y.</p>
+<p>So for example, many such studies use regression modeling where the outcome variable is set to Y and the explanatory/predictor variable is X, much as you’ve started learning how to do in this chapter. However, <a href="#fig-moderndive-figure-causal-graph" class="quarto-xref">Figure&nbsp;<span>5.13</span></a> also includes a third variable with arrows pointing at both X and Y.</p>
 <ul>
 <li>Z: Is a <em>confounding</em> variable that affects both X &amp; Y, thus “confounding” their relationship.</li>
 </ul>
@@ -1778,8 +1926,8 @@ Group variables            None
 </section>
 <section id="sec-leastsquares" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-leastsquares"><span class="header-section-number">5.3.3</span> Best-fitting line</h3>
-<p>Regression lines are also known as “best-fitting” lines. But what do we mean by “best”? Let’s unpack the criteria that is used in regression to determine “best.” Recall <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a>, where for an instructor with a beauty score of <span class="math inline">\(x = 7.333\)</span> we mark the <em>observed value</em> <span class="math inline">\(y\)</span> with a circle, the <em>fitted value</em> <span class="math inline">\(\widehat{y}\)</span> with a square, and the <em>residual</em> <span class="math inline">\(y - \widehat{y}\)</span> with an arrow.</p>
-<p>We re-display <a href="#fig-numxplot4">Figure&nbsp;<span>5.6</span></a> in the top-left plot of <a href="#fig-best-fitting-line">Figure&nbsp;<span>5.14</span></a>. Furthermore, let’s repeat this for three more arbitrarily chosen course’s instructors:</p>
+<p>Regression lines are also known as “best-fitting” lines. But what do we mean by “best”? Let’s unpack the criteria that is used in regression to determine “best.” Recall <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>, where for an instructor with a beauty score of <span class="math inline">\(x = 7.333\)</span> we mark the <em>observed value</em> <span class="math inline">\(y\)</span> with a circle, the <em>fitted value</em> <span class="math inline">\(\widehat{y}\)</span> with a square, and the <em>residual</em> <span class="math inline">\(y - \widehat{y}\)</span> with an arrow.</p>
+<p>We re-display <a href="#fig-numxplot4" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> in the top-left plot of <a href="#fig-best-fitting-line" class="quarto-xref">Figure&nbsp;<span>5.14</span></a>. Furthermore, let’s repeat this for three more arbitrarily chosen course’s instructors:</p>
 <ol type="1">
 <li><p>A course whose instructor had a “beauty” score <span class="math inline">\(x\)</span> = 2.333 and teaching score <span class="math inline">\(y\)</span> = 2.7. The residual in this case is <span class="math inline">\(2.7 - 4.036 = -1.336\)</span>, which we mark with a new blue arrow in the top-right plot.</p></li>
 <li><p>A course whose instructor had a “beauty” score <span class="math inline">\(x = 3.667\)</span> and teaching score <span class="math inline">\(y = 4.4\)</span>. The residual in this case is <span class="math inline">\(4.4 - 4.125 = 0.2753\)</span>, which we mark with a new blue arrow in the bottom-left plot.</p></li>
@@ -1787,10 +1935,14 @@ Group variables            None
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-best-fitting-line" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="05-regression_files/figure-html/fig-best-fitting-line-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.14: Example of observed value, fitted value, and residual</figcaption>
+<div id="fig-best-fitting-line" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-best-fitting-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-regression_files/figure-html/fig-best-fitting-line-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-best-fitting-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.14: Example of observed value, fitted value, and residual
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1801,7 +1953,7 @@ Group variables            None
 <p><span class="math display">\[
 \sum_{i=1}^{n}(y_i - \widehat{y}_i)^2
 \]</span></p>
-<p>Let’s use our data wrangling tools from <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> to compute the sum of squared residuals exactly:</p>
+<p>Let’s use our data wrangling tools from <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a> to compute the sum of squared residuals exactly:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>score_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> bty_avg, <span class="at">data =</span> evals_ch5)</span>
@@ -1857,11 +2009,11 @@ Group variables            None
 <h2 data-number="5.4" class="anchored" data-anchor-id="sec-basic-reg-conclusion"><span class="header-section-number">5.4</span> Conclusion</h2>
 <section id="sec-additional-resources-basic-regression" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="sec-additional-resources-basic-regression"><span class="header-section-number">5.4.1</span> Additional resources</h3>
-<p>As we suggested in <a href="#sec-model1EDA">Subsection&nbsp;<span>5.1.1</span></a>, interpreting coefficients that are not close to the extreme values of -1, 0, and 1 can be somewhat subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80’s-style video game called “Guess the correlation” at <a href="http://guessthecorrelation.com/" class="uri">http://guessthecorrelation.com/</a>.</p>
+<p>As we suggested in <a href="#sec-model1EDA" class="quarto-xref">Subsection&nbsp;<span>5.1.1</span></a>, interpreting coefficients that are not close to the extreme values of -1, 0, and 1 can be somewhat subjective. To help develop your sense of correlation coefficients, we suggest you play the following 80’s-style video game called “Guess the correlation” at <a href="http://guessthecorrelation.com/" class="uri">http://guessthecorrelation.com/</a>.</p>
 </section>
 <section id="whats-to-come" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">5.4.2</span> What’s to come?</h3>
-<p>In this chapter, you’ve studied the term <em>basic regression</em>, where you fit models that only have one explanatory variable. In <a href="06-multiple-regression.html"><span>Chapter&nbsp;6</span></a>, we’ll study <em>multiple regression</em>, where our regression models can now have more than one explanatory variable! In particular, we’ll consider two scenarios: regression models with one numerical and one categorical explanatory variable and regression models with two numerical explanatory variables. This will allow you to construct more sophisticated and more powerful models, all in the hopes of better explaining your outcome variable <span class="math inline">\(y\)</span>.</p>
+<p>In this chapter, you’ve studied the term <em>basic regression</em>, where you fit models that only have one explanatory variable. In <a href="06-multiple-regression.html" class="quarto-xref"><span>Chapter 6</span></a>, we’ll study <em>multiple regression</em>, where our regression models can now have more than one explanatory variable! In particular, we’ll consider two scenarios: regression models with one numerical and one categorical explanatory variable and regression models with two numerical explanatory variables. This will allow you to construct more sophisticated and more powerful models, all in the hopes of better explaining your outcome variable <span class="math inline">\(y\)</span>.</p>
 </section>
 </section>
 <section id="sec-ex05" class="level2" data-number="5.5">
@@ -1869,7 +2021,7 @@ Group variables            None
 <section id="sec-ex05-conceptual" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="sec-ex05-conceptual"><span class="header-section-number">5.5.1</span> Conceptual</h3>
 <div id="exr-ch05-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.1 </strong></span>Match the following graph with the most appropriate correlation coefficient.</p>
+<p><span class="theorem-title"><strong>Exercise 5.1</strong></span> Match the following graph with the most appropriate correlation coefficient.</p>
 <p><img src="images/cor_-0.7.png" style="height:1.5in"></p>
 <ol type="a">
 <li>-1</li>
@@ -1880,7 +2032,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.2 </strong></span>What is the most appropriate correlation between an hourly employees paycheck and the number of hours worked?</p>
+<p><span class="theorem-title"><strong>Exercise 5.2</strong></span> What is the most appropriate correlation between an hourly employees paycheck and the number of hours worked?</p>
 <ol type="a">
 <li>Exactly -1</li>
 <li>Between -1 and 0</li>
@@ -1890,7 +2042,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.3 </strong></span>What is the most appropriate correlation between the distance up a mountain and temperature?</p>
+<p><span class="theorem-title"><strong>Exercise 5.3</strong></span> What is the most appropriate correlation between the distance up a mountain and temperature?</p>
 <ol type="a">
 <li>Exactly -1</li>
 <li>Between -1 and 0</li>
@@ -1900,7 +2052,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.4 </strong></span>Select all that apply to complete the following statement: The variable x is also called the ____</p>
+<p><span class="theorem-title"><strong>Exercise 5.4</strong></span> Select all that apply to complete the following statement: The variable x is also called the ____</p>
 <ol type="a">
 <li>explanatory variable</li>
 <li>predictor variable</li>
@@ -1911,7 +2063,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.5 </strong></span>Select all that apply to complete the following statement: The variable y is also called the ____</p>
+<p><span class="theorem-title"><strong>Exercise 5.5</strong></span> Select all that apply to complete the following statement: The variable y is also called the ____</p>
 <ol type="a">
 <li>explanatory variable</li>
 <li>predictor variable</li>
@@ -1922,7 +2074,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.6 </strong></span>Consider the regression line <span class="math inline">\(\hat{y}=5.25+3.86x\)</span>. Which of the following does <span class="math inline">\(5.25\)</span> refer to? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 5.6</strong></span> Consider the regression line <span class="math inline">\(\hat{y}=5.25+3.86x\)</span>. Which of the following does <span class="math inline">\(5.25\)</span> refer to? Select all that apply.</p>
 <ol type="a">
 <li>slope coefficient</li>
 <li>the increase in <span class="math inline">\(\hat{y}\)</span> for every increase of 1 in <span class="math inline">\(x\)</span></li>
@@ -1933,7 +2085,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.7 </strong></span>Consider the regression line <span class="math inline">\(\hat{y}=5.25+3.86x\)</span>. Which of the following is the correct interpretation of 3.86?</p>
+<p><span class="theorem-title"><strong>Exercise 5.7</strong></span> Consider the regression line <span class="math inline">\(\hat{y}=5.25+3.86x\)</span>. Which of the following is the correct interpretation of 3.86?</p>
 <ol type="a">
 <li>For every increase of 1 unit in y, there is an associated increase of 3.86 units of x.</li>
 <li>For every increase of 1 unit in x, there is an associated increase of 3.86 units of y.</li>
@@ -1944,28 +2096,28 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.8 </strong></span>The residual is the difference between the observed value and the predicted value. This can be thought of as the error in prediction from the regression line.</p>
+<p><span class="theorem-title"><strong>Exercise 5.8</strong></span> The residual is the difference between the observed value and the predicted value. This can be thought of as the error in prediction from the regression line.</p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch05-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.9 </strong></span>If a linear regression model <span class="math inline">\(y ~ x\)</span> is fitted where <span class="math inline">\(x\)</span> is a categorical variable, then <span class="math inline">\(b_1\)</span> is the mean of the baseline.</p>
+<p><span class="theorem-title"><strong>Exercise 5.9</strong></span> If a linear regression model <span class="math inline">\(y ~ x\)</span> is fitted where <span class="math inline">\(x\)</span> is a categorical variable, then <span class="math inline">\(b_1\)</span> is the mean of the baseline.</p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch05-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.10 </strong></span>The regression line minimizes the following equation <span class="math inline">\(\sum_{i=0}^{n}(y_i-\hat{y}_i)\)</span></p>
+<p><span class="theorem-title"><strong>Exercise 5.10</strong></span> The regression line minimizes the following equation <span class="math inline">\(\sum_{i=0}^{n}(y_i-\hat{y}_i)\)</span></p>
 <ol type="a">
 <li>TRUE</li>
 <li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch05-c11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.11 </strong></span>An ice cream company employee explores a data set with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?</p>
+<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> An ice cream company employee explores a data set with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?</p>
 <ol type="a">
 <li>Yes, the positive correlation shows that an increase in shark attacks causes ice cream sales to improve.</li>
 <li>Yes, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.</li>
@@ -1978,7 +2130,7 @@ Group variables            None
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="sec-ex05-application"><span class="header-section-number">5.5.2</span> Application</h3>
 <p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
 <div id="exr-ch05-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.12 </strong></span>Using the <code>covid_states</code> dataset…</p>
+<p><span class="theorem-title"><strong>Exercise 5.12</strong></span> Using the <code>covid_states</code> dataset…</p>
 <ol type="a">
 <li>Conduct an exploratory data analysis. That is, use the <code>skim</code> function to describe the number of variables, observations, any missingness issues, and any potential problematic features.</li>
 <li>Calculate the correlation between <code>new_tested</code> and <code>new_confirmed</code>.</li>
@@ -1989,7 +2141,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.13 </strong></span>Using the <code>nba</code> dataset, fit a simple linear regression model to predict total team points using the total points the player scored.</p>
+<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> Using the <code>nba</code> dataset, fit a simple linear regression model to predict total team points using the total points the player scored.</p>
 <ol type="a">
 <li>What is the correlation between <code>pts_tm</code> and <code>pts</code>.</li>
 <li>Plot the relationship and line of best fit.</li>
@@ -1999,7 +2151,7 @@ Group variables            None
 </ol>
 </div>
 <div id="exr-ch05-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.14 </strong></span>Using the <code>titanic</code> dataset, fit a linear regression model to determine if the port that the passenger embarked on can predict the cost of the passenger’s ticket.</p>
+<p><span class="theorem-title"><strong>Exercise 5.14</strong></span> Using the <code>titanic</code> dataset, fit a linear regression model to determine if the port that the passenger embarked on can predict the cost of the passenger’s ticket.</p>
 <ol type="a">
 <li>What is the model equation?</li>
 <li>Interpret the intercept in the context of the problem.</li>
@@ -2011,9 +2163,9 @@ Group variables            None
 <section id="sec-ex05-advanced" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="sec-ex05-advanced"><span class="header-section-number">5.5.3</span> Advanced</h3>
 <div id="exr-ch05-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.15 </strong></span>The <code>summary</code> function and the <code>lm</code> function contain many values relevant to our analysis, including residuals and fitted values stored in the <code>lm</code> function and residuals, coefficients, R-squared and adjusted R-squared values all stored in the <code>summary</code> function.</p>
-<p>Sometimes, it can be useful to extract these values directly from the result of the functions. These values can be accessed using the $ operator that we learned about in <a href="01-getting-started.html"><span>Chapter&nbsp;1</span></a>.</p>
-<p>Using the model from <a href="#exr-ch05-app2">Exercise&nbsp;<span>5.13</span></a>…</p>
+<p><span class="theorem-title"><strong>Exercise 5.15</strong></span> The <code>summary</code> function and the <code>lm</code> function contain many values relevant to our analysis, including residuals and fitted values stored in the <code>lm</code> function and residuals, coefficients, R-squared and adjusted R-squared values all stored in the <code>summary</code> function.</p>
+<p>Sometimes, it can be useful to extract these values directly from the result of the functions. These values can be accessed using the $ operator that we learned about in <a href="01-getting-started.html" class="quarto-xref"><span>Chapter 1</span></a>.</p>
+<p>Using the model from <a href="#exr-ch05-app2" class="quarto-xref">Exercise&nbsp;<span>5.13</span></a>…</p>
 <ol type="a">
 <li>extract the <code>coefficients</code> directly from the model</li>
 <li>extract the <code>r.squared</code> from the summary. This represents the proportion of variance in the dependent variable that can be explained by the independent variables. You will learn about this in detail in higher level regression courses.</li>
@@ -2021,7 +2173,7 @@ Group variables            None
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-R-skimr" class="csl-entry" role="listitem">
 Waring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, and Shannon Ellis. 2022. <em>Skimr: Compact and Flexible Summaries of Data</em>. <a href="https://CRAN.R-project.org/package=skimr">https://CRAN.R-project.org/package=skimr</a>.
 </div>
@@ -2109,10 +2261,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2122,8 +2273,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2136,6 +2296,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2179,6 +2458,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2204,6 +2484,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2265,12 +2571,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04-tidy.html" class="pagination-link">
+      <a href="./04-tidy.html" class="pagination-link" aria-label="Data Importing &amp; &quot;Tidy Data&quot;">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06-multiple-regression.html" class="pagination-link">
+      <a href="./06-multiple-regression.html" class="pagination-link" aria-label="Multiple Regression">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2279,4 +2585,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/05-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

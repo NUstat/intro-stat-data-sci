@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./09-sampling-distributions.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./09-sampling-distributions.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -399,12 +433,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex09-advanced" id="toc-sec-ex09-advanced" class="nav-link" data-scroll-target="#sec-ex09-advanced"><span class="header-section-number">9.8.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/09-sampling-distributions.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/09-sampling-distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-causality.html">Statistical Theory</a></li><li class="breadcrumb-item"><a href="./09-sampling-distributions.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-sampling" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></h1>
 </div>
@@ -419,12 +453,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>In <a href="08-populations.html"><span>Chapter&nbsp;8</span></a> we introduced inferential statistics by discussing several ways to take a <em>random sample</em> from a population and that estimates calculated from random samples can be used to make inferences regarding parameter values in populations. In this chapter we focus on how these inferences can be made using the theory of <strong>repeated sampling</strong>.</p>
+
+<p>In <a href="08-populations.html" class="quarto-xref"><span>Chapter 8</span></a> we introduced inferential statistics by discussing several ways to take a <em>random sample</em> from a population and that estimates calculated from random samples can be used to make inferences regarding parameter values in populations. In this chapter we focus on how these inferences can be made using the theory of <strong>repeated sampling</strong>.</p>
 <section id="needed-packages" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="needed-packages">Needed packages</h3>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
@@ -435,11 +471,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sec-parametric" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="sec-parametric"><span class="header-section-number">9.1</span> Distributions</h2>
-<p>Recall from <a href="02-visualization.html#sec-histograms"><span>Section&nbsp;2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center, how they vary, and the shape in terms of modality and symmetry/skew. <a href="#fig-distribution">Figure&nbsp;<span>9.1</span></a> shows examples of some common distribution shapes.</p>
-<div id="fig-distribution" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/distribution.png" class="img-fluid figure-img" data-out.width="100%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.1: Common distribution shapes</figcaption>
+<p>Recall from <a href="02-visualization.html#sec-histograms" class="quarto-xref"><span>Section 2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center, how they vary, and the shape in terms of modality and symmetry/skew. <a href="#fig-distribution" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> shows examples of some common distribution shapes.</p>
+<div id="fig-distribution" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/distribution.png" class="img-fluid figure-img" data-out.width="100%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Common distribution shapes
+</figcaption>
 </figure>
 </div>
 <!-- retrieved diagram from previous 202 slides need to cite?-->
@@ -451,13 +491,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="normal-distribution" class="level3" data-number="9.1.1">
 <h3 data-number="9.1.1" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">9.1.1</span> Normal Distribution</h3>
-<p>The <strong>Normal Distribution</strong> is the most common and important of all distributions. It is characterized by two parameters: <span class="math inline">\(\mu\)</span>, which determines the center of the distribution, and <span class="math inline">\(\sigma\)</span> which determines the spread. In <a href="#fig-samplingdistribution-virtual">Figure&nbsp;<span>9.16</span></a>, the solid- and dashed-line curves have the same standard deviation (i.e.&nbsp;<span class="math inline">\(\sigma = 1\)</span>), so they have identical spread, but they have different means, so the dashed curve is simply shifted to the right to be centered at <span class="math inline">\(\mu = 2\)</span>. On the other hand, the solid- and dotted-line curves are centered around the same value (i.e.&nbsp;<span class="math inline">\(\mu = 0\)</span>), but the dotted curve has a larger standard deviation and is therefore more spread out. The solid line is a special case of the Normal distribution called the <strong>Standard Normal distribution</strong>, which has mean 0 and standard deviation 1. Importantly, for all possible values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the Normal distribution is <strong>symmetric</strong> and <strong>unimodal</strong>.</p>
+<p>The <strong>Normal Distribution</strong> is the most common and important of all distributions. It is characterized by two parameters: <span class="math inline">\(\mu\)</span>, which determines the center of the distribution, and <span class="math inline">\(\sigma\)</span> which determines the spread. In <a href="#fig-samplingdistribution-virtual" class="quarto-xref">Figure&nbsp;<span>9.16</span></a>, the solid- and dashed-line curves have the same standard deviation (i.e.&nbsp;<span class="math inline">\(\sigma = 1\)</span>), so they have identical spread, but they have different means, so the dashed curve is simply shifted to the right to be centered at <span class="math inline">\(\mu = 2\)</span>. On the other hand, the solid- and dotted-line curves are centered around the same value (i.e.&nbsp;<span class="math inline">\(\mu = 0\)</span>), but the dotted curve has a larger standard deviation and is therefore more spread out. The solid line is a special case of the Normal distribution called the <strong>Standard Normal distribution</strong>, which has mean 0 and standard deviation 1. Importantly, for all possible values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, the Normal distribution is <strong>symmetric</strong> and <strong>unimodal</strong>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-normaldist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-normaldist-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.2: Normal distribution</figcaption>
+<div id="fig-normaldist" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normaldist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-normaldist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normaldist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: Normal distribution
+</figcaption>
 </figure>
 </div>
 </div>
@@ -482,7 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img"></p>
+<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -503,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img"></p>
+<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -512,14 +556,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="empirical-rule" class="level3" data-number="9.1.2">
 <h3 data-number="9.1.2" class="anchored" data-anchor-id="empirical-rule"><span class="header-section-number">9.1.2</span> Empirical Rule</h3>
-<div id="fig-empirical-rule2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/empirical_rule.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.3: Empirical Rule: property of the Normal Distribution</figcaption>
+<div id="fig-empirical-rule2" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-empirical-rule2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/empirical_rule.png" class="img-fluid figure-img" data-out.width="90%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: Empirical Rule: property of the Normal Distribution
+</figcaption>
 </figure>
 </div>
 <!-- retrieved diagram from previous 202 slides need to cite?-->
-<p>The property that approximately 68%, 95%, and 99.7% of data falls within 1, 2, and 3 standard deviations of the mean, respectively is known as the Empirical Rule. <a href="#fig-empirical-rule2">Figure&nbsp;<span>9.3</span></a> displays this phenomenon. Note this is a property of the Normal distribution in general, for all values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p>The property that approximately 68%, 95%, and 99.7% of data falls within 1, 2, and 3 standard deviations of the mean, respectively is known as the Empirical Rule. <a href="#fig-empirical-rule2" class="quarto-xref">Figure&nbsp;<span>9.3</span></a> displays this phenomenon. Note this is a property of the Normal distribution in general, for all values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
 <p>If you were to plot the distribution of a Normally distributed random variable, this means you would expect:</p>
 <ul>
 <li>Approximately 68% of values to fall between <span class="math inline">\(\mu-\sigma\)</span> and <span class="math inline">\(\mu+\sigma\)</span></li>
@@ -550,37 +598,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="9.1.3" class="anchored" data-anchor-id="standardization"><span class="header-section-number">9.1.3</span> Standardization</h3>
 <p>A special case of the Normal distribution is called the <strong>Standard Normal distribution</strong>, which has mean 0 and standard deviation 1. Any Normally distributed random variable can be <strong>standardized</strong>, or in other words converted into a Standard Normal distribution using the formula:</p>
 <p><span class="math display">\[STAT = \frac{x-\mu}{\sigma}.\]</span></p>
-<p><a href="#fig-standardization1">Figure&nbsp;<span>9.4</span></a> demonstrates the relationship between a Normally distributed random variable, <span class="math inline">\(X\)</span>, and its standardized statistic.</p>
-<div id="fig-standardization1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/standardization.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.4: Converting normally distributed data to standard normal.</figcaption>
+<p><a href="#fig-standardization1" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> demonstrates the relationship between a Normally distributed random variable, <span class="math inline">\(X\)</span>, and its standardized statistic.</p>
+<div id="fig-standardization1" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standardization1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/standardization.png" class="img-fluid figure-img" data-out.width="90%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standardization1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.4: Converting normally distributed data to standard normal.
+</figcaption>
 </figure>
 </div>
-<p>In some literature, STAT is called a Z-score or test statistic. Standardization is a useful statistical tool as it allows us to put measures that are on different scales all onto the same scale. For example, if we have a STAT value of 2.5, we know it will fall fairly far out in the right tail of the distribution. Or if we have a STAT value of -0.5, we know it falls slightly to the left of center. This is displayed in <a href="#fig-STAT-values">Figure&nbsp;<span>9.5</span></a>.</p>
+<p>In some literature, STAT is called a Z-score or test statistic. Standardization is a useful statistical tool as it allows us to put measures that are on different scales all onto the same scale. For example, if we have a STAT value of 2.5, we know it will fall fairly far out in the right tail of the distribution. Or if we have a STAT value of -0.5, we know it falls slightly to the left of center. This is displayed in <a href="#fig-STAT-values" class="quarto-xref">Figure&nbsp;<span>9.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-STAT-values" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-STAT-values-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.5: N(0,1) example values: STAT = -0.5, STAT = 2.5</figcaption>
+<div id="fig-STAT-values" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-STAT-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-STAT-values-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-STAT-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: N(0,1) example values: STAT = -0.5, STAT = 2.5
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Continuing our example of babies birth weight, let’s observe the relationship between weight and the standardized statistic, STAT.</p>
-<div id="fig-standardization2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/standardization2.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.6: Standardized birth weight distribution.</figcaption>
+<div id="fig-standardization2" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standardization2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/standardization2.png" class="img-fluid figure-img" data-out.width="90%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standardization2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.6: Standardized birth weight distribution.
+</figcaption>
 </figure>
 </div>
 <p>What if we wanted to know the percent of babies that weigh less than 95 ounces at birth? Start by converting the value 95 to STAT.</p>
-<p><span class="math display">\[STAT = \frac{x-\mu}{\sigma} = \frac{95-119.6}{18.2}= -1.35\]</span> Meaning that 95 ounces is 1.35 standard deviations below the mean. The standardized statistic already gives us an idea for a range of babies that weight less than 95 ounces because it falls somewhere between -2 and -1 standard deviations. Based on the empirical rule we know this probability should be between 2.5% and 16%, see <a href="#fig-standardization3">Figure&nbsp;<span>9.7</span></a> for details.</p>
-<div id="fig-standardization3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/standardization3.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.7: Standardized birth weight distribution.</figcaption>
+<p><span class="math display">\[STAT = \frac{x-\mu}{\sigma} = \frac{95-119.6}{18.2}= -1.35\]</span> Meaning that 95 ounces is 1.35 standard deviations below the mean. The standardized statistic already gives us an idea for a range of babies that weight less than 95 ounces because it falls somewhere between -2 and -1 standard deviations. Based on the empirical rule we know this probability should be between 2.5% and 16%, see <a href="#fig-standardization3" class="quarto-xref">Figure&nbsp;<span>9.7</span></a> for details.</p>
+<div id="fig-standardization3" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standardization3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/standardization3.png" class="img-fluid figure-img" data-out.width="90%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standardization3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.7: Standardized birth weight distribution.
+</figcaption>
 </figure>
 </div>
 <p>We can calculate the exact probability of a baby weighing less than 95 ounces using the <code>pnorm()</code> function.</p>
@@ -596,10 +660,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>There is an 8.8% chance a baby weights less than 95 ounces. Notice that you can use either the data value or standardized value, the two functions give you the same results and any difference is simply due to rounding. By default, <code>pnorm()</code> calculates the area less than or to the left of a specified value.</p>
 <p>What if instead we want to calculate a value based on a percent. For example, 25% of babies weigh less than what weight? This is essentially the reverse of our previous question.</p>
-<div id="fig-standardization4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/standardization4.png" class="img-fluid figure-img" data-out.width="90%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.8: Standardized birth weight distribution.</figcaption>
+<div id="fig-standardization4" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standardization4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/standardization4.png" class="img-fluid figure-img" data-out.width="90%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standardization4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.8: Standardized birth weight distribution.
+</figcaption>
 </figure>
 </div>
 <p>We will use the function <code>qnorm()</code>.</p>
@@ -621,16 +689,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In general, the t-distribution has the same shape as the Standard Normal distribution (symmetric, unimodal), but it has <strong>heavier tails</strong>. As sample size increases (and therefore degrees of freedom increases), the t-distribution becomes a very close approximation to the Normal distribution.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-t-dist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-t-dist-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.9: t-distribution with example 95% cutoff values</figcaption>
+<div id="fig-t-dist" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-t-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-t-dist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.9: t-distribution with example 95% cutoff values
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Because the exact shape of the t-distribution depends on the sample size, we can’t define one nice rule like the Empirical Rule to know which “cutoff” values correspond to 95% of the data, for example. If <span class="math inline">\(df = 30\)</span>, for example, it can be shown that 95% of the data will fall between -2.04 and 2.04, but if <span class="math inline">\(df = 2\)</span>, 95% of the data will fall between -4.3 and 4.3. This is what we mean by the t-distribution having “heavier tails”; more of the observations fall farther out in the tails of the distribution, compared to the Normal distribution.</p>
-<p>Similar to the Normal distribution we can calculate probabilities and test statistics from a t-distribution using the <code>pt()</code> and <code>qt()</code> function, respectively. You must specify the <code>df</code> parameter which recall is a function of sample size, <span class="math inline">\(n\)</span>, and dependent on the statistic. We will learn more about the <code>df</code> of different statistics in <a href="#sec-commonstat"><span>Section&nbsp;9.4</span></a>.</p>
+<p>Similar to the Normal distribution we can calculate probabilities and test statistics from a t-distribution using the <code>pt()</code> and <code>qt()</code> function, respectively. You must specify the <code>df</code> parameter which recall is a function of sample size, <span class="math inline">\(n\)</span>, and dependent on the statistic. We will learn more about the <code>df</code> of different statistics in <a href="#sec-commonstat" class="quarto-xref"><span>Section 9.4</span></a>.</p>
 </section>
 <section id="normal-vs-t" class="level3" data-number="9.1.5">
 <h3 data-number="9.1.5" class="anchored" data-anchor-id="normal-vs-t"><span class="header-section-number">9.1.5</span> Normal vs T</h3>
@@ -643,7 +715,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img"></p>
+<p><img src="09-sampling-distributions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -660,7 +732,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>How would our estimate of the average age change if instead of these <span class="math inline">\(n = 100\)</span> individuals we had randomly selected a <em>different</em> <span class="math inline">\(n = 100\)</span> individuals?</li>
 </ul>
-<p>While it is not possible to travel back in time for this particular question, we could instead generate a way to study this exact question by creating a <strong>simulation</strong>. We will discuss simulations further in <a href="#sec-sampling-activity">Subsections&nbsp;<span>9.2.2</span></a> and <a href="#sec-sampling-simulation"><span>9.2.3</span></a> and actually conduct one, but for now, let’s just do a thought experiment. Imagine that we create a hypothetical situation in which we <em>know</em> the outcome (e.g., age) for every individual or observation in a population. As a result, we know what the population parameter value is (e.g., <span class="math inline">\(\mu = 32.4\)</span>). Then we would randomly select a sample of <span class="math inline">\(n = 100\)</span> observations and calculate the sample mean (e.g.&nbsp;<span class="math inline">\(\bar{x} = 28.2\)</span>). And then we could <strong>repeat</strong> this sampling process – each time selecting a different possible sample of <span class="math inline">\(n = 100\)</span> – many, many, many times (e.g., <span class="math inline">\(10,000\)</span> different samples of <span class="math inline">\(n = 100\)</span>), each time calculating the sample mean. At the end of this process, we would then have many different estimates of the population mean, each equally likely.</p>
+<p>While it is not possible to travel back in time for this particular question, we could instead generate a way to study this exact question by creating a <strong>simulation</strong>. We will discuss simulations further in <a href="#sec-sampling-activity" class="quarto-xref">Subsections&nbsp;<span>9.2.2</span></a> and <a href="#sec-sampling-simulation" class="quarto-xref"><span>9.2.3</span></a> and actually conduct one, but for now, let’s just do a thought experiment. Imagine that we create a hypothetical situation in which we <em>know</em> the outcome (e.g., age) for every individual or observation in a population. As a result, we know what the population parameter value is (e.g., <span class="math inline">\(\mu = 32.4\)</span>). Then we would randomly select a sample of <span class="math inline">\(n = 100\)</span> observations and calculate the sample mean (e.g.&nbsp;<span class="math inline">\(\bar{x} = 28.2\)</span>). And then we could <strong>repeat</strong> this sampling process – each time selecting a different possible sample of <span class="math inline">\(n = 100\)</span> – many, many, many times (e.g., <span class="math inline">\(10,000\)</span> different samples of <span class="math inline">\(n = 100\)</span>), each time calculating the sample mean. At the end of this process, we would then have many different estimates of the population mean, each equally likely.</p>
 <p>We do this type of simulation in order to understand how close any one sample’s estimate is to the true population mean. For example, it may be that we are usually within <span class="math inline">\(\pm 2\)</span> years? Or maybe <span class="math inline">\(\pm 5\)</span> years? We can ask further questions, like: on average, is the sample mean the same as the population mean?</p>
 <p>It is important to emphasize here that this process is <em>theoretical</em>. In real life, you do not know the values for all individuals or observations in a population. (If you did, why sample?) And in real life, you will not take repeated samples. Instead, you will have in front of you a <strong>single sample</strong> that you will need to use to make inferences to a population. What simulation exercises provide are properties that can help you understand <em>how far off the sample estimate you have in hand might be for the population parameter you care about</em>.</p>
 </section>
@@ -671,28 +743,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p><p><strong>What proportion of this bowl’s balls are red?</strong></p>
 <p></p>
 <p>In this section, we provide a concrete example, based upon a classroom activity completed in an introductory statistics class with 33 students. In the class, there is a large bowl of balls that contains red and white balls. <strong>Importantly, we know that 37.5% of the balls are red (someone counted this!).</strong></p>
-<div id="fig-sampling-exercise-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/sampling_bowl_1.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.10: A bowl with red and white balls.</figcaption>
+<div id="fig-sampling-exercise-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-exercise-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sampling_bowl_1.jpg" class="img-fluid figure-img" data-out.width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-exercise-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.10: A bowl with red and white balls.
+</figcaption>
 </figure>
 </div>
 <p>The goal of the activity is to understand what would happen if we didn’t actually count all of the red balls (a census), but instead estimated the proportion that are red based upon a smaller random sample (e.g., n = 50).</p>
 <p style="font-family: times, serif; font-size:16pt; font-style:italic">
 </p><p><strong>Taking one random sample</strong></p>
 <p></p>
-<p>We begin by taking a random sample of n = 50 balls. To do so, we insert a shovel into the bowl, as seen in <a href="#fig-sampling-exercise-2">Figure&nbsp;<span>9.11</span></a>.</p>
-<div id="fig-sampling-exercise-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/sampling_bowl_2.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.11: Inserting a shovel into the bowl.</figcaption>
+<p>We begin by taking a random sample of n = 50 balls. To do so, we insert a shovel into the bowl, as seen in <a href="#fig-sampling-exercise-2" class="quarto-xref">Figure&nbsp;<span>9.11</span></a>.</p>
+<div id="fig-sampling-exercise-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-exercise-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sampling_bowl_2.jpg" class="img-fluid figure-img" data-out.width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-exercise-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.11: Inserting a shovel into the bowl.
+</figcaption>
 </figure>
 </div>
-<p>Using the shovel, we remove a number of balls as seen in <a href="#fig-sampling-exercise-3">Figure&nbsp;<span>9.12</span></a>.</p>
-<div id="fig-sampling-exercise-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/sampling_bowl_3_cropped.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.12: Fifty balls from the bowl.</figcaption>
+<p>Using the shovel, we remove a number of balls as seen in <a href="#fig-sampling-exercise-3" class="quarto-xref">Figure&nbsp;<span>9.12</span></a>.</p>
+<div id="fig-sampling-exercise-3" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-exercise-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sampling_bowl_3_cropped.jpg" class="img-fluid figure-img" data-out.width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-exercise-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.12: Fifty balls from the bowl.
+</figcaption>
 </figure>
 </div>
 <p>Observe that 17 of the balls are red. There are a total of 5 x 10 = 50 balls, and thus 0.34 = 34% of the shovel’s balls are red. We can view the proportion of balls that are red <em>in this shovel</em> as a guess of the proportion of balls that are red <em>in the entire bowl</em>. While not as exact as doing an exhaustive count, our guess of 34% took much less time and energy to obtain.</p>
@@ -722,38 +806,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>However, before returning the balls into the bowl, they are going to mark the proportion of the 50 balls they removed that are red in a histogram as seen in <a href="#fig-sampling-exercise-4">Figure&nbsp;<span>9.13</span></a>.</p>
-<div id="fig-sampling-exercise-4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/sampling/tactile_3_a.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.13: Constructing a histogram of proportions.</figcaption>
+<p>However, before returning the balls into the bowl, they are going to mark the proportion of the 50 balls they removed that are red in a histogram as seen in <a href="#fig-sampling-exercise-4" class="quarto-xref">Figure&nbsp;<span>9.13</span></a>.</p>
+<div id="fig-sampling-exercise-4" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-exercise-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sampling/tactile_3_a.jpg" class="img-fluid figure-img" data-out.width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-exercise-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.13: Constructing a histogram of proportions.
+</figcaption>
 </figure>
 </div>
-<p>Recall from <a href="02-visualization.html#sec-histograms"><span>Section&nbsp;2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center and in particular how they vary. The resulting hand-drawn histogram can be seen in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>.</p>
-<div id="fig-sampling-exercise-5" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/sampling/tactile_3_c.jpg" class="img-fluid figure-img" data-out.width="80%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.14: Hand-drawn histogram of 33 proportions.</figcaption>
+<p>Recall from <a href="02-visualization.html#sec-histograms" class="quarto-xref"><span>Section 2.5</span></a> that histograms allow us to visualize the <em>distribution</em> of a numerical variable: where the values center and in particular how they vary. The resulting hand-drawn histogram can be seen in <a href="#fig-sampling-exercise-5" class="quarto-xref">Figure&nbsp;<span>9.14</span></a>.</p>
+<div id="fig-sampling-exercise-5" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-exercise-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sampling/tactile_3_c.jpg" class="img-fluid figure-img" data-out.width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-exercise-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.14: Hand-drawn histogram of 33 proportions.
+</figcaption>
 </figure>
 </div>
-<p>Observe the following about the histogram in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>:</p>
+<p>Observe the following about the histogram in <a href="#fig-sampling-exercise-5" class="quarto-xref">Figure&nbsp;<span>9.14</span></a>:</p>
 <ul>
 <li>At the low end, one group removed 50 balls from the bowl with proportion between 0.20 = 20% and 0.25 = 25%</li>
 <li>At the high end, another group removed 50 balls from the bowl with proportion between 0.45 = 45% and 0.5 = 50% red.</li>
 <li>However the most frequently occurring proportions were between 0.30 = 30% and 0.35 = 35% red, right in the middle of the distribution.</li>
 <li>The shape of this distribution is somewhat bell-shaped.</li>
 </ul>
-<p>Let’s construct this same hand-drawn histogram in R using your data visualization skills that you honed in <a href="02-visualization.html"><span>Chapter&nbsp;2</span></a>. Each of the 33 student’s proportion red is saved in a data frame <code>tactile_prop_red</code> which is included in the <code>moderndive</code> package you loaded earlier.</p>
+<p>Let’s construct this same hand-drawn histogram in R using your data visualization skills that you honed in <a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a>. Each of the 33 student’s proportion red is saved in a data frame <code>tactile_prop_red</code> which is included in the <code>moderndive</code> package you loaded earlier.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tactile_prop_red</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(tactile_prop_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s display only the first 10 out of 33 rows of <code>tactile_prop_red</code>’s contents in <a href="#tbl-tactilered">Table&nbsp;<span>9.1</span></a>.</p>
+<p>Let’s display only the first 10 out of 33 rows of <code>tactile_prop_red</code>’s contents in <a href="#tbl-tactilered" class="quarto-xref">Table&nbsp;<span>9.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-tactilered" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tactilered-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.1: First 10 out of 33 groups’ proportion of 50 balls that are red.
+</figcaption>
+<div aria-describedby="tbl-tactilered-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tactilered" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.1: First 10 out of 33 groups’ proportion of 50 balls that are red.</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>First 10 out of 33 groups’ proportion of 50 balls that are red.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">student</th>
@@ -827,9 +924,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Observe for each <code>student</code> we have their names, the number of <code>red_balls</code> they obtained, and the corresponding proportion out of 50 balls that were red named <code>prop_red</code>. Observe, we also have a variable <code>replicate</code> enumerating each of the 33 students; we chose this name because each row can be viewed as one instance of a replicated activity: using the shovel to remove 50 balls and computing the proportion of those balls that are red.</p>
-<p>We visualize the distribution of these 33 proportions using a <code>geom_histogram()</code> with <code>binwidth = 0.05</code> in <a href="#fig-samplingdistribution-tactile">Figure&nbsp;<span>9.15</span></a>, which is appropriate since the variable <code>prop_red</code> is numerical. This computer-generated histogram matches our hand-drawn histogram from the earlier <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a>.</p>
+<p>We visualize the distribution of these 33 proportions using a <code>geom_histogram()</code> with <code>binwidth = 0.05</code> in <a href="#fig-samplingdistribution-tactile" class="quarto-xref">Figure&nbsp;<span>9.15</span></a>, which is appropriate since the variable <code>prop_red</code> is numerical. This computer-generated histogram matches our hand-drawn histogram from the earlier <a href="#fig-sampling-exercise-5" class="quarto-xref">Figure&nbsp;<span>9.14</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tactile_prop_red, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
@@ -838,10 +937,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-samplingdistribution-tactile" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-tactile-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.15: Distribution of 33 proportions based on 33 samples of size 50</figcaption>
+<div id="fig-samplingdistribution-tactile" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-samplingdistribution-tactile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-tactile-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samplingdistribution-tactile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.15: Distribution of 33 proportions based on 33 samples of size 50
+</figcaption>
 </figure>
 </div>
 </div>
@@ -854,17 +957,17 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <p>We just worked through a <strong>thought experiment</strong> in which we imagined 33 different realities that could have occurred. In each, a different random sample of size 50 balls was selected and the proportion of balls that were red was calculated, providing an <strong>estimate of the true proportion</strong> of balls that are red in the entire bowl. We then compared these estimates to the true parameter value.</p>
 <p>We found that there is variation in these estimates – what we call <strong>sampling variability</strong> – and that while the estimates are somewhat near to the population parameter, they are not typically equal to the population parameter value. That is, in some of these realities, the sample estimate was larger than the population value, while in others, the sample estimate was smaller.</p>
 <p>But why did we do this? It may seem like a strange activity, since we already know the value of the population proportion. Why do we need to imagine these other realities? By understanding how close (or far) a sample estimate can be from a population parameter <strong>in a situation when we know the true value of the parameter</strong>, we are able to deduce properties of the estimator more generally, which we can use in real-life situations in which we do not know the value of the population parameter and have to estimate it.</p>
-<p>Unfortunately, the thought exercise we just completed wasn’t very precise – certainly there are more than 33 possible alternative realities and samples that we could have drawn. Put another way, if we really want to understand properties of an estimator, we need to repeat this activity <strong>thousands</strong> of times. Doing this by hand – as illustrated in this section – would take forever. For this reason, in <a href="#sec-sampling-simulation"><span>Section&nbsp;9.2.3</span></a> we’ll extend the hands-on sampling activity we just performed by using a <em>computer simulation</em>.</p>
+<p>Unfortunately, the thought exercise we just completed wasn’t very precise – certainly there are more than 33 possible alternative realities and samples that we could have drawn. Put another way, if we really want to understand properties of an estimator, we need to repeat this activity <strong>thousands</strong> of times. Doing this by hand – as illustrated in this section – would take forever. For this reason, in <a href="#sec-sampling-simulation" class="quarto-xref"><span>Section 9.2.3</span></a> we’ll extend the hands-on sampling activity we just performed by using a <em>computer simulation</em>.</p>
 <p>Using a computer, not only will we be able to repeat the hands-on activity a very large number of times, but it will also allow us to use shovels with different numbers of slots than just 50. The purpose of these simulations is to develop an understanding of two key concepts relating to repeated sampling: understanding the concept of <strong>sampling variation</strong> and the role that <strong>sample size</strong> plays in this variation.</p>
 </section>
 <section id="sec-sampling-simulation" class="level3" data-number="9.2.3">
 <h3 data-number="9.2.3" class="anchored" data-anchor-id="sec-sampling-simulation"><span class="header-section-number">9.2.3</span> Computer simulation</h3>
-<p>In the previous <a href="#sec-sampling-activity"><span>Section&nbsp;9.2.2</span></a>, we began imagining other realities and the other possible samples we could have gotten other than our own. To do so, we read about an activity in which a physical bowl of balls and a physical shovel were used by 33 members of a statistics class. We began with this approach so that we could develop a firm understanding of the root ideas behind the theory of repeated sampling.</p>
+<p>In the previous <a href="#sec-sampling-activity" class="quarto-xref"><span>Section 9.2.2</span></a>, we began imagining other realities and the other possible samples we could have gotten other than our own. To do so, we read about an activity in which a physical bowl of balls and a physical shovel were used by 33 members of a statistics class. We began with this approach so that we could develop a firm understanding of the root ideas behind the theory of repeated sampling.</p>
 <p>In this section, we’ll extend this activity to include 10,000 other realities and possible samples using a computer. We focus on 10,000 hypothetical samples since it is enough to get a strong understanding of the properties of an estimator, while remaining computationally simple to implement.</p>
 <p style="font-family: times, serif; font-size:16pt; font-style:italic">
 </p><p><strong>Using the virtual shovel once</strong></p>
 <p></p>
-<p>Let’s start by performing the virtual analogue of the tactile sampling simulation we performed in <a href="#sec-sampling-activity"><span>Section&nbsp;9.2.2</span></a>. We first need a virtual analogue of the bowl seen in <a href="#fig-sampling-exercise-1">Figure&nbsp;<span>9.10</span></a>. To this end, we included a data frame <code>bowl</code> in the <code>moderndive</code> package whose rows correspond exactly with the contents of the actual bowl.</p>
+<p>Let’s start by performing the virtual analogue of the tactile sampling simulation we performed in <a href="#sec-sampling-activity" class="quarto-xref"><span>Section 9.2.2</span></a>. We first need a virtual analogue of the bowl seen in <a href="#fig-sampling-exercise-1" class="quarto-xref">Figure&nbsp;<span>9.10</span></a>. To this end, we included a data frame <code>bowl</code> in the <code>moderndive</code> package whose rows correspond exactly with the contents of the actual bowl.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>bowl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -884,19 +987,24 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 # ℹ 2,390 more rows</code></pre>
 </div>
 </div>
-<p>Observe in the output that <code>bowl</code> has 2400 rows, telling us that the bowl contains 2400 equally-sized balls. The first variable <code>ball_ID</code> is used merely as an “identification variable” for this data frame; none of the balls in the actual bowl are marked with numbers. The second variable <code>color</code> indicates whether a particular virtual ball is red or white. View the contents of the bowl in RStudio’s data viewer and scroll through the contents to convince yourselves that <code>bowl</code> is indeed a virtual version of the actual bowl in <a href="#fig-sampling-exercise-1">Figure&nbsp;<span>9.10</span></a>.</p>
-<p>Now that we have a virtual analogue of our bowl, we now need a virtual analogue for the shovel seen in <a href="#fig-sampling-exercise-2">Figure&nbsp;<span>9.11</span></a>; we’ll use this virtual shovel to generate our virtual random samples of 50 balls. We’re going to use the <code>rep_sample_n()</code> function included in the <code>moderndive</code> package. This function allows us to take <code>rep</code>eated, or <code>rep</code>licated, <code>samples</code> of size <code>n</code>. Run the following and explore <code>virtual_shovel</code>’s contents in the RStudio viewer.</p>
+<p>Observe in the output that <code>bowl</code> has 2400 rows, telling us that the bowl contains 2400 equally-sized balls. The first variable <code>ball_ID</code> is used merely as an “identification variable” for this data frame; none of the balls in the actual bowl are marked with numbers. The second variable <code>color</code> indicates whether a particular virtual ball is red or white. View the contents of the bowl in RStudio’s data viewer and scroll through the contents to convince yourselves that <code>bowl</code> is indeed a virtual version of the actual bowl in <a href="#fig-sampling-exercise-1" class="quarto-xref">Figure&nbsp;<span>9.10</span></a>.</p>
+<p>Now that we have a virtual analogue of our bowl, we now need a virtual analogue for the shovel seen in <a href="#fig-sampling-exercise-2" class="quarto-xref">Figure&nbsp;<span>9.11</span></a>; we’ll use this virtual shovel to generate our virtual random samples of 50 balls. We’re going to use the <code>rep_sample_n()</code> function included in the <code>moderndive</code> package. This function allows us to take <code>rep</code>eated, or <code>rep</code>licated, <code>samples</code> of size <code>n</code>. Run the following and explore <code>virtual_shovel</code>’s contents in the RStudio viewer.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_shovel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s display only the first 10 out of 50 rows of <code>virtual_shovel</code>’s contents in <a href="#tbl-virtual-shovel">Table&nbsp;<span>9.2</span></a>.</p>
+<p>Let’s display only the first 10 out of 50 rows of <code>virtual_shovel</code>’s contents in <a href="#tbl-virtual-shovel" class="quarto-xref">Table&nbsp;<span>9.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-virtual-shovel" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-virtual-shovel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.2: First 10 sampled balls of 50 in virtual sample
+</figcaption>
+<div aria-describedby="tbl-virtual-shovel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-virtual-shovel" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.2: First 10 sampled balls of 50 in virtual sample</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>First 10 sampled balls of 50 in virtual sample</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">replicate</th>
@@ -959,9 +1067,11 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>The <code>ball_ID</code> variable identifies which of the balls from <code>bowl</code> are included in our sample of 50 balls and <code>color</code> denotes its color. However what does the <code>replicate</code> variable indicate? In <code>virtual_shovel</code>’s case, <code>replicate</code> is equal to 1 for all 50 rows. This is telling us that these 50 rows correspond to a first repeated/replicated use of the shovel, in our case our first sample. We’ll see below when we “virtually” take 10,000 samples, <code>replicate</code> will take values between 1 and 10,000. Before we do this, let’s compute the proportion of balls in our virtual sample of size 50 that are red using the <code>dplyr</code> data wrangling verbs you learned in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>. Let’s breakdown the steps individually:</p>
-<p>First, for each of our 50 sampled balls, identify if it is red using a test for equality using <code>==</code>. For every row where <code>color == "red"</code>, the Boolean <code>TRUE</code> is returned and for every row where <code>color</code> is not equal to <code>"red"</code>, the Boolean <code>FALSE</code> is returned. Let’s create a new Boolean variable <code>is_red</code> using the <code>mutate()</code> function from <a href="03-wrangling.html#sec-mutate"><span>Section&nbsp;3.5</span></a>:</p>
+</div>
+<p>The <code>ball_ID</code> variable identifies which of the balls from <code>bowl</code> are included in our sample of 50 balls and <code>color</code> denotes its color. However what does the <code>replicate</code> variable indicate? In <code>virtual_shovel</code>’s case, <code>replicate</code> is equal to 1 for all 50 rows. This is telling us that these 50 rows correspond to a first repeated/replicated use of the shovel, in our case our first sample. We’ll see below when we “virtually” take 10,000 samples, <code>replicate</code> will take values between 1 and 10,000. Before we do this, let’s compute the proportion of balls in our virtual sample of size 50 that are red using the <code>dplyr</code> data wrangling verbs you learned in <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a>. Let’s breakdown the steps individually:</p>
+<p>First, for each of our 50 sampled balls, identify if it is red using a test for equality using <code>==</code>. For every row where <code>color == "red"</code>, the Boolean <code>TRUE</code> is returned and for every row where <code>color</code> is not equal to <code>"red"</code>, the Boolean <code>FALSE</code> is returned. Let’s create a new Boolean variable <code>is_red</code> using the <code>mutate()</code> function from <a href="03-wrangling.html#sec-mutate" class="quarto-xref"><span>Section 3.5</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_red =</span> (color <span class="sc">==</span> <span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -983,7 +1093,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 # ℹ 40 more rows</code></pre>
 </div>
 </div>
-<p>Second, we compute the number of balls out of 50 that are red using the <code>summarize()</code> function. Recall from <a href="03-wrangling.html#sec-summarize"><span>Section&nbsp;3.3</span></a> that <code>summarize()</code> takes a data frame with many rows and returns a data frame with a single row containing summary statistics that you specify, like <code>mean()</code> and <code>median()</code>. In this case we use the <code>sum()</code>:</p>
+<p>Second, we compute the number of balls out of 50 that are red using the <code>summarize()</code> function. Recall from <a href="03-wrangling.html#sec-summarize" class="quarto-xref"><span>Section 3.3</span></a> that <code>summarize()</code> takes a data frame with many rows and returns a data frame with a single row containing summary statistics that you specify, like <code>mean()</code> and <code>median()</code>. In this case we use the <code>sum()</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>virtual_shovel <span class="sc">%&gt;%</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_red =</span> (color <span class="sc">==</span> <span class="st">"red"</span>)) <span class="sc">%&gt;%</span> </span>
@@ -1021,18 +1131,18 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 1         1      12     0.24</code></pre>
 </div>
 </div>
-<p>Great! 24% of <code>virtual_shovel</code>’s 50 balls were red! So based on this particular sample, our guess at the proportion of the <code>bowl</code>’s balls that are red is 24%. But remember from our earlier tactile sampling activity that if we repeated this sampling, we would not necessarily obtain a sample of 50 balls with 24% of them being red again; there will likely be some variation. In fact in <a href="#tbl-tactilered">Table&nbsp;<span>9.1</span></a> we displayed 33 such proportions based on 33 tactile samples and then in <a href="#fig-sampling-exercise-5">Figure&nbsp;<span>9.14</span></a> we visualized the distribution of the 33 proportions in a histogram. Let’s now perform the virtual analogue of having 10,000 students use the sampling shovel!</p>
+<p>Great! 24% of <code>virtual_shovel</code>’s 50 balls were red! So based on this particular sample, our guess at the proportion of the <code>bowl</code>’s balls that are red is 24%. But remember from our earlier tactile sampling activity that if we repeated this sampling, we would not necessarily obtain a sample of 50 balls with 24% of them being red again; there will likely be some variation. In fact in <a href="#tbl-tactilered" class="quarto-xref">Table&nbsp;<span>9.1</span></a> we displayed 33 such proportions based on 33 tactile samples and then in <a href="#fig-sampling-exercise-5" class="quarto-xref">Figure&nbsp;<span>9.14</span></a> we visualized the distribution of the 33 proportions in a histogram. Let’s now perform the virtual analogue of having 10,000 students use the sampling shovel!</p>
 <p style="font-family: times, serif; font-size:16pt; font-style:italic">
 </p><p><strong>Using the virtual shovel 10,000 times</strong></p>
 <p></p>
-<p>Recall that in our tactile sampling exercise in <a href="#sec-sampling-activity">Subsection&nbsp;<span>9.2.2</span></a> we had 33 students each use the shovel, yielding 33 samples of size 50 balls, which we then used to compute 33 proportions. In other words we repeated/replicated using the shovel 33 times. We can perform this repeated/replicated sampling virtually by once again using our virtual shovel function <code>rep_sample_n()</code>, but by adding the <code>reps = 10000</code> argument, indicating we want to repeat the sampling 10,000 times. Be sure to scroll through the contents of <code>virtual_samples</code> in RStudio’s viewer.</p>
+<p>Recall that in our tactile sampling exercise in <a href="#sec-sampling-activity" class="quarto-xref">Subsection&nbsp;<span>9.2.2</span></a> we had 33 students each use the shovel, yielding 33 samples of size 50 balls, which we then used to compute 33 proportions. In other words we repeated/replicated using the shovel 33 times. We can perform this repeated/replicated sampling virtually by once again using our virtual shovel function <code>rep_sample_n()</code>, but by adding the <code>reps = 10000</code> argument, indicating we want to repeat the sampling 10,000 times. Be sure to scroll through the contents of <code>virtual_samples</code> in RStudio’s viewer.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>virtual_samples <span class="ot">&lt;-</span> bowl <span class="sc">%&gt;%</span> </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Observe that while the first 50 rows of <code>replicate</code> are equal to <code>1</code>, the next 50 rows of <code>replicate</code> are equal to <code>2</code>. This is telling us that the first 50 rows correspond to the first sample of 50 balls while the next 50 correspond to the second sample of 50 balls. This pattern continues for all <code>reps = 10000</code> replicates and thus <code>virtual_samples</code> has 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows.</p>
-<p>Let’s now take the data frame <code>virtual_samples</code> with 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows corresponding to 10,000 samples of size 50 balls and compute the resulting 10,000 proportions red. We’ll use the same <code>dplyr</code> verbs as we did in the previous section, but this time with an additional <code>group_by()</code> of the <code>replicate</code> variable. Recall from <a href="03-wrangling.html#sec-groupby"><span>Section&nbsp;3.4</span></a> that by assigning the grouping variable “meta-data” before <code>summarizing()</code>, we’ll obtain 10,000 different proportions red:</p>
+<p>Let’s now take the data frame <code>virtual_samples</code> with 10,000 <span class="math inline">\(\times\)</span> 50 = 500,000 rows corresponding to 10,000 samples of size 50 balls and compute the resulting 10,000 proportions red. We’ll use the same <code>dplyr</code> verbs as we did in the previous section, but this time with an additional <code>group_by()</code> of the <code>replicate</code> variable. Recall from <a href="03-wrangling.html#sec-groupby" class="quarto-xref"><span>Section 3.4</span></a> that by assigning the grouping variable “meta-data” before <code>summarizing()</code>, we’ll obtain 10,000 different proportions red:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>virtual_prop_red <span class="ot">&lt;-</span> virtual_samples <span class="sc">%&gt;%</span> </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
@@ -1040,13 +1150,18 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_red =</span> red <span class="sc">/</span> <span class="dv">50</span>)</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(virtual_prop_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s display only the first 10 out of 10,000 rows of <code>virtual_prop_red</code>’s contents in <a href="#tbl-tactilered">Table&nbsp;<span>9.1</span></a>. As one would expect, there is variation in the resulting <code>prop_red</code> proportions red for the first 10 out 10,000 repeated/replicated samples.</p>
+<p>Let’s display only the first 10 out of 10,000 rows of <code>virtual_prop_red</code>’s contents in <a href="#tbl-virtualred" class="quarto-xref">Table&nbsp;<span>9.3</span></a>. As one would expect, there is variation in the resulting <code>prop_red</code> proportions red for the first 10 out 10,000 repeated/replicated samples.</p>
 <!-- Albert will remove `boundary` here on updates to chalkboard image. -->
 <div class="cell" data-layout-align="center">
+<div id="tbl-virtualred" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-virtualred-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.3: First 10 out of 10,000 virtual proportion of 50 balls that are red.
+</figcaption>
+<div aria-describedby="tbl-virtualred-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-virtualred" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.3: First 10 out of 33 virtual proportion of 50 balls that are red.</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>First 10 out of 33 virtual proportion of 50 balls that are red.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">replicate</th>
@@ -1109,8 +1224,10 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Let’s visualize the distribution of these 10,000 proportions red based on 10,000 virtual samples using a histogram with <code>binwidth = 0.05</code> in <a href="#fig-samplingdistribution-virtual">Figure&nbsp;<span>9.16</span></a>.</p>
+</div>
+<p>Let’s visualize the distribution of these 10,000 proportions red based on 10,000 virtual samples using a histogram with <code>binwidth = 0.05</code> in <a href="#fig-samplingdistribution-virtual" class="quarto-xref">Figure&nbsp;<span>9.16</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virtual_prop_red, <span class="fu">aes</span>(<span class="at">x =</span> prop_red)) <span class="sc">+</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
@@ -1119,10 +1236,14 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-samplingdistribution-virtual" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-virtual-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.16: Distribution of 10,000 proportions based on 10,000 samples of size 50</figcaption>
+<div id="fig-samplingdistribution-virtual" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-samplingdistribution-virtual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-samplingdistribution-virtual-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-samplingdistribution-virtual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.16: Distribution of 10,000 proportions based on 10,000 samples of size 50
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1140,7 +1261,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <li>What is the average value in this distribution? How does that compare to the population parameter?</li>
 <li>What is the standard deviation of this distribution? What range of values are likely to occur in samples of size <span class="math inline">\(n\)</span>?</li>
 </ol>
-<p>Hopefully you were able to see that in <a href="#fig-samplingdistribution-virtual">Figure&nbsp;<span>9.16</span></a> that the sampling distribution of <span class="math inline">\(\hat{\pi}\)</span> follows a Normal distribution. As a result of the Central Limit Theorem (CLT), when sample sizes are large, most sampling distributions will be approximated well by a Normal Distribution. We will discuss the CLT further in <a href="#sec-clt"><span>Section&nbsp;9.6</span></a>.</p>
+<p>Hopefully you were able to see that in <a href="#fig-samplingdistribution-virtual" class="quarto-xref">Figure&nbsp;<span>9.16</span></a> that the sampling distribution of <span class="math inline">\(\hat{\pi}\)</span> follows a Normal distribution. As a result of the Central Limit Theorem (CLT), when sample sizes are large, most sampling distributions will be approximated well by a Normal Distribution. We will discuss the CLT further in <a href="#sec-clt" class="quarto-xref"><span>Section 9.6</span></a>.</p>
 <p>Throughout this section, it is imperative that you remember that this is a theoretical exercise. By beginning with a situation in which we know the right answer, we will be able to deduce properties of estimators that we can leverage in cases in which we do not know the right answer (i.e., when you are conducting actual data analyses!).</p>
 <section id="sec-bias" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="sec-bias"><span class="header-section-number">9.3.1</span> Mean of the sampling distribution</h3>
@@ -1173,7 +1294,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </div>
 <p>Here we see that <span class="math inline">\(\hat{\pi}=\)</span> 0.375, which is a good approximation to the true proportion of red balls in the bowl (<span class="math inline">\(\pi =\)</span> 0.375). This is because the sample proportion <span class="math inline">\(\hat{\pi} = \frac{\# \  of \ successes}{\# \ of \ trials}\)</span> is an unbiased estimator of the population proportion <span class="math inline">\(\pi\)</span>.</p>
 <p>The difficulty with introducing this idea of bias in an introductory course is that most statistics used at this level (e.g., proportions, means, regression coefficients) are unbiased. Examples of biased statistics are more common in more complex models. One example, however, that illustrates this bias concept is that of sample variance estimator.</p>
-<p>Recall that we have used <em>standard deviation</em> as a summary statistic for how spread out data is. <strong>Variance</strong> is simply standard deviation <em>squared</em>, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter <span class="math inline">\(s\)</span>, and sample variance by <span class="math inline">\(s^2\)</span>. These are estimators for the population standard deviation (denoted <span class="math inline">\(\sigma\)</span>) and the population variance (denoted <span class="math inline">\(\sigma^2\)</span>). We estimate the sample variance using <span class="math inline">\(s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}\)</span>, where <span class="math inline">\(n\)</span> is the sample size (check out <a href="0a-statistical-background.html"><span>Appendix&nbsp;A</span></a> if you are unfamiliar with the <span class="math inline">\(\sum\)</span> notation and using subscripts <span class="math inline">\(i\)</span>). When we use the <code>sd()</code> function in R, it is using the square root of this function in the background: <span class="math inline">\(s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}\)</span>. Until now, we have simply used this estimator without reason. You might ask: why is this divided by <span class="math inline">\(n – 1\)</span> instead of simply by <span class="math inline">\(n\)</span> like the formula for the mean (i.e.&nbsp;<span class="math inline">\(\frac{\sum x_i}{n}\)</span>)? To see why, let’s look at an example.</p>
+<p>Recall that we have used <em>standard deviation</em> as a summary statistic for how spread out data is. <strong>Variance</strong> is simply standard deviation <em>squared</em>, and thus it is also a measure of spread. The sample standard deviation is usually denoted by the letter <span class="math inline">\(s\)</span>, and sample variance by <span class="math inline">\(s^2\)</span>. These are estimators for the population standard deviation (denoted <span class="math inline">\(\sigma\)</span>) and the population variance (denoted <span class="math inline">\(\sigma^2\)</span>). We estimate the sample variance using <span class="math inline">\(s^2= \frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}\)</span>, where <span class="math inline">\(n\)</span> is the sample size (check out <a href="0a-statistical-background.html" class="quarto-xref"><span>Appendix A</span></a> if you are unfamiliar with the <span class="math inline">\(\sum\)</span> notation and using subscripts <span class="math inline">\(i\)</span>). When we use the <code>sd()</code> function in R, it is using the square root of this function in the background: <span class="math inline">\(s= \sqrt{s^2} = \sqrt{\frac{\sum_{i = 1}^n(x_i - \bar{x})^2}{(n-1)}}\)</span>. Until now, we have simply used this estimator without reason. You might ask: why is this divided by <span class="math inline">\(n – 1\)</span> instead of simply by <span class="math inline">\(n\)</span> like the formula for the mean (i.e.&nbsp;<span class="math inline">\(\frac{\sum x_i}{n}\)</span>)? To see why, let’s look at an example.</p>
 <p>The <code>gapminder</code> dataset in the <code>dslabs</code> package has life expectancy data on 185 countries in 2016. We will consider these 185 countries to be our population. The true variance of life expectancy in this population is <span class="math inline">\(\sigma^2 = 57.5\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"gapminder"</span>, <span class="at">package =</span> <span class="st">"dslabs"</span>)</span>
@@ -1185,16 +1306,21 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 1   57.5</code></pre>
 </div>
 </div>
-<p>Let’s draw 10,000 repeated samples of n = 5 countries from this population. The data for the first 2 samples (replicates) is shown in <a href="#tbl-s2-bias">Table&nbsp;<span>9.4</span></a>.</p>
+<p>Let’s draw 10,000 repeated samples of n = 5 countries from this population. The data for the first 2 samples (replicates) is shown in <a href="#tbl-s2-bias" class="quarto-xref">Table&nbsp;<span>9.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">rep_sample_n</span>(gapminder_2016, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">reps =</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(replicate, country, year, life_expectancy, continent, region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-s2-bias" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-s2-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.4: Life expectancy data for 2 out of 10,000 samples of size n = 5 countries
+</figcaption>
+<div aria-describedby="tbl-s2-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-s2-bias" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.4: Life expectancy data for 2 out of 10,000 samples of size n = 5 countries</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Life expectancy data for 2 out of 10,000 samples of size n = 5 countries</caption>
 <colgroup>
 <col style="width: 14%">
 <col style="width: 16%">
@@ -1298,6 +1424,8 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>We can then calculate the variance for each sample (replicate) using two different formulas:</p>
 <ol type="1">
@@ -1312,10 +1440,15 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">s2 =</span> <span class="fu">sum</span>((life_expectancy <span class="sc">-</span> <span class="fu">mean</span>(life_expectancy))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-s2-bias-2" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-s2-bias-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.5: Sample variances of life expectancy for first 10 samples
+</figcaption>
+<div aria-describedby="tbl-s2-bias-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-s2-bias-2" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.5: Sample variances of life expectancy for first 10 samples</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Sample variances of life expectancy for first 10 samples</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">replicate</th>
@@ -1378,8 +1511,10 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p><a href="#tbl-s2-bias-2">Table&nbsp;<span>9.5</span></a> shows the results for the first 10 samples. Let’s look at the average of <span class="math inline">\(s_n^2\)</span> and <span class="math inline">\(s^2\)</span> across all 10,000 samples.</p>
+</div>
+<p><a href="#tbl-s2-bias-2" class="quarto-xref">Table&nbsp;<span>9.5</span></a> shows the results for the first 10 samples. Let’s look at the average of <span class="math inline">\(s_n^2\)</span> and <span class="math inline">\(s^2\)</span> across all 10,000 samples.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>variances <span class="sc">%&gt;%</span>  </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_s2_n =</span> <span class="fu">mean</span>(s2_n),</span>
@@ -1392,7 +1527,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </div>
 </div>
 <p>Remember that the true value of the variance in this population is <span class="math inline">\(\sigma^2 = 57.5\)</span>. We can see that <span class="math inline">\(s_n^2\)</span> is biased; on average it is equal to 45.913. By dividing by <span class="math inline">\(n – 1\)</span> instead of <span class="math inline">\(n\)</span>, however, the bias is removed; the average value of <span class="math inline">\(s^2\)</span> = 57.391. Therefore we use <span class="math inline">\(s^2= \frac{\sum(x_i - \bar{x})^2}{(n-1)}\)</span> as our usual estimator for <span class="math inline">\(\sigma^2\)</span> because it is unbiased.</p>
-<p>In <a href="#fig-s2-bias-3">Figure&nbsp;<span>9.17</span></a> we visualize the sampling distribution of <span class="math inline">\(s_n^2\)</span> and <span class="math inline">\(s^2\)</span>. The black dotted line corresponds to the population variance (<span class="math inline">\(\sigma^2\)</span>), and we can see that the mean of the <span class="math inline">\(s^2\)</span>s line up with it very well (blue vertical line), but on average the <span class="math inline">\(s_n^2\)</span>s are an underestimate (red vertical line).</p>
+<p>In <a href="#fig-s2-bias-3" class="quarto-xref">Figure&nbsp;<span>9.17</span></a> we visualize the sampling distribution of <span class="math inline">\(s_n^2\)</span> and <span class="math inline">\(s^2\)</span>. The black dotted line corresponds to the population variance (<span class="math inline">\(\sigma^2\)</span>), and we can see that the mean of the <span class="math inline">\(s^2\)</span>s line up with it very well (blue vertical line), but on average the <span class="math inline">\(s_n^2\)</span>s are an underestimate (red vertical line).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(variances) <span class="sc">+</span> </span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> s2_n, <span class="at">fill =</span> <span class="st">"red"</span>), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
@@ -1405,30 +1540,38 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Sample variance estimate"</span>) <span class="sc">+</span></span>
 <span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of samples"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-s2-bias-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-s2-bias-3-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.17: Sample variance estimates for 10,000 samples of size n = 5</figcaption>
+<div id="fig-s2-bias-3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-s2-bias-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-s2-bias-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-s2-bias-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.17: Sample variance estimates for 10,000 samples of size n = 5
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Notice that the sampling distribution of the sample variance shown in <a href="#fig-s2-bias-3">Figure&nbsp;<span>9.17</span></a> is not Normal but rather is skewed right; in fact, it follows a chi-square distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+<p>Notice that the sampling distribution of the sample variance shown in <a href="#fig-s2-bias-3" class="quarto-xref">Figure&nbsp;<span>9.17</span></a> is not Normal but rather is skewed right; in fact, it follows a chi-square distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
 </section>
 <section id="sec-precision" class="level3" data-number="9.3.2">
 <h3 data-number="9.3.2" class="anchored" data-anchor-id="sec-precision"><span class="header-section-number">9.3.2</span> Standard deviation of the sampling distribution</h3>
-<p>In <a href="#sec-bias">Subsection&nbsp;<span>9.3.1</span></a> we mentioned that one desirable characteristic of an estimator is that it be <strong>unbiased</strong>. Another desirable characteristic of an estimator is that it be <strong>precise</strong>. An estimator is <em>precise</em> when the estimate is close to the average of its sampling distribution in most samples. In other words, the estimates do not vary greatly from one (theoretical) sample to another.</p>
+<p>In <a href="#sec-bias" class="quarto-xref">Subsection&nbsp;<span>9.3.1</span></a> we mentioned that one desirable characteristic of an estimator is that it be <strong>unbiased</strong>. Another desirable characteristic of an estimator is that it be <strong>precise</strong>. An estimator is <em>precise</em> when the estimate is close to the average of its sampling distribution in most samples. In other words, the estimates do not vary greatly from one (theoretical) sample to another.</p>
 <p>If we were analyzing a dataset in general, we might characterize this precision by a measure of the distribution’s spread, such as the standard deviation. We can do this with sampling distributions, too. The <strong>standard error</strong> of an estimator is the standard deviation of its sampling distribution:</p>
 <ul>
 <li>A <em>large</em> standard error means that an estimate (e.g., in the sample you have) may be far from the average of its sampling distribution. This means the estimate is <em>imprecise</em>.</li>
 <li>A <em>small</em> standard error means an estimate (e.g., in the sample you have) is likely to be close to the average of its sampling distribution. This means the estimate is <em>precise</em>.</li>
 </ul>
 <p>In statistics, we prefer estimators that are precise over those that are not. Again, this is tricky to understand at an introductory level, since nearly all sample statistics at this level can be proven to be the most precise estimators (out of all possible estimators) of the population parameters they are estimating. In more complex models, however, there are often competing estimators, and statisticians spend time studying the behavior of these estimators in comparison to one another.</p>
-<p><a href="#fig-bias-precision">Figure&nbsp;<span>9.18</span></a> illustrates the concepts of bias and precision. Note that an estimator can be precise but also biased. That is, all of the estimates tend to be close to one another (i.e.&nbsp;the sampling distribution has a small standard error), but they are centered around the wrong average value. Conversely, it’s possible for an estimator to be unbiased (i.e.&nbsp;it’s centered around the true population parameter value) but imprecise (i.e.&nbsp;large standard error, the estimates vary quite a bit from one (theoretical) sample to another). Most of the estimators you use in this class (e.g.&nbsp;<span class="math inline">\(\bar{x}, s^2, \hat{\pi}\)</span>) are both precise and unbiased, which is clearly the preferred set of characteristics.</p>
-<div id="fig-bias-precision" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/bias-precision.png" class="img-fluid figure-img" data-out.width="100%"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.18: Bias vs.&nbsp;Precision</figcaption>
+<p><a href="#fig-bias-precision" class="quarto-xref">Figure&nbsp;<span>9.18</span></a> illustrates the concepts of bias and precision. Note that an estimator can be precise but also biased. That is, all of the estimates tend to be close to one another (i.e.&nbsp;the sampling distribution has a small standard error), but they are centered around the wrong average value. Conversely, it’s possible for an estimator to be unbiased (i.e.&nbsp;it’s centered around the true population parameter value) but imprecise (i.e.&nbsp;large standard error, the estimates vary quite a bit from one (theoretical) sample to another). Most of the estimators you use in this class (e.g.&nbsp;<span class="math inline">\(\bar{x}, s^2, \hat{\pi}\)</span>) are both precise and unbiased, which is clearly the preferred set of characteristics.</p>
+<div id="fig-bias-precision" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bias-precision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/bias-precision.png" class="img-fluid figure-img" data-out.width="100%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bias-precision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.18: Bias vs.&nbsp;Precision
+</figcaption>
 </figure>
 </div>
 </section>
@@ -1449,15 +1592,20 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <p>In the previous sections, we demonstrated that every statistic has a sampling distribution and that this distribution is used to make inferences between a statistic (estimate) calculated in a sample and its unknown (parameter) value in the population. For example, you now know that the sample mean’s sampling distribution is a normal distribution and that the sample variance’s sampling distribution is a chi-squared distribution.</p>
 <section id="standard-errors-based-on-theory" class="level3" data-number="9.4.1">
 <h3 data-number="9.4.1" class="anchored" data-anchor-id="standard-errors-based-on-theory"><span class="header-section-number">9.4.1</span> Standard Errors based on Theory</h3>
-<p>In <a href="#sec-precision">Subsection&nbsp;<span>9.3.2</span></a> we explained that the standard error gives you a sense of how far from the average value an estimate might be in an observed sample. In simulations, you could see that a wide distribution meant a large standard error, while a narrow distribution meant a small standard error. We could see this relationship by beginning with a case in which we knew the right answer (e.g., the population mean) and then simulating random samples of the same size, estimating this parameter in each possible sample.</p>
+<p>In <a href="#sec-precision" class="quarto-xref">Subsection&nbsp;<span>9.3.2</span></a> we explained that the standard error gives you a sense of how far from the average value an estimate might be in an observed sample. In simulations, you could see that a wide distribution meant a large standard error, while a narrow distribution meant a small standard error. We could see this relationship by beginning with a case in which we knew the right answer (e.g., the population mean) and then simulating random samples of the same size, estimating this parameter in each possible sample.</p>
 <p>But we can be more precise than this. Using mathematical properties of the normal distribution, a formula can be derived for this standard error. For example, for the sample mean, the standard error is, <span class="math display">\[SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{s}{\sqrt{n}},\]</span> where <span class="math inline">\(s = \sqrt{\frac{\sum (x_i – \bar{x})^2}{n – 1}}\)</span> is the sample standard deviation.</p>
-<p>Note that this standard error is a function of both the spread of the underlying data (the <span class="math inline">\(x_i\)</span>’s) and the sample size (<span class="math inline">\(n\)</span>). We will discuss more about the role of sample size in <a href="#sec-size"><span>Section&nbsp;9.5</span></a>.</p>
-<p>In <a href="#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a> we provide properties of some estimators, including their standard errors, for many common statistics. Note that this is not exhaustive – there are many more estimators in the world of statistics, but the ones listed here are common and provide a solid introduction.</p>
+<p>Note that this standard error is a function of both the spread of the underlying data (the <span class="math inline">\(x_i\)</span>’s) and the sample size (<span class="math inline">\(n\)</span>). We will discuss more about the role of sample size in <a href="#sec-size" class="quarto-xref"><span>Section 9.5</span></a>.</p>
+<p>In <a href="#tbl-SE-table-ch-9" class="quarto-xref">Table&nbsp;<span>9.6</span></a> we provide properties of some estimators, including their standard errors, for many common statistics. Note that this is not exhaustive – there are many more estimators in the world of statistics, but the ones listed here are common and provide a solid introduction.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-SE-table-ch-9" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-SE-table-ch-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.6: Properties of Sample Statistics
+</figcaption>
+<div aria-describedby="tbl-SE-table-ch-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-SE-table-ch-9" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.6: Properties of Sample Statistics</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Properties of Sample Statistics</caption>
 <colgroup>
 <col style="width: 12%">
 <col style="width: 10%">
@@ -1529,15 +1677,17 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Recall if the population standard deviation is unknown, we use <span class="math inline">\(s\)</span> and the sampling distribution is the t-distribution. If the population standard deviation is known we replace the <span class="math inline">\(s\)</span>’s in these formulas with <span class="math inline">\(\sigma's\)</span> and the sampling distribution is the Normal distribution.</p>
-<p>The fact that there is a formula for this standard error means that we can know properties of the sampling distribution <strong>without having to do a simulation</strong> and can use this knowledge to make inferences. For example, let’s pretend we’re estimating a population mean, which we don’t know. To do so, we take a random sample of the population and estimate the mean (<span class="math inline">\(\bar{x} = 5.2\)</span>) and standard deviation (<span class="math inline">\(s = 2.1\)</span>) based upon <span class="math inline">\(n = 10\)</span> observations. Now, looking at <a href="#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>, we know that the sample mean:</p>
+<p>The fact that there is a formula for this standard error means that we can know properties of the sampling distribution <strong>without having to do a simulation</strong> and can use this knowledge to make inferences. For example, let’s pretend we’re estimating a population mean, which we don’t know. To do so, we take a random sample of the population and estimate the mean (<span class="math inline">\(\bar{x} = 5.2\)</span>) and standard deviation (<span class="math inline">\(s = 2.1\)</span>) based upon <span class="math inline">\(n = 10\)</span> observations. Now, looking at <a href="#tbl-SE-table-ch-9" class="quarto-xref">Table&nbsp;<span>9.6</span></a>, we know that the sample mean:</p>
 <ul>
 <li>Is an unbiased estimate of the population mean (so, on average, we get the right answer),</li>
 <li>That the sampling distribution is a t-distribution, and that</li>
 <li>The standard error (spread) of this distribution can be calculated as <span class="math inline">\(SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{s}{\sqrt{n}} = \frac{2.1}{\sqrt{10}} = 0.664\)</span>.</li>
 </ul>
-<p>At this point, this is all you know, but in <a href="10-confidence-intervals.html">Chapters&nbsp;<span>10</span></a> - <a href="12-hypothesis-tests.html"><span>12</span></a>, we will put these properties to good use.</p>
+<p>At this point, this is all you know, but in <a href="10-confidence-intervals.html" class="quarto-xref">Chapters&nbsp;<span>10</span></a> - <a href="12-hypothesis-tests.html" class="quarto-xref"><span>12</span></a>, we will put these properties to good use.</p>
 </section>
 </section>
 <section id="sec-size" class="level2" data-number="9.5">
@@ -1625,18 +1775,22 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Proportion of 100 balls that were red"</span>, <span class="at">title =</span> <span class="st">"100"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For easy comparison, we present the three resulting histograms in a single row with matching x and y axes in <a href="#fig-comparing-sampling-distributions">Figure&nbsp;<span>9.19</span></a>. What do you observe?</p>
+<p>For easy comparison, we present the three resulting histograms in a single row with matching x and y axes in <a href="#fig-comparing-sampling-distributions" class="quarto-xref">Figure&nbsp;<span>9.19</span></a>. What do you observe?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-comparing-sampling-distributions" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-comparing-sampling-distributions-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.19: Comparing the distributions of proportion red for different sample sizes</figcaption>
+<div id="fig-comparing-sampling-distributions" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-comparing-sampling-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-comparing-sampling-distributions-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparing-sampling-distributions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.19: Comparing the distributions of proportion red for different sample sizes
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Observe that as the sample size increases, the spread of the 10,000 replicates of the proportion red decreases. In other words, as the sample size increases, there are less differences due to sampling variation and the distribution centers more tightly around the same value. Eyeballing <a href="#fig-comparing-sampling-distributions">Figure&nbsp;<span>9.19</span></a>, things appear to center tightly around roughly 40%.</p>
+<p>Observe that as the sample size increases, the spread of the 10,000 replicates of the proportion red decreases. In other words, as the sample size increases, there are less differences due to sampling variation and the distribution centers more tightly around the same value. Eyeballing <a href="#fig-comparing-sampling-distributions" class="quarto-xref">Figure&nbsp;<span>9.19</span></a>, things appear to center tightly around roughly 40%.</p>
 <p>We can be numerically explicit about the amount of spread in our 3 sets of 10,000 values of <code>prop_red</code> by computing the standard deviation for each of the three sampling distributions. For all three sample sizes, let’s compute the standard deviation of the 10,000 proportions red by running the following data wrangling code that uses the <code>sd()</code> summary function.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 25</span></span>
@@ -1649,12 +1803,17 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>virtual_prop_red_100 <span class="sc">%&gt;%</span> </span>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">SE =</span> <span class="fu">sd</span>(prop_red))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s compare these 3 measures of spread of the distributions in <a href="#tbl-comparing-n">Table&nbsp;<span>9.7</span></a>.</p>
+<p>Let’s compare these 3 measures of spread of the distributions in <a href="#tbl-comparing-n" class="quarto-xref">Table&nbsp;<span>9.7</span></a>.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-comparing-n" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparing-n-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.7: Comparing standard error of proportion red for 3 different shovels.
+</figcaption>
+<div aria-describedby="tbl-comparing-n-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-comparing-n" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.7: Comparing standard error of proportion red for 3 different shovels.</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Comparing standard error of proportion red for 3 different shovels.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Number of slots in shovel</th>
@@ -1678,10 +1837,12 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>As we observed visually in <a href="#fig-comparing-sampling-distributions">Figure&nbsp;<span>9.19</span></a>, as the sample size increases our numerical measure of spread (i.e.&nbsp;our standard error) decreases; there is less variation in our proportions red. In other words, as the sample size increases, our guesses at the true proportion of the bowl’s balls that are red get more consistent and precise. Remember that because we are computing the standard deviation of an estimator <span class="math inline">\(\hat{\pi}\)</span>’s sampling distribution, we call this the <strong>standard error</strong> of <span class="math inline">\(\hat{\pi}\)</span>.</p>
+</div>
+<p>As we observed visually in <a href="#fig-comparing-sampling-distributions" class="quarto-xref">Figure&nbsp;<span>9.19</span></a>, as the sample size increases our numerical measure of spread (i.e.&nbsp;our standard error) decreases; there is less variation in our proportions red. In other words, as the sample size increases, our guesses at the true proportion of the bowl’s balls that are red get more consistent and precise. Remember that because we are computing the standard deviation of an estimator <span class="math inline">\(\hat{\pi}\)</span>’s sampling distribution, we call this the <strong>standard error</strong> of <span class="math inline">\(\hat{\pi}\)</span>.</p>
 <p>Overall, this simulation shows that compared to a smaller sample size (e.g., <span class="math inline">\(n = 10\)</span>), with a larger sample size (e.g., <span class="math inline">\(n = 100\)</span>), the sampling distribution has less spread and a smaller standard error. This means that an estimate from a larger sample is likely closer to the population parameter value than one from a smaller sample.</p>
-<p>Note that this is exactly what we would expect by looking at the standard error formulas in <a href="#tbl-SE-table-ch-9">Table&nbsp;<span>9.6</span></a>. Sample size <span class="math inline">\(n\)</span> appears in some form on the denominator in each formula, and we know by simple arithmetic that dividing by a larger number causes the calculation to result in a smaller value. Therefore it is a general mathematical property that increasing sample size will decrease the standard error.</p>
+<p>Note that this is exactly what we would expect by looking at the standard error formulas in <a href="#tbl-SE-table-ch-9" class="quarto-xref">Table&nbsp;<span>9.6</span></a>. Sample size <span class="math inline">\(n\)</span> appears in some form on the denominator in each formula, and we know by simple arithmetic that dividing by a larger number causes the calculation to result in a smaller value. Therefore it is a general mathematical property that increasing sample size will decrease the standard error.</p>
 </section>
 </section>
 <section id="sec-clt" class="level2" data-number="9.6">
@@ -1708,7 +1869,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </section>
 <section id="sec-clt-example" class="level3" data-number="9.6.2">
 <h3 data-number="9.6.2" class="anchored" data-anchor-id="sec-clt-example"><span class="header-section-number">9.6.2</span> CLT example</h3>
-<p>Let’s return to the <code>gapminder</code> dataset, this time looking at the variable <code>infant_mortality</code>. We’ll first subset our data to only include the year 2015, and we’ll exclude the 7 countries that have missing data for <code>infant_mortality</code>. <a href="#fig-infant-mortality">Figure&nbsp;<span>9.20</span></a> shows the distribution of <code>infant_mortality</code>, which is skewed right.</p>
+<p>Let’s return to the <code>gapminder</code> dataset, this time looking at the variable <code>infant_mortality</code>. We’ll first subset our data to only include the year 2015, and we’ll exclude the 7 countries that have missing data for <code>infant_mortality</code>. <a href="#fig-infant-mortality" class="quarto-xref">Figure&nbsp;<span>9.20</span></a> shows the distribution of <code>infant_mortality</code>, which is skewed right.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"gapminder"</span>, <span class="at">package =</span> <span class="st">"dslabs"</span>) </span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>gapminder_2015 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
@@ -1718,10 +1879,14 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Infant mortality per 1,000 live births"</span>) <span class="sc">+</span></span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of countries"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-infant-mortality" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.20: Infant mortality rates per 1,000 live births across 178 countries in 2015</figcaption>
+<div id="fig-infant-mortality" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-infant-mortality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-infant-mortality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.20: Infant mortality rates per 1,000 live births across 178 countries in 2015
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1751,15 +1916,19 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Mean infant mortality"</span>) <span class="sc">+</span></span>
 <span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of samples"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-infant-mortality-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for various sample sizes</figcaption>
+<div id="fig-infant-mortality-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-infant-mortality-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-sampling-distributions_files/figure-html/fig-infant-mortality-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-infant-mortality-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for various sample sizes
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-infant-mortality-2">Figure&nbsp;<span>9.21</span></a> shows that for samples of size <span class="math inline">\(n = 5\)</span>, the sampling distribution is still skewed slightly right. However, with even a moderate sample size of <span class="math inline">\(n = 30\)</span>, the Central Limit Theorem kicks in, and we see that the sampling distribution of the mean (<span class="math inline">\(\bar{x}\)</span>) is normal, even though the underlying data was skewed. We again see that the standard error of the estimate decreases as the sample size increases.</p>
+<p><a href="#fig-infant-mortality-2" class="quarto-xref">Figure&nbsp;<span>9.21</span></a> shows that for samples of size <span class="math inline">\(n = 5\)</span>, the sampling distribution is still skewed slightly right. However, with even a moderate sample size of <span class="math inline">\(n = 30\)</span>, the Central Limit Theorem kicks in, and we see that the sampling distribution of the mean (<span class="math inline">\(\bar{x}\)</span>) is normal, even though the underlying data was skewed. We again see that the standard error of the estimate decreases as the sample size increases.</p>
 <p>Overall, this simulation shows that not only might the precision of an estimate differ as a result of a larger sample size, but also the sampling distribution might be different for a smaller sample size (e.g., <span class="math inline">\(n = 5\)</span>) than for a larger sample size (e.g., <span class="math inline">\(n=100\)</span>).</p>
 </section>
 </section>
@@ -1779,7 +1948,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <section id="sec-ex09-conceptual" class="level3" data-number="9.8.1">
 <h3 data-number="9.8.1" class="anchored" data-anchor-id="sec-ex09-conceptual"><span class="header-section-number">9.8.1</span> Conceptual</h3>
 <div id="exr-ch09-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.1 </strong></span>Which of the following properties do the Normal distribution and the T distribution share? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 9.1</strong></span> Which of the following properties do the Normal distribution and the T distribution share? Select all that apply.</p>
 <ol type="a">
 <li>depends on degrees of freedom</li>
 <li>unimodal</li>
@@ -1792,14 +1961,14 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.2 </strong></span>Standardization is a useful statistical tool as it allows us to put measures that are on the same scale onto different scales.</p>
+<p><span class="theorem-title"><strong>Exercise 9.2</strong></span> Standardization is a useful statistical tool as it allows us to put measures that are on the same scale onto different scales.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch09-03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.3 </strong></span>The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women that are shorter than 60 inches?</p>
+<p><span class="theorem-title"><strong>Exercise 9.3</strong></span> The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women that are shorter than 60 inches?</p>
 <ol type="a">
 <li><code>qnorm(p = 60, mean = 64, sd = 3)</code></li>
 <li><code>pnorm(q = 60, mu = 64, sigma = 3)</code></li>
@@ -1809,7 +1978,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.4 </strong></span>The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women between 60 and 72 inches? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 9.4</strong></span> The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women between 60 and 72 inches? Select all that apply.</p>
 <ol type="a">
 <li><code>pnorm(q = -1.33) - pnorm(q = 2.67)</code></li>
 <li><code>pnorm(q = 72, mean = 64, sd = 3) - pnorm(q = 60, mean = 64, sd = 3)</code></li>
@@ -1819,7 +1988,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.5 </strong></span>Suppose we want to compare apples to oranges. Specifically, let’s compare their weights. Apples are known to follow a normal distribution with a mean weight of 100 grams and standard deviation of 15 grams. Oranges are known to follow a normal distribution with a mean weight of 140 grams and standard deviation of 25 grams.</p>
+<p><span class="theorem-title"><strong>Exercise 9.5</strong></span> Suppose we want to compare apples to oranges. Specifically, let’s compare their weights. Apples are known to follow a normal distribution with a mean weight of 100 grams and standard deviation of 15 grams. Oranges are known to follow a normal distribution with a mean weight of 140 grams and standard deviation of 25 grams.</p>
 <p>You have an apple that weighs 110 grams and your sister has an orange that weighs 160 grams. She claims her orange is bigger than your apple. But you state that is not a fair comparison because you think your apple is big compared to other apples. Who’s fruit is bigger when measured on a standardized scale?</p>
 <ol type="a">
 <li>apple</li>
@@ -1827,14 +1996,14 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.6 </strong></span>When <code>n</code> is at least 50, the sampling distribution of the sample proportion follows a Normal distribution, and so it is both symmetric and unimodal.</p>
+<p><span class="theorem-title"><strong>Exercise 9.6</strong></span> When <code>n</code> is at least 50, the sampling distribution of the sample proportion follows a Normal distribution, and so it is both symmetric and unimodal.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch09-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.7 </strong></span>Which of the following statements regarding sample statistics are true? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 9.7</strong></span> Which of the following statements regarding sample statistics are true? Select all that apply.</p>
 <ol type="a">
 <li>All sample statistics are biased estimators of the population parameter</li>
 <li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the T distribution</li>
@@ -1846,21 +2015,21 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.8 </strong></span>The distribution of the population will always have a larger spread than the distribution of a sampling distribution.</p>
+<p><span class="theorem-title"><strong>Exercise 9.8</strong></span> The distribution of the population will always have a larger spread than the distribution of a sampling distribution.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch09-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.9 </strong></span>As sample size (n) increases the spread of the distribution also increases.</p>
+<p><span class="theorem-title"><strong>Exercise 9.9</strong></span> As sample size (n) increases the spread of the distribution also increases.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch09-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.10 </strong></span>Which of the following describes the estimator <span class="math inline">\(\bar(x)\)</span>?</p>
+<p><span class="theorem-title"><strong>Exercise 9.10</strong></span> Which of the following describes the estimator <span class="math inline">\(\bar(x)\)</span>?</p>
 <ol type="a">
 <li>biased and imprecise</li>
 <li>biased and precise</li>
@@ -1869,14 +2038,14 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-c11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.11 </strong></span>Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter <span class="math inline">\(\\pi\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 9.11</strong></span> Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter <span class="math inline">\(\\pi\)</span>.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch09-c12" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.12 </strong></span>Every statistic has a sampling distribution. What is the sampling distribution of a…</p>
+<p><span class="theorem-title"><strong>Exercise 9.12</strong></span> Every statistic has a sampling distribution. What is the sampling distribution of a…</p>
 <ul>
 <li>sample mean?</li>
 <li>sample proportion?</li>
@@ -1887,7 +2056,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <section id="sec-ex09-application" class="level3" data-number="9.8.2">
 <h3 data-number="9.8.2" class="anchored" data-anchor-id="sec-ex09-application"><span class="header-section-number">9.8.2</span> Application</h3>
 <div id="exr-ch09-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.13 </strong></span>It is found that the average male adult shoe size is normally distributed with a mean of size 10.5 and standard deviation of 1.5.</p>
+<p><span class="theorem-title"><strong>Exercise 9.13</strong></span> It is found that the average male adult shoe size is normally distributed with a mean of size 10.5 and standard deviation of 1.5.</p>
 <ol type="a">
 <li>Using the empirical rule, approximately what percent of men have a shoe size between 6 and 15?</li>
 <li>What percent of men have a shoe size larger than 13?</li>
@@ -1896,7 +2065,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 </ol>
 </div>
 <div id="exr-ch09-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.14 </strong></span>You are a chef at a steakhouse restaurant that serves 6oz filets. When preparing filets there is some variability in the actual weight of each filet served. You prepare 18 filets and measure their average weight to be 6.02oz with a standard deviation of 0.03oz. The distribution appears to be bell shaped.</p>
+<p><span class="theorem-title"><strong>Exercise 9.14</strong></span> You are a chef at a steakhouse restaurant that serves 6oz filets. When preparing filets there is some variability in the actual weight of each filet served. You prepare 18 filets and measure their average weight to be 6.02oz with a standard deviation of 0.03oz. The distribution appears to be bell shaped.</p>
 <ol type="a">
 <li>What percent of filets are prepared under the advertised weight of 6oz?</li>
 <li>A filet is considered large if it is in the top 10%. What is the weight of a large filet?</li>
@@ -1907,7 +2076,7 @@ with the ggplot2 histogram so that `boundary` isn't needed. -->
 <section id="sec-ex09-advanced" class="level3" data-number="9.8.3">
 <h3 data-number="9.8.3" class="anchored" data-anchor-id="sec-ex09-advanced"><span class="header-section-number">9.8.3</span> Advanced</h3>
 <div id="exr-ch09-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.15 </strong></span>You work for a weather company and are tasked with determining the proportion of days that are <code>sunny</code> in a town with a mixed variety of weather conditions. You are provided with a data frame (<code>weather</code>) containing weather descriptors (<code>daily_weather</code>) for each day for the last six years.</p>
+<p><span class="theorem-title"><strong>Exercise 9.15</strong></span> You work for a weather company and are tasked with determining the proportion of days that are <code>sunny</code> in a town with a mixed variety of weather conditions. You are provided with a data frame (<code>weather</code>) containing weather descriptors (<code>daily_weather</code>) for each day for the last six years.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">daily_weather =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"sunny"</span>,<span class="dv">476</span>), </span>
@@ -2012,10 +2181,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2025,8 +2193,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2039,6 +2216,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2082,6 +2378,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2107,6 +2404,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2168,12 +2491,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./08-populations.html" class="pagination-link">
+      <a href="./08-populations.html" class="pagination-link" aria-label="Populations and Generalizability">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Populations and Generalizability</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-confidence-intervals.html" class="pagination-link">
+      <a href="./10-confidence-intervals.html" class="pagination-link" aria-label="Confidence Intervals">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2182,4 +2505,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/09-sampling-distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -107,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./12-hypothesis-tests.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./12-hypothesis-tests.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -130,8 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -218,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -385,12 +419,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-ex12-advanced" id="toc-sec-ex12-advanced" class="nav-link" data-scroll-target="#sec-ex12-advanced"><span class="header-section-number">12.8.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/12-hypothesis-tests.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/12-hypothesis-tests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-confidence-intervals.html">Statistical Inference</a></li><li class="breadcrumb-item"><a href="./12-hypothesis-tests.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-hypothesis-tests" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis tests</span></span></h1>
 </div>
@@ -405,12 +439,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<p>In <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a>, we introduced the p-value, which provides analysts with a probability (between 0 and 1) that the observed data would be found if the null hypothesis were true. Readers familiar with the use of statistics may have noticed, however, that <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a> did not refer to any criteria (e.g., p &lt; .05) or use the phrase “statistically significant”. This is because the concept of a p-value is distinct from the use of a p-value to make a decision. In this chapter, we introduce hypothesis testing, which can be used for just this purpose.</p>
+
+<p>In <a href="11-p-values.html" class="quarto-xref"><span>Chapter 11</span></a>, we introduced the p-value, which provides analysts with a probability (between 0 and 1) that the observed data would be found if the null hypothesis were true. Readers familiar with the use of statistics may have noticed, however, that <a href="11-p-values.html" class="quarto-xref"><span>Chapter 11</span></a> did not refer to any criteria (e.g., p &lt; .05) or use the phrase “statistically significant”. This is because the concept of a p-value is distinct from the use of a p-value to make a decision. In this chapter, we introduce hypothesis testing, which can be used for just this purpose.</p>
 <section id="packages-needed" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h3>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
@@ -427,10 +463,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="12.2" class="anchored" data-anchor-id="sec-trade-offs"><span class="header-section-number">12.2</span> Decision making trade-offs</h2>
 <p>Imagine that you’ve been invited to a party, and you are trying to decide if you should go. On the one hand, the party might be a good time, and you’d be happy that you went. On the other hand, it might not be that much fun and you’d be unhappy that you went. In advance, you don’t know which kind of party it will be. How do you decide? We can formalize this decision making in terms of a 2x2 table crossing your decision (left) with information about the party (top):</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-party-table" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-party-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.1: Party decision making
+</figcaption>
+<div aria-describedby="tbl-party-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-party-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;12.1: Party decision making</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Party decision making</caption>
 <colgroup>
 <col style="width: 22%">
 <col style="width: 38%">
@@ -458,6 +499,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>As you can see from this table, there are 4 possible combinations. If you decide to go to the party and it is in fact fun, you’re happy. If you decide to stay home and you hear from your friends that it was terrible, you’re happy. But in the other two cases you are <em>not happy</em>:</p>
 <ul>
@@ -477,10 +520,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="sec-medicine"><span class="header-section-number">12.2.1</span> Medicine</h3>
 <p>Imagine that you might be pregnant and take a pregnancy test. This test is based upon levels of HcG in your urine, and when these levels are “high enough” (determined by the pregnancy test maker), the test will tell you that you are pregnant (+). If the levels are not “high enough”, the test will tell you that you are not pregnant (-). Depending upon how the test determines “high enough” levels of HcG, however, the test might be wrong. To see how, examine the following table.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-medicine-table" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-medicine-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.2: Pregnancy test decision making
+</figcaption>
+<div aria-describedby="tbl-medicine-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-medicine-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;12.2: Pregnancy test decision making</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Pregnancy test decision making</caption>
 <colgroup>
 <col style="width: 15%">
 <col style="width: 42%">
@@ -508,6 +556,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>As the table notes, in two of the cases, the test correctly determines that you are either pregnant or not pregnant. But there are also two cases in which the test (a decision) is incorrect:</p>
 <ul>
@@ -521,10 +571,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="sec-law"><span class="header-section-number">12.2.2</span> Law</h3>
 <p>Imagine that you are on the jury of a criminal trial. You are presented with evidence that a crime has been committed and must make a decision regarding the guilt of the defendant. But you were not there when the crime was committed, so it is impossible to know with 100% accuracy that your decision is correct. Instead, you again encounter this 2x2 table:</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-law-table" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-law-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.3: Criminal trial decision making
+</figcaption>
+<div aria-describedby="tbl-law-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-law-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;12.3: Criminal trial decision making</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Criminal trial decision making</caption>
 <colgroup>
 <col style="width: 26%">
 <col style="width: 39%">
@@ -552,6 +607,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>As the table notes, in two of the cases, the jury correctly determines that the defendant is either guilty or not. But there are also two cases in which the jury’s decision is incorrect:</p>
 <ul>
@@ -570,10 +627,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The same sort of decision making problems face statistics as well: based on some p-value criterion, we could either reject the null hypothesis or not. And either the null hypothesis is true, or it is not – in which case some <em>alternative</em> hypothesis must be true.</p>
 <p>This is the first time we have mentioned an <strong>alternative hypothesis</strong>. This hypothesis is what we are seeking evidence to prove when we are conducting what is called a <strong>hypothesis test</strong>:</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-ht-table" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ht-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.4: Hypothesis test decision making
+</figcaption>
+<div aria-describedby="tbl-ht-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-ht-table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;12.4: Hypothesis test decision making</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Hypothesis test decision making</caption>
 <colgroup>
 <col style="width: 40%">
 <col style="width: 30%">
@@ -601,12 +663,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>There is a lot of new information here to define:</p>
 <ul>
 <li>We <strong>reject</strong> the null hypothesis if the p-value is smaller than some threshold (i.e., p &lt; threshold).</li>
 <li>We <strong>do not reject</strong> the null hypothesis if the p-value is larger than this threshold (i.e., p &gt; threshold).</li>
-<li>The <strong>null model</strong> is as we’ve defined it in <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a>. In most cases it is that there is no effect, no difference, or no relationship. (Other null hypotheses are possible, these are just the most common.)</li>
+<li>The <strong>null model</strong> is as we’ve defined it in <a href="11-p-values.html" class="quarto-xref"><span>Chapter 11</span></a>. In most cases it is that there is no effect, no difference, or no relationship. (Other null hypotheses are possible, these are just the most common.)</li>
 <li>The <strong>alternative model</strong> is a model we are seeking evidence to prove is correct. For example, the alternative model may be that there is an average non-zero difference between men and women’s SAT scores. Or that there is a correlation between income and education. Specifying an alternative can be tricky – usually this is based both on substantive knowledge and findings from prior studies.</li>
 </ul>
 <p>Just as in the other decision-making context, there are two cases in which these decisions are correct, and two cases in which they are not:</p>
@@ -678,21 +742,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The variable <code>id</code> acts as an identification variable for all 48 rows, the <code>decision</code> variable indicates whether the candidate was selected for promotion or not, while the <code>gender</code> variable indicates the gender of the candidate indicated on the personnel file. Recall that this data does not pertain to 24 actual men and 24 actual women, but rather 48 identical personnel files of which 24 were indicated to be male candidates and 24 were indicated to be female candidates.</p>
-<p>Let’s perform an exploratory data analysis of the relationship between the two categorical variables <code>decision</code> and <code>gender</code>. Recall that we saw in <a href="02-visualization.html#sec-two-categ-barplot"><span>Section&nbsp;2.8.3</span></a> that one way we can visualize such a relationship is using a stacked barplot.</p>
+<p>Let’s perform an exploratory data analysis of the relationship between the two categorical variables <code>decision</code> and <code>gender</code>. Recall that we saw in <a href="02-visualization.html#sec-two-categ-barplot" class="quarto-xref"><span>Section 2.8.3</span></a> that one way we can visualize such a relationship is using a stacked barplot.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions, <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> decision)) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender on personnel file"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-promotions-barplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="12-hypothesis-tests_files/figure-html/fig-promotions-barplot-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;12.1: Barplot of relationship between gender and promotion decision.</figcaption>
+<div id="fig-promotions-barplot" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-promotions-barplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="12-hypothesis-tests_files/figure-html/fig-promotions-barplot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-promotions-barplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.1: Barplot of relationship between gender and promotion decision.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Observe in <a href="#fig-promotions-barplot">Figure&nbsp;<span>12.1</span></a> that it appears that female personnel files were much less likely to be accepted for promotion (even though they were identical to the male personnel files). Let’s quantify these promotion rates by computing the proportion of personnel files accepted for promotion for each group using the <code>dplyr</code> package for data wrangling:</p>
+<p>Observe in <a href="#fig-promotions-barplot" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> that it appears that female personnel files were much less likely to be accepted for promotion (even though they were identical to the male personnel files). Let’s quantify these promotion rates by computing the proportion of personnel files accepted for promotion for each group using the <code>dplyr</code> package for data wrangling:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>promotion_props <span class="ot">&lt;-</span> promotions <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
@@ -713,7 +781,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[H_0: \pi_m = \pi_f\]</span> <span class="math display">\[H_A: \pi_m \neq \pi_f,\]</span></p>
 <p>where <span class="math inline">\(\pi_f\)</span> is the proportion of female files selected for promotion and <span class="math inline">\(\pi_m\)</span> is the proportion of male files selected for promotion. Here the null hypothesis corresponds to the scenario in which there is <em>no gender discrimination</em>; that is, males and females are promoted at identical rates. We will specify this test ahead of time to have <span class="math inline">\(\alpha = 0.05\)</span>. That is, we are comfortable with a 5% Type I error rate, and we will reject the null hypothesis if <span class="math inline">\(p &lt; 0.05\)</span>.</p>
 <p>Note the null hypothesis can be rewritten as <span class="math display">\[H_0: \pi_m - \pi_f = 0\]</span> by subtracting <span class="math inline">\(\pi_f\)</span> from both sides. Therefore, the population parameter we are interested in estimating is <span class="math inline">\(\pi_m - \pi_f\)</span>.</p>
-<p>Recall from <a href="11-p-values.html"><span>Chapter&nbsp;11</span></a> that we calculate the standardized statistic under the null hypothesis by subtracting the null value from the estimate and dividing by the standard error. Within the context of hypothesis tests, where we are actually <em>testing</em> the null hypothesis to make a decision (rather than simply computing a p-value), we usually refer to the t-statistic as a <em>test-statistic</em>.</p>
+<p>Recall from <a href="11-p-values.html" class="quarto-xref"><span>Chapter 11</span></a> that we calculate the standardized statistic under the null hypothesis by subtracting the null value from the estimate and dividing by the standard error. Within the context of hypothesis tests, where we are actually <em>testing</em> the null hypothesis to make a decision (rather than simply computing a p-value), we usually refer to the t-statistic as a <em>test-statistic</em>.</p>
 <p><span class="math display">\[test\_stat = \frac{Estimate - Null \ \ value}{SE(Estimate)}\]</span></p>
 <p>In this example, we have <span class="math display">\[test\_stat = \frac{(\hat{\pi}_m - \hat{\pi}_f) - 0}{\sqrt{\frac{\pi_m(1-\pi_m)}{n_m} + \frac{\pi_f(1-\pi_f)}{n_f}}}\]</span> Because our null hypothesis states <span class="math inline">\(\pi_m - \pi_f = 0\)</span>, we plug in 0 for our null value. In the hypothesis test context, because we are assuming <span class="math inline">\(\pi_m = \pi_f\)</span>, we can use all of the data to compute one <em>pooled</em> proportion to plug in for <span class="math inline">\(\pi_m\)</span> and <span class="math inline">\(\pi_f\)</span> in the standard error formula instead of using separate estimates <span class="math inline">\(\hat{\pi}_m\)</span> and <span class="math inline">\(\hat{\pi}_f\)</span>. This pooled estimate, which we will denote <span class="math inline">\(\hat{\pi}_0\)</span> can be calculated by <span class="math display">\[\hat{\pi}_0 = \frac{\# \ of \ successes_1 + \# of successes_2}{n_1 + n_2}.\]</span> Therefore, the test statistic is computed by <span class="math display">\[test\_stat = \frac{(\hat{\pi}_m - \hat{\pi}_f) - (\pi_m - \pi_f)}{\sqrt{\frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_m} + \frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_f}}}=\frac{(\hat{\pi}_m - \hat{\pi}_f) - 0}{\sqrt{\frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_m} + \frac{\hat{\pi}_0(1-\hat{\pi}_0)}{n_f}}}\]</span></p>
 <p>Think about this intuition for a second: since we are working under the hypothesis that the two parameters <span class="math inline">\(\pi_m\)</span> and <span class="math inline">\(\pi_f\)</span> are equal, it is more efficient to use <em>all</em> of the information to estimate <em>one</em> parameter than to use half of the data to estimate <span class="math inline">\(\pi_m\)</span> and the other half of the data to estimate <span class="math inline">\(\pi_f\)</span>.</p>
@@ -739,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1      2.27</code></pre>
 </div>
 </div>
-<p>Our test statistic is equal to 2.27, which we can now use to compute our p-value. Recall from <a href="10-confidence-intervals.html#tbl-samp-dist-table-ch-10">Table&nbsp;<span>10.1</span></a> that the standardized statistic for a difference in proportions follows a N(0,1) distribution, so we can use <code>pnorm()</code> to compute the p-value.</p>
+<p>Our test statistic is equal to 2.27, which we can now use to compute our p-value. Recall from <a href="10-confidence-intervals.html#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a> that the standardized statistic for a difference in proportions follows a N(0,1) distribution, so we can use <code>pnorm()</code> to compute the p-value.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="fl">2.27</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -749,15 +817,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-promotions-p-value" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="12-hypothesis-tests_files/figure-html/fig-promotions-p-value-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;12.2: P-value for Promotions Hypothesis Test</figcaption>
+<div id="fig-promotions-p-value" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-promotions-p-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="12-hypothesis-tests_files/figure-html/fig-promotions-p-value-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-promotions-p-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.2: P-value for Promotions Hypothesis Test
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Note that we set <code>lower.tail = FALSE</code> so that it gives us the probability in the upper tail of the distribution to the right of our observed test-statistic, and we multiply by 2 because we are conducting a two-sided hypothesis test (and the N(0,1) distribution is symmetric). The p-value = 0.02 is represented by the shaded region in <a href="#fig-promotions-p-value">Figure&nbsp;<span>12.2</span></a>.</p>
+<p>Note that we set <code>lower.tail = FALSE</code> so that it gives us the probability in the upper tail of the distribution to the right of our observed test-statistic, and we multiply by 2 because we are conducting a two-sided hypothesis test (and the N(0,1) distribution is symmetric). The p-value = 0.02 is represented by the shaded region in <a href="#fig-promotions-p-value" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>.</p>
 <p>We could also find the p-value using the function called <code>prop.test()</code>, similar to <code>t.test()</code>, which will perform all of the above calculations for us when dealing with proportions. <code>prop.test()</code> needs you to specify <code>x</code>, a vector (or column) of data containing the number of successes (in this case promotions) for each group, and <code>n</code>, a vector (or column) of data containing the total number of trials per group. Recall that we computed this information in <code>promotion_props</code>. There is a something called the Yates’ continuity correction that is applied by default to tests of proportions in <code>prop.test()</code>, but because we did not use this correction when conducting the test “by hand”, we will override this default by setting <code>correct = FALSE</code> for now. Let’s see <code>prop.test()</code> in action on our promotions data.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>promotion_test <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x =</span> promotion_props<span class="sc">$</span>num_promoted, </span>
@@ -789,11 +861,11 @@ prop 1 prop 2
 </section>
 <section id="movies-example-revisited" class="level3" data-number="12.4.2">
 <h3 data-number="12.4.2" class="anchored" data-anchor-id="movies-example-revisited"><span class="header-section-number">12.4.2</span> Movies example revisited</h3>
-<p>Let’s return to our movies example from <a href="11-p-values.html#sec-imdb"><span>Section&nbsp;11.3.1</span></a>, and this time set up a formal hypothesis test. Recall that we were interested in the question of whether or not average IMDB ratings differed for <code>action</code> movies (<span class="math inline">\(\mu_1\)</span>) vs.&nbsp;<code>romance</code> movies (<span class="math inline">\(\mu_2\)</span>). We can set up our hypotheses as follows:</p>
+<p>Let’s return to our movies example from <a href="11-p-values.html#sec-imdb" class="quarto-xref"><span>Section 11.3.1</span></a>, and this time set up a formal hypothesis test. Recall that we were interested in the question of whether or not average IMDB ratings differed for <code>action</code> movies (<span class="math inline">\(\mu_1\)</span>) vs.&nbsp;<code>romance</code> movies (<span class="math inline">\(\mu_2\)</span>). We can set up our hypotheses as follows:</p>
 <p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span> <span class="math display">\[H_A: \mu_1 \neq \mu_2\]</span></p>
 <p>Note that we can re-write these as</p>
 <p><span class="math display">\[H_0: \mu_1 - \mu_2 = 0\]</span> <span class="math display">\[H_A: \mu_1 - \mu_2 \neq 0,\]</span> so that it’s clear our parameter of interest is a difference in two means. We will test this hypothesis at the 95% confidence level (i.e.&nbsp;with <span class="math inline">\(\alpha = 0.05\)</span>).</p>
-<p>Recall that we already computed all the relevant values in <a href="11-p-values.html#sec-t-test"><span>Section&nbsp;11.3.3</span></a> using <code>t.test</code>, but we show the code again here.</p>
+<p>Recall that we already computed all the relevant values in <a href="11-p-values.html#sec-t-test" class="quarto-xref"><span>Section 11.3.3</span></a> using <code>t.test</code>, but we show the code again here.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>romance <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Romance"</span>)</span>
@@ -818,7 +890,7 @@ mean of x mean of y
 </div>
 </div>
 <p>Because we obtain a p-value of <span class="math inline">\(0.005 &lt; \alpha = 0.05\)</span>, we <em>reject the null hypothesis</em> and conclude there is sufficient evidence that action and romance movies do not recieve the same average ratings in the IMDB population database.</p>
-<p>We could also conduct a hypothesis test for this same problem in the regression framework we demonstrated in <a href="11-p-values.html#sec-pvalues-regression"><span>Section&nbsp;11.3.4</span></a>. Recall we fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> and said <span class="math inline">\(b_1\)</span> could be interpreted as the difference in means. Recall that the slope <span class="math inline">\(b_1\)</span> in our sample is an estimate of the <em>population slope</em> <span class="math inline">\(\beta_1\)</span>. Note that assuming there is no difference in means implies <span class="math inline">\(\beta_1 = 0\)</span>. Therefore in this framework, our hypotheses would be:</p>
+<p>We could also conduct a hypothesis test for this same problem in the regression framework we demonstrated in <a href="11-p-values.html#sec-pvalues-regression" class="quarto-xref"><span>Section 11.3.4</span></a>. Recall we fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> and said <span class="math inline">\(b_1\)</span> could be interpreted as the difference in means. Recall that the slope <span class="math inline">\(b_1\)</span> in our sample is an estimate of the <em>population slope</em> <span class="math inline">\(\beta_1\)</span>. Note that assuming there is no difference in means implies <span class="math inline">\(\beta_1 = 0\)</span>. Therefore in this framework, our hypotheses would be:</p>
 <p><span class="math display">\[H_0: \beta_1 = 0\]</span> <span class="math display">\[H_A: \beta_1 \neq 0\]</span> Let’s look again at the results of this model.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
@@ -848,7 +920,7 @@ F-statistic: 8.28 on 1 and 66 DF,  p-value: 0.0054</code></pre>
 </section>
 <section id="sec-ride-two-tail" class="level3" data-number="12.4.3">
 <h3 data-number="12.4.3" class="anchored" data-anchor-id="sec-ride-two-tail"><span class="header-section-number">12.4.3</span> Ride share example revisited</h3>
-<p>Let’s return to our ride share price example from <a href="11-p-values.html#sec-ride-share"><span>Section&nbsp;11.4</span></a>. Recall that we wanted to know whether <span class="math inline">\(\mu_B = \$19.50\)</span>. We could test this with the following hypotheses, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance:</p>
+<p>Let’s return to our ride share price example from <a href="11-p-values.html#sec-ride-share" class="quarto-xref"><span>Section 11.4</span></a>. Recall that we wanted to know whether <span class="math inline">\(\mu_B = \$19.50\)</span>. We could test this with the following hypotheses, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance:</p>
 <p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span></p>
 <div class="cell" data-layout-align="center" data-warnings="false">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&amp;single=true&amp;output=csv"</span>)</span>
@@ -894,11 +966,11 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </section>
 <section id="one-tailed-hypothesis-tests" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="one-tailed-hypothesis-tests"><span class="header-section-number">12.5</span> One-tailed hypothesis tests</h2>
-<p>All the examples in <a href="#sec-two-tailed"><span>Section&nbsp;12.4</span></a> were what are call two-tailed hypothesis tests. This means that the rejection region is split into both the upper and lower tail. A two-tailed test is used when the hypothesis claim includes equality. Then we are concerned with the chance of being either above or below the claim.</p>
+<p>All the examples in <a href="#sec-two-tailed" class="quarto-xref"><span>Section 12.4</span></a> were what are call two-tailed hypothesis tests. This means that the rejection region is split into both the upper and lower tail. A two-tailed test is used when the hypothesis claim includes equality. Then we are concerned with the chance of being either above or below the claim.</p>
 <p>But what if our hypothesis is that the test statistic is less than a claimed value or greater than a claimed value? In that case we are only concerned with one direction and it is more appropriate to use a one-tailed hypothesis test.</p>
 <section id="ride-share-example-revisited-again" class="level3" data-number="12.5.1">
 <h3 data-number="12.5.1" class="anchored" data-anchor-id="ride-share-example-revisited-again"><span class="header-section-number">12.5.1</span> Ride share example revisited again</h3>
-<p>Consider the ride share example from <a href="11-p-values.html#sec-ride-share">Sections&nbsp;<span>11.4</span></a> and <a href="#sec-ride-two-tail"><span>12.4.3</span></a>. We want to test the claim if the average price of rides at company B is equal to $19.50. To test this claim we obtain a random sample of 100 rides and compare the sample mean. Our claim again is <span class="math inline">\(\mu_B = 19.50\)</span>, meaning we are concerned if their price is different in either direction. Recall, we write our hypothesis test as:</p>
+<p>Consider the ride share example from <a href="11-p-values.html#sec-ride-share" class="quarto-xref">Sections&nbsp;<span>11.4</span></a> and <a href="#sec-ride-two-tail" class="quarto-xref"><span>12.4.3</span></a>. We want to test the claim if the average price of rides at company B is equal to $19.50. To test this claim we obtain a random sample of 100 rides and compare the sample mean. Our claim again is <span class="math inline">\(\mu_B = 19.50\)</span>, meaning we are concerned if their price is different in either direction. Recall, we write our hypothesis test as:</p>
 <p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span> What if instead, we want to test the claim that the average price of rides at company B is <strong>greater than</strong> <span class="math inline">\(\$19.50\)</span>? In mathematical notation this claim is <span class="math inline">\(\mu_B &gt; 19.50\)</span>. We formulate the hypothesis as follows:</p>
 <p><span class="math display">\[H_0: \mu_B \leq 19.50\]</span> <span class="math display">\[H_A: \mu_B &gt; 19.50\]</span> It’s important to note that the null hypothesis always contains equality! Now our rejection region is strictly in the upper tail of the distribution. Let’s test this claim, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance.</p>
 <div class="cell" data-layout-align="center" data-warnings="false">
@@ -913,13 +985,17 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 <pre><code>[1] 0.0648</code></pre>
 </div>
 </div>
-<p>The test-statistic is 1.529, the same test statistic from our two-tailed test in <a href="#sec-ride-two-tail"><span>Section&nbsp;12.4.3</span></a>. This means the test-statistic for a one-tailed test compared to a two-tailed test will always be the same. What is different is our p-value of 0.065. The p-value for a one-tailed test is half the p-value of a two-tailed test. We still compare our <span class="math inline">\(p\_value\)</span> to our pre-defined <span class="math inline">\(\alpha\)</span>. Since our <span class="math inline">\(p\_value = 0.065 &gt; \alpha = 0.05\)</span>, we <em>do not reject</em> the null hypothesis. In this instance we came to the same conclusions, but that is not always the case.</p>
+<p>The test-statistic is 1.529, the same test statistic from our two-tailed test in <a href="#sec-ride-two-tail" class="quarto-xref"><span>Section 12.4.3</span></a>. This means the test-statistic for a one-tailed test compared to a two-tailed test will always be the same. What is different is our p-value of 0.065. The p-value for a one-tailed test is half the p-value of a two-tailed test. We still compare our <span class="math inline">\(p\_value\)</span> to our pre-defined <span class="math inline">\(\alpha\)</span>. Since our <span class="math inline">\(p\_value = 0.065 &gt; \alpha = 0.05\)</span>, we <em>do not reject</em> the null hypothesis. In this instance we came to the same conclusions, but that is not always the case.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-rideshare-p-value" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="12-hypothesis-tests_files/figure-html/fig-rideshare-p-value-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;12.3: P-value for Ride Share Hypothesis in Two-tail and One-tail Test</figcaption>
+<div id="fig-rideshare-p-value" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rideshare-p-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="12-hypothesis-tests_files/figure-html/fig-rideshare-p-value-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rideshare-p-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.3: P-value for Ride Share Hypothesis in Two-tail and One-tail Test
+</figcaption>
 </figure>
 </div>
 </div>
@@ -927,26 +1003,32 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </section>
 <section id="formulating-the-hypotheses-overview" class="level3" data-number="12.5.2">
 <h3 data-number="12.5.2" class="anchored" data-anchor-id="formulating-the-hypotheses-overview"><span class="header-section-number">12.5.2</span> Formulating the Hypotheses Overview</h3>
-<p>When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. <a href="#tbl-tail-ch-12">Table&nbsp;<span>12.5</span></a> provides an overview of the three possible scenarios.</p>
+<p>When formulating the hypothesis you first want to state the claim in mathematical notation. If the claim contains equality, it belongs in the null hypothesis and if it does not it belongs in the alternative hypothesis. Next decide if the claim is a two-tailed, right-tailed, or left-tailed test. <a href="#tbl-tail-ch-12" class="quarto-xref">Table&nbsp;<span>12.5</span></a> provides an overview of the three possible scenarios.</p>
 <!-- |         |         Two-tailed         |         Right-tailed         |         Left-tailed         | -->
 <!-- |----------------|:------------------:|:------------------:|:------------------:| -->
 <!-- | $H_0$   |            $=$             |            $\leq$            |           $\geq$            | -->
 <!-- | $H_A$   |           $\neq$           |            $\gt$             |            $\lt$            | -->
 <!-- | p-value | ![](images/tail_two.png){width="90%"} | ![](images/tail_right.png){width="90%"} | ![](images/tail_left.png){width="90%"} | -->
-
 <!-- Saved above table as png because rendering issue with ch12_tails.rds -->
 <div class="cell" data-layout-align="center">
+<div id="tbl-tail-ch-12" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tail-ch-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.5: Formulating the Null and Alternative Hypothesis
+</figcaption>
+<div aria-describedby="tbl-tail-ch-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tail-ch-12" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;12.5: Formulating the Null and Alternative Hypothesis</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Formulating the Null and Alternative Hypothesis</caption>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><img src="images/ch12_tails.png" class="img-fluid"></td>
+<td style="text-align: left;"><img src="images/ch12_tails.png" class="img-fluid figure-img"></td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>Choosing a one-tailed test for the sole purpose of attaining significance is not appropriate. For example, if you formulate a two-tailed test at the <span class="math inline">\(\alpha = 0.05\)</span> significance level and obtain a p-value of 0.051 you fail to reject the null. You cannot then change the test to a one-tail test in order to obtain significance. This will lead to questionable and invalid results.</p>
@@ -992,14 +1074,14 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 <section id="sec-ex12-conceptual" class="level3" data-number="12.8.1">
 <h3 data-number="12.8.1" class="anchored" data-anchor-id="sec-ex12-conceptual"><span class="header-section-number">12.8.1</span> Conceptual</h3>
 <div id="exr-ch12-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.1 </strong></span>You reject the null hypothesis when the null hypothesis is true. What type of error did you make?</p>
+<p><span class="theorem-title"><strong>Exercise 12.1</strong></span> You reject the null hypothesis when the null hypothesis is true. What type of error did you make?</p>
 <ol type="a">
 <li>Type I Error</li>
 <li>Type II Error</li>
 </ol>
 </div>
 <div id="exr-ch12-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.2 </strong></span>Can you minimize both Type I and II errors at the same time?</p>
+<p><span class="theorem-title"><strong>Exercise 12.2</strong></span> Can you minimize both Type I and II errors at the same time?</p>
 <ol type="a">
 <li>Yes, Type I and Type II errors are independent</li>
 <li>Yes, Type I and Type II errors increase and decrease together</li>
@@ -1008,21 +1090,21 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </ol>
 </div>
 <div id="exr-ch12-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.3 </strong></span>Let’s say we choose an alpha level of <span class="math inline">\(\alpha = 0.01\)</span>. Then, when <span class="math inline">\(p &gt; 0.01\)</span> we accept the null hypothesis.</p>
+<p><span class="theorem-title"><strong>Exercise 12.3</strong></span> Let’s say we choose an alpha level of <span class="math inline">\(\alpha = 0.01\)</span>. Then, when <span class="math inline">\(p &gt; 0.01\)</span> we accept the null hypothesis.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch12-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.4 </strong></span>You must specify your <span class="math inline">\(\alpha\)</span> level before calculating your p-value to ensure the validity of your hypothesis test.</p>
+<p><span class="theorem-title"><strong>Exercise 12.4</strong></span> You must specify your <span class="math inline">\(\alpha\)</span> level before calculating your p-value to ensure the validity of your hypothesis test.</p>
 <ol type="a">
 <li>True</li>
 <li>False</li>
 </ol>
 </div>
 <div id="exr-ch12-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.5 </strong></span>Which of the following does the power of a hypothesis test depend upon? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 12.5</strong></span> Which of the following does the power of a hypothesis test depend upon? Select all that apply.</p>
 <ol type="a">
 <li><span class="math inline">\(\alpha\)</span></li>
 <li><span class="math inline">\(n\)</span></li>
@@ -1031,7 +1113,7 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </ol>
 </div>
 <div id="exr-ch12-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.6 </strong></span>If the alternative hypothesis is true, which type of error could you still make?</p>
+<p><span class="theorem-title"><strong>Exercise 12.6</strong></span> If the alternative hypothesis is true, which type of error could you still make?</p>
 <ol type="a">
 <li>Type I Error</li>
 <li>Type II Error</li>
@@ -1040,7 +1122,7 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </ol>
 </div>
 <div id="exr-ch12-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.7 </strong></span>Consider a two-tailed hypothesis test to determine if there is a difference between two proportions with a significance value in terms of the critical value of <span class="math inline">\(\pm 1.96\)</span>. Your computed test statistic is 1.99. What is your decision?</p>
+<p><span class="theorem-title"><strong>Exercise 12.7</strong></span> Consider a two-tailed hypothesis test to determine if there is a difference between two proportions with a significance value in terms of the critical value of <span class="math inline">\(\pm 1.96\)</span>. Your computed test statistic is 1.99. What is your decision?</p>
 <ol type="a">
 <li>Fail to reject the null, there is no difference between the proportions.</li>
 <li>Fail to reject the null, there is a difference between the proportions.</li>
@@ -1049,7 +1131,7 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </ol>
 </div>
 <div id="exr-ch12-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.8 </strong></span>In a two-tailed hypothesis test for a mean, what happens to the test statistic when we decrease the sample size from 200 to 50? Assuming no other alterations happen except size.</p>
+<p><span class="theorem-title"><strong>Exercise 12.8</strong></span> In a two-tailed hypothesis test for a mean, what happens to the test statistic when we decrease the sample size from 200 to 50? Assuming no other alterations happen except size.</p>
 <ol type="a">
 <li>becomes larger</li>
 <li>becomes smaller</li>
@@ -1058,7 +1140,7 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </ol>
 </div>
 <div id="exr-ch12-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.9 </strong></span>You construct a hypothesis test to determine if a plant is able to grow taller with a new fertilized soil treatment compared to untreated soil. You compute the average height of the plants after one month for the treatment plants and the average height of the plants after one month for the control (untreated) plants and compare their differences. Which of the following could be your null hypothesis?</p>
+<p><span class="theorem-title"><strong>Exercise 12.9</strong></span> You construct a hypothesis test to determine if a plant is able to grow taller with a new fertilized soil treatment compared to untreated soil. You compute the average height of the plants after one month for the treatment plants and the average height of the plants after one month for the control (untreated) plants and compare their differences. Which of the following could be your null hypothesis?</p>
 <ol type="a">
 <li><span class="math inline">\(\bar{x}_{treat} - \bar{x}_{control} = 0\)</span></li>
 <li><span class="math inline">\(\bar{x}_{treat} - \bar{x}_{control} &gt; 0\)</span></li>
@@ -1067,29 +1149,29 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </ol>
 </div>
 <div id="exr-ch12-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.10 </strong></span>Suppose a person is being tested for HIV. Specify the null and alternative hypotheses. After that describe the 4 possible scenarios and their consequences.</p>
+<p><span class="theorem-title"><strong>Exercise 12.10</strong></span> Suppose a person is being tested for HIV. Specify the null and alternative hypotheses. After that describe the 4 possible scenarios and their consequences.</p>
 </div>
 </section>
 <section id="sec-ex12-application" class="level3" data-number="12.8.2">
 <h3 data-number="12.8.2" class="anchored" data-anchor-id="sec-ex12-application"><span class="header-section-number">12.8.2</span> Application</h3>
 <p>For the following problems, state your hypothesis test and interpret your results in the context of the problem.</p>
 <div id="exr-ch12-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.11 </strong></span>Using the <code>nba</code> dataset, determine if the player’s teams scored more than 100 points per game on average. Evaluate at the <span class="math inline">\(\alpha = 0.02\)</span> significance level.</p>
+<p><span class="theorem-title"><strong>Exercise 12.11</strong></span> Using the <code>nba</code> dataset, determine if the player’s teams scored more than 100 points per game on average. Evaluate at the <span class="math inline">\(\alpha = 0.02\)</span> significance level.</p>
 </div>
 <div id="exr-ch12-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.12 </strong></span>A basketball superfan claims that Michael Jordan scored more points per game on average than LeBron James. Use the <code>nba</code> dataset to determine if this superfan is correct.</p>
+<p><span class="theorem-title"><strong>Exercise 12.12</strong></span> A basketball superfan claims that Michael Jordan scored more points per game on average than LeBron James. Use the <code>nba</code> dataset to determine if this superfan is correct.</p>
 </div>
 <div id="exr-ch12-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.13 </strong></span>Using the <code>nba</code> dataset, determine if Kobe Bryant won a majority of his games. Evaluate at the <span class="math inline">\(\alpha = 0.1\)</span> significance level.</p>
+<p><span class="theorem-title"><strong>Exercise 12.13</strong></span> Using the <code>nba</code> dataset, determine if Kobe Bryant won a majority of his games. Evaluate at the <span class="math inline">\(\alpha = 0.1\)</span> significance level.</p>
 </div>
 <div id="exr-ch12-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.14 </strong></span>Using the <code>titanic</code> dataset, determine if the 1st class ticket passengers or 3rd class ticket passengers had a higher survival rate.</p>
+<p><span class="theorem-title"><strong>Exercise 12.14</strong></span> Using the <code>titanic</code> dataset, determine if the 1st class ticket passengers or 3rd class ticket passengers had a higher survival rate.</p>
 </div>
 </section>
 <section id="sec-ex12-advanced" class="level3" data-number="12.8.3">
 <h3 data-number="12.8.3" class="anchored" data-anchor-id="sec-ex12-advanced"><span class="header-section-number">12.8.3</span> Advanced</h3>
 <div id="exr-ch12-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 12.15 </strong></span>Pick one player, is there a linear relationship between the player’s points scored and game score? If there is one, then what is the magnitude of the relationship?</p>
+<p><span class="theorem-title"><strong>Exercise 12.15</strong></span> Pick one player, is there a linear relationship between the player’s points scored and game score? If there is one, then what is the magnitude of the relationship?</p>
 <p>Evaluate using the following linear model: <span class="math display">\[ \widehat{gm_sc} = \beta_0 + \beta_1(pts)\]</span></p>
 </div>
 
@@ -1177,10 +1259,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1190,8 +1271,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1204,6 +1294,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1247,6 +1456,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1272,6 +1482,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1333,12 +1569,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./11-p-values.html" class="pagination-link">
+      <a href="./11-p-values.html" class="pagination-link" aria-label="P-values">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">P-values</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./13-putting-together.html" class="pagination-link">
+      <a href="./13-putting-together.html" class="pagination-link" aria-label="Putting it all together">
         <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Putting it all together</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1347,4 +1583,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/12-hypothesis-tests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

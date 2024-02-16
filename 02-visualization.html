@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,6 +116,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,33 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
@@ -126,12 +161,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./02-visualization.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./02-visualization.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -141,7 +176,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -149,8 +184,8 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/NUstat/intro-stat-data-sci" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -237,7 +272,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; “Tidy Data”</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Importing &amp; "Tidy Data"</span></span></a>
   </div>
 </li>
       </ul>
@@ -368,7 +403,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -428,12 +463,12 @@ div.csl-indent {
   <li><a href="#sec-ex02-advanced" id="toc-sec-ex02-advanced" class="nav-link" data-scroll-target="#sec-ex02-advanced"><span class="header-section-number">2.10.3</span> Advanced</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/02-visualization.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/02-visualization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-visualization.html">Data Exploration via the tidyverse</a></li><li class="breadcrumb-item"><a href="./02-visualization.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-viz" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></h1>
 </div>
@@ -448,14 +483,16 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>We begin the development of your data science toolbox with data visualization. By visualizing our data, we gain valuable insights that we couldn’t initially see from just looking at the raw data in spreadsheet form. We will use the <code>ggplot2</code> package as it provides an easy way to customize your plots. <code>ggplot2</code> is rooted in the data visualization theory known as <em>The Grammar of Graphics</em> <span class="citation" data-cites="wilkinson2005">(<a href="references.html#ref-wilkinson2005" role="doc-biblioref">Wilkinson 2005</a>)</span>.</p>
 <p>At the most basic level, graphics/plots/charts (we use these terms interchangeably in this book) provide a nice way for us to get a sense for how quantitative variables compare in terms of their center (where the values tend to be located) and their spread (how they vary around the center). Graphics should be designed to emphasize the findings and insight you want your audience to understand. This does however require a balancing act. On the one hand, you want to highlight as many meaningful relationships and interesting findings as possible; on the other you don’t want to include so many as to overwhelm your audience.</p>
 <p>As we will see, plots/graphics also help us to identify patterns and outliers in our data. We will see that a common extension of these ideas is to compare the <em>distribution</em> of one quantitative variable (i.e., what the spread of a variable looks like or how the variable is <em>distributed</em> in terms of its values) as we go across the levels of a different categorical variable.</p>
 <section id="packages-needed" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h2>
-<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). Read <a href="01-getting-started.html#sec-packages"><span>Section&nbsp;1.3</span></a> for information on how to install and load R packages.</p>
+<p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). Read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -481,12 +518,17 @@ div.csl-indent {
 </section>
 <section id="sec-gapminder" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-gapminder"><span class="header-section-number">2.1.2</span> Gapminder data</h3>
-<p>In February 2006, a statistician named Hans Rosling gave a TED talk titled <a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">“The best stats you’ve ever seen”</a> where he presented global economic, health, and development data from the website <a href="http://www.gapminder.org/tools/#_locale_id=en;&amp;chart-type=bubbles">gapminder.org</a>. For example, for the 142 countries included from 2007, let’s consider only the first 6 countries when listed alphabetically in <a href="#tbl-gapminder-2007">Table&nbsp;<span>2.1</span></a>.</p>
+<p>In February 2006, a statistician named Hans Rosling gave a TED talk titled <a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">“The best stats you’ve ever seen”</a> where he presented global economic, health, and development data from the website <a href="http://www.gapminder.org/tools/#_locale_id=en;&amp;chart-type=bubbles">gapminder.org</a>. For example, for the 142 countries included from 2007, let’s consider only the first 6 countries when listed alphabetically in <a href="#tbl-gapminder-2007" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-gapminder-2007" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gapminder-2007-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Gapminder 2007 Data: First 6 of 142 countries
+</figcaption>
+<div aria-describedby="tbl-gapminder-2007-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-gapminder-2007" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;2.1: Gapminder 2007 Data: First 6 of 142 countries</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Gapminder 2007 Data: First 6 of 142 countries</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Country</th>
@@ -543,6 +585,8 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Each row in this table corresponds to a country in 2007. For each row, we have 5 columns:</p>
 <ol type="1">
@@ -552,13 +596,17 @@ div.csl-indent {
 <li><strong>Population</strong>: Number of people living in the country.</li>
 <li><strong>GDP per Capita</strong>: Gross domestic product (in US dollars).</li>
 </ol>
-<p>Now consider <a href="#fig-gapminder">Figure&nbsp;<span>2.1</span></a>, which plots this data for all 142 countries in the data.</p>
+<p>Now consider <a href="#fig-gapminder" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, which plots this data for all 142 countries in the data.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-gapminder" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-gapminder-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: Life Expectancy over GDP per Capita in 2007</figcaption>
+<div id="fig-gapminder" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gapminder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-gapminder-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gapminder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Life Expectancy over GDP per Capita in 2007
+</figcaption>
 </figure>
 </div>
 </div>
@@ -571,12 +619,17 @@ div.csl-indent {
 <li>The <code>data</code> variable <strong>Continent</strong> gets mapped to the <code>color</code> <code>aes</code>thetic of the points.</li>
 </ol>
 <p>We’ll see shortly that <code>data</code> corresponds to the particular data frame where our data is saved and a “data variable” corresponds to a particular column in the data frame. Furthermore, the type of <code>geom</code>etric object considered in this plot are points. That being said, while in this example we are considering points, graphics are not limited to just points. Other plots involve lines while others involve bars.</p>
-<p>Let’s summarize the three essential components of the Grammar in <a href="#tbl-summary-gapminder">Table&nbsp;<span>2.2</span></a>.</p>
+<p>Let’s summarize the three essential components of the Grammar in <a href="#tbl-summary-gapminder" class="quarto-xref">Table&nbsp;<span>2.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-summary-gapminder" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summary-gapminder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: Summary of Grammar of Graphics for this plot
+</figcaption>
+<div aria-describedby="tbl-summary-gapminder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-summary-gapminder" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;2.2: Summary of Grammar of Graphics for this plot</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Summary of Grammar of Graphics for this plot</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">data variable</th>
@@ -609,14 +662,16 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 </section>
 <section id="other-components" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="other-components"><span class="header-section-number">2.1.3</span> Other components</h3>
 <p>There are other components of the Grammar of Graphics we can control as well. As you start to delve deeper into the Grammar of Graphics, you’ll start to encounter these topics more frequently. In this book however, we’ll keep things simple and only work with the two additional components listed below:</p>
 <ul>
-<li><code>facet</code>ing breaks up a plot into small multiples corresponding to the levels of another variable (<a href="#sec-facets"><span>Section&nbsp;2.6</span></a>)</li>
-<li><code>position</code> adjustments for barplots (<a href="#sec-geombar"><span>Section&nbsp;2.8</span></a>)</li>
+<li><code>facet</code>ing breaks up a plot into small multiples corresponding to the levels of another variable (<a href="#sec-facets" class="quarto-xref"><span>Section 2.6</span></a>)</li>
+<li><code>position</code> adjustments for barplots (<a href="#sec-geombar" class="quarto-xref"><span>Section 2.8</span></a>)</li>
 </ul>
 <p>Other more complex components like <code>scales</code> and <code>coord</code>inate systems are left for a more advanced text such as <a href="http://r4ds.had.co.nz/data-visualisation.html#aesthetic-mappings">R for Data Science</a> <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span>. Generally speaking, the Grammar of Graphics allows for a high degree of customization of plots and also a consistent framework for easily updating and modifying them.</p>
 </section>
@@ -627,7 +682,7 @@ div.csl-indent {
 <li>The data frame where the variables exist: the <code>data</code> argument.</li>
 <li>The mapping of the variables to aesthetic attributes: the <code>mapping</code> argument which specifies the <code>aes</code>thetic attributes involved.</li>
 </ul>
-<p>After we’ve specified these components, we then add <em>layers</em> to the plot using the <code>+</code> sign. The most essential layer to add to a plot is the layer that specifies which type of <code>geom</code>etric object we want the plot to involve: points, lines, bars, and others. Other layers we can add to a plot include layers specifying the plot title, axes labels, visual themes for the plots, and facets (which we’ll see in <a href="#sec-facets"><span>Section&nbsp;2.6</span></a>.</p>
+<p>After we’ve specified these components, we then add <em>layers</em> to the plot using the <code>+</code> sign. The most essential layer to add to a plot is the layer that specifies which type of <code>geom</code>etric object we want the plot to involve: points, lines, bars, and others. Other layers we can add to a plot include layers specifying the plot title, axes labels, visual themes for the plots, and facets (which we’ll see in <a href="#sec-facets" class="quarto-xref"><span>Section 2.6</span></a>.</p>
 <p>Let’s now put the theory of the Grammar of Graphics into practice.</p>
 </section>
 </section>
@@ -656,8 +711,8 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>alaska_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(carrier <span class="sc">==</span> <span class="st">"AS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For now we suggest you ignore how this code works; we’ll explain this in detail in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> when we cover data wrangling. However, convince yourself that this code does what it is supposed to by running <code>View(alaska_flights)</code>: it creates a new data frame <code>alaska_flights</code> consisting of only the 714 Alaska Airlines flights.</p>
-<p>We’ll see later in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> on data wrangling that this code uses the <code>dplyr</code> package for data wrangling to achieve our goal: it takes the <code>flights</code> data frame and <code>filter</code>s it to only return the rows where <code>carrier</code> is equal to <code>"AS"</code>, Alaska Airlines’ carrier code. Other examples of carrier codes include “AA” for American Airlines and “UA” for United Airlines. Recall from <a href="01-getting-started.html#sec-code"><span>Section&nbsp;1.2</span></a> that testing for equality is specified with <code>==</code> and not <code>=</code>. Fasten your seat belts and sit tight for now however, we’ll introduce these ideas more fully in <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a>.</p>
+<p>For now we suggest you ignore how this code works; we’ll explain this in detail in <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a> when we cover data wrangling. However, convince yourself that this code does what it is supposed to by running <code>View(alaska_flights)</code>: it creates a new data frame <code>alaska_flights</code> consisting of only the 714 Alaska Airlines flights.</p>
+<p>We’ll see later in <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a> on data wrangling that this code uses the <code>dplyr</code> package for data wrangling to achieve our goal: it takes the <code>flights</code> data frame and <code>filter</code>s it to only return the rows where <code>carrier</code> is equal to <code>"AS"</code>, Alaska Airlines’ carrier code. Other examples of carrier codes include “AA” for American Airlines and “UA” for United Airlines. Recall from <a href="01-getting-started.html#sec-code" class="quarto-xref"><span>Section 1.2</span></a> that testing for equality is specified with <code>==</code> and not <code>=</code>. Fasten your seat belts and sit tight for now however, we’ll introduce these ideas more fully in <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -676,7 +731,7 @@ div.csl-indent {
 </div>
 <section id="sec-geompoint" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="sec-geompoint"><span class="header-section-number">2.3.1</span> Scatterplots via geom_point</h3>
-<p>Let’s now go over the code that will create the desired scatterplot, keeping in mind our discussion on the Grammar of Graphics in <a href="#sec-grammarofgraphics"><span>Section&nbsp;2.1</span></a>. We’ll be using the <code>ggplot()</code> function included in the <code>ggplot2</code> package.</p>
+<p>Let’s now go over the code that will create the desired scatterplot, keeping in mind our discussion on the Grammar of Graphics in <a href="#sec-grammarofgraphics" class="quarto-xref"><span>Section 2.1</span></a>. We’ll be using the <code>ggplot()</code> function included in the <code>ggplot2</code> package.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> alaska_flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -694,34 +749,42 @@ div.csl-indent {
 </ol></li>
 <li>We add a layer to the <code>ggplot()</code> function call using the <code>+</code> sign. The layer in question specifies the third component of the grammar: the <code>geom</code>etric object. In this case the geometric object are points, set by specifying <code>geom_point()</code>.</li>
 </ul>
-<p>After running the above code, you’ll notice two outputs: a warning message and the graphic shown in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a>. Let’s first unpack the warning message:</p>
+<p>After running the above code, you’ll notice two outputs: a warning message and the graphic shown in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>. Let’s first unpack the warning message:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 5 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-noalpha" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-noalpha-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.2: Arrival Delays vs Departure Delays for Alaska Airlines flights from NYC in 2013</figcaption>
+<div id="fig-noalpha" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-noalpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-noalpha-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-noalpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Arrival Delays vs Departure Delays for Alaska Airlines flights from NYC in 2013
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>After running the above code, R returns a warning message alerting us to the fact that 5 rows were ignored due to them being missing. For 5 rows either the value for <code>dep_delay</code> or <code>arr_delay</code> or both were missing (recorded in R as <code>NA</code>), and thus these rows were ignored in our plot. Turning our attention to the resulting scatterplot in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a>, we see that a positive relationship exists between <code>dep_delay</code> and <code>arr_delay</code>: as departure delays increase, arrival delays tend to also increase. We also note the large mass of points clustered near (0, 0).</p>
+<p>After running the above code, R returns a warning message alerting us to the fact that 5 rows were ignored due to them being missing. For 5 rows either the value for <code>dep_delay</code> or <code>arr_delay</code> or both were missing (recorded in R as <code>NA</code>), and thus these rows were ignored in our plot. Turning our attention to the resulting scatterplot in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>, we see that a positive relationship exists between <code>dep_delay</code> and <code>arr_delay</code>: as departure delays increase, arrival delays tend to also increase. We also note the large mass of points clustered near (0, 0).</p>
 <p>Before we continue, let’s consider a few more notes on the layers in the above code that generated the scatterplot:</p>
 <ul>
 <li>Note that the <code>+</code> sign comes at the end of lines, and not at the beginning. You’ll get an error in R if you put it at the beginning.</li>
 <li>When adding layers to a plot, you are encouraged to start a new line after the <code>+</code> so that the code for each layer is on a new line. As we add more and more layers to plots, you’ll see this will greatly improve the legibility of your code.</li>
-<li>To stress the importance of adding layers in particular the layer specifying the <code>geom</code>etric object, consider <a href="#fig-nolayers">Figure&nbsp;<span>2.3</span></a> where no layers are added. A not very useful plot!</li>
+<li>To stress the importance of adding layers in particular the layer specifying the <code>geom</code>etric object, consider <a href="#fig-nolayers" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> where no layers are added. A not very useful plot!</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> alaska_flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-nolayers" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-nolayers-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.3: Plot with no layers</figcaption>
+<div id="fig-nolayers" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nolayers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-nolayers-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nolayers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Plot with no layers
+</figcaption>
 </figure>
 </div>
 </div>
@@ -809,26 +872,30 @@ div.csl-indent {
 </section>
 <section id="sec-overplotting" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="sec-overplotting"><span class="header-section-number">2.3.2</span> Over-plotting</h3>
-<p>The large mass of points near (0, 0) in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a> can cause some confusion as it is hard to tell the true number of points that are plotted. This is the result of a phenomenon called <em>overplotting</em>. As one may guess, this corresponds to values being plotted on top of each other <em>over</em> and <em>over</em> again. It is often difficult to know just how many values are plotted in this way when looking at a basic scatterplot as we have here. There are two methods to address the issue of overplotting:</p>
+<p>The large mass of points near (0, 0) in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> can cause some confusion as it is hard to tell the true number of points that are plotted. This is the result of a phenomenon called <em>overplotting</em>. As one may guess, this corresponds to values being plotted on top of each other <em>over</em> and <em>over</em> again. It is often difficult to know just how many values are plotted in this way when looking at a basic scatterplot as we have here. There are two methods to address the issue of overplotting:</p>
 <ol type="1">
 <li>By adjusting the transparency of the points.</li>
 <li>By adding a little random “jitter”, or random “nudges”, to each of the points.</li>
 </ol>
 <p><strong>Method 1: Changing the transparency</strong></p>
-<p>The first way of addressing overplotting is by changing the transparency of the points by using the <code>alpha</code> argument in <code>geom_point()</code>. By default, this value is set to <code>1</code>. We can change this to any value between <code>0</code> and <code>1</code>, where <code>0</code> sets the points to be 100% transparent and <code>1</code> sets the points to be 100% opaque. Note how the following code is identical to the code in <a href="#sec-scatterplots"><span>Section&nbsp;2.3</span></a> that created the scatterplot with overplotting, but with <code>alpha = 0.2</code> added to the <code>geom_point()</code>:</p>
+<p>The first way of addressing overplotting is by changing the transparency of the points by using the <code>alpha</code> argument in <code>geom_point()</code>. By default, this value is set to <code>1</code>. We can change this to any value between <code>0</code> and <code>1</code>, where <code>0</code> sets the points to be 100% transparent and <code>1</code> sets the points to be 100% opaque. Note how the following code is identical to the code in <a href="#sec-scatterplots" class="quarto-xref"><span>Section 2.3</span></a> that created the scatterplot with overplotting, but with <code>alpha = 0.2</code> added to the <code>geom_point()</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> alaska_flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-alpha" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-alpha-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.4: Delay scatterplot with alpha = 0.2</figcaption>
+<div id="fig-alpha" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-alpha-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Delay scatterplot with alpha = 0.2
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The key feature to note in <a href="#fig-alpha">Figure&nbsp;<span>2.4</span></a> is that the transparency of the points is cumulative: areas with a high-degree of overplotting are darker, whereas areas with a lower degree are less dark. Note furthermore that there is no <code>aes()</code> surrounding <code>alpha = 0.2</code>. This is because we are not mapping a variable to an aesthetic attribute, but rather merely changing the default setting of <code>alpha</code>. In fact, you’ll receive an error if you try to change the second line above to read <code>geom_point(aes(alpha = 0.2))</code>.</p>
+<p>The key feature to note in <a href="#fig-alpha" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> is that the transparency of the points is cumulative: areas with a high-degree of overplotting are darker, whereas areas with a lower degree are less dark. Note furthermore that there is no <code>aes()</code> surrounding <code>alpha = 0.2</code>. This is because we are not mapping a variable to an aesthetic attribute, but rather merely changing the default setting of <code>alpha</code>. In fact, you’ll receive an error if you try to change the second line above to read <code>geom_point(aes(alpha = 0.2))</code>.</p>
 <p><strong>Method 2: Jittering the points</strong></p>
 <p>The second way of addressing overplotting is by <em>jittering</em> all the points, in other words give each point a small nudge in a random direction. You can think of “jittering” as shaking the points around a bit on the plot. Let’s illustrate using a simple example first. Say we have a data frame <code>jitter_example</code> with 4 rows of identical value 0 for both <code>x</code> and <code>y</code>:</p>
 <div class="cell" data-layout-align="center">
@@ -842,24 +909,32 @@ div.csl-indent {
 4     0     0</code></pre>
 </div>
 </div>
-<p>We display the resulting scatterplot in <a href="#fig-jitter-example-plot-1">Figure&nbsp;<span>2.5</span></a>; observe that the 4 points are superimposed on top of each other. While we know there are 4 values being plotted, this fact might not be apparent to others.</p>
+<p>We display the resulting scatterplot in <a href="#fig-jitter-example-plot-1" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>; observe that the 4 points are superimposed on top of each other. While we know there are 4 values being plotted, this fact might not be apparent to others.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-jitter-example-plot-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-jitter-example-plot-1-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.5: Regular scatterplot of jitter example data</figcaption>
+<div id="fig-jitter-example-plot-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jitter-example-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-jitter-example-plot-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jitter-example-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Regular scatterplot of jitter example data
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-jitter-example-plot-2">Figure&nbsp;<span>2.6</span></a> we instead display a <em>jittered scatterplot</em> where each point is given a random “nudge.” It is now plainly evident that this plot involves four points. Keep in mind that jittering is strictly a visualization tool; even after creating a jittered scatterplot, the original values saved in <code>jitter_example</code> remain unchanged.</p>
+<p>In <a href="#fig-jitter-example-plot-2" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> we instead display a <em>jittered scatterplot</em> where each point is given a random “nudge.” It is now plainly evident that this plot involves four points. Keep in mind that jittering is strictly a visualization tool; even after creating a jittered scatterplot, the original values saved in <code>jitter_example</code> remain unchanged.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-jitter-example-plot-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-jitter-example-plot-2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.6: Jittered scatterplot of jitter example data</figcaption>
+<div id="fig-jitter-example-plot-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jitter-example-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-jitter-example-plot-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jitter-example-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Jittered scatterplot of jitter example data
+</figcaption>
 </figure>
 </div>
 </div>
@@ -869,16 +944,20 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> alaska_flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="dv">30</span>, <span class="at">height =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-jitter" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-jitter-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.7: Jittered delay scatterplot</figcaption>
+<div id="fig-jitter" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-jitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-jitter-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: Jittered delay scatterplot
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Observe how the above code is identical to the code that created the scatterplot with overplotting in <a href="#sec-geompoint">Subsection&nbsp;<span>2.3.1</span></a>, but with <code>geom_point()</code> replaced with <code>geom_jitter()</code>.</p>
-<p>The resulting plot in <a href="#fig-jitter">Figure&nbsp;<span>2.7</span></a> helps us a little bit in getting a sense for the overplotting, but with a relatively large data set like this one (714 flights), it can be argued that changing the transparency of the points by setting <code>alpha</code> proved more effective. In terms of how much jitter one should add using the <code>width</code> and <code>height</code> arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.</p>
+<p>Observe how the above code is identical to the code that created the scatterplot with overplotting in <a href="#sec-geompoint" class="quarto-xref">Subsection&nbsp;<span>2.3.1</span></a>, but with <code>geom_point()</code> replaced with <code>geom_jitter()</code>.</p>
+<p>The resulting plot in <a href="#fig-jitter" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> helps us a little bit in getting a sense for the overplotting, but with a relatively large data set like this one (714 flights), it can be argued that changing the transparency of the points by setting <code>alpha</code> proved more effective. In terms of how much jitter one should add using the <code>width</code> and <code>height</code> arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -907,7 +986,7 @@ div.csl-indent {
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>After viewing the <a href="#fig-alpha">Figure&nbsp;<span>2.4</span></a> above, give an approximate range of arrival delays and departure delays that occur the most frequently. How has that region changed compared to when you observed the same plot without the <code>alpha = 0.2</code> set in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a>?</p>
+<p>After viewing the <a href="#fig-alpha" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> above, give an approximate range of arrival delays and departure delays that occur the most frequently. How has that region changed compared to when you observed the same plot without the <code>alpha = 0.2</code> set in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>?</p>
 </div>
 </div>
 </div>
@@ -930,7 +1009,7 @@ div.csl-indent {
 <li>Run <code>?weather</code> to bring up the help file.</li>
 </ul>
 <p>We can see that there is a variable called <code>temp</code> of hourly temperature recordings in Fahrenheit at weather stations near all three airports in New York City: Newark (<code>origin</code> code <code>EWR</code>), JFK, and La Guardia (<code>LGA</code>). Instead of considering hourly temperatures for all days in 2013 for all three airports however, for simplicity let’s only consider hourly temperatures at only Newark airport for the first 15 days in January.</p>
-<p>Recall in <a href="#sec-scatterplots"><span>Section&nbsp;2.3</span></a> we used the <code>filter()</code> function to only choose the subset of rows of <code>flights</code> corresponding to Alaska Airlines flights. We similarly use <code>filter()</code> here, but by using the <code>&amp;</code> operator we only choose the subset of rows of <code>weather</code> where</p>
+<p>Recall in <a href="#sec-scatterplots" class="quarto-xref"><span>Section 2.3</span></a> we used the <code>filter()</code> function to only choose the subset of rows of <code>flights</code> corresponding to Alaska Airlines flights. We similarly use <code>filter()</code> here, but by using the <code>&amp;</code> operator we only choose the subset of rows of <code>weather</code> where</p>
 <ol type="1">
 <li>The <code>origin</code> is <code>"EWR"</code> and</li>
 <li>the <code>month</code> is January and</li>
@@ -979,15 +1058,19 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> early_january_weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> time_hour, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-hourlytemp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-hourlytemp-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.8: Hourly Temperature in Newark for January 1-15, 2013</figcaption>
+<div id="fig-hourlytemp" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hourlytemp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-hourlytemp-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hourlytemp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: Hourly Temperature in Newark for January 1-15, 2013
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Much as with the <code>ggplot()</code> code that created the scatterplot of departure and arrival delays for Alaska Airlines flights in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a>, let’s break down the above code piece-by-piece in terms of the Grammar of Graphics:</p>
+<p>Much as with the <code>ggplot()</code> code that created the scatterplot of departure and arrival delays for Alaska Airlines flights in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>, let’s break down the above code piece-by-piece in terms of the Grammar of Graphics:</p>
 <ul>
 <li>Within the <code>ggplot()</code> function call, we specify two of the components of the Grammar of Graphics as arguments:
 <ol type="1">
@@ -1056,20 +1139,24 @@ div.csl-indent {
 </section>
 <section id="sec-histograms" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="sec-histograms"><span class="header-section-number">2.5</span> 5NG#3: Histograms</h2>
-<p>Let’s consider the <code>temp</code> variable in the <code>weather</code> data frame once again, but unlike with the linegraphs in <a href="#sec-linegraphs"><span>Section&nbsp;2.4</span></a>, let’s say we don’t care about the relationship of temperature to time, but rather we only care about how the values of <code>temp</code> <em>distribute</em>. In other words:</p>
+<p>Let’s consider the <code>temp</code> variable in the <code>weather</code> data frame once again, but unlike with the linegraphs in <a href="#sec-linegraphs" class="quarto-xref"><span>Section 2.4</span></a>, let’s say we don’t care about the relationship of temperature to time, but rather we only care about how the values of <code>temp</code> <em>distribute</em>. In other words:</p>
 <ol type="1">
 <li>What are the smallest and largest values?</li>
 <li>What is the “center” value?</li>
 <li>How do the values spread out?</li>
 <li>What are frequent and infrequent values?</li>
 </ol>
-<p>One way to visualize this <em>distribution</em> of this single variable <code>temp</code> is to plot them on a horizontal line as we do in <a href="#fig-temp-on-line">Figure&nbsp;<span>2.9</span></a>:</p>
+<p>One way to visualize this <em>distribution</em> of this single variable <code>temp</code> is to plot them on a horizontal line as we do in <a href="#fig-temp-on-line" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-temp-on-line" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-temp-on-line-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.9: Plot of Hourly Temperature Recordings from NYC in 2013</figcaption>
+<div id="fig-temp-on-line" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-temp-on-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-temp-on-line-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-temp-on-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: Plot of Hourly Temperature Recordings from NYC in 2013
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1081,13 +1168,17 @@ div.csl-indent {
 <li><p>For each bin, we count the number of observations that fall in the range corresponding to that bin.</p></li>
 <li><p>Then for each bin, we draw a bar whose height marks the corresponding count.</p></li>
 </ol>
-<p>Let’s drill-down on an example of a histogram, shown in <a href="#fig-histogramexample">Figure&nbsp;<span>2.10</span></a>.</p>
+<p>Let’s drill-down on an example of a histogram, shown in <a href="#fig-histogramexample" class="quarto-xref">Figure&nbsp;<span>2.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-histogramexample" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-histogramexample-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.10: Example histogram</figcaption>
+<div id="fig-histogramexample" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histogramexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-histogramexample-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histogramexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: Example histogram
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1112,24 +1203,32 @@ div.csl-indent {
 <pre><code>Warning: Removed 1 rows containing non-finite values (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-weather-histogram" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-weather-histogram-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.11: Histogram of hourly temperatures at three NYC airports</figcaption>
+<div id="fig-weather-histogram" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-weather-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-weather-histogram-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weather-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: Histogram of hourly temperatures at three NYC airports
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Let’s unpack the messages R sent us first. The first message is telling us that the histogram was constructed using <code>bins = 30</code>, in other words 30 equally spaced bins. This is known in computer programming as a default value; unless you override this default number of bins with a number you specify, R will choose 30 by default. We’ll see in the next section how to change this default number of bins. The second message is telling us something similar to the warning message we received when we ran the code to create a scatterplot of departure and arrival delays for Alaska Airlines flights in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a>: that because one row has a missing <code>NA</code> value for <code>temp</code>, it was omitted from the histogram. R is just giving us a friendly heads up that this was the case.</p>
-<p>Now’s let’s unpack the resulting histogram in <a href="#fig-weather-histogram">Figure&nbsp;<span>2.11</span></a>. Observe that values less than 25°F as well as values above 80°F are rather rare. However, because of the large number of bins, its hard to get a sense for which range of temperatures is covered by each bin; everything is one giant amorphous blob. So let’s add white vertical borders demarcating the bins by adding a <code>color = "white"</code> argument to <code>geom_histogram()</code>:</p>
+<p>Let’s unpack the messages R sent us first. The first message is telling us that the histogram was constructed using <code>bins = 30</code>, in other words 30 equally spaced bins. This is known in computer programming as a default value; unless you override this default number of bins with a number you specify, R will choose 30 by default. We’ll see in the next section how to change this default number of bins. The second message is telling us something similar to the warning message we received when we ran the code to create a scatterplot of departure and arrival delays for Alaska Airlines flights in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>: that because one row has a missing <code>NA</code> value for <code>temp</code>, it was omitted from the histogram. R is just giving us a friendly heads up that this was the case.</p>
+<p>Now’s let’s unpack the resulting histogram in <a href="#fig-weather-histogram" class="quarto-xref">Figure&nbsp;<span>2.11</span></a>. Observe that values less than 25°F as well as values above 80°F are rather rare. However, because of the large number of bins, its hard to get a sense for which range of temperatures is covered by each bin; everything is one giant amorphous blob. So let’s add white vertical borders demarcating the bins by adding a <code>color = "white"</code> argument to <code>geom_histogram()</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-weather-histogram-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-weather-histogram-2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.12: Histogram of hourly temperatures at three NYC airports with white borders</figcaption>
+<div id="fig-weather-histogram-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-weather-histogram-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-weather-histogram-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weather-histogram-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.12: Histogram of hourly temperatures at three NYC airports with white borders
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1139,10 +1238,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-weather-histogram-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-weather-histogram-3-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.13: Histogram of hourly temperatures at three NYC airports with white borders</figcaption>
+<div id="fig-weather-histogram-3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-weather-histogram-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-weather-histogram-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weather-histogram-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.13: Histogram of hourly temperatures at three NYC airports with white borders
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1150,7 +1253,7 @@ div.csl-indent {
 </section>
 <section id="sec-adjustbins" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="sec-adjustbins"><span class="header-section-number">2.5.2</span> Adjusting the bins</h3>
-<p>Observe in both <a href="#fig-weather-histogram-2">Figure&nbsp;<span>2.12</span></a> and <a href="#fig-weather-histogram-3">Figure&nbsp;<span>2.13</span></a> that in the 50-75°F range there appear to be roughly 8 bins. Thus each bin has width 25 divided by 8, or roughly 3.12°F which is not a very easily interpretable range to work with. Let’s now adjust the number of bins in our histogram in one of two methods:</p>
+<p>Observe in both <a href="#fig-weather-histogram-2" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> and <a href="#fig-weather-histogram-3" class="quarto-xref">Figure&nbsp;<span>2.13</span></a> that in the 50-75°F range there appear to be roughly 8 bins. Thus each bin has width 25 divided by 8, or roughly 3.12°F which is not a very easily interpretable range to work with. Let’s now adjust the number of bins in our histogram in one of two methods:</p>
 <ol type="1">
 <li>By adjusting the number of bins via the <code>bins</code> argument to <code>geom_histogram()</code>.</li>
 <li>By adjusting the width of the bins via the <code>binwidth</code> argument to <code>geom_histogram()</code>.</li>
@@ -1160,10 +1263,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-hist-bins40" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-hist-bins40-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.14: Histogram with 40 bins</figcaption>
+<div id="fig-hist-bins40" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-bins40-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-hist-bins40-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-bins40-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.14: Histogram with 40 bins
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1173,10 +1280,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-hist-binwidth10" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-hist-binwidth10-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.15: Histogram with binwidth 10</figcaption>
+<div id="fig-hist-binwidth10" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-binwidth10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-hist-binwidth10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-binwidth10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.15: Histogram with binwidth 10
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1254,16 +1365,20 @@ div.csl-indent {
 <section id="sec-facets" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="sec-facets"><span class="header-section-number">2.6</span> Facets</h2>
 <p>Before continuing the 5NG, let’s briefly introduce a new concept called <em>faceting</em>. Faceting is used when we’d like to split a particular visualization of variables by another variable. This will create multiple copies of the same type of plot with matching x and y axes, but whose content will differ.</p>
-<p>For example, suppose we were interested in looking at how the histogram of hourly temperature recordings at the three NYC airports we saw in <a href="#sec-histograms"><span>Section&nbsp;2.5</span></a> differed by month. We would “split” this histogram by the 12 possible months in a given year, in other words plot histograms of <code>temp</code> for each <code>month</code>. We do this by adding <code>facet_wrap(~ month)</code> layer.</p>
+<p>For example, suppose we were interested in looking at how the histogram of hourly temperature recordings at the three NYC airports we saw in <a href="#sec-histograms" class="quarto-xref"><span>Section 2.5</span></a> differed by month. We would “split” this histogram by the 12 possible months in a given year, in other words plot histograms of <code>temp</code> for each <code>month</code>. We do this by adding <code>facet_wrap(~ month)</code> layer.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp)) <span class="sc">+</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-facethistogram" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-facethistogram-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.16: Faceted histogram</figcaption>
+<div id="fig-facethistogram" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-facethistogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-facethistogram-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facethistogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.16: Faceted histogram
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1274,15 +1389,19 @@ div.csl-indent {
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> month, <span class="at">nrow =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-facethistogram2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-facethistogram2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.17: Faceted histogram with 4 instead of 3 rows</figcaption>
+<div id="fig-facethistogram2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-facethistogram2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-facethistogram2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facethistogram2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.17: Faceted histogram with 4 instead of 3 rows
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Observe in both <a href="#fig-facethistogram">Figure&nbsp;<span>2.16</span></a> and <a href="#fig-facethistogram2">Figure&nbsp;<span>2.17</span></a> that as we might expect in the Northern Hemisphere, temperatures tend to be higher in the summer months, while they tend to be lower in the winter.</p>
+<p>Observe in both <a href="#fig-facethistogram" class="quarto-xref">Figure&nbsp;<span>2.16</span></a> and <a href="#fig-facethistogram2" class="quarto-xref">Figure&nbsp;<span>2.17</span></a> that as we might expect in the Northern Hemisphere, temperatures tend to be higher in the summer months, while they tend to be lower in the winter.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1350,13 +1469,17 @@ div.csl-indent {
 </section>
 <section id="sec-boxplots" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="sec-boxplots"><span class="header-section-number">2.7</span> 5NG#4: Boxplots</h2>
-<p>While faceted histograms are one visualization that allows us to compare distributions of a numerical variable split by another variable, another visualization that achieves this same goal are <em>side-by-side boxplots</em>. A boxplot is constructed from the information provided in the <em>five-number summary</em> of a numerical variable (see <a href="0a-statistical-background.html">Appendix&nbsp;<span>A</span></a>). To keep things simple for now, let’s only consider hourly temperature recordings for the month of November in <a href="#fig-nov1">Figure&nbsp;<span>2.18</span></a>.</p>
+<p>While faceted histograms are one visualization that allows us to compare distributions of a numerical variable split by another variable, another visualization that achieves this same goal are <em>side-by-side boxplots</em>. A boxplot is constructed from the information provided in the <em>five-number summary</em> of a numerical variable (see <a href="0a-statistical-background.html" class="quarto-xref">Appendix&nbsp;<span>A</span></a>). To keep things simple for now, let’s only consider hourly temperature recordings for the month of November in <a href="#fig-nov1" class="quarto-xref">Figure&nbsp;<span>2.18</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nov1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-nov1-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.18: November temperatures</figcaption>
+<div id="fig-nov1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nov1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-nov1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nov1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.18: November temperatures
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1369,24 +1492,32 @@ div.csl-indent {
 <li>Third quartile AKA 75<sup>th</sup> percentile: 51.98°F</li>
 <li>Maximum: 71.06°F</li>
 </ol>
-<p>Let’s mark these 5 values with dashed horizontal lines in <a href="#fig-nov2">Figure&nbsp;<span>2.19</span></a>.</p>
+<p>Let’s mark these 5 values with dashed horizontal lines in <a href="#fig-nov2" class="quarto-xref">Figure&nbsp;<span>2.19</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nov2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-nov2-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.19: November temperatures</figcaption>
+<div id="fig-nov2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nov2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-nov2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nov2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.19: November temperatures
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Let’s add the boxplot underneath these points and dashed horizontal lines in <a href="#fig-nov3">Figure&nbsp;<span>2.20</span></a>.</p>
+<p>Let’s add the boxplot underneath these points and dashed horizontal lines in <a href="#fig-nov3" class="quarto-xref">Figure&nbsp;<span>2.20</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nov3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-nov3-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.20: November temperatures</figcaption>
+<div id="fig-nov3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nov3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-nov3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nov3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.20: November temperatures
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1399,13 +1530,17 @@ div.csl-indent {
 <li><p>25% of points fall over the top edge of the box. In other words 25% of observations were warmer than 51.98°F.</p></li>
 <li><p>The middle 50% of points lie within the <em>interquartile range</em> between the first and third quartile of 51.98 - 35.96 = 16.02°F.</p></li>
 </ol>
-<p>Lastly, for clarity’s sake let’s remove the points but keep the dashed horizontal lines in <a href="#fig-nov4">Figure&nbsp;<span>2.21</span></a>.</p>
+<p>Lastly, for clarity’s sake let’s remove the points but keep the dashed horizontal lines in <a href="#fig-nov4" class="quarto-xref">Figure&nbsp;<span>2.21</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nov4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-nov4-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.21: November temperatures</figcaption>
+<div id="fig-nov4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nov4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-nov4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nov4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.21: November temperatures
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1418,10 +1553,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-badbox" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-badbox-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.22: Invalid boxplot specification</figcaption>
+<div id="fig-badbox" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-badbox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-badbox-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-badbox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.22: Invalid boxplot specification
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1429,21 +1568,25 @@ div.csl-indent {
 <pre><code>Warning messages:
 1: Continuous x aesthetic -- did you forget aes(group=...)? 
 2: Removed 1 rows containing non-finite values (stat_boxplot). </code></pre>
-<p>Observe in <a href="#fig-badbox">Figure&nbsp;<span>2.22</span></a> that this plot does not provide information about temperature separated by month. The warning messages clue us in as to why. The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as <code>NA</code> missing. However, the first warning message is telling us that we have a “continuous”, or numerical variable, on the x-position aesthetic. Side-by-side boxplots require one categorical variable and one numeric variable.</p>
+<p>Observe in <a href="#fig-badbox" class="quarto-xref">Figure&nbsp;<span>2.22</span></a> that this plot does not provide information about temperature separated by month. The warning messages clue us in as to why. The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as <code>NA</code> missing. However, the first warning message is telling us that we have a “continuous”, or numerical variable, on the x-position aesthetic. Side-by-side boxplots require one categorical variable and one numeric variable.</p>
 <p>We can convert the numerical variable <code>month</code> into a categorical variable by using the <code>factor()</code> function. So after applying <code>factor(month)</code>, month goes from having numerical values 1, 2, …, 12 to having labels “1”, “2”, …, “12.”</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(month), <span class="at">y =</span> temp)) <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-monthtempbox" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-monthtempbox-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.23: Temp by month boxplot</figcaption>
+<div id="fig-monthtempbox" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-monthtempbox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-monthtempbox-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-monthtempbox-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.23: Temp by month boxplot
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The resulting <a href="#fig-monthtempbox">Figure&nbsp;<span>2.23</span></a> shows 12 separate “box and whiskers” plots with the features we saw earlier focusing only on November:</p>
+<p>The resulting <a href="#fig-monthtempbox" class="quarto-xref">Figure&nbsp;<span>2.23</span></a> shows 12 separate “box and whiskers” plots with the features we saw earlier focusing only on November:</p>
 <ul>
 <li><p>The “box” portions of this visualization represent the 1<sup>st</sup> quartile, the median AKA the 2<sup>nd</sup> quartile, and the 3<sup>rd</sup> quartile.</p></li>
 <li><p>The “length” of each box, i.e.&nbsp;the value of the 3<sup>rd</sup> quartile minus the value of the 1<sup>st</sup> quartile, is the <em>interquartile range</em>. It is a measure of spread of the middle 50% of values, with longer boxes indicating more variability.</p></li>
@@ -1565,10 +1708,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fruits, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fruit)) <span class="sc">+</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-geombar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-geombar-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.24: Barplot when counts are not pre-counted</figcaption>
+<div id="fig-geombar" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geombar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-geombar-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geombar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.24: Barplot when counts are not pre-counted
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1578,39 +1725,52 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fruits_counted, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fruit, <span class="at">y =</span> number)) <span class="sc">+</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-geomcol" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-geomcol-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.25: Barplot when counts are pre-counted</figcaption>
+<div id="fig-geomcol" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geomcol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-geomcol-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geomcol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.25: Barplot when counts are pre-counted
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Compare the barplots in <a href="#fig-geombar">Figure&nbsp;<span>2.24</span></a> and <a href="#fig-geomcol">Figure&nbsp;<span>2.25</span></a>. They are identical because they reflect count of the same 5 fruit. However depending on how our data is saved, either pre-counted or not, we must add a different <code>geom</code> layer. When the categorical variable whose distribution you want to visualize is:</p>
+<p>Compare the barplots in <a href="#fig-geombar" class="quarto-xref">Figure&nbsp;<span>2.24</span></a> and <a href="#fig-geomcol" class="quarto-xref">Figure&nbsp;<span>2.25</span></a>. They are identical because they reflect count of the same 5 fruit. However depending on how our data is saved, either pre-counted or not, we must add a different <code>geom</code> layer. When the categorical variable whose distribution you want to visualize is:</p>
 <ul>
 <li>Is not pre-counted in your data frame: use <code>geom_bar()</code>.</li>
 <li>Is pre-counted in your data frame, use <code>geom_col()</code> with the y-position aesthetic mapped to the variable that has the counts.</li>
 </ul>
-<p>Let’s now go back to the <code>flights</code> data frame in the <code>nycflights13</code> package and visualize the distribution of the categorical variable <code>carrier</code>. In other words, let’s visualize the number of domestic flights out of the three New York City airports each airline company flew in 2013. Recall from <a href="01-getting-started.html#sec-exploredataframes"><span>Section&nbsp;1.4.3</span></a> when you first explored the <code>flights</code> data frame you saw that each row corresponds to a flight. In other words the <code>flights</code> data frame is more like the <code>fruits</code> data frame than the <code>fruits_counted</code> data frame above, and thus we should use <code>geom_bar()</code> instead of <code>geom_col()</code> to create a barplot. Much like a <code>geom_histogram()</code>, there is only one variable in the <code>aes()</code> aesthetic mapping: the variable <code>carrier</code> gets mapped to the <code>x</code>-position.</p>
+<p>Let’s now go back to the <code>flights</code> data frame in the <code>nycflights13</code> package and visualize the distribution of the categorical variable <code>carrier</code>. In other words, let’s visualize the number of domestic flights out of the three New York City airports each airline company flew in 2013. Recall from <a href="01-getting-started.html#sec-exploredataframes" class="quarto-xref"><span>Section 1.4.3</span></a> when you first explored the <code>flights</code> data frame you saw that each row corresponds to a flight. In other words the <code>flights</code> data frame is more like the <code>fruits</code> data frame than the <code>fruits_counted</code> data frame above, and thus we should use <code>geom_bar()</code> instead of <code>geom_col()</code> to create a barplot. Much like a <code>geom_histogram()</code>, there is only one variable in the <code>aes()</code> aesthetic mapping: the variable <code>carrier</code> gets mapped to the <code>x</code>-position.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-flightsbar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-flightsbar-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.26: Number of flights departing NYC in 2013 by airline using <code>geom_bar()</code></figcaption>
+<div id="fig-flightsbar" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flightsbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-flightsbar-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flightsbar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.26: Number of flights departing NYC in 2013 by airline using <code>geom_bar()</code>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Observe in <a href="#fig-flightsbar">Figure&nbsp;<span>2.26</span></a> that United Air Lines (<code>UA</code>), JetBlue Airways (<code>B6</code>), and ExpressJet Airlines (<code>EV</code>) had the most flights depart New York City in 2013. If you don’t know which airlines correspond to which carrier codes, then run <code>View(airlines)</code> to see a directory of airlines. For example: AA is American Airlines; B6 is JetBlue Airways; DL is Delta Airlines; EV is ExpressJet Airlines; MQ is Envoy Air; while UA is United Airlines.</p>
-<p>Alternatively, say you had a data frame <code>flights_counted</code> where the number of flights for each <code>carrier</code> was pre-counted like in <a href="#tbl-flights-counted">Table&nbsp;<span>2.3</span></a>.</p>
+<p>Observe in <a href="#fig-flightsbar" class="quarto-xref">Figure&nbsp;<span>2.26</span></a> that United Air Lines (<code>UA</code>), JetBlue Airways (<code>B6</code>), and ExpressJet Airlines (<code>EV</code>) had the most flights depart New York City in 2013. If you don’t know which airlines correspond to which carrier codes, then run <code>View(airlines)</code> to see a directory of airlines. For example: AA is American Airlines; B6 is JetBlue Airways; DL is Delta Airlines; EV is ExpressJet Airlines; MQ is Envoy Air; while UA is United Airlines.</p>
+<p>Alternatively, say you had a data frame <code>flights_counted</code> where the number of flights for each <code>carrier</code> was pre-counted like in <a href="#tbl-flights-counted" class="quarto-xref">Table&nbsp;<span>2.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-flights-counted" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flights-counted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: Number of flights pre-counted for each carrier
+</figcaption>
+<div aria-describedby="tbl-flights-counted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-flights-counted" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;2.3: Number of flights pre-counted for each carrier</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Number of flights pre-counted for each carrier</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">carrier</th>
@@ -1686,8 +1846,10 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>In order to create a barplot visualizing the distribution of the categorical variable <code>carrier</code> in this case, we would use <code>geom_col()</code> instead with <code>x</code> mapped to <code>carrier</code> and <code>y</code> mapped to <code>number</code> as seen below. The resulting barplot would be identical to <a href="#fig-flightsbar">Figure&nbsp;<span>2.26</span></a>.</p>
+</div>
+<p>In order to create a barplot visualizing the distribution of the categorical variable <code>carrier</code> in this case, we would use <code>geom_col()</code> instead with <code>x</code> mapped to <code>carrier</code> and <code>y</code> mapped to <code>number</code> as seen below. The resulting barplot would be identical to <a href="#fig-flightsbar" class="quarto-xref">Figure&nbsp;<span>2.26</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights_table, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">y =</span> number)) <span class="sc">+</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1760,13 +1922,17 @@ div.csl-indent {
 <section id="must-avoid-pie-charts" class="level3" data-number="2.8.2">
 <h3 data-number="2.8.2" class="anchored" data-anchor-id="must-avoid-pie-charts"><span class="header-section-number">2.8.2</span> Must avoid pie charts!</h3>
 <p>Unfortunately, one of the most common plots seen today for categorical data is the pie chart. While they may seem harmless enough, they actually present a problem in that humans are unable to judge angles well. As Naomi Robbins describes in her book “Creating More Effective Graphs” <span class="citation" data-cites="robbins2013">(<a href="references.html#ref-robbins2013" role="doc-biblioref">Robbins 2013</a>)</span>, we overestimate angles greater than 90 degrees and we underestimate angles less than 90 degrees. In other words, it is difficult for us to determine relative size of one piece of the pie compared to another.</p>
-<p>Let’s examine the same data used in our previous barplot of the number of flights departing NYC by airline in <a href="#fig-flightsbar">Figure&nbsp;<span>2.26</span></a>, but this time we will use a pie chart in <a href="#fig-carrierpie">Figure&nbsp;<span>2.27</span></a>.</p>
+<p>Let’s examine the same data used in our previous barplot of the number of flights departing NYC by airline in <a href="#fig-flightsbar" class="quarto-xref">Figure&nbsp;<span>2.26</span></a>, but this time we will use a pie chart in <a href="#fig-carrierpie" class="quarto-xref">Figure&nbsp;<span>2.27</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-carrierpie" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-carrierpie-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.27: The dreaded pie chart</figcaption>
+<div id="fig-carrierpie" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-carrierpie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-carrierpie-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carrierpie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.27: The dreaded pie chart
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1777,12 +1943,12 @@ div.csl-indent {
 <li>What the third largest carrier is in terms of departing flights, and</li>
 <li>How many carriers have fewer flights than United Airlines (<code>UA</code>)?</li>
 </ul>
-<p>While it is quite difficult to answer these questions when looking at the pie chart in <a href="#fig-carrierpie">Figure&nbsp;<span>2.27</span></a>, we can much more easily answer these questions using the barchart in Figure <a href="#fig-flightsbar">Figure&nbsp;<span>2.26</span></a>. This is true since barplots present the information in a way such that comparisons between categories can be made with single horizontal lines, whereas pie charts present the information in a way such that comparisons between categories must be made by comparing angles.</p>
+<p>While it is quite difficult to answer these questions when looking at the pie chart in <a href="#fig-carrierpie" class="quarto-xref">Figure&nbsp;<span>2.27</span></a>, we can much more easily answer these questions using the barchart in Figure <a href="#fig-flightsbar" class="quarto-xref">Figure&nbsp;<span>2.26</span></a>. This is true since barplots present the information in a way such that comparisons between categories can be made with single horizontal lines, whereas pie charts present the information in a way such that comparisons between categories must be made by comparing angles.</p>
 <p>There may be one exception of a pie chart not to avoid courtesy Nathan Yau at <a href="https://flowingdata.com/2008/09/19/pie-i-have-eaten-and-pie-i-have-not-eaten/">FlowingData.com</a>, but we will leave this for the reader to decide:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Pie-I-have-Eaten.jpg" class="img-fluid figure-img" style="width:3.79in"></p>
-<figcaption class="figure-caption">The only good pie chart</figcaption>
+<figcaption>The only good pie chart</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -1820,14 +1986,14 @@ div.csl-indent {
 </section>
 <section id="sec-two-categ-barplot" class="level3" data-number="2.8.3">
 <h3 data-number="2.8.3" class="anchored" data-anchor-id="sec-two-categ-barplot"><span class="header-section-number">2.8.3</span> Two categorical variables</h3>
-<p>Barplots are the go-to way to visualize the frequency of different categories, or levels, of a single categorical variable. Another use of barplots is to visualize the <em>joint</em> distribution of two categorical variables at the same time. Let’s examine the <em>joint</em> distribution of outgoing domestic flights from NYC by <code>carrier</code> and <code>origin</code>, or in other words the number of flights for each <code>carrier</code> and <code>origin</code> combination. For example, the number of WestJet flights from <code>JFK</code>, the number of WestJet flights from <code>LGA</code>, the number of WestJet flights from <code>EWR</code>, the number of American Airlines flights from <code>JFK</code>, and so on. Recall the <code>ggplot()</code> code that created the barplot of <code>carrier</code> frequency in <a href="#fig-flightsbar">Figure&nbsp;<span>2.26</span></a>:</p>
+<p>Barplots are the go-to way to visualize the frequency of different categories, or levels, of a single categorical variable. Another use of barplots is to visualize the <em>joint</em> distribution of two categorical variables at the same time. Let’s examine the <em>joint</em> distribution of outgoing domestic flights from NYC by <code>carrier</code> and <code>origin</code>, or in other words the number of flights for each <code>carrier</code> and <code>origin</code> combination. For example, the number of WestJet flights from <code>JFK</code>, the number of WestJet flights from <code>LGA</code>, the number of WestJet flights from <code>EWR</code>, the number of American Airlines flights from <code>JFK</code>, and so on. Recall the <code>ggplot()</code> code that created the barplot of <code>carrier</code> frequency in <a href="#fig-flightsbar" class="quarto-xref">Figure&nbsp;<span>2.26</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="02-visualization_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img"></p>
+<p><img src="02-visualization_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1837,29 +2003,37 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-flights-stacked-bar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-flights-stacked-bar-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.28: Stacked barplot comparing the number of flights by carrier and origin</figcaption>
+<div id="fig-flights-stacked-bar" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flights-stacked-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-flights-stacked-bar-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flights-stacked-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.28: Stacked barplot comparing the number of flights by carrier and origin
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-flights-stacked-bar">Figure&nbsp;<span>2.28</span></a> is an example of a <em>stacked barplot</em>. While simple to make, in certain aspects it is not ideal. For example, it is difficult to compare the heights of the different colors between the bars, corresponding to comparing the number of flights from each <code>origin</code> airport between the carriers.</p>
+<p><a href="#fig-flights-stacked-bar" class="quarto-xref">Figure&nbsp;<span>2.28</span></a> is an example of a <em>stacked barplot</em>. While simple to make, in certain aspects it is not ideal. For example, it is difficult to compare the heights of the different colors between the bars, corresponding to comparing the number of flights from each <code>origin</code> airport between the carriers.</p>
 <p>Before we continue, let’s address some common points of confusion amongst new R users. First, note that <code>fill</code> is another aesthetic mapping much like <code>x</code>-position; thus it must be included within the parentheses of the <code>aes()</code> mapping. The following code, where the <code>fill</code> aesthetic is specified outside the <code>aes()</code> mapping will yield an error. This is a fairly common error that new <code>ggplot</code> users make:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier), <span class="at">fill =</span> origin) <span class="sc">+</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Second, the <code>fill</code> aesthetic corresponds to the color used to fill the bars, while the <code>color</code> aesthetic corresponds to the color of the outline of the bars. Observe in <a href="#fig-flights-stacked-bar-color">Figure&nbsp;<span>2.29</span></a> that mapping <code>origin</code> to <code>color</code> and not <code>fill</code> yields grey bars with different colored outlines.</p>
+<p>Second, the <code>fill</code> aesthetic corresponds to the color used to fill the bars, while the <code>color</code> aesthetic corresponds to the color of the outline of the bars. Observe in <a href="#fig-flights-stacked-bar-color" class="quarto-xref">Figure&nbsp;<span>2.29</span></a> that mapping <code>origin</code> to <code>color</code> and not <code>fill</code> yields grey bars with different colored outlines.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">color =</span> origin)) <span class="sc">+</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-flights-stacked-bar-color" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-flights-stacked-bar-color-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.29: Stacked barplot with color aesthetic used instead of fill</figcaption>
+<div id="fig-flights-stacked-bar-color" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flights-stacked-bar-color-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-flights-stacked-bar-color-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flights-stacked-bar-color-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.29: Stacked barplot with color aesthetic used instead of fill
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1901,10 +2075,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-flights-bar-dodge" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-flights-bar-dodge-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.30: Side-by-side AKA dodged barplot comparing the number of flights by carrier and origin</figcaption>
+<div id="fig-flights-bar-dodge" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flights-bar-dodge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-flights-bar-dodge-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flights-bar-dodge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.30: Side-by-side AKA dodged barplot comparing the number of flights by carrier and origin
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1941,16 +2119,20 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Lastly, another type of barplot is a <em>faceted barplot</em>. Recall in <a href="#sec-facets"><span>Section&nbsp;2.6</span></a> we visualized the distribution of hourly temperatures at the 3 NYC airports <em>split</em> by month using facets. We apply the same principle to our barplot visualizing the frequency of <code>carrier</code> split by <code>origin</code>: instead of mapping <code>origin</code></p>
+<p>Lastly, another type of barplot is a <em>faceted barplot</em>. Recall in <a href="#sec-facets" class="quarto-xref"><span>Section 2.6</span></a> we visualized the distribution of hourly temperatures at the 3 NYC airports <em>split</em> by month using facets. We apply the same principle to our barplot visualizing the frequency of <code>carrier</code> split by <code>origin</code>: instead of mapping <code>origin</code></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> origin, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-facet-bar-vert" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-visualization_files/figure-html/fig-facet-bar-vert-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.31: Faceted barplot comparing the number of flights by carrier and origin</figcaption>
+<div id="fig-facet-bar-vert" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-facet-bar-vert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-visualization_files/figure-html/fig-facet-bar-vert-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facet-bar-vert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.31: Faceted barplot comparing the number of flights by carrier and origin
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1997,12 +2179,17 @@ div.csl-indent {
 <h2 data-number="2.9" class="anchored" data-anchor-id="sec-data-vis-conclusion"><span class="header-section-number">2.9</span> Conclusion</h2>
 <section id="summary-table" class="level3" data-number="2.9.1">
 <h3 data-number="2.9.1" class="anchored" data-anchor-id="summary-table"><span class="header-section-number">2.9.1</span> Summary table</h3>
-<p>Let’s recap all five of the Five Named Graphs (5NG) in <a href="#tbl-viz-summary">Table&nbsp;<span>2.4</span></a> summarizing their differences. Using these 5NG, you’ll be able to visualize the distributions and relationships of variables contained in a wide array of datasets. This will be even more the case as we start to map more variables to more of each <code>geom</code>etric object’s <code>aes</code>thetic attribute options, further unlocking the awesome power of the <code>ggplot2</code> package.</p>
+<p>Let’s recap all five of the Five Named Graphs (5NG) in <a href="#tbl-viz-summary" class="quarto-xref">Table&nbsp;<span>2.4</span></a> summarizing their differences. Using these 5NG, you’ll be able to visualize the distributions and relationships of variables contained in a wide array of datasets. This will be even more the case as we start to map more variables to more of each <code>geom</code>etric object’s <code>aes</code>thetic attribute options, further unlocking the awesome power of the <code>ggplot2</code> package.</p>
 <div class="cell" data-layout-align="center">
+<div id="tbl-viz-summary" class="cell quarto-float anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-viz-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: Summary of 5NG
+</figcaption>
+<div aria-describedby="tbl-viz-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-viz-summary" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;2.4: Summary of 5NG</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>Summary of 5NG</caption>
 <colgroup>
 <col style="width: 4%">
 <col style="width: 27%">
@@ -2052,6 +2239,8 @@ div.csl-indent {
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 </section>
 <section id="argument-specification" class="level3" data-number="2.9.2">
@@ -2073,16 +2262,20 @@ div.csl-indent {
 <h3 data-number="2.9.3" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">2.9.3</span> Additional resources</h3>
 <p>If you want to further unlock the power of the <code>ggplot2</code> package for data visualization, we suggest you that you check out RStudio’s “Data Visualization with ggplot2” cheatsheet. This cheatsheet summarizes much more than what we’ve discussed in this chapter, in particular the many more than the 5 <code>geom</code> geometric objects we covered in this Chapter, while providing quick and easy to read visual descriptions.</p>
 <p>You can access this cheatsheet by going to the RStudio Menu Bar -&gt; Help -&gt; Cheatsheets -&gt; “Data Visualization with ggplot2”:</p>
-<div id="fig-ggplot-cheatsheet" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/ggplot_cheatsheet-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat</figcaption>
+<div id="fig-ggplot-cheatsheet" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ggplot-cheatsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ggplot_cheatsheet-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot-cheatsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="sec-whats-to-come-3" class="level3" data-number="2.9.4">
 <h3 data-number="2.9.4" class="anchored" data-anchor-id="sec-whats-to-come-3"><span class="header-section-number">2.9.4</span> What’s to come</h3>
-<p>Recall in <a href="#fig-noalpha">Figure&nbsp;<span>2.2</span></a> in <a href="#sec-scatterplots"><span>Section&nbsp;2.3</span></a> we visualized the relationship between departure delay and arrival delay for Alaska Airlines flights. This necessitated paring or filtering down the <code>flights</code> data frame to a new data frame <code>alaska_flights</code> consisting of only <code>carrier == AS</code> flights first:</p>
+<p>Recall in <a href="#fig-noalpha" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> in <a href="#sec-scatterplots" class="quarto-xref"><span>Section 2.3</span></a> we visualized the relationship between departure delay and arrival delay for Alaska Airlines flights. This necessitated paring or filtering down the <code>flights</code> data frame to a new data frame <code>alaska_flights</code> consisting of only <code>carrier == AS</code> flights first:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>alaska_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(carrier <span class="sc">==</span> <span class="st">"AS"</span>)</span>
@@ -2090,7 +2283,7 @@ div.csl-indent {
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> alaska_flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_delay, <span class="at">y =</span> arr_delay)) <span class="sc">+</span> </span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Furthermore recall in <a href="#fig-hourlytemp">Figure&nbsp;<span>2.8</span></a> in <a href="#sec-linegraphs"><span>Section&nbsp;2.4</span></a> we visualized hourly temperature recordings at Newark airport only for the first 15 days of January 2013. This necessitated paring or fitlering down the <code>weather</code> data frame to a new data frame <code>early_january_weather</code> consisting of hourly temperature recordings only for <code>origin == "EWR"</code>, <code>month == 1</code>, and day less than or equal to <code>15</code> first:</p>
+<p>Furthermore recall in <a href="#fig-hourlytemp" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> in <a href="#sec-linegraphs" class="quarto-xref"><span>Section 2.4</span></a> we visualized hourly temperature recordings at Newark airport only for the first 15 days of January 2013. This necessitated paring or fitlering down the <code>weather</code> data frame to a new data frame <code>early_january_weather</code> consisting of hourly temperature recordings only for <code>origin == "EWR"</code>, <code>month == 1</code>, and day less than or equal to <code>15</code> first:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>early_january_weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">"EWR"</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> day <span class="sc">&lt;=</span> <span class="dv">15</span>)</span>
@@ -2098,7 +2291,7 @@ div.csl-indent {
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> early_january_weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> time_hour, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>These two code segments were a preview of <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> on data wrangling where we’ll delve further into the <code>dplyr</code> package. Data wrangling is the process of transforming and modifying existing data with the intent of making it more appropriate for analysis purposes. For example, the two code segments used the <code>filter()</code> function to create new data frames (<code>alaska_flights</code> and <code>early_january_weather</code>) by choosing only a subset of rows of existing data frames (<code>flights</code> and <code>weather</code>). In this next chapter, we’ll formally introduce the <code>filter()</code> and other data wrangling functions as well as the <em>pipe operator</em> <code>%&gt;%</code> which allows you to combine multiple data wrangling actions into a single sequential <em>chain</em> of actions. On to <a href="03-wrangling.html"><span>Chapter&nbsp;3</span></a> on data wrangling!</p>
+<p>These two code segments were a preview of <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a> on data wrangling where we’ll delve further into the <code>dplyr</code> package. Data wrangling is the process of transforming and modifying existing data with the intent of making it more appropriate for analysis purposes. For example, the two code segments used the <code>filter()</code> function to create new data frames (<code>alaska_flights</code> and <code>early_january_weather</code>) by choosing only a subset of rows of existing data frames (<code>flights</code> and <code>weather</code>). In this next chapter, we’ll formally introduce the <code>filter()</code> and other data wrangling functions as well as the <em>pipe operator</em> <code>%&gt;%</code> which allows you to combine multiple data wrangling actions into a single sequential <em>chain</em> of actions. On to <a href="03-wrangling.html" class="quarto-xref"><span>Chapter 3</span></a> on data wrangling!</p>
 </section>
 </section>
 <section id="sec-ex02" class="level2" data-number="2.10">
@@ -2106,7 +2299,7 @@ div.csl-indent {
 <section id="sec-ex02-conceptual" class="level3" data-number="2.10.1">
 <h3 data-number="2.10.1" class="anchored" data-anchor-id="sec-ex02-conceptual"><span class="header-section-number">2.10.1</span> Conceptual</h3>
 <div id="exr-ch02-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.1 </strong></span>Which of the following layers could be added to create one of the five named graphs (5NG)? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 2.1</strong></span> Which of the following layers could be added to create one of the five named graphs (5NG)? Select all that apply.</p>
 <ol type="a">
 <li><code>geom_smooth()</code></li>
 <li><code>geom_line()</code></li>
@@ -2117,7 +2310,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c02" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.2 </strong></span>What layer is add to create a scatterplot?</p>
+<p><span class="theorem-title"><strong>Exercise 2.2</strong></span> What layer is add to create a scatterplot?</p>
 <ol type="a">
 <li><code>geom_line()</code></li>
 <li><code>geom_scatter()</code></li>
@@ -2127,7 +2320,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c03" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.3 </strong></span>Which of the following options are solutions to overplotting? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 2.3</strong></span> Which of the following options are solutions to overplotting? Select all that apply.</p>
 <ol type="a">
 <li>Changing the x and y variables</li>
 <li>Changing the transparency</li>
@@ -2137,7 +2330,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.4 </strong></span>When is it useful to facet your data?</p>
+<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> When is it useful to facet your data?</p>
 <ol type="a">
 <li>When you want to see the shape of the entire distribution without separation</li>
 <li>When you want to split a particular visualization of variables by another variable</li>
@@ -2147,7 +2340,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.5 </strong></span>Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each <code>player</code> had over their career?</p>
+<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each <code>player</code> had over their career?</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -2178,7 +2371,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c06" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.6 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for comparing the distribution of weights for different species of cats?</p>
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> Which of the following graphs would be <strong>MOST</strong> useful for comparing the distribution of weights for different species of cats?</p>
 <ol type="a">
 <li>grouped boxplot</li>
 <li>histogram</li>
@@ -2188,7 +2381,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.7 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for visualizing the daily weather temperatures in January for Chicago?</p>
+<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> Which of the following graphs would be <strong>MOST</strong> useful for visualizing the daily weather temperatures in January for Chicago?</p>
 <ol type="a">
 <li>scatterplot</li>
 <li>linegraph</li>
@@ -2198,7 +2391,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.8 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for visualizing the relationship between bank account balances and annual incomes?</p>
+<p><span class="theorem-title"><strong>Exercise 2.8</strong></span> Which of the following graphs would be <strong>MOST</strong> useful for visualizing the relationship between bank account balances and annual incomes?</p>
 <ol type="a">
 <li>faceted histogram</li>
 <li>linegraph</li>
@@ -2208,7 +2401,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c09" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.9 </strong></span>Which of the following graphs would be <strong>MOST</strong> useful for finding outliers?</p>
+<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> Which of the following graphs would be <strong>MOST</strong> useful for finding outliers?</p>
 <ol type="a">
 <li>scatterplot</li>
 <li>linegraph</li>
@@ -2218,15 +2411,15 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.10 </strong></span>Below is a scatterplot of a fictional dataset depicting the amount of money spent in a grocery store by the amount of time in the store. Describe the relationship.</p>
+<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> Below is a scatterplot of a fictional dataset depicting the amount of money spent in a grocery store by the amount of time in the store. Describe the relationship.</p>
 <p><img src="images/exercises/ch02_scatter.png" style="height:2in"></p>
 </div>
 <div id="exr-ch02-c11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.11 </strong></span>Describe the modality and skew of the histogram below.</p>
+<p><span class="theorem-title"><strong>Exercise 2.11</strong></span> Describe the modality and skew of the histogram below.</p>
 <p><img src="images/exercises/ch02_match_hist.png" style="height:2in"></p>
 </div>
 <div id="exr-ch02-c12" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.12 </strong></span>Match the histogram with the corresponding boxplot.</p>
+<p><span class="theorem-title"><strong>Exercise 2.12</strong></span> Match the histogram with the corresponding boxplot.</p>
 <p><img src="images/exercises/ch02_match_hist.png" style="height:2in"> <img src="images/exercises/ch02_match_box.png" style="height:2in"></p>
 </div>
 </section>
@@ -2243,25 +2436,25 @@ div.csl-indent {
 </div>
 <p>You will learn about data wrangling in the next Chapter. The code reads as follows: take the dataset <code>covid_states</code> and then subset the data to only include observations in the states <code>"IL"</code> or <code>"FL"</code>, and only include observations between July 1, 2021 and August 31, 2021 (inclusive), and only observations not recorded on Saturday, and observations not recorded on Sunday. Note: COVID reporting was not done on weekends or holidays in these states.</p>
 <div id="exr-ch02-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.13 </strong></span>Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the <code>color</code> aesthetic to have separate lines for each state. Compare and describe the linegraph.</p>
+<p><span class="theorem-title"><strong>Exercise 2.13</strong></span> Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the <code>color</code> aesthetic to have separate lines for each state. Compare and describe the linegraph.</p>
 </div>
 <hr>
-<p>Use the <code>nba</code> dataset in the <code>ISDSdatasets</code> package for exercises <a href="#exr-ch02-app2">Exercise&nbsp;<span>2.14</span></a>, <a href="#exr-ch02-app3">Exercise&nbsp;<span>2.15</span></a>, and <a href="#exr-ch02-app4">Exercise&nbsp;<span>2.16</span></a>.</p>
+<p>Use the <code>nba</code> dataset in the <code>ISDSdatasets</code> package for exercises <a href="#exr-ch02-app2" class="quarto-xref">Exercise&nbsp;<span>2.14</span></a>, <a href="#exr-ch02-app3" class="quarto-xref">Exercise&nbsp;<span>2.15</span></a>, and <a href="#exr-ch02-app4" class="quarto-xref">Exercise&nbsp;<span>2.16</span></a>.</p>
 <div id="exr-ch02-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.14 </strong></span>Describe and compare the number of wins and losses faceted by player using a barplot.</p>
+<p><span class="theorem-title"><strong>Exercise 2.14</strong></span> Describe and compare the number of wins and losses faceted by player using a barplot.</p>
 </div>
 <div id="exr-ch02-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.15 </strong></span>Plot and describe the relationship between field goal percentage (<code>fg_percent</code>) and free throw percentage (<code>ft_percent</code>). Adjust for overplotting if need be.</p>
+<p><span class="theorem-title"><strong>Exercise 2.15</strong></span> Plot and describe the relationship between field goal percentage (<code>fg_percent</code>) and free throw percentage (<code>ft_percent</code>). Adjust for overplotting if need be.</p>
 </div>
 <div id="exr-ch02-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.16 </strong></span>Compare the center, spread, and shape of the distribution of <code>pts</code> scored per game by <code>player</code> for regular season games and playoff games. In other words, facet the plot of <code>pts</code> by <code>player</code> based on <code>season</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.16</strong></span> Compare the center, spread, and shape of the distribution of <code>pts</code> scored per game by <code>player</code> for regular season games and playoff games. In other words, facet the plot of <code>pts</code> by <code>player</code> based on <code>season</code>.</p>
 </div>
 </section>
 <section id="sec-ex02-advanced" class="level3" data-number="2.10.3">
 <h3 data-number="2.10.3" class="anchored" data-anchor-id="sec-ex02-advanced"><span class="header-section-number">2.10.3</span> Advanced</h3>
 <p>Let’s learn some advanced plotting features.</p>
 <div id="exr-ch02-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.17 </strong></span>Start with your plot from <a href="#exr-ch02-app1">Exercise&nbsp;<span>2.13</span></a>. Let’s clean up the graph a little by adding the following layers:</p>
+<p><span class="theorem-title"><strong>Exercise 2.17</strong></span> Start with your plot from <a href="#exr-ch02-app1" class="quarto-xref">Exercise&nbsp;<span>2.13</span></a>. Let’s clean up the graph a little by adding the following layers:</p>
 <ol type="a">
 <li>add on <code>theme_minimal()</code></li>
 <li>remove the x-axis label by setting <code>x = NULL</code> in the <code>labs()</code></li>
@@ -2269,7 +2462,7 @@ div.csl-indent {
 </ol>
 </div>
 <div id="exr-ch02-adv2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.18 </strong></span>Use the <code>nba_pct</code> dataset created below to plot the average free throw percent for each player.</p>
+<p><span class="theorem-title"><strong>Exercise 2.18</strong></span> Use the <code>nba_pct</code> dataset created below to plot the average free throw percent for each player.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>nba_pct <span class="ot">&lt;-</span> nba <span class="sc">%&gt;%</span> </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span></span>
@@ -2282,7 +2475,7 @@ div.csl-indent {
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-rds2016" class="csl-entry" role="listitem">
 Grolemund, Garrett, and Hadley Wickham. 2016. <em>R for Data Science</em>. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
 </div>
@@ -2379,10 +2572,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2392,8 +2584,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2406,6 +2607,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2449,6 +2769,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2474,6 +2795,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2535,12 +2882,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-getting-started.html" class="pagination-link">
+      <a href="./01-getting-started.html" class="pagination-link" aria-label="Getting Started with Data in R">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with Data in R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-wrangling.html" class="pagination-link">
+      <a href="./03-wrangling.html" class="pagination-link" aria-label="Data Wrangling">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2549,4 +2896,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/02-visualization.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
