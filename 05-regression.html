@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Statistics and Data Science - 5&nbsp; Basic Regression</title>
+<title>5&nbsp; Basic Regression – Introduction to Statistics and Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -123,7 +123,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -161,13 +161,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-regression.html">Data Modeling</a></li><li class="breadcrumb-item"><a href="./05-regression.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basic Regression</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -178,7 +178,7 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
+      <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
@@ -187,23 +187,23 @@ window.Quarto = {
     <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
+              <i class="bi bi-twitter pe-1"></i>
             Twitter
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
+              <i class="bi bi-facebook pe-1"></i>
             Facebook
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-bi-linkedin pe-1"></i>
+              <i class="bi bi-linkedin pe-1"></i>
             LinkedIn
             </a>
           </li>
@@ -233,9 +233,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Getting started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,9 +250,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Exploration via the tidyverse</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -279,9 +279,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -302,9 +302,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -331,9 +331,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -373,9 +373,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -547,7 +547,7 @@ window.Quarto = {
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Random sample of 5 instructors</caption>
 <thead>
 <tr class="header">
@@ -598,14 +598,14 @@ window.Quarto = {
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-five-random-courses" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-five-random-courses" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-five-random-courses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.1: A random sample of 5 out of the 463 courses at UT Austin
 </figcaption>
 <div aria-describedby="tbl-five-random-courses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>A random sample of 5 out of the 463 courses at UT Austin</caption>
 <thead>
 <tr class="header">
@@ -706,7 +706,7 @@ Group variables            None
 <p><a href="#fig-correlation1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> gives examples of different correlation coefficient values for hypothetical numerical variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. We see that while for a correlation coefficient of -0.75 there is still a negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, it is not as strong as the negative relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> when the correlation coefficient is -1.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-correlation1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-correlation1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-correlation1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-correlation1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -744,7 +744,7 @@ Figure&nbsp;5.1: Different correlation coefficients
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Beauty Score"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Relationship of teaching and beauty scores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-numxplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-numxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -765,7 +765,7 @@ Figure&nbsp;5.2: Instructor evaluation scores at UT Austin
 <p>Before we continue, we bring to light an important fact about this dataset: it suffers from <em>overplotting</em>. Recall from the data visualization <a href="02-visualization.html#sec-overplotting" class="quarto-xref">Subsection&nbsp;<span>2.3.2</span></a> that overplotting occurs when several points are stacked directly on top of each other thereby obscuring the number of points. For example, let’s focus on the 6 points in the top-right of the plot with a beauty score of around 8 out of 10: are there truly only 6 points, or are there many more just stacked on top of each other? You can think of these as <em>ties</em>. Let’s break up these ties with a little random “jitter” added to the points in <a href="#fig-numxplot2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxplot2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxplot2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-numxplot2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -781,7 +781,7 @@ Figure&nbsp;5.3: Instructor evaluation scores at UT Austin: Jittered
 <p>Let’s compare side-by-side the regular scatterplot in <a href="#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> with the jittered scatterplot <a href="#fig-numxplot2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxplot2-a" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxplot2-a" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxplot2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-numxplot2-a-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -809,7 +809,7 @@ Figure&nbsp;5.4: Comparing regular and jittered scatterplots
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span>  </span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-numxplot3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxplot3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxplot3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-numxplot3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -833,7 +833,7 @@ Figure&nbsp;5.5: Regression line
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-numxplot4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxplot4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxplot4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-numxplot4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -961,14 +961,14 @@ F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-numxplot4b" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-numxplot4b" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-numxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.2: Linear regression table
 </figcaption>
 <div aria-describedby="tbl-numxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Linear regression table</caption>
 <thead>
 <tr class="header">
@@ -1025,7 +1025,7 @@ Table&nbsp;5.2: Linear regression table
 <p>For example, say we are interested in the 21st instructor in this dataset:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Data for 21st instructor</caption>
 <thead>
 <tr class="header">
@@ -1052,7 +1052,7 @@ Table&nbsp;5.2: Linear regression table
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxplot5" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxplot5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxplot5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-numxplot5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1082,14 +1082,14 @@ Figure&nbsp;5.7: Example of observed value, fitted value, and residual
 </div>
 <p>Note that we also used the <code>rownames_to_column()</code> function from the <code>tibble</code> package (part of the <code>tidyverse</code> suite) to create a convenient ID column from the rownames. In the table below we only present the results for the 21st through the 24th instructors.</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-reg-points" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-reg-points" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)
 </figcaption>
 <div aria-describedby="tbl-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Regression points (for only 21st through 24th instructor)</caption>
 <thead>
 <tr class="header">
@@ -1210,14 +1210,14 @@ $ gdpPercap &lt;dbl&gt; 975, 5937, 6223, 4797, 12779, 34435, 36126, 29796, 1391,
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model2-data-preview" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model2-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model2-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.4: Random sample of 5 out of 142 countries
 </figcaption>
 <div aria-describedby="tbl-model2-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Random sample of 5 out of 142 countries</caption>
 <thead>
 <tr class="header">
@@ -1307,7 +1307,7 @@ Group variables            None
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogram of distribution of worldwide life expectancies"</span></span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-lifeExp2007hist" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-lifeExp2007hist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lifeExp2007hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-lifeExp2007hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1332,7 +1332,7 @@ Figure&nbsp;5.8: Histogram of Life Expectancy in 2007
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-catxplot0b" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-catxplot0b" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-catxplot0b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-catxplot0b-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1355,7 +1355,7 @@ Figure&nbsp;5.9: Life expectancy in 2007
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Life expectancy by continent"</span></span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-catxplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-catxplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-catxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-catxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1376,14 +1376,14 @@ Figure&nbsp;5.10: Life expectancy in 2007
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median =</span> <span class="fu">median</span>(lifeExp), <span class="at">mean =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-catxplot0" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-catxplot0" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-catxplot0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.5: Life expectancy by continent
 </figcaption>
 <div aria-describedby="tbl-catxplot0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">continent</th>
@@ -1434,14 +1434,14 @@ Table&nbsp;5.5: Life expectancy by continent
 </ol>
 <p>Let’s put these values in <a href="#tbl-continent-mean-life-expectancies" class="quarto-xref">Table&nbsp;<span>5.6</span></a>, which we’ll revisit later on in this section.</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-continent-mean-life-expectancies" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-continent-mean-life-expectancies" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-continent-mean-life-expectancies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.6: Mean life expectancy by continent and relative differences from mean for Africa
 </figcaption>
 <div aria-describedby="tbl-continent-mean-life-expectancies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Mean life expectancy by continent and relative differences from mean for Africa</caption>
 <thead>
 <tr class="header">
@@ -1516,14 +1516,14 @@ Table&nbsp;5.6: Mean life expectancy by continent and relative differences from 
 </ol>
 <p>Think back to your observations from the eyeball test of <a href="#fig-catxplot1" class="quarto-xref">Figure&nbsp;<span>5.10</span></a> at the end of the last subsection. The column “mean vs Africa” is the same idea of comparing a summary statistic to a baseline for comparison, in this case the countries of Africa, but using means instead of medians.</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-continent-mean-life-expectancies-" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-continent-mean-life-expectancies-" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-continent-mean-life-expectancies--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.7: Mean life expectancy by continent
 </figcaption>
 <div aria-describedby="tbl-continent-mean-life-expectancies--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Mean life expectancy by continent</caption>
 <thead>
 <tr class="header">
@@ -1572,14 +1572,14 @@ Table&nbsp;5.7: Mean life expectancy by continent
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lifeExp_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-catxplot4b" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-catxplot4b" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-catxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.8: Linear regression table
 </figcaption>
 <div aria-describedby="tbl-catxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Linear regression table</caption>
 <thead>
 <tr class="header">
@@ -1733,14 +1733,14 @@ Table&nbsp;5.8: Linear regression table
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-lifeExp-reg-points" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-lifeExp-reg-points" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lifeExp-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.9: Regression points (First 10 out of 142 countries)
 </figcaption>
 <div aria-describedby="tbl-lifeExp-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Regression points (First 10 out of 142 countries)</caption>
 <thead>
 <tr class="header">
@@ -1872,7 +1872,7 @@ Table&nbsp;5.9: Regression points (First 10 out of 142 countries)
 <p>Let’s re-plot <a href="#fig-correlation1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, but now consider a broader range of correlation coefficient values in <a href="#fig-correlation2" class="quarto-xref">Figure&nbsp;<span>5.11</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-correlation2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-correlation2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-correlation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-correlation2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1891,7 +1891,7 @@ Figure&nbsp;5.11: Different Correlation Coefficients
 <p>You’ll note throughout this chapter we’ve been very cautious in making statements of the “associated effect” of explanatory variables on the outcome variables, for example our statement from <a href="#sec-model1table" class="quarto-xref">Subsection&nbsp;<span>5.1.2</span></a> that “for every increase of 1 unit in <code>bty_avg</code>, there is an <em>associated</em> increase of, <em>on average</em>, 18.802 units of <code>score</code>.” We stay this because we are careful not to make <em>causal</em> statements. So while beauty score <code>bty_avg</code> is positively correlated with teaching <code>score</code>, does it directly cause effects on teaching score.</p>
 <p>For example, let’s say an instructor has their <code>bty_avg</code> reevaluated, but only after taking steps to try to boost their beauty score. Does this mean that they will suddenly be a better instructor? Or will they suddenly get higher teaching scores? Maybe?</p>
 <p>Here is another example, a not-so-great medical doctor goes through their medical records and finds that patients who slept with their shoes on tended to wake up more with headaches. So this doctor declares “Sleeping with shoes on cause headaches!”</p>
-<div id="fig-sleep-shoes-on" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-sleep-shoes-on" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sleep-shoes-on-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/flowcharts/flowchart.010-cropped.png" class="img-fluid figure-img">
@@ -1907,7 +1907,7 @@ Figure&nbsp;5.12: Does sleeping with shoes on cause headaches?
 <li>Y: Is an <em>outcome</em> variable, here “waking up with a headache.”</li>
 <li>X: Is a <em>treatment</em> variable whose causal effect we are interested in, here “sleeping with shoes on.”</li>
 </ul>
-<div id="fig-moderndive-figure-causal-graph" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-moderndive-figure-causal-graph" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-moderndive-figure-causal-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/flowcharts/flowchart.009-cropped.png" class="img-fluid figure-img">
@@ -1935,7 +1935,7 @@ Figure&nbsp;5.13: Causal graph
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-best-fitting-line" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-best-fitting-line" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-best-fitting-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-regression_files/figure-html/fig-best-fitting-line-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -2217,18 +2217,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2260,7 +2249,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nustat\.github\.io\/intro-stat-data-sci\/");
@@ -2268,7 +2279,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Statistics and Data Science - 6&nbsp; Multiple Regression</title>
+<title>6&nbsp; Multiple Regression – Introduction to Statistics and Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-regression.html">Data Modeling</a></li><li class="breadcrumb-item"><a href="./06-multiple-regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multiple Regression</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -158,7 +158,7 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
+      <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
       <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
@@ -167,23 +167,23 @@ window.Quarto = {
     <a href="https://github.com/NUstat/intro-stat-data-sci" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./Introduction-to-Statistics-and-Data-Science.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
+              <i class="bi bi-twitter pe-1"></i>
             Twitter
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
+              <i class="bi bi-facebook pe-1"></i>
             Facebook
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
-              <i class="bi bi-bi-linkedin pe-1"></i>
+              <i class="bi bi-linkedin pe-1"></i>
             LinkedIn
             </a>
           </li>
@@ -213,9 +213,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Getting started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -230,9 +230,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Exploration via the tidyverse</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -259,9 +259,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -282,9 +282,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -311,9 +311,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -353,9 +353,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -515,14 +515,14 @@ $ age           &lt;int&gt; 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model3-data-preview" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model3-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.1: Random sample of 5 credit card holders.
 </figcaption>
 <div aria-describedby="tbl-model3-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Random sample of 5 credit card holders.</caption>
 <thead>
 <tr class="header">
@@ -606,14 +606,14 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model3-correlation" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model3-correlation" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit, and income.
 </figcaption>
 <div aria-describedby="tbl-model3-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Correlation coefficients between credit card debt, credit limit, and income.</caption>
 <thead>
 <tr class="header">
@@ -674,7 +674,7 @@ Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit,
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-2numxplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-2numxplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2numxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-2numxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -692,7 +692,7 @@ Figure&nbsp;6.1: Relationship between credit card debt and credit limit/income.
 <li>The numerical outcome variable <span class="math inline">\(y\)</span> <code>debt</code> is on the vertical axis</li>
 <li>The two numerical explanatory variables, <span class="math inline">\(x_1\)</span> <code>income</code> and <span class="math inline">\(x_2\)</span> <code>credit_limit</code>, are on the two axes that form the bottom plane.</li>
 </ol>
-<div id="fig-3D-scatterplot" class="quarto-figure quarto-figure-center quarto-float anchored" data-out.width="60%">
+<div id="fig-3D-scatterplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-out.width="60%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3D-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/credit_card_balance_regression_plane.png" class="img-fluid figure-img" data-out.width="60%">
@@ -741,14 +741,14 @@ Figure&nbsp;6.2: 3D scatterplot and regression plane
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model3-table-output" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model3-table-output" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-table-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.3: Multiple regression table
 </figcaption>
 <div aria-describedby="tbl-model3-table-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Multiple regression table</caption>
 <thead>
 <tr class="header">
@@ -834,14 +834,14 @@ Table&nbsp;6.3: Multiple regression table
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model3-points-table" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model3-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.4: Regression points (First 10 credit card holders out of 400).
 </figcaption>
 <div aria-describedby="tbl-model3-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Regression points (First 10 credit card holders out of 400).</caption>
 <thead>
 <tr class="header">
@@ -989,14 +989,14 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model4-data-preview" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model4-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
 </figcaption>
 <div aria-describedby="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>A random sample of 5 out of the 463 courses at UT Austin</caption>
 <thead>
 <tr class="header">
@@ -1083,7 +1083,7 @@ Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxcatxplot1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxcatxplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxcatxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-numxcatxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1105,7 +1105,7 @@ Figure&nbsp;6.3: Colored scatterplot of relationship of teaching and beauty scor
 <p>Recall in <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a> we fit a regression model for countries’ life expectancies as a function of which continent the country was in. In other words, we had a numerical outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> and a categorical explanatory variable <span class="math inline">\(x\)</span> = <code>continent</code> which had 5 levels: <code>Africa</code>, <code>Americas</code>, <code>Asia</code>, <code>Europe</code>, and <code>Oceania</code>. Let’s re-display the regression table you saw in <a href="05-regression.html#tbl-catxplot4b" class="quarto-xref">Table&nbsp;<span>5.8</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Linear regression table</caption>
 <thead>
 <tr class="header">
@@ -1166,14 +1166,14 @@ Figure&nbsp;6.3: Colored scatterplot of relationship of teaching and beauty scor
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-regtable-interaction" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-regtable-interaction" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.6: Regression table for interaction model.
 </figcaption>
 <div aria-describedby="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Regression table for interaction model.</caption>
 <thead>
 <tr class="header">
@@ -1226,14 +1226,14 @@ Table&nbsp;6.6: Regression table for interaction model.
 <p>Similarly, <code>age:gendermale</code> = 0.014 is not the slope for age for the male instructors, but rather the <em>offset</em> in slope for the male instructors. Therefore, the slope for age for the male instructors is <code>age + age:gendermale</code> = -0.018 + 0.014 = -0.004. Therefore the blue regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> has intercept 4.437 and slope for age of -0.004.</p>
 <p>Let’s summarize these values in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.7</span></a> and focus on the two slopes for age:</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-interaction-summary" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-interaction-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.7: Comparison of intercepts and slopes for interaction model.
 </figcaption>
 <div aria-describedby="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Comparison of intercepts and slopes for interaction model.</caption>
 <thead>
 <tr class="header">
@@ -1318,7 +1318,7 @@ Table&nbsp;6.7: Comparison of intercepts and slopes for interaction model.
 <p>Unfortunately, the <code>ggplot2</code> package does not have a convenient way to plot a parallel slopes model, so we just display it for you in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> but leave the code for a more advanced data visualization class.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxcatx-parallel" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxcatx-parallel" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxcatx-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-numxcatx-parallel-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1340,14 +1340,14 @@ Figure&nbsp;6.4: Parallel slopes model of relationship of score with age and gen
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-regtable-parallel-slopes" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-regtable-parallel-slopes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.8: Regression table for parallel slopes model.
 </figcaption>
 <div aria-describedby="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Regression table for parallel slopes model.</caption>
 <thead>
 <tr class="header">
@@ -1393,14 +1393,14 @@ Table&nbsp;6.8: Regression table for parallel slopes model.
 <p>Unlike in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a> however, we now only have a single slope for age of -0.009. This is because the model specifies that both the female and male instructors have a common slope for age. This is telling us that an instructor who is a year older than another instructor received a teaching score that is on average 0.009 units <em>lower</em>. This penalty for aging applies equally for both female and male instructors.</p>
 <p>Let’s summarize these values in <a href="#tbl-parallel-slopes-summary" class="quarto-xref">Table&nbsp;<span>6.9</span></a>, noting the different intercepts but common slopes:</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-parallel-slopes-summary" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-parallel-slopes-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.9: Comparison of intercepts and slope for parallel slopes model.
 </figcaption>
 <div aria-describedby="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Comparison of intercepts and slope for parallel slopes model.</caption>
 <thead>
 <tr class="header">
@@ -1454,7 +1454,7 @@ Table&nbsp;6.9: Comparison of intercepts and slope for parallel slopes model.
 <p>Great! We’ve considered both an interaction model and a parallel slopes model for our data. Let’s compare the visualizations for both models side-by-side in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxcatx-comparison" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxcatx-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxcatx-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-numxcatx-comparison-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1475,7 +1475,7 @@ Figure&nbsp;6.5: Comparison of interaction and parallel slopes models
 <p>We answer this question visually first by finding the intersection of the red regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 36. We mark this value with a large red dot in <a href="#fig-fitted-values" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>. Similarly, we can identify the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> for the male instructor by finding the intersection of the blue regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 59. We mark this value with a large blue dot in <a href="#fig-fitted-values" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-fitted-values" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-fitted-values" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fitted-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-fitted-values-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1503,14 +1503,14 @@ Figure&nbsp;6.6: Fitted values for two new professors
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model4-points-table" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model4-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.10: Regression points (First 10 out of 463 courses)
 </figcaption>
 <div aria-describedby="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Regression points (First 10 out of 463 courses)</caption>
 <thead>
 <tr class="header">
@@ -1639,7 +1639,7 @@ Table&nbsp;6.10: Regression points (First 10 out of 463 courses)
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-recall-parallel-vs-interaction" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-recall-parallel-vs-interaction" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-recall-parallel-vs-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-recall-parallel-vs-interaction-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1671,7 +1671,7 @@ Figure&nbsp;6.7: Previously seen comparison of interaction and parallel slopes m
 <p><a href="#fig-numxcatx-comparison-2" class="quarto-xref">Figure&nbsp;<span>6.8</span></a> visualizes both the interaction and parallel slopes models.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-numxcatx-comparison-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-numxcatx-comparison-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-numxcatx-comparison-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-numxcatx-comparison-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1691,14 +1691,14 @@ Figure&nbsp;6.8: Comparison of interaction and parallel slopes models for MA sch
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model2-interaction" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model2-interaction" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model2-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.11: Interaction model regression table
 </figcaption>
 <div aria-describedby="tbl-model2-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Interaction model regression table</caption>
 <colgroup>
 <col style="width: 34%">
@@ -1772,14 +1772,14 @@ Table&nbsp;6.11: Interaction model regression table
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model2-parallel-slopes" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model2-parallel-slopes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model2-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.12: Parallel slopes regression table
 </figcaption>
 <div aria-describedby="tbl-model2-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Parallel slopes regression table</caption>
 <thead>
 <tr class="header">
@@ -1840,14 +1840,14 @@ Table&nbsp;6.12: Parallel slopes regression table
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div id="tbl-cor-credit-2" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-cor-credit-2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cor-credit-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.13: Correlation between income (in dollars) and credit card debt
 </figcaption>
 <div aria-describedby="tbl-cor-credit-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Correlation between income (in dollars) and credit card debt</caption>
 <thead>
 <tr class="header">
@@ -1881,7 +1881,7 @@ Table&nbsp;6.13: Correlation between income (in dollars) and credit card debt
 <p>Recall in <a href="#sec-model3" class="quarto-xref"><span>Section 6.1</span></a>, we saw the two seemingly contradictory results when studying the relationship between credit card debt and income. On the one hand, the right hand plot of <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> suggested that the relationship between credit card debt and income was <em>positive</em>. We re-display this plot in <a href="#fig-2numxplot1-repeat" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-2numxplot1-repeat" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-2numxplot1-repeat" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2numxplot1-repeat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-2numxplot1-repeat-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1895,14 +1895,14 @@ Figure&nbsp;6.9: Relationship between credit card debt and income.
 </div>
 <p>On the other hand, the multiple regression table in <a href="#tbl-model3-table-output" class="quarto-xref">Table&nbsp;<span>6.3</span></a> suggested that the relationship between debt and income was <em>negative</em>. We re-display this table in <a href="#tbl-model3-table-output-repeat" class="quarto-xref">Table&nbsp;<span>6.14</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-model3-table-output-repeat" class="cell quarto-float anchored" data-layout-align="center">
+<div id="tbl-model3-table-output-repeat" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-table-output-repeat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.14: Multiple regression table
 </figcaption>
 <div aria-describedby="tbl-model3-table-output-repeat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <caption>Multiple regression table</caption>
 <colgroup>
 <col style="width: 19%">
@@ -1964,7 +1964,7 @@ Table&nbsp;6.14: Multiple regression table
 <p>Let’s show how Simpson’s Paradox manifests itself in the <code>credit_ch6</code> data. Let’s first visualize the distribution of the numerical explanatory variable credit limit with a histogram in <a href="#fig-credit-limit-quartiles" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-credit-limit-quartiles" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-credit-limit-quartiles" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-credit-limit-quartiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-credit-limit-quartiles-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -1991,7 +1991,7 @@ Figure&nbsp;6.10: Histogram of credit limits and brackets.
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-2numxplot4" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<div id="fig-2numxplot4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2numxplot4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-multiple-regression_files/figure-html/fig-2numxplot4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
@@ -2136,18 +2136,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2179,7 +2168,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nustat\.github\.io\/intro-stat-data-sci\/");
@@ -2187,7 +2198,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
