@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -463,12 +463,12 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sec-model3" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sec-model3"><span class="header-section-number">6.1</span> Two numerical explanatory variables</h2>
-<p>Let’s first consider a <em>multiple regression</em> model with two numerical explanatory variables. The dataset we’ll use is from <a href="http://www-bcf.usc.edu/~gareth/ISL/">“An Introduction to Statistical Learning with Applications in R (ISLR)”</a>, an intermediate-level textbook on statistical and machine learning. Its accompanying <code>ISLR</code> R package contains the datasets that the authors apply various machine learning methods to.</p>
+<p>Let’s first consider a <em>multiple regression</em> model with two numerical explanatory variables. The dataset we’ll use is from <a href="https://www.statlearning.com/">“An Introduction to Statistical Learning with Applications in R, (Second Edition)”</a>, an intermediate-level textbook on statistical and machine learning. Its accompanying <code>ISLR2</code> R package contains the datasets that the authors apply various machine learning methods to.</p>
 <p>One frequently used dataset in this book is the <code>Credit</code> dataset, where the outcome variable of interest is the credit card debt of 400 individuals. Other variables like income, credit limit, credit rating, and age are included as well. Note that the <code>Credit</code> data is not based on real individuals’ financial information, but rather is a simulated dataset used for educational purposes.</p>
 <p>In this section, we’ll fit a regression model where we have</p>
 <ol type="1">
@@ -483,7 +483,7 @@ window.Quarto = {
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="sec-model3EDA"><span class="header-section-number">6.1.1</span> Exploratory data analysis</h3>
 <p>Let’s load the <code>Credit</code> dataset, but to keep things simple let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>credit_ch6</code>. Notice our slightly different use of the <code>select()</code> verb here than we introduced in <a href="03-wrangling.html#sec-select" class="quarto-xref">Subsection&nbsp;<span>3.8.1</span></a>. For example, we’ll select the <code>Balance</code> variable from <code>Credit</code> but then save it with a new variable name <code>debt</code>. We do this because here the term “debt” is a little more interpretable than “balance.”</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="ot">&lt;-</span> Credit <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">debt =</span> Balance, <span class="at">credit_limit =</span> Limit, </span>
@@ -501,11 +501,11 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 400
 Columns: 5
-$ debt          &lt;int&gt; 333, 903, 580, 964, 331, 1151, 203, 872, 279, 1350, 1407…
-$ credit_limit  &lt;int&gt; 3606, 6645, 7075, 9504, 4897, 8047, 3388, 7114, 3300, 68…
+$ debt          &lt;dbl&gt; 333, 903, 580, 964, 331, 1151, 203, 872, 279, 1350, 1407…
+$ credit_limit  &lt;dbl&gt; 3606, 6645, 7075, 9504, 4897, 8047, 3388, 7114, 3300, 68…
 $ income        &lt;dbl&gt; 14.9, 106.0, 104.6, 148.9, 55.9, 80.2, 21.0, 71.4, 15.1,…
-$ credit_rating &lt;int&gt; 283, 483, 514, 681, 357, 569, 259, 512, 266, 491, 589, 1…
-$ age           &lt;int&gt; 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 49, …</code></pre>
+$ credit_rating &lt;dbl&gt; 283, 483, 514, 681, 357, 569, 259, 512, 266, 491, 589, 1…
+$ age           &lt;dbl&gt; 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 49, …</code></pre>
 </div>
 </div>
 <p>Furthermore, let’s look at a random sample of five out of the 400 credit card holders in <a href="#tbl-model3-data-preview" class="quarto-xref">Table&nbsp;<span>6.1</span></a>. Once again, note that due to the random nature of the sampling, you will likely end up with a different subset of five rows.</p>

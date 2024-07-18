@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -510,9 +510,9 @@ window.Quarto = {
 </blockquote>
 <p>Specifically, we can break a graphic into three essential components:</p>
 <ol type="1">
-<li><code>data</code>: the data set composed of variables that we map.</li>
+<li><code>data</code>: the dataset composed of variables that we map.</li>
 <li><code>geom</code>: the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.</li>
-<li><code>aes</code>: aesthetic attributes of the geometric object. For example, x-position, y-position, color, shape, and size. Each assigned aesthetic attribute can be mapped to a variable in our data set.</li>
+<li><code>aes</code>: aesthetic attributes of the geometric object. For example, x-position, y-position, color, shape, and size. Each assigned aesthetic attribute can be mapped to a variable in our dataset.</li>
 </ol>
 <p>You might be wondering why we wrote the terms <code>data</code>, <code>geom</code>, and <code>aes</code> in a computer code type font. We’ll see very shortly that we’ll specify the elements of the grammar in R using these terms. However, let’s first break down the grammar with an example.</p>
 </section>
@@ -696,7 +696,7 @@ Table&nbsp;2.2: Summary of Grammar of Graphics for this plot
 <li>histograms</li>
 <li>barplots</li>
 </ol>
-<p>We will discuss some variations of these plots, but with this basic repertoire of graphics in your toolbox you can visualize a wide array of different variable types. Note that certain plots are only appropriate for categorical variables and while others are only appropriate for quantitative variables. You’ll want to quiz yourself often as we go along on which plot makes sense a given a particular problem or data set.</p>
+<p>We will discuss some variations of these plots, but with this basic repertoire of graphics in your toolbox you can visualize a wide array of different variable types. Note that certain plots are only appropriate for categorical variables and while others are only appropriate for quantitative variables. You’ll want to quiz yourself often as we go along on which plot makes sense a given a particular problem or dataset.</p>
 </section>
 <section id="sec-scatterplots" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-scatterplots"><span class="header-section-number">2.3</span> 5NG#1: Scatterplots</h2>
@@ -957,7 +957,7 @@ Figure&nbsp;2.7: Jittered delay scatterplot
 </div>
 </div>
 <p>Observe how the above code is identical to the code that created the scatterplot with overplotting in <a href="#sec-geompoint" class="quarto-xref">Subsection&nbsp;<span>2.3.1</span></a>, but with <code>geom_point()</code> replaced with <code>geom_jitter()</code>.</p>
-<p>The resulting plot in <a href="#fig-jitter" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> helps us a little bit in getting a sense for the overplotting, but with a relatively large data set like this one (714 flights), it can be argued that changing the transparency of the points by setting <code>alpha</code> proved more effective. In terms of how much jitter one should add using the <code>width</code> and <code>height</code> arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.</p>
+<p>The resulting plot in <a href="#fig-jitter" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> helps us a little bit in getting a sense for the overplotting, but with a relatively large dataset like this one (714 flights), it can be argued that changing the transparency of the points by setting <code>alpha</code> proved more effective. In terms of how much jitter one should add using the <code>width</code> and <code>height</code> arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -994,7 +994,7 @@ Figure&nbsp;2.7: Jittered delay scatterplot
 <section id="summary" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.3.3</span> Summary</h3>
 <p>Scatterplots display the relationship between two numerical variables. They are among the most commonly used plots because they can provide an immediate way to see the trend in one variable versus another. However, if you try to create a scatterplot where either one of the two variables is not numerical, you might get strange results. Be careful!</p>
-<p>With medium to large data sets, you may need to play around with the different modifications one can make to a scatterplot. This tweaking is often a fun part of data visualization, since you’ll have the chance to see different relationships come about as you make subtle changes to your plots.</p>
+<p>With medium to large datasets, you may need to play around with the different modifications one can make to a scatterplot. This tweaking is often a fun part of data visualization, since you’ll have the chance to see different relationships come about as you make subtle changes to your plots.</p>
 <!--
 2019/1/28 note: Add example here using size or color aesthetic?
 -->
@@ -1002,7 +1002,7 @@ Figure&nbsp;2.7: Jittered delay scatterplot
 </section>
 <section id="sec-linegraphs" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="sec-linegraphs"><span class="header-section-number">2.4</span> 5NG#2: Linegraphs</h2>
-<p>The next of the five named graphs are linegraphs. Linegraphs show the relationship between two numerical variables when the variable on the x-axis, also called the <em>explanatory</em> variable, is of a sequential nature; in other words there is an inherent ordering to the variable. The most common example of linegraphs have some notion of time on the x-axis: hours, days, weeks, years, etc. Since time is sequential, we connect consecutive observations of the variable on the y-axis with a line. Linegraphs that have some notion of time on the x-axis are also called <em>time series</em> plots. Linegraphs should be avoided when there is not a clear sequential ordering to the variable on the x-axis. Let’s illustrate linegraphs using another data set in the <code>nycflights13</code> package: the <code>weather</code> data frame.</p>
+<p>The next of the five named graphs are linegraphs. Linegraphs show the relationship between two numerical variables when the variable on the x-axis, also called the <em>explanatory</em> variable, is of a sequential nature; in other words there is an inherent ordering to the variable. The most common example of linegraphs have some notion of time on the x-axis: hours, days, weeks, years, etc. Since time is sequential, we connect consecutive observations of the variable on the y-axis with a line. Linegraphs that have some notion of time on the x-axis are also called <em>time series</em> plots. Linegraphs should be avoided when there is not a clear sequential ordering to the variable on the x-axis. Let’s illustrate linegraphs using another dataset in the <code>nycflights13</code> package: the <code>weather</code> data frame.</p>
 <p>Let’s get a sense for the <code>weather</code> data frame:</p>
 <ul>
 <li>Explore the <code>weather</code> data by running <code>View(weather)</code>.</li>
@@ -1446,7 +1446,7 @@ Figure&nbsp;2.17: Faceted histogram with 4 instead of 3 rows
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For which types of data sets would these types of faceted plots not work well in comparing relationships between variables? Give an example describing the nature of these variables and other important characteristics.</p>
+<p>For which types of datasets would these types of faceted plots not work well in comparing relationships between variables? Give an example describing the nature of these variables and other important characteristics.</p>
 </div>
 </div>
 </div>
@@ -1462,7 +1462,7 @@ Figure&nbsp;2.17: Faceted histogram with 4 instead of 3 rows
 </div>
 <div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Does the <code>temp</code> variable in the <code>weather</code> data set have a lot of variability? Why do you say that?</p>
+<p>Does the <code>temp</code> variable in the <code>weather</code> dataset have a lot of variability? Why do you say that?</p>
 </div>
 </div>
 </div>
@@ -2340,7 +2340,7 @@ Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat
 </ol>
 </div>
 <div id="exr-ch02-c05" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each <code>player</code> had over their career?</p>
+<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> Consider the following data frame which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each <code>player</code> had over their career?</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2425,52 +2425,50 @@ Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat
 </section>
 <section id="sec-ex02-application" class="level3" data-number="2.10.2">
 <h3 data-number="2.10.2" class="anchored" data-anchor-id="sec-ex02-application"><span class="header-section-number">2.10.2</span> Application</h3>
-<p>Use the <code>covid_sub</code> dataset created below for the following problem. The dataset is derived from the <code>covid_states</code> dataset in the <code>ISDSdatasets</code> package.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>covid_sub <span class="ot">&lt;-</span> covid_states <span class="sc">%&gt;%</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    state_abbr <span class="sc">==</span> <span class="st">"IL"</span> <span class="sc">|</span> state_abbr <span class="sc">==</span> <span class="st">"FL"</span>,</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    date <span class="sc">&gt;=</span> <span class="st">"2021-07-01"</span>, date <span class="sc">&lt;=</span> <span class="st">"2021-08-31"</span>,</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    wday <span class="sc">!=</span> <span class="st">"Sat"</span>, wday <span class="sc">!=</span> <span class="st">"Sun"</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You will learn about data wrangling in the next Chapter. The code reads as follows: take the dataset <code>covid_states</code> and then subset the data to only include observations in the states <code>"IL"</code> or <code>"FL"</code>, and only include observations between July 1, 2021 and August 31, 2021 (inclusive), and only observations not recorded on Saturday, and observations not recorded on Sunday. Note: COVID reporting was not done on weekends or holidays in these states.</p>
+<p>For <a href="#exr-ch02-app1" class="quarto-xref">Exercise&nbsp;<span>2.13</span></a>, <a href="#exr-ch02-app2" class="quarto-xref">Exercise&nbsp;<span>2.14</span></a>, and <a href="#exr-ch02-app3" class="quarto-xref">Exercise&nbsp;<span>2.15</span></a> use the <code>Bikeshare</code> dataset in the <code>ISLR2</code> package.</p>
+<p>For <a href="#exr-ch02-app4" class="quarto-xref">Exercise&nbsp;<span>2.16</span></a>, use the <code>titanic_train</code> dataset included in the <code>titanic</code> package</p>
 <div id="exr-ch02-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.13</strong></span> Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the <code>color</code> aesthetic to have separate lines for each state. Compare and describe the linegraph.</p>
+<p><span class="theorem-title"><strong>Exercise 2.13</strong></span> Plot and describe the relationship between temperature (<code>atemp</code>) by bikers (<code>bikers</code>). Adjust for overplotting if need be.</p>
 </div>
-<hr>
-<p>Use the <code>nba</code> dataset in the <code>ISDSdatasets</code> package for exercises <a href="#exr-ch02-app2" class="quarto-xref">Exercise&nbsp;<span>2.14</span></a>, <a href="#exr-ch02-app3" class="quarto-xref">Exercise&nbsp;<span>2.15</span></a>, and <a href="#exr-ch02-app4" class="quarto-xref">Exercise&nbsp;<span>2.16</span></a>.</p>
 <div id="exr-ch02-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.14</strong></span> Describe and compare the number of wins and losses faceted by player using a barplot.</p>
+<p><span class="theorem-title"><strong>Exercise 2.14</strong></span> Use a faceted histogram to compare the center, spread, and shape of the distribution of <code>bikers</code> by <code>weathersit</code>.</p>
 </div>
 <div id="exr-ch02-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.15</strong></span> Plot and describe the relationship between field goal percentage (<code>fg_percent</code>) and free throw percentage (<code>ft_percent</code>). Adjust for overplotting if need be.</p>
+<p><span class="theorem-title"><strong>Exercise 2.15</strong></span> Use a side-by-side boxplot to compare the center, spread, and shape of the distribution of <code>bikers</code> by <code>season</code>.</p>
 </div>
 <div id="exr-ch02-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.16</strong></span> Compare the center, spread, and shape of the distribution of <code>pts</code> scored per game by <code>player</code> for regular season games and playoff games. In other words, facet the plot of <code>pts</code> by <code>player</code> based on <code>season</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.16</strong></span> Describe and compare the distribution of passengers that <code>Survived</code> and how the distribution varies based on <code>Sex</code> in the <code>titanic_train</code> dataset.</p>
 </div>
 </section>
 <section id="sec-ex02-advanced" class="level3" data-number="2.10.3">
 <h3 data-number="2.10.3" class="anchored" data-anchor-id="sec-ex02-advanced"><span class="header-section-number">2.10.3</span> Advanced</h3>
-<p>Let’s learn some advanced plotting features.</p>
+<p>For <a href="#exr-ch02-adv1" class="quarto-xref">Exercise&nbsp;<span>2.17</span></a> and <a href="#exr-ch02-adv2" class="quarto-xref">Exercise&nbsp;<span>2.18</span></a>, use the <code>bikeshare_date</code> dataset created below. The dataset is derived from the <code>Bikeshare</code> dataset in the <code>ISLR2</code> package. You will learn about data wrangling in the next Chapter.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>bike_daily <span class="ot">&lt;-</span> Bikeshare <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create date from day variable</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">parse_date_time</span>(<span class="at">x =</span> <span class="fu">paste</span>(<span class="dv">2011</span>, day), <span class="at">orders =</span> <span class="st">"yj"</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span> </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate summary stats by date</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">casual =</span> <span class="fu">sum</span>(casual),</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">registered =</span> <span class="fu">sum</span>(registered),</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">bikers =</span> <span class="fu">sum</span>(bikers),</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">pct_casual =</span> casual<span class="sc">/</span>bikers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div id="exr-ch02-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.17</strong></span> Start with your plot from <a href="#exr-ch02-app1" class="quarto-xref">Exercise&nbsp;<span>2.13</span></a>. Let’s clean up the graph a little by adding the following layers:</p>
+<p><span class="theorem-title"><strong>Exercise 2.17</strong></span> Plot a linegraph of the number of <code>bikers</code> by <code>date</code>. Add a layer for the number of <code>registered</code> bikers and set the color of this line to “blue”. Add a layer for the number of <code>casual</code> bikers and set the color of this line to “red”. Hint: define the aesthetics within the <code>geom</code> layer.</p>
+<p>Compare and describe the linegraph.</p>
+</div>
+<div id="exr-ch02-adv2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.18</strong></span> Create a linegraph of <code>pct_casual</code> by <code>date</code>. Clean up the graph by adding the following layers:</p>
 <ol type="a">
 <li>add on <code>theme_minimal()</code></li>
 <li>remove the x-axis label by setting <code>x = NULL</code> in the <code>labs()</code></li>
 <li>To make the x-axis text easier to read we will rotate it 45 degrees and horizontally align it on the right. Add the layer <code>theme(axis.text.x = element_text(angle = ?, hjust = ?))</code> but replace the ? with the appropriate values.</li>
-</ol>
-</div>
-<div id="exr-ch02-adv2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.18</strong></span> Use the <code>nba_pct</code> dataset created below to plot the average free throw percent for each player.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>nba_pct <span class="ot">&lt;-</span> nba <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">avg_ft_pct =</span> <span class="fu">mean</span>(ft_percent, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="a">
 <li>Change the y-axis label to percents by adding the following layer <code>scale_y_*(labels = scales::percent)</code>. Replace the * with the data type. May be useful to check the help documentation.</li>
-<li>Reorder the x-axis from highest to lowest with the following layer: <code>scale_x_*(limits = c("Kobe Bryant", "Michael Jordan", "LeBron James"))</code>. Again replace the * with the appropriate data type.</li>
 </ol>
 </div>
 

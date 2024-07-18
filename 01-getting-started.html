@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -442,10 +442,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sec-ex01" id="toc-sec-ex01" class="nav-link" data-scroll-target="#sec-ex01"><span class="header-section-number">1.6</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#sec-ex00-explained" id="toc-sec-ex00-explained" class="nav-link" data-scroll-target="#sec-ex00-explained"><span class="header-section-number">1.6.1</span> Exercises explained</a></li>
-  <li><a href="#sec-ex01-conceptual" id="toc-sec-ex01-conceptual" class="nav-link" data-scroll-target="#sec-ex01-conceptual"><span class="header-section-number">1.6.2</span> Conceptual</a></li>
-  <li><a href="#sec-ex01-application" id="toc-sec-ex01-application" class="nav-link" data-scroll-target="#sec-ex01-application"><span class="header-section-number">1.6.3</span> Application</a></li>
-  <li><a href="#sec-ex01-advanced" id="toc-sec-ex01-advanced" class="nav-link" data-scroll-target="#sec-ex01-advanced"><span class="header-section-number">1.6.4</span> Advanced</a></li>
+  <li><a href="#sec-ex01-conceptual" id="toc-sec-ex01-conceptual" class="nav-link" data-scroll-target="#sec-ex01-conceptual"><span class="header-section-number">1.6.1</span> Conceptual</a></li>
+  <li><a href="#sec-ex01-application" id="toc-sec-ex01-application" class="nav-link" data-scroll-target="#sec-ex01-application"><span class="header-section-number">1.6.2</span> Application</a></li>
+  <li><a href="#sec-ex01-advanced" id="toc-sec-ex01-advanced" class="nav-link" data-scroll-target="#sec-ex01-advanced"><span class="header-section-number">1.6.3</span> Advanced</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/01-getting-started.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -478,7 +477,7 @@ window.Quarto = {
 <li>How do I code in R?</li>
 <li>What are R packages?</li>
 </ol>
-<p>We’ll introduce these concepts in upcoming <a href="#sec-r-rstudio" class="quarto-xref">Sections&nbsp;<span>1.1</span></a> - <a href="#sec-packages" class="quarto-xref"><span>1.3</span></a> If you are already somewhat familiar with these concepts, feel free to skip to <a href="#sec-nycflights13" class="quarto-xref"><span>Section 1.4</span></a> where we’ll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.</p>
+<p>We’ll introduce these concepts in upcoming <a href="#sec-r-rstudio" class="quarto-xref">Sections&nbsp;<span>1.1</span></a> - <a href="#sec-packages" class="quarto-xref"><span>1.3</span></a> If you are already somewhat familiar with these concepts, feel free to skip to <a href="#sec-nycflights13" class="quarto-xref"><span>Section 1.4</span></a> where we’ll introduce our first dataset: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.</p>
 <section id="sec-r-rstudio" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-r-rstudio"><span class="header-section-number">1.1</span> What are R and RStudio?</h2>
 <p>For much of this book, we will assume that you are using R via RStudio. First time users often confuse the two. At its simplest:</p>
@@ -756,7 +755,7 @@ window.Quarto = {
 <section id="nycflights13-package" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="nycflights13-package"><span class="header-section-number">1.4.1</span> <code>nycflights13</code> package</h3>
 <p>Many of us have flown on airplanes or know someone who has. Air travel has become an ever-present aspect in many people’s lives. If you live in or are visiting a relatively large city and you walk around that city’s airport, you see gates showing flight information from many different airlines. And you will frequently see that some flights are delayed because of a variety of conditions. Are there ways that we can avoid having to deal with these flight delays?</p>
-<p>We’d all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for the moment that you are very much anticipating being at your final destination.) Throughout this book, we’re going to analyze data related to flights contained in the <code>nycflights13</code> package <span class="citation" data-cites="R-nycflights13">(<a href="references.html#ref-R-nycflights13" role="doc-biblioref">Wickham 2021</a>)</span>. Specifically, this package contains five data sets saved in five separate data frames with information about all domestic flights departing from New York City in 2013. These include Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia (LGA) airports:</p>
+<p>We’d all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for the moment that you are very much anticipating being at your final destination.) Throughout this book, we’re going to analyze data related to flights contained in the <code>nycflights13</code> package <span class="citation" data-cites="R-nycflights13">(<a href="references.html#ref-R-nycflights13" role="doc-biblioref">Wickham 2021</a>)</span>. Specifically, this package contains five datasets saved in five separate data frames with information about all domestic flights departing from New York City in 2013. These include Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia (LGA) airports:</p>
 <ul>
 <li><code>flights</code>: Information on all 336,776 flights</li>
 <li><code>airlines</code>: A table matching airline names and their two letter IATA airline codes (also known as carrier codes) for 16 airline companies</li>
@@ -918,14 +917,10 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="sec-ex01" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="sec-ex01"><span class="header-section-number">1.6</span> Exercises</h2>
-<section id="sec-ex00-explained" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="sec-ex00-explained"><span class="header-section-number">1.6.1</span> Exercises explained</h3>
-<p>Following each chapter, there are a set of Exercises for you to practice what you have learned. The <strong>Conceptual</strong> questions are multiple choice or short answer questions focusing on the major concepts learned throughout the chapter. The <strong>Application</strong> questions focus on practical skills learned throughout the chapter. And the <strong>Advanced</strong> questions teach new and useful skills beyond what was taught in the chapter.</p>
-<p>The chapter exercises use the <code>covid_states</code>, <code>nba</code>, and <code>titanic</code> datasets which are included in the <code>ISDSdatasets</code> package. To install <code>ISDSdatasets</code> on your computer, type <code>remotes::install_github("NUstat/ISDSdatasets")</code> in your <strong>Console</strong>. You may need to install the <code>remotes</code> package first. See <a href="#sec-package-installation" class="quarto-xref"><span>Section 1.3.1</span></a> for how to install the <code>remotes</code> package. If you are using RStudio Cloud, your instructor probably already installed all of this for you. You can see what packages you have installed by clicking on the <strong>Packages</strong> tab in the lower right pane.</p>
-<p>To use the package make sure you load it using <code>library(ISDSdatasets)</code>. To explore a dataset within the package you can use the <code>View()</code> or <code>data()</code> function in your <strong>Console</strong>. For example, try typing <code>data(titanic)</code> in the <strong>Console</strong>. This will load the <code>titanic</code> data into the <strong>Environment</strong>.</p>
-</section>
-<section id="sec-ex01-conceptual" class="level3" data-number="1.6.2">
-<h3 data-number="1.6.2" class="anchored" data-anchor-id="sec-ex01-conceptual"><span class="header-section-number">1.6.2</span> Conceptual</h3>
+<p>The Chapter 1 exercises use the <code>flights</code> dataset from the <code>nycflights13</code> package and the <code>titanic_train</code> dataset from the <code>titanic</code> package. See <a href="#sec-package-installation" class="quarto-xref"><span>Section 1.3.1</span></a> for how to install the <code>titanic</code> package. You can see what packages you have installed by clicking on the <strong>Packages</strong> tab in the lower right pane.</p>
+<p>To use the package make sure you load it using <code>library(titanic)</code>. To explore a dataset within the package you can use the <code>View()</code> or <code>data()</code> function in your <strong>Console</strong>. For example, try typing <code>data(titanic_train)</code> in the <strong>Console</strong>. This will load the <code>titanic_train</code> data into the <strong>Environment</strong>.</p>
+<section id="sec-ex01-conceptual" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="sec-ex01-conceptual"><span class="header-section-number">1.6.1</span> Conceptual</h3>
 <div id="exr-ch01-c01" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Which type of document do we use to both code and write explanations?</p>
 <ol type="a">
@@ -981,7 +976,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </ol>
 </div>
 <div id="exr-ch01-c07" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> What does any ONE row in this flights dataset refer to?</p>
+<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> What does any ONE row in the <code>flights</code> dataset from the <code>nycflights13</code> package refer to?</p>
 <ol type="a">
 <li>Data on an airline</li>
 <li>Data on a flight</li>
@@ -990,34 +985,33 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </ol>
 </div>
 <div id="exr-ch01-c08" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> In the flights dataset, <code>air_time</code> and <code>arr_delay</code> are which type of variables?</p>
+<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> In the <code>flights</code> dataset, <code>air_time</code> and <code>arr_delay</code> are which type of variables?</p>
 <ol type="a">
 <li>string</li>
 <li>categorical</li>
 <li>quantitative</li>
 <li>character</li>
-<li>dataframe</li>
+<li>data frame</li>
 </ol>
 </div>
 </section>
-<section id="sec-ex01-application" class="level3" data-number="1.6.3">
-<h3 data-number="1.6.3" class="anchored" data-anchor-id="sec-ex01-application"><span class="header-section-number">1.6.3</span> Application</h3>
+<section id="sec-ex01-application" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="sec-ex01-application"><span class="header-section-number">1.6.2</span> Application</h3>
 <div id="exr-ch01-app1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.9</strong></span> In a code chunk, first define a variable <code>z</code> to be the product of 12 and 31, then define a variable called <code>add_on</code> to be the number 12. Print the output of <code>z + add_on</code>.</p>
 </div>
 <div id="exr-ch01-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.10</strong></span> Consider the <code>titanic</code> data set included in the package <code>ISDSdatasets</code>. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.</p>
+<p><span class="theorem-title"><strong>Exercise 1.10</strong></span> Consider the <code>titanic_train</code> dataset included in the <code>titanic</code> package. This is one of the most popular datasets used for understanding machine learning basics, and you will likely see this dataset in the future if you continue on in your studies to machine learning.</p>
 <p>Use the <code>glimpse()</code> function from the <code>dplyr</code> package to explore and describe the dataset.</p>
 </div>
 </section>
-<section id="sec-ex01-advanced" class="level3" data-number="1.6.4">
-<h3 data-number="1.6.4" class="anchored" data-anchor-id="sec-ex01-advanced"><span class="header-section-number">1.6.4</span> Advanced</h3>
-<p>For the following problems we will use the <code>titanic</code> data set to learn additional data exploration techniques.</p>
+<section id="sec-ex01-advanced" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="sec-ex01-advanced"><span class="header-section-number">1.6.3</span> Advanced</h3>
 <div id="exr-ch01-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.11</strong></span> Use the function <code>head()</code> on the <code>titanic</code> dataset. What does it do? Based on this, what do you expect the function <code>tail()</code> does?</p>
+<p><span class="theorem-title"><strong>Exercise 1.11</strong></span> Use the function <code>head()</code> on the <code>titanic_train</code> dataset. What does it do? Based on this, what do you expect the function <code>tail()</code> does?</p>
 </div>
 <div id="exr-ch01-adv2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> The function <code>unique()</code>, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function <code>unique()</code> on the variable <code>Embarked</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> The function <code>unique()</code>, when used on a specific variable within a dataset, returns a vector of the values of the variable with duplicate elements removed. Try using the function <code>unique()</code> on the variable <code>Embarked</code>.</p>
 </div>
 
 
