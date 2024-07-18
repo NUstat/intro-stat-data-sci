@@ -32,7 +32,7 @@ Before we can start exploring data in R, there are some key concepts to understa
 2.  How do I code in R?
 3.  What are R packages?
 
-We'll introduce these concepts in upcoming [Sections -@sec-r-rstudio] - [-@sec-packages.] If you are already somewhat familiar with these concepts, feel free to skip to @sec-nycflights13 where we'll introduce our first data set: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.
+We'll introduce these concepts in upcoming [Sections -@sec-r-rstudio] - [-@sec-packages.] If you are already somewhat familiar with these concepts, feel free to skip to @sec-nycflights13 where we'll introduce our first dataset: all domestic flights departing a New York City airport in 2013. This is a dataset we will explore in depth in this book.
 
 ## What are R and RStudio? {#sec-r-rstudio}
 
@@ -290,7 +290,7 @@ At the beginning of all subsequent chapters in this text, we'll always have a li
 
 Many of us have flown on airplanes or know someone who has. Air travel has become an ever-present aspect in many people's lives. If you live in or are visiting a relatively large city and you walk around that city's airport, you see gates showing flight information from many different airlines. And you will frequently see that some flights are delayed because of a variety of conditions. Are there ways that we can avoid having to deal with these flight delays?
 
-We'd all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for the moment that you are very much anticipating being at your final destination.) Throughout this book, we're going to analyze data related to flights contained in the `nycflights13` package [@R-nycflights13]. Specifically, this package contains five data sets saved in five separate data frames with information about all domestic flights departing from New York City in 2013. These include Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia (LGA) airports:
+We'd all like to arrive at our destinations on time whenever possible. (Unless you secretly love hanging out at airports. If you are one of these people, pretend for the moment that you are very much anticipating being at your final destination.) Throughout this book, we're going to analyze data related to flights contained in the `nycflights13` package [@R-nycflights13]. Specifically, this package contains five datasets saved in five separate data frames with information about all domestic flights departing from New York City in 2013. These include Newark Liberty International (EWR), John F. Kennedy International (JFK), and LaGuardia (LGA) airports:
 
 -   `flights`: Information on all `r scales::comma(nrow(nycflights13::flights))` flights
 -   `airlines`: A table matching airline names and their two letter IATA airline codes (also known as carrier codes) for `r nrow(nycflights13::airlines)` airline companies
@@ -424,13 +424,9 @@ If you are completely new to the world of coding, R, and RStudio and feel you co
 
 ## Exercises {#sec-ex01}
 
-### Exercises explained {#sec-ex00-explained}
+The Chapter 1 exercises use the `flights` dataset from the `nycflights13` package and the `titanic_train` dataset from the `titanic` package. See @sec-package-installation for how to install the `titanic` package. You can see what packages you have installed by clicking on the **Packages** tab in the lower right pane.
 
-Following each chapter, there are a set of Exercises for you to practice what you have learned. The **Conceptual** questions are multiple choice or short answer questions focusing on the major concepts learned throughout the chapter. The **Application** questions focus on practical skills learned throughout the chapter. And the **Advanced** questions teach new and useful skills beyond what was taught in the chapter.
-
-The chapter exercises use the `covid_states`, `nba`, and `titanic` datasets which are included in the `ISDSdatasets` package. To install `ISDSdatasets` on your computer, type `remotes::install_github("NUstat/ISDSdatasets")` in your **Console**. You may need to install the `remotes` package first. See @sec-package-installation for how to install the `remotes` package. If you are using RStudio Cloud, your instructor probably already installed all of this for you. You can see what packages you have installed by clicking on the **Packages** tab in the lower right pane.
-
-To use the package make sure you load it using `library(ISDSdatasets)`. To explore a dataset within the package you can use the `View()` or `data()` function in your **Console**. For example, try typing `data(titanic)` in the **Console**. This will load the `titanic` data into the **Environment**.
+To use the package make sure you load it using `library(titanic)`. To explore a dataset within the package you can use the `View()` or `data()` function in your **Console**. For example, try typing `data(titanic_train)` in the **Console**. This will load the `titanic_train` data into the **Environment**.
 
 ### Conceptual {#sec-ex01-conceptual}
 
@@ -489,7 +485,7 @@ e)  15
 :::
 
 ::: {#exr-ch01-c07}
-What does any ONE row in this flights dataset refer to?
+What does any ONE row in the `flights` dataset from the `nycflights13` package refer to?
 
 a)  Data on an airline
 b)  Data on a flight
@@ -498,13 +494,13 @@ d)  Data on multiple flights
 :::
 
 ::: {#exr-ch01-c08}
-In the flights dataset, `air_time` and `arr_delay` are which type of variables?
+In the `flights` dataset, `air_time` and `arr_delay` are which type of variables?
 
 a)  string
 b)  categorical
 c)  quantitative
 d)  character
-e)  dataframe
+e)  data frame
 :::
 
 ### Application {#sec-ex01-application}
@@ -514,19 +510,17 @@ In a code chunk, first define a variable `z` to be the product of 12 and 31, the
 :::
 
 ::: {#exr-ch01-app2}
-Consider the `titanic` data set included in the package `ISDSdatasets`. This is one of the most popular data sets used for understanding machine learning basics, and you will likely see this data set in the future if you continue on in your studies to machine learning.
+Consider the `titanic_train` dataset included in the `titanic` package. This is one of the most popular datasets used for understanding machine learning basics, and you will likely see this dataset in the future if you continue on in your studies to machine learning.
 
 Use the `glimpse()` function from the `dplyr` package to explore and describe the dataset.
 :::
 
 ### Advanced {#sec-ex01-advanced}
 
-For the following problems we will use the `titanic` data set to learn additional data exploration techniques.
-
 ::: {#exr-ch01-adv1}
-Use the function `head()` on the `titanic` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
+Use the function `head()` on the `titanic_train` dataset. What does it do? Based on this, what do you expect the function `tail()` does?
 :::
 
 ::: {#exr-ch01-adv2}
-The function `unique()`, when used on a specific variable within a data set, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
+The function `unique()`, when used on a specific variable within a dataset, returns a vector of the values of the variable with duplicate elements removed. Try using the function `unique()` on the variable `Embarked`.
 :::

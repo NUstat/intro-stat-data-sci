@@ -52,7 +52,7 @@ If needed, read @sec-packages for information on how to install and load R packa
 library(tidyverse)
 library(moderndive)
 library(skimr)
-library(ISLR)
+library(ISLR2)
 ```
 ```{r}
 #| echo: false
@@ -64,7 +64,7 @@ library(moderndive)
 # the remaining chapters in the book.
 # Furthermore all skimr::skim() output in this Chapter has been hard coded. 
 # library(skimr)
-library(ISLR)
+library(ISLR2)
 ```
 
 ```{r}
@@ -79,7 +79,7 @@ library(gapminder)
 
 ## Two numerical explanatory variables {#sec-model3}
 
-Let's first consider a *multiple regression* model with two numerical explanatory variables. The dataset we'll use is from ["An Introduction to Statistical Learning with Applications in R (ISLR)"](http://www-bcf.usc.edu/~gareth/ISL/), an intermediate-level textbook on statistical and machine learning. Its accompanying `ISLR` R package contains the datasets that the authors apply various machine learning methods to. 
+Let's first consider a *multiple regression* model with two numerical explanatory variables. The dataset we'll use is from ["An Introduction to Statistical Learning with Applications in R, (Second Edition)"](https://www.statlearning.com/), an intermediate-level textbook on statistical and machine learning. Its accompanying `ISLR2` R package contains the datasets that the authors apply various machine learning methods to. 
 
 One frequently used dataset in this book is the `Credit` dataset, where the outcome variable of interest is the credit card debt of 400 individuals. Other variables like income, credit limit, credit rating, and age are included as well. Note that the `Credit` data is not based on real individuals' financial information, but rather is a simulated dataset used for educational purposes. 
 
@@ -263,7 +263,7 @@ Furthermore, we also include the *regression plane*\index{regression plane}. Rec
 #| eval: false
 #| echo: false
 # Source code for above 3D scatterplot & regression plane. 
-library(ISLR)
+library(ISLR2)
 library(plotly)
 library(tidyverse)
 # setup hideous grid required by plotly

@@ -4,11 +4,13 @@
 #| warning: false
 #| message: false
 
-library(ISDSdatasets)
+library(titanic)
 library(tidyverse)
 library(moderndive)
 library(lubridate)
 library(patchwork)
+library(ISLR2)
+library(ISDSdatasets)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -42,16 +44,16 @@ z + add_on
 
 ```{r}
 #| eval: false
-glimpse(titanic)
+glimpse(titanic_train)
 ```
 
-The dataset has 418 rows (passengers) and 11 variables. The variables identify various passenger information such as name, age, sex, ticket class, number of siblings/spouses on board, fare cost, port the left from, and whether or not they survived.
+The dataset has 891 rows (passengers) and 12 variables. The variables identify various passenger information such as name, age, sex, ticket class, number of siblings/spouses on board, fare cost, port the left from, and whether or not they survived.
 
 
 @exr-ch01-adv1
 
 ```{r}
-head(titanic)
+head(titanic_train)
 ```
 
 The `head()` function shows the first 6 rows of the dataset. Based on this, I expect the `tail()` function to show the last 6 rows of the dataset.
@@ -59,7 +61,7 @@ The `head()` function shows the first 6 rows of the dataset. Based on this, I ex
 @exr-ch01-adv2
 
 ```{r}
-unique(titanic$Embarked)
+unique(titanic_train$Embarked)
 ```
 
 There are 3 unique ports of embarkation: Q, S, C (Queenstown, Southampton, Cherbourg). 
@@ -93,74 +95,101 @@ There are 3 unique ports of embarkation: Q, S, C (Queenstown, Southampton, Cherb
 @exr-ch02-app1
 
 ```{r}
-#| include: false
-library(ggplot2)
-library(dplyr)
-library(ISDSdatasets)
-
-covid_sub <- covid_states %>% 
-  filter(
-    state_abbr == "IL" | state_abbr == "FL",
-    date >= "2021-07-01", date <= "2021-08-31",
-    wday != "Sat", wday != "Sun"
-    )
-```
-
-```{r}
 ggplot(
-  covid_sub, 
-  aes(x = date, y = new_confirmed, color = state_abbr)
+  Bikeshare, 
+  aes(x = bikers, y = atemp)
   ) +
-  geom_line()
+  geom_point(alpha = 0.2)
 ```
 
-Florida has significantly more covid cases than Illinois in the months of July and August 2021. The spikes to 0 could indicate testing did not occur on those days. Illinois has a positive "fairly linear" trend. Florida has a nonlinear trend where cases are increasing until around August 15th, at which point cases start to decrease.
+There is a moderate positive linear relationship between the number of bikers each hour and temperature. Meaning as temperature increases so does the number of bikers.
 
 @exr-ch02-app2
 
 ```{r}
-ggplot(nba, aes(x = factor(win)) ) +
-  geom_bar() +
-  facet_wrap(~ player)
+ggplot(Bikeshare, aes(x = bikers) ) +
+  geom_histogram(color = "white", bins = 35) +
+  facet_wrap(~ weathersit, scales = "free")
 ```
 
-A win is indicated with a "1". All three players have more wins than losses. LeBron has the most total wins and Jordan has the least total losses. But Jordan having less wins and losses is relative because he also played the least number of games.
+There was only one observation with heavy rain/snow. The distribution of bikers for all other weather conditions are right skewed. The main peak for each weather condition is similar at around 20. The "clear" and "light rain/snow" conditions are fairly unimodal and "cloudy/misty" appears bi-modal with a minor peak around 80. The spread in terms of range is 600 for all three conditions. 
 
 @exr-ch02-app3
 
 ```{r}
-ggplot(nba, aes(x = ft_percent, y = fg_percent)) +
-  geom_jitter(alpha=0.1)
+ggplot(Bikeshare, aes(x = factor(season), y = bikers)) +
+  geom_boxplot()
 ```
 
-The relationship between the field goal percentage and free throw percentage seems to have no association. This means that whether a player made all of their free throws or only 50% of their free throws, it will not impact their shooting during the game (field goal percent). If we draw a circle around the points it is fairly horizontal (indicating no positive or negative trend) and a large oval. 
+Season 1 corresponds to winter and has the lowest median around 60 bikers and lowest spread in terms of IQR estimated around 80. Season 3 corresponds to summer with the highest median estimated around 175 bikers and largest spread in terms of IQR estimated around 225. The distribution for spring and fall are similar with a median around 125 and IQR of around 200. All seasons have high outliers resulting in a right skew.
+
 
 @exr-ch02-app4
 
 ```{r}
-ggplot(nba, aes(x = player, y = pts)) +
-  geom_boxplot() +
-  facet_wrap(~ season)
+ggplot(titanic_train, 
+       aes(x = factor(Survived), fill = Sex)
+       ) +
+  geom_bar(position = "dodge")
 ```
 
+There were more males than females in our sample of data from the titanic. Roughly 240 female passengers and 105 male passengers survived while around 80 female passengers and 460 male passengers died. Meaning in total more passengers died (~540) than survived(~345). Due to the imbalanced counts between genders it would be more informative to compare the rate of survival.
+
 ```{r}
-#Alternate way to visualize
-ggplot(nba, aes(x = pts)) +
-  geom_histogram() +
-  facet_grid(player ~ season, scales = "free")
+ggplot(titanic_train, 
+       aes(x = factor(Survived), fill = Sex)
+       ) +
+  geom_bar(position = "fill")
 ```
+
+Of the passengers that survived, roughly 30% were male and 70% female. Of the passengers that died, roughly 80% were male and 20% female.
 
 @exr-ch02-adv1
 
 ```{r}
+#| include: false
+library(ggplot2)
+library(dplyr)
+library(ISLR2)
+
+bike_daily <- Bikeshare %>% 
+  mutate(
+    # create date from day variable
+    date = parse_date_time(x = paste(2011, day), orders = "yj")
+    ) |> 
+  group_by(date) |> 
+  # calculate summary stats by date
+  summarize(casual = sum(casual),
+            registered = sum(registered),
+            bikers = sum(bikers),
+            pct_casual = casual/bikers)
+```
+
+```{r}
 ggplot(
-  covid_sub, 
-  aes(x = date, y = new_confirmed, color = state_abbr)
+  bike_daily, 
+  aes(x = date, y = bikers)
+  ) +
+  geom_line() +
+  geom_line(aes(y = registered), color = "blue") +
+  geom_line(aes(y = casual), color = "red")
+```
+
+There are more registered bikers than casual bikers and the registered and casual bikers sum to the total bikers (black line). In general, the line trends upwards from January until July where the number of bikers peak and trends downward the rest of the year. This makes sense because people generally bike when the weather is nicer in the summer months. Although August is a summer month it has a lower number of bikers than July likely due to the school year starting back up.
+
+@exr-ch02-adv2
+
+```{r}
+ggplot(
+  bike_daily, 
+  aes(x = date, y = pct_casual)
   ) +
   geom_line() +
   theme_minimal() +
   labs(x = NULL) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1)) +
+  scale_y_continuous(labels = scales::percent)
 ```
 
 

@@ -73,9 +73,9 @@ In short, the grammar tells us that:
 
 Specifically, we can break a graphic into three essential components:
 
-1.  `data`: the data set composed of variables that we map.
+1.  `data`: the dataset composed of variables that we map.
 2.  `geom`: the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.
-3.  `aes`: aesthetic attributes of the geometric object. For example, x-position, y-position, color, shape, and size. Each assigned aesthetic attribute can be mapped to a variable in our data set.
+3.  `aes`: aesthetic attributes of the geometric object. For example, x-position, y-position, color, shape, and size. Each assigned aesthetic attribute can be mapped to a variable in our dataset.
 
 You might be wondering why we wrote the terms `data`, `geom`, and `aes` in a computer code type font. We'll see very shortly that we'll specify the elements of the grammar in R using these terms. However, let's first break down the grammar with an example.
 
@@ -207,7 +207,7 @@ In order to keep things simple, we will only focus on five types of graphics in 
 4.  histograms
 5.  barplots
 
-We will discuss some variations of these plots, but with this basic repertoire of graphics in your toolbox you can visualize a wide array of different variable types. Note that certain plots are only appropriate for categorical variables and while others are only appropriate for quantitative variables. You'll want to quiz yourself often as we go along on which plot makes sense a given a particular problem or data set.
+We will discuss some variations of these plots, but with this basic repertoire of graphics in your toolbox you can visualize a wide array of different variable types. Note that certain plots are only appropriate for categorical variables and while others are only appropriate for quantitative variables. You'll want to quiz yourself often as we go along on which plot makes sense a given a particular problem or dataset.
 
 ## 5NG#1: Scatterplots {#sec-scatterplots}
 
@@ -386,7 +386,7 @@ ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 Observe how the above code is identical to the code that created the scatterplot with overplotting in [Subsection -@sec-geompoint], but with `geom_point()` replaced with `geom_jitter()`.
 
-The resulting plot in @fig-jitter helps us a little bit in getting a sense for the overplotting, but with a relatively large data set like this one (`r nrow(alaska_flights)` flights), it can be argued that changing the transparency of the points by setting `alpha` proved more effective. In terms of how much jitter one should add using the `width` and `height` arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.
+The resulting plot in @fig-jitter helps us a little bit in getting a sense for the overplotting, but with a relatively large dataset like this one (`r nrow(alaska_flights)` flights), it can be argued that changing the transparency of the points by setting `alpha` proved more effective. In terms of how much jitter one should add using the `width` and `height` arguments, it is important to add just enough jitter to break any overlap in points, but not so much that we completely alter the overall pattern in points.
 
 ::: {.callout-tip icon="false" collapse="true"}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
@@ -404,7 +404,7 @@ After viewing the @fig-alpha above, give an approximate range of arrival delays 
 
 Scatterplots display the relationship between two numerical variables. They are among the most commonly used plots because they can provide an immediate way to see the trend in one variable versus another. However, if you try to create a scatterplot where either one of the two variables is not numerical, you might get strange results. Be careful!
 
-With medium to large data sets, you may need to play around with the different modifications one can make to a scatterplot. This tweaking is often a fun part of data visualization, since you'll have the chance to see different relationships come about as you make subtle changes to your plots.
+With medium to large datasets, you may need to play around with the different modifications one can make to a scatterplot. This tweaking is often a fun part of data visualization, since you'll have the chance to see different relationships come about as you make subtle changes to your plots.
 
 ```{=html}
 <!--
@@ -413,7 +413,7 @@ With medium to large data sets, you may need to play around with the different m
 ```
 ## 5NG#2: Linegraphs {#sec-linegraphs}
 
-The next of the five named graphs are linegraphs. Linegraphs show the relationship between two numerical variables when the variable on the x-axis, also called the *explanatory* variable, is of a sequential nature; in other words there is an inherent ordering to the variable. The most common example of linegraphs have some notion of time on the x-axis: hours, days, weeks, years, etc. Since time is sequential, we connect consecutive observations of the variable on the y-axis with a line. Linegraphs that have some notion of time on the x-axis are also called *time series* plots. Linegraphs should be avoided when there is not a clear sequential ordering to the variable on the x-axis. Let's illustrate linegraphs using another data set in the `nycflights13` package: the `weather` data frame.
+The next of the five named graphs are linegraphs. Linegraphs show the relationship between two numerical variables when the variable on the x-axis, also called the *explanatory* variable, is of a sequential nature; in other words there is an inherent ordering to the variable. The most common example of linegraphs have some notion of time on the x-axis: hours, days, weeks, years, etc. Since time is sequential, we connect consecutive observations of the variable on the y-axis with a line. Linegraphs that have some notion of time on the x-axis are also called *time series* plots. Linegraphs should be avoided when there is not a clear sequential ordering to the variable on the x-axis. Let's illustrate linegraphs using another dataset in the `nycflights13` package: the `weather` data frame.
 
 Let's get a sense for the `weather` data frame:
 
@@ -679,13 +679,13 @@ What do the numbers 1-12 correspond to in the plot above? What about 25, 50, 75,
 ::: {.callout-tip icon="false" collapse="true"}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
-For which types of data sets would these types of faceted plots not work well in comparing relationships between variables? Give an example describing the nature of these variables and other important characteristics.
+For which types of datasets would these types of faceted plots not work well in comparing relationships between variables? Give an example describing the nature of these variables and other important characteristics.
 :::
 
 ::: {.callout-tip icon="false" collapse="true"}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
-Does the `temp` variable in the `weather` data set have a lot of variability? Why do you say that?
+Does the `temp` variable in the `weather` dataset have a lot of variability? Why do you say that?
 :::
 
 ## 5NG#4: Boxplots {#sec-boxplots}
@@ -1297,7 +1297,7 @@ e)  When you have lots of missing values
 :::
 
 ::: {#exr-ch02-c05}
-Consider the following dataset which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each `player` had over their career?
+Consider the following data frame which counts the total number of career wins for three NBA players. Which layer is added to visualize the distribution of the number of wins each `player` had over their career?
 
 | player         | num_wins |
 |----------------|----------|
@@ -1373,66 +1373,60 @@ Match the histogram with the corresponding boxplot.
 
 ### Application {#sec-ex02-application}
 
-Use the `covid_sub` dataset created below for the following problem. The dataset is derived from the `covid_states` dataset in the `ISDSdatasets` package.
+For @exr-ch02-app1, @exr-ch02-app2, and @exr-ch02-app3 use the `Bikeshare` dataset in the `ISLR2` package.
 
-```{r}
-#| label: ex02-covid-sub
-#| eval: false
-
-covid_sub <- covid_states %>% 
-  filter(
-    state_abbr == "IL" | state_abbr == "FL",
-    date >= "2021-07-01", date <= "2021-08-31",
-    wday != "Sat", wday != "Sun"
-    )
-```
-
-You will learn about data wrangling in the next Chapter. The code reads as follows: take the dataset `covid_states` and then subset the data to only include observations in the states `"IL"` or `"FL"`, and only include observations between July 1, 2021 and August 31, 2021 (inclusive), and only observations not recorded on Saturday, and observations not recorded on Sunday. Note: COVID reporting was not done on weekends or holidays in these states.
+For @exr-ch02-app4, use the `titanic_train` dataset included in the `titanic` package
 
 ::: {#exr-ch02-app1}
-Plot a linegraph of the number of new COVID cases from July to August 2021 for Illinois and Florida. Use the `color` aesthetic to have separate lines for each state. Compare and describe the linegraph.
+Plot and describe the relationship between temperature (`atemp`) by bikers (`bikers`). Adjust for overplotting if need be.
 :::
 
-***
-
-Use the `nba` dataset in the `ISDSdatasets` package for exercises @exr-ch02-app2, @exr-ch02-app3, and @exr-ch02-app4.
-
 ::: {#exr-ch02-app2}
-Describe and compare the number of wins and losses faceted by player using a barplot.
+Use a faceted histogram to compare the center, spread, and shape of the distribution of `bikers` by `weathersit`.
 :::
 
 ::: {#exr-ch02-app3}
-Plot and describe the relationship between field goal percentage (`fg_percent`) and free throw percentage (`ft_percent`). Adjust for overplotting if need be.
+Use a side-by-side boxplot to compare the center, spread, and shape of the distribution of `bikers` by `season`.
 :::
 
 ::: {#exr-ch02-app4}
-Compare the center, spread, and shape of the distribution of `pts` scored per game by `player` for regular season games and playoff games. In other words, facet the plot of `pts` by `player` based on `season`.
+Describe and compare the distribution of passengers that `Survived` and how the distribution varies based on `Sex` in the `titanic_train` dataset.
 :::
 
 ### Advanced {#sec-ex02-advanced}
 
-Let's learn some advanced plotting features.
+For @exr-ch02-adv1 and @exr-ch02-adv2, use the `bikeshare_date` dataset created below. The dataset is derived from the `Bikeshare` dataset in the `ISLR2` package. You will learn about data wrangling in the next Chapter.
+
+```{r}
+#| label: ex02-bike-sub
+#| eval: false
+
+library(ISLR2)
+
+bike_daily <- Bikeshare %>% 
+  mutate(
+    # create date from day variable
+    date = parse_date_time(x = paste(2011, day), orders = "yj")
+    ) |> 
+  group_by(date) |> 
+  # calculate summary stats by date
+  summarize(casual = sum(casual),
+            registered = sum(registered),
+            bikers = sum(bikers),
+            pct_casual = casual/bikers)
+```
 
 ::: {#exr-ch02-adv1}
-Start with your plot from @exr-ch02-app1. Let's clean up the graph a little by adding the following layers:
+Plot a linegraph of the number of `bikers` by `date`. Add a layer for the number of `registered` bikers and set the color of this line to "blue". Add a layer for the number of `casual` bikers and set the color of this line to "red". Hint: define the aesthetics within the `geom` layer.
+
+Compare and describe the linegraph.
+:::
+
+::: {#exr-ch02-adv2}
+Create a linegraph of `pct_casual` by `date`. Clean up the graph by adding the following layers:
 
 a)  add on `theme_minimal()`
 b)  remove the x-axis label by setting `x = NULL` in the `labs()`
 c)  To make the x-axis text easier to read we will rotate it 45 degrees and horizontally align it on the right. Add the layer `theme(axis.text.x = element_text(angle = ?, hjust = ?))` but replace the ? with the appropriate values.
-:::
-
-::: {#exr-ch02-adv2}
-Use the `nba_pct` dataset created below to plot the average free throw percent for each player.
-
-```{r}
-#| label: ex02-nba-pct
-#| eval: false
-
-nba_pct <- nba %>% 
-    group_by(player) %>%
-    summarize(avg_ft_pct = mean(ft_percent, na.rm = TRUE))
-```
-
-a)   Change the y-axis label to percents by adding the following layer `scale_y_*(labels = scales::percent)`. Replace the * with the data type. May be useful to check the help documentation.
-b)   Reorder the x-axis from highest to lowest with the following layer: `scale_x_*(limits = c("Kobe Bryant", "Michael Jordan", "LeBron James"))`. Again replace the * with the appropriate data type.
+d)   Change the y-axis label to percents by adding the following layer `scale_y_*(labels = scales::percent)`. Replace the * with the data type. May be useful to check the help documentation.
 :::
