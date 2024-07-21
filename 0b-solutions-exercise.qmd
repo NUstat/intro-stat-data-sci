@@ -156,8 +156,8 @@ bike_daily <- Bikeshare %>%
   mutate(
     # create date from day variable
     date = parse_date_time(x = paste(2011, day), orders = "yj")
-    ) |> 
-  group_by(date) |> 
+    ) %>% 
+  group_by(date) %>% 
   # calculate summary stats by date
   summarize(casual = sum(casual),
             registered = sum(registered),
@@ -220,33 +220,24 @@ ggplot(
 @exr-ch03-app1
 
 ```{r}
-nba %>%
-  group_by(player) %>%
-  summarize(avg_ft= mean(ft, na.rm=TRUE))
+Bikeshare %>%
+  filter(hr == 12) %>% 
+  group_by(mnth) %>%
+  summarize(avg_bikers= mean(bikers, na.rm=TRUE))
 ```
 
 @exr-ch03-app2
 ```{r}
-nba %>%
-  group_by(player) %>%
-  mutate(spread = pts_tm - pts_opp ) %>%
-  ungroup() %>%
-  slice_max(spread) %>% 
-  select(player, pts_tm, pts_opp, spread)
-
-# Alternate code
-nba_spread <- nba %>%
-  group_by(player) %>%
-  mutate(spread = pts_tm - pts_opp ) %>% 
-  select(player, pts_tm, pts_opp, spread)
-
-nba_spread %>% arrange(desc(spread))
+Auto %>%
+  mutate(pwr = horsepower/weight ) %>%
+  slice_max(pwr) %>% 
+  select(name, pwr, horsepower, weight)
 ```
-Kobe Bryant had the largest win spread, winning the game by 55 points.
+The buick estate wagon (sw) has the largest power weight ratio of 0.0729.
 
 @exr-ch03-app3
 ```{r}
-titanic %>%
+titanic_train %>%
   group_by(Pclass) %>% 
   summarize(fare_calc= sum(Fare, na.rm=TRUE)) %>%
   arrange(desc(fare_calc))
@@ -255,51 +246,57 @@ titanic %>%
 @exr-ch03-app4
 
 ```{r}
-covid_join <- covid_states %>%
- group_by(location_key, state) %>%
- summarize(total_new_confirmed=sum(new_confirmed, na.rm=TRUE),
-           total_new_deceased=sum(new_deceased, na.rm=TRUE),
-           total_new_recovered=sum(new_recovered, na.rm=TRUE),
-           total_new_tested=sum(new_tested, na.rm=TRUE))
+titanic_train %>%
+  count(Survived, Sex)
 
-covid_joined <- covid_join %>%
-  inner_join(covid_dem, by= "location_key")
-
-covid_joined
+# Alternate code
+titanic_train %>%
+  group_by(Survived, Sex) %>% 
+  summarize(count = n())
 ```
 
 @exr-ch03-adv1
 
 ```{r}
-covid_pop <- covid_states %>% 
-  filter(state_abbr %in% c("CA", "TX", "FL", "NY"))
+bike_summer <- Bikeshare %>% 
+  filter(mnth %in% c("June", "July", "Aug"))
 ```
 
-@exr-ch03-adv2
-```{r}
-library(lubridate)
-covid_confirmed <- covid_pop %>%
-  filter(date<="2021-12-31", date>="2021-01-01") %>%
-  mutate(week = week(date)) %>% 
-  group_by(week, state) %>% 
-  summarize(total_confirmed = sum(new_confirmed))
-
-ggplot(data=covid_confirmed, 
-       aes(x=week, y=total_confirmed, color=state)) +
-  geom_line()
-```
-
-The linegraph shows that the states had the similar pattern overall. The peaks seem to correspond to weeks of holidays and school starting where people are gathering.
 
 
 ## Chapter 4 {#sec-ex04-sol}
 
-::: callout-caution
-## Under Construction
+@exr-ch05-c01 Yes it is tidy.
 
-Currently working on exercise solutions.
-:::
+@exr-ch05-c02 a, b, c, d
 
+@exr-ch05-app1
+
+```{r}
+#| eval: false
+wine_qt <- read_csv("data/WineQT")
+```
+
+@exr-ch05-app2
+
+```{r}
+table_tidy <- table4a %>% 
+  pivot_longer(c(`1999`, `2000`), 
+               names_to = "year", 
+               values_to = "cases")
+
+table_tidy
+```
+
+@exr-ch05-adv1
+
+```{r}
+DD_vs_SB %>% 
+  pivot_wider(id_cols = c(FIPS, median_income, population), 
+               names_from = "shop_type", 
+               values_from = "shops")
+
+```
 
 
 ## Chapter 5 {#sec-ex05-sol}

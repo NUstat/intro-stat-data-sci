@@ -1373,7 +1373,7 @@ Match the histogram with the corresponding boxplot.
 
 ### Application {#sec-ex02-application}
 
-For @exr-ch02-app1, @exr-ch02-app2, and @exr-ch02-app3 use the `Bikeshare` dataset in the `ISLR2` package.
+For @exr-ch02-app1, @exr-ch02-app2, and @exr-ch02-app3 use the `Bikeshare` dataset included in the `ISLR2` package.
 
 For @exr-ch02-app4, use the `titanic_train` dataset included in the `titanic` package
 
@@ -1407,8 +1407,8 @@ bike_daily <- Bikeshare %>%
   mutate(
     # create date from day variable
     date = parse_date_time(x = paste(2011, day), orders = "yj")
-    ) |> 
-  group_by(date) |> 
+    ) %>% 
+  group_by(date) %>% 
   # calculate summary stats by date
   summarize(casual = sum(casual),
             registered = sum(registered),

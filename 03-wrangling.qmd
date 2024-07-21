@@ -1151,32 +1151,28 @@ e)  `blue_line %>%` <br>
 
 ### Application {#sec-ex03-application}
 
+The `Bikeshare` and `Auto` datasets are in the `ISLR2` package. The `titanic_train` dataset is included in the `titanic` package.
+
 ::: {#exr-ch03-app1}
-Recall our `nba` dataset that includes data from each game that Michael Jordan, Kobe Bryant and Lebron James played. Compute the average number of free throws made per game by each player.
+Using the `Bikeshare` dataset, compute the average number of bikers at noon (`hr` 12) each month.
 :::
 
 ::: {#exr-ch03-app2}
-Create a variable called `spread` calculated from `pts_tm` - `pts_opp`. Using code, determine who played the game with the largest win spread and how much they won by.
+Using the `Auto` dataset, create a variable for the power weight ratio (`pwr`) of a car. `pwr` is calculated from `horsepower/weight`. Using code, determine which car has the largest power weight ratio.
 :::
 
 ::: {#exr-ch03-app3}
-Using the `titanic` dataset, calculate the total revenue that the ship received from passengers in each class. Store the output in an object called `fare_calc`. Print the contents such that the total revenue is sorted from high to low.
+Using the `titanic_train` dataset, calculate the total revenue that the ship received from passengers in each class. Store the output in an object called `fare_calc`. Print the contents such that the total revenue is sorted from high to low.
 :::
 
 ::: {#exr-ch03-app4}
-Using the `covid_states` dataset, calculate the total `new_confirmed`, `new_deceased`, `new_recovered` and `new_tested` for each state. Then join this summarized dataset with the `covid_dem` dataset, join the two datasets into one dataset called `covid_joined`. 
+Using the `titanic_train` dataset, calculate the count of men and women that survived and died.
 :::
 
 ### Advanced {#sec-ex03-advanced}
 
 ::: {#exr-ch03-adv1}
-When you are using `filter`, you need to specify each criteria separately. This can get repetitive if you are trying to filter on multiple criteria for the same variable. Consider the `covid_states` dataset, what if we are interested in only the 4 most populous states? This would include `state_abbr` CA, TX, FL, and NY. Instead of listing `(state_abbr == "CA",` `state_abbr == "TX",` `state_abbr == "FL",` `state_abbr == "NY")` we can use the `%in%` function to condense this.
+When you are using `filter`, you need to specify each criteria separately. This can get repetitive if you are trying to filter on multiple criteria for the same variable. Consider the `Bikeshare` dataset, what if we are interested in only the months of `June`, `July`, and `Aug`? Instead of listing `(mnth == "June",` `mnth == "July",` `mnth == "Aug")` we can use the `%in%` function to condense this.
 
-Try typing `state_abbr %in%` followed by the vector of states within `filter` to subset the dataset. Call this new dataset `covid_pop`.
-:::
-
-::: {#exr-ch03-adv2}
-Using the `covid_pop` dataset created in @exr-ch03-adv1, calculate the total weekly `new_confirmed` COVID cases in 2021 for each state. Plot the total weekly cases to determine if the 4 states had a similar trend.
-
-When working with dates you will want to use the `lubridate` package. Create a new variable `week` by using the function `week(date)`.
+Try typing `mnth %in%` followed by the vector of months within `filter` to subset the dataset. Call this new dataset `bike_summer`.
 :::

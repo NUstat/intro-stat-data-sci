@@ -533,4 +533,56 @@ If you want to learn more about using the `readr` and `tidyr` package, we sugges
 
 ### What's to come?
 
-Congratulations! We've completed the "Data Science via the tidyverse" portion of this book! We'll now move to the "data modeling" portion in Chapters -@sec-regression and -@sec-multiple-regression, where you'll leverage your data visualization and wrangling skills to model relationships between different variables in data frames. 
+Congratulations! We've completed the "Data Science via the tidyverse" portion of this book! We'll now move to the "data modeling" portion in [Chapters -@sec-regression] and [-@sec-multiple-regression], where you'll leverage your data visualization and wrangling skills to model relationships between different variables in data frames. 
+
+
+## Exercises {#sec-ex04}
+
+### Conceptual {#sec-ex04-conceptual}
+
+::: {#exr-ch04-c01}
+Is the following table tidy or not?
+
+```{r}
+#| echo: false
+table1
+```
+
+:::
+
+::: {#exr-ch04-c02}
+Which of the following packages are included in the `tidyverse` library? Select all that apply.
+
+a)  `ggplot2`
+b)  `tidyr`
+c)  `readr`
+d)  `dplyr`
+:::
+
+### Application {#sec-ex04-application}
+
+<!-- Some packages in development are not available on CRAN and need to be downloaded from `GitHub`. Install the `dcldata` package by typing the following line of code in the **Console** -->
+<!-- `remotes::install_github("dcl-docs/dcldata")`. -->
+
+<!-- <!-- https://dcl-wrangle.stanford.edu/pivot-basic.html --> -->
+
+<!-- You may need to install the `remotes` package first. -->
+
+::: {#exr-ch04-app1}
+Download the [Wine Quality Dataset](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset) from Kaggle and save it into a `data/` subdirectory in your RStudio Project. Read the dataset into your R script.
+:::
+
+::: {#exr-ch04-app2}
+Tidy the `table4a` dataset from the `tidyr` package. Name the new columns `year` and `cases`.
+:::
+
+<!-- ::: {#exr-ch04-app3} -->
+<!-- Tidy the `example_eagle_pairs` dataset from the `dcldata` package. Name the new columns `year` and `num_nests`. -->
+<!-- ::: -->
+
+### Advanced {#sec-ex04-advanced}
+
+::: {#exr-ch04-adv1}
+Transform the `DD_vs_SB` dataset from the `moderndive` package so that each observation corresponds to a `FIPS`.
+:::
+
