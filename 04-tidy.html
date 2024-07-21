@@ -429,6 +429,12 @@ window.Quarto = {
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">4.4.2</span> Additional resources</a></li>
   <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="header-section-number">4.4.3</span> What’s to come?</a></li>
   </ul></li>
+  <li><a href="#sec-ex04" id="toc-sec-ex04" class="nav-link" data-scroll-target="#sec-ex04"><span class="header-section-number">4.5</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex04-conceptual" id="toc-sec-ex04-conceptual" class="nav-link" data-scroll-target="#sec-ex04-conceptual"><span class="header-section-number">4.5.1</span> Conceptual</a></li>
+  <li><a href="#sec-ex04-application" id="toc-sec-ex04-application" class="nav-link" data-scroll-target="#sec-ex04-application"><span class="header-section-number">4.5.2</span> Application</a></li>
+  <li><a href="#sec-ex04-advanced" id="toc-sec-ex04-advanced" class="nav-link" data-scroll-target="#sec-ex04-advanced"><span class="header-section-number">4.5.3</span> Advanced</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/04-tidy.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -1121,7 +1127,61 @@ Table&nbsp;4.3: Date, Boeing Price, Weather Data
 </section>
 <section id="whats-to-come" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">4.4.3</span> What’s to come?</h3>
-<p>Congratulations! We’ve completed the “Data Science via the tidyverse” portion of this book! We’ll now move to the “data modeling” portion in Chapters -<a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a> and -<a href="06-multiple-regression.html" class="quarto-xref"><span>Chapter 6</span></a>, where you’ll leverage your data visualization and wrangling skills to model relationships between different variables in data frames.</p>
+<p>Congratulations! We’ve completed the “Data Science via the tidyverse” portion of this book! We’ll now move to the “data modeling” portion in <a href="05-regression.html" class="quarto-xref">Chapters&nbsp;<span>5</span></a> and <a href="06-multiple-regression.html" class="quarto-xref"><span>6</span></a>, where you’ll leverage your data visualization and wrangling skills to model relationships between different variables in data frames.</p>
+</section>
+</section>
+<section id="sec-ex04" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-ex04"><span class="header-section-number">4.5</span> Exercises</h2>
+<section id="sec-ex04-conceptual" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="sec-ex04-conceptual"><span class="header-section-number">4.5.1</span> Conceptual</h3>
+<div id="exr-ch04-c01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> Is the following table tidy or not?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country      year  cases population
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afghanistan  1999    745   19987071
+2 Afghanistan  2000   2666   20595360
+3 Brazil       1999  37737  172006362
+4 Brazil       2000  80488  174504898
+5 China        1999 212258 1272915272
+6 China        2000 213766 1280428583</code></pre>
+</div>
+</div>
+</div>
+<div id="exr-ch04-c02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Which of the following packages are included in the <code>tidyverse</code> library? Select all that apply.</p>
+<ol type="a">
+<li><code>ggplot2</code></li>
+<li><code>tidyr</code></li>
+<li><code>readr</code></li>
+<li><code>dplyr</code></li>
+</ol>
+</div>
+</section>
+<section id="sec-ex04-application" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="sec-ex04-application"><span class="header-section-number">4.5.2</span> Application</h3>
+<!-- Some packages in development are not available on CRAN and need to be downloaded from `GitHub`. Install the `dcldata` package by typing the following line of code in the **Console** -->
+<!-- `remotes::install_github("dcl-docs/dcldata")`. -->
+<!-- <!-- https://dcl-wrangle.stanford.edu/pivot-basic.html -->
+<p>–&gt;</p>
+<!-- You may need to install the `remotes` package first. -->
+<div id="exr-ch04-app1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.3</strong></span> Download the <a href="https://www.kaggle.com/datasets/yasserh/wine-quality-dataset">Wine Quality Dataset</a> from Kaggle and save it into a <code>data/</code> subdirectory in your RStudio Project. Read the dataset into your R script.</p>
+</div>
+<div id="exr-ch04-app2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.4</strong></span> Tidy the <code>table4a</code> dataset from the <code>tidyr</code> package. Name the new columns <code>year</code> and <code>cases</code>.</p>
+</div>
+<!-- ::: {#exr-ch04-app3} -->
+<!-- Tidy the `example_eagle_pairs` dataset from the `dcldata` package. Name the new columns `year` and `num_nests`. -->
+<!-- ::: -->
+</section>
+<section id="sec-ex04-advanced" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="sec-ex04-advanced"><span class="header-section-number">4.5.3</span> Advanced</h3>
+<div id="exr-ch04-adv1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.5</strong></span> Transform the <code>DD_vs_SB</code> dataset from the <code>moderndive</code> package so that each observation corresponds to a <code>FIPS</code>.</p>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

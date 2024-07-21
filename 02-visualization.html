@@ -2425,7 +2425,7 @@ Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat
 </section>
 <section id="sec-ex02-application" class="level3" data-number="2.10.2">
 <h3 data-number="2.10.2" class="anchored" data-anchor-id="sec-ex02-application"><span class="header-section-number">2.10.2</span> Application</h3>
-<p>For <a href="#exr-ch02-app1" class="quarto-xref">Exercise&nbsp;<span>2.13</span></a>, <a href="#exr-ch02-app2" class="quarto-xref">Exercise&nbsp;<span>2.14</span></a>, and <a href="#exr-ch02-app3" class="quarto-xref">Exercise&nbsp;<span>2.15</span></a> use the <code>Bikeshare</code> dataset in the <code>ISLR2</code> package.</p>
+<p>For <a href="#exr-ch02-app1" class="quarto-xref">Exercise&nbsp;<span>2.13</span></a>, <a href="#exr-ch02-app2" class="quarto-xref">Exercise&nbsp;<span>2.14</span></a>, and <a href="#exr-ch02-app3" class="quarto-xref">Exercise&nbsp;<span>2.15</span></a> use the <code>Bikeshare</code> dataset included in the <code>ISLR2</code> package.</p>
 <p>For <a href="#exr-ch02-app4" class="quarto-xref">Exercise&nbsp;<span>2.16</span></a>, use the <code>titanic_train</code> dataset included in the <code>titanic</code> package</p>
 <div id="exr-ch02-app1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.13</strong></span> Plot and describe the relationship between temperature (<code>atemp</code>) by bikers (<code>bikers</code>). Adjust for overplotting if need be.</p>
@@ -2450,8 +2450,8 @@ Figure&nbsp;2.32: Data Visualization with ggplot2 cheatsheat
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create date from day variable</span></span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="fu">parse_date_time</span>(<span class="at">x =</span> <span class="fu">paste</span>(<span class="dv">2011</span>, day), <span class="at">orders =</span> <span class="st">"yj"</span>)</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span> </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span> </span>
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate summary stats by date</span></span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">casual =</span> <span class="fu">sum</span>(casual),</span>
 <span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">registered =</span> <span class="fu">sum</span>(registered),</span>
