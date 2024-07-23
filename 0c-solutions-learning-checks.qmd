@@ -772,6 +772,11 @@ What can you say about the relationship between age and teaching scores based on
 
 **Solution**: 
 
+```{r}
+evals_ch5 <- evals %>%
+  select(score, bty_avg, age)
+```
+
 - Looking at the raw data values: 
 ```{r}
 glimpse(evals_ch5)
