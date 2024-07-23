@@ -901,8 +901,6 @@ Currently working on exercise solutions.
 :::
 
 
-
-
 ## Chapter 12 {#sec-ex12-sol}
 
 @exr-ch12-c01

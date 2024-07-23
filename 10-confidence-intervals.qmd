@@ -604,15 +604,15 @@ d) Approximately 90% of confidence intervals contain the true mean
 ::: {#exr-ch10-c03}
 As the margin of error decreases, the width of the confidence interval increases.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch10-c04}
 As sample size increases, the margin of error decreases.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch10-c05}

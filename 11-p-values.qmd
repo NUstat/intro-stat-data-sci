@@ -401,8 +401,6 @@ This will be important to keep in mind as we move towards using p-values for dec
 
 ### Application {#sec-ex11-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
-
 ::: {#exr-ch11-app1}
 
 :::
