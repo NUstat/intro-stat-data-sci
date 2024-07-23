@@ -390,15 +390,15 @@ f) rbernoulli(n = 1000, p = 1/6)
 ::: {#exr-ch07-c03}
 The more times the random procedure is conducted, the further our experimental probability diverges from the true probability.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch07-c04}
 Randomization allows you to determine causation because the treatment and control groups do not differ by any pre-treatment variables.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch07-c05}

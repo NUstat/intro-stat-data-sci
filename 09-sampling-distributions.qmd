@@ -75,7 +75,7 @@ When you visualize your population or sample data in a histogram, often times it
 
 -   Normal distribution
 -   T-distribution
--   Chi-squared distribution.
+-   chi-squared distribution.
 
 ### Normal Distribution
 
@@ -266,7 +266,7 @@ The Normal distribution and t-distribution are very closely related, how do we k
 
 ### Chi-squared Distribution
 
-The Chi-squared distribution is unimodal but skewed right. The Chi-squared distribution depends on one parameter $df$.
+The chi-squared distribution is unimodal but skewed right. The chi-squared distribution depends on one parameter $df$.
 
 ```{r}
 #| echo: false
@@ -1113,7 +1113,7 @@ Overall, this simulation shows that not only might the precision of an estimate 
 
 ## Conclusion
 
-In this chapter, you've been introduced to the **theory of repeated sampling** that undergirds our ability to connect estimates from samples to parameters from populations that we wish to know about. In order to make these inferences, we need to understand how our results might change if -- in a different reality -- a different random sample was collected, or, more generally, how our results might differ across the many, many possible random samples we could have drawn. This led us to simulate the **sampling distribution** for our estimator of the population proportion.
+In this chapter, you've been introduced to the **theory of repeated sampling** that develops our ability to connect estimates from samples to parameters from populations that we wish to know about. In order to make these inferences, we need to understand how our results might change if -- in a different reality -- a different random sample was collected, or, more generally, how our results might differ across the many, many possible random samples we could have drawn. This led us to simulate the **sampling distribution** for our estimator of the population proportion.
 
 You also learned that statisticians summarize this sampling distribution in three ways. We showed that for the population proportion:
 
@@ -1129,26 +1129,26 @@ In the next section of the book, we will build upon this theoretical foundation,
 ### Conceptual {#sec-ex09-conceptual}
 
 ::: {#exr-ch09-c01}
-Which of the following properties do the Normal distribution and the T distribution share? Select all that apply.
+Which of the following properties do the Normal distribution and the t-distribution share? Select all that apply.
 
 a) depends on degrees of freedom
 b) unimodal
 c) bimodal
 d) multimodal
 e) uniform
-f) right skewed
-g) left skewed
+f) right-skewed
+g) left-skewed
 h) symmetric
 :::
 
 ::: {#exr-ch09-c02}
 Standardization is a useful statistical tool as it allows us to put measures that are on the same scale onto different scales.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
-:::{#exr-ch09-03}
+:::{#exr-ch09-c03}
 The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women that are shorter than 60 inches?
 
 a) `qnorm(p = 60, mean = 64, sd = 3)`
@@ -1158,7 +1158,7 @@ d) `qnorm(p = 60, mean = 64, sd = 3, lower.tail = FALSE)`
 e) `pnorm(q = 64, mean = 60, sd = 3)`
 :::
 
-:::{#exr-ch09-04}
+:::{#exr-ch09-c04}
 The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women between 60 and 72 inches? Select all that apply.
 
 a) `pnorm(q = -1.33) - pnorm(q = 2.67)`
@@ -1168,7 +1168,7 @@ d) `pnorm(q = 60, mean = 64, sd = 3) + pnorm(q = 72, mean = 64, sd = 3, lower.ta
 e) `1 - 2*pnorm(q = 60, mean = 64, sd = 3)`
 :::
 
-:::{#exr-ch09-05}
+:::{#exr-ch09-c05}
 Suppose we want to compare apples to oranges. Specifically, let’s compare their weights. Apples are known to follow a normal distribution with a mean weight of 100 grams and standard deviation of 15 grams. Oranges are known to follow a normal distribution with a mean weight of 140 grams and standard deviation of 25 grams.
 
 You have an apple that weighs 110 grams and your sister has an orange that weighs 160 grams. She claims her orange is bigger than your apple. But you state that is not a fair comparison because you think your apple is big compared to other apples. Who's fruit is bigger when measured on a standardized scale?
@@ -1181,38 +1181,38 @@ b) orange
 ::: {#exr-ch09-c06}
 When `n` is at least 50, the sampling distribution of the sample proportion follows a Normal distribution, and so it is both symmetric and unimodal.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch09-c07}
 Which of the following statements regarding sample statistics are true? Select all that apply.
 
 a) All sample statistics are biased estimators of the population parameter
-b) The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the T distribution
-c) The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the Chi-Squared Distribution
-d) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution
-e) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the Chi-Squared distribution
-f) The regression slope and regression intercept both follow the T distribution
-g) The regression slope and regression intercept both follow the Chi-Squared distribution
+b) The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the t-distribution
+c) The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the chi-squared distribution
+d) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the t-distribution
+e) The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the chi-squared distribution
+f) The regression slope and regression intercept both follow the t-distribution
+g) The regression slope and regression intercept both follow the chi-squared distribution
 :::
 
 ::: {#exr-ch09-c08}
 The distribution of the population will always have a larger spread than the distribution of a sampling distribution.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch09-c09}
 As sample size (n) increases the spread of the distribution also increases.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch09-c10}
-Which of the following describes the estimator $\bar(x)$?
+Which of the following describes the estimator $\bar{x}$?
 
 a) biased and imprecise
 b) biased and precise
@@ -1221,10 +1221,10 @@ d) unbiased and precise
 :::
 
 ::: {#exr-ch09-c11}
-Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter $\\pi$.
+Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter $\pi$.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 

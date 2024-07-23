@@ -458,9 +458,9 @@ summary(model_mpg)$r.squared
 
 @exr-ch06-c02 d. 0.47
 
-@exr-ch06-c03 b. False
+@exr-ch06-c03 b. FALSE
 
-@exr-ch06-c04 a. True
+@exr-ch06-c04 a. TRUE
 
 @exr-ch06-c05 a. Splitting up your data can result in unequal balance in representation of some groups compared to others. & d. Splitting up your data by a confounding variable can allow you to see trends in the data that were hidden in the aggregated version of the data.
 
@@ -565,9 +565,9 @@ The RMSE of the parallel slopes is 119.38 and the RMSE of the interaction is 119
 
 @exr-ch07-c02 d) rbernoulli(n = 1000, p = 0.25)
 
-@exr-ch07-c03 b) False
+@exr-ch07-c03 b) FALSE
 
-@exr-ch07-c04 a) True
+@exr-ch07-c04 a) TRUE
 
 @exr-ch07-c05 a) Try to ensure that treatment and control groups are as similar as possible on all variables related to treatment assignment & c) Look for variables you can use to control for confounding & d) State your assumptions and limitations
 
@@ -609,7 +609,7 @@ b) $\hat{\mu}$ & d) $\bar{x}$ & f) $\hat{\pi}$ & g) $p$ & h) $\hat{p}$ & i) $s$ 
 
 @exr-ch08-c07 c) Cluster sampling (with unequal probability) choosing towns is based on random cluster selection
 
-@exr-ch08-c08 b) False
+@exr-ch08-c08 b) FALSE
 
 @exr-ch08-c09 c) An observational study with random sampling but no random assignment
 
@@ -640,7 +640,7 @@ While the stratified sampling would allow for better representation of people in
 b) unimodal & h) symmetric
 
 @exr-ch09-c02
-b) False
+b) FALSE
 
 @exr-ch09-c03
 c) `1 - pnorm(q = 60, mean = 64, sd = 3, lower.tail = FALSE)`
@@ -653,7 +653,7 @@ c) `1 - pnorm(q = -1.33) - pnorm(q = 2.67, lower.tail = FALSE)`
 b) orange
 
 @exr-ch09-c06
-a) True
+a) TRUE
 
 @exr-ch09-c07
 
@@ -662,17 +662,17 @@ d) The sampling distribution of the sample mean and the sampling distribution of
 f) The regression slope and regression intercept both follow the T distribution
 
 @exr-ch09-c08
-a) True
+a) TRUE
 
 @exr-ch09-c09
-b) False
+b) FALSE
 
 @exr-ch09-c10
 d) unbiased and precise
 
 @exr-ch09-c11
 
-b) False
+b) FALSE
 
 @exr-ch09-c12
 
@@ -681,7 +681,7 @@ b) False
 - chi-squared distribution
 
 
-@exr-ch09-c13
+@exr-ch09-app1
 
 a) 99.7% (3 standard deviations)
 
@@ -704,7 +704,7 @@ qnorm(p = 0.6, mean = 10.5, sd = 1.5, lower.tail = FALSE)
 ```
 His shoe size is 10.12 (which is not an actual shoe size so his shoe size would be 10)
 
-@exr-ch09-c14
+@exr-ch09-app2
 
 We have a sample mean and sample standard deviation so will use the t-distribution
 
@@ -736,7 +736,7 @@ pt(q = stat_6.05, df = 17, lower.tail= FALSE)
 0.01608422 + 0.1656664
 ```
 
-@exr-ch09-c15
+@exr-ch09-adv1
 
 ```{r}
 weather <- tibble(
@@ -802,7 +802,7 @@ a) We are 90% confident that the true mean is within any given 90% confidence in
 d) Approximately 90% of confidence intervals contain the true mean
 
 @exr-ch10-c03
-b) False
+b) FALSE
 
 @exr-ch10-c04
 a)
@@ -854,6 +854,7 @@ nba_sample %>%
 
 prop.test(x = c(56, 59), n = c(56 + 33, 59+32), conf.level = 0.9, correct = FALSE)
 ```
+
 @exr-ch10-app4
 
 ```{r}
@@ -911,10 +912,10 @@ a) Type I Error
 d) No, one type of error will be minimized at the expense of the other type
 
 @exr-ch12-c03
-b) False
+b) FALSE
 
 @exr-ch12-c04
-a) True
+a) TRUE
 
 @exr-ch12-c05
 a) $\alpha$
