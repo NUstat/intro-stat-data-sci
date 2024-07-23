@@ -1227,15 +1227,15 @@ f) none of the above
 ::: {#exr-ch06-c03}
 An interaction effect exists if the associated effect of one variable is independent of the value of another variable.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch06-c04}
-An example of simpson's paradox is when you see a trend in several separate groups of data, but when you combine these groups, the trend changes or disappears.
+An example of Simpson's Paradox is when you see a trend in several separate groups of data, but when you combine these groups, the trend changes or disappears.
 
-a) True
-b) False
+a) TRUE
+b) FALSE
 :::
 
 ::: {#exr-ch06-c05}
@@ -1249,34 +1249,31 @@ d) Splitting up your data by a confounding variable can allow you to see trends 
 
 ### Application {#sec-ex06-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
+The `Auto` and `Bikeshare` datasets are in the `ISLR2` package.
 
 ::: {#exr-ch06-app1}
-Using the `covid_states` dataset, predict `new_confirmed` using `new_recovered` and `new_deceased`.
+Using the `Auto` dataset, predict `mpg` using `displacement` and `weight`. 
 :::
 
 ::: {#exr-ch06-app2}
-Using the `covid_states` and the `covid_dem` datasets, predict `new_confirmed` using `population` and `new_tested`.
+Consider the `Bikeshare` dataset. It is known that more people tend to bike on the weekend than weekday, so the variable `workingday` is likely useful in predicting total number of bikers (`bikers`). Additionally we assume that the normalized temperature (`temp`) likely impacts the number of bikers.
+
+Use a parallel slopes model to predict the total number of bikers using `temp` and `workingday`. Plot the resulting model and interpret the coefficients.
 :::
 
 ::: {#exr-ch06-app3}
-Consider the `nba` dataset. It is known that teams tend to play better on their home courts, so the variable `location` is likely useful in predicting total points scored by a team (`pts_tm`). Additionally we assume that the number of points scored by the star player (`pts`) likely impacts the team's total points scored.
-
-Use a parallel slopes model to predict the total points scored by the team using `location` and `pts`. Plot the resulting model and interpret the coefficients.
-:::
-
-::: {#exr-ch06-app4}
-Using the same variables from @exr-ch06-app3, this time fit an interaction model to predict the total points scored by the team. Plot the resulting model and interpret the coefficients.
+Using the same variables from @exr-ch06-app2, this time fit an interaction model to predict the total number of bikers using temperature and working day. Plot the resulting model and interpret the coefficients.
 :::
 
 ### Advanced {#sec-ex06-advanced}
 
-::: {#exr-ch06-adv1}
-A lot of times analysts will compare model performance using what is called the "mean squared error" (MSE). This is calculated by first squaring each residual, then take the mean of those squared residuals. The model with the lower MSE is generally considered "better".
+A lot of times analysts will compare model performance using what is called the "root mean squared error" (RMSE). This is calculated by first squaring each residual, then take the mean of those squared residuals, and then taking the square root. The model with the lower RMSE is generally considered "better".
 
-Determine if the model in @exr-ch06-app3 or @exr-ch06-app4 is better using the MSE as the evaluation criteria.
+::: {#exr-ch06-adv1}
+Determine if the model in @exr-ch06-app2 or @exr-ch06-app3 is better using the RMSE as the evaluation criteria.
 :::
 
+
 ::: {#exr-ch06-adv2}
-Using any two variables from the `nba` dataset, build a model to predict `pts_tm` that has a better MSE than the ones reported in @exr-ch06-app3.
+Using the `Auto` dataset, predict `mpg` using any two variables such that the resulting model has a better RMSE than the model in @exr-ch06-app1.
 :::

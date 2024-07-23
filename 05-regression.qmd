@@ -71,7 +71,7 @@ Let's now load all the packages needed for this chapter (this assumes you've alr
 
 1. The `gapminder` package, which provides excerpts of data available from [Gapminder.org](https://gapminder.org)
 
-1. The `moderndive` package, which includes data sets we will analyze
+1. The `moderndive` package, which includes datasets we will analyze
 
 If needed, read @sec-packages for information on how to install and load R packages.
 
@@ -1547,7 +1547,7 @@ b) FALSE
 :::
 
 ::: {#exr-ch05-c11}
-An ice cream company employee explores a data set with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?
+An ice cream company employee explores a dataset with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?
 
 a) Yes, the positive correlation shows that an increase in shark attacks causes ice cream sales to improve.
 b) Yes, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.
@@ -1557,36 +1557,38 @@ d) No, the positive correlation does not necessarily imply causation.
 
 ### Application {#sec-ex05-application}
 
-The application exercises use datasets from the `ISDSdatasets` package.
+The `Auto` and `Bikeshare`  datasets are in the `ISLR2` package.
 
 ::: {#exr-ch05-app1}
-Using the `covid_states` dataset...
+Using the `Auto` dataset...
 
 a) Conduct an exploratory data analysis. That is, use the `skim` function to describe the number of variables, observations, any missingness issues, and any potential problematic features.
-b) Calculate the correlation between `new_tested` and `new_confirmed`.
-c) Plot the relationship of `new_confirmed` by `new_tested`. Add the line of best fit to the scatterplot.
-d) Fit a linear regression model to predict `new_confirmed` based on `new_tested`. What is the equation of the line?
+b) Calculate the correlation between `mpg` and `horsepower`.
+c) Plot the relationship of `mpg` by `horsepower`. Add the line of best fit to the scatterplot.
+d) Fit a linear regression model to predict `mpg` based on `horsepower`. What is the equation of the line?
 e) Interpret the intercept and slope in the context of the problem.
-f) If 20,000 people are tested for COVID, how many people do we expect to have COVID?
+f) What is the expected `mpg` of a car with 150 `horsepower?
 :::
 
 ::: {#exr-ch05-app2}
-Using the `nba` dataset, fit a simple linear regression model to predict total team points using the total points the player scored.
+Using the `Bikeshare` dataset, fit a simple linear regression model to predict the number of bikers using the temperature. Note: temperature is reported as a normalized unit in Celsius.
     
-a) What is the correlation between `pts_tm` and `pts`.
+a) What is the correlation between `bikers` and `temp`.
 b) Plot the relationship and line of best fit.
 c) What is the equation of the line of best fit?
 d) Interpret the intercept and slope in the context of the problem.
-e) If a player scored 50 points, what is the predicted team's score?
+e) If the normalized temperature is 0.5, what is the predicted number of bikers?
 :::
 
 ::: {#exr-ch05-app3}
-Using the `titanic` dataset, fit a linear regression model to determine if the port that the passenger embarked on can predict the cost of the passenger’s ticket. 
+Using the `Bikeshare` dataset, fit a linear regression model to determine if the season can predict the number of bikers. 
+
+Hint: type `?Bikeshare` to view the help documentation and see the data type of `season`.
 
 a) What is the model equation?
 b) Interpret the intercept in the context of the problem.
-c) Which port, on average, had the highest ticket cost?
-d) Which passenger did the model predict the worst?
+c) Which season, on average, had the highest average number of bikers?
+d) Which observation(s) did the model predict the worst?
 :::
     
 ### Advanced {#sec-ex05-advanced}
@@ -1596,7 +1598,7 @@ The `summary` function and the `lm` function contain many values relevant to our
 
 Sometimes, it can be useful to extract these values directly from the result of the functions. These values can be accessed using the $ operator that we learned about in @sec-getting-started.
 
-Using the model from @exr-ch05-app2...
+Using the model from @exr-ch05-app1...
     
 a) extract the `coefficients` directly from the model
 b) extract the `r.squared` from the summary. This represents the proportion of variance in the dependent variable that can be explained by the independent variables. You will learn about this in detail in higher level regression courses.

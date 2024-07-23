@@ -301,8 +301,6 @@ DD_vs_SB %>%
 
 ## Chapter 5 {#sec-ex05-sol}
 
-
-
 @exr-ch05-c01 c) -0.7
 
 @exr-ch05-c02 e) Exactly 1
@@ -332,131 +330,129 @@ DD_vs_SB %>%
 
 ```{r}
 #| eval: false
-skim(covid_states)
+skim(Auto)
 ```
 
 
 **b)**
 
 ```{r}
-covid_states %>% 
-  select(new_tested, new_confirmed) %>% 
+Auto %>% 
+  select(horsepower, mpg) %>% 
   cor(use = "complete.obs")
 ```
-The correlation is 0.514.
+The correlation is -0.778.
 
 
 **c)**
 
 ```{r}
-ggplot(covid_states, aes(x = new_tested, y = new_confirmed)) +
+ggplot(Auto, aes(x = horsepower, y = mpg)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
 **d)**
 ```{r}
-model_covid <- lm(new_confirmed ~ new_tested, data = covid_states)
+model_mpg <- lm(mpg ~ horsepower, data = Auto)
 
-summary(model_covid)$coefficients
+summary(model_mpg)$coefficients
 ```
-$$\widehat{newconfirmed} = 320.16 + 0.057*newtested$$
+$$\widehat{mpg} = 39.94 - 0.158*horsepower$$
 **e)**
 
-**Intercept**: When there are 0 people newly tested for COVID, we expect there to 320.16 newly confirmed cases.
+**Intercept**: When a vehicle has 0 horsepower, we expect the car to have on average 39.94 miles per gallon.
 
-**Slope:**: For every 1 additional person newly tested for COVID, we expect the number of new confirmed cases to increase by 0.057.
+**Slope:**: For every 1 additional unit of horsepower, we expect the miles per gallon of the vehicle to decrease on average by 0.158.
 
 
 **f)**
 ```{r}
-320.16 + 0.057*20000
+39.94 - 0.158*150
 ```
-We would expect 1,460 people to have COVID.
+We would expect the vehicle to have 16.24 miles per gallon.
 
 @exr-ch05-app2
 ```{r}
-model_pts <- lm(pts_tm ~ pts, data = nba)
+model_bike <- lm(bikers ~ temp, data = Bikeshare)
 
-summary(model_pts)
+summary(model_bike)
 ```
 
-**a)** 0.272
+**a)** 0.451
 ```{r}
-nba %>% 
-  summarize(cor = cor(pts_tm, pts, use = "complete.obs"))
+Bikeshare %>% 
+  summarize(cor = cor(bikers, temp, use = "complete.obs"))
 ```
 
 **b)**
 ```{r}
-ggplot(nba, aes(x = pts, y = pts_tm)) +
+ggplot(Bikeshare, aes(x = temp, y = bikers)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
 **c)**
-$$\widehat{pts tm} = 92.80 + 0.345*pts$$
+$$\widehat{bikers} = -5.374 + 305.006*temp$$
 **d)**
 
-**Intercept**: When the individual player scored 0 points in a game, we expect their team to score 92.80 points.
+**Intercept**: When the normalized temperature in celsius in 0, we expect there to be -5.374 bikers.
 
-**Slope:**: For every 1 additional point the individual player scores, we expect the number of total points the team scores to increase by 0.345.
+**Slope:**: For every 1 additional increase in temperature, we expect the number of bikers to increase by 305.
 
-**e)** We predict the team will have a total of 110 points.
+**e)** We predict the number of bikers to be 147.
 ```{r}
-92.80 + 0.345*50
+-5.374 + 305.006*0.5
 ```
 
 
 @exr-ch05-app3
 
 ```{r}
-model_fare <- lm(Fare ~ Embarked, data = titanic)
+model_season <- lm(bikers ~ factor(season), data = Bikeshare)
 
-summary(model_fare)$coefficients
+summary(model_season)$coefficients
 ```
-**a)** $$\widehat{Fare} = 66.26 - 55.32*1_Q(x)-38.03*1_S(x)$$
+**a)** $$\widehat{bikers} = 72.53 + 85.12*1_season2(x)+114.81*1_season3(x)+80.30*1_season4(x)$$
 
-**b)** The expected fare for passengers that embarked from Cherbourg (C) is 66.26.
+**b)** The expected number of bikers during winter is 72.53.
 
-**c)** On average, Cherbourg (C) had the highest ticket cost.
+**c)** On average, summer (season3) had the highest number of bikers.
 
 **d)**
 
 ```{r}
-titanic_error <- titanic %>% 
-  filter(!is.na(Fare)) %>% 
-  mutate(residuals = residuals(model_fare),
-         fitted = fitted.values(model_fare)) %>% 
-  select(PassengerId, Survived, Fare, 
-         Embarked, residuals, fitted)
+bike_error <- Bikeshare %>% 
+  filter(!is.na(bikers)) %>% 
+  mutate(residuals = residuals(model_season),
+         fitted = fitted.values(model_season)) %>% 
+  select(mnth, day, hr, season, bikers, residuals, fitted)
 
-titanic_error %>% 
+bike_error %>% 
   slice_max(residuals, n=1)
-titanic_error %>% 
+bike_error %>% 
   slice_min(residuals, n=1)
 ```
 
-The worst prediction will be the residual that is farthest from 0. We checked both the min (farthest negative) and max (farthest positive) residual. Passenger 1235 had the worst prediction with an observed value of 512.33 and predicted value of 66.26 (residual of 446.07).
+The worst prediction will be the residual that is farthest from 0. We checked both the min (farthest negative) and max (farthest positive) residual. The 166th day of the year at hour 17 had the worst prediction with an observed value of 638 and predicted value of 157 (residual of 480.3).
 
 @exr-ch05-adv1
+
 ```{r}
 #| warning: false
 #| message: false
 
 # coefficients
-summary(model_pts)$coefficients
+summary(model_mpg)$coefficients
 # or
-model_pts$coefficients
+model_mpg$coefficients
 
 # r.squared
-summary(model_pts)$r.squared
+summary(model_mpg)$r.squared
 ```
 
 
 ## Chapter 6 {#sec-ex06-sol}
-
-
 
 @exr-ch06-c01 c. The parallel slopes model. Since two models are very similar, the additional complexity of the interaction model isn’t necessary
 
@@ -472,111 +468,95 @@ summary(model_pts)$r.squared
 @exr-ch06-app1
 
 ```{r}
-covid_pred <- lm(new_confirmed ~ new_recovered + new_deceased, data = covid_states)
+mod_auto <- lm(mpg ~ displacement + weight, data = Auto)
 
-summary(covid_pred)$coefficients
+summary(mod_auto)$coefficients
 ```
 
 @exr-ch06-app2
 
 ```{r}
-#| warning: false
-#| message: false
+biker_parallel <- lm(bikers ~ temp + factor(workingday), 
+                  data = Bikeshare)
 
-covid_merge <- covid_states %>% 
-  left_join(covid_dem)
+summary(biker_parallel)$coefficients
 
-covid_pred2 <- lm(new_confirmed ~ population + new_tested, 
-                  data = covid_merge)
-
-summary(covid_pred2)$coefficients
+ggplot(Bikeshare, 
+       aes(x = temp, y = bikers, 
+           color = factor(workingday))
+       ) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
 ```
+
+**b_0** When the normalized temperature is 0 degrees celsius and it is not a work day (ie: the weekend), the number of bikers is predicted to be -3.15.
+
+**b_1** For every one additional degree of normalized temperature, the associated expected increase in bikers is 305.45, regardless if it is a work or weekday.
+
+**b_2** The number of bikers on average is 3.57 less on a work day than on the weekend.
 
 
 @exr-ch06-app3
 
 ```{r}
-model_pts_parallel <- lm(pts_tm ~ pts + location, 
-                   data = nba)
+#| warning: false
+#| message: false
+#| 
+biker_int <- lm(bikers ~ temp * factor(workingday), 
+                  data = Bikeshare)
 
-summary(model_pts_parallel)$coefficients
+summary(biker_int)$coefficients
 
-ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
+ggplot(Bikeshare, 
+       aes(x = temp, y = bikers, 
+           color = factor(workingday))
+       ) +
   geom_point() +
-  geom_parallel_slopes(se = FALSE)
+  geom_smooth(se = FALSE)
 ```
 
-**b_0** When the star player scores 0 points and the game is away, the team is predicted to score 90.9 points.
+**b_0** When the normalized temperature is 0 degrees celsius and it is not a work day (ie: the weekend), the number of bikers is predicted to be -34.82.
 
-**b_1** For every additional point the star player scores, the associated expected increase in team points is 0.345, regardless if the game is home or away.
+**b_1** For every one additional degree of normalized temperature, the associated expected increase in bikers is 372.33 on the weekend (non working day).
 
-**b_2** The team is expected to score on average 3.74 more points when the game is home compared to when the game is away.
+**b_2** When the normalized temperature is 0 degrees celsius, the number of bikers on average is 43.77 more on a work day than on the weekend.
+
+**b_3** For every one additional degree of normalized temperature, the associated expected increase in number of bikers is 98.47 less on working days than on the weekend.
 
 
-@exr-ch06-app4
+@exr-ch06-adv1
 
-```{r}
-#| include: false
-model_pts_parallel <- lm(pts_tm ~ pts + location, 
-                   data = nba)
-
-summary(model_pts_parallel)$coefficients
-
-ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
-  geom_point() +
-  geom_parallel_slopes(se = FALSE)
-```
-
+**One possible answer**
 
 ```{r}
 #| warning: false
 #| message: false
 
-model_pts_int <- lm(pts_tm ~ pts*location, 
-                   data = nba)
+# rmse to beat
+mean(mod_auto$residuals^2)
 
-summary(model_pts_int)$coefficients
+# new model
+model_better <- lm(mpg ~ horsepower + weight, 
+                   data = Auto)
 
-ggplot(nba, aes(x = pts, y = pts_tm, color = location)) +
-  geom_point() +
-  geom_smooth(se = FALSE)
+mean(model_better$residuals^2)
 ```
+This model which uses the opponents points and star player points has an MSE of 116.9 which is better.
 
-**b_0** When the star player scores 0 points and the game is away, the team is predicted to score 88.57 points.
-
-**b_1** For every additional point the star player scores, the associated expected increase in team points is 0.431 for away games.
-
-**b_2** When the star player scores 0 points, the team is expected to score on average 8.37 more points when the game is home compared to when the game is away.
-
-**b_3** For every additional point the star player scores, the associated expected increase in team points will be 0.169 less for home games than away games.
-
-@exr-ch06-adv1
+@exr-ch06-adv2
 
 ```{r}
 #| warning: false
 #| message: false
 
 # parallel slopes
-mean(model_pts_parallel$residuals^2)
+sqrt(mean(biker_parallel$residuals^2))
 
 # interaction
-mean(model_pts_int$residuals^2)
+sqrt(mean(biker_int$residuals^2))
 ```
-The MSE of the parallel slopes is 136.6 and the MSE of the interaction is 135.9. Since the MSE for the interaction model is smaller it appears to be slightly better.
+The RMSE of the parallel slopes is 119.38 and the RMSE of the interaction is 119.04. Since the RMSE for the interaction model is smaller it appears to be slightly better (though not significantly).
 
-@exr-ch06-adv2
-
-**Many different possible answers**
-
-```{r}
-#| warning: false
-#| message: false
-
-model_better <- lm(pts_tm ~ pts_opp + pts, data = nba)
-
-mean(model_better$residuals^2)
-```
-This model which uses the opponents points and star player points has an MSE of 116.9 which is better.
 
 ## Chapter 7 {#sec-ex07-sol}
 
