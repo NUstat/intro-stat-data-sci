@@ -376,7 +376,7 @@ Recall in the right-hand plot of @fig-2numxplot1 that when plotting the relation
 ::: {.callout-tip icon="false" collapse="true"}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
-**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Fit a new simple linear regression using `lm(debt ~ credit_rating + age, data = credit_ch6)` where `credit_rating` and `age` are the new numerical explanatory variables $x_1$ and $x_2$. Get information about the "best-fitting" regression plane from the regression table by applying the `summary()` function. How do the regression results match up with the results from your previous exploratory data analysis?
+Fit a new simple linear regression using `lm(debt ~ credit_rating + age, data = credit_ch6)` where `credit_rating` and `age` are the new numerical explanatory variables $x_1$ and $x_2$. Get information about the "best-fitting" regression plane from the regression table by applying the `summary()` function. How do the regression results match up with the results from your previous exploratory data analysis?
 :::
 
 ### Observed/fitted values and residuals {#sec-model3points}
@@ -912,7 +912,7 @@ In fact, it turns out that the female instructor of age 36 taught the first four
 ::: {.callout-tip icon="false" collapse="true"}
 ## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
 
-**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Compute the observed values, fitted values, and residuals not for the interaction model as we just did, but rather for the parallel slopes model we saved in `score_model_parallel_slopes`.
+Compute the observed values, fitted values, and residuals not for the interaction model as we just did, but rather for the parallel slopes model we saved in `score_model_parallel_slopes`.
 :::
 
 ## Related topics
