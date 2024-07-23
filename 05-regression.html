@@ -508,7 +508,7 @@ window.Quarto = {
 </ul></li>
 <li><p>The <code>skimr</code> <span class="citation" data-cites="R-skimr">(<a href="references.html#ref-R-skimr" role="doc-biblioref">Waring et al. 2022</a>)</span> package, which provides a simple-to-use function to quickly compute a wide array of commonly-used summary statistics.</p></li>
 <li><p>The <code>gapminder</code> package, which provides excerpts of data available from <a href="https://gapminder.org">Gapminder.org</a></p></li>
-<li><p>The <code>moderndive</code> package, which includes data sets we will analyze</p></li>
+<li><p>The <code>moderndive</code> package, which includes datasets we will analyze</p></li>
 </ol>
 <p>If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
@@ -2117,7 +2117,7 @@ Figure&nbsp;5.14: Example of observed value, fitted value, and residual
 </ol>
 </div>
 <div id="exr-ch05-c11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> An ice cream company employee explores a data set with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?</p>
+<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> An ice cream company employee explores a dataset with information on shark attacks and ice cream sales, and notices a positive correlation between these two variables. The employee concludes that an increase in shark attacks will help them sell more ice cream. Is this conclusion correct?</p>
 <ol type="a">
 <li>Yes, the positive correlation shows that an increase in shark attacks causes ice cream sales to improve.</li>
 <li>Yes, the positive correlation shows that an increase in ice cream sales causes shark attacks to increase.</li>
@@ -2128,35 +2128,36 @@ Figure&nbsp;5.14: Example of observed value, fitted value, and residual
 </section>
 <section id="sec-ex05-application" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="sec-ex05-application"><span class="header-section-number">5.5.2</span> Application</h3>
-<p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
+<p>The <code>Auto</code> and <code>Bikeshare</code> datasets are in the <code>ISLR2</code> package.</p>
 <div id="exr-ch05-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.12</strong></span> Using the <code>covid_states</code> dataset…</p>
+<p><span class="theorem-title"><strong>Exercise 5.12</strong></span> Using the <code>Auto</code> dataset…</p>
 <ol type="a">
 <li>Conduct an exploratory data analysis. That is, use the <code>skim</code> function to describe the number of variables, observations, any missingness issues, and any potential problematic features.</li>
-<li>Calculate the correlation between <code>new_tested</code> and <code>new_confirmed</code>.</li>
-<li>Plot the relationship of <code>new_confirmed</code> by <code>new_tested</code>. Add the line of best fit to the scatterplot.</li>
-<li>Fit a linear regression model to predict <code>new_confirmed</code> based on <code>new_tested</code>. What is the equation of the line?</li>
+<li>Calculate the correlation between <code>mpg</code> and <code>horsepower</code>.</li>
+<li>Plot the relationship of <code>mpg</code> by <code>horsepower</code>. Add the line of best fit to the scatterplot.</li>
+<li>Fit a linear regression model to predict <code>mpg</code> based on <code>horsepower</code>. What is the equation of the line?</li>
 <li>Interpret the intercept and slope in the context of the problem.</li>
-<li>If 20,000 people are tested for COVID, how many people do we expect to have COVID?</li>
+<li>What is the expected <code>mpg</code> of a car with 150 `horsepower?</li>
 </ol>
 </div>
 <div id="exr-ch05-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> Using the <code>nba</code> dataset, fit a simple linear regression model to predict total team points using the total points the player scored.</p>
+<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> Using the <code>Bikeshare</code> dataset, fit a simple linear regression model to predict the number of bikers using the temperature. Note: temperature is reported as a normalized unit in Celsius.</p>
 <ol type="a">
-<li>What is the correlation between <code>pts_tm</code> and <code>pts</code>.</li>
+<li>What is the correlation between <code>bikers</code> and <code>temp</code>.</li>
 <li>Plot the relationship and line of best fit.</li>
 <li>What is the equation of the line of best fit?</li>
 <li>Interpret the intercept and slope in the context of the problem.</li>
-<li>If a player scored 50 points, what is the predicted team’s score?</li>
+<li>If the normalized temperature is 0.5, what is the predicted number of bikers?</li>
 </ol>
 </div>
 <div id="exr-ch05-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.14</strong></span> Using the <code>titanic</code> dataset, fit a linear regression model to determine if the port that the passenger embarked on can predict the cost of the passenger’s ticket.</p>
+<p><span class="theorem-title"><strong>Exercise 5.14</strong></span> Using the <code>Bikeshare</code> dataset, fit a linear regression model to determine if the season can predict the number of bikers.</p>
+<p>Hint: type <code>?Bikeshare</code> to view the help documentation and see the data type of <code>season</code>.</p>
 <ol type="a">
 <li>What is the model equation?</li>
 <li>Interpret the intercept in the context of the problem.</li>
-<li>Which port, on average, had the highest ticket cost?</li>
-<li>Which passenger did the model predict the worst?</li>
+<li>Which season, on average, had the highest average number of bikers?</li>
+<li>Which observation(s) did the model predict the worst?</li>
 </ol>
 </div>
 </section>
@@ -2165,7 +2166,7 @@ Figure&nbsp;5.14: Example of observed value, fitted value, and residual
 <div id="exr-ch05-adv1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.15</strong></span> The <code>summary</code> function and the <code>lm</code> function contain many values relevant to our analysis, including residuals and fitted values stored in the <code>lm</code> function and residuals, coefficients, R-squared and adjusted R-squared values all stored in the <code>summary</code> function.</p>
 <p>Sometimes, it can be useful to extract these values directly from the result of the functions. These values can be accessed using the $ operator that we learned about in <a href="01-getting-started.html" class="quarto-xref"><span>Chapter 1</span></a>.</p>
-<p>Using the model from <a href="#exr-ch05-app2" class="quarto-xref">Exercise&nbsp;<span>5.13</span></a>…</p>
+<p>Using the model from <a href="#exr-ch05-app1" class="quarto-xref">Exercise&nbsp;<span>5.12</span></a>…</p>
 <ol type="a">
 <li>extract the <code>coefficients</code> directly from the model</li>
 <li>extract the <code>r.squared</code> from the summary. This represents the proportion of variance in the dependent variable that can be explained by the independent variables. You will learn about this in detail in higher level regression courses.</li>

@@ -2048,15 +2048,15 @@ Figure&nbsp;6.11: Relationship between credit card debt and income by credit lim
 <div id="exr-ch06-c03" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 6.3</strong></span> An interaction effect exists if the associated effect of one variable is independent of the value of another variable.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch06-c04" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.4</strong></span> An example of simpson’s paradox is when you see a trend in several separate groups of data, but when you combine these groups, the trend changes or disappears.</p>
+<p><span class="theorem-title"><strong>Exercise 6.4</strong></span> An example of Simpson’s Paradox is when you see a trend in several separate groups of data, but when you combine these groups, the trend changes or disappears.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch06-c05" class="theorem exercise">
@@ -2071,29 +2071,26 @@ Figure&nbsp;6.11: Relationship between credit card debt and income by credit lim
 </section>
 <section id="sec-ex06-application" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-ex06-application"><span class="header-section-number">6.5.2</span> Application</h3>
-<p>The application exercises use datasets from the <code>ISDSdatasets</code> package.</p>
+<p>The <code>Auto</code> and <code>Bikeshare</code> datasets are in the <code>ISLR2</code> package.</p>
 <div id="exr-ch06-app1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.6</strong></span> Using the <code>covid_states</code> dataset, predict <code>new_confirmed</code> using <code>new_recovered</code> and <code>new_deceased</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 6.6</strong></span> Using the <code>Auto</code> dataset, predict <code>mpg</code> using <code>displacement</code> and <code>weight</code>.</p>
 </div>
 <div id="exr-ch06-app2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.7</strong></span> Using the <code>covid_states</code> and the <code>covid_dem</code> datasets, predict <code>new_confirmed</code> using <code>population</code> and <code>new_tested</code>.</p>
+<p><span class="theorem-title"><strong>Exercise 6.7</strong></span> Consider the <code>Bikeshare</code> dataset. It is known that more people tend to bike on the weekend than weekday, so the variable <code>workingday</code> is likely useful in predicting total number of bikers (<code>bikers</code>). Additionally we assume that the normalized temperature (<code>temp</code>) likely impacts the number of bikers.</p>
+<p>Use a parallel slopes model to predict the total number of bikers using <code>temp</code> and <code>workingday</code>. Plot the resulting model and interpret the coefficients.</p>
 </div>
 <div id="exr-ch06-app3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.8</strong></span> Consider the <code>nba</code> dataset. It is known that teams tend to play better on their home courts, so the variable <code>location</code> is likely useful in predicting total points scored by a team (<code>pts_tm</code>). Additionally we assume that the number of points scored by the star player (<code>pts</code>) likely impacts the team’s total points scored.</p>
-<p>Use a parallel slopes model to predict the total points scored by the team using <code>location</code> and <code>pts</code>. Plot the resulting model and interpret the coefficients.</p>
-</div>
-<div id="exr-ch06-app4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.9</strong></span> Using the same variables from <a href="#exr-ch06-app3" class="quarto-xref">Exercise&nbsp;<span>6.8</span></a>, this time fit an interaction model to predict the total points scored by the team. Plot the resulting model and interpret the coefficients.</p>
+<p><span class="theorem-title"><strong>Exercise 6.8</strong></span> Using the same variables from <a href="#exr-ch06-app2" class="quarto-xref">Exercise&nbsp;<span>6.7</span></a>, this time fit an interaction model to predict the total number of bikers using temperature and working day. Plot the resulting model and interpret the coefficients.</p>
 </div>
 </section>
 <section id="sec-ex06-advanced" class="level3" data-number="6.5.3">
 <h3 data-number="6.5.3" class="anchored" data-anchor-id="sec-ex06-advanced"><span class="header-section-number">6.5.3</span> Advanced</h3>
+<p>A lot of times analysts will compare model performance using what is called the “root mean squared error” (RMSE). This is calculated by first squaring each residual, then take the mean of those squared residuals, and then taking the square root. The model with the lower RMSE is generally considered “better”.</p>
 <div id="exr-ch06-adv1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.10</strong></span> A lot of times analysts will compare model performance using what is called the “mean squared error” (MSE). This is calculated by first squaring each residual, then take the mean of those squared residuals. The model with the lower MSE is generally considered “better”.</p>
-<p>Determine if the model in <a href="#exr-ch06-app3" class="quarto-xref">Exercise&nbsp;<span>6.8</span></a> or <a href="#exr-ch06-app4" class="quarto-xref">Exercise&nbsp;<span>6.9</span></a> is better using the MSE as the evaluation criteria.</p>
+<p><span class="theorem-title"><strong>Exercise 6.9</strong></span> Determine if the model in <a href="#exr-ch06-app2" class="quarto-xref">Exercise&nbsp;<span>6.7</span></a> or <a href="#exr-ch06-app3" class="quarto-xref">Exercise&nbsp;<span>6.8</span></a> is better using the RMSE as the evaluation criteria.</p>
 </div>
 <div id="exr-ch06-adv2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.11</strong></span> Using any two variables from the <code>nba</code> dataset, build a model to predict <code>pts_tm</code> that has a better MSE than the ones reported in <a href="#exr-ch06-app3" class="quarto-xref">Exercise&nbsp;<span>6.8</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise 6.10</strong></span> Using the <code>Auto</code> dataset, predict <code>mpg</code> using any two variables such that the resulting model has a better RMSE than the model in <a href="#exr-ch06-app1" class="quarto-xref">Exercise&nbsp;<span>6.6</span></a>.</p>
 </div>
 
 
