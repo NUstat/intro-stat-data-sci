@@ -1008,6 +1008,13 @@ What can you say about the relationship between a credit card holder's debt and 
 
 **Solution**: 
 
+```{r}
+credit_ch6 <- Credit %>%
+  as_tibble() %>% 
+  select(debt = Balance, credit_limit = Limit, 
+         income = Income, credit_rating = Rating, age = Age)
+```
+
 * Most crucially: Looking at the raw data values.
 ```{r}
 credit_ch6 %>%
