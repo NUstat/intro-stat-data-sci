@@ -1076,6 +1076,8 @@ Compute the observed values, fitted values, and residuals not for the interactio
 evals_ch6 <- evals %>%
   select(ID, score, age, gender)
 
+score_model_parallel_slopes <- lm(score ~ age + gender, data = evals_ch6)
+
 score_model_parallel_data <- evals_ch6 %>% 
   select(score, age, gender) %>% 
   mutate(score_hat = fitted(score_model_parallel_slopes),
