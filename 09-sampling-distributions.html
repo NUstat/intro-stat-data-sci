@@ -487,7 +487,7 @@ Figure&nbsp;9.1: Common distribution shapes
 <ul>
 <li>Normal distribution</li>
 <li>T-distribution</li>
-<li>Chi-squared distribution.</li>
+<li>chi-squared distribution.</li>
 </ul>
 <section id="normal-distribution" class="level3" data-number="9.1.1">
 <h3 data-number="9.1.1" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">9.1.1</span> Normal Distribution</h3>
@@ -710,7 +710,7 @@ Figure&nbsp;9.9: t-distribution with example 95% cutoff values
 </section>
 <section id="chi-squared-distribution" class="level3" data-number="9.1.6">
 <h3 data-number="9.1.6" class="anchored" data-anchor-id="chi-squared-distribution"><span class="header-section-number">9.1.6</span> Chi-squared Distribution</h3>
-<p>The Chi-squared distribution is unimodal but skewed right. The Chi-squared distribution depends on one parameter <span class="math inline">\(df\)</span>.</p>
+<p>The chi-squared distribution is unimodal but skewed right. The chi-squared distribution depends on one parameter <span class="math inline">\(df\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1934,7 +1934,7 @@ Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for variou
 </section>
 <section id="conclusion" class="level2" data-number="9.7">
 <h2 data-number="9.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">9.7</span> Conclusion</h2>
-<p>In this chapter, you’ve been introduced to the <strong>theory of repeated sampling</strong> that undergirds our ability to connect estimates from samples to parameters from populations that we wish to know about. In order to make these inferences, we need to understand how our results might change if – in a different reality – a different random sample was collected, or, more generally, how our results might differ across the many, many possible random samples we could have drawn. This led us to simulate the <strong>sampling distribution</strong> for our estimator of the population proportion.</p>
+<p>In this chapter, you’ve been introduced to the <strong>theory of repeated sampling</strong> that develops our ability to connect estimates from samples to parameters from populations that we wish to know about. In order to make these inferences, we need to understand how our results might change if – in a different reality – a different random sample was collected, or, more generally, how our results might differ across the many, many possible random samples we could have drawn. This led us to simulate the <strong>sampling distribution</strong> for our estimator of the population proportion.</p>
 <p>You also learned that statisticians summarize this sampling distribution in three ways. We showed that for the population proportion:</p>
 <ol type="1">
 <li>The sampling distribution of the sample proportion is symmetric, unimodal, and follows a <strong>normal distribution</strong> (when n = 50),</li>
@@ -1948,26 +1948,26 @@ Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for variou
 <section id="sec-ex09-conceptual" class="level3" data-number="9.8.1">
 <h3 data-number="9.8.1" class="anchored" data-anchor-id="sec-ex09-conceptual"><span class="header-section-number">9.8.1</span> Conceptual</h3>
 <div id="exr-ch09-c01" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.1</strong></span> Which of the following properties do the Normal distribution and the T distribution share? Select all that apply.</p>
+<p><span class="theorem-title"><strong>Exercise 9.1</strong></span> Which of the following properties do the Normal distribution and the t-distribution share? Select all that apply.</p>
 <ol type="a">
 <li>depends on degrees of freedom</li>
 <li>unimodal</li>
 <li>bimodal</li>
 <li>multimodal</li>
 <li>uniform</li>
-<li>right skewed</li>
-<li>left skewed</li>
+<li>right-skewed</li>
+<li>left-skewed</li>
 <li>symmetric</li>
 </ol>
 </div>
 <div id="exr-ch09-c02" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.2</strong></span> Standardization is a useful statistical tool as it allows us to put measures that are on the same scale onto different scales.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
-<div id="exr-ch09-03" class="theorem exercise">
+<div id="exr-ch09-c03" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.3</strong></span> The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women that are shorter than 60 inches?</p>
 <ol type="a">
 <li><code>qnorm(p = 60, mean = 64, sd = 3)</code></li>
@@ -1977,7 +1977,7 @@ Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for variou
 <li><code>pnorm(q = 64, mean = 60, sd = 3)</code></li>
 </ol>
 </div>
-<div id="exr-ch09-04" class="theorem exercise">
+<div id="exr-ch09-c04" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.4</strong></span> The average height of women in the U.S. is normally distributed with a mean height of 64 inches and a population standard deviation of 3 inches. Which of the following will compute the percent of women between 60 and 72 inches? Select all that apply.</p>
 <ol type="a">
 <li><code>pnorm(q = -1.33) - pnorm(q = 2.67)</code></li>
@@ -1987,7 +1987,7 @@ Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for variou
 <li><code>1 - 2*pnorm(q = 60, mean = 64, sd = 3)</code></li>
 </ol>
 </div>
-<div id="exr-ch09-05" class="theorem exercise">
+<div id="exr-ch09-c05" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.5</strong></span> Suppose we want to compare apples to oranges. Specifically, let’s compare their weights. Apples are known to follow a normal distribution with a mean weight of 100 grams and standard deviation of 15 grams. Oranges are known to follow a normal distribution with a mean weight of 140 grams and standard deviation of 25 grams.</p>
 <p>You have an apple that weighs 110 grams and your sister has an orange that weighs 160 grams. She claims her orange is bigger than your apple. But you state that is not a fair comparison because you think your apple is big compared to other apples. Who’s fruit is bigger when measured on a standardized scale?</p>
 <ol type="a">
@@ -1998,38 +1998,38 @@ Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for variou
 <div id="exr-ch09-c06" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.6</strong></span> When <code>n</code> is at least 50, the sampling distribution of the sample proportion follows a Normal distribution, and so it is both symmetric and unimodal.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch09-c07" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.7</strong></span> Which of the following statements regarding sample statistics are true? Select all that apply.</p>
 <ol type="a">
 <li>All sample statistics are biased estimators of the population parameter</li>
-<li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the T distribution</li>
-<li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the Chi-Squared Distribution</li>
-<li>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the T distribution</li>
-<li>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the Chi-Squared distribution</li>
-<li>The regression slope and regression intercept both follow the T distribution</li>
-<li>The regression slope and regression intercept both follow the Chi-Squared distribution</li>
+<li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the t-distribution</li>
+<li>The sampling distribution of the sample proportion and the sampling distribution of the difference in proportions both follow the chi-squared distribution</li>
+<li>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the t-distribution</li>
+<li>The sampling distribution of the sample mean and the sampling distribution of the difference in sample means both follow the chi-squared distribution</li>
+<li>The regression slope and regression intercept both follow the t-distribution</li>
+<li>The regression slope and regression intercept both follow the chi-squared distribution</li>
 </ol>
 </div>
 <div id="exr-ch09-c08" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.8</strong></span> The distribution of the population will always have a larger spread than the distribution of a sampling distribution.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch09-c09" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.9</strong></span> As sample size (n) increases the spread of the distribution also increases.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch09-c10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.10</strong></span> Which of the following describes the estimator <span class="math inline">\(\bar(x)\)</span>?</p>
+<p><span class="theorem-title"><strong>Exercise 9.10</strong></span> Which of the following describes the estimator <span class="math inline">\(\bar{x}\)</span>?</p>
 <ol type="a">
 <li>biased and imprecise</li>
 <li>biased and precise</li>
@@ -2038,10 +2038,10 @@ Figure&nbsp;9.21: Sampling distributions of the mean infant mortality for variou
 </ol>
 </div>
 <div id="exr-ch09-c11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.11</strong></span> Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter <span class="math inline">\(\\pi\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 9.11</strong></span> Proportions are an unbiased statistic, so any proportion will give you the exact value of the population parameter <span class="math inline">\(\pi\)</span>.</p>
 <ol type="a">
-<li>True</li>
-<li>False</li>
+<li>TRUE</li>
+<li>FALSE</li>
 </ol>
 </div>
 <div id="exr-ch09-c12" class="theorem exercise">
