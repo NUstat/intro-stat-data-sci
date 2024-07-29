@@ -58,21 +58,6 @@
         "viridis"
       ]
     },
-    "ISDSdatasets": {
-      "Package": "ISDSdatasets",
-      "Version": "0.0.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "ISDSdatasets",
-      "RemoteUsername": "NUstat",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "680b6d572d1e8cd1562e881dfaf73bcbd693ed15",
-      "Hash": "079429395135c5fec64b804483cc041c",
-      "Requirements": [
-        "tibble"
-      ]
-    },
     "ISLR2": {
       "Package": "ISLR2",
       "Version": "1.3-2",
@@ -126,6 +111,14 @@
         "Hmisc",
         "MASS"
       ]
+    },
+    "airports": {
+      "Package": "airports",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "14e997c91e0cdca32231b04143e0904c",
+      "Requirements": []
     },
     "askpass": {
       "Package": "askpass",
@@ -263,6 +256,14 @@
       "Requirements": [
         "backports"
       ]
+    },
+    "cherryblossom": {
+      "Package": "cherryblossom",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ef936debf27cd40d667339a6ad89cd75",
+      "Requirements": []
     },
     "cli": {
       "Package": "cli",
@@ -1057,6 +1058,22 @@
         "tibble"
       ]
     },
+    "openintro": {
+      "Package": "openintro",
+      "Version": "2.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d25a629e4f3163cfc981516817f358ca",
+      "Requirements": [
+        "airports",
+        "cherryblossom",
+        "ggplot2",
+        "readr",
+        "rmarkdown",
+        "tibble",
+        "usdata"
+      ]
+    },
     "openssl": {
       "Package": "openssl",
       "Version": "2.1.1",
@@ -1608,6 +1625,16 @@
       "Hash": "f561504ec2897f4d46f0c7657e488ae1",
       "Requirements": [
         "cpp11"
+      ]
+    },
+    "usdata": {
+      "Package": "usdata",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "924b597b270e2f6a84387f563abadb39",
+      "Requirements": [
+        "tibble"
       ]
     },
     "utf8": {

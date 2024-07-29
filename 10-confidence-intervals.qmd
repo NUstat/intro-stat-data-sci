@@ -669,31 +669,27 @@ e) 0.06819
 
 ### Application {#sec-ex10-application}
 
-The application exercises use the `nba_sample` dataset from the `ISDSdatasets` package. This is a random sample obtained from the `nba` dataset.
+The `lego_sample`  dataset is in the `openintro` package.
 
 ::: {#exr-ch10-app1}
-Using `nba_sample`, we are interested in determining the number of points that Michael Jordan scored per game (`pts`) on average. Develop an 85% confidence interval for this variable. 
+Using `lego_sample`, we are interested in determining the average number of `pieces` in LEGO sets with the `City` `theme`. Develop an 85% confidence interval for this variable. 
 :::
 
 ::: {#exr-ch10-app2}
-Using `nba_sample` determine the proportion of `win`s for LeBron James. Develop a 99% confidence interval for this variable. 
+Using `lego_sample` determine the proportion of LEGO sets that have over 100 `pieces`. Develop a 99% confidence interval for this variable. 
 :::
 
 ::: {#exr-ch10-app3}
-Using `nba_sample` determine if LeBron James or Kobe Bryant won more games. In other words, find the 90% confidence interval for the difference in proportion of wins (`win`) between LeBron James and Kobe Bryant.
+Using `lego_sample` determine if `City` or `Friends` themed LEGOs cost more on Amazon at the 90% confidence level.
 :::
 
 ::: {#exr-ch10-app4}
-Using `nba_sample` determine if Michael Jordan or Kobe Bryant were better at free throws. In other words, find the 95% confidence interval for the difference in average free throw percent (`ft_percent`) between Michael Jordan and Kobe Bryant. 
+Using `lego_sample` determine if `City` or `Friends` themed LEGOs have a higher proportion of LEGO sets suitable for a 5 year old at the 95% confidence interval. 
 :::
 
 
 ### Advanced {#sec-ex10-advanced}
 
 ::: {#exr-ch10-adv1}
-Using the `nba_sample` dataset, determine if our players play better at home or away games. Specify how you chose to evaluate what constitutes "playing better" and specify your confidence level used.
-:::
-
-::: {#exr-ch10-adv2}
-Basketball reference keeps very diligent and accurate records for basketball games, so this is one of the rare instances when we have the entire population of games played for Michael Jordan, Kobe Bryant, and LeBron James through the 2021 season. This census is our `nba` dataset. In the above problems we used a random sample to demonstrate how a sample is used to approximate the population parameters. Calculate the population parameters relevant to @exr-ch10-app1, @exr-ch10-app2, @exr-ch10-app3, and @exr-ch10-app4 using the `nba` dataset and specify if your confidence interval captured the true population.
+Using the `lego_samples` dataset, determine if one `theme` is over-priced more than others on Amazon. Specify how you chose to evaluate what constitutes "over-priced" and specify your confidence level used.
 :::

@@ -10,7 +10,7 @@ library(moderndive)
 library(lubridate)
 library(patchwork)
 library(ISLR2)
-library(ISDSdatasets)
+library(openintro)
 ```
 
 ## Chapter 1 {#sec-ex01-sol}
@@ -825,80 +825,105 @@ d) qnorm(p = 0.015)
 @exr-ch10-app1
 
 ```{r}
-nba_mj <- nba_sample %>% 
-  filter(player == "Michael Jordan")
+lego_city <- lego_sample %>% 
+  filter(theme == "City")
 
-t.test(nba_mj$pts, conf.level = 0.85)
+t.test(lego_city$pieces, conf.level = 0.85)
 ```
 
+We are 85% confident that the average number of pieces in a City themed LEGO set is between 205 and 344 pieces.
 
 @exr-ch10-app2
 
-Let's consider only the games that Kobe Bryant **played in**.
-
 ```{r}
-nba_sample %>% 
-  filter(!is.na(gs)) %>% 
-  count(win, player)
+lego_sample %>% 
+  count(pieces > 100)
 
-prop.test(x = 56, n = (56 + 33), conf.level = 0.99, correct = FALSE)
+prop.test(x = 36, n = (39 + 36), 
+          conf.level = 0.99, correct = FALSE)
 ```
-We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.
+We are 99% confident that the proportion of LEGO sets that have over 100 pieces is between 0.339 and 0.624.
 
 @exr-ch10-app3
 
 ```{r}
-nba_sample %>% 
-  filter(!is.na(gs)) %>% 
-  count(win, player)
+lego_city <- lego_sample %>% 
+  filter(theme == "City")
 
-prop.test(x = c(56, 59), n = c(56 + 33, 59+32), conf.level = 0.9, correct = FALSE)
+lego_friends <- lego_sample %>% 
+  filter(theme == "Friends")
+
+t.test(x = lego_city$amazon_price, 
+       y = lego_friends$amazon_price, 
+       conf.level = 0.90)
+
 ```
+We are 90% confident that the difference in average Amazon price between City themed and Friends themed LEGO sets is between -9.95 and 23.19. Since the confidence interval contains zero there is no statistical difference in average Amazon price.
 
 @exr-ch10-app4
 
 ```{r}
-nba_mj <- nba_sample %>% 
-  filter(player == "Michael Jordan")
+lego_sample %>%  
+  filter(theme == "City") %>%
+  count(ages)
+# For City, the categories "Ages_4+", "Ages_5+", and "Ages_5-12" are suitable for a 5 year old
 
-nba_kobe <- nba_sample %>% 
-  filter(player == "Kobe Bryant")
+lego_sample %>%  
+  filter(theme == "Friends") %>%
+  count(ages)
+# For Frinds the category "Ages_4+" is suitable for a 5 year old (all others you should be over 5)
 
-t.test(x = nba_mj$ft_percent, y = nba_kobe$ft_percent, conf.level = 0.95)
+# quick denominator count
+lego_sample %>% 
+  count(theme)
+
+prop.test(x = c(1 + 13 + 7, 1), 
+          n = c(25, 25), 
+          conf.level = 0.95, correct = FALSE)
 ```
 
-We are 95% confident that the difference in free throw percentage between Michael Jordan and Kobe Bryant is between -0.0155 and 0.071.
+We are 95% confident that the difference in proportion of City themed and Friends themed LEGO sets suitable for a 5 year old is between 0.637 and 0.962. Our confidence interval supports that City themed legosets have a higher proportion of LEGO sets suitable for a 5 year old because the interval is strictly positive.
 
-@exr-ch10-adv2
+@exr-ch10-adv1
+
+Let's consider the difference between `amazon_price` and `price` to be the amount that a LEGO set is "over-priced".
+
+We will use the 95% confidence level to compare the difference in means.
 
 ```{r}
-# 2
-nba %>% 
-  filter(!is.na(gs), player == "Kobe Bryant") %>% 
-  count(win)
-971/(971+595)
+lego_price <- lego_sample %>% 
+  mutate(overprice = amazon_price - price) %>% 
+  select(theme, overprice)
+
+city_price <- lego_price %>% 
+  filter(theme == "City")
+
+friends_price <- lego_price %>% 
+  filter(theme == "Friends")
+
+duplo_price <- lego_price %>% 
+  filter(theme != "Friends", theme != "City")
+
+t.test(city_price$overprice, friends_price$overprice)
+# no statistical difference between city and friends
+t.test(duplo_price$overprice, friends_price$overprice)
+# no statistical difference between duplo and friends
+t.test(city_price$overprice, duplo_price$overprice)
+# no statistical difference between city and duplo
 ```
-Yes, 0.620 is between our 99% CI [0.493, 0.748]
 
+There is no statistical difference in the average amount in which a LEGO set theme is overpriced.
 
-
-```{r}
-# 4
-nba %>% 
-  group_by(player) %>% 
-  summarize(mean = mean(ft_percent, na.rm = TRUE))
-
-0.8279-0.8286
-```
-Yes, -0.0007 is between our 95% CI [-0.0155, 0.071]
 
 ## Chapter 11 {#sec-ex11-sol}
 
-::: callout-caution
-## Under Construction
+See Chapter 12 practice problems for calculating and interpreting a p-value.
 
-Currently working on exercise solutions.
-:::
+<!-- ::: callout-caution -->
+<!-- ## Under Construction -->
+
+<!-- Currently working on exercise solutions. -->
+<!-- ::: -->
 
 
 ## Chapter 12 {#sec-ex12-sol}
@@ -947,63 +972,105 @@ Scenario 4: The person tests negative for HIV and does not have HIV
 
 @exr-ch12-app1
 
-$$H_0: \mu_{team pts} = 100$$
+$$H_0: \mu_{pieces} = 350$$
 
-$$H_A: \mu_{team pts} \ne 100$$
+$$H_A: \mu_{pieces} \ne 350$$
 
 ```{r}
-t.test(nba$pts_tm, mu = 100)
+lego_city <- lego_sample %>% 
+  filter(theme == "City")
+
+t.test(lego_city$pieces, mu = 350, conf.level = 0.98)
 ```
+
+Assuming the average number of pieces in LEGO sets with the `City` `theme` is equal to 350, there is an 11.73% chance of observing data as extreme as our sample. At the 2% significance level, we fail to reject the null hypothesis. There is not statistically significant evidence to suggest the average number of pieces is **not** 350.
+
 
 @exr-ch12-app2
 
-$$H_0: \mu_{jordan} - \mu_{lebron} = 0$$
+$$H_0: \pi_{pieces} = 0.5$$
 
-$$H_A: \mu_{jordan} - \mu_{lebron} \ne 0$$
-
-First we need to pre-specify an alpha level. Let's choose 0.05.
+$$H_A: \pi_{pieces} \ne 0.5$$
 
 ```{r}
-mj <- nba %>% 
-  filter(player == "Michael Jordan")
-lebron <- nba %>% 
-  filter(player == "LeBron James")
+lego_sample |> 
+  filter(theme == "Friends") %>%
+  mutate(over100 = pieces > 100) |> 
+  count(over100)
 
-t.test(x = mj$pts, y = lebron$pts)
+prop.test(x = 17, n = 25, p = 0.5, correct = FALSE)
 ```
 
 
+Assuming the proportion of LEGO sets with the Friends theme that have over 100 `pieces` is equal to 50%, there is a 7.19% chance of observing data as extreme as our sample. At the 10% significance level, we reject the null hypothesis. There is statistically significant evidence to suggest the proportion of LEGO sets with the Friends theme that have over 100 `pieces` is NOT equal to 50%. Our sample statistic of 68% and rejection of the null supports that a majority of Friends LEGO sets have over 100 pieces.
 
 @exr-ch12-app3
 
-$$H_0: \pi_{win} = 0.5$$
+$$H_0: \mu_{city} - \mu_{friends} = 0$$
 
-$$H_A: \pi_{win} \ne 0.5$$
+$$H_A: \mu_{city} - \mu_{friends} \ne 0$$
 
 
 ```{r}
-nba %>% 
-  filter(player == "Kobe Bryant") %>% 
-  count(win)
+lego_city <- lego_sample %>% 
+  filter(theme == "City")
 
-prop.test(x = 1057, n = c(720+1057), p = 0.5, correct = FALSE)
+lego_friends <- lego_sample %>% 
+  filter(theme == "Friends")
 
+# no need to set mu because checking if difference is 0
+t.test(x = lego_city$amazon_price, 
+       y = lego_friends$amazon_price, 
+       conf.level = 0.90)
 ```
 
 
 @exr-ch12-app4
 
+$$H_0: \pi_{city} - \pi_{friends} = 0$$
 
-$$H_0: \pi_{first} - \pi_{third} = 0$$
+$$H_A: \pi_{city} - \pi_{friends} \ne 0$$
 
-$$H_A: \pi_{first} - \pi_{third} \ne 0$$
 
-First we need to pre-specify an alpha rate. For example let's pick 0.01.
 ```{r}
-titanic %>% 
-  count(Survived, Pclass)
+lego_sample %>%  
+  filter(theme == "City") %>%
+  count(ages)
+# For City, the categories "Ages_4+", "Ages_5+", and "Ages_5-12" are suitable for a 5 year old
 
-prop.test(x = c(50, 72), n = c(50+57, 72+146))
+lego_sample %>%  
+  filter(theme == "Friends") %>%
+  count(ages)
+# For Frinds the category "Ages_4+" is suitable for a 5 year old (all others you should be over 5)
+
+# quick denominator count
+lego_sample %>% 
+  count(theme)
+
+# no need to set p because checking if difference is 0
+prop.test(x = c(1 + 13 + 7, 1), 
+          n = c(25, 25), 
+          conf.level = 0.95, correct = FALSE)
 ```
 
 
+@exr-ch12-adv1
+
+
+$$H_0: \beta_{1} = 0$$
+
+$$H_A: \beta_{1} \ne 0$$
+
+```{r}
+price_model <- lm(price ~ pieces, data = lego_sample)
+
+summary(price_model)
+```
+
+The p-value of 1.02e-14, leads us to conclude there is a relationship between price and pieces at the .05 significance level.
+
+```{r}
+confint(price_model)
+```
+
+We are 95% confident that for every one additional piece in a LEGO set the price on average increases somewhere between 0.077 and 0.117 dollars.

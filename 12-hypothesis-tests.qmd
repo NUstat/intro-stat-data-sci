@@ -711,30 +711,31 @@ Suppose a person is being tested for HIV. Specify the null and alternative hypot
 
 ### Application {#sec-ex12-application}
 
-For the following problems, state your hypothesis test and interpret your results in the context of the problem.
+Use a two-sided hypothesis test to answer the following problems. Be sure to state your hypothesis test and interpret your results in the context of the problem.
+
+The `lego_sample`  dataset is in the `openintro` package.
 
 ::: {#exr-ch12-app1}
-Using the `nba` dataset, determine if the player's teams scored more than 100 points per game on average. Evaluate at the $\alpha = 0.02$ significance level.
+Using the `lego_sample` dataset, determine if the average number of pieces in LEGO sets with the `City` `theme` is more than 350. Evaluate at the $\alpha = 0.02$ significance level.
 :::
 
 ::: {#exr-ch12-app2}
-A basketball superfan claims that Michael Jordan scored more points per game on average than LeBron James. 
-Use the `nba` dataset to determine if this superfan is correct.
+Using `lego_sample` determine if a majority of the LEGO sets with the `Friends` `theme` have over 100 `pieces`. Evaluate at the $\alpha = 0.10$ significance level.
 :::
 
 ::: {#exr-ch12-app3}
-Using the `nba` dataset, determine if Kobe Bryant won a majority of his games. Evaluate at the $\alpha = 0.1$ significance level. 
+Using `lego_sample` determine if `City` or `Friends` themed LEGOs cost more on Amazon at the alpha = 0.10 significance level.
 :::
 
 ::: {#exr-ch12-app4}
-Using the `titanic` dataset, determine if the 1st class ticket passengers or 3rd class ticket passengers had a higher survival rate.
+Using `lego_sample` determine if `City` or `Friends` themed LEGOs have a higher proportion of LEGO sets suitable for a 5 year old at the .05 significance level. 
 :::
 
 ### Advanced {#sec-ex12-advanced}
 
 ::: {#exr-ch12-adv1}
-Pick one player, is there a linear relationship between the player's points scored and game score? If there is one, then what is the magnitude of the relationship?
+Is there a linear relationship between the number of pieces and price? If there is one, then what is the magnitude of the relationship?
 
 Evaluate using the following linear model:
-$$ \widehat{gm_sc} = \beta_0 + \beta_1(pts)$$
+$$ \widehat{price} = \beta_0 + \beta_1(pieces)$$
 :::

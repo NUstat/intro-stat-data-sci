@@ -390,23 +390,23 @@ Finally, remember that the p-value is a probabilistic attempt at making a proof 
 This will be important to keep in mind as we move towards using p-values for decision making in @sec-hypothesis-tests.
 
 
-## Exercises {#sec-ex11}
+<!-- ## Exercises {#sec-ex11} -->
 
-### Conceptual {#sec-ex11-conceptual}
+<!-- ### Conceptual {#sec-ex11-conceptual} -->
 
-::: {#exr-ch11-c01}
+<!-- ::: {#exr-ch11-c01} -->
 
-:::
+<!-- ::: -->
 
 
-### Application {#sec-ex11-application}
+<!-- ### Application {#sec-ex11-application} -->
 
-::: {#exr-ch11-app1}
+<!-- ::: {#exr-ch11-app1} -->
 
-:::
+<!-- ::: -->
 
-### Advanced {#sec-ex11-advanced}
+<!-- ### Advanced {#sec-ex11-advanced} -->
 
-::: {#exr-ch11-adv1}
+<!-- ::: {#exr-ch11-adv1} -->
 
-:::
+<!-- ::: -->
