@@ -434,7 +434,7 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISDSdatasets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sec-ex01-sol" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="sec-ex01-sol"><span class="header-section-number">B.1</span> Chapter 1</h2>
@@ -1296,166 +1296,212 @@ temp:factor(workingday)1 -98.47336  13.880235 -7.094502  1.400530e-12</code></pr
 <p><a href="10-confidence-intervals.html#exr-ch10-c09" class="quarto-xref">Exercise&nbsp;<span>10.9</span></a> 0.01804</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-app1" class="quarto-xref">Exercise&nbsp;<span>10.10</span></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>lego_city <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>)</span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(nba_mj<span class="sc">$</span>pts, <span class="at">conf.level =</span> <span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(lego_city<span class="sc">$</span>pieces, <span class="at">conf.level =</span> <span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
-data:  nba_mj$pts
-t = 33.421, df = 98, p-value &lt; 2.2e-16
+data:  lego_city$pieces
+t = 5.9203, df = 24, p-value = 4.146e-06
 alternative hypothesis: true mean is not equal to 0
 85 percent confidence interval:
- 30.30159 33.05194
+ 205.6526 343.6274
 sample estimates:
 mean of x 
- 31.67677 </code></pre>
+   274.64 </code></pre>
 </div>
 </div>
+<p>We are 85% confident that the average number of pieces in a City themed LEGO set is between 205 and 344 pieces.</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-app2" class="quarto-xref">Exercise&nbsp;<span>10.11</span></a></p>
-<p>Let’s consider only the games that Kobe Bryant <strong>played in</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win, player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pieces <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-    win player             n
-  &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt;
-1     0 Kobe Bryant       33
-2     0 LeBron James      32
-3     0 Michael Jordan    33
-4     1 Kobe Bryant       56
-5     1 LeBron James      59
-6     1 Michael Jordan    66</code></pre>
+<pre><code># A tibble: 2 × 2
+  `pieces &gt; 100`     n
+  &lt;lgl&gt;          &lt;int&gt;
+1 FALSE             39
+2 TRUE              36</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">56</span>, <span class="at">n =</span> (<span class="dv">56</span> <span class="sc">+</span> <span class="dv">33</span>), <span class="at">conf.level =</span> <span class="fl">0.99</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">36</span>, <span class="at">n =</span> (<span class="dv">39</span> <span class="sc">+</span> <span class="dv">36</span>), </span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.level =</span> <span class="fl">0.99</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     1-sample proportions test without continuity correction
 
-data:  56 out of (56 + 33), null probability 0.5
-X-squared = 5.9438, df = 1, p-value = 0.01477
+data:  36 out of (39 + 36), null probability 0.5
+X-squared = 0.12, df = 1, p-value = 0.729
 alternative hypothesis: true p is not equal to 0.5
 99 percent confidence interval:
- 0.4927093 0.7477887
+ 0.3391862 0.6240648
 sample estimates:
-        p 
-0.6292135 </code></pre>
+   p 
+0.48 </code></pre>
 </div>
 </div>
-<p>We are 99% confident that the proportion of career wins for Kobe Bryant is between 0.493 and 0.748.</p>
+<p>We are 99% confident that the proportion of LEGO sets that have over 100 pieces is between 0.339 and 0.624.</p>
 <p><a href="10-confidence-intervals.html#exr-ch10-app3" class="quarto-xref">Exercise&nbsp;<span>10.12</span></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs)) <span class="sc">%&gt;%</span> </span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win, player)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-    win player             n
-  &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt;
-1     0 Kobe Bryant       33
-2     0 LeBron James      32
-3     0 Michael Jordan    33
-4     1 Kobe Bryant       56
-5     1 LeBron James      59
-6     1 Michael Jordan    66</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="dv">59</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">56</span> <span class="sc">+</span> <span class="dv">33</span>, <span class="dv">59</span><span class="sc">+</span><span class="dv">32</span>), <span class="at">conf.level =</span> <span class="fl">0.9</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    2-sample test for equality of proportions without continuity correction
-
-data:  c(56, 59) out of c(56 + 33, 59 + 32)
-X-squared = 0.071432, df = 1, p-value = 0.7893
-alternative hypothesis: two.sided
-90 percent confidence interval:
- -0.13691240  0.09863607
-sample estimates:
-   prop 1    prop 2 
-0.6292135 0.6483516 </code></pre>
-</div>
-</div>
-<p><a href="10-confidence-intervals.html#exr-ch10-app4" class="quarto-xref">Exercise&nbsp;<span>10.13</span></a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>nba_mj <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>nba_kobe <span class="ot">&lt;-</span> nba_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>)</span>
-<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> nba_mj<span class="sc">$</span>ft_percent, <span class="at">y =</span> nba_kobe<span class="sc">$</span>ft_percent, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>lego_city <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>lego_friends <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"Friends"</span>)</span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> lego_city<span class="sc">$</span>amazon_price, </span>
+<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> lego_friends<span class="sc">$</span>amazon_price, </span>
+<span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
 
-data:  nba_mj$ft_percent and nba_kobe$ft_percent
-t = 1.2643, df = 172.42, p-value = 0.2078
+data:  lego_city$amazon_price and lego_friends$amazon_price
+t = 0.6702, df = 47.98, p-value = 0.5059
 alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.01552775  0.07086917
+90 percent confidence interval:
+ -9.947649 23.188449
 sample estimates:
 mean of x mean of y 
-0.8460825 0.8184118 </code></pre>
+  45.2696   38.6492 </code></pre>
 </div>
 </div>
-<p>We are 95% confident that the difference in free throw percentage between Michael Jordan and Kobe Bryant is between -0.0155 and 0.071.</p>
-<p><a href="10-confidence-intervals.html#exr-ch10-adv2" class="quarto-xref">Exercise&nbsp;<span>10.15</span></a></p>
+<p>We are 90% confident that the difference in average Amazon price between City themed and Friends themed LEGO sets is between -9.95 and 23.19. Since the confidence interval contains zero there is no statistical difference in average Amazon price.</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-app4" class="quarto-xref">Exercise&nbsp;<span>10.13</span></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gs), player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span>  </span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-    win     n
-  &lt;dbl&gt; &lt;int&gt;
-1     0   595
-2     1   971</code></pre>
+<pre><code># A tibble: 5 × 2
+  ages          n
+  &lt;chr&gt;     &lt;int&gt;
+1 Ages_4+       1
+2 Ages_5+      13
+3 Ages_5-12     7
+4 Ages_6+       3
+5 Ages_7+       1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="dv">971</span><span class="sc">/</span>(<span class="dv">971</span><span class="sc">+</span><span class="dv">595</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For City, the categories "Ages_4+", "Ages_5+", and "Ages_5-12" are suitable for a 5 year old</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span>  </span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"Friends"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6200511</code></pre>
+<pre><code># A tibble: 5 × 2
+  ages          n
+  &lt;chr&gt;     &lt;int&gt;
+1 Ages_4+       1
+2 Ages_6+      17
+3 Ages_6-12     5
+4 Ages_7+       1
+5 Ages_8+       1</code></pre>
 </div>
-</div>
-<p>Yes, 0.620 is between our 99% CI [0.493, 0.748]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
-<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(player) <span class="sc">%&gt;%</span> </span>
-<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(ft_percent, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For Frinds the category "Ages_4+" is suitable for a 5 year old (all others you should be over 5)</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co"># quick denominator count</span></span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(theme)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
-  player          mean
-  &lt;chr&gt;          &lt;dbl&gt;
-1 Kobe Bryant    0.829
-2 LeBron James   0.727
-3 Michael Jordan 0.828</code></pre>
+  theme       n
+  &lt;chr&gt;   &lt;int&gt;
+1 City       25
+2 DUPLO®     25
+3 Friends    25</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8279-0.8286</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">13</span> <span class="sc">+</span> <span class="dv">7</span>, <span class="dv">1</span>), </span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">25</span>), </span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -7e-04</code></pre>
+<pre><code>
+    2-sample test for equality of proportions without continuity correction
+
+data:  c(1 + 13 + 7, 1) out of c(25, 25)
+X-squared = 32.468, df = 1, p-value = 1.212e-08
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ 0.6370517 0.9629483
+sample estimates:
+prop 1 prop 2 
+  0.84   0.04 </code></pre>
 </div>
 </div>
-<p>Yes, -0.0007 is between our 95% CI [-0.0155, 0.071]</p>
+<p>We are 95% confident that the difference in proportion of City themed and Friends themed LEGO sets suitable for a 5 year old is between 0.637 and 0.962. Our confidence interval supports that City themed legosets have a higher proportion of LEGO sets suitable for a 5 year old because the interval is strictly positive.</p>
+<p><a href="10-confidence-intervals.html#exr-ch10-adv1" class="quarto-xref">Exercise&nbsp;<span>10.14</span></a></p>
+<p>Let’s consider the difference between <code>amazon_price</code> and <code>price</code> to be the amount that a LEGO set is “over-priced”.</p>
+<p>We will use the 95% confidence level to compare the difference in means.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>lego_price <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overprice =</span> amazon_price <span class="sc">-</span> price) <span class="sc">%&gt;%</span> </span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(theme, overprice)</span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a>city_price <span class="ot">&lt;-</span> lego_price <span class="sc">%&gt;%</span> </span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>)</span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a>friends_price <span class="ot">&lt;-</span> lego_price <span class="sc">%&gt;%</span> </span>
+<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"Friends"</span>)</span>
+<span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a>duplo_price <span class="ot">&lt;-</span> lego_price <span class="sc">%&gt;%</span> </span>
+<span id="cb116-12"><a href="#cb116-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">!=</span> <span class="st">"Friends"</span>, theme <span class="sc">!=</span> <span class="st">"City"</span>)</span>
+<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-14"><a href="#cb116-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(city_price<span class="sc">$</span>overprice, friends_price<span class="sc">$</span>overprice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  city_price$overprice and friends_price$overprice
+t = -0.62861, df = 40.606, p-value = 0.5331
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -15.08319   7.92399
+sample estimates:
+mean of x mean of y 
+   5.3996    8.9792 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no statistical difference between city and friends</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(duplo_price<span class="sc">$</span>overprice, friends_price<span class="sc">$</span>overprice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  duplo_price$overprice and friends_price$overprice
+t = -0.26943, df = 43.189, p-value = 0.7889
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -13.46272  10.28912
+sample estimates:
+mean of x mean of y 
+   7.3924    8.9792 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no statistical difference between duplo and friends</span></span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(city_price<span class="sc">$</span>overprice, duplo_price<span class="sc">$</span>overprice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  city_price$overprice and duplo_price$overprice
+t = -0.43643, df = 47.443, p-value = 0.6645
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -11.17641   7.19081
+sample estimates:
+mean of x mean of y 
+   5.3996    7.3924 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no statistical difference between city and duplo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There is no statistical difference in the average amount in which a LEGO set theme is overpriced.</p>
 </section>
 <section id="sec-ex11-sol" class="level2" data-number="B.11">
 <h2 data-number="B.11" class="anchored" data-anchor-id="sec-ex11-sol"><span class="header-section-number">B.11</span> Chapter 11</h2>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Under Construction
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Currently working on exercise solutions.</p>
-</div>
-</div>
+<p>See Chapter 12 practice problems for calculating and interpreting a p-value.</p>
+<!-- ::: callout-caution -->
+<!-- ## Under Construction -->
+<!-- Currently working on exercise solutions. -->
+<!-- ::: -->
 </section>
 <section id="sec-ex12-sol" class="level2" data-number="B.12">
 <h2 data-number="B.12" class="anchored" data-anchor-id="sec-ex12-sol"><span class="header-section-number">B.12</span> Chapter 12</h2>
@@ -1482,111 +1528,188 @@ Under Construction
 <p><span class="math display">\[H_A:\]</span> the person has HIV</p>
 <p>Scenario 1: The person tests positive for HIV and has HIV Scenario 2: The person tests positive for HIV but does not actually have HIV (Type I error) Scenario 3: The person tests negative for HIV but actually has HIV (Type II error) Scenario 4: The person tests negative for HIV and does not have HIV</p>
 <p><a href="12-hypothesis-tests.html#exr-ch12-app1" class="quarto-xref">Exercise&nbsp;<span>12.11</span></a></p>
-<p><span class="math display">\[H_0: \mu_{team pts} = 100\]</span></p>
-<p><span class="math display">\[H_A: \mu_{team pts} \ne 100\]</span></p>
+<p><span class="math display">\[H_0: \mu_{pieces} = 350\]</span></p>
+<p><span class="math display">\[H_A: \mu_{pieces} \ne 350\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(nba<span class="sc">$</span>pts_tm, <span class="at">mu =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>lego_city <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>)</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(lego_city<span class="sc">$</span>pieces, <span class="at">mu =</span> <span class="dv">350</span>, <span class="at">conf.level =</span> <span class="fl">0.98</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
-data:  nba$pts_tm
-t = 11.521, df = 4746, p-value &lt; 2.2e-16
-alternative hypothesis: true mean is not equal to 100
-95 percent confidence interval:
- 101.7088 102.4096
+data:  lego_city$pieces
+t = -1.6245, df = 24, p-value = 0.1173
+alternative hypothesis: true mean is not equal to 350
+98 percent confidence interval:
+ 159.03 390.25
 sample estimates:
 mean of x 
- 102.0592 </code></pre>
+   274.64 </code></pre>
 </div>
 </div>
+<p>Assuming the average number of pieces in LEGO sets with the <code>City</code> <code>theme</code> is equal to 350, there is an 11.73% chance of observing data as extreme as our sample. At the 2% significance level, we fail to reject the null hypothesis. There is not statistically significant evidence to suggest the average number of pieces is <strong>not</strong> 350.</p>
 <p><a href="12-hypothesis-tests.html#exr-ch12-app2" class="quarto-xref">Exercise&nbsp;<span>12.12</span></a></p>
-<p><span class="math display">\[H_0: \mu_{jordan} - \mu_{lebron} = 0\]</span></p>
-<p><span class="math display">\[H_A: \mu_{jordan} - \mu_{lebron} \ne 0\]</span></p>
-<p>First we need to pre-specify an alpha level. Let’s choose 0.05.</p>
+<p><span class="math display">\[H_0: \pi_{pieces} = 0.5\]</span></p>
+<p><span class="math display">\[H_A: \pi_{pieces} \ne 0.5\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>mj <span class="ot">&lt;-</span> nba <span class="sc">%&gt;%</span> </span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Michael Jordan"</span>)</span>
-<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>lebron <span class="ot">&lt;-</span> nba <span class="sc">%&gt;%</span> </span>
-<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"LeBron James"</span>)</span>
-<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> mj<span class="sc">$</span>pts, <span class="at">y =</span> lebron<span class="sc">$</span>pts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  mj$pts and lebron$pts
-t = 9.8053, df = 2382.2, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- 2.652615 3.978838
-sample estimates:
-mean of x mean of y 
- 30.59872  27.28299 </code></pre>
-</div>
-</div>
-<p><a href="12-hypothesis-tests.html#exr-ch12-app3" class="quarto-xref">Exercise&nbsp;<span>12.13</span></a></p>
-<p><span class="math display">\[H_0: \pi_{win} = 0.5\]</span></p>
-<p><span class="math display">\[H_A: \pi_{win} \ne 0.5\]</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Kobe Bryant"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(win)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">|&gt;</span> </span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"Friends"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">over100 =</span> pieces <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(over100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
-    win     n
-  &lt;dbl&gt; &lt;int&gt;
-1     0   720
-2     1  1057</code></pre>
+  over100     n
+  &lt;lgl&gt;   &lt;int&gt;
+1 FALSE       8
+2 TRUE       17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">1057</span>, <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">720</span><span class="sc">+</span><span class="dv">1057</span>), <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">17</span>, <span class="at">n =</span> <span class="dv">25</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     1-sample proportions test without continuity correction
 
-data:  1057 out of c(720 + 1057), null probability 0.5
-X-squared = 63.911, df = 1, p-value = 1.302e-15
+data:  17 out of 25, null probability 0.5
+X-squared = 3.24, df = 1, p-value = 0.07186
 alternative hypothesis: true p is not equal to 0.5
 95 percent confidence interval:
- 0.5718164 0.6174200
+ 0.4841027 0.8279481
 sample estimates:
-        p 
-0.5948227 </code></pre>
+   p 
+0.68 </code></pre>
+</div>
+</div>
+<p>Assuming the proportion of LEGO sets with the Friends theme that have over 100 <code>pieces</code> is equal to 50%, there is a 7.19% chance of observing data as extreme as our sample. At the 10% significance level, we reject the null hypothesis. There is statistically significant evidence to suggest the proportion of LEGO sets with the Friends theme that have over 100 <code>pieces</code> is NOT equal to 50%. Our sample statistic of 68% and rejection of the null supports that a majority of Friends LEGO sets have over 100 pieces.</p>
+<p><a href="12-hypothesis-tests.html#exr-ch12-app3" class="quarto-xref">Exercise&nbsp;<span>12.13</span></a></p>
+<p><span class="math display">\[H_0: \mu_{city} - \mu_{friends} = 0\]</span></p>
+<p><span class="math display">\[H_A: \mu_{city} - \mu_{friends} \ne 0\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>lego_city <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>)</span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a>lego_friends <span class="ot">&lt;-</span> lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"Friends"</span>)</span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="co"># no need to set mu because checking if difference is 0</span></span>
+<span id="cb129-8"><a href="#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> lego_city<span class="sc">$</span>amazon_price, </span>
+<span id="cb129-9"><a href="#cb129-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> lego_friends<span class="sc">$</span>amazon_price, </span>
+<span id="cb129-10"><a href="#cb129-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  lego_city$amazon_price and lego_friends$amazon_price
+t = 0.6702, df = 47.98, p-value = 0.5059
+alternative hypothesis: true difference in means is not equal to 0
+90 percent confidence interval:
+ -9.947649 23.188449
+sample estimates:
+mean of x mean of y 
+  45.2696   38.6492 </code></pre>
 </div>
 </div>
 <p><a href="12-hypothesis-tests.html#exr-ch12-app4" class="quarto-xref">Exercise&nbsp;<span>12.14</span></a></p>
-<p><span class="math display">\[H_0: \pi_{first} - \pi_{third} = 0\]</span></p>
-<p><span class="math display">\[H_A: \pi_{first} - \pi_{third} \ne 0\]</span></p>
-<p>First we need to pre-specify an alpha rate. For example let’s pick 0.01.</p>
+<p><span class="math display">\[H_0: \pi_{city} - \pi_{friends} = 0\]</span></p>
+<p><span class="math display">\[H_A: \pi_{city} - \pi_{friends} \ne 0\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>titanic <span class="sc">%&gt;%</span> </span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Survived, Pclass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span>  </span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"City"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  Survived Pclass     n
-     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
-1        0      1    57
-2        0      2    63
-3        0      3   146
-4        1      1    50
-5        1      2    30
-6        1      3    72</code></pre>
+<pre><code># A tibble: 5 × 2
+  ages          n
+  &lt;chr&gt;     &lt;int&gt;
+1 Ages_4+       1
+2 Ages_5+      13
+3 Ages_5-12     7
+4 Ages_6+       3
+5 Ages_7+       1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">72</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">50</span><span class="sc">+</span><span class="dv">57</span>, <span class="dv">72</span><span class="sc">+</span><span class="dv">146</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For City, the categories "Ages_4+", "Ages_5+", and "Ages_5-12" are suitable for a 5 year old</span></span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span>  </span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(theme <span class="sc">==</span> <span class="st">"Friends"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  ages          n
+  &lt;chr&gt;     &lt;int&gt;
+1 Ages_4+       1
+2 Ages_6+      17
+3 Ages_6-12     5
+4 Ages_7+       1
+5 Ages_8+       1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For Frinds the category "Ages_4+" is suitable for a 5 year old (all others you should be over 5)</span></span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co"># quick denominator count</span></span>
+<span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a>lego_sample <span class="sc">%&gt;%</span> </span>
+<span id="cb135-5"><a href="#cb135-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(theme)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  theme       n
+  &lt;chr&gt;   &lt;int&gt;
+1 City       25
+2 DUPLO®     25
+3 Friends    25</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no need to set p because checking if difference is 0</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">13</span> <span class="sc">+</span> <span class="dv">7</span>, <span class="dv">1</span>), </span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">25</span>), </span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    2-sample test for equality of proportions with continuity correction
+    2-sample test for equality of proportions without continuity correction
 
-data:  c(50, 72) out of c(50 + 57, 72 + 146)
-X-squared = 5.177, df = 1, p-value = 0.02289
+data:  c(1 + 13 + 7, 1) out of c(25, 25)
+X-squared = 32.468, df = 1, p-value = 1.212e-08
 alternative hypothesis: two.sided
 95 percent confidence interval:
- 0.01675772 0.25727126
+ 0.6370517 0.9629483
 sample estimates:
-   prop 1    prop 2 
-0.4672897 0.3302752 </code></pre>
+prop 1 prop 2 
+  0.84   0.04 </code></pre>
 </div>
 </div>
+<p><a href="12-hypothesis-tests.html#exr-ch12-adv1" class="quarto-xref">Exercise&nbsp;<span>12.15</span></a></p>
+<p><span class="math display">\[H_0: \beta_{1} = 0\]</span></p>
+<p><span class="math display">\[H_A: \beta_{1} \ne 0\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>price_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> pieces, <span class="at">data =</span> lego_sample)</span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(price_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = price ~ pieces, data = lego_sample)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-31.660 -11.047  -4.796   5.627  96.745 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 13.03596    2.90808   4.483 2.68e-05 ***
+pieces       0.09723    0.01005   9.675 1.02e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 18.49 on 73 degrees of freedom
+Multiple R-squared:  0.5618,    Adjusted R-squared:  0.5558 
+F-statistic: 93.61 on 1 and 73 DF,  p-value: 1.021e-14</code></pre>
+</div>
+</div>
+<p>The p-value of 1.02e-14, leads us to conclude there is a relationship between price and pieces at the .05 significance level.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(price_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 2.5 %     97.5 %
+(Intercept) 7.24016551 18.8317477
+pieces      0.07719969  0.1172558</code></pre>
+</div>
+</div>
+<p>We are 95% confident that for every one additional piece in a LEGO set the price on average increases somewhere between 0.077 and 0.117 dollars.</p>
 
 
 </section>
