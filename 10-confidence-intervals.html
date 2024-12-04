@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cd7de1037569933fbb609f06423bd096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,6 +102,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -470,69 +472,64 @@ Table&nbsp;10.1: Properties of Sample Statistics
 </figcaption>
 <div aria-describedby="tbl-samp-dist-table-ch-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Properties of Sample Statistics</caption>
-<colgroup>
-<col style="width: 9%">
-<col style="width: 7%">
-<col style="width: 12%">
-<col style="width: 52%">
-<col style="width: 17%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Statistic</th>
-<th style="text-align: left;">Population parameter</th>
-<th style="text-align: left;">Estimator</th>
-<th style="text-align: left;">Standardized statistic</th>
-<th style="text-align: left;">Sampling distribution of standardized statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Population parameter</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Estimator</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Standardized statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sampling distribution of standardized statistic</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Proportion</td>
-<td style="text-align: left;"><span class="math inline">\(\pi\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{\hat{\pi} - \pi}{\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(N(0,1)\)</span></td>
+<td style="text-align: left; width: 0.5in;">Proportion</td>
+<td style="text-align: left; width: 0.7in;">$\pi$</td>
+<td style="text-align: left; width: 1in;">$\widehat{\pi}$</td>
+<td style="text-align: left; width: 1.1in;">$\frac{\hat{\pi} - \pi}{\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}}$</td>
+<td style="text-align: left; width: 1in;">$N(0,1)$</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Mean</td>
-<td style="text-align: left;"><span class="math inline">\(\mu\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\overline{x}\)</span> or <span class="math inline">\(\widehat{\mu}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(t(df = n-1)\)</span></td>
+<td style="text-align: left; width: 0.5in;">Mean</td>
+<td style="text-align: left; width: 0.7in;">$\mu$</td>
+<td style="text-align: left; width: 1in;">$\overline{x}$ or $\widehat{\mu}$</td>
+<td style="text-align: left; width: 1.1in;">$\frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}$</td>
+<td style="text-align: left; width: 1in;">$t(df = n-1)$</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Difference in proportions</td>
-<td style="text-align: left;"><span class="math inline">\(\pi_1 -\pi_2\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\widehat{\pi}_1 - \widehat{\pi}_2\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{(\hat{\pi}_1 - \hat{\pi}_2) - {(\pi_1 - \pi_2)}}{\sqrt{\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1} + \frac{\hat{\pi}_2(1 - \hat{\pi}_2)}{n_2}}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(N(0,1)\)</span></td>
+<td style="text-align: left; width: 0.5in;">Difference in proportions</td>
+<td style="text-align: left; width: 0.7in;">$\pi_1 -\pi_2$</td>
+<td style="text-align: left; width: 1in;">$\widehat{\pi}_1 - \widehat{\pi}_2$</td>
+<td style="text-align: left; width: 1.1in;">$\frac{(\hat{\pi}_1 - \hat{\pi}_2) - {(\pi_1 - \pi_2)}}{\sqrt{\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1} + \frac{\hat{\pi}_2(1 - \hat{\pi}_2)}{n_2}}}$</td>
+<td style="text-align: left; width: 1in;">$N(0,1)$</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Difference in means</td>
-<td style="text-align: left;"><span class="math inline">\(\mu_1 - \mu_2\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\overline{x}_1 - \overline{x}_2\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(t(df = min(n_1 - 1, n_2 - 1))\)</span></td>
+<td style="text-align: left; width: 0.5in;">Difference in means</td>
+<td style="text-align: left; width: 0.7in;">$\mu_1 - \mu_2$</td>
+<td style="text-align: left; width: 1in;">$\overline{x}_1 - \overline{x}_2$</td>
+<td style="text-align: left; width: 1.1in;">$\frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$</td>
+<td style="text-align: left; width: 1in;">$t(df = min(n_1 - 1, n_2 - 1))$</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Regression intercept</td>
-<td style="text-align: left;"><span class="math inline">\(\beta_0\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(b_0\)</span> or <span class="math inline">\(\widehat{\beta}_0\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{b_0 - \hat{\beta}_0}{\sqrt{s_y^2[\frac{1}{n} + \frac{\bar{x}^2}{(n-1)s_x^2}]}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(t(df = n-2)\)</span></td>
+<td style="text-align: left; width: 0.5in;">Regression intercept</td>
+<td style="text-align: left; width: 0.7in;">$\beta_0$</td>
+<td style="text-align: left; width: 1in;">$b_0$ or $\widehat{\beta}_0$</td>
+<td style="text-align: left; width: 1.1in;">$\frac{b_0 - \hat{\beta}_0}{\sqrt{s_y^2[\frac{1}{n} + \frac{\bar{x}^2}{(n-1)s_x^2}]}}$</td>
+<td style="text-align: left; width: 1in;">$t(df = n-2)$</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Regression slope</td>
-<td style="text-align: left;"><span class="math inline">\(\beta_1\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(b_1\)</span> or <span class="math inline">\(\widehat{\beta}_1\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{b_1 - \beta_1}{\sqrt{\frac{s_y^2}{(n-1)s_x^2}}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(t(df = n-2)\)</span></td>
+<td style="text-align: left; width: 0.5in;">Regression slope</td>
+<td style="text-align: left; width: 0.7in;">$\beta_1$</td>
+<td style="text-align: left; width: 1in;">$b_1$ or $\widehat{\beta}_1$</td>
+<td style="text-align: left; width: 1.1in;">$\frac{b_1 - \beta_1}{\sqrt{\frac{s_y^2}{(n-1)s_x^2}}}$</td>
+<td style="text-align: left; width: 1in;">$t(df = n-2)$</td>
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -657,7 +654,7 @@ Figure&nbsp;10.1: N(0,1) 95% cutoff values
 <pre><code>[1] -2.01</code></pre>
 </div>
 </div>
-<p>Recall that the critical values for 99%, 95%, and 90% confidence intervals for the <span class="math inline">\(N(0,1)\)</span> are given by <span class="math inline">\(\pm 2.575, \pm 1.96,\)</span>and <span class="math inline">\(\pm 1.645\)</span> respectively. These are likely numbers you will memorize from using frequently, but they can also be calculated using the <code>rnorm()</code> function in R.</p>
+<p>Recall that the critical values for 99%, 95%, and 90% confidence intervals for the <span class="math inline">\(N(0,1)\)</span> are given by <span class="math inline">\(\pm 2.575, \pm 1.96,\)</span>and <span class="math inline">\(\pm 1.645\)</span> respectively. These are likely numbers you will memorize from using frequently, but they can also be calculated using the <code>qnorm()</code> function in R.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">005</span>) <span class="co">#99% (i.e. 0.5% in each tail)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1257,8 +1254,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1369,7 +1364,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

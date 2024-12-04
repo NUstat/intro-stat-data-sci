@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,10 +91,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cd7de1037569933fbb609f06423bd096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,6 +122,8 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -547,13 +549,13 @@ window.Quarto = {
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Random sample of 5 instructors</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">score</th>
-<th style="text-align: right;">bty_avg</th>
-<th style="text-align: right;">age</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bty_avg</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
 </tr>
 </thead>
 <tbody>
@@ -584,6 +586,8 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 <p>While a full description of each of these variables can be found at <a href="https://www.openintro.org/stat/data/?data=evals">openintro.org</a>, let’s summarize what each of these variables represents.</p>
@@ -605,13 +609,13 @@ Table&nbsp;5.1: A random sample of 5 out of the 463 courses at UT Austin
 </figcaption>
 <div aria-describedby="tbl-five-random-courses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A random sample of 5 out of the 463 courses at UT Austin</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">score</th>
-<th style="text-align: right;">bty_avg</th>
-<th style="text-align: right;">age</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bty_avg</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
 </tr>
 </thead>
 <tbody>
@@ -642,6 +646,8 @@ Table&nbsp;5.1: A random sample of 5 out of the 463 courses at UT Austin
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -736,7 +742,7 @@ Figure&nbsp;5.1: Different correlation coefficients
 <pre><code>[1] 0.187</code></pre>
 </div>
 </div>
-<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection -<a href="#sec-correlationcoefficient" class="quarto-xref"><span>Section 5.3.1</span></a> below.</p>
+<p>In our case, the correlation coefficient of 0.187 indicates that the relationship between teaching evaluation score and beauty average is “weakly positive.” There is a certain amount of subjectivity in interpreting correlation coefficients, especially those that aren’t close to -1, 0, and 1. For help developing such intuition and more discussion on the correlation coefficient see [Subsection <a href="#sec-correlationcoefficient" class="quarto-xref"><span>5.3.1</span></a> below.</p>
 <p>Let’s now proceed by visualizing this data. Since both the <code>score</code> and <code>bty_avg</code> variables are numerical, a scatterplot is an appropriate graph to visualize this data. Let’s do this using <code>geom_point()</code> and set informative axes labels and title and display the result in <a href="#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch5, <span class="fu">aes</span>(<span class="at">x =</span> bty_avg, <span class="at">y =</span> score)) <span class="sc">+</span></span>
@@ -968,15 +974,15 @@ Table&nbsp;5.2: Linear regression table
 </figcaption>
 <div aria-describedby="tbl-numxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Linear regression table</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
-<th style="text-align: right;">t value</th>
-<th style="text-align: right;">Pr(&gt;|t|)</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;&amp;#124;t&amp;#124;)</th>
 </tr>
 </thead>
 <tbody>
@@ -996,6 +1002,8 @@ Table&nbsp;5.2: Linear regression table
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1025,13 +1033,13 @@ Table&nbsp;5.2: Linear regression table
 <p>For example, say we are interested in the 21st instructor in this dataset:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Data for 21st instructor</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">score</th>
-<th style="text-align: right;">bty_avg</th>
-<th style="text-align: right;">age</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bty_avg</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
 </tr>
 </thead>
 <tbody>
@@ -1042,6 +1050,8 @@ Table&nbsp;5.2: Linear regression table
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 <p>What is the value on the blue line corresponding to this instructor’s <code>bty_avg</code> of 7.333? In <a href="#fig-numxplot5" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> we mark three values in particular corresponding to this instructor.</p>
@@ -1089,15 +1099,15 @@ Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)
 </figcaption>
 <div aria-describedby="tbl-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Regression points (for only 21st through 24th instructor)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">ID</th>
-<th style="text-align: right;">score</th>
-<th style="text-align: right;">bty_avg</th>
-<th style="text-align: right;">score_hat</th>
-<th style="text-align: right;">residual</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bty_avg</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score_hat</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">residual</th>
 </tr>
 </thead>
 <tbody>
@@ -1131,6 +1141,8 @@ Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1167,7 +1179,7 @@ Table&nbsp;5.3: Regression points (for only 21st through 24th instructor)
 <li><p>A numerical outcome variable <span class="math inline">\(y\)</span>. In this case, life expectancy.</p></li>
 <li><p>A single categorical explanatory variable <span class="math inline">\(x\)</span>. In this case, the continent the country is part of.</p></li>
 </ol>
-<p>When the explanatory variable <span class="math inline">\(x\)</span> is categorical, the concept of a “best-fitting” line is a little different than the one we saw previously in <a href="#sec-model1" class="quarto-xref"><span>Section 5.1</span></a> where the explanatory variable <span class="math inline">\(x\)</span> was numerical. We’ll study these differences shortly in [Subsection -<a href="#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>, but first we conduct our exploratory data analysis.</p>
+<p>When the explanatory variable <span class="math inline">\(x\)</span> is categorical, the concept of a “best-fitting” line is a little different than the one we saw previously in <a href="#sec-model1" class="quarto-xref"><span>Section 5.1</span></a> where the explanatory variable <span class="math inline">\(x\)</span> was numerical. We’ll study these differences shortly in [Subsection <a href="#sec-model2table" class="quarto-xref"><span>5.2.2</span></a>, but first we conduct our exploratory data analysis.</p>
 <section id="sec-model2EDA" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-model2EDA"><span class="header-section-number">5.2.1</span> Exploratory data analysis</h3>
 <p>The data on the 142 countries can be found in the <code>gapminder</code> data frame included in the <code>gapminder</code> package. However, to keep things simple, let’s <code>filter()</code> for only those observations/rows corresponding to the year 2007. Additionally, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter. We’ll save this data in a new data frame called <code>gapminder2007</code>:</p>
@@ -1217,14 +1229,14 @@ Table&nbsp;5.4: Random sample of 5 out of 142 countries
 </figcaption>
 <div aria-describedby="tbl-model2-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Random sample of 5 out of 142 countries</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">country</th>
-<th style="text-align: right;">lifeExp</th>
-<th style="text-align: left;">continent</th>
-<th style="text-align: right;">gdpPercap</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">lifeExp</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">continent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">gdpPercap</th>
 </tr>
 </thead>
 <tbody>
@@ -1260,6 +1272,8 @@ Table&nbsp;5.4: Random sample of 5 out of 142 countries
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1383,12 +1397,12 @@ Table&nbsp;5.5: Life expectancy by continent
 </figcaption>
 <div aria-describedby="tbl-catxplot0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th style="text-align: left;">continent</th>
-<th style="text-align: right;">median</th>
-<th style="text-align: right;">mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">continent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">median</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean</th>
 </tr>
 </thead>
 <tbody>
@@ -1419,6 +1433,8 @@ Table&nbsp;5.5: Life expectancy by continent
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1441,13 +1457,13 @@ Table&nbsp;5.6: Mean life expectancy by continent and relative differences from 
 </figcaption>
 <div aria-describedby="tbl-continent-mean-life-expectancies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Mean life expectancy by continent and relative differences from mean for Africa</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">continent</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">Difference versus Africa</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">continent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Difference versus Africa</th>
 </tr>
 </thead>
 <tbody>
@@ -1478,6 +1494,8 @@ Table&nbsp;5.6: Mean life expectancy by continent and relative differences from 
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1523,13 +1541,13 @@ Table&nbsp;5.7: Mean life expectancy by continent
 </figcaption>
 <div aria-describedby="tbl-continent-mean-life-expectancies--caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Mean life expectancy by continent</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">continent</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">mean vs Africa</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">continent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean vs Africa</th>
 </tr>
 </thead>
 <tbody>
@@ -1560,6 +1578,8 @@ Table&nbsp;5.7: Mean life expectancy by continent
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1579,15 +1599,15 @@ Table&nbsp;5.8: Linear regression table
 </figcaption>
 <div aria-describedby="tbl-catxplot4b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Linear regression table</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
-<th style="text-align: right;">t value</th>
-<th style="text-align: right;">Pr(&gt;|t|)</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr(&gt;&amp;#124;t&amp;#124;)</th>
 </tr>
 </thead>
 <tbody>
@@ -1628,6 +1648,8 @@ Table&nbsp;5.8: Linear regression table
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -1740,15 +1762,15 @@ Table&nbsp;5.9: Regression points (First 10 out of 142 countries)
 </figcaption>
 <div aria-describedby="tbl-lifeExp-reg-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Regression points (First 10 out of 142 countries)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">country</th>
-<th style="text-align: right;">lifeExp</th>
-<th style="text-align: left;">continent</th>
-<th style="text-align: right;">lifeExp_hat</th>
-<th style="text-align: right;">residual</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">lifeExp</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">continent</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">lifeExp_hat</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">residual</th>
 </tr>
 </thead>
 <tbody>
@@ -1824,6 +1846,8 @@ Table&nbsp;5.9: Regression points (First 10 out of 142 countries)
 </tr>
 </tbody>
 </table>
+
+
 </div>
 </div>
 </figure>
@@ -2265,8 +2289,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2377,7 +2399,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

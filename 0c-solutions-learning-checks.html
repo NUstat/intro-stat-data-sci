@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,10 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cd7de1037569933fbb609f06423bd096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -490,7 +490,8 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> alaska_flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dep_time, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -744,7 +745,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Because after the first <code>summarize()</code>, the variable <code>temp</code> disappears as it has been collapsed to the value <code>mean</code>. So when we try to run the second <code>summarize()</code>, it can’t find the variable <code>temp</code> to compute the standard deviation of.</p>
-<p><strong>(LC 3.5)</strong> Recall from Chapter -<a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a> when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the <code>summary_monthly_temp</code> data frame tell us about temperatures in New York City throughout the year?</p>
+<p><strong>(LC 3.5)</strong> Recall from Chapter <a href="02-visualization.html" class="quarto-xref"><span>2</span></a> when we looked at plots of temperatures by months in NYC. What does the standard deviation column in the <code>summary_monthly_temp</code> data frame tell us about temperatures in New York City throughout the year?</p>
 <p><strong>Solution</strong>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1576,7 +1577,7 @@ window.Quarto = {
 16 YV         20163632</code></pre>
 </div>
 </div>
-<p>However, because for certain carriers certain flights have missing <code>NA</code> values, the resulting table also returns <code>NA</code>’s. We can eliminate these by adding a <code>na.rm = TRUE</code> argument to <code>sum()</code>, telling R that we want to remove the <code>NA</code>’s in the sum. We saw this in Section -<a href="03-wrangling.html#sec-summarize" class="quarto-xref"><span>Section 3.3</span></a>):</p>
+<p>However, because for certain carriers certain flights have missing <code>NA</code> values, the resulting table also returns <code>NA</code>’s. We can eliminate these by adding a <code>na.rm = TRUE</code> argument to <code>sum()</code>, telling R that we want to remove the <code>NA</code>’s in the sum. We saw this in Section <a href="03-wrangling.html#sec-summarize" class="quarto-xref"><span>3.3</span></a>):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(planes, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span> </span>
@@ -2308,8 +2309,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2420,7 +2419,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
