@@ -76,8 +76,15 @@ biblio-style: apalike
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt
+  #   include-in-header:
+  #     - text: |
+  #         \usepackage{siunitx}
+  #         \usepackage{booktabs}
+  #         \usepackage{longtable}
+
+from: markdown+emoji
 
 # execute:
 #   tidy: false
@@ -87,4 +94,4 @@ format:
 #   out.width: '\\textwidth'
 #   # freeze: auto
 
-from: markdown+emoji
+
