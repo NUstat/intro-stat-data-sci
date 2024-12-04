@@ -17,6 +17,47 @@
       "Hash": "065ae649b05f1ff66bb0c793107508f5",
       "Requirements": []
     },
+    "Formula": {
+      "Package": "Formula",
+      "Version": "1.2-5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7a29697b75e027767a53fde6c903eca7",
+      "Requirements": []
+    },
+    "HistData": {
+      "Package": "HistData",
+      "Version": "0.9-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f003808ac670bee0c355c3a715debfed",
+      "Requirements": []
+    },
+    "Hmisc": {
+      "Package": "Hmisc",
+      "Version": "5.2-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f0cc53d252666c65b2fc1f7ad88491ac",
+      "Requirements": [
+        "Formula",
+        "base64enc",
+        "cluster",
+        "colorspace",
+        "data.table",
+        "foreign",
+        "ggplot2",
+        "gridExtra",
+        "gtable",
+        "htmlTable",
+        "htmltools",
+        "knitr",
+        "nnet",
+        "rmarkdown",
+        "rpart",
+        "viridis"
+      ]
+    },
     "ISLR2": {
       "Package": "ISLR2",
       "Version": "1.3-2",
@@ -58,6 +99,18 @@
       "Repository": "CRAN",
       "Hash": "45f0398006e83a5b10b72a90663d8d8c",
       "Requirements": []
+    },
+    "UsingR": {
+      "Package": "UsingR",
+      "Version": "2.0-7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "59c69a7a5517007674e6f8b7cfaa7937",
+      "Requirements": [
+        "HistData",
+        "Hmisc",
+        "MASS"
+      ]
     },
     "airports": {
       "Package": "airports",
@@ -194,6 +247,16 @@
         "tibble"
       ]
     },
+    "checkmate": {
+      "Package": "checkmate",
+      "Version": "2.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0e14e01ce07e7c88fd25de6d4260d26b",
+      "Requirements": [
+        "backports"
+      ]
+    },
     "cherryblossom": {
       "Package": "cherryblossom",
       "Version": "0.1.0",
@@ -216,6 +279,14 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "3f038e5ac7f41d4ac41ce658c85e3042",
+      "Requirements": []
+    },
+    "cluster": {
+      "Package": "cluster",
+      "Version": "2.1.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0aaa05204035dc43ea0004b9c76611dd",
       "Requirements": []
     },
     "colorspace": {
@@ -430,6 +501,14 @@
         "tibble"
       ]
     },
+    "foreign": {
+      "Package": "foreign",
+      "Version": "0.8-87",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "81fc09bdeab0077a73927ed1243404b6",
+      "Requirements": []
+    },
     "formula.tools": {
       "Package": "formula.tools",
       "Version": "1.7.1",
@@ -505,6 +584,14 @@
         "vctrs",
         "withr"
       ]
+    },
+    "ggplot2movies": {
+      "Package": "ggplot2movies",
+      "Version": "0.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "df2c648760e7d07c45249c73ad5b95f9",
+      "Requirements": []
     },
     "glue": {
       "Package": "glue",
@@ -627,6 +714,22 @@
         "vctrs"
       ]
     },
+    "htmlTable": {
+      "Package": "htmlTable",
+      "Version": "2.4.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ca027d8771f2c039aed82f00a81e725b",
+      "Requirements": [
+        "checkmate",
+        "htmltools",
+        "htmlwidgets",
+        "knitr",
+        "magrittr",
+        "rstudioapi",
+        "stringr"
+      ]
+    },
     "htmltools": {
       "Package": "htmltools",
       "Version": "0.5.8.1",
@@ -638,6 +741,20 @@
         "digest",
         "fastmap",
         "rlang"
+      ]
+    },
+    "htmlwidgets": {
+      "Package": "htmlwidgets",
+      "Version": "1.6.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "04291cc45198225444a397606810ac37",
+      "Requirements": [
+        "htmltools",
+        "jsonlite",
+        "knitr",
+        "rmarkdown",
+        "yaml"
       ]
     },
     "httr": {
@@ -913,6 +1030,14 @@
         "lattice"
       ]
     },
+    "nnet": {
+      "Package": "nnet",
+      "Version": "7.3-19",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "2c797b46eea7fb58ede195bc0b1f1138",
+      "Requirements": []
+    },
     "nycflights13": {
       "Package": "nycflights13",
       "Version": "1.0.2",
@@ -1186,6 +1311,14 @@
         "xfun",
         "yaml"
       ]
+    },
+    "rpart": {
+      "Package": "rpart",
+      "Version": "4.1.23",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b3d390424f41d04174cccf84d49676c2",
+      "Requirements": []
     },
     "rstudioapi": {
       "Package": "rstudioapi",
@@ -1467,6 +1600,14 @@
         "xfun"
       ]
     },
+    "titanic": {
+      "Package": "titanic",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "61cb96b3df52af283e889169e7b0d0f9",
+      "Requirements": []
+    },
     "tzdb": {
       "Package": "tzdb",
       "Version": "0.4.0",
@@ -1514,6 +1655,18 @@
         "glue",
         "lifecycle",
         "rlang"
+      ]
+    },
+    "viridis": {
+      "Package": "viridis",
+      "Version": "0.6.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "acd96d9fa70adeea4a5a1150609b9745",
+      "Requirements": [
+        "ggplot2",
+        "gridExtra",
+        "viridisLite"
       ]
     },
     "viridisLite": {
