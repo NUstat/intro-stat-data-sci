@@ -253,7 +253,7 @@ Importantly, changing the degrees of freedom (by having a different sample size)
 qt(p = .025, df = 49)
 ```
 
-Recall that the critical values for 99%, 95%, and 90% confidence intervals for the $N(0,1)$ are given by $\pm 2.575, \pm 1.96,$and $\pm 1.645$ respectively. These are likely numbers you will memorize from using frequently, but they can also be calculated using the `rnorm()` function in R.
+Recall that the critical values for 99%, 95%, and 90% confidence intervals for the $N(0,1)$ are given by $\pm 2.575, \pm 1.96,$and $\pm 1.645$ respectively. These are likely numbers you will memorize from using frequently, but they can also be calculated using the `qnorm()` function in R.
 
 ```{r}
 qnorm(.005) #99% (i.e. 0.5% in each tail)
