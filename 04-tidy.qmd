@@ -564,7 +564,7 @@ d)  `dplyr`
 <!-- Some packages in development are not available on CRAN and need to be downloaded from `GitHub`. Install the `dcldata` package by typing the following line of code in the **Console** -->
 <!-- `remotes::install_github("dcl-docs/dcldata")`. -->
 
-<!-- <!-- https://dcl-wrangle.stanford.edu/pivot-basic.html --> -->
+<!-- <!-- https://dcl-wrangle.stanford.edu/pivot-basic.html -->
 
 <!-- You may need to install the `remotes` package first. -->
 
