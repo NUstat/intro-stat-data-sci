@@ -76,6 +76,7 @@ biblio-style: apalike
 format:
   html:
     theme: cosmo
+    include-in-header: in-line_math_mode.html
   # pdf:
   #   documentclass: scrreprt
   #   include-in-header:

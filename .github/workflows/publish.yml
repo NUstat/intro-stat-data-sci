@@ -28,9 +28,9 @@ jobs:
         with:
           r-version: '4.4.1'
     
-      - name: Install curl
+      - name: Install curl and ragg
         run: |-
-          Rscript -e "install.packages(c('curl'), repos = 'https://demo.rstudiopm.com/all/__linux__/bionic/latest')"
+          Rscript -e "install.packages(c('curl', 'ragg'), repos = 'https://demo.rstudiopm.com/all/__linux__/bionic/latest')"
           
       - name: Install Dependencies
         run: |

@@ -833,6 +833,7 @@ In @tbl-SE-table-ch-9 we provide properties of some estimators, including their 
 #| tbl-cap: "Properties of Sample Statistics"
 #| echo: false
 #| message: false
+
 if(!file.exists("rds/ch9_SE_table.rds")){
   ch9_SE_table <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQXpL0Gv4FJDpLdvfVOyyoUiwPzBxgzApeBrl9GGYOSRg6jBIGdonQFHvdQQl3lMFQQR3PAmxx7y6FQ/pub?gid=164147569&single=true&output=csv" %>% 
     read_csv(na = "")
@@ -842,9 +843,8 @@ if(!file.exists("rds/ch9_SE_table.rds")){
 }
 
 ch9_SE_table %>% 
-  kable(
+  kbl(
     format = "markdown",
-    caption = "Properties of Sample Statistics", 
     booktabs = TRUE,
     escape = FALSE
   ) %>% 
