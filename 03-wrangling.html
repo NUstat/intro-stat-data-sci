@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,10 +91,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cd7de1037569933fbb609f06423bd096.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2ce9fc9ac8b614e7ffef13962cc12eaf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,6 +122,15 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+  </script>
+  <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -802,8 +811,8 @@ Figure&nbsp;3.1: Diagram of filter()
 12    12  38.4    9.98</code></pre>
 </div>
 </div>
-<p>This code is identical to the previous code that created <code>summary_temp</code>, but with an extra <code>group_by(month)</code> added before the <code>summarize()</code>. Grouping the <code>weather</code> dataset by <code>month</code> and then applying the <code>summarize()</code> functions yields a data frame that displays the mean and standard deviation temperature split by the 12 months of the year.</p>
-<p>It is important to note that the <code>group_by()</code> function doesn’t change data frame by itself. Rather it changes the <em>meta-data</em>, or data about the data, specifically the group structure. It is only after we apply the <code>summarize()</code> function that the data frame changes. For example, let’s consider the <code>diamonds</code> data frame included in the <code>ggplot2</code> package. Run this code, specifically in the console:</p>
+<p>This code is identical to the previous code that created <code>summary_temp</code>, but with an extra <code>group_by(month)</code> added before the <code>summarize()</code>. Grouping the <code>weather</code> dataset by <code>month</code> and then applying the <code>summarize()</code> function yields a data frame that displays the mean and standard deviation temperature split by the 12 months of the year.</p>
+<p>It is important to note that the <code>group_by()</code> function doesn’t change the data frame by itself. Rather it changes the <em>meta-data</em>, or data about the data, specifically the group structure. It is only after we apply the <code>summarize()</code> function that the data frame changes. For example, let’s consider the <code>diamonds</code> data frame included in the <code>ggplot2</code> package. Run this code, specifically in the console:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
