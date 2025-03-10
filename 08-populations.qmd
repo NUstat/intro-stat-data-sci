@@ -129,6 +129,7 @@ Recall that a population is a collection of individuals or observations that you
 * Students in public elementary schools in Texas.
 * Private hospitals receiving Medicaid funding in California.
 * Fish in Lake Michigan.
+* Customers at a shopping mall.
 
 In each case, the definition of the population includes clear inclusion / exclusion criteria. These help to clarify where inferences are appropriate to be made and where they are not.
 
@@ -138,6 +139,7 @@ In order to select a sample from a population, a **population frame** must be cr
 * A list of public elementary *schools* (not students), available for the prior year in the Texas public education state longitudinal data system. 
 * A list of private hospitals made available from the state of California government in a database collected every five years. (Once contacted, only those receiving > $0 Medicaid would be included). 
 * Areas of Lake Michigan where it is possible to fish (e.g, excluding coves).
+* A list of customers that went to the shopping mall at the time of interest.
 
 When this population frame differs from the population, **undercoverage** can occur - i.e., there are parts of the population that may not be able to be studied. For example, citizens over 18 without phone numbers would have a 0% chance of being included in the sample even though they are part of the population of interest. It is important in research to make this clear and to understand how these differences might impact results. 
 
@@ -146,7 +148,8 @@ Once a population frame is defined, a **sampling** process is developed that, ba
 *	**Simple random sampling**: Individuals or observations are selected randomly from the population, each having an equal chance of being selected.
 * **Random sampling with unequal probability**: Individuals or observations are selected randomly, but the probability of selection varies proportional to size or some other relevant characteristic.
 *	**Cluster sampling**: In order to reach individuals or observations, first clusters are selected (e.g. schools, neighborhoods, hospitals, etc.), and then within these clusters, individuals or observations are randomly selected. 
-* **Stratified sampling**: In order to represent the population well, first the population is divided into sub-groups (strata) that are similar to one another, and then within these sub-groups (strata), individuals or observations are randomly selected. 
+* **Stratified sampling**: In order to represent the population well, first the population is divided into sub-groups (strata) that are similar to one another, and then within these sub-groups (strata), individuals or observations are randomly selected.
+* **Systematic sampling**: Individuals or observations are selected using a fixed, predetermined interval (e.g., every 5th person on a list) after choosing a random starting point, ensuring a structured selection process.
 
 Observations or clusters can be selected with **equal probability** or **unequal probability** --- the most important feature is that the probability of being selected is *known* and defined in *advance* of selection. In the above examples, these procedures might be used:
 
@@ -154,11 +157,22 @@ Observations or clusters can be selected with **equal probability** or **unequal
 * **Cluster sampling**: First schools (clusters) are randomly selected with unequal probability (e.g., larger schools have a bigger chance of being selected), and then within those schools selected, students are randomly selected with equal probability. 
 * **Random sampling with unequal probability**: Hospitals are selected randomly with unequal probability (e.g., larger hospitals have a bigger chance of being selected).
 * **Stratified sampling**: Lake Michigan is geographically divided into four regions (strata): those nearby to the shore in urban areas, those nearby the shore in non-urban areas, those in the middle north, and those in the middle south. It is expected that the number and kinds of fish differ across these regions. Within each region, fish are selected randomly based upon a catch-and-release procedure. 
+* **Systematic sampling**: A researcher wants to survey customers at a shopping mall. They stand at the entrance and select every 10th person who walks through the door after choosing a random starting point.
 
 In all of these cases, because the sample is selected randomly from the population, estimates from the sample can be used to make inferences regarding values of the population parameters. For example, a sample mean calculated in a random sample of a population can be used to make inferences regarding the value of the population mean. Without this random selection, these inferences would be unwarranted. 
 
 Finally, note that in the examples and data we use in this book and course, we focus on **random sampling with equal probabilities of selection** (i.e. simple random sampling). Methods to account for clustering, stratification, and unequal selection probabilities require use of weights and, sometimes, more complicated models. Courses on survey sampling, regression, and hierarchical linear models will provide more background and details on these cases.  
 
+If a sampling process is not based on a random procedure then it cannot be used to make inference about the population. For example:
+
+
+* **Convenience sampling**: Individuals or observations are selected based on ease of access or availability, rather than random selection, which may lead to bias and limit generalizability.
+
+A few examples of when convenience sampling might be used:
+
+* A professor wants to study social media usage among college students and surveys only the students in their own class because they are easily accessible.
+
+* A researcher surveys students about their study habits by standing outside the university library and asking the first 50 students who walk by.
 
 ---
 
