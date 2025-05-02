@@ -113,7 +113,9 @@ if(!file.exists("data/star_data.csv")){
 
 ```{r}
 #| message: false
-star_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTluVgdD7hdPLkKPMpN3OZjpBdZ1HloCGEQ1abcgfcWJHGYQppUGyXsGaPz74XQRwaMobDFLZgN3caU/pub?gid=0&single=true&output=csv")
+# star_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTluVgdD7hdPLkKPMpN3OZjpBdZ1HloCGEQ1abcgfcWJHGYQppUGyXsGaPz74XQRwaMobDFLZgN3caU/pub?gid=0&single=true&output=csv")
+star_data <- read_csv("data/star_data.csv")
+
 glimpse(star_data)
 ```
 
@@ -163,7 +165,8 @@ In 2008, there was an economic downturn and increasing numbers of young adults r
 ```{r}
 #| message: false
 #| echo: false
-beta_U_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTfEw5anFVvZ6-lFXxhmeBdTJDkcJvJz-gHQxVwBARIMOouvpd6QwxJB190k3oxDCSjB6PqiEG0exey/pub?gid=0&single=true&output=csv")
+# beta_U_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTfEw5anFVvZ6-lFXxhmeBdTJDkcJvJz-gHQxVwBARIMOouvpd6QwxJB190k3oxDCSjB6PqiEG0exey/pub?gid=0&single=true&output=csv")
+beta_U_data <- read_csv("data/beta_U_data.csv")
 
 glimpse(beta_U_data)
 ```
@@ -262,7 +265,8 @@ legosets_HP <- legosets %>%
 ```{r}
 #| message: false
 #| eval: false
-legosets <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSwB0bCE4w7qrep4lIC-QVyF307mxFNUYQ08LZqiFsC_ks1bt_ZEJqiTEo7SaCl6g4TQ8gig2ZIfQJu/pub?gid=0&single=true&output=csv")
+# legosets <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSwB0bCE4w7qrep4lIC-QVyF307mxFNUYQ08LZqiFsC_ks1bt_ZEJqiTEo7SaCl6g4TQ8gig2ZIfQJu/pub?gid=0&single=true&output=csv")
+legosets <- read_csv("data/legosets.csv")
 
 legosets_HP <- legosets %>% 
   filter(Theme == "Harry Potter")
