@@ -285,7 +285,7 @@ write_csv(rides_B, "data/rides_B.csv")
 ```{r}
 #| warning: false
 #| message: false
-rides_B <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&single=true&output=csv")
+# rides_B <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&single=true&output=csv")
 
 glimpse(rides_B)
 ```
