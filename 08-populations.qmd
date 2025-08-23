@@ -105,7 +105,7 @@ ch8_parameters %>%
   select(-`Formula for Estimator`) %>% 
   kable(
     format = "markdown",
-    caption = "Population Parameters and Sample Statistics", 
+   # caption = "Population Parameters and Sample Statistics", 
     booktabs = TRUE,
     escape = FALSE
   ) %>% 
@@ -333,7 +333,7 @@ movies_30_99 %>%
   mutate(prob = 71 / n) %>% 
   kable(
     format = "markdown",
-    caption = "Selection probability by decade", 
+   # caption = "Selection probability by decade", 
     booktabs = TRUE,
     escape = FALSE
   ) %>% 
@@ -371,7 +371,7 @@ movies_strata_equal %>%
             prob = n_strata / N_strata) %>% 
   kable(
     format = "markdown",
-    caption = "Stratified sampling with equal probabilities (i.e. proportional to stratum size)", 
+   # caption = "Stratified sampling with equal probabilities (i.e. proportional to stratum size)", 
     booktabs = TRUE,
     escape = FALSE
   ) %>% 

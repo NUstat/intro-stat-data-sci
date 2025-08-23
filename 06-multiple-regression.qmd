@@ -133,7 +133,7 @@ credit_ch6 %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Random sample of 5 credit card holders.",
+  #  caption = "Random sample of 5 credit card holders.",
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -190,7 +190,7 @@ credit_ch6 %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Correlation coefficients between credit card debt, credit limit, and income.", 
+   # caption = "Correlation coefficients between credit card debt, credit limit, and income.", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -342,11 +342,19 @@ summary(debt_model)$coefficients
 debt_model <- lm(debt ~ credit_limit + income, data = credit_ch6)
 credit_line <- summary(debt_model)$coefficients[, 1]
 
-summary(debt_model)$coefficients %>% 
+summary(debt_model)$coefficients %>%  
+  as.data.frame() |> 
+  rownames_to_column("term") %>%
+  rename(
+    #estimate = Estimate,
+    #std_error = `Std. Error`,
+    #t_value = `t value`,
+    `p value` = `Pr(>|t|)`
+  ) |> 
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Multiple regression table", 
+   # caption = "Multiple regression table", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -359,7 +367,7 @@ Second, the `credit_limit` value is \$0.264. Taking into account all the other e
 
 Furthermore, we preface our interpretation with the statement "taking into account all the other explanatory variables in our model."  Here, by all other explanatory variables we mean `income`. We do this to emphasize that we are now jointly interpreting the associated effect of multiple explanatory variables in the same model at the same time. 
 
-Third, `income` = -\$7.663. Taking into account all the other explanatory variables in our model, for every increase of one unit in the variable `income`, in other words \$1000 in actual income, there is an associated decrease of on average \$7.663 in credit card debt.
+Third, `income` = -\$7.663. Taking into account all the other explanatory variables in our model, for every increase of one unit in the variable `income`, in other words \$1,000 in actual income, there is an associated decrease of on average \$7.663 in credit card debt.
 
 Putting these results together, the equation of the regression plane that gives us fitted values $\widehat{y}$ = $\widehat{\text{debt}}$ is:
 
@@ -406,7 +414,7 @@ debt_model_data %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Regression points (First 10 credit card holders out of 400).",
+   # caption = "Regression points (First 10 credit card holders out of 400).",
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -467,7 +475,7 @@ evals_ch6 %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "A random sample of 5 out of the 463 courses at UT Austin",
+   # caption = "A random sample of 5 out of the 463 courses at UT Austin",
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -549,6 +557,8 @@ Recall in @sec-model2table we fit a regression model for countries' life expecta
 
 ```{r}
 #| echo: false
+#| eval: false
+
 # Wrangle data
 gapminder2007 <- gapminder %>%
   filter(year == 2007) %>%
@@ -556,8 +566,12 @@ gapminder2007 <- gapminder %>%
 # Fit regression model:
 lifeExp_model <- lm(lifeExp ~ continent, data = gapminder2007)
 coefs <- summary(lifeExp_model)$coefficients
+colnames(coefs) <- c("Estimate", "Std. Error", "t value", "p value")
+
 # Get regression table and kable output
-coefs %>%
+coefs %>% 
+  as.data.frame() %>% 
+  rownames_to_column("term") %>% 
   knitr::kable(
     format = "markdown",
     digits = 3,
@@ -575,22 +589,31 @@ Going back to our multiple regression model for teaching `score` using `age` and
 $$\widehat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2$$
 
 ```{r}
-#| eval: false
+#| eval: true
+
 # Fit regression model:
 score_model_interaction <- lm(score ~ age + gender + age * gender, data = evals_ch6)
 # Get regression table:
 summary(score_model_interaction)$coefficients
 ```
+
 ```{r}
 #| label: tbl-regtable-interaction
 #| tbl-cap: "Regression table for interaction model."
 #| echo: false
+#| eval: true
+
 score_model_interaction <- lm(score ~ age + gender + age * gender, data = evals_ch6)
-summary(score_model_interaction)$coefficients %>% 
+interact_coef <- summary(score_model_interaction)$coefficients 
+colnames(interact_coef) <- c("Estimate", "Std. Error", "t value", "p value")
+
+interact_coef %>% 
+  as.data.frame() %>% 
+  rownames_to_column("term") %>%  
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Regression table for interaction model.", 
+   # caption = "Regression table for interaction model.", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -620,7 +643,7 @@ tibble(
   knitr::kable(
     format = "markdown",
     digits = 4,
-    caption = "Comparison of intercepts and slopes for interaction model.", 
+  #  caption = "Comparison of intercepts and slopes for interaction model.", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -728,16 +751,23 @@ score_model_parallel_slopes <- lm(score ~ age + gender, data = evals_ch6)
 # Get regression table:
 summary(score_model_parallel_slopes)$coefficients
 ```
+
 ```{r}
 #| label: tbl-regtable-parallel-slopes
 #| tbl-cap: "Regression table for parallel slopes model."
 #| echo: false
+#| eval: true
 score_model_parallel_slopes <- lm(score ~ age + gender, data = evals_ch6)
-summary(score_model_parallel_slopes)$coefficients %>% 
+parallel_coef <- summary(score_model_parallel_slopes)$coefficients 
+colnames(parallel_coef) <- c("Estimate", "Std. Error", "t value", "p value")
+
+parallel_coef %>% 
+  as.data.frame() %>% 
+  rownames_to_column("term") %>%  
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Regression table for parallel slopes model.", 
+   # caption = "Regression table for parallel slopes model.", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -767,7 +797,7 @@ tibble(
   knitr::kable(
     format = "markdown",
     digits = 4,
-    caption = "Comparison of intercepts and slope for parallel slopes model.", 
+  #  caption = "Comparison of intercepts and slope for parallel slopes model.", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -900,7 +930,7 @@ score_model_interaction_data %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Regression points (First 10 out of 463 courses)",
+  #  caption = "Regression points (First 10 out of 463 courses)",
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -1000,13 +1030,20 @@ summary(model_2_interaction)$coefficients
 #| label: tbl-model2-interaction
 #| tbl-cap: "Interaction model regression table"
 #| echo: false
+#| eval: true
 model_2_interaction <- lm(average_sat_math ~ perc_disadvan * size, 
                           data = MA_schools)
-summary(model_2_interaction)$coefficients %>% 
+
+interaction_coeffs  <- summary(model_2_interaction)$coefficients
+colnames(interaction_coeffs) <- c("Estimate", "Std. Error", "t value", "p value")
+
+interaction_coeffs %>% 
+  as.data.frame() %>% 
+  rownames_to_column("term") %>% 
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Interaction model regression table", 
+   # caption = "Interaction model regression table", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -1028,7 +1065,7 @@ summary(model_2_parallel_slopes)$coefficients %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Parallel slopes regression table", 
+   # caption = "Parallel slopes regression table", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -1064,7 +1101,7 @@ credit_ch6 %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Correlation between income (in dollars) and credit card debt", 
+   # caption = "Correlation between income (in dollars) and credit card debt", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -1100,8 +1137,9 @@ get_regression_table(debt_model) %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Multiple regression table", 
-    booktabs = TRUE
+   # caption = "Multiple regression table", 
+    booktabs = TRUE,
+    escape = FALSE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
                 latex_options = c("hold_position"))

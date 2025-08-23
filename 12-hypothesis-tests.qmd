@@ -81,7 +81,7 @@ if(!file.exists("rds/party_table.rds")){
 party_table %>%
   kable(
     format = "markdown",
-    caption = "Party decision making",
+  #  caption = "Party decision making",
     booktabs = TRUE,
     escape = FALSE
   ) %>%
@@ -124,7 +124,7 @@ if(!file.exists("rds/medicine_table.rds")){
 medicine_table %>%
   kable(
     format = "markdown",
-    caption = "Pregnancy test decision making",
+   # caption = "Pregnancy test decision making",
     booktabs = TRUE,
     escape = FALSE
   ) %>%
@@ -160,7 +160,7 @@ if(!file.exists("rds/law_table.rds")){
 law_table %>%
   kable(
     format = "markdown",
-    caption = "Criminal trial decision making",
+   # caption = "Criminal trial decision making",
     booktabs = TRUE,
     escape = FALSE
   ) %>%
@@ -200,7 +200,7 @@ if(!file.exists("rds/ht_table.rds")){
 ht_table %>%
   kable(
     format = "markdown",
-    caption = "Hypothesis test decision making",
+   # caption = "Hypothesis test decision making",
     booktabs = TRUE,
     escape = FALSE
   ) %>%
@@ -570,7 +570,7 @@ tails <- tibble("![](images/ch12_tails.png)")
 tails %>%
   kable(
     format = "markdown",
-    caption = "Formulating the Null and Alternative Hypothesis",
+   # caption = "Formulating the Null and Alternative Hypothesis",
     booktabs = TRUE,
     escape = FALSE,
     col.names = NULL

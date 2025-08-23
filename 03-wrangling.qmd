@@ -949,7 +949,7 @@ temp <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRgwl1lugQA6zxzfB6_0hM5
 temp %>% 
   kable(
     format = "markdown",
-    caption = "Summary of data wrangling verbs", 
+    #caption = "Summary of data wrangling verbs", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),

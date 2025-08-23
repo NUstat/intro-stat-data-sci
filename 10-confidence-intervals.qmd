@@ -89,7 +89,7 @@ if(!file.exists("rds/ch10_samp_dist.rds")){
 ch10_samp_dist %>% 
   kable(
     format = "markdown",
-    caption = "Properties of Sample Statistics", 
+   # caption = "Properties of Sample Statistics", 
     booktabs = TRUE,
     escape = FALSE
   ) %>% 

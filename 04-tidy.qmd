@@ -230,7 +230,7 @@ stocks <- tibble(
 stocks %>% 
   kable(
     digits = 2,
-    caption = "Stock Prices (Non-Tidy Format)", 
+    #caption = "Stock Prices (Non-Tidy Format)", 
     booktabs = TRUE,
     format = "markdown"
   ) %>% 
@@ -258,7 +258,7 @@ stocks_tidy <- stocks %>%
 stocks_tidy %>% 
   kable(
     digits = 2,
-    caption = "Stock Prices (Tidy Format)", 
+    #caption = "Stock Prices (Tidy Format)", 
     booktabs = TRUE,
     format = "markdown"
   ) %>% 
@@ -282,7 +282,7 @@ stocks %>%
   kable(
     format = "markdown",
     digits = 2,
-    caption = "Date, Boeing Price, Weather Data", 
+    #caption = "Date, Boeing Price, Weather Data", 
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16), 

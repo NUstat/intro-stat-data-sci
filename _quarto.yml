@@ -77,13 +77,14 @@ format:
   html:
     theme: cosmo
     include-in-header: in-line_math_mode.html
-  pdf:
-    documentclass: scrreprt
-    include-in-header:
-      - text: |
-          \usepackage{siunitx}
-          \usepackage{booktabs}
-          \usepackage{longtable}
+  # pdf:
+  #  documentclass: scrreprt
+    
+    # include-in-header:
+    #   - text: |
+    #       \usepackage{siunitx}
+    #       \usepackage{booktabs}
+    #       \usepackage{longtable}
 
 from: markdown+emoji
 

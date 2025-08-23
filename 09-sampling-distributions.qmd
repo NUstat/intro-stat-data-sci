@@ -405,7 +405,7 @@ tactile_prop_red %>%
   kable(
     format = "markdown",
     digits = 3,
-    caption = "First 10 out of 33 groups' proportion of 50 balls that are red.", 
+   # caption = "First 10 out of 33 groups' proportion of 50 balls that are red.", 
     booktabs = TRUE,
     longtable = TRUE
   ) %>% 
@@ -499,7 +499,7 @@ virtual_shovel %>%
     format = "markdown",
     align = c("r", "r"),
     digits = 3,
-    caption = "First 10 sampled balls of 50 in virtual sample",
+   # caption = "First 10 sampled balls of 50 in virtual sample",
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -615,7 +615,7 @@ virtual_prop_red %>%
   kable(
     format = "markdown",
     digits = 3,
-    caption = "First 10 out of 33 virtual proportion of 50 balls that are red.", 
+  #  caption = "First 10 out of 33 virtual proportion of 50 balls that are red.", 
     booktabs = TRUE,
     longtable = TRUE
   ) %>% 
@@ -722,7 +722,7 @@ samples[1:10,] %>%
   kable(
     format = "markdown",
     digits = 3,
-    caption = "Life expectancy data for 2 out of 10,000 samples of size n = 5 countries", 
+  #  caption = "Life expectancy data for 2 out of 10,000 samples of size n = 5 countries", 
       booktabs = TRUE) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
                 latex_options = c("HOLD_position"))
@@ -750,7 +750,7 @@ variances[1:10,] %>%
   kable(
     format = "markdown",
     digits = 3,
-    caption = "Sample variances of life expectancy for first 10 samples", 
+   # caption = "Sample variances of life expectancy for first 10 samples", 
       booktabs = TRUE) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
                 latex_options = c("HOLD_position"))
@@ -1012,7 +1012,7 @@ comparing_n_table  %>%
   kable(
     format = "markdown",
     digits = 3,
-    caption = "Comparing standard error of proportion red for 3 different shovels.", 
+   # caption = "Comparing standard error of proportion red for 3 different shovels.", 
     booktabs = TRUE
 ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),

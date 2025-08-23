@@ -191,7 +191,7 @@ evals_ch5 %>%
   slice_sample(n = 5) %>%
   knitr::kable(
     digits = 3,
-    caption = "A random sample of 5 out of the 463 courses at UT Austin",
+    #caption = "A random sample of 5 out of the 463 courses at UT Austin",
     booktabs = TRUE,
     format = "markdown"
   ) %>%
@@ -486,7 +486,7 @@ score_model
 
 This output is telling us that the `Intercept` coefficient $b_0$ of the regression line is 3.8803, and the slope coefficient for `by_avg` is 0.0666.  Therefore the blue regression line in @fig-numxplot4 is 
 
-$$\widehat{\text{score}} = b_0 + b_{\text{bty avg}} \cdot\text{bty avg} = 3.8803 + 0.0666\cdot\text{ bty avg}$$ 
+$$\widehat{\text{score}} = b_0 + b_{\text{bty avg}} \cdot\text{bty avg} = 3.8803 + 0.0666\cdot\text{bty avg}$$ 
 
 where
 
@@ -533,11 +533,18 @@ summary(score_model)$coefficients
 #| label: tbl-numxplot4b
 #| tbl-cap: "Linear regression table"
 #| echo: false
+#| eval: true
 
-summary(score_model)$coefficients %>%
+score_model_coeffs <- summary(score_model)$coefficients
+
+colnames(score_model_coeffs) <- c("Estimate", "Std. Error", "t value", "p value")
+
+score_model_coeffs %>%
+  as.data.frame() %>% 
+  rownames_to_column("term") %>% 
   knitr::kable(
     digits = 3,
-    caption = "Linear regression table",
+    #caption = "Linear regression table",
     booktabs = TRUE,
     format = "markdown"
   ) %>% 
@@ -597,7 +604,9 @@ What is the value on the blue line corresponding to this instructor's `bty_avg` 
 
 * Red circle: This is the *observed value* $y$ = `r y` and corresponds to this instructor's actual teaching score.
 
-* Red square: This is the *fitted value* $\widehat{y}$ and corresponds to the value on the regression line for $x$ = `r x`. This value is computed using the intercept and slope in the regression table above: $$\widehat{y} = b_0 + b_1 \cdot x = `r coefs[1,1]` + `r coefs[2,1]` * `r x` = `r y_hat`$$
+* Red square: This is the *fitted value* $\widehat{y}$ and corresponds to the value on the regression line for $x$ = `r x`. This value is computed using the intercept and slope in the regression table above: 
+
+$$\widehat{y} = b_0 + b_1 \cdot x = `r coefs[1,1]` + `r coefs[2,1]` * `r x` = `r y_hat`$$
 
 * Blue arrow: The length of this arrow is the *residual* and is computed by subtracting the fitted value $\widehat{y}$ from the observed value $y$. The residual can be thought of as the error or "lack of fit" of the regression line.  In the case of this instructor, it is $y - \widehat{y}$ = `r y` - `r y_hat` = `r y-y_hat`. In other words, the model was off by `r y-y_hat` teaching score units for this instructor. 
 
@@ -664,7 +673,7 @@ score_model_data %>%
   filter(ID %in% seq(from = index, to = (index + 3)))  %>%
   knitr::kable(
     digits = 3,
-    caption = "Regression points (for only 21st through 24th instructor)",
+    #caption = "Regression points (for only 21st through 24th instructor)",
     booktabs = TRUE,
     format = "markdown"
   ) %>% 
@@ -785,7 +794,7 @@ gapminder2007 %>%
   slice_sample(n =5) %>%
   knitr::kable(
     digits = 3,
-    caption = "Random sample of 5 out of 142 countries",
+    #caption = "Random sample of 5 out of 142 countries",
     booktabs = TRUE,
     format = "markdown"
   ) %>%
@@ -930,12 +939,13 @@ lifeExp_by_continent <- gapminder2007 %>%
 
 ```{r}
 #| label: tbl-catxplot0
+#| tbl-cap: "Life expectancy by continent"
 #| echo: false
 
 lifeExp_by_continent %>%
   knitr::kable(
     digits = 3,
-    caption = "Life expectancy by continent",
+   # caption = "Life expectancy by continent",
     booktabs = TRUE,
     format = "markdown"
   ) %>% 
@@ -970,7 +980,7 @@ gapminder2007 %>%
   mutate(`Difference versus Africa` = mean - mean_africa) %>%
   knitr::kable(
     digits = 3,
-    caption = "Mean life expectancy by continent and relative differences from mean for Africa",
+   # caption = "Mean life expectancy by continent and relative differences from mean for Africa",
     booktabs = TRUE,
     format = "markdown"
   ) %>%
@@ -1015,7 +1025,7 @@ gapminder2007 %>%
   mutate(`mean vs Africa` = mean - mean_africa) %>% 
   knitr::kable(
     digits = 3,
-    caption = "Mean life expectancy by continent",
+   # caption = "Mean life expectancy by continent",
     booktabs = TRUE,
     format = "markdown"
   ) %>%
@@ -1047,11 +1057,16 @@ coefs <- summary(lifeExp_model)$coefficients
 #| label: tbl-catxplot4b
 #| tbl-cap: "Linear regression table"
 #| echo: false
+#| eval: true
+
+colnames(coefs) <- c("Estimate", "Std. Error", "t value", "p value")
 
 coefs %>%
+  as.data.frame() %>% 
+  rownames_to_column("term") %>% 
   knitr::kable(
     digits = 3,
-    caption = "Linear regression table",
+  #  caption = "Linear regression table",
     booktabs = TRUE,
     format = "markdown"
   ) %>% 
@@ -1074,12 +1089,20 @@ $$
 
 Let's break this down. First, $\mathbb{1}_{A}(x)$ is what's known in mathematics as an "indicator function" that takes one of two possible values:
 
+<!-- $$ -->
+<!-- \mathbb{1}_{A}(x) = \left\{ -->
+<!-- \begin{array}{ll} -->
+<!-- 1 & \text{if } x \text{ is in } A \\ -->
+<!-- 0 & \text{otherwise} \end{array} -->
+<!-- \right. -->
+<!-- $$ -->
+
 $$
-\mathbb{1}_{A}(x) = \left\{
-\begin{array}{ll}
-1 & \text{if } x \text{ is in } A \\
-0 & \text{otherwise} \end{array}
-\right.
+\mathbb{1}_{A}(x) =
+\begin{cases}
+  1 & \text{if } x \in A \\
+  0 & \text{otherwise}
+\end{cases}
 $$
 
 In a statistical modeling context this is also known as a "dummy variable". In our case, let's consider the first such indicator variable:
@@ -1181,7 +1204,7 @@ lifeExp_model_data %>%
   slice(1:10) %>%
   knitr::kable(
     digits = 3,
-    caption = "Regression points (First 10 out of 142 countries)",
+   # caption = "Regression points (First 10 out of 142 countries)",
     booktabs = TRUE,
     format = "markdown"
   ) %>% 

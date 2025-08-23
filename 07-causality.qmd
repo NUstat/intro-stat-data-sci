@@ -259,7 +259,7 @@ ed_data %>%
   knitr::kable(
     format = "markdown",
     digits = 3,
-    caption = "Math scores for first 10 students, under random and non-random treatment assignment scenarios",
+   # caption = "Math scores for first 10 students, under random and non-random treatment assignment scenarios",
     booktabs = TRUE
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),

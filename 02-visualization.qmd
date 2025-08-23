@@ -100,7 +100,7 @@ In February 2006, a statistician named Hans Rosling gave a TED talk titled ["The
 
 ```{r}
 #| label: tbl-gapminder-2007
-#| tbl-cap: "Gapminder 2007 Data: First 6 of 142 countries"
+#| tbl-cap: "Gapminder 2007 Data First 6 of 142 countries"
 #| echo: false
 
 gapminder_2007 %>% 
@@ -108,7 +108,7 @@ gapminder_2007 %>%
   kable(
     format = "markdown",
     digits = 2,
-    caption = "Gapminder 2007 Data: First 6 of 142 countries", 
+    #caption = "Gapminder 2007 Data: First 6 of 142 countries", 
     booktabs = TRUE
   ) %>% 
   kable_styling(
@@ -168,7 +168,7 @@ tibble(
 ) %>% 
   kable(
     format = "markdown",
-    caption = "Summary of Grammar of Graphics for this plot", 
+  #  caption = "Summary of Grammar of Graphics for this plot", 
     booktabs = TRUE
   ) %>% 
   kable_styling(
@@ -965,7 +965,7 @@ kable(
   format = "markdown",
   flights_table,
   digits = 3,
-  caption = "Number of flights pre-counted for each carrier", 
+ # caption = "Number of flights pre-counted for each carrier", 
   booktabs = TRUE,
   longtable = TRUE
   ) %>% 
@@ -1181,7 +1181,7 @@ Let's recap all five of the Five Named Graphs (5NG) in @tbl-viz-summary summariz
 read_csv("table/viz_summary_table.csv", na = "") %>% 
   kable(
     format = "markdown",
-    caption = "Summary of 5NG", 
+  #  caption = "Summary of 5NG", 
     booktabs = TRUE
   ) %>% 
   kable_styling(
