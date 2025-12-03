@@ -342,20 +342,21 @@ summary(debt_model)$coefficients
 debt_model <- lm(debt ~ credit_limit + income, data = credit_ch6)
 credit_line <- summary(debt_model)$coefficients[, 1]
 
-summary(debt_model)$coefficients %>%  
+debt_model_coeffs <- summary(debt_model)$coefficients
+colnames(debt_model_coeffs) <- c("Estimate", "Std. Error", "t value", "p value")
+
+debt_model_coeffs %>%  
   as.data.frame() |> 
   rownames_to_column("term") %>%
-  rename(
-    #estimate = Estimate,
-    #std_error = `Std. Error`,
-    #t_value = `t value`,
-    `p value` = `Pr(>|t|)`
-  ) |> 
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>%
   knitr::kable(
-    format = "markdown",
+  #  format = "markdown",
     digits = 3,
    # caption = "Multiple regression table", 
-    booktabs = TRUE
+    booktabs = TRUE,
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown")
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
                 latex_options = c("hold_position"))
@@ -557,7 +558,7 @@ Recall in @sec-model2table we fit a regression model for countries' life expecta
 
 ```{r}
 #| echo: false
-#| eval: false
+#| eval: true
 
 # Wrangle data
 gapminder2007 <- gapminder %>%
@@ -572,8 +573,12 @@ colnames(coefs) <- c("Estimate", "Std. Error", "t value", "p value")
 coefs %>% 
   as.data.frame() %>% 
   rownames_to_column("term") %>% 
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
-    format = "markdown",
+    #format = "markdown",
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown"),
     digits = 3,
     caption = "Linear regression table",
     booktabs = TRUE
@@ -589,7 +594,7 @@ Going back to our multiple regression model for teaching `score` using `age` and
 $$\widehat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2$$
 
 ```{r}
-#| eval: true
+#| eval: false
 
 # Fit regression model:
 score_model_interaction <- lm(score ~ age + gender + age * gender, data = evals_ch6)
@@ -610,8 +615,12 @@ colnames(interact_coef) <- c("Estimate", "Std. Error", "t value", "p value")
 interact_coef %>% 
   as.data.frame() %>% 
   rownames_to_column("term") %>%  
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
-    format = "markdown",
+    #format = "markdown",
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown"),
     digits = 3,
    # caption = "Regression table for interaction model.", 
     booktabs = TRUE
@@ -721,7 +730,18 @@ $$
 \end{aligned}
 $$
 
-Unfortunately, the `ggplot2` package does not have a convenient way to plot a parallel slopes model, so we just display it for you in @fig-numxcatx-parallel but leave the code for a more advanced data visualization class. 
+<!-- Unfortunately, the `ggplot2` package does not have a convenient way to plot a parallel slopes model, so we just display it for you in  but leave the code for a more advanced data visualization class.  -->
+
+To plot parallel slopes we use the function `geom_parallel_slopes()` that is included in the `moderndive` package. To use this function you need to load both the `ggplot2` and `moderndive` packages. Observe how the code is identical to the one used for the model with interactions in @fig-numxcatxplot1, but now the `geom_smooth(method = "lm", se = FALSE)` layer is replaced with `geom_parallel_slopes(se = FALSE)`.
+
+```{r}
+#| eval: false
+ggplot(evals_ch6,aes(x =age, y =score, color =gender)) +
+  geom_point() +
+  labs(x = "Age", y = "Teaching Score", color = "Gender") +
+  geom_parallel_slopes(se = FALSE)
+```
+
 
 ```{r}
 #| label: fig-numxcatx-parallel
@@ -764,8 +784,12 @@ colnames(parallel_coef) <- c("Estimate", "Std. Error", "t value", "p value")
 parallel_coef %>% 
   as.data.frame() %>% 
   rownames_to_column("term") %>%  
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
-    format = "markdown",
+    # format = "markdown",
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown"),
     digits = 3,
    # caption = "Regression table for parallel slopes model.", 
     booktabs = TRUE
@@ -1040,8 +1064,12 @@ colnames(interaction_coeffs) <- c("Estimate", "Std. Error", "t value", "p value"
 interaction_coeffs %>% 
   as.data.frame() %>% 
   rownames_to_column("term") %>% 
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
-    format = "markdown",
+    # format = "markdown",
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown"),
     digits = 3,
    # caption = "Interaction model regression table", 
     booktabs = TRUE
@@ -1061,12 +1089,21 @@ summary(model_2_parallel_slopes)$coefficients
 #| echo: false
 model_2_parallel_slopes <- lm(average_sat_math ~ perc_disadvan + size, 
                               data = MA_schools)
-summary(model_2_parallel_slopes)$coefficients %>% 
+parallel_coeffs  <- summary(model_2_parallel_slopes)$coefficients
+colnames(parallel_coeffs) <- c("Estimate", "Std. Error", "t value", "p value")
+
+parallel_coeffs %>%
+  as.data.frame() %>% 
+  rownames_to_column("term") %>% 
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
-    format = "markdown",
+    # format = "markdown",
     digits = 3,
    # caption = "Parallel slopes regression table", 
-    booktabs = TRUE
+    booktabs = TRUE,
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown")
   ) %>% 
   kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
                 latex_options = c("hold_position"))

@@ -253,11 +253,11 @@
 \author{Elizabeth Tipton \and Arend M Kuyper \and Danielle
 Sass \and Kaitlyn G. Fitzgerald \and Adapted from ModernDive
 by \and Chester Ismay and Albert Y. Kim}
-\date{2025-08-23}
+\date{2025-12-03}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, interior hidden, boxrule=0pt, enhanced, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -280,7 +280,7 @@ and examine many types of data arising from several contexts. Hopefully
 you'll have fun and see how valuable it is to be able to critically
 think with data.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-warning-color-frame, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, left=2mm, colback=white]
 
 Please note that this is a ``development version'' of this book for the
 new design of STAT 202. Meaning this is a work in progress being edited
@@ -1279,7 +1279,7 @@ Much like an app on your phone, you only have to install a package once.
 However, if you want to update an already installed package to a newer
 verions, you need to re-install it by repeating the above steps.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.1}, left=2mm, colback=white]
 
 Repeat the above installing steps for the \texttt{dplyr},
 \texttt{nycflights13}, and \texttt{knitr} packages. This will install
@@ -1318,7 +1318,7 @@ Error in library(ggplot2) : there is no package called ‘ggplot2’
 go back to the previous subsection ``Package installation'' and install
 it.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.2}, left=2mm, colback=white]
 
 ``Load'' the \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr}
 packages as well by repeating the above steps.
@@ -1522,7 +1522,7 @@ capital ``V'' in \texttt{View}. R is case-sensitive so you'll receive an
 error is you run \texttt{view(flights)} instead of
 \texttt{View(flights)}.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.3}, left=2mm, colback=white]
 
 What does any \emph{ONE} row in this \texttt{flights} dataset refer to?
 
@@ -1612,7 +1612,7 @@ suspect, this variable corresponds to a specific date and time of day.
 However, we won't work with dates in this class and leave it to a more
 advanced book on data science.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.4}, left=2mm, colback=white]
 
 What are some examples in this dataset of \textbf{categorical}
 variables? What makes them different than \textbf{quantitative}
@@ -2279,7 +2279,7 @@ is specified with \texttt{==} and not \texttt{=}. Fasten your seat belts
 and sit tight for now however, we'll introduce these ideas more fully in
 Chapter~\ref{sec-wrangling}.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.1}, left=2mm, colback=white]
 
 Take a look at both the \texttt{flights} and \texttt{alaska\_flights}
 data frames by running \texttt{View(flights)} and
@@ -2405,14 +2405,14 @@ above code that generated the scatterplot:
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.2}, left=2mm, colback=white]
 
 What are some practical reasons why \texttt{dep\_delay} and
 \texttt{arr\_delay} have a positive relationship?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.3}, left=2mm, colback=white]
 
 What variables (not necessarily in the \texttt{flights} data frame)
 would you expect to have a negative correlation (i.e.~a negative
@@ -2421,20 +2421,20 @@ focusing on numerical variables here.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.4}, left=2mm, colback=white]
 
 Why do you believe there is a cluster of points near (0, 0)? What does
 (0, 0) correspond to in terms of the Alaskan flights?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.5}, left=2mm, colback=white]
 
 What are some other features of the plot that stand out to you?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.6}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.6}, left=2mm, colback=white]
 
 Create a new scatterplot using different variables in the
 \texttt{alaska\_flights} data frame by modifying the example above.
@@ -2591,7 +2591,7 @@ effective. In terms of how much jitter one should add using the
 just enough jitter to break any overlap in points, but not so much that
 we completely alter the overall pattern in points.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.7}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.7}, left=2mm, colback=white]
 
 Why is setting the \texttt{alpha} argument value useful with
 scatterplots? What further information does it give you that a regular
@@ -2599,7 +2599,7 @@ scatterplot cannot?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.8}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.8}, left=2mm, colback=white]
 
 After viewing the Figure~\ref{fig-alpha} above, give an approximate
 range of arrival delays and departure delays that occur the most
@@ -2682,7 +2682,7 @@ choose the subset of rows of \texttt{weather} where
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.9}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.9}, left=2mm, colback=white]
 
 Take a look at both the \texttt{weather} and
 \texttt{early\_january\_weather} data frames by running
@@ -2691,7 +2691,7 @@ what respect do these data frames differ?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.10}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.10}, left=2mm, colback=white]
 
 \texttt{View()} the \texttt{flights} data frame again. Why does the
 \texttt{time\_hour} variable uniquely identify the hour of the
@@ -2763,21 +2763,21 @@ in terms of the Grammar of Graphics:
   \texttt{geom\_line()}.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.11}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.11}, left=2mm, colback=white]
 
 Why should linegraphs be avoided when there is not a clear ordering of
 the horizontal axis?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.12}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.12}, left=2mm, colback=white]
 
 Why are linegraphs frequently used when time is the explanatory variable
 on the x-axis?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.13}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.13}, left=2mm, colback=white]
 
 Plot a time series of a variable other than \texttt{temp} for Newark
 Airport in the first 15 days of January 2013.
@@ -2908,7 +2908,7 @@ you automatically. Furthermore, the geometric object layer is now a
 \end{Shaded}
 
 \begin{verbatim}
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 \end{verbatim}
 
 \begin{verbatim}
@@ -3054,28 +3054,28 @@ of each bin to be 10°F.
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.14}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.14}, left=2mm, colback=white]
 
 What does changing the number of bins from 30 to 40 tell us about the
 distribution of temperatures?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.15}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.15}, left=2mm, colback=white]
 
 Would you classify the distribution of temperatures as symmetric or
 skewed?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.16}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.16}, left=2mm, colback=white]
 
 What would you guess is the ``center'' value in this distribution? Why
 did you make that choice?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.17}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.17}, left=2mm, colback=white]
 
 Is this data spread out greatly from the center or is it close? Why?
 
@@ -3157,21 +3157,21 @@ Figure~\ref{fig-facethistogram2} that as we might expect in the Northern
 Hemisphere, temperatures tend to be higher in the summer months, while
 they tend to be lower in the winter.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.18}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.18}, left=2mm, colback=white]
 
 What other things do you notice about the faceted plot above? How does a
 faceted plot help us see relationships between two variables?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.19}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.19}, left=2mm, colback=white]
 
 What do the numbers 1-12 correspond to in the plot above? What about 25,
 50, 75, 100?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.20}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.20}, left=2mm, colback=white]
 
 For which types of datasets would these types of faceted plots not work
 well in comparing relationships between variables? Give an example
@@ -3180,7 +3180,7 @@ characteristics.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.21}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.21}, left=2mm, colback=white]
 
 Does the \texttt{temp} variable in the \texttt{weather} dataset have a
 lot of variability? Why do you say that?
@@ -3407,21 +3407,21 @@ the plot. Furthermore, the height of the 12 boxes as quantified by the
 interquartile ranges are informative too; they tell us about
 variability, or spread, of temperatures recorded in a given month.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.22}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.22}, left=2mm, colback=white]
 
 What does the dot at the bottom of the plot for May correspond to?
 Explain what might have occurred in May to produce this point.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.23}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.23}, left=2mm, colback=white]
 
 Which months have the highest variability in temperature? What reasons
 can you give for this?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.24}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.24}, left=2mm, colback=white]
 
 We looked at the distribution of the numerical variable \texttt{temp}
 split by the numerical variable \texttt{month} that we converted to a
@@ -3432,7 +3432,7 @@ the \texttt{factor()} not be informative?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.25}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.25}, left=2mm, colback=white]
 
 Boxplots provide a simple way to identify outliers. Why may outliers be
 easier to identify when looking at a boxplot instead of a faceted
@@ -3664,25 +3664,25 @@ barplot would be identical to Figure~\ref{fig-flightsbar}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.26}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.26}, left=2mm, colback=white]
 
 Why are histograms inappropriate for visualizing categorical variables?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.27}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.27}, left=2mm, colback=white]
 
 What is the difference between histograms and barplots?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.28}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.28}, left=2mm, colback=white]
 
 How many Envoy Air flights departed NYC in 2013?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.29}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.29}, left=2mm, colback=white]
 
 What was the seventh highest airline in terms of departed flights from
 NYC in 2013? How could we better present the table to get this answer
@@ -3754,13 +3754,13 @@ but we will leave this for the reader to decide:
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.30}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.30}, left=2mm, colback=white]
 
 Why should pie charts be avoided and replaced by barplots?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.31}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.31}, left=2mm, colback=white]
 
 Why do you think people continue to use pie charts?
 
@@ -3791,7 +3791,7 @@ and so on. Recall the \texttt{ggplot()} code that created the barplot of
 
 \begin{figure}[H]
 
-{\centering \includegraphics{02-visualization_files/figure-pdf/unnamed-chunk-43-1.pdf}
+{\centering \includegraphics{02-visualization_files/figure-pdf/unnamed-chunk-7-1.pdf}
 
 }
 
@@ -3866,14 +3866,14 @@ aesthetic used instead of fill}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.32}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.32}, left=2mm, colback=white]
 
 What kinds of questions are not easily answered by looking at the above
 figure?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.33}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.33}, left=2mm, colback=white]
 
 What can you say, if anything, about the relationship between airline
 and airport in NYC in 2013 in regards to the number of departing
@@ -3907,14 +3907,14 @@ comparing the number of flights by carrier and origin}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.34}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.34}, left=2mm, colback=white]
 
 Why might the side-by-side (AKA dodged) barplot be preferable to a
 stacked barplot in this case?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.35}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.35}, left=2mm, colback=white]
 
 What are the disadvantages of using a side-by-side (AKA dodged) barplot,
 in general?
@@ -3947,14 +3947,14 @@ of flights by carrier and origin}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.36}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.36}, left=2mm, colback=white]
 
 Why is the faceted barplot preferred to the side-by-side and stacked
 barplots in this case?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.37}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.37}, left=2mm, colback=white]
 
 What information about the different carriers at different airports is
 more easily seen in the faceted barplot?
@@ -4892,7 +4892,7 @@ among the first verbs you apply to your data. This cleans your dataset
 to only those rows you care about, or put differently, it narrows down
 the scope of your data frame to just the observations you care about.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.1}, left=2mm, colback=white]
 
 What's another way of using the ``not'' operator \texttt{!} to filter
 only the rows that are not going to Burlington VT nor Seattle WA in the
@@ -5037,7 +5037,7 @@ values and returns just one. Here are just a few:
   \texttt{group\_by()} is covered in Section~\ref{sec-groupby}.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.2}, left=2mm, colback=white]
 
 Say a doctor is studying the effect of smoking on lung cancer for a
 large number of patients who have records measured at five year
@@ -5047,7 +5047,7 @@ patients in her analysis. What is wrong with this doctor's approach?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.3}, left=2mm, colback=white]
 
 Modify the above \texttt{summarize()} function to create
 \texttt{summary\_temp} to also use the \texttt{n()} summary function:
@@ -5057,7 +5057,7 @@ What does the returned value correspond to?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.4}, left=2mm, colback=white]
 
 Why doesn't the following code work?
 
@@ -5370,7 +5370,7 @@ here is if you want to \texttt{group\_by()} two or more variables, you
 should include all these variables in a single \texttt{group\_by()}
 function call.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.5}, left=2mm, colback=white]
 
 Recall from Chapter~\ref{sec-viz} when we looked at plots of
 temperatures by months in NYC. What does the standard deviation column
@@ -5379,14 +5379,14 @@ temperatures in New York City throughout the year?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.6}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.6}, left=2mm, colback=white]
 
 What code would be required to get the mean and standard deviation
 temperature for each day in 2013 for NYC?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.7}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.7}, left=2mm, colback=white]
 
 Recreate \texttt{by\_monthly\_origin}, but instead of grouping via
 \texttt{group\_by(origin,\ month)}, group variables in a different order
@@ -5396,14 +5396,14 @@ What differs in the resulting dataset?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.8}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.8}, left=2mm, colback=white]
 
 How could we identify how many flights left each of the three airports
 for each \texttt{carrier}?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.9}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.9}, left=2mm, colback=white]
 
 How does the \texttt{filter} operation differ from a \texttt{group\_by}
 followed by a \texttt{summarize}?
@@ -5607,7 +5607,7 @@ Wickham 2016):
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.10}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.10}, left=2mm, colback=white]
 
 What do positive values of the \texttt{gain} variable in
 \texttt{flights} correspond to? What about negative values? And what
@@ -5615,7 +5615,7 @@ about a zero value?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.11}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.11}, left=2mm, colback=white]
 
 Could we create the \texttt{dep\_delay} and \texttt{arr\_delay} columns
 by simply subtracting \texttt{dep\_time} from \texttt{sched\_dep\_time}
@@ -5624,7 +5624,7 @@ between the result and what actually appears in \texttt{flights}.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.12}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.12}, left=2mm, colback=white]
 
 What can we say about the distribution of \texttt{gain}? Describe it in
 a few sentences using the plot and the \texttt{gain\_summary} data frame
@@ -5948,7 +5948,7 @@ earlier:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.13}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.13}, left=2mm, colback=white]
 
 Looking at Figure~\ref{fig-flights-key-diagram}, when joining
 \texttt{flights} and \texttt{weather} (or, in other words, matching the
@@ -5958,7 +5958,7 @@ of \texttt{year}, \texttt{month}, \texttt{day}, \texttt{hour}, and
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.14}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.14}, left=2mm, colback=white]
 
 What surprises you about the top 10 destinations from NYC in 2013?
 
@@ -5999,7 +5999,7 @@ tables without losing information is called \textbf{normalization}. More
 information is available on
 \href{https://en.wikipedia.org/wiki/Database_normalization}{Wikipedia}.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.15}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.15}, left=2mm, colback=white]
 
 What are some advantages of data in normal forms? What are some
 disadvantages?
@@ -6198,7 +6198,7 @@ help file for the different \texttt{slice\_*()} functions by running
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.16}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.16}, left=2mm, colback=white]
 
 What are some ways to select all three of the \texttt{dest},
 \texttt{air\_time}, and \texttt{distance} variables from
@@ -6207,7 +6207,7 @@ different ways.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.17}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.17}, left=2mm, colback=white]
 
 How could one use \texttt{starts\_with}, \texttt{ends\_with}, and
 \texttt{contains} to select columns from the \texttt{flights} data
@@ -6217,13 +6217,13 @@ frame? Provide three different examples in total: one for
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.18}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.18}, left=2mm, colback=white]
 
 Why might we want to use the \texttt{select} function on a data frame?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.19}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.19}, left=2mm, colback=white]
 
 Create a new data frame that shows the top 5 airports with the largest
 arrival delays from NYC in 2013.
@@ -7185,13 +7185,13 @@ in our non-``tidy'' data in Table~\ref{tbl-non-tidy-stocks}), the data
 three unique pieces of information: Date, Boeing stock price, and the
 weather that particular day.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.1}, left=2mm, colback=white]
 
 What are common characteristics of ``tidy'' data frames?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.2}, left=2mm, colback=white]
 
 What makes ``tidy'' data frames useful for organizing data?
 
@@ -7327,7 +7327,7 @@ bars.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{04-tidy_files/figure-pdf/unnamed-chunk-17-1.pdf}
+{\centering \includegraphics{04-tidy_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 }
 
@@ -7346,7 +7346,7 @@ available for data tidying and a case study using data from the World
 Health Organization in \href{http://r4ds.had.co.nz/tidy-data.html}{R for
 Data Science} (Grolemund and Wickham 2016).
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.3}, left=2mm, colback=white]
 
 Take a look the \texttt{airline\_safety} data frame included in the
 \texttt{fivethirtyeight} data. Run the following:
@@ -7622,13 +7622,13 @@ changed from 1952 to 1992 using a \texttt{geom\_line()}:
 
 \begin{figure}[H]
 
-{\centering \includegraphics{04-tidy_files/figure-pdf/unnamed-chunk-23-1.pdf}
+{\centering \includegraphics{04-tidy_files/figure-pdf/unnamed-chunk-18-1.pdf}
 
 }
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.4}, left=2mm, colback=white]
 
 Convert the \texttt{dem\_score} data frame into a tidy data frame and
 assign the name of \texttt{dem\_score\_tidy} to the resulting
@@ -7636,7 +7636,7 @@ long-formatted data frame.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.5}, left=2mm, colback=white]
 
 Read in the life expectancy data stored at
 \url{https://moderndive.com/data/le_mess.csv} and convert it to a tidy
@@ -8513,7 +8513,7 @@ important!
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.1}, left=2mm, colback=white]
 
 Conduct a new exploratory data analysis with the same outcome variable
 \(y\) being \texttt{score} but with \texttt{age} as the new explanatory
@@ -8661,7 +8661,7 @@ For every increase of 1 unit in \texttt{bty\_avg}, there is an
 \texttt{score}.
 \end{quote}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-important-color-frame, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, left=2mm, colback=white]
 
 \textbf{Such interpretations need be carefully worded:}
 
@@ -8767,7 +8767,7 @@ known as standard errors, t-statistics, and p-values, which we will
 cover in Parts III and IV of the book when we talk about statistical
 theory and inference.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.2}, left=2mm, colback=white]
 
 Fit a new simple linear regression using
 \texttt{lm(score\ \textasciitilde{}\ age,\ data\ =\ evals\_ch5)} where
@@ -9392,7 +9392,7 @@ Oceania & 80.7 & 25.9\\
 \end{longtable}
 \endgroup{}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.3}, left=2mm, colback=white]
 
 Conduct a new exploratory data analysis with the same explanatory
 variable \(x\) being \texttt{continent} but with \texttt{gdpPercap} as
@@ -9630,7 +9630,7 @@ that to a more advanced course. (The \texttt{forcats} package is
 particularly nice for doing this and we encourage you to explore using
 it.)
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.4}, left=2mm, colback=white]
 
 Fit a new linear regression using
 \texttt{lm(gdpPercap\ \textasciitilde{}\ continent,\ data\ =\ gapminder2007)}
@@ -9717,7 +9717,7 @@ Afghanistan's life expectancy is a whopping 26.9 years lower than the
 mean life expectancy of all Asian countries. This can in part be
 explained by the many years of war that country has suffered.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.5}, left=2mm, colback=white]
 
 Using either the sorting functionality of RStudio's spreadsheet viewer
 or using the data wrangling tools you learned in
@@ -9727,7 +9727,7 @@ about their life expectancy relative to their continents?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.6}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.6}, left=2mm, colback=white]
 
 Repeat this process, but identify the five countries with the five
 largest (most positive) residuals. What do these positive residuals say
@@ -10751,7 +10751,7 @@ that similarly minimizes the sum of squared residuals. Head to
 \href{https://beta.rstudioconnect.com/connect/\#/apps/3214/}{here} to
 open an interactive version of this plot in your browser.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.1}, left=2mm, colback=white]
 
 \textbf{(LC6.2)} Conduct a new exploratory data analysis with the same
 outcome variable \(y\) being \texttt{debt} but with
@@ -10810,21 +10810,23 @@ the results in Table~\ref{tbl-model3-table-output}.
 \end{Highlighting}
 \end{Shaded}
 
-\begingroup\fontsize{10}{12}\selectfont
-
 \hypertarget{tbl-model3-table-output}{}
-\begin{longtable}[t]{lrrrr}
+\begin{table}[!h]
 \caption{\label{tbl-model3-table-output}Multiple regression table }\tabularnewline
 
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
 \toprule
 term & Estimate & Std. Error & t value & p value\\
 \midrule
-(Intercept) & -385.179 & 19.465 & -19.8 & 0\\
+Intercept & -385.179 & 19.465 & -19.8 & 0\\
 credit\_limit & 0.264 & 0.006 & 45.0 & 0\\
 income & -7.663 & 0.385 & -19.9 & 0\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 \endgroup{}
+\end{table}
 
 Let's interpret the three values in the \texttt{Estimate} column. First,
 the \texttt{Intercept} value is -\$385.179. This intercept represents
@@ -10882,7 +10884,7 @@ Section~\ref{sec-simpsonsparadox} we elaborate on this idea by looking
 at the relationship between \texttt{credit\_limit} and credit card
 \texttt{debt}, but split along different \texttt{income} brackets.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.3}, left=2mm, colback=white]
 
 Fit a new simple linear regression using
 \texttt{lm(debt\ \textasciitilde{}\ credit\_rating\ +\ age,\ data\ =\ credit\_ch6)}
@@ -11198,6 +11200,24 @@ country was in. In other words, we had a numerical outcome variable
 Let's re-display the regression table you saw in
 Table~\ref{tbl-catxplot4b}:
 
+\begin{table}[H]
+\centering
+\caption{Linear regression table}
+\centering
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{lrrrr}
+\toprule
+term & Estimate & Std. Error & t value & p value\\
+\midrule
+Intercept & 54.8 & 1.02 & 53.45 & 0\\
+continentAmericas & 18.8 & 1.80 & 10.45 & 0\\
+continentAsia & 15.9 & 1.65 & 9.68 & 0\\
+continentEurope & 22.8 & 1.70 & 13.47 & 0\\
+continentOceania & 25.9 & 5.33 & 4.86 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 Recall our interpretation of the \texttt{Estimate} column. Since
 \texttt{Africa} was the ``baseline for comparison'' group, the
 \texttt{Intercept} term corresponds to the mean life expectancy for all
@@ -11235,35 +11255,24 @@ an interaction model with two explanatory variables is of the form:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-               Estimate Std. Error t value
-(Intercept)      4.8830    0.20521   23.80
-age             -0.0175    0.00447   -3.92
-gendermale      -0.4460    0.26541   -1.68
-age:gendermale   0.0135    0.00553    2.45
-                                                                                             Pr(>|t|)
-(Intercept)    0.000000000000000000000000000000000000000000000000000000000000000000000000000000000402
-age            0.000102667107525383085957736140070295505211106501519680023193359375000000000000000000
-gendermale     0.093519980116477025022803104548074770718812942504882812500000000000000000000000000000
-age:gendermale 0.014803372170237579646956405099444964434951543807983398437500000000000000000000000000
-\end{verbatim}
-
-\begingroup\fontsize{10}{12}\selectfont
-
 \hypertarget{tbl-regtable-interaction}{}
-\begin{longtable}[t]{lrrrr}
+\begin{table}[!h]
 \caption{\label{tbl-regtable-interaction}Regression table for interaction model. }\tabularnewline
 
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
 \toprule
 term & Estimate & Std. Error & t value & p value\\
 \midrule
-(Intercept) & 4.883 & 0.205 & 23.80 & 0.000\\
+Intercept & 4.883 & 0.205 & 23.80 & 0.000\\
 age & -0.018 & 0.004 & -3.92 & 0.000\\
 gendermale & -0.446 & 0.265 & -1.68 & 0.094\\
 age:gendermale & 0.014 & 0.006 & 2.45 & 0.015\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 \endgroup{}
+\end{table}
 
 Looking at the regression table output in
 Table~\ref{tbl-regtable-interaction}, we see there are four rows of
@@ -11461,10 +11470,23 @@ form:
 \end{aligned}
 \]
 
-Unfortunately, the \texttt{ggplot2} package does not have a convenient
-way to plot a parallel slopes model, so we just display it for you in
-Figure~\ref{fig-numxcatx-parallel} but leave the code for a more
-advanced data visualization class.
+To plot parallel slopes we use the function
+\texttt{geom\_parallel\_slopes()} that is included in the
+\texttt{moderndive} package. To use this function you need to load both
+the \texttt{ggplot2} and \texttt{moderndive} packages. Observe how the
+code is identical to the one used for the model with interactions in
+Figure~\ref{fig-numxcatxplot1}, but now the
+\texttt{geom\_smooth(method\ =\ "lm",\ se\ =\ FALSE)} layer is replaced
+with \texttt{geom\_parallel\_slopes(se\ =\ FALSE)}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(evals\_ch6,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{age, }\AttributeTok{y =}\NormalTok{score, }\AttributeTok{color =}\NormalTok{gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Age"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Teaching Score"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Gender"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_parallel\_slopes}\NormalTok{(}\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{figure}
 
@@ -11513,21 +11535,23 @@ and the single common slope, we once again ``fit'' the model using the
 \end{Highlighting}
 \end{Shaded}
 
-\begingroup\fontsize{10}{12}\selectfont
-
 \hypertarget{tbl-regtable-parallel-slopes}{}
-\begin{longtable}[t]{lrrrr}
+\begin{table}[!h]
 \caption{\label{tbl-regtable-parallel-slopes}Regression table for parallel slopes model. }\tabularnewline
 
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
 \toprule
 term & Estimate & Std. Error & t value & p value\\
 \midrule
-(Intercept) & 4.484 & 0.125 & 35.79 & 0.000\\
+Intercept & 4.484 & 0.125 & 35.79 & 0.000\\
 age & -0.009 & 0.003 & -3.28 & 0.001\\
 gendermale & 0.191 & 0.052 & 3.63 & 0.000\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 \endgroup{}
+\end{table}
 
 Looking at the regression table output in
 Table~\ref{tbl-regtable-parallel-slopes}, we see there are three rows of
@@ -11761,7 +11785,7 @@ the second and third course this instructor taught had negative
 residuals, indicating that the actual teaching score they received from
 students was less than their fitted score of 4.25.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, leftrule=.75mm, breakable, toptitle=1mm, titlerule=0mm, opacityback=0, toprule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.4}, left=2mm, colback=white]
 
 Compute the observed values, fitted values, and residuals not for the
 interaction model as we just did, but rather for the parallel slopes
@@ -11892,16 +11916,17 @@ models in Tables~\ref{tbl-model2-interaction} and
 \end{Highlighting}
 \end{Shaded}
 
-\begingroup\fontsize{10}{12}\selectfont
-
 \hypertarget{tbl-model2-interaction}{}
-\begin{longtable}[t]{lrrrr}
+\begin{table}[!h]
 \caption{\label{tbl-model2-interaction}Interaction model regression table }\tabularnewline
 
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
 \toprule
 term & Estimate & Std. Error & t value & p value\\
 \midrule
-(Intercept) & 594.327 & 13.288 & 44.726 & 0.000\\
+Intercept & 594.327 & 13.288 & 44.726 & 0.000\\
 perc\_disadvan & -2.932 & 0.294 & -9.961 & 0.000\\
 sizemedium & -17.764 & 15.827 & -1.122 & 0.263\\
 sizelarge & -13.293 & 13.813 & -0.962 & 0.337\\
@@ -11909,8 +11934,9 @@ perc\_disadvan:sizemedium & 0.146 & 0.371 & 0.393 & 0.694\\
 \addlinespace
 perc\_disadvan:sizelarge & 0.189 & 0.323 & 0.586 & 0.559\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 \endgroup{}
+\end{table}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11920,22 +11946,24 @@ perc\_disadvan:sizelarge & 0.189 & 0.323 & 0.586 & 0.559\\
 \end{Highlighting}
 \end{Shaded}
 
-\begingroup\fontsize{10}{12}\selectfont
-
 \hypertarget{tbl-model2-parallel-slopes}{}
-\begin{longtable}[t]{lrrrr}
+\begin{table}[!h]
 \caption{\label{tbl-model2-parallel-slopes}Parallel slopes regression table }\tabularnewline
 
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
 \toprule
- & Estimate & Std. Error & t value & Pr(>\&\#124;t\&\#124;)\\
+term & Estimate & Std. Error & t value & p value\\
 \midrule
-(Intercept) & 588.19 & 7.607 & 77.325 & 0.000\\
+Intercept & 588.19 & 7.607 & 77.325 & 0.000\\
 perc\_disadvan & -2.78 & 0.106 & -26.120 & 0.000\\
 sizemedium & -11.91 & 7.535 & -1.581 & 0.115\\
 sizelarge & -6.36 & 6.923 & -0.919 & 0.359\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 \endgroup{}
+\end{table}
 
 Observe how the regression table for the interaction model has 2 more
 rows (6 versus 4). This reflects the additional ``complexity'' of the
@@ -14621,6 +14649,11 @@ distribution}, which has mean 0 and standard deviation 1. Importantly,
 for all possible values of \(\mu\) and \(\sigma\), the Normal
 distribution is \textbf{symmetric} and \textbf{unimodal}.
 
+\begin{verbatim}
+Ignoring unknown labels:
+* ylab : ""
+\end{verbatim}
+
 \begin{figure}
 
 {\centering \includegraphics{09-sampling-distributions_files/figure-pdf/fig-normaldist-1.pdf}
@@ -14667,7 +14700,7 @@ have the entire population.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{09-sampling-distributions_files/figure-pdf/unnamed-chunk-5-1.pdf}
+{\centering \includegraphics{09-sampling-distributions_files/figure-pdf/unnamed-chunk-3-1.pdf}
 
 }
 
@@ -14715,7 +14748,7 @@ Normal.
 
 \begin{figure}[H]
 
-{\centering \includegraphics{09-sampling-distributions_files/figure-pdf/unnamed-chunk-6-1.pdf}
+{\centering \includegraphics{09-sampling-distributions_files/figure-pdf/unnamed-chunk-4-1.pdf}
 
 }
 
@@ -15024,7 +15057,7 @@ chi-squared distribution depends on one parameter \(df\).
 
 \begin{figure}
 
-{\centering \includegraphics{09-sampling-distributions_files/figure-pdf/unnamed-chunk-12-1.pdf}
+{\centering \includegraphics{09-sampling-distributions_files/figure-pdf/unnamed-chunk-8-1.pdf}
 
 }
 
@@ -20114,19 +20147,47 @@ hypothesis. Next decide if the claim is a two-tailed, right-tailed, or
 left-tailed test. Table~\ref{tbl-tail-ch-12} provides an overview of the
 three possible scenarios.
 
-\begingroup\fontsize{10}{12}\selectfont
-
 \hypertarget{tbl-tail-ch-12}{}
-\begin{longtable}[t]{l}
-\caption{\label{tbl-tail-ch-12}Formulating the Null and Alternative Hypothesis }\tabularnewline
-
-\toprule
-\\
-\midrule
-![](images/ch12\_tails.png)\\
-\bottomrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1837}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2449}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2857}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2857}}@{}}
+\caption{\label{tbl-tail-ch-12}Overview of the three possible tail-test
+scenarios.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Two-tailed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Right-tailed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Left-tailed
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Two-tailed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Right-tailed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Left-tailed
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(H_0\) & \(=\) & \(\leq\) & \(\geq\) \\
+\(H_A\) & \(\neq\) & \(\gt\) & \(\lt\) \\
+p-value &
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/tail_two.png}
+&
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/tail_right.png}
+&
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/tail_left.png} \\
 \end{longtable}
-\endgroup{}
 
 Choosing a one-tailed test for the sole purpose of attaining
 significance is not appropriate. For example, if you formulate a
@@ -23232,9 +23293,22 @@ dollars.
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'dplyr' was built under R version 4.5.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+Warning: package 'ggplot2' was built under R version 4.5.2
+\end{verbatim}
 
 \textbf{(LC 1.1)} Repeat the above installing steps, but for the
 \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr} packages. This
@@ -23329,7 +23403,7 @@ what all the variables mean!
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'nycflights13' was built under R version 4.4.2
+Warning: package 'nycflights13' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{Shaded}
@@ -23341,7 +23415,7 @@ Warning: package 'nycflights13' was built under R version 4.4.2
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'knitr' was built under R version 4.4.2
+Warning: package 'knitr' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{Shaded}
@@ -23351,7 +23425,7 @@ Warning: package 'knitr' was built under R version 4.4.2
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'moderndive' was built under R version 4.4.2
+Warning: package 'moderndive' was built under R version 4.5.2
 \end{verbatim}
 
 \textbf{(LC 2.1)} Take a look at both the \texttt{flights} and
@@ -23808,7 +23882,7 @@ horizontal line.
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'kableExtra' was built under R version 4.4.2
+Warning: package 'kableExtra' was built under R version 4.5.2
 \end{verbatim}
 
 \textbf{(LC 3.1)} What's another way using the ``not'' operator
@@ -24773,13 +24847,31 @@ presented data!
 \FunctionTok{library}\NormalTok{(ggplot2)}
 \FunctionTok{library}\NormalTok{(nycflights13)}
 \FunctionTok{library}\NormalTok{(tidyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'tidyr' was built under R version 4.5.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning: package 'readr' was built under R version 4.5.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(fivethirtyeight)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'fivethirtyeight' was built under R version 4.4.2
+Warning: package 'fivethirtyeight' was built under R version 4.5.2
 \end{verbatim}
 
 \textbf{(LC 4.1)} What are common characteristics of ``tidy'' datasets?
@@ -25049,7 +25141,7 @@ in \texttt{dem\_score} vs \texttt{dem\_score\_tidy}:
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'gapminder' was built under R version 4.4.2
+Warning: package 'gapminder' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{Shaded}
@@ -25057,6 +25149,10 @@ Warning: package 'gapminder' was built under R version 4.4.2
 \FunctionTok{library}\NormalTok{(skimr)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+Warning: package 'skimr' was built under R version 4.5.2
+\end{verbatim}
 
 \textbf{(LC5.1)} Conduct a new exploratory data analysis with the same
 outcome variable \(y\) being \texttt{score} but with \texttt{age} as the
@@ -25393,19 +25489,27 @@ higher than the average life expectancy of its continent, Africa.
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'tidyverse' was built under R version 4.4.2
+Warning: package 'tidyverse' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{verbatim}
-Warning: package 'purrr' was built under R version 4.4.3
+Warning: package 'tibble' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{verbatim}
-Warning: package 'forcats' was built under R version 4.4.2
+Warning: package 'purrr' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{verbatim}
-Warning: package 'lubridate' was built under R version 4.4.3
+Warning: package 'stringr' was built under R version 4.5.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'forcats' was built under R version 4.5.2
+\end{verbatim}
+
+\begin{verbatim}
+Warning: package 'lubridate' was built under R version 4.5.2
 \end{verbatim}
 
 \begin{Shaded}
@@ -25417,7 +25521,7 @@ Warning: package 'lubridate' was built under R version 4.4.3
 \end{Shaded}
 
 \begin{verbatim}
-Warning: package 'ISLR2' was built under R version 4.4.2
+Warning: package 'ISLR2' was built under R version 4.5.2
 \end{verbatim}
 
 \textbf{(LC6.2)} Conduct a new exploratory data analysis with the same
