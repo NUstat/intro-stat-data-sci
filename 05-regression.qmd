@@ -542,11 +542,15 @@ colnames(score_model_coeffs) <- c("Estimate", "Std. Error", "t value", "p value"
 score_model_coeffs %>%
   as.data.frame() %>% 
   rownames_to_column("term") %>% 
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
     digits = 3,
     #caption = "Linear regression table",
     booktabs = TRUE,
-    format = "markdown"
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown")
+    # format = "markdown"
   ) %>% 
   kable_styling(
     font_size = ifelse(knitr:::is_latex_output(), 10, 16),
@@ -1064,11 +1068,15 @@ colnames(coefs) <- c("Estimate", "Std. Error", "t value", "p value")
 coefs %>%
   as.data.frame() %>% 
   rownames_to_column("term") %>% 
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>% 
   knitr::kable(
     digits = 3,
   #  caption = "Linear regression table",
     booktabs = TRUE,
-    format = "markdown"
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown")
+    # format = "markdown"
   ) %>% 
   kable_styling(
     font_size = ifelse(knitr:::is_latex_output(), 10, 16),

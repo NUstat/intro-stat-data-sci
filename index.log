@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.18)  23 AUG 2025 14:03
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.18)  23 AUG 2025 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1406,6 +1406,9 @@ LaTeX Warning: Reference `sec-wrangling' on page 4 undefined on input line 429.
 
 
 LaTeX Warning: Reference `sec-tidy' on page 4 undefined on input line 432.
+
+
+LaTeX Warning: Reference `sec-regression' on page 4 undefined on input line 443.
 
 
 LaTeX Warning: Reference `sec-multiple-regression' on page 4 undefined on input line 445.
@@ -2903,6 +2906,9 @@ Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mappin
 File: images/import_cheatsheet-1.png Graphic file (type bmp)
 <images/import_cheatsheet-1.png>
 
+LaTeX Warning: Reference `sec-regression' on page 140 undefined on input line 7735.
+
+
 LaTeX Warning: Reference `sec-multiple-regression' on page 140 undefined on input line 7735.
 
 
@@ -2923,10 +2929,16 @@ Package scrkbase Info: You've told me to use the font selection of the element
 ]
 chapter 5.
 
-LaTeX Warning: Reference `sec-tidyverse-package' on page 144 undefined on input line 7846.
+LaTeX Warning: Reference `sec-viz' on page 144 undefined on input line 7819.
 
 
-LaTeX Warning: Reference `sec-packages' on page 144 undefined on input line 7865.
+LaTeX Warning: Reference `sec-tidy' on page 144 undefined on input line 7820.
+
+
+LaTeX Warning: Reference `sec-wrangling' on page 144 undefined on input line 7821.
+
+
+LaTeX Warning: Reference `sec-exploredataframes' on page 144 undefined on input line 7875.
 
 
 
@@ -2934,46 +2946,69 @@ LaTeX Warning: Reference `sec-packages' on page 144 undefined on input line 7865
 
 ]
 
-LaTeX Warning: Reference `sec-select' on page 145 undefined on input line 7925.
+LaTeX Warning: Reference `sec-model1' on page 145 undefined on input line 7901.
 
 
-Underfull \hbox (badness 1377) in paragraph at lines 7940--7942
-[]\TU/lmr/m/n/10.95 Recall the three common steps in an exploratory data analysis we saw in \TU/lmr/bx/n/10.95 ?@sec-
- []
+LaTeX Warning: Reference `sec-model2' on page 145 undefined on input line 7905.
+
+
+LaTeX Warning: Reference `sec-multiple-regression' on page 145 undefined on input line 7909.
+
+
+LaTeX Warning: Reference `sec-model3' on page 145 undefined on input line 7917.
+
+
+LaTeX Warning: Reference `sec-model3' on page 145 undefined on input line 7920.
+
+
+LaTeX Warning: Reference `sec-tidyverse-package' on page 145 undefined on input line 7943.
 
 
 
 [145]
-Overfull \hbox (7.39111pt too wide) in paragraph at lines 7968--7968
-[]\TU/lmtt/m/n/10.95 $ debt          <dbl> 333, 903, 580, 964, 331, 1151, 203, 872, 279, 1350, 1407~[] 
- []
 
-
-Overfull \hbox (7.39111pt too wide) in paragraph at lines 7969--7969
-[]\TU/lmtt/m/n/10.95 $ credit_limit  <dbl> 3606, 6645, 7075, 9504, 4897, 8047, 3388, 7114, 3300, 68~[] 
- []
-
-
-Overfull \hbox (7.39111pt too wide) in paragraph at lines 7970--7970
-[]\TU/lmtt/m/n/10.95 $ income        <dbl> 14.9, 106.0, 104.6, 148.9, 55.9, 80.2, 21.0, 71.4, 15.1,~[] 
- []
-
-
-Overfull \hbox (7.39111pt too wide) in paragraph at lines 7971--7971
-[]\TU/lmtt/m/n/10.95 $ credit_rating <dbl> 283, 483, 514, 681, 357, 569, 259, 512, 266, 491, 589, 1~[] 
- []
-
-
-Overfull \hbox (7.39111pt too wide) in paragraph at lines 7972--7972
-[]\TU/lmtt/m/n/10.95 $ age           <dbl> 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 49, ~[] 
- []
-
-
-LaTeX Warning: Reference `tbl-model3-data-preview' on page 146 undefined on input line 7976.
+LaTeX Warning: Reference `sec-packages' on page 146 undefined on input line 7973.
 
 
 
 [146]
+
+LaTeX Warning: Reference `tbl-five-random-courses' on page 147 undefined on input line 8111.
+
+
+
+[147]
+
+LaTeX Warning: Reference `sec-summarize' on page 148 undefined on input line 8148.
+
+
+
+[148]
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -3036,17 +3071,745 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
-Overfull \hbox (13.13986pt too wide) in paragraph at lines 8028--8028
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 8201--8201
+[]  \TU/lmtt/m/n/10.95 skim_variable n_missing complete_rate mean    sd   p0  p25  p50 p75 p100 hist[] 
+ []
+
+Missing character: There is no ▁ (U+2581) in font [lmmono10-regular]:!
+Missing character: There is no ▁ (U+2581) in font [lmmono10-regular]:!
+Missing character: There is no ▅ (U+2585) in font [lmmono10-regular]:!
+Missing character: There is no ▇ (U+2587) in font [lmmono10-regular]:!
+Missing character: There is no ▇ (U+2587) in font [lmmono10-regular]:!
+Missing character: There is no ▃ (U+2583) in font [lmmono10-regular]:!
+Missing character: There is no ▇ (U+2587) in font [lmmono10-regular]:!
+Missing character: There is no ▇ (U+2587) in font [lmmono10-regular]:!
+Missing character: There is no ▃ (U+2583) in font [lmmono10-regular]:!
+Missing character: There is no ▂ (U+2582) in font [lmmono10-regular]:!
+
+
+[149]
+
+LaTeX Warning: Reference `fig-correlation1' on page 150 undefined on input line 8276.
+
+File: 05-regression_files/figure-pdf/fig-correlation1-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-correlation1-1.pdf>
+
+LaTeX Warning: Reference `sec-exploredataframes' on page 150 undefined on input line 8315.
+
+
+
+[150]
+
+[151]
+
+LaTeX Warning: Reference `sec-correlationcoefficient' on page 152 undefined on input line 8333.
+
+
+LaTeX Warning: Reference `fig-numxplot1' on page 152 undefined on input line 8339.
+
+File: 05-regression_files/figure-pdf/fig-numxplot1-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-numxplot1-1.pdf>
+
+
+[152]
+
+LaTeX Warning: Reference `fig-numxplot2' on page 153 undefined on input line 8371.
+
+
+LaTeX Warning: Reference `sec-overplotting' on page 153 undefined on input line 8379.
+
+
+LaTeX Warning: Reference `fig-numxplot2' on page 153 undefined on input line 8386.
+
+File: 05-regression_files/figure-pdf/fig-numxplot2-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-numxplot2-1.pdf>
+
+
+[153]
+
+LaTeX Warning: Reference `fig-numxplot1' on page 154 undefined on input line 8406.
+
+
+LaTeX Warning: Reference `fig-numxplot2' on page 154 undefined on input line 8407.
+
+File: 05-regression_files/figure-pdf/fig-numxplot2-a-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-numxplot2-a-1.pdf>
+
+LaTeX Warning: Reference `fig-numxplot1' on page 154 undefined on input line 8438.
+
+
+LaTeX Warning: Reference `fig-numxplot3' on page 154 undefined on input line 8439.
+
+
+LaTeX Warning: Reference `fig-numxplot2' on page 154 undefined on input line 8441.
+
+
+LaTeX Warning: Reference `sec-leastsquares' on page 154 undefined on input line 8445.
+
+
+LaTeX Warning: Reference `sec-model1points' on page 154 undefined on input line 8447.
+
+
+
+[154]
+File: 05-regression_files/figure-pdf/fig-numxplot3-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-numxplot3-1.pdf>
+
+
+[155]
+
+LaTeX Warning: Reference `sec-sampling' on page 156 undefined on input line 8487.
+
+
+LaTeX Warning: Reference `sec-confidence-int' on page 156 undefined on input line 8489.
+
+
+LaTeX Warning: Reference `sec-hypothesis-tests' on page 156 undefined on input line 8490.
+
+File: 05-regression_files/figure-pdf/fig-numxplot4-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-numxplot4-1.pdf>
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[156]
+
+LaTeX Warning: Reference `fig-numxplot4' on page 157 undefined on input line 8558.
+
+
+LaTeX Warning: Reference `sec-model1points' on page 157 undefined on input line 8574.
+
+
+LaTeX Warning: Reference `fig-numxplot4' on page 157 undefined on input line 8577.
+
+
+
+[157]
+
+LaTeX Warning: Reference `fig-numxplot4' on page 158 undefined on input line 8632.
+
+
+LaTeX Warning: Reference `sec-correlation-is-not-causation' on page 158 undefined on input line 8680.
+
+
+LaTeX Warning: Reference `sec-causality' on page 158 undefined on input line 8681.
+
+
+LaTeX Warning: Reference `fig-numxplot4' on page 158 undefined on input line 8688.
+
+
+
+[158]
+
+LaTeX Warning: Reference `fig-numxplot4' on page 159 undefined on input line 8694.
+
+
+
+[159]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 8751.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 8751.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 8751.
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[160]
+
+LaTeX Warning: Reference `fig-numxplot5' on page 161 undefined on input line 8807.
+
+File: 05-regression_files/figure-pdf/fig-numxplot5-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-numxplot5-1.pdf>
+
+LaTeX Warning: Reference `fig-numxplot4' on page 161 undefined on input line 8860.
+
+
+LaTeX Warning: Reference `sec-wrangling' on page 161 undefined on input line 8864.
+
+
+
+[161]
+
+[162]
+
+LaTeX Warning: Reference `tbl-reg-points' on page 163 undefined on input line 8912.
+
+
+LaTeX Warning: Reference `sec-leastsquares' on page 163 undefined on input line 8955.
+
+
+
+[163]
+
+LaTeX Warning: Reference `sec-gapminder' on page 164 undefined on input line 8984.
+
+
+LaTeX Warning: Reference `sec-viz' on page 164 undefined on input line 8985.
+
+
+LaTeX Warning: Reference `sec-model1' on page 164 undefined on input line 8992.
+
+
+LaTeX Warning: Reference `sec-model1' on page 164 undefined on input line 9006.
+
+
+LaTeX Warning: Reference `sec-model2table' on page 164 undefined on input line 9008.
+
+
+
+[164]
+
+LaTeX Warning: Reference `sec-model1EDA' on page 165 undefined on input line 9031.
+
+
+LaTeX Warning: Reference `sec-exploredataframes' on page 165 undefined on input line 9048.
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 9060--9060
+[]\TU/lmtt/m/n/10.95 $ country   <fct> "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 9061--9061
+[]\TU/lmtt/m/n/10.95 $ lifeExp   <dbl> 43.8, 76.4, 72.3, 42.7, 75.3, 81.2, 79.8, 75.6, 64.1, 79.4, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 9062--9062
+[]\TU/lmtt/m/n/10.95 $ continent <fct> Asia, Europe, Africa, Africa, Americas, Oceania, Europe, Asi~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 9063--9063
+[]\TU/lmtt/m/n/10.95 $ gdpPercap <dbl> 975, 5937, 6223, 4797, 12779, 34435, 36126, 29796, 1391, 336~[] 
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 9066--9073
+[]\TU/lmr/m/n/10.95 Observe that \TU/lmtt/m/n/10.95 Observations: 142 \TU/lmr/m/n/10.95 indicates that there are 142 rows/observations in
+ []
+
+
+
+[165]
+
+LaTeX Warning: Reference `tbl-model2-data-preview' on page 166 undefined on input line 9100.
+
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+
+[166]
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+Overfull \hbox (76.3761pt too wide) in paragraph at lines 9164--9164
+[]\TU/lmtt/m/n/10.95 1 continent             0             1 FALSE          5 Afr: 52, Asi: 33, Eur: 30, Ame: 25[] 
+ []
+
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 9167--9167
+[]  \TU/lmtt/m/n/10.95 skim_variable n_missing complete_rate mean   sd   p0  p25  p50  p75 p100 hist[] 
+ []
+
+Missing character: There is no ▂ (U+2582) in font [lmmono10-regular]:!
+Missing character: There is no ▃ (U+2583) in font [lmmono10-regular]:!
+Missing character: There is no ▃ (U+2583) in font [lmmono10-regular]:!
+Missing character: There is no ▆ (U+2586) in font [lmmono10-regular]:!
+Missing character: There is no ▇ (U+2587) in font [lmmono10-regular]:!
+
+LaTeX Warning: Reference `fig-lifeExp2007hist' on page 167 undefined on input line 9201.
+
+
+
+[167]
+File: 05-regression_files/figure-pdf/fig-lifeExp2007hist-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-lifeExp2007hist-1.pdf>
+
+LaTeX Warning: Reference `sec-facets' on page 168 undefined on input line 9236.
+
+
+LaTeX Warning: Reference `fig-catxplot0b' on page 168 undefined on input line 9238.
+
+
+
+[168]
+File: 05-regression_files/figure-pdf/fig-catxplot0b-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-catxplot0b-1.pdf>
+
+LaTeX Warning: Reference `fig-catxplot1' on page 169 undefined on input line 9274.
+
+
+
+[169]
+File: 05-regression_files/figure-pdf/fig-catxplot1-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-catxplot1-1.pdf>
+
+LaTeX Warning: Reference `fig-catxplot1' on page 170 undefined on input line 9302.
+
+
+LaTeX Warning: Reference `fig-catxplot0b' on page 170 undefined on input line 9306.
+
+
+
+[170]
+
+LaTeX Warning: Reference `tbl-catxplot0' on page 171 undefined on input line 9319.
+
+
+LaTeX Warning: Reference `fig-catxplot1' on page 171 undefined on input line 9351.
+
+
+LaTeX Warning: Reference `tbl-continent-mean-life-expectancies' on page 171 undefined on input line 9373.
+
+[171]
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
+
+LaTeX Warning: Reference `sec-model1table' on page 172 undefined on input line 9421.
+
+
+LaTeX Warning: Reference `tbl-catxplot0' on page 172 undefined on input line 9431.
+
+
+LaTeX Warning: Reference `fig-catxplot1' on page 172 undefined on input line 9444.
+
+[172]
+
+[173]
+
+LaTeX Warning: Reference `tbl-continent-mean-life-expectancies' on page 174 undefined on input line 9560.
+
+
+LaTeX Warning: Reference `tbl-continent-mean-life-expectancies' on page 174 undefined on input line 9584.
+
+
+
+[174]
+
+LaTeX Warning: Reference `tbl-continent-mean-life-expectancies' on page 175 undefined on input line 9607.
+
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 9635--9641
+[]\TU/lmr/m/n/10.95 Fit a new linear regression using \TU/lmtt/m/n/10.95 lm(gdpPercap ~ continent, data =
+ []
+
+
+LaTeX Warning: Reference `sec-model1points' on page 175 undefined on input line 9648.
+
+
+
+[175]
+
+LaTeX Warning: Reference `sec-model1points' on page 176 undefined on input line 9663.
+
+
+LaTeX Warning: Reference `tbl-lifeExp-reg-points' on page 176 undefined on input line 9702.
+
+
+LaTeX Warning: Reference `tbl-continent-mean-life-expectancies' on page 176 undefined on input line 9706.
+
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
+
+LaTeX Warning: Reference `sec-wrangling' on page 176 undefined on input line 9724.
+
+
+
+[176]
+Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
+
+LaTeX Warning: Reference `fig-correlation1' on page 177 undefined on input line 9744.
+
+
+LaTeX Warning: Reference `fig-correlation2' on page 177 undefined on input line 9746.
+
+File: 05-regression_files/figure-pdf/fig-correlation2-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-correlation2-1.pdf>
+
+LaTeX Warning: Reference `sec-model1EDA' on page 177 undefined on input line 9758.
+
+
+
+[177]
+
+LaTeX Warning: Reference `sec-model1table' on page 178 undefined on input line 9771.
+
+File: images/flowcharts/flowchart.010-cropped.png Graphic file (type bmp)
+<images/flowcharts/flowchart.010-cropped.png>
+
+LaTeX Warning: Reference `fig-moderndive-figure-causal-graph' on page 178 undefined on input line 9807.
+
+
+
+[178]
+File: images/flowcharts/flowchart.009-cropped.png Graphic file (type bmp)
+<images/flowcharts/flowchart.009-cropped.png>
+
+LaTeX Warning: Reference `fig-moderndive-figure-causal-graph' on page 179 undefined on input line 9832.
+
+
+
+[179]
+
+LaTeX Warning: Reference `fig-numxplot4' on page 180 undefined on input line 9869.
+
+
+LaTeX Warning: Reference `fig-numxplot4' on page 180 undefined on input line 9875.
+
+
+LaTeX Warning: Reference `fig-best-fitting-line' on page 180 undefined on input line 9876.
+
+File: 05-regression_files/figure-pdf/fig-best-fitting-line-1.pdf Graphic file (type pdf)
+<use 05-regression_files/figure-pdf/fig-best-fitting-line-1.pdf>
+
+LaTeX Warning: Reference `sec-wrangling' on page 180 undefined on input line 9932.
+
+
+
+[180]
+
+[181]
+
+LaTeX Warning: Reference `sec-model1EDA' on page 182 undefined on input line 9979.
+
+
+LaTeX Warning: Reference `sec-multiple-regression' on page 182 undefined on input line 9991.
+
+
+
+[182]
+File: images/cor_-0.7.png Graphic file (type bmp)
+<images/cor_-0.7.png>
+
+
+[183]
+
+[184]
+
+[185]
+
+LaTeX Warning: Reference `sec-getting-started' on page 186 undefined on input line 10345.
+
+
+LaTeX Warning: Reference `exr-ch05-app1' on page 186 undefined on input line 10347.
+
+
+
+[186]
+
+[187]
+chapter 6.
+
+LaTeX Warning: Reference `sec-regression' on page 188 undefined on input line 10366.
+
+
+LaTeX Warning: Reference `sec-model1' on page 188 undefined on input line 10374.
+
+
+LaTeX Warning: Reference `sec-model2' on page 188 undefined on input line 10374.
+
+
+LaTeX Warning: Reference `sec-model1' on page 188 undefined on input line 10379.
+
+
+LaTeX Warning: Reference `sec-model2' on page 188 undefined on input line 10380.
+
+
+LaTeX Warning: Reference `sec-tidyverse-package' on page 188 undefined on input line 10394.
+
+
+LaTeX Warning: Reference `sec-packages' on page 188 undefined on input line 10413.
+
+
+
+[188
+
+]
+
+LaTeX Warning: Reference `sec-select' on page 189 undefined on input line 10473.
+
+
+LaTeX Warning: Reference `sec-model1EDA' on page 189 undefined on input line 10489.
+
+
+
+[189]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 10516--10516
+[]\TU/lmtt/m/n/10.95 $ debt          <dbl> 333, 903, 580, 964, 331, 1151, 203, 872, 279, 1350, 1407~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 10517--10517
+[]\TU/lmtt/m/n/10.95 $ credit_limit  <dbl> 3606, 6645, 7075, 9504, 4897, 8047, 3388, 7114, 3300, 68~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 10518--10518
+[]\TU/lmtt/m/n/10.95 $ income        <dbl> 14.9, 106.0, 104.6, 148.9, 55.9, 80.2, 21.0, 71.4, 15.1,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 10519--10519
+[]\TU/lmtt/m/n/10.95 $ credit_rating <dbl> 283, 483, 514, 681, 357, 569, 259, 512, 266, 491, 589, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 10520--10520
+[]\TU/lmtt/m/n/10.95 $ age           <dbl> 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 49, ~[] 
+ []
+
+
+LaTeX Warning: Reference `tbl-model3-data-preview' on page 190 undefined on input line 10524.
+
+
+LaTeX Warning: Reference `sec-model1EDA' on page 190 undefined on input line 10558.
+
+
+LaTeX Warning: Reference `sec-model2EDA' on page 190 undefined on input line 10558.
+
+
+
+[190]
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+Overfull \hbox (13.13986pt too wide) in paragraph at lines 10576--10576
 []  \TU/lmtt/m/n/10.95 variable missing complete   n    mean      sd  p0     p25    p50     p75  p100[] 
  []
 
 
-Overfull \hbox (13.13986pt too wide) in paragraph at lines 8029--8029
+Overfull \hbox (13.13986pt too wide) in paragraph at lines 10577--10577
 []\TU/lmtt/m/n/10.95 credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913[] 
  []
 
 
-Overfull \hbox (13.13986pt too wide) in paragraph at lines 8030--8030
+Overfull \hbox (13.13986pt too wide) in paragraph at lines 10578--10578
 []         \TU/lmtt/m/n/10.95 debt    0      400 400  520.01  459.76   0   68.75  459.5  863     1999[] 
  []
 
@@ -3112,42 +3875,53 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
-LaTeX Warning: Reference `tbl-model3-correlation' on page 147 undefined on input line 8059.
+LaTeX Warning: Reference `sec-model1EDA' on page 191 undefined on input line 10596.
 
-[147]
 
-LaTeX Warning: Reference `fig-2numxplot1' on page 148 undefined on input line 8127.
+LaTeX Warning: Reference `tbl-model3-correlation' on page 191 undefined on input line 10608.
+
+
+
+[191]
+
+LaTeX Warning: Reference `fig-2numxplot1' on page 192 undefined on input line 10676.
 
 File: 06-multiple-regression_files/figure-pdf/fig-2numxplot1-1.pdf Graphic file (type pdf)
 <use 06-multiple-regression_files/figure-pdf/fig-2numxplot1-1.pdf>
 
-
-[148]
-
-[149]
-
-LaTeX Warning: Reference `fig-2numxplot1' on page 150 undefined on input line 8163.
+LaTeX Warning: Reference `fig-2numxplot1' on page 192 undefined on input line 10712.
 
 
-LaTeX Warning: Reference `fig-3D-scatterplot' on page 150 undefined on input line 8167.
+LaTeX Warning: Reference `fig-3D-scatterplot' on page 192 undefined on input line 10716.
 
+
+
+[192]
+
+[193]
 File: images/credit_card_balance_regression_plane.png Graphic file (type bmp)
 <images/credit_card_balance_regression_plane.png>
+
+LaTeX Warning: Reference `sec-leastsquares' on page 194 undefined on input line 10744.
+
 Missing character: There is no 🎯 (U+1F3AF) in font [lmroman10-regular]:mapping=tex-text;!
 
 
-[150]
+[194]
 
-LaTeX Warning: Reference `fig-3D-scatterplot' on page 151 undefined on input line 8234.
+LaTeX Warning: Reference `fig-3D-scatterplot' on page 195 undefined on input line 10783.
 
 
-LaTeX Warning: Reference `tbl-model3-table-output' on page 151 undefined on input line 8241.
+LaTeX Warning: Reference `sec-regression' on page 195 undefined on input line 10788.
+
+
+LaTeX Warning: Reference `tbl-model3-table-output' on page 195 undefined on input line 10790.
 
 ! Undefined control sequence.
 <argument> ...al \expandafter \let \cmrsideswitch 
                                                   \@tempa \fi \fi 
-l.8273 (Intercept)
-                   & -385.179 & 19.465 & -19.8 & 0\\
+l.10822 (Intercept)
+                    & -385.179 & 19.465 & -19.8 & 0\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -3156,11 +3930,11 @@ and I'll forget about whatever was undefined.
 
  
 Here is how much of TeX's memory you used:
- 41786 strings out of 470411
- 869246 string characters out of 5487509
+ 42050 strings out of 470411
+ 878621 string characters out of 5487509
  1551041 words of memory out of 5000000
- 69415 multiletter control sequences out of 15000+600000
- 633434 words of font info for 100 fonts, out of 8000000 for 9000
+ 69657 multiletter control sequences out of 15000+600000
+ 634409 words of font info for 107 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 108i,10n,114p,10900b,1329s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on index.pdf (150 pages).
+ 108i,10n,114p,10900b,1331s stack positions out of 10000i,1000n,20000p,200000b,200000s
+Output written on index.pdf (194 pages).

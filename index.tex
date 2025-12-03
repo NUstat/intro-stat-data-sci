@@ -257,7 +257,7 @@ by \and Chester Ismay and Albert Y. Kim}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -280,7 +280,7 @@ and examine many types of data arising from several contexts. Hopefully
 you'll have fun and see how valuable it is to be able to critically
 think with data.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-warning-color-frame, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Please note that this is a ``development version'' of this book for the
 new design of STAT 202. Meaning this is a work in progress being edited
@@ -440,7 +440,7 @@ flights from a New York City airport in 2013. Then
   \begin{itemize}
   \tightlist
   \item
-    \textbf{?@sec-regression}: Constructing basic regression models.
+    Ch.~\ref{sec-regression}: Constructing basic regression models.
   \item
     Ch.~\ref{sec-multiple-regression}: Constructing multiple regression
     models.
@@ -1279,7 +1279,7 @@ Much like an app on your phone, you only have to install a package once.
 However, if you want to update an already installed package to a newer
 verions, you need to re-install it by repeating the above steps.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 1.1}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Repeat the above installing steps for the \texttt{dplyr},
 \texttt{nycflights13}, and \texttt{knitr} packages. This will install
@@ -1318,7 +1318,7 @@ Error in library(ggplot2) : there is no package called ‘ggplot2’
 go back to the previous subsection ``Package installation'' and install
 it.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 1.2}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 ``Load'' the \texttt{dplyr}, \texttt{nycflights13}, and \texttt{knitr}
 packages as well by repeating the above steps.
@@ -1522,7 +1522,7 @@ capital ``V'' in \texttt{View}. R is case-sensitive so you'll receive an
 error is you run \texttt{view(flights)} instead of
 \texttt{View(flights)}.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 1.3}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What does any \emph{ONE} row in this \texttt{flights} dataset refer to?
 
@@ -1612,7 +1612,7 @@ suspect, this variable corresponds to a specific date and time of day.
 However, we won't work with dates in this class and leave it to a more
 advanced book on data science.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 1.4}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 1.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are some examples in this dataset of \textbf{categorical}
 variables? What makes them different than \textbf{quantitative}
@@ -2279,7 +2279,7 @@ is specified with \texttt{==} and not \texttt{=}. Fasten your seat belts
 and sit tight for now however, we'll introduce these ideas more fully in
 Chapter~\ref{sec-wrangling}.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.1}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Take a look at both the \texttt{flights} and \texttt{alaska\_flights}
 data frames by running \texttt{View(flights)} and
@@ -2405,14 +2405,14 @@ above code that generated the scatterplot:
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.2}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are some practical reasons why \texttt{dep\_delay} and
 \texttt{arr\_delay} have a positive relationship?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.3}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What variables (not necessarily in the \texttt{flights} data frame)
 would you expect to have a negative correlation (i.e.~a negative
@@ -2421,20 +2421,20 @@ focusing on numerical variables here.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.4}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why do you believe there is a cluster of points near (0, 0)? What does
 (0, 0) correspond to in terms of the Alaskan flights?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.5}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are some other features of the plot that stand out to you?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.6}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.6}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Create a new scatterplot using different variables in the
 \texttt{alaska\_flights} data frame by modifying the example above.
@@ -2591,7 +2591,7 @@ effective. In terms of how much jitter one should add using the
 just enough jitter to break any overlap in points, but not so much that
 we completely alter the overall pattern in points.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.7}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.7}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why is setting the \texttt{alpha} argument value useful with
 scatterplots? What further information does it give you that a regular
@@ -2599,7 +2599,7 @@ scatterplot cannot?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.8}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.8}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 After viewing the Figure~\ref{fig-alpha} above, give an approximate
 range of arrival delays and departure delays that occur the most
@@ -2682,7 +2682,7 @@ choose the subset of rows of \texttt{weather} where
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.9}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.9}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Take a look at both the \texttt{weather} and
 \texttt{early\_january\_weather} data frames by running
@@ -2691,7 +2691,7 @@ what respect do these data frames differ?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.10}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.10}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 \texttt{View()} the \texttt{flights} data frame again. Why does the
 \texttt{time\_hour} variable uniquely identify the hour of the
@@ -2763,21 +2763,21 @@ in terms of the Grammar of Graphics:
   \texttt{geom\_line()}.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.11}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.11}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why should linegraphs be avoided when there is not a clear ordering of
 the horizontal axis?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.12}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.12}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why are linegraphs frequently used when time is the explanatory variable
 on the x-axis?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.13}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.13}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Plot a time series of a variable other than \texttt{temp} for Newark
 Airport in the first 15 days of January 2013.
@@ -3054,28 +3054,28 @@ of each bin to be 10°F.
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.14}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.14}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What does changing the number of bins from 30 to 40 tell us about the
 distribution of temperatures?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.15}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.15}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Would you classify the distribution of temperatures as symmetric or
 skewed?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.16}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.16}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What would you guess is the ``center'' value in this distribution? Why
 did you make that choice?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.17}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.17}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Is this data spread out greatly from the center or is it close? Why?
 
@@ -3157,21 +3157,21 @@ Figure~\ref{fig-facethistogram2} that as we might expect in the Northern
 Hemisphere, temperatures tend to be higher in the summer months, while
 they tend to be lower in the winter.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.18}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.18}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What other things do you notice about the faceted plot above? How does a
 faceted plot help us see relationships between two variables?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.19}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.19}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What do the numbers 1-12 correspond to in the plot above? What about 25,
 50, 75, 100?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.20}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.20}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 For which types of datasets would these types of faceted plots not work
 well in comparing relationships between variables? Give an example
@@ -3180,7 +3180,7 @@ characteristics.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.21}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.21}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Does the \texttt{temp} variable in the \texttt{weather} dataset have a
 lot of variability? Why do you say that?
@@ -3407,21 +3407,21 @@ the plot. Furthermore, the height of the 12 boxes as quantified by the
 interquartile ranges are informative too; they tell us about
 variability, or spread, of temperatures recorded in a given month.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.22}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.22}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What does the dot at the bottom of the plot for May correspond to?
 Explain what might have occurred in May to produce this point.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.23}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.23}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Which months have the highest variability in temperature? What reasons
 can you give for this?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.24}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.24}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 We looked at the distribution of the numerical variable \texttt{temp}
 split by the numerical variable \texttt{month} that we converted to a
@@ -3432,7 +3432,7 @@ the \texttt{factor()} not be informative?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.25}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.25}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Boxplots provide a simple way to identify outliers. Why may outliers be
 easier to identify when looking at a boxplot instead of a faceted
@@ -3664,25 +3664,25 @@ barplot would be identical to Figure~\ref{fig-flightsbar}.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.26}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.26}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why are histograms inappropriate for visualizing categorical variables?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.27}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.27}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What is the difference between histograms and barplots?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.28}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.28}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 How many Envoy Air flights departed NYC in 2013?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.29}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.29}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What was the seventh highest airline in terms of departed flights from
 NYC in 2013? How could we better present the table to get this answer
@@ -3754,13 +3754,13 @@ but we will leave this for the reader to decide:
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.30}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.30}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why should pie charts be avoided and replaced by barplots?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.31}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.31}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why do you think people continue to use pie charts?
 
@@ -3866,14 +3866,14 @@ aesthetic used instead of fill}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.32}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.32}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What kinds of questions are not easily answered by looking at the above
 figure?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.33}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.33}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What can you say, if anything, about the relationship between airline
 and airport in NYC in 2013 in regards to the number of departing
@@ -3907,14 +3907,14 @@ comparing the number of flights by carrier and origin}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.34}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.34}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why might the side-by-side (AKA dodged) barplot be preferable to a
 stacked barplot in this case?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.35}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.35}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are the disadvantages of using a side-by-side (AKA dodged) barplot,
 in general?
@@ -3947,14 +3947,14 @@ of flights by carrier and origin}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.36}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.36}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why is the faceted barplot preferred to the side-by-side and stacked
 barplots in this case?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 2.37}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 2.37}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What information about the different carriers at different airports is
 more easily seen in the faceted barplot?
@@ -4892,7 +4892,7 @@ among the first verbs you apply to your data. This cleans your dataset
 to only those rows you care about, or put differently, it narrows down
 the scope of your data frame to just the observations you care about.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.1}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What's another way of using the ``not'' operator \texttt{!} to filter
 only the rows that are not going to Burlington VT nor Seattle WA in the
@@ -5037,7 +5037,7 @@ values and returns just one. Here are just a few:
   \texttt{group\_by()} is covered in Section~\ref{sec-groupby}.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.2}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Say a doctor is studying the effect of smoking on lung cancer for a
 large number of patients who have records measured at five year
@@ -5047,7 +5047,7 @@ patients in her analysis. What is wrong with this doctor's approach?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.3}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Modify the above \texttt{summarize()} function to create
 \texttt{summary\_temp} to also use the \texttt{n()} summary function:
@@ -5057,7 +5057,7 @@ What does the returned value correspond to?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.4}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why doesn't the following code work?
 
@@ -5370,7 +5370,7 @@ here is if you want to \texttt{group\_by()} two or more variables, you
 should include all these variables in a single \texttt{group\_by()}
 function call.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.5}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Recall from Chapter~\ref{sec-viz} when we looked at plots of
 temperatures by months in NYC. What does the standard deviation column
@@ -5379,14 +5379,14 @@ temperatures in New York City throughout the year?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.6}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.6}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What code would be required to get the mean and standard deviation
 temperature for each day in 2013 for NYC?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.7}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.7}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Recreate \texttt{by\_monthly\_origin}, but instead of grouping via
 \texttt{group\_by(origin,\ month)}, group variables in a different order
@@ -5396,14 +5396,14 @@ What differs in the resulting dataset?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.8}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.8}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 How could we identify how many flights left each of the three airports
 for each \texttt{carrier}?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.9}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.9}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 How does the \texttt{filter} operation differ from a \texttt{group\_by}
 followed by a \texttt{summarize}?
@@ -5607,7 +5607,7 @@ Wickham 2016):
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.10}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.10}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What do positive values of the \texttt{gain} variable in
 \texttt{flights} correspond to? What about negative values? And what
@@ -5615,7 +5615,7 @@ about a zero value?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.11}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.11}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Could we create the \texttt{dep\_delay} and \texttt{arr\_delay} columns
 by simply subtracting \texttt{dep\_time} from \texttt{sched\_dep\_time}
@@ -5624,7 +5624,7 @@ between the result and what actually appears in \texttt{flights}.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.12}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.12}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What can we say about the distribution of \texttt{gain}? Describe it in
 a few sentences using the plot and the \texttt{gain\_summary} data frame
@@ -5948,7 +5948,7 @@ earlier:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.13}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.13}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Looking at Figure~\ref{fig-flights-key-diagram}, when joining
 \texttt{flights} and \texttt{weather} (or, in other words, matching the
@@ -5958,7 +5958,7 @@ of \texttt{year}, \texttt{month}, \texttt{day}, \texttt{hour}, and
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.14}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.14}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What surprises you about the top 10 destinations from NYC in 2013?
 
@@ -5999,7 +5999,7 @@ tables without losing information is called \textbf{normalization}. More
 information is available on
 \href{https://en.wikipedia.org/wiki/Database_normalization}{Wikipedia}.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.15}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.15}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are some advantages of data in normal forms? What are some
 disadvantages?
@@ -6198,7 +6198,7 @@ help file for the different \texttt{slice\_*()} functions by running
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.16}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.16}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are some ways to select all three of the \texttt{dest},
 \texttt{air\_time}, and \texttt{distance} variables from
@@ -6207,7 +6207,7 @@ different ways.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.17}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.17}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 How could one use \texttt{starts\_with}, \texttt{ends\_with}, and
 \texttt{contains} to select columns from the \texttt{flights} data
@@ -6217,13 +6217,13 @@ frame? Provide three different examples in total: one for
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.18}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.18}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Why might we want to use the \texttt{select} function on a data frame?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 3.19}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 3.19}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Create a new data frame that shows the top 5 airports with the largest
 arrival delays from NYC in 2013.
@@ -7185,13 +7185,13 @@ in our non-``tidy'' data in Table~\ref{tbl-non-tidy-stocks}), the data
 three unique pieces of information: Date, Boeing stock price, and the
 weather that particular day.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 4.1}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What are common characteristics of ``tidy'' data frames?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 4.2}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 What makes ``tidy'' data frames useful for organizing data?
 
@@ -7346,7 +7346,7 @@ available for data tidying and a case study using data from the World
 Health Organization in \href{http://r4ds.had.co.nz/tidy-data.html}{R for
 Data Science} (Grolemund and Wickham 2016).
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 4.3}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Take a look the \texttt{airline\_safety} data frame included in the
 \texttt{fivethirtyeight} data. Run the following:
@@ -7628,7 +7628,7 @@ changed from 1952 to 1992 using a \texttt{geom\_line()}:
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 4.4}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Convert the \texttt{dem\_score} data frame into a tidy data frame and
 assign the name of \texttt{dem\_score\_tidy} to the resulting
@@ -7636,7 +7636,7 @@ long-formatted data frame.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 4.5}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 4.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Read in the life expectancy data stored at
 \url{https://moderndive.com/data/le_mess.csv} and convert it to a tidy
@@ -7732,7 +7732,7 @@ and searching for ``Data Import Cheat Sheet''.
 
 Congratulations! We've completed the ``Data Science via the tidyverse''
 portion of this book! We'll now move to the ``data modeling'' portion in
-\textbf{?@sec-regression} and \ref{sec-multiple-regression}, where
+Chapters~\ref{sec-regression} and \ref{sec-multiple-regression}, where
 you'll leverage your data visualization and wrangling skills to model
 relationships between different variables in data frames.
 
@@ -7812,25 +7812,2573 @@ package so that each observation corresponds to a \texttt{FIPS}.
 
 \part{Data Modeling}
 
+\hypertarget{sec-regression}{%
+\chapter{Basic Regression}\label{sec-regression}}
+
+Now that we are equipped with data visualization skills from
+Chapter~\ref{sec-viz}, an understanding of the ``tidy'' data format from
+Chapter~\ref{sec-tidy}, and data wrangling skills from
+Chapter~\ref{sec-wrangling}, we now proceed with data modeling. The
+fundamental premise of data modeling is \emph{to make explicit the
+relationship} between:
+
+\begin{itemize}
+\tightlist
+\item
+  an outcome variable \(y\), also called a dependent variable and
+\item
+  an explanatory/predictor variable \(x\), also called an independent
+  variable or covariate.
+\end{itemize}
+
+Another way to state this is using mathematical terminology: we will
+model the outcome variable \(y\) \emph{as a function} of the
+explanatory/predictor variable \(x\). Why do we have two different
+labels, explanatory and predictor, for the variable \(x\)? That's
+because roughly speaking data modeling can be used for two purposes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Modeling for prediction}: You want to predict an outcome
+  variable \(y\) based on the information contained in a set of
+  predictor variables. You don't care so much about understanding how
+  all the variables relate and interact, but so long as you can make
+  good predictions about \(y\), you're fine. For example, if we know
+  many individuals' risk factors for lung cancer, such as smoking habits
+  and age, can we predict whether or not they will develop lung cancer?
+  Here we wouldn't care so much about distinguishing the degree to which
+  the different risk factors contribute to lung cancer, but instead only
+  on whether or not they could be put together to make reliable
+  predictions.
+\item
+  \textbf{Modeling for explanation}: You want to explicitly describe the
+  relationship between an outcome variable \(y\) and a set of
+  explanatory variables, determine the significance of any found
+  relationships, and have measures summarizing these. Continuing our
+  example from above, we would now be interested in describing the
+  individual effects of the different risk factors and quantifying the
+  magnitude of these effects. One reason could be to design an
+  intervention to reduce lung cancer cases in a population, such as
+  targeting smokers of a specific age group with an advertisement for
+  smoking cessation programs. In this book, we'll focus more on this
+  latter purpose.
+\end{enumerate}
+
+Data modeling is used in a wide variety of fields, including statistical
+inference, causal inference, artificial intelligence, and machine
+learning. There are many techniques for data modeling, such as
+tree-based models, neural networks and deep learning, and supervised
+learning. In this chapter, we'll focus on one particular technique:
+\emph{linear regression}, one of the most commonly-used and
+easy-to-understand approaches to modeling. Recall our discussion in
+Subsection~\ref{sec-exploredataframes} on numerical and categorical
+variables. Linear regression involves:
+
+\begin{itemize}
+\tightlist
+\item
+  an outcome variable \(y\) that is \emph{numerical} and
+\item
+  explanatory variables \(x_i\) (e.g.~\(x_1, x_2, ...\)) that are either
+  \emph{numerical} or \emph{categorical}.
+\end{itemize}
+
+With linear regression there is always only one numerical outcome
+variable \(y\) but we have choices on both the number and the type of
+explanatory variables to use. We're going to cover the following
+regression scenarios:
+
+\begin{itemize}
+\tightlist
+\item
+  In this current chapter on basic regression, we'll always have only
+  one explanatory variable.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In Section~\ref{sec-model1}, this explanatory variable will be a
+    single numerical explanatory variable \(x\). This scenario is known
+    as \emph{simple linear regression}.
+  \item
+    In Section~\ref{sec-model2}, this explanatory variable will be a
+    categorical explanatory variable \(x\).
+  \end{itemize}
+\item
+  In the next chapter, Chapter~\ref{sec-multiple-regression} on
+  \emph{multiple regression}, we'll have more than one explanatory
+  variable:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    We'll focus on two numerical explanatory variables, \(x_1\) and
+    \(x_2\), in Section~\ref{sec-model3}.
+  \item
+    We'll use one numerical and one categorical explanatory variable in
+    Section~\ref{sec-model3}. We'll also introduce \emph{interaction
+    models} here; there, the effect of one explanatory variable depends
+    on the value of another.
+  \end{itemize}
+\end{itemize}
+
+We'll study all four of these regression scenarios using real data, all
+easily accessible via R packages!
+
+\hypertarget{packages-needed-3}{%
+\section*{Packages Needed}\label{packages-needed-3}}
+\addcontentsline{toc}{section}{Packages Needed}
+
+\markright{Packages Needed}
+
+Let's now load all the packages needed for this chapter (this assumes
+you've already installed them). In this chapter we introduce some new
+packages:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The \texttt{tidyverse} ``umbrella'' package. Recall from our
+  discussion in Subsection~\ref{sec-tidyverse-package} that loading the
+  \texttt{tidyverse} package by running \texttt{library(tidyverse)}
+  loads the following commonly used data science packages all at once:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{ggplot2} for data visualization
+  \item
+    \texttt{dplyr} for data wrangling
+  \item
+    \texttt{tidyr} for converting data to ``tidy'' format
+  \item
+    \texttt{readr} for importing spreadsheet data into R
+  \item
+    As well as the more advanced \texttt{purrr}, \texttt{tibble},
+    \texttt{stringr}, and \texttt{forcats} packages
+  \end{itemize}
+\item
+  The \texttt{skimr} (Waring et al. 2022) package, which provides a
+  simple-to-use function to quickly compute a wide array of
+  commonly-used summary statistics.
+\item
+  The \texttt{gapminder} package, which provides excerpts of data
+  available from \href{https://gapminder.org}{Gapminder.org}
+\item
+  The \texttt{moderndive} package, which includes datasets we will
+  analyze
+\end{enumerate}
+
+If needed, read Section~\ref{sec-packages} for information on how to
+install and load R packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(skimr)}
+\FunctionTok{library}\NormalTok{(gapminder)}
+\FunctionTok{library}\NormalTok{(moderndive)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sec-model1}{%
+\section{One numerical explanatory variable}\label{sec-model1}}
+
+Why do some professors and instructors at universities and colleges get
+high teaching evaluations from students while others don't? What factors
+can explain these differences? Are there biases? These are questions
+that are of interest to university/college administrators, as teaching
+evaluations are among the many criteria considered in determining which
+professors and instructors should get promotions. Researchers at the
+University of Texas in Austin, Texas (UT Austin) tried to answer this
+question: what factors can explain differences in instructor's teaching
+evaluation scores? To this end, they collected information on
+\(n = 463\) instructors. A full description of the study can be found at
+\href{https://www.openintro.org/stat/data/?data=evals}{openintro.org}.
+
+We'll keep things simple for now and try to explain differences in
+instructor evaluation scores as a function of one numerical variable:
+their ``beauty score.'' The specifics on how this score was calculated
+will be described shortly.
+
+Could it be that instructors with higher beauty scores also have higher
+teaching evaluations? Could it be instead that instructors with higher
+beauty scores tend to have lower teaching evaluations? Or could it be
+there is no relationship between beauty score and teaching evaluations?
+
+We'll achieve ways to address these questions by modeling the
+relationship between these two variables with a particular kind of
+linear regression called \emph{simple linear regression}. Simple linear
+regression is the most basic form of linear regression. With it we have
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A numerical outcome variable \(y\). In this case, an instructor's
+  teaching score.
+\item
+  A single numerical explanatory variable \(x\). In this case, an
+  instructor's beauty score.
+\end{enumerate}
+
+\hypertarget{sec-model1EDA}{%
+\subsection{Exploratory data analysis}\label{sec-model1EDA}}
+
+A crucial step before doing any kind of modeling or analysis is
+performing an \emph{exploratory data analysis}, or EDA, of all our data.
+Exploratory data analysis can give you a sense of the distribution of
+the data and whether there are outliers and/or missing values. Most
+importantly, it can inform how to build your model. There are many
+approaches to exploratory data analysis; here are three:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Most fundamentally: just looking at the raw values, in a spreadsheet
+  for example. While this may seem trivial, many people ignore this
+  crucial step!
+\item
+  Computing summary statistics like means, medians, and standard
+  deviations.
+\item
+  Creating data visualizations.
+\end{enumerate}
+
+Let's load the \texttt{evals} data (which is built into the
+\texttt{moderndive} package), \texttt{select} only a subset of the
+variables, and look at the raw values. Recall you can look at the raw
+values by running \texttt{View()} in the console in RStudio to pop-up
+the spreadsheet viewer with the data frame of interest as the argument
+to \texttt{View()}. Here, however, we present only a snapshot of five
+randomly chosen rows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evals\_ch5 }\OtherTok{\textless{}{-}}\NormalTok{ evals }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(score, bty\_avg, age)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{rrr}
+\caption{Random sample of 5 instructors}\\
+\toprule
+score & bty\_avg & age\\
+\midrule
+3.7 & 3.00 & 62\\
+4.7 & 4.33 & 46\\
+4.8 & 5.50 & 62\\
+2.8 & 2.00 & 62\\
+4.0 & 2.33 & 64\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+While a full description of each of these variables can be found at
+\href{https://www.openintro.org/stat/data/?data=evals}{openintro.org},
+let's summarize what each of these variables represents.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \texttt{score}: Numerical variable of the average teaching score based
+  on students' evaluations between 1 and 5. This is the outcome variable
+  \(y\) of interest.
+\item
+  \texttt{bty\_avg}: Numerical variable of average ``beauty'' rating
+  based on a panel of 6 students' scores between 1 and 10. This is the
+  numerical explanatory variable \(x\) of interest. Here 1 corresponds
+  to a low beauty rating and 10 to a high beauty rating.
+\item
+  \texttt{age}: A numerical variable of age in years as an integer
+  value.
+\end{enumerate}
+
+An alternative way to look at the raw data values is by choosing a
+random sample of the rows in \texttt{evals\_ch5} by piping it into the
+\texttt{slice\_sample()} function from the \texttt{dplyr} package. Here
+we set the \texttt{n} argument to be \texttt{5}, indicating that we want
+a random sample of 5 rows. We display the results in
+Table~\ref{tbl-five-random-courses}. Note that due to the random nature
+of the sampling, you will likely end up with a different subset of 5
+rows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-five-random-courses}{}
+\begin{longtable}[t]{rrr}
+\caption{\label{tbl-five-random-courses}A random sample of 5 out of the 463 courses at UT Austin }\tabularnewline
+
+\toprule
+score & bty\_avg & age\\
+\midrule
+4.4 & 5.67 & 57\\
+3.1 & 7.00 & 33\\
+4.1 & 4.17 & 45\\
+5.0 & 4.33 & 46\\
+4.8 & 4.83 & 52\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+Now that we've looked at the raw values in our \texttt{evals\_ch5} data
+frame and got a preliminary sense of the data, let's move on to the next
+common step in an exploratory data analysis: computing summary
+statistics. Let's start by computing the mean and median of our
+numerical outcome variable \texttt{score} and our numerical explanatory
+variable ``beauty'' score denoted as \texttt{bty\_avg}. We'll do this by
+using the \texttt{summarize()} function from \texttt{dplyr} along with
+the \texttt{mean()} and \texttt{median()} summary functions we saw in
+Section~\ref{sec-summarize}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_bty\_avg =} \FunctionTok{mean}\NormalTok{(bty\_avg),}
+    \AttributeTok{mean\_score =} \FunctionTok{mean}\NormalTok{(score),}
+    \AttributeTok{median\_bty\_avg =} \FunctionTok{median}\NormalTok{(bty\_avg), }
+    \AttributeTok{median\_score =} \FunctionTok{median}\NormalTok{(score)}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 4
+  mean_bty_avg mean_score median_bty_avg median_score
+         <dbl>      <dbl>          <dbl>        <dbl>
+1         4.42       4.17           4.33          4.3
+\end{verbatim}
+
+However, what if we want other summary statistics as well, such as the
+standard deviation (a measure of spread), the minimum and maximum
+values, and various percentiles? Typing out all these summary statistic
+functions in \texttt{summarize()} would be long and tedious. Instead,
+let's use the convenient \texttt{skim()} function from the
+\texttt{skimr} package. This function takes in a data frame, ``skims''
+it, and returns commonly used summary statistics. Let's take our
+\texttt{evals\_ch5} data frame, \texttt{select()} only the outcome and
+explanatory variables teaching \texttt{score} and \texttt{bty\_avg}, and
+pipe them into the \texttt{skim()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(score, bty\_avg) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{skim}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+── Data Summary ────────────────────────
+                           Values    
+Name                       Piped data
+Number of rows             463       
+Number of columns          2         
+_______________________              
+Column type frequency:               
+  numeric                  2         
+________________________             
+Group variables            None      
+
+── Variable type: numeric ──────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate mean    sd   p0  p25  p50 p75 p100 hist 
+1 score                 0             1 4.17 0.544 2.3  3.8  4.3  4.6 5    ▁▁▅▇▇
+2 bty_avg               0             1 4.42 1.53  1.67 3.17 4.33 5.5 8.17 ▃▇▇▃▂ 
+\end{verbatim}
+
+For our two numerical variables teaching \texttt{score} and ``beauty''
+score \texttt{bty\_avg} it returns:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{n\_missing}: the number of missing values
+\item
+  \texttt{complete\_rate}: the proportion of non-missing or complete
+  values
+\item
+  \texttt{mean}: the average
+\item
+  \texttt{sd}: the standard deviation
+\item
+  \texttt{p0}: the 0\textsuperscript{th} percentile: the value at which
+  0\% of observations are smaller than it (the \emph{minimum} value)
+\item
+  \texttt{p25}: the 25\textsuperscript{th} percentile: the value at
+  which 25\% of observations are smaller than it (the
+  \emph{1\textsuperscript{st} quartile})
+\item
+  \texttt{p50}: the 50\textsuperscript{th} percentile: the value at
+  which 50\% of observations are smaller than it (the
+  \emph{2\textsuperscript{nd}} quartile and more commonly called the
+  \emph{median})
+\item
+  \texttt{p75}: the 75\textsuperscript{th} percentile: the value at
+  which 75\% of observations are smaller than it (the
+  \emph{3\textsuperscript{rd} quartile})
+\item
+  \texttt{p100}: the 100\textsuperscript{th} percentile: the value at
+  which 100\% of observations are smaller than it (the \emph{maximum}
+  value)
+\end{itemize}
+
+Looking at this output, we get an idea of how the values of both
+variables distribute. For example, the mean teaching score was 4.17 out
+of 5 whereas the mean ``beauty'' score was 4.42 out of 10. Furthermore,
+the middle 50\% of teaching scores were between 3.80 and 4.6 (the first
+and third quartiles) whereas the middle 50\% of ``beauty'' scores were
+between 3.17 and 5.5 out of 10.
+
+The \texttt{skim()} function only returns what are known as
+\emph{univariate} summary statistics: functions that take a single
+variable and return some numerical summary of that variable. However,
+there also exist \emph{bivariate} summary statistics: functions that
+take in two variables and return some summary of those two variables. In
+particular, when the two variables are numerical, we can compute the
+\emph{correlation coefficient}. Generally speaking, \emph{coefficients}
+are quantitative expressions of a specific phenomenon. A
+\emph{correlation coefficient} is a quantitative expression of the
+\emph{strength of the linear relationship between two numerical
+variables}. Its value ranges between -1 and 1 where:
+
+\begin{itemize}
+\tightlist
+\item
+  -1 indicates a perfect \emph{negative relationship}: As the value of
+  one variable goes up, the value of the other variable tends to go down
+  following along a straight line.
+\item
+  0 indicates no relationship: The values of both variables go up/down
+  independently of each other.
+\item
+  +1 indicates a perfect \emph{positive relationship}: As the value of
+  one variable goes up, the value of the other variable tends to go up
+  as well in a linear fashion.
+\end{itemize}
+
+Figure~\ref{fig-correlation1} gives examples of different correlation
+coefficient values for hypothetical numerical variables \(x\) and \(y\).
+We see that while for a correlation coefficient of -0.75 there is still
+a negative relationship between \(x\) and \(y\), it is not as strong as
+the negative relationship between \(x\) and \(y\) when the correlation
+coefficient is -1.
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-correlation1-1.pdf}
+
+}
+
+\caption{\label{fig-correlation1}Different correlation coefficients}
+
+\end{figure}
+
+The correlation coefficient is computed using the \texttt{cor()}
+function, where the inputs to the function are the two numerical
+variables for which we want to quantify the strength of the linear
+relationship.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{correlation =} \FunctionTok{cor}\NormalTok{(score, bty\_avg))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+  correlation
+        <dbl>
+1       0.187
+\end{verbatim}
+
+You can also use the \texttt{cor()} function directly instead of using
+it inside \texttt{summarise}, but you will need to use the \texttt{\$}
+syntax to access the specific variables within a data frame (See
+Subsection~\ref{sec-exploredataframes}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(}\AttributeTok{x =}\NormalTok{ evals\_ch5}\SpecialCharTok{$}\NormalTok{bty\_avg, }\AttributeTok{y =}\NormalTok{ evals\_ch5}\SpecialCharTok{$}\NormalTok{score)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.187
+\end{verbatim}
+
+In our case, the correlation coefficient of 0.187 indicates that the
+relationship between teaching evaluation score and beauty average is
+``weakly positive.'' There is a certain amount of subjectivity in
+interpreting correlation coefficients, especially those that aren't
+close to -1, 0, and 1. For help developing such intuition and more
+discussion on the correlation coefficient see {[}Subsection
+-Section~\ref{sec-correlationcoefficient} below.
+
+Let's now proceed by visualizing this data. Since both the
+\texttt{score} and \texttt{bty\_avg} variables are numerical, a
+scatterplot is an appropriate graph to visualize this data. Let's do
+this using \texttt{geom\_point()} and set informative axes labels and
+title and display the result in Figure~\ref{fig-numxplot1}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(evals\_ch5, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bty\_avg, }\AttributeTok{y =}\NormalTok{ score)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Beauty Score"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Teaching Score"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Relationship of teaching and beauty scores"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-numxplot1-1.pdf}
+
+}
+
+\caption{\label{fig-numxplot1}Instructor evaluation scores at UT Austin}
+
+\end{figure}
+
+Observe the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Most ``beauty'' scores lie between 2 and 8.
+\item
+  Most teaching scores lie between 3 and 5.
+\item
+  Recall our earlier computation of the correlation coefficient, which
+  describes the strength of the linear relationship between two
+  numerical variables. Looking at Figure~\ref{fig-numxplot2}, it is not
+  immediately apparent that these two variables are positively related.
+  This is to be expected given the positive, but rather weak (close to
+  0), correlation coefficient of 0.187.
+\end{enumerate}
+
+Before we continue, we bring to light an important fact about this
+dataset: it suffers from \emph{overplotting}. Recall from the data
+visualization Subsection~\ref{sec-overplotting} that overplotting occurs
+when several points are stacked directly on top of each other thereby
+obscuring the number of points. For example, let's focus on the 6 points
+in the top-right of the plot with a beauty score of around 8 out of 10:
+are there truly only 6 points, or are there many more just stacked on
+top of each other? You can think of these as \emph{ties}. Let's break up
+these ties with a little random ``jitter'' added to the points in
+Figure~\ref{fig-numxplot2}.
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-numxplot2-1.pdf}
+
+}
+
+\caption{\label{fig-numxplot2}Instructor evaluation scores at UT Austin:
+Jittered}
+
+\end{figure}
+
+Jittering adds a little random bump to each of the points to break up
+these ties: just enough so you can distinguish them, but not so much
+that the plot is overly altered. Furthermore, jittering is strictly a
+visualization tool; it does not alter the original values in the
+dataset.
+
+Let's compare side-by-side the regular scatterplot in
+Figure~\ref{fig-numxplot1} with the jittered scatterplot
+Figure~\ref{fig-numxplot2}.
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-numxplot2-a-1.pdf}
+
+}
+
+\caption{\label{fig-numxplot2-a}Comparing regular and jittered
+scatterplots}
+
+\end{figure}
+
+We make several further observations:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Focusing our attention on the top-right of the plot again, as noted
+  earlier where there seemed to only be 6 points in the regular
+  scatterplot, we see there were in fact really 9 as seen in the
+  jittered scatterplot.
+\item
+  A further interesting trend is that the jittering revealed a large
+  number of instructors with beauty scores of between 3 and 4.5, towards
+  the lower end of the beauty scale.
+\end{enumerate}
+
+To keep things simple in this chapter, we'll present regular
+scatterplots rather than the jittered scatterplots, though we'll keep
+the overplotting in mind whenever looking at such plots. Going back to
+scatterplot in Figure~\ref{fig-numxplot1}, let's improve on it by adding
+a ``regression line'' in Figure~\ref{fig-numxplot3}. This is easily done
+by adding a new layer to the \texttt{ggplot} code that created
+Figure~\ref{fig-numxplot2}: \texttt{+\ geom\_smooth(method\ =\ "lm")}. A
+regression line is a ``best fitting'' line in that of all possible lines
+you could draw on this plot, it is ``best'' in terms of some
+mathematical criteria. We discuss the criteria for ``best'' in
+Subsection~\ref{sec-leastsquares} below, but we suggest you read this
+only after covering the concept of a \emph{residual} coming up in
+Subsection~\ref{sec-model1points}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(evals\_ch5, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bty\_avg, }\AttributeTok{y =}\NormalTok{ score)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Beauty Score"}\NormalTok{, }
+    \AttributeTok{y =} \StringTok{"Teaching Score"}\NormalTok{, }
+    \AttributeTok{title =} \StringTok{"Relationship of teaching and beauty scores"}
+\NormalTok{    ) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-numxplot3-1.pdf}
+
+}
+
+\caption{\label{fig-numxplot3}Regression line}
+
+\end{figure}
+
+When viewed on this plot, the regression line is a visual summary of the
+relationship between two numerical variables, in our case the outcome
+variable \texttt{score} and the explanatory variable \texttt{bty\_avg}.
+The positive slope of the blue line is consistent with our observed
+correlation coefficient of 0.187 suggesting that there is a positive
+relationship between \texttt{score} and \texttt{bty\_avg}. We'll see
+later however that while the correlation coefficient is not equal to the
+slope of this line, they always have the same sign: positive or
+negative.
+
+What are the grey bands surrounding the blue line? These are
+\emph{standard error} bands, which can be thought of as
+error/uncertainty bands. Let's skip this idea for now and suppress these
+grey bars by adding the argument \texttt{se\ =\ FALSE} to
+\texttt{geom\_smooth(method\ =\ "lm")}. We'll introduce standard errors
+when covering sampling distributions (Chapter~\ref{sec-sampling}). We
+also will use standard errors to construct \emph{confidence intervals}
+(Chapter~\ref{sec-confidence-int}) and conduct \emph{hypothesis tests}
+(Chapter~\ref{sec-hypothesis-tests}). Standard errors are really
+important!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(evals\_ch5, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bty\_avg, }\AttributeTok{y =}\NormalTok{ score)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Beauty Score"}\NormalTok{, }
+    \AttributeTok{y =} \StringTok{"Teaching Score"}\NormalTok{, }
+    \AttributeTok{title =} \StringTok{"Relationship of teaching and beauty scores"}
+\NormalTok{    ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-numxplot4-1.pdf}
+
+}
+
+\caption{\label{fig-numxplot4}Regression line without error bands}
+
+\end{figure}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+Conduct a new exploratory data analysis with the same outcome variable
+\(y\) being \texttt{score} but with \texttt{age} as the new explanatory
+variable \(x\). Remember, this involves three things:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Looking at the raw values.
+\item
+  Computing summary statistics of the variables of interest.
+\item
+  Creating informative visualizations.
+\end{enumerate}
+
+What can you say about the relationship between age and teaching scores
+based on this exploration?
+
+\end{tcolorbox}
+
+\hypertarget{sec-model1table}{%
+\subsection{Simple linear regression}\label{sec-model1table}}
+
+You may recall from secondary school / high school algebra, in general,
+the equation of a line is \(y = a + bx\), which is defined by two
+coefficients. Recall we defined this earlier as ``quantitative
+expressions of a specific property of a phenomenon.'' These two
+coefficients are:
+
+\begin{itemize}
+\tightlist
+\item
+  the intercept coefficient \(a\), or the value of \(y\) when \(x = 0\),
+  and
+\item
+  the slope coefficient \(b\), or the increase in \(y\) for every
+  increase of one in \(x\).
+\end{itemize}
+
+However, when defining a line specifically for regression, like the blue
+regression line in Figure~\ref{fig-numxplot4}, we use slightly different
+notation: the equation of the regression line is
+\(\widehat{y} = b_0 + b_1 \cdot x\) where
+
+\begin{itemize}
+\tightlist
+\item
+  the intercept coefficient is \(b_0\), or the value of \(\widehat{y}\)
+  when \(x=0\), and
+\item
+  the slope coefficient \(b_1\), or the increase in \(\widehat{y}\) for
+  every increase of one in \(x\).
+\end{itemize}
+
+Why do we put a ``hat'' on top of the \(y\)? It's a form of notation
+commonly used in regression, which we'll introduce in the next
+Subsection~\ref{sec-model1points} when we discuss \emph{fitted values}.
+For now, let's ignore the hat and treat the equation of the line as you
+would from secondary school / high school algebra recognizing the slope
+and the intercept. We know looking at Figure~\ref{fig-numxplot4} that
+the slope coefficient corresponding to \texttt{bty\_avg} should be
+positive. Why? Because as \texttt{bty\_avg} increases, professors tend
+to roughly have higher teaching evaluation \texttt{scores}. However,
+what are the specific values of the intercept and slope coefficients?
+Let's not worry about computing these by hand, but instead let the
+computer do the work for us. Specifically, let's use R!
+
+Let's get the value of the intercept and slope coefficients by
+outputting something called the \emph{linear regression table}. We will
+fit the linear regression model to the \texttt{data} using the
+\texttt{lm()} function and save this to \texttt{score\_model}.
+\texttt{lm} stands for ``linear model.'' When we say ``fit'', we are
+saying find the best fitting line to this data.
+
+The \texttt{lm()} function that ``fits'' the linear regression model is
+typically used as
+\texttt{lm(y\ \textasciitilde{}\ x,\ data\ =\ data\_frame\_name)} where:
+
+\begin{itemize}
+\item
+  \texttt{y} is the outcome variable, followed by a tilde
+  (\texttt{\textasciitilde{}}). This is likely the key to the left of
+  ``1'' on your keyboard. In our case, \texttt{y} is set to
+  \texttt{score}.
+\item
+  \texttt{x} is the explanatory variable. In our case, \texttt{x} is set
+  to \texttt{bty\_avg}. We call the combination
+  \texttt{y\ \textasciitilde{}\ x} a \emph{model formula}.
+\item
+  \texttt{data\_frame\_name} is the name of the data frame that contains
+  the variables \texttt{y} and \texttt{x}. In our case,
+  \texttt{data\_frame\_name} is the \texttt{evals\_ch5} data frame.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{score\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ bty\_avg, }\AttributeTok{data =}\NormalTok{ evals\_ch5)}
+\NormalTok{score\_model}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = score ~ bty_avg, data = evals_ch5)
+
+Coefficients:
+(Intercept)      bty_avg  
+     3.8803       0.0666  
+\end{verbatim}
+
+This output is telling us that the \texttt{Intercept} coefficient
+\(b_0\) of the regression line is 3.8803, and the slope coefficient for
+\texttt{by\_avg} is 0.0666. Therefore the blue regression line in
+Figure~\ref{fig-numxplot4} is
+
+\[\widehat{\text{score}} = b_0 + b_{\text{bty avg}} \cdot\text{bty avg} = 3.8803 + 0.0666\cdot\text{bty avg}\]
+
+where
+
+\begin{itemize}
+\item
+  The intercept coefficient \(b_0 = 3.8803\) means for instructors that
+  had a hypothetical beauty score of 0, we would expect them to have on
+  average a teaching score of 3.8803. In this case however, while the
+  intercept has a mathematical interpretation when defining the
+  regression line, there is no \emph{practical} interpretation since
+  \texttt{score} is an average of a panel of 6 students' ratings from 1
+  to 10, a \texttt{bty\_avg} of 0 would be impossible. Furthermore, no
+  instructors had a beauty score anywhere near 0 in this data.
+\item
+  Of more interest is the slope coefficient associated with
+  \texttt{bty\_avg}: \(b_{\text{bty avg}} = +0.0666\). This is a
+  numerical quantity that summarizes the relationship between the
+  outcome and explanatory variables. Note that the sign is positive,
+  suggesting a positive relationship between beauty scores and teaching
+  scores, meaning as beauty scores go up, so also do teaching scores go
+  up. The slope's precise interpretation is:
+\end{itemize}
+
+\begin{quote}
+For every increase of 1 unit in \texttt{bty\_avg}, there is an
+\emph{associated} increase of, \emph{on average}, 0.0666 units of
+\texttt{score}.
+\end{quote}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-important-color-frame, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+\textbf{Such interpretations need be carefully worded:}
+
+\begin{itemize}
+\item
+  We only stated that there is an \emph{associated} increase, and not
+  necessarily a \emph{causal} increase. For example, perhaps it's not
+  that beauty directly affects teaching scores, but instead younger
+  instructors tend to be perceived as better teachers (perhaps because
+  they are more energetic or use more modern techniques), and younger
+  instructors are also perceived to be more beautiful. Avoiding such
+  reasoning can be summarized by the adage ``correlation is not
+  necessarily causation.'' In other words, just because two variables
+  are correlated, it doesn't mean one directly causes the other. We
+  discuss these ideas more in
+  Subsection~\ref{sec-correlation-is-not-causation} and in
+  Chapter~\ref{sec-causality}.
+\item
+  We say that this associated increase is \emph{on average} 0.0666 units
+  of teaching \texttt{score} and not that the associated increase is
+  \emph{exactly} 0.0666 units of \texttt{score} across all values of
+  \texttt{bty\_avg}. This is because the slope is the average increase
+  across all points as shown by the regression line in
+  Figure~\ref{fig-numxplot4}.
+\end{itemize}
+
+\end{tcolorbox}
+
+Now that we've learned how to compute the equation for the blue
+regression line in Figure~\ref{fig-numxplot4} and interpreted all its
+terms, let's take our modeling one step further. This time after fitting
+the model using the \texttt{lm()}, let's get something called the
+\emph{regression table} using the \texttt{summary()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit regression model:}
+\NormalTok{score\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ bty\_avg, }\AttributeTok{data =}\NormalTok{ evals\_ch5)}
+
+\CommentTok{\# Get regression results:}
+\FunctionTok{summary}\NormalTok{(score\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = score ~ bty_avg, data = evals_ch5)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-1.925 -0.369  0.142  0.398  0.931 
+
+Coefficients:
+            Estimate Std. Error t value             Pr(>|t|)    
+(Intercept)   3.8803     0.0761   50.96 < 0.0000000000000002 ***
+bty_avg       0.0666     0.0163    4.09             0.000051 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.535 on 461 degrees of freedom
+Multiple R-squared:  0.035, Adjusted R-squared:  0.0329 
+F-statistic: 16.7 on 1 and 461 DF,  p-value: 0.0000508
+\end{verbatim}
+
+Note how we took the output of the model fit saved in
+\texttt{score\_model} and used it as an input to the subsequent
+\texttt{summary()} function. The raw output of the \texttt{summary()}
+function above gives lots of information about the regression model that
+we won't cover in this introductory course (e.g., Multiple R-squared,
+F-statistic, etc.). We will only consider the ``Coefficients'' section
+of the output. We can print these relevant results only by accessing the
+\texttt{coefficients} object stored in the summary results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(score\_model)}\SpecialCharTok{$}\NormalTok{coefficients}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tbl-numxplot4b}{}
+\begin{table}[H]
+\caption{\label{tbl-numxplot4b}Linear regression table }\tabularnewline
+
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
+\toprule
+term & Estimate & Std. Error & t value & p value\\
+\midrule
+Intercept & 3.880 & 0.076 & 50.96 & 0\\
+bty\_avg & 0.067 & 0.016 & 4.09 & 0\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+
+For now since we are only using regression as an exploratory data
+analysis tool, we will only focus on the ``Estimate'' column that
+contains the estimates of the intercept and slope for the best fit line
+for our data. The remaining three columns refer to statistical concepts
+known as standard errors, t-statistics, and p-values, which we will
+cover in Parts III and IV of the book when we talk about statistical
+theory and inference.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.2}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+Fit a new simple linear regression using
+\texttt{lm(score\ \textasciitilde{}\ age,\ data\ =\ evals\_ch5)} where
+\texttt{age} is the new explanatory variable \(x\). Get information
+about the ``best-fitting'' line from the regression table by applying
+the \texttt{summary()} function. How do the regression results match up
+with the results from your exploratory data analysis above?
+
+\end{tcolorbox}
+
+\hypertarget{sec-model1points}{%
+\subsection{Observed/fitted values and
+residuals}\label{sec-model1points}}
+
+We just saw how to get the value of the intercept and the slope of the
+regression line from the regression table generated by
+\texttt{summary()}. Now instead, say we want information on individual
+points. In this case, we focus on one of the \(n = 463\) instructors in
+this dataset, corresponding to a single row of \texttt{evals\_ch5}.
+
+For example, say we are interested in the 21st instructor in this
+dataset:
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{rrr}
+\caption{Data for 21st instructor}\\
+\toprule
+score & bty\_avg & age\\
+\midrule
+4.9 & 7.33 & 31\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+What is the value on the blue line corresponding to this instructor's
+\texttt{bty\_avg} of 7.333? In Figure~\ref{fig-numxplot5} we mark three
+values in particular corresponding to this instructor.
+
+\begin{itemize}
+\item
+  Red circle: This is the \emph{observed value} \(y\) = 4.9 and
+  corresponds to this instructor's actual teaching score.
+\item
+  Red square: This is the \emph{fitted value} \(\widehat{y}\) and
+  corresponds to the value on the regression line for \(x\) = 7.333.
+  This value is computed using the intercept and slope in the regression
+  table above:
+\end{itemize}
+
+\[\widehat{y} = b_0 + b_1 \cdot x = 3.88 + 0.067 * 7.333 = 4.369\]
+
+\begin{itemize}
+\tightlist
+\item
+  Blue arrow: The length of this arrow is the \emph{residual} and is
+  computed by subtracting the fitted value \(\widehat{y}\) from the
+  observed value \(y\). The residual can be thought of as the error or
+  ``lack of fit'' of the regression line. In the case of this
+  instructor, it is \(y - \widehat{y}\) = 4.9 - 4.369 = 0.531. In other
+  words, the model was off by 0.531 teaching score units for this
+  instructor.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-numxplot5-1.pdf}
+
+}
+
+\caption{\label{fig-numxplot5}Example of observed value, fitted value,
+and residual}
+
+\end{figure}
+
+What if we want both
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the fitted value \(\widehat{y} = b_0 + b_1 \cdot x\) and
+\item
+  the residual \(y - \widehat{y}\)
+\end{enumerate}
+
+for not only the 21st instructor but for all 463 instructors in the
+study? Recall that each instructor corresponds to one of the 463 rows in
+the \texttt{evals\_ch5} data frame and also one of the 463 points in the
+regression plot in Figure~\ref{fig-numxplot4}.
+
+We could repeat the above calculations by hand 463 times, but that would
+be tedious and time consuming. Instead, let's use our data wrangling
+tools from Chapter~\ref{sec-wrangling} and the functions
+\texttt{fitted()} and \texttt{residuals()} to create a data frame with
+these values. Similar to the \texttt{summary()} function, the
+\texttt{fitted()} and \texttt{residuals()} functions also take a model
+object as their input. \texttt{fitted()} calculates all the
+\emph{fitted} \(\hat{y}\) values by plugging in each observed \(x\)
+value in the dataset into the regression equation, and
+\texttt{residuals()} similarly calculates all the residuals
+(\(y - \hat{y}\)) for each observation in the dataset. The following
+code will store these new \(\hat{y}\) and residual variables, which we
+will name \texttt{score\_hat} and \texttt{residual} respectively, along
+with their corresponding \texttt{score} and \texttt{bty\_avg} values
+from the original data \texttt{evals\_ch5}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{score\_model\_data }\OtherTok{\textless{}{-}}\NormalTok{ evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(score, bty\_avg) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{score\_hat =} \FunctionTok{fitted}\NormalTok{(score\_model),}
+    \AttributeTok{residual =} \FunctionTok{residuals}\NormalTok{(score\_model)}
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"ID"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note that we also used the \texttt{rownames\_to\_column()} function from
+the \texttt{tibble} package (part of the \texttt{tidyverse} suite) to
+create a convenient ID column from the rownames. In the table below we
+only present the results for the 21st through the 24th instructors.
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-reg-points}{}
+\begin{longtable}[t]{rrrrr}
+\caption{\label{tbl-reg-points}Regression points (for only 21st through 24th instructor) }\tabularnewline
+
+\toprule
+ID & score & bty\_avg & score\_hat & residual\\
+\midrule
+21 & 4.9 & 7.33 & 4.37 & 0.531\\
+22 & 4.6 & 7.33 & 4.37 & 0.231\\
+23 & 4.5 & 7.33 & 4.37 & 0.131\\
+24 & 4.4 & 5.50 & 4.25 & 0.153\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+Let's recap what we're seeing in Table~\ref{tbl-reg-points} in terms of
+the linear regression model (\texttt{score\_model}) that we fit to the
+\texttt{evals\_ch5} data:
+
+\begin{itemize}
+\item
+  The \texttt{ID} column represents the row number where this
+  observation appears in the original \texttt{evals\_ch5} data
+\item
+  The \texttt{score} column represents the observed value of the outcome
+  variable \(y\).
+\item
+  The \texttt{bty\_avg} column represents the values of the explanatory
+  variable \(x\).
+\item
+  The \texttt{score\_hat} column represents the fitted values
+  \(\widehat{y}\).
+\item
+  The \texttt{residual} column represents the residuals
+  \(y - \widehat{y}\).
+\end{itemize}
+
+Just as we did for the 21st instructor in the \texttt{evals\_ch5}
+dataset (in the first row of the table above), let's repeat the above
+calculations for the 24th instructor in the \texttt{evals\_ch5} dataset
+(in the fourth row of the table above):
+
+\begin{itemize}
+\item
+  \texttt{score} = 4.4 is the observed value \(y\) for this instructor.
+\item
+  \texttt{bty\_avg} = 5.50 is the value of the explanatory variable
+  \(x\) for this instructor.
+\item
+  \texttt{score\_hat} = 4.25 = 3.88 + 0.067 * \(x\) = 3.88 + 0.067 *
+  5.50 is the fitted value \(\widehat{y}\) for this instructor.
+\item
+  \texttt{residual} = 0.153 = 4.4 - 4.25 is the value of the residual
+  for this instructor. In other words, the model was off by 0.153
+  teaching score units for this instructor.
+\end{itemize}
+
+More development of this idea appears in
+Subsection~\ref{sec-leastsquares} and we encourage you to read that
+section after you investigate residuals.
+
+\hypertarget{sec-model2}{%
+\section{One categorical explanatory variable}\label{sec-model2}}
+
+It's an unfortunate truth that life expectancy is not the same across
+various countries in the world; there are a multitude of factors that
+are associated with how long people live. International development
+agencies are very interested in studying these differences in the hope
+of understanding where governments should allocate resources to address
+this problem. In this section, we'll explore differences in life
+expectancy in two ways:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Differences between continents: Are there significant differences in
+  life expectancy, on average, between the five continents of the world:
+  Africa, the Americas, Asia, Europe, and Oceania?
+\item
+  Differences within continents: How does life expectancy vary within
+  the world's five continents? For example, is the spread of life
+  expectancy among the countries of Africa larger than the spread of
+  life expectancy among the countries of Asia?
+\end{enumerate}
+
+To answer such questions, we'll study the \texttt{gapminder} dataset
+from the \texttt{gapminder} package. Recall we mentioned this dataset in
+Subsection~\ref{sec-gapminder} when we first introduced the ``Grammar of
+Graphics'' (Chapter~\ref{sec-viz}). This dataset has international
+development statistics such as life expectancy, GDP per capita, and
+population by country (\(n\) = 142) for 5-year intervals between 1952
+and 2007.
+
+We'll use this data for linear regression again, but note that our
+explanatory variable \(x\) is now categorical, and not numerical like
+when we covered simple linear regression in Section~\ref{sec-model1}.
+More precisely, we have:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A numerical outcome variable \(y\). In this case, life expectancy.
+\item
+  A single categorical explanatory variable \(x\). In this case, the
+  continent the country is part of.
+\end{enumerate}
+
+When the explanatory variable \(x\) is categorical, the concept of a
+``best-fitting'' line is a little different than the one we saw
+previously in Section~\ref{sec-model1} where the explanatory variable
+\(x\) was numerical. We'll study these differences shortly in
+{[}Subsection -Section~\ref{sec-model2table}, but first we conduct our
+exploratory data analysis.
+
+\hypertarget{sec-model2EDA}{%
+\subsection{Exploratory data analysis}\label{sec-model2EDA}}
+
+The data on the 142 countries can be found in the \texttt{gapminder}
+data frame included in the \texttt{gapminder} package. However, to keep
+things simple, let's \texttt{filter()} for only those observations/rows
+corresponding to the year 2007. Additionally, let's \texttt{select()}
+only the subset of the variables we'll consider in this chapter. We'll
+save this data in a new data frame called \texttt{gapminder2007}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gapminder)}
+
+\NormalTok{gapminder2007 }\OtherTok{\textless{}{-}}\NormalTok{ gapminder }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{==} \DecValTok{2007}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(country, lifeExp, continent, gdpPercap)}
+\end{Highlighting}
+\end{Shaded}
+
+Recall from Section~\ref{sec-model1EDA} that there are three common
+steps in an exploratory data analysis:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Most crucially: Looking at the raw data values.
+\item
+  Computing summary statistics, like means, medians, and interquartile
+  ranges.
+\item
+  Creating data visualizations.
+\end{enumerate}
+
+Let's perform the first common step in an exploratory data analysis:
+looking at the raw data values. You can do this by using RStudio's
+spreadsheet viewer or by using the \texttt{glimpse()} command as
+introduced in Section~\ref{sec-exploredataframes} on exploring data
+frames:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(gapminder2007)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 142
+Columns: 4
+$ country   <fct> "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", ~
+$ lifeExp   <dbl> 43.8, 76.4, 72.3, 42.7, 75.3, 81.2, 79.8, 75.6, 64.1, 79.4, ~
+$ continent <fct> Asia, Europe, Africa, Africa, Americas, Oceania, Europe, Asi~
+$ gdpPercap <dbl> 975, 5937, 6223, 4797, 12779, 34435, 36126, 29796, 1391, 336~
+\end{verbatim}
+
+Observe that \texttt{Observations:\ 142} indicates that there are 142
+rows/observations in \texttt{gapminder2007}, where each row corresponds
+to one country. In other words, the \emph{observational unit} is an
+individual country. Furthermore, observe that the variable
+\texttt{continent} is of type \texttt{\textless{}fct\textgreater{}},
+which stands for \emph{factor}, which is R's way of encoding categorical
+variables.
+
+A full description of all the variables included in \texttt{gapminder}
+can be found by reading the associated help file (run
+\texttt{?gapminder} in the console). However, let's fully describe the 4
+variables we selected in \texttt{gapminder2007}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \texttt{country}: An identification text variable used to distinguish
+  the 142 countries in the dataset.
+\item
+  \texttt{lifeExp}: A numerical variable of that country's life
+  expectancy at birth. This is the outcome variable \(y\) of interest.
+\item
+  \texttt{continent}: A categorical variable with five levels. Here
+  ``levels'' corresponds to the possible categories: Africa, Asia,
+  Americas, Europe, and Oceania. This is the explanatory variable \(x\)
+  of interest.
+\item
+  \texttt{gdpPercap}: A numerical variable of that country's GDP per
+  capita in US inflation-adjusted dollars that we'll use as another
+  outcome variable \(y\) in the Learning Check at the end of this
+  subsection.
+\end{enumerate}
+
+Furthermore, let's look at a random sample of five out of the 142
+countries in Table~\ref{tbl-model2-data-preview}. Again, note due to the
+random nature of the sampling, you will likely end up with a different
+subset of 5 rows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder2007 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup\fontsize{10}{12}\selectfont
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-model2-data-preview}{}
+\begin{longtable}[t]{lrlr}
+\caption{\label{tbl-model2-data-preview}Random sample of 5 out of 142 countries }\tabularnewline
+
+\toprule
+country & lifeExp & continent & gdpPercap\\
+\midrule
+Togo & 58.4 & Africa & 883\\
+Sao Tome and Principe & 65.5 & Africa & 1598\\
+Congo, Dem. Rep. & 46.5 & Africa & 278\\
+Lesotho & 42.6 & Africa & 1569\\
+Bulgaria & 73.0 & Europe & 10681\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\endgroup{}
+
+Now that we've looked at the raw values in our \texttt{gapminder2007}
+data frame and got a sense of the data, let's move on to computing
+summary statistics. Let's once again apply the \texttt{skim()} function
+from the \texttt{skimr} package. Recall from our previous EDA that this
+function takes in a data frame, ``skims'' it, and returns commonly used
+summary statistics. Let's take our \texttt{gapminder2007} data frame,
+\texttt{select()} only the outcome and explanatory variables
+\texttt{lifeExp} and \texttt{continent}, and pipe them into the
+\texttt{skim()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gapminder2007 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(lifeExp, continent) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{skim}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+── Data Summary ────────────────────────
+                           Values    
+Name                       Piped data
+Number of rows             142       
+Number of columns          2         
+_______________________              
+Column type frequency:               
+  factor                   1         
+  numeric                  1         
+________________________             
+Group variables            None      
+
+── Variable type: factor ───────────────────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate ordered n_unique top_counts                        
+1 continent             0             1 FALSE          5 Afr: 52, Asi: 33, Eur: 30, Ame: 25
+
+── Variable type: numeric ──────────────────────────────────────────────────────────────────
+  skim_variable n_missing complete_rate mean   sd   p0  p25  p50  p75 p100 hist 
+1 lifeExp               0             1 67.0 12.1 39.6 57.2 71.9 76.4 82.6 ▂▃▃▆▇
+\end{verbatim}
+
+The \texttt{skim()} output now reports summaries for categorical
+variables (\texttt{Variable\ type:factor}) separately from the numerical
+variables (\texttt{Variable\ type:numeric}). For the categorical
+variable \texttt{continent}, it reports:
+
+\begin{itemize}
+\item
+  \texttt{n\_missing} and \texttt{complete\_rate}, which are the number
+  of missing and proportion of non-missing values, respectively.
+\item
+  \texttt{n\_unique}: The number of unique levels to this variable,
+  corresponding to Africa, Asia, Americas, Europe, and Oceania. This
+  refers to the how many countries are in the data for each continent.
+\item
+  \texttt{top\_counts}: In this case the top four counts:
+  \texttt{Africa} has 52 countries, \texttt{Asia} has 33,
+  \texttt{Europe} has 30, and \texttt{Americas} has 25. Not displayed is
+  \texttt{Oceania} with 2 countries.
+\end{itemize}
+
+Turning our attention to the summary statistics of the numerical
+variable \texttt{lifeExp}, we observe that the global median life
+expectancy in 2007 was 71.94. Thus, half of the world's countries (71
+countries) had a life expectancy less than 71.94. The mean life
+expectancy of 67.01 is lower however. Why is the mean life expectancy
+lower than the median?
+
+We can answer this question by performing the last of the three common
+steps in an exploratory data analysis: creating data visualizations.
+Let's visualize the distribution of our outcome variable \(y\) =
+\texttt{lifeExp} in Figure~\ref{fig-lifeExp2007hist}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(gapminder2007, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lifeExp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Life expectancy"}\NormalTok{, }
+    \AttributeTok{y =} \StringTok{"Number of countries"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Histogram of distribution of worldwide life expectancies"}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-lifeExp2007hist-1.pdf}
+
+}
+
+\caption{\label{fig-lifeExp2007hist}Histogram of Life Expectancy in
+2007}
+
+\end{figure}
+
+We see that this data is \emph{left-skewed}, also known as
+\emph{negatively} skewed: there are a few countries with low life
+expectancy that are bringing down the mean life expectancy. However, the
+median is less sensitive to the effects of such outliers; hence, the
+median is greater than the mean in this case.
+
+Remember, however, that we want to compare life expectancies both
+between continents and within continents. In other words, our
+visualizations need to incorporate some notion of the variable
+\texttt{continent}. We can do this easily with a faceted histogram.
+Recall from Section~\ref{sec-facets} that facets allow us to split a
+visualization by the different values of another variable. We display
+the resulting visualization in Figure~\ref{fig-catxplot0b} by adding a
+\texttt{facet\_wrap(\textasciitilde{}\ continent,\ nrow\ =\ 2)} layer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(gapminder2007, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ lifeExp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Life expectancy"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Number of countries"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Histogram of distribution of worldwide life expectancies"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ continent, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-catxplot0b-1.pdf}
+
+}
+
+\caption{\label{fig-catxplot0b}Life expectancy in 2007}
+
+\end{figure}
+
+Observe that unfortunately the distribution of African life expectancies
+is much lower than the other continents, while in Europe life
+expectancies tend to be higher and furthermore do not vary as much. On
+the other hand, both Asia and Africa have the most variation in life
+expectancies. There is the least variation in Oceania, but keep in mind
+that there are only two countries in Oceania: Australia and New Zealand.
+
+Recall that an alternative method to visualize the distribution of a
+numerical variable split by a categorical variable is by using a
+side-by-side boxplot. We map the categorical variable \texttt{continent}
+to the \(x\)-axis and the different life expectancies within each
+continent on the \(y\)-axis in Figure~\ref{fig-catxplot1}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(gapminder2007, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ continent, }\AttributeTok{y =}\NormalTok{ lifeExp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Continent"}\NormalTok{, }
+    \AttributeTok{y =} \StringTok{"Life expectancy (years)"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Life expectancy by continent"}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-catxplot1-1.pdf}
+
+}
+
+\caption{\label{fig-catxplot1}Life expectancy in 2007}
+
+\end{figure}
+
+Some people prefer comparing the distributions of a numerical variable
+between different levels of a categorical variable using a boxplot
+instead of a faceted histogram. This is because we can make quick
+comparisons between the categorical variable's levels with imaginary
+horizontal lines. For example, observe in Figure~\ref{fig-catxplot1}
+that we can quickly convince ourselves that Oceania has the highest
+median life expectancies by drawing an imaginary horizontal line at
+\(y\) = 80. Furthermore, as we observed in the faceted histogram in
+Figure~\ref{fig-catxplot0b}, Africa and Asia have the largest variation
+in life expectancy as evidenced by their large interquartile ranges (the
+heights of the boxes).
+
+It's important to remember however that the solid lines in the middle of
+the boxes correspond to the medians (the middle value) rather than the
+mean (the average). So for example, if you look at Asia, the solid line
+denotes the median life expectancy of around 72 years. This tells us
+that half of all countries in Asia have a life expectancy below 72 years
+whereas half have a life expectancy above 72 years.
+
+Let's compute the median and mean life expectancy for each continent
+with a little more data wrangling and display the results in
+Table~\ref{tbl-catxplot0}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lifeExp\_by\_continent }\OtherTok{\textless{}{-}}\NormalTok{ gapminder2007 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(continent) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{median =} \FunctionTok{median}\NormalTok{(lifeExp), }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(lifeExp))}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-catxplot0}{}
+\begin{longtable}[t]{lrr}
+\caption{\label{tbl-catxplot0}Life expectancy by continent }\tabularnewline
+
+\toprule
+continent & median & mean\\
+\midrule
+Africa & 52.9 & 54.8\\
+Americas & 72.9 & 73.6\\
+Asia & 72.4 & 70.7\\
+Europe & 78.6 & 77.6\\
+Oceania & 80.7 & 80.7\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+Observe the order of the second column \texttt{median} life expectancy:
+Africa is lowest, the Americas and Asia are next with similar medians,
+then Europe, then Oceania. This ordering corresponds to the ordering of
+the solid black lines inside the boxes in our side-by-side boxplot in
+Figure~\ref{fig-catxplot1}.
+
+Let's now turn our attention to the values in the third column
+\texttt{mean}. Using Africa's mean life expectancy of 54.8 as a
+\emph{baseline for comparison}, let's start making relative comparisons
+to the life expectancies of the other four continents:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The mean life expectancy of the Americas is 73.6 - 54.8 = 18.8 years
+  higher.
+\item
+  The mean life expectancy of Asia is 70.7 - 54.8 = 15.9 years higher.
+\item
+  The mean life expectancy of Europe is 77.6 - 54.8 = 22.8 years higher.
+\item
+  The mean life expectancy of Oceania is 80.7 - 54.8 = 25.9 years
+  higher.
+\end{enumerate}
+
+Let's put these values in
+Table~\ref{tbl-continent-mean-life-expectancies}, which we'll revisit
+later on in this section.
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-continent-mean-life-expectancies}{}
+\begin{longtable}[t]{lrr}
+\caption{\label{tbl-continent-mean-life-expectancies}Mean life expectancy by continent and relative differences from mean for
+Africa }\tabularnewline
+
+\toprule
+continent & mean & Difference versus Africa\\
+\midrule
+Africa & 54.8 & 0.0\\
+Americas & 73.6 & 18.8\\
+Asia & 70.7 & 15.9\\
+Europe & 77.6 & 22.8\\
+Oceania & 80.7 & 25.9\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+Conduct a new exploratory data analysis with the same explanatory
+variable \(x\) being \texttt{continent} but with \texttt{gdpPercap} as
+the new outcome variable \(y\). Remember, this involves three things:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Most crucially: Looking at the raw data values.
+\item
+  Computing summary statistics, such as means, medians, and
+  interquartile ranges.
+\item
+  Creating data visualizations.
+\end{enumerate}
+
+What can you say about the differences in GDP per capita between
+continents based on this exploration?
+
+\end{tcolorbox}
+
+\hypertarget{sec-model2table}{%
+\subsection{Linear regression}\label{sec-model2table}}
+
+In Subsection~\ref{sec-model1table} we introduced \emph{simple} linear
+regression, which involves modeling the relationship between a numerical
+outcome variable \(y\) as a function of a numerical explanatory variable
+\(x\), in our life expectancy example, we now have a categorical
+explanatory variable \(x\) \texttt{continent}. While we still can fit a
+regression model, given our categorical explanatory variable we no
+longer have a concept of a ``best-fitting'' line, but rather
+``differences relative to a baseline for comparison.''
+
+Before we fit our regression model, let's create a table similar to
+Table~\ref{tbl-catxplot0}, but
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Report the mean life expectancy for each continent.
+\item
+  Report the difference in mean life expectancy \emph{relative} to
+  Africa's mean life expectancy of 54.806 in the column ``mean vs
+  Africa''; this column is simply the ``mean'' column minus 54.806.
+\end{enumerate}
+
+Think back to your observations from the eyeball test of
+Figure~\ref{fig-catxplot1} at the end of the last subsection. The column
+``mean vs Africa'' is the same idea of comparing a summary statistic to
+a baseline for comparison, in this case the countries of Africa, but
+using means instead of medians.
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-continent-mean-life-expectancies-}{}
+\begin{longtable}[t]{lrr}
+\caption{\label{tbl-continent-mean-life-expectancies-}Mean life expectancy by continent }\tabularnewline
+
+\toprule
+continent & mean & mean vs Africa\\
+\midrule
+Africa & 54.8 & 0.0\\
+Americas & 73.6 & 18.8\\
+Asia & 70.7 & 15.9\\
+Europe & 77.6 & 22.8\\
+Oceania & 80.7 & 25.9\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+Now, let's use the \texttt{summary()} function again to get the
+\emph{regression table} for the \texttt{gapminder2007} analysis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lifeExp\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(lifeExp }\SpecialCharTok{\textasciitilde{}}\NormalTok{ continent, }\AttributeTok{data =}\NormalTok{ gapminder2007)}
+
+\FunctionTok{summary}\NormalTok{(lifeExp\_model)}\SpecialCharTok{$}\NormalTok{coefficients}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tbl-catxplot4b}{}
+\begin{table}[H]
+\caption{\label{tbl-catxplot4b}Linear regression table }\tabularnewline
+
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}{lrrrr}
+\toprule
+term & Estimate & Std. Error & t value & p value\\
+\midrule
+Intercept & 54.8 & 1.02 & 53.45 & 0\\
+continentAmericas & 18.8 & 1.80 & 10.45 & 0\\
+continentAsia & 15.9 & 1.65 & 9.68 & 0\\
+continentEurope & 22.8 & 1.70 & 13.47 & 0\\
+continentOceania & 25.9 & 5.33 & 4.86 & 0\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+
+Just as before, we're only interested in the ``Estimate'' column, but
+unlike before, we now have 5 rows corresponding to 5 outputs in our
+table: an intercept like before, but also \texttt{continentAmericas},
+\texttt{continentAsia}, \texttt{continentEurope}, and
+\texttt{continentOceania}. What are these values? First, we must
+describe the equation for fitted value \(\widehat{y}\), which is a
+little more complicated when the \(x\) explanatory variable is
+categorical:
+
+\[
+\begin{aligned}
+\widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)
+\end{aligned}
+\]
+
+Let's break this down. First, \(\mathbb{1}_{A}(x)\) is what's known in
+mathematics as an ``indicator function'' that takes one of two possible
+values:
+
+\[
+\mathbb{1}_{A}(x) =
+\begin{cases}
+  1 & \text{if } x \in A \\
+  0 & \text{otherwise}
+\end{cases}
+\]
+
+In a statistical modeling context this is also known as a ``dummy
+variable''. In our case, let's consider the first such indicator
+variable:
+
+\[
+\mathbb{1}_{\mbox{Amer}}(x) = \left\{
+\begin{array}{ll}
+1 & \text{if } \text{country } x \text{ is in the Americas} \\
+0 & \text{otherwise}\end{array}
+\right.
+\]
+
+Now let's interpret the terms in the estimate column of the regression
+table. First \(b_0 =\) \texttt{intercept\ =\ 54.8} corresponds to the
+mean life expectancy for countries in Africa, since for country \(x\) in
+Africa we have the following equation:
+
+\[
+\begin{aligned}
+\widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot 0 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
+&= 54.8
+\end{aligned}
+\]
+
+Meaning, all four of the indicator variables are equal to 0. Recall we
+stated earlier that we would treat Africa as the baseline for comparison
+group. Furthermore, this value corresponds to the group mean life
+expectancy for all African countries in
+Table~\ref{tbl-continent-mean-life-expectancies}.
+
+Next, \(b_{\text{Amer}}\) = \texttt{continentAmericas\ =\ 18.8} is the
+difference in mean life expectancy of countries in the Americas relative
+to Africa, or in other words, on average countries in the Americas had
+life expectancy 18.8 years greater. The fitted value yielded by this
+equation is:
+
+\[
+\begin{aligned}
+\widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot 1 + 15.9\cdot 0 + 22.8\cdot 0 + 25.9\cdot 0\\
+&= 54.8 + 18.8\\
+&= 73.6
+\end{aligned}
+\]
+
+i.e.~in this case, only the indicator function
+\(\mathbb{1}_{\mbox{Amer}}(x)\) is equal to 1, but all others are 0.
+Recall that 73.6 corresponds to the group mean life expectancy for all
+countries in the Americas in
+Table~\ref{tbl-continent-mean-life-expectancies}.
+
+Similarly, \(b_{\text{Asia}}\) = \texttt{continentAsia\ =\ 15.9} is the
+difference in mean life expectancy of Asian countries relative to Africa
+countries, or in other words, on average countries in the Asia had life
+expectancy 15.9 years greater than Africa. The fitted value yielded by
+this equation is:
+
+\[
+\begin{aligned}
+\widehat{\text{life exp}} &= b_0 + b_{\text{Amer}}\cdot\mathbb{1}_{\mbox{Amer}}(x) + b_{\text{Asia}}\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ b_{\text{Euro}}\cdot\mathbb{1}_{\mbox{Euro}}(x) + b_{\text{Ocean}}\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot\mathbb{1}_{\mbox{Amer}}(x) + 15.9\cdot\mathbb{1}_{\mbox{Asia}}(x)
++ 22.8\cdot\mathbb{1}_{\mbox{Euro}}(x) + 25.9\cdot\mathbb{1}_{\mbox{Ocean}}(x)\\
+&= 54.8 + 18.8\cdot 0 + 15.9\cdot 1 + 22.8\cdot 0 + 25.9\cdot 0\\
+&= 54.8 + 15.9\\
+&= 70.7
+\end{aligned}
+\]
+
+Meaning, in this case, only the indicator function
+\(\mathbb{1}_{\mbox{Asia}}(x)\) is equal to 1, but all others are 0.
+Recall that 70.7 corresponds to the group mean life expectancy for all
+countries in Asia in Table~\ref{tbl-continent-mean-life-expectancies}.
+The same logic applies to \(b_{\text{Euro}} = 22.8\) and
+\(b_{\text{Ocean}} = 25.9\); they correspond to the ``offset'' in mean
+life expectancy for countries in Europe and Oceania, relative to the
+mean life expectancy of the baseline group for comparison of African
+countries.
+
+Let's generalize this idea a bit. If we fit a linear regression model
+using a categorical explanatory variable \(x\) that has \(k\) levels, a
+regression model will return an intercept and \(k - 1\) ``slope''
+coefficients. When \(x\) is a numerical explanatory variable the
+interpretation is of a ``slope'' coefficient, but when \(x\) is
+categorical the meaning is a little trickier. They are \emph{offsets}
+relative to the baseline.
+
+In our case, since there are \(k = 5\) continents, the regression model
+returns an intercept corresponding to the baseline for comparison Africa
+and \(k - 1 = 4\) slope coefficients corresponding to the Americas,
+Asia, Europe, and Oceania. Africa was chosen as the baseline by R for no
+other reason than it is first alphabetically of the 5 continents. You
+can manually specify which continent to use as baseline instead of the
+default choice of whichever comes first alphabetically, but we leave
+that to a more advanced course. (The \texttt{forcats} package is
+particularly nice for doing this and we encourage you to explore using
+it.)
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+Fit a new linear regression using
+\texttt{lm(gdpPercap\ \textasciitilde{}\ continent,\ data\ =\ gapminder2007)}
+where \texttt{gdpPercap} is the new outcome variable \(y\). Get
+information about the ``best-fitting'' line from the regression table by
+applying the \texttt{summary()} function. How do the regression results
+match up with the results from your exploratory data analysis above?
+
+\end{tcolorbox}
+
+\hypertarget{sec-model2points}{%
+\subsection{Observed/fitted values and
+residuals}\label{sec-model2points}}
+
+Recall in Subsection~\ref{sec-model1points} we defined the following
+three concepts:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Observed values \(y\), or the observed value of the outcome variable
+\item
+  Fitted values \(\widehat{y}\), or the value on the regression line for
+  a given \(x\) value
+\item
+  Residuals \(y - \widehat{y}\), or the error between the observed value
+  and the fitted value
+\end{enumerate}
+
+Let's use similar code (from Subsection~\ref{sec-model1points}) to
+obtain these values for the \texttt{lifeExp\_model} fit to the
+\texttt{gapminder2007} dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lifeExp\_model\_data }\OtherTok{\textless{}{-}}\NormalTok{ gapminder2007 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(country, lifeExp, continent) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{lifeExp\_hat =} \FunctionTok{fitted}\NormalTok{(lifeExp\_model),}
+    \AttributeTok{residual =} \FunctionTok{residuals}\NormalTok{(lifeExp\_model)}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\hypertarget{tbl-lifeExp-reg-points}{}
+\begin{longtable}[t]{lrlrr}
+\caption{\label{tbl-lifeExp-reg-points}Regression points (First 10 out of 142 countries) }\tabularnewline
+
+\toprule
+country & lifeExp & continent & lifeExp\_hat & residual\\
+\midrule
+Afghanistan & 43.8 & Asia & 70.7 & -26.900\\
+Albania & 76.4 & Europe & 77.6 & -1.226\\
+Algeria & 72.3 & Africa & 54.8 & 17.495\\
+Angola & 42.7 & Africa & 54.8 & -12.075\\
+Argentina & 75.3 & Americas & 73.6 & 1.712\\
+\addlinespace
+Australia & 81.2 & Oceania & 80.7 & 0.516\\
+Austria & 79.8 & Europe & 77.6 & 2.180\\
+Bahrain & 75.6 & Asia & 70.7 & 4.907\\
+Bangladesh & 64.1 & Asia & 70.7 & -6.666\\
+Belgium & 79.4 & Europe & 77.6 & 1.792\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+Observe in Table~\ref{tbl-lifeExp-reg-points} that \texttt{lifeExp\_hat}
+contains the fitted values \(\hat{y} = \widehat{lifeExp}\). If you look
+closely, there are only 5 possible values for \texttt{lifeExp\_hat}.
+These correspond to the five mean life expectancies for the 5 continents
+that we displayed in Table~\ref{tbl-continent-mean-life-expectancies}
+and computed using the ``Estimate'' column of the regression results in
+@tbl-catxplot4b.
+
+The \texttt{residual} column is simply \(y - \widehat{y}\) =
+\texttt{lifeexp\ -\ lifeexp\_hat}. These values can be interpreted as
+that particular country's deviation from the mean life expectancy of the
+respective continent's mean. For example, the first row of Table
+@ref(tab:lifeExp-reg-points) corresponds to Afghanistan, and the
+residual of \(y - \widehat{y} = 43.8 - 70.7 = -26.9\) is telling us that
+Afghanistan's life expectancy is a whopping 26.9 years lower than the
+mean life expectancy of all Asian countries. This can in part be
+explained by the many years of war that country has suffered.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.5}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+Using either the sorting functionality of RStudio's spreadsheet viewer
+or using the data wrangling tools you learned in
+Chapter~\ref{sec-wrangling}, identify the five countries with the five
+smallest (most negative) residuals? What do these negative residuals say
+about their life expectancy relative to their continents?
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 5.6}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
+
+Repeat this process, but identify the five countries with the five
+largest (most positive) residuals. What do these positive residuals say
+about their life expectancy relative to their continents?
+
+\end{tcolorbox}
+
+\hypertarget{related-topics}{%
+\section{Related topics}\label{related-topics}}
+
+\hypertarget{sec-correlationcoefficient}{%
+\subsection{Correlation coefficient}\label{sec-correlationcoefficient}}
+
+Let's re-plot Figure~\ref{fig-correlation1}, but now consider a broader
+range of correlation coefficient values in
+Figure~\ref{fig-correlation2}.
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-correlation2-1.pdf}
+
+}
+
+\caption{\label{fig-correlation2}Different Correlation Coefficients}
+
+\end{figure}
+
+As we suggested in Subsection~\ref{sec-model1EDA}, interpreting
+coefficients that are not close to the extreme values of -1 and 1 can be
+subjective. To help develop your sense of correlation coefficients, we
+suggest you play the following 80's-style video game called ``Guess the
+correlation'' at \url{http://guessthecorrelation.com/}.
+
+\hypertarget{sec-correlation-is-not-causation}{%
+\subsection{Correlation is not necessarily
+causation}\label{sec-correlation-is-not-causation}}
+
+You'll note throughout this chapter we've been very cautious in making
+statements of the ``associated effect'' of explanatory variables on the
+outcome variables, for example our statement from
+Subsection~\ref{sec-model1table} that ``for every increase of 1 unit in
+\texttt{bty\_avg}, there is an \emph{associated} increase of, \emph{on
+average}, 18.802 units of \texttt{score}.'' We stay this because we are
+careful not to make \emph{causal} statements. So while beauty score
+\texttt{bty\_avg} is positively correlated with teaching \texttt{score},
+does it directly cause effects on teaching score.
+
+For example, let's say an instructor has their \texttt{bty\_avg}
+reevaluated, but only after taking steps to try to boost their beauty
+score. Does this mean that they will suddenly be a better instructor? Or
+will they suddenly get higher teaching scores? Maybe?
+
+Here is another example, a not-so-great medical doctor goes through
+their medical records and finds that patients who slept with their shoes
+on tended to wake up more with headaches. So this doctor declares
+``Sleeping with shoes on cause headaches!''
+
+\begin{figure}
+
+{\centering \includegraphics{images/flowcharts/flowchart.010-cropped.png}
+
+}
+
+\caption{\label{fig-sleep-shoes-on}Does sleeping with shoes on cause
+headaches?}
+
+\end{figure}
+
+However as some of you might have guessed, if someone is sleeping with
+their shoes on it's probably because they are intoxicated. Furthermore,
+drinking more tends to cause more hangovers, and hence more headaches.
+
+In this instance, alcohol is what's known as a
+\emph{confounding/lurking} variable. It ``lurks'' behind the scenes,
+confounding or making less apparent, the causal effect (if any) of
+``sleeping with shoes on'' with waking up with a headache. We can
+summarize this notion in Figure~\ref{fig-moderndive-figure-causal-graph}
+with a \emph{causal graph} where:
+
+\begin{itemize}
+\tightlist
+\item
+  Y: Is an \emph{outcome} variable, here ``waking up with a headache.''
+\item
+  X: Is a \emph{treatment} variable whose causal effect we are
+  interested in, here ``sleeping with shoes on.''
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{images/flowcharts/flowchart.009-cropped.png}
+
+}
+
+\caption{\label{fig-moderndive-figure-causal-graph}Causal graph}
+
+\end{figure}
+
+So for example, many such studies use regression modeling where the
+outcome variable is set to Y and the explanatory/predictor variable is
+X, much as you've started learning how to do in this chapter. However,
+Figure~\ref{fig-moderndive-figure-causal-graph} also includes a third
+variable with arrows pointing at both X and Y.
+
+\begin{itemize}
+\tightlist
+\item
+  Z: Is a \emph{confounding} variable that affects both X \& Y, thus
+  ``confounding'' their relationship.
+\end{itemize}
+
+So as we said, alcohol will both cause people to be more likely to sleep
+with their shoes on as well as more likely to wake up with a headache.
+Thus when evaluating what causes one to wake up with a headache, its
+hard to tease out the effect of sleeping with shoes on versus just the
+alcohol. Thus our model needs to also use Z as an explanatory/predictor
+variable as well, in other words our doctor needs to take into account
+who had been drinking the night before. We'll start covering multiple
+regression models that allows us to incorporate more than one variable
+in the next chapter.
+
+Establishing causation is a tricky problem and frequently takes either
+carefully designed experiments or methods to control for the effects of
+potential confounding variables. Both these approaches attempt either to
+remove all confounding variables or take them into account as best they
+can, and only focus on the behavior of an outcome variable in the
+presence of the levels of the other variable(s). Be careful as you read
+studies to make sure that the writers aren't falling into this fallacy
+of correlation implying causation. If you spot one, you may want to send
+them a link to
+\href{http://www.tylervigen.com/spurious-correlations}{Spurious
+Correlations}.
+
+\hypertarget{sec-leastsquares}{%
+\subsection{Best-fitting line}\label{sec-leastsquares}}
+
+Regression lines are also known as ``best-fitting'' lines. But what do
+we mean by ``best''? Let's unpack the criteria that is used in
+regression to determine ``best.'' Recall Figure~\ref{fig-numxplot4},
+where for an instructor with a beauty score of \(x = 7.333\) we mark the
+\emph{observed value} \(y\) with a circle, the \emph{fitted value}
+\(\widehat{y}\) with a square, and the \emph{residual}
+\(y - \widehat{y}\) with an arrow.
+
+We re-display Figure~\ref{fig-numxplot4} in the top-left plot of
+Figure~\ref{fig-best-fitting-line}. Furthermore, let's repeat this for
+three more arbitrarily chosen course's instructors:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A course whose instructor had a ``beauty'' score \(x\) = 2.333 and
+  teaching score \(y\) = 2.7. The residual in this case is
+  \(2.7 - 4.036 = -1.336\), which we mark with a new arrow in the
+  top-right plot.
+\item
+  A course whose instructor had a ``beauty'' score \(x = 3.667\) and
+  teaching score \(y = 4.4\). The residual in this case is
+  \(4.4 - 4.125 = 0.2753\), which we mark with a new arrow in the
+  bottom-left plot.
+\item
+  A course whose instructor had a ``beauty'' score \(x = 6\) and
+  teaching score \(y = 3.8\). The residual in this case is
+  \(3.8 - 4.28 = -0.4802\), which we mark with a new arrow in the
+  bottom-right plot.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics{05-regression_files/figure-pdf/fig-best-fitting-line-1.pdf}
+
+}
+
+\caption{\label{fig-best-fitting-line}Example of observed value, fitted
+value, and residual}
+
+\end{figure}
+
+Now say we repeated this process of computing residuals for all 463
+courses' instructors, then we squared all the residuals, and then we
+summed them. We call this quantity the \emph{sum of squared residuals}
+and it is a measure of the \emph{lack of fit} of a model. Larger values
+of the sum of squared residuals indicate a bigger lack of fit. This
+corresponds to a worse fitting model.
+
+If the regression line fits all the points perfectly, then the sum of
+squared residuals is 0. This is because if the regression line fits all
+the points perfectly, then the fitted value \(\widehat{y}\) equals the
+observed value \(y\) in all cases, and hence the residual
+\(y-\widehat{y}\) = 0 in all cases, and the sum of even a large number
+of 0's is still 0.
+
+Furthermore, of all possible lines we can draw through the cloud of 463
+points, the regression line minimizes this value. In other words, the
+regression and its corresponding fitted values \(\widehat{y}\) minimizes
+the sum of the squared residuals:
+
+\[
+\sum_{i=1}^{n}(y_i - \widehat{y}_i)^2
+\]
+
+Let's use our data wrangling tools from Chapter~\ref{sec-wrangling} to
+compute the sum of squared residuals exactly:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit regression model:}
+\NormalTok{score\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(score }\SpecialCharTok{\textasciitilde{}}\NormalTok{ bty\_avg, }\AttributeTok{data =}\NormalTok{ evals\_ch5)}
+
+\CommentTok{\# Get regression points:}
+\NormalTok{score\_model\_data }\OtherTok{\textless{}{-}}\NormalTok{ evals\_ch5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(score, bty\_avg) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{score\_hat =} \FunctionTok{fitted}\NormalTok{(score\_model),}
+    \AttributeTok{residual =} \FunctionTok{residuals}\NormalTok{(score\_model)}
+\NormalTok{    ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"ID"}\NormalTok{)}
+
+\CommentTok{\# Compute sum of squared residuals}
+\NormalTok{score\_model\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{squared\_residuals =}\NormalTok{ residual}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{sum\_of\_squared\_residuals =} \FunctionTok{sum}\NormalTok{(squared\_residuals))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+  sum_of_squared_residuals
+                     <dbl>
+1                     132.
+\end{verbatim}
+
+Any other straight line drawn in the figure would yield a sum of squared
+residuals greater than 132. This is a mathematically guaranteed fact
+that you can prove using calculus and linear algebra. That's why
+alternative names for the linear regression line are the
+\emph{best-fitting line} as well as the \emph{least-squares line}. Why
+do we square the residuals (i.e.~the arrow lengths)? We do this so that
+both positive and negative deviations of the same amount are treated
+equally.
+
+\hypertarget{sec-basic-reg-conclusion}{%
+\section{Conclusion}\label{sec-basic-reg-conclusion}}
+
+\hypertarget{sec-additional-resources-basic-regression}{%
+\subsection{Additional
+resources}\label{sec-additional-resources-basic-regression}}
+
+As we suggested in Subsection~\ref{sec-model1EDA}, interpreting
+coefficients that are not close to the extreme values of -1, 0, and 1
+can be somewhat subjective. To help develop your sense of correlation
+coefficients, we suggest you play the following 80's-style video game
+called ``Guess the correlation'' at
+\url{http://guessthecorrelation.com/}.
+
+\hypertarget{whats-to-come-2}{%
+\subsection{What's to come?}\label{whats-to-come-2}}
+
+In this chapter, you've studied the term \emph{basic regression}, where
+you fit models that only have one explanatory variable. In
+Chapter~\ref{sec-multiple-regression}, we'll study \emph{multiple
+regression}, where our regression models can now have more than one
+explanatory variable! In particular, we'll consider two scenarios:
+regression models with one numerical and one categorical explanatory
+variable and regression models with two numerical explanatory variables.
+This will allow you to construct more sophisticated and more powerful
+models, all in the hopes of better explaining your outcome variable
+\(y\).
+
+\hypertarget{sec-ex05}{%
+\section{Exercises}\label{sec-ex05}}
+
+\hypertarget{sec-ex05-conceptual}{%
+\subsection{Conceptual}\label{sec-ex05-conceptual}}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c01}{}\label{exr-ch05-c01}
+
+Match the following graph with the most appropriate correlation
+coefficient.
+
+\includegraphics[width=\textwidth,height=1.5in]{images/cor_-0.7.png}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  -1
+\item
+  -0.9
+\item
+  -0.7
+\item
+  -0.4
+\item
+  None of the above, it is a positive association
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c02}{}\label{exr-ch05-c02}
+
+What is the most appropriate correlation between an hourly employees
+paycheck and the number of hours worked?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Exactly -1
+\item
+  Between -1 and 0
+\item
+  About 0
+\item
+  Between 0 and 1
+\item
+  Exactly 1
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c03}{}\label{exr-ch05-c03}
+
+What is the most appropriate correlation between the distance up a
+mountain and temperature?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Exactly -1
+\item
+  Between -1 and 0
+\item
+  About 0
+\item
+  Between 0 and 1
+\item
+  Exactly 1
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c04}{}\label{exr-ch05-c04}
+
+Select all that apply to complete the following statement: The variable
+x is also called the \_\_\_\_
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  explanatory variable
+\item
+  predictor variable
+\item
+  outcome variable
+\item
+  independent variable
+\item
+  dependent variable
+\item
+  covariate
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c05}{}\label{exr-ch05-c05}
+
+Select all that apply to complete the following statement: The variable
+y is also called the \_\_\_\_
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  explanatory variable
+\item
+  predictor variable
+\item
+  outcome variable
+\item
+  independent variable
+\item
+  dependent variable
+\item
+  covariate
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c06}{}\label{exr-ch05-c06}
+
+Consider the regression line \(\hat{y}=5.25+3.86x\). Which of the
+following does \(5.25\) refer to? Select all that apply.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  slope coefficient
+\item
+  the increase in \(\hat{y}\) for every increase of 1 in \(x\)
+\item
+  \(b_0\)
+\item
+  \(b_1\)
+\item
+  the value of \(\hat{y}\) when \(x=0\)
+\item
+  intercept
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c07}{}\label{exr-ch05-c07}
+
+Consider the regression line \(\hat{y}=5.25+3.86x\). Which of the
+following is the correct interpretation of 3.86?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  For every increase of 1 unit in y, there is an associated increase of
+  3.86 units of x.
+\item
+  For every increase of 1 unit in x, there is an associated increase of
+  3.86 units of y.
+\item
+  For every increase of 1 unit in y, there is an associated increase of,
+  on average, 3.86 units of x.
+\item
+  For every increase of 1 unit in x, there is an associated increase of,
+  on average, 3.86 units of y.
+\item
+  For every increase of 1 unit in y, there is a causal increase of, on
+  average, 3.86 units of x.
+\item
+  For every increase of 1 unit in x, there is a causal increase of, on
+  average, 3.86 units of y.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c08}{}\label{exr-ch05-c08}
+
+The residual is the difference between the observed value and the
+predicted value. This can be thought of as the error in prediction from
+the regression line.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  TRUE
+\item
+  FALSE
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c09}{}\label{exr-ch05-c09}
+
+If a linear regression model \(y ~ x\) is fitted where \(x\) is a
+categorical variable, then \(b_1\) is the mean of the baseline.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  TRUE
+\item
+  FALSE
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c10}{}\label{exr-ch05-c10}
+
+The regression line minimizes the following equation
+\(\sum_{i=0}^{n}(y_i-\hat{y}_i)\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  TRUE
+\item
+  FALSE
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-c11}{}\label{exr-ch05-c11}
+
+An ice cream company employee explores a dataset with information on
+shark attacks and ice cream sales, and notices a positive correlation
+between these two variables. The employee concludes that an increase in
+shark attacks will help them sell more ice cream. Is this conclusion
+correct?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Yes, the positive correlation shows that an increase in shark attacks
+  causes ice cream sales to improve.
+\item
+  Yes, the positive correlation shows that an increase in ice cream
+  sales causes shark attacks to increase.
+\item
+  No, the positive correlation shows that an increase in ice cream sales
+  causes shark attacks to increase.
+\item
+  No, the positive correlation does not necessarily imply causation.
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{sec-ex05-application}{%
+\subsection{Application}\label{sec-ex05-application}}
+
+The \texttt{Auto} and \texttt{Bikeshare} datasets are in the
+\texttt{ISLR2} package.
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-app1}{}\label{exr-ch05-app1}
+
+Using the \texttt{Auto} dataset\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Conduct an exploratory data analysis. That is, use the \texttt{skim}
+  function to describe the number of variables, observations, any
+  missingness issues, and any potential problematic features.
+\item
+  Calculate the correlation between \texttt{mpg} and
+  \texttt{horsepower}.
+\item
+  Plot the relationship of \texttt{mpg} by \texttt{horsepower}. Add the
+  line of best fit to the scatterplot.
+\item
+  Fit a linear regression model to predict \texttt{mpg} based on
+  \texttt{horsepower}. What is the equation of the line?
+\item
+  Interpret the intercept and slope in the context of the problem.
+\item
+  What is the expected \texttt{mpg} of a car with 150 `horsepower?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-app2}{}\label{exr-ch05-app2}
+
+Using the \texttt{Bikeshare} dataset, fit a simple linear regression
+model to predict the number of bikers using the temperature. Note:
+temperature is reported as a normalized unit in Celsius.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  What is the correlation between \texttt{bikers} and \texttt{temp}.
+\item
+  Plot the relationship and line of best fit.
+\item
+  What is the equation of the line of best fit?
+\item
+  Interpret the intercept and slope in the context of the problem.
+\item
+  If the normalized temperature is 0.5, what is the predicted number of
+  bikers?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-app3}{}\label{exr-ch05-app3}
+
+Using the \texttt{Bikeshare} dataset, fit a linear regression model to
+determine if the season can predict the number of bikers.
+
+Hint: type \texttt{?Bikeshare} to view the help documentation and see
+the data type of \texttt{season}.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  What is the model equation?
+\item
+  Interpret the intercept in the context of the problem.
+\item
+  Which season, on average, had the highest average number of bikers?
+\item
+  Which observation(s) did the model predict the worst?
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{sec-ex05-advanced}{%
+\subsection{Advanced}\label{sec-ex05-advanced}}
+
+\begin{exercise}[]\protect\hypertarget{exr-ch05-adv1}{}\label{exr-ch05-adv1}
+
+The \texttt{summary} function and the \texttt{lm} function contain many
+values relevant to our analysis, including residuals and fitted values
+stored in the \texttt{lm} function and residuals, coefficients,
+R-squared and adjusted R-squared values all stored in the
+\texttt{summary} function.
+
+Sometimes, it can be useful to extract these values directly from the
+result of the functions. These values can be accessed using the \$
+operator that we learned about in Chapter~\ref{sec-getting-started}.
+
+Using the model from Exercise~\ref{exr-ch05-app1}\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  extract the \texttt{coefficients} directly from the model
+\item
+  extract the \texttt{r.squared} from the summary. This represents the
+  proportion of variance in the dependent variable that can be explained
+  by the independent variables. You will learn about this in detail in
+  higher level regression courses.
+\end{enumerate}
+
+\end{exercise}
+
 \hypertarget{sec-multiple-regression}{%
 \chapter{Multiple Regression}\label{sec-multiple-regression}}
 
-In \textbf{?@sec-regression} we introduced ideas related to modeling for
-explanation, in particular that the goal of modeling is to make explicit
-the relationship between some outcome variable \(y\) and some
+In Chapter~\ref{sec-regression} we introduced ideas related to modeling
+for explanation, in particular that the goal of modeling is to make
+explicit the relationship between some outcome variable \(y\) and some
 explanatory variable \(x\). While there are many approaches to modeling,
 we focused on one particular technique: \emph{linear regression}, one of
 the most commonly-used and easy-to-understand approaches to modeling.
 Furthermore to keep things simple we only considered models with one
 explanatory \(x\) variable that was either numerical in
-\textbf{?@sec-model1} or categorical in \textbf{?@sec-model2}.
+Section~\ref{sec-model1} or categorical in Section~\ref{sec-model2}.
 
 In this chapter on multiple regression, we'll start considering models
 that include more than one explanatory variable \(x\). You can imagine
 when trying to model a particular outcome variable, like teaching
-evaluation scores as in \textbf{?@sec-model1} or life expectancy as in
-\textbf{?@sec-model2}, that it would be useful to include more than just
-one explanatory variable's worth of information.
+evaluation scores as in Section~\ref{sec-model1} or life expectancy as
+in Section~\ref{sec-model2}, that it would be useful to include more
+than just one explanatory variable's worth of information.
 
 Since our regression models will now consider more than one explanatory
 variable, the interpretation of the associated effect of any one
@@ -7938,7 +10486,7 @@ new variable name \texttt{debt}. We do this because here the term
 \end{Shaded}
 
 Recall the three common steps in an exploratory data analysis we saw in
-\textbf{?@sec-model1EDA}:
+Subsection~\ref{sec-model1EDA}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -8006,11 +10554,11 @@ debt & credit\_limit & income & credit\_rating & age\\
 Now that we've looked at the raw values in our \texttt{credit\_ch6} data
 frame and have a sense of the data, let's move on to the next common
 step in an exploratory data analysis: computing summary statistics. As
-we did in our exploratory data analyses in \textbf{?@sec-model1EDA} and
-\textbf{?@sec-model2EDA} from the previous chapter, let's use the
-\texttt{skim()} function from the \texttt{skimr} package, being sure to
-only \texttt{select()} the variables of interest in our
-model:\index{R packages!skimr!skim()}
+we did in our exploratory data analyses in
+Subsections~\ref{sec-model1EDA} and \ref{sec-model2EDA} from the
+previous chapter, let's use the \texttt{skim()} function from the
+\texttt{skimr} package, being sure to only \texttt{select()} the
+variables of interest in our model:\index{R packages!skimr!skim()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8045,7 +10593,8 @@ Since our outcome variable \texttt{debt} and the explanatory variables
 \texttt{credit\_limit} and \texttt{income} are numerical, we can compute
 the correlation coefficient between the different possible pairs of
 these variables. First, we can run the \texttt{cor()} command as seen in
-\textbf{?@sec-model1EDA} twice, once for each explanatory variable:
+Subsections~\ref{sec-model1EDA} twice, once for each explanatory
+variable:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8191,18 +10740,18 @@ point where
 \end{figure}
 
 Furthermore, we also include the \emph{regression
-plane}\index{regression plane}. Recall from \textbf{?@sec-leastsquares}
-that regression lines are ``best-fitting'' in that of all possible lines
-we can draw through a cloud of points, the regression line minimizes the
-\emph{sum of squared residuals}\index{sum of squared residuals}. This
-concept also extends to models with two numerical explanatory variables.
-The difference is instead of a ``best-fitting'' line, we now have a
-``best-fitting'' plane that similarly minimizes the sum of squared
-residuals. Head to
+plane}\index{regression plane}. Recall from
+Subsection~\ref{sec-leastsquares} that regression lines are
+``best-fitting'' in that of all possible lines we can draw through a
+cloud of points, the regression line minimizes the \emph{sum of squared
+residuals}\index{sum of squared residuals}. This concept also extends to
+models with two numerical explanatory variables. The difference is
+instead of a ``best-fitting'' line, we now have a ``best-fitting'' plane
+that similarly minimizes the sum of squared residuals. Head to
 \href{https://beta.rstudioconnect.com/connect/\#/apps/3214/}{here} to
 open an interactive version of this plot in your browser.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 6.1}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.1}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 \textbf{(LC6.2)} Conduct a new exploratory data analysis with the same
 outcome variable \(y\) being \texttt{debt} but with
@@ -8236,9 +10785,9 @@ formula of the form \texttt{y\ \textasciitilde{}\ x1\ +\ x2}, where
 \texttt{x1} and \texttt{x2} represent our two explanatory variables
 \texttt{credit\_limit} and \texttt{income}.
 
-Just like we did in \textbf{?@sec-regression}, let's get the regression
-table for this model using our two-step process and display the results
-in Table~\ref{tbl-model3-table-output}.
+Just like we did in Chapter~\ref{sec-regression}, let's get the
+regression table for this model using our two-step process and display
+the results in Table~\ref{tbl-model3-table-output}.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -8289,10 +10838,10 @@ Second, the \texttt{credit\_limit} value is \$0.264. Taking into account
 all the other explanatory variables in our model, for every increase of
 one dollar in \texttt{credit\_limit}, there is an associated increase of
 on average \$0.26 in credit card debt. Just as we did in
-\textbf{?@sec-model1table}, we are cautious to \emph{not} imply
-causality as we saw in \textbf{?@sec-correlation-is-not-causation} that
-``correlation is not necessarily causation.'' We do this merely stating
-there was an \emph{associated} increase.
+Section~\ref{sec-model1table}, we are cautious to \emph{not} imply
+causality as we saw in Section~\ref{sec-correlation-is-not-causation}
+that ``correlation is not necessarily causation.'' We do this merely
+stating there was an \emph{associated} increase.
 
 Furthermore, we preface our interpretation with the statement ``taking
 into account all the other explanatory variables in our model.'' Here,
@@ -8333,7 +10882,7 @@ Section~\ref{sec-simpsonsparadox} we elaborate on this idea by looking
 at the relationship between \texttt{credit\_limit} and credit card
 \texttt{debt}, but split along different \texttt{income} brackets.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 6.3}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.3}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Fit a new simple linear regression using
 \texttt{lm(debt\ \textasciitilde{}\ credit\_rating\ +\ age,\ data\ =\ credit\_ch6)}
@@ -8350,8 +10899,8 @@ with the results from your previous exploratory data analysis?
 residuals}\label{sec-model3points}}
 
 Let's also compute all fitted values and residuals for our regression
-model using the code from \textbf{?@sec-model1points} and present only
-the first 10 rows of output in Table~\ref{tbl-model3-points-table}.
+model using the code from Section~\ref{sec-model1points} and present
+only the first 10 rows of output in Table~\ref{tbl-model3-points-table}.
 Remember that the coordinates of each of the points in our 3D
 scatterplot in Figure~\ref{fig-3D-scatterplot} can be found in the
 \texttt{income}, \texttt{credit\_limit}, and \texttt{debt} columns. The
@@ -8424,11 +10973,11 @@ Table~\ref{tbl-model3-points-table} presents rounded values for
 variable}\label{sec-model4}}
 
 Let's revisit the instructor evaluation data from UT Austin we
-introduced in \textbf{?@sec-model1}. We studied the relationship between
-teaching evaluation scores as given by students and ``beauty'' scores.
-The variable teaching \texttt{score} was the numerical outcome variable
-\(y\) and the variable ``beauty'' score (\texttt{bty\_avg}) was the
-numerical explanatory \(x\) variable.
+introduced in Section~\ref{sec-model1}. We studied the relationship
+between teaching evaluation scores as given by students and ``beauty''
+scores. The variable teaching \texttt{score} was the numerical outcome
+variable \(y\) and the variable ``beauty'' score (\texttt{bty\_avg}) was
+the numerical explanatory \(x\) variable.
 
 In this section, we are going to consider a different model. Our outcome
 variable will still be teaching score, but now we'll now include two
@@ -8468,7 +11017,7 @@ Recall that data on the 463 courses at UT Austin can be found in the
 However, to keep things simple, let's \texttt{select()} only the subset
 of the variables we'll consider in this chapter, and save this data in a
 new data frame called \texttt{evals\_ch6}. Note that these are different
-than the variables chosen in \textbf{?@sec-regression}.
+than the variables chosen in Chapter~\ref{sec-regression}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8562,7 +11111,7 @@ the average age of the unique instructors may differ.
 
 Furthermore, let's compute the correlation coefficient between our two
 numerical variables: \texttt{score} and \texttt{age}. Recall from
-\textbf{?@sec-model1EDA} that correlation coefficients only exist
+Section~\ref{sec-model1EDA} that correlation coefficients only exist
 between numerical variables. We observe that they are ``weakly
 negatively'' correlated.
 
@@ -8588,7 +11137,7 @@ can we incorporate the categorical variable \texttt{gender} however? By
 \texttt{mapping} the variable \texttt{gender} to the \texttt{color}
 aesthetic, thereby creating a \emph{colored} scatterplot. The following
 code is similar to the code that created the scatterplot of teaching
-score over ``beauty'' score in \textbf{?@fig-numxplot1}, but with
+score over ``beauty'' score in Figure~\ref{fig-numxplot1}, but with
 \texttt{color\ =\ gender} added to the \texttt{aes()}thetic mapping.
 
 \begin{Shaded}
@@ -8640,14 +11189,14 @@ in Figure~\ref{fig-numxcatxplot1} using the values from a regression
 table. Before we do this however, let's go over a brief refresher of
 regression when you have a categorical explanatory variable \(x\).
 
-Recall in \textbf{?@sec-model2table} we fit a regression model for
+Recall in Section~\ref{sec-model2table} we fit a regression model for
 countries' life expectancies as a function of which continent the
 country was in. In other words, we had a numerical outcome variable
 \(y\) = \texttt{lifeExp} and a categorical explanatory variable \(x\) =
 \texttt{continent} which had 5 levels: \texttt{Africa},
 \texttt{Americas}, \texttt{Asia}, \texttt{Europe}, and \texttt{Oceania}.
 Let's re-display the regression table you saw in
-\textbf{?@tbl-catxplot4b}:
+Table~\ref{tbl-catxplot4b}:
 
 Recall our interpretation of the \texttt{Estimate} column. Since
 \texttt{Africa} was the ``baseline for comparison'' group, the
@@ -8664,7 +11213,7 @@ Asia, Europe, and Oceania.
 Going back to our multiple regression model for teaching \texttt{score}
 using \texttt{age} and \texttt{gender} in
 Figure~\ref{fig-numxcatxplot1}, we generate the regression table using
-the same two-step approach from \textbf{?@sec-regression}: we first
+the same two-step approach from Chapter~\ref{sec-regression}: we first
 ``fit'' the model using the \texttt{lm()} ``linear model'' function and
 then we apply the \texttt{summary()} function. This time however, our
 model formula won't be of the form \texttt{y\ \textasciitilde{}\ x}, but
@@ -8699,12 +11248,25 @@ gendermale     0.093519980116477025022803104548074770718812942504882812500000000
 age:gendermale 0.014803372170237579646956405099444964434951543807983398437500000000000000000000000000
 \end{verbatim}
 
-\begin{table}
+\begingroup\fontsize{10}{12}\selectfont
 
-\end{table}
+\hypertarget{tbl-regtable-interaction}{}
+\begin{longtable}[t]{lrrrr}
+\caption{\label{tbl-regtable-interaction}Regression table for interaction model. }\tabularnewline
+
+\toprule
+term & Estimate & Std. Error & t value & p value\\
+\midrule
+(Intercept) & 4.883 & 0.205 & 23.80 & 0.000\\
+age & -0.018 & 0.004 & -3.92 & 0.000\\
+gendermale & -0.446 & 0.265 & -1.68 & 0.094\\
+age:gendermale & 0.014 & 0.006 & 2.45 & 0.015\\
+\bottomrule
+\end{longtable}
+\endgroup{}
 
 Looking at the regression table output in
-\textbf{?@tbl-regtable-interaction}, we see there are four rows of
+Table~\ref{tbl-regtable-interaction}, we see there are four rows of
 values in the \texttt{Estimate} column that correspond to the 4
 estimated components of the model: \(b_0, \ b_1, \ b_2,\) and
 \(b_{1,2}\). Note that we chose to use the notation \(b_{1,2}\) to make
@@ -8780,7 +11342,7 @@ to compute our fitted values \(\widehat{y} = \widehat{\text{score}}\).
 \]
 
 Whoa! That's even more daunting than the equation you saw for the life
-expectancy as a function of continent in \textbf{?@sec-model2table}!
+expectancy as a function of continent in Section~\ref{sec-model2table}!
 However if you recall what an ``indicator function'' AKA ``dummy
 variable'' does, the equation simplifies greatly. In the previous
 equation, we have one indicator function of interest:
@@ -8795,7 +11357,7 @@ equation, we have one indicator function of interest:
 
 Second, let's match coefficients in the previous equation with values in
 the \texttt{Estimate} column in our regression table in
-\textbf{?@tbl-regtable-interaction}:
+Table~\ref{tbl-regtable-interaction}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -8848,7 +11410,7 @@ Phew! That was a lot of arithmetic! Don't fret however, this is as hard
 as modeling will get in this book. If you're still a little unsure about
 using indicator functions and using categorical explanatory variables in
 a regression model, we \emph{highly} suggest you re-read
-\textbf{?@sec-model2table}. This involves only a single categorical
+Section~\ref{sec-model2table}. This involves only a single categorical
 explanatory variable and thus is much simpler.
 
 Before we end this section, we explain why we refer to this type of
@@ -8857,7 +11419,7 @@ the equation for the fitted value \(\widehat{y}\) =
 \(\widehat{\text{score}}\) is what's known in statistical modeling as an
 ``interaction effect.'' The interaction term corresponds to the
 \texttt{age:gendermale} = 0.014 in the final row of the regression table
-in \textbf{?@tbl-regtable-interaction}.
+in Table~\ref{tbl-regtable-interaction}.
 
 We say there is an interaction effect if the associated effect of one
 variable \emph{depends on the value of another variable}. In other
@@ -8951,12 +11513,24 @@ and the single common slope, we once again ``fit'' the model using the
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
+\begingroup\fontsize{10}{12}\selectfont
 
-\end{table}
+\hypertarget{tbl-regtable-parallel-slopes}{}
+\begin{longtable}[t]{lrrrr}
+\caption{\label{tbl-regtable-parallel-slopes}Regression table for parallel slopes model. }\tabularnewline
+
+\toprule
+term & Estimate & Std. Error & t value & p value\\
+\midrule
+(Intercept) & 4.484 & 0.125 & 35.79 & 0.000\\
+age & -0.009 & 0.003 & -3.28 & 0.001\\
+gendermale & 0.191 & 0.052 & 3.63 & 0.000\\
+\bottomrule
+\end{longtable}
+\endgroup{}
 
 Looking at the regression table output in
-\textbf{?@tbl-regtable-parallel-slopes}, we see there are three rows of
+Table~\ref{tbl-regtable-parallel-slopes}, we see there are three rows of
 values in the \texttt{Estimate} column. Similar to what we did in
 Section~\ref{sec-model4interactiontable}, using these three values we
 can write out the equations of both lines in
@@ -8980,7 +11554,7 @@ male instructors has an intercept of 4.675. Once again, since there
 aren't any instructors of age 0, the intercepts only have a mathematical
 interpretation but no practical one.
 
-Unlike in \textbf{?@tbl-regtable-interaction} however, we now only have
+Unlike in Table~\ref{tbl-regtable-interaction} however, we now only have
 a single slope for age of -0.009. This is because the model specifies
 that both the female and male instructors have a common slope for age.
 \index{regression!multiple linear!parallel slopes model} This is telling
@@ -9116,7 +11690,8 @@ What are these two values of \(\widehat{y}\) =
 \(\widehat{\text{score}}\) precisely? We can use the equations of the
 two regression lines we computed in
 Section~\ref{sec-model4interactiontable}, which in turn were based on
-values from the regression table in \textbf{?@tbl-regtable-interaction}:
+values from the regression table in
+Table~\ref{tbl-regtable-interaction}:
 
 \begin{itemize}
 \tightlist
@@ -9135,9 +11710,9 @@ Now what if we want the fitted values not just for the instructors of
 these two courses, but for the instructors of all 463 courses included
 in the \texttt{evals\_ch6} data frame? Doing this by hand would be long
 and tedious! This is where our data wrangling code from
-\textbf{?@sec-model1points} can help: it will quickly automate this for
-all 463 courses. We present a preview of just the first 10 rows out of
-463 in Table~\ref{tbl-model4-points-table}.
+Section~\ref{sec-model1points} can help: it will quickly automate this
+for all 463 courses. We present a preview of just the first 10 rows out
+of 463 in Table~\ref{tbl-model4-points-table}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9186,7 +11761,7 @@ the second and third course this instructor taught had negative
 residuals, indicating that the actual teaching score they received from
 students was less than their fitted score of 4.25.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, opacityback=0, colframe=quarto-callout-tip-color-frame, title={{🎯} Learning Check 6.4}, left=2mm, toprule=.15mm, coltitle=black, leftrule=.75mm, titlerule=0mm, bottomtitle=1mm, arc=.35mm, colbacktitle=quarto-callout-tip-color!10!white, bottomrule=.15mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, rightrule=.15mm, colback=white, toptitle=1mm, coltitle=black, arc=.35mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, title={{🎯} Learning Check 6.4}, bottomtitle=1mm, breakable, titlerule=0mm, leftrule=.75mm]
 
 Compute the observed values, fitted values, and residuals not for the
 interaction model as we just did, but rather for the parallel slopes
@@ -9194,8 +11769,8 @@ model we saved in \texttt{score\_model\_parallel\_slopes}.
 
 \end{tcolorbox}
 
-\hypertarget{related-topics}{%
-\section{Related topics}\label{related-topics}}
+\hypertarget{related-topics-1}{%
+\section{Related topics}\label{related-topics-1}}
 
 \hypertarget{sec-model-selection}{%
 \subsection{Model selection}\label{sec-model-selection}}
@@ -9250,9 +11825,9 @@ The interaction model is ``more complex'' in that there is an additional
 \(b_{\mbox{age,male}} \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\)
 element to the equation not present for the parallel slopes model. Or
 viewed alternatively, the regression table for the interaction model in
-\textbf{?@tbl-regtable-interaction} has \emph{four} rows, whereas the
+Table~\ref{tbl-regtable-interaction} has \emph{four} rows, whereas the
 regression table for the parallel slopes model in
-\textbf{?@tbl-regtable-parallel-slopes} has \emph{three} rows. The
+Table~\ref{tbl-regtable-parallel-slopes} has \emph{three} rows. The
 question becomes: ``Is this additional complexity warranted?'' In this
 case, it can be argued that this additional complexity is warranted, as
 evidenced by the clear x-shaped pattern of the two regression lines in
@@ -9306,7 +11881,7 @@ we should prefer the ``simpler'' parallel slopes model.
 
 Let's explicitly define what ``simpler'' means in this case. Let's
 compare the regression tables for the interaction and parallel slopes
-models in \textbf{?@tbl-model2-interaction} and
+models in Tables~\ref{tbl-model2-interaction} and
 -Table~\ref{tbl-model2-parallel-slopes}.
 
 \begin{Shaded}
@@ -9317,9 +11892,25 @@ models in \textbf{?@tbl-model2-interaction} and
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
+\begingroup\fontsize{10}{12}\selectfont
 
-\end{table}
+\hypertarget{tbl-model2-interaction}{}
+\begin{longtable}[t]{lrrrr}
+\caption{\label{tbl-model2-interaction}Interaction model regression table }\tabularnewline
+
+\toprule
+term & Estimate & Std. Error & t value & p value\\
+\midrule
+(Intercept) & 594.327 & 13.288 & 44.726 & 0.000\\
+perc\_disadvan & -2.932 & 0.294 & -9.961 & 0.000\\
+sizemedium & -17.764 & 15.827 & -1.122 & 0.263\\
+sizelarge & -13.293 & 13.813 & -0.962 & 0.337\\
+perc\_disadvan:sizemedium & 0.146 & 0.371 & 0.393 & 0.694\\
+\addlinespace
+perc\_disadvan:sizelarge & 0.189 & 0.323 & 0.586 & 0.559\\
+\bottomrule
+\end{longtable}
+\endgroup{}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9350,7 +11941,7 @@ Observe how the regression table for the interaction model has 2 more
 rows (6 versus 4). This reflects the additional ``complexity'' of the
 interaction model over the parallel slopes model.
 
-Furthermore, note in \textbf{?@tbl-model2-interaction} how the
+Furthermore, note in Table~\ref{tbl-model2-interaction} how the
 \emph{offsets for the slopes} \texttt{perc\_disadvan:sizemedium} being
 0.146 and \texttt{perc\_disadvan:sizelarge} being 0.189 are small
 relative to the \emph{slope for the baseline group} of small schools. In
@@ -9561,15 +12152,15 @@ line in the left-hand plot.
 In this example of Simpson's Paradox, the credit limit is a
 \emph{confounding variable} of the relationship between credit card debt
 and income\index{confounding variable} as we defined in
-\textbf{?@sec-correlation-is-not-causation}. Thus, the credit limit
+Section~\ref{sec-correlation-is-not-causation}. Thus, the credit limit
 needs to be accounted for in any appropriate model for the relationship
 between debt and income.
 
 \hypertarget{sec-multi-reg-conclusion}{%
 \section{Conclusion}\label{sec-multi-reg-conclusion}}
 
-\hypertarget{whats-to-come-2}{%
-\subsection{What's to come?}\label{whats-to-come-2}}
+\hypertarget{whats-to-come-3}{%
+\subsection{What's to come?}\label{whats-to-come-3}}
 
 Congratulations! We've completed the ``Data modeling'' portion of this
 book. We're ready to proceed to the next part of the book: ``Statistical
@@ -9878,7 +12469,7 @@ In practice, a randomized experiment involves several steps.
   model, \[\hat{y} = b_0 + b_1T \] where \(T\) equals 1 when the
   individual is in the treatment group and 0 when they are in the
   control group. Note that using the notation introduced in
-  \textbf{?@sec-model2table}, this would be the same as writing
+  Section~\ref{sec-model2table}, this would be the same as writing
   \(\hat{y} = b_0 + b_1\mathbb{1}_{\mbox{Trt}}(x)\). We will stick with
   the \(T\) notation for now, because this is more common in randomized
   experiments in practice.
@@ -9894,7 +12485,7 @@ difference between the treatment and control group averages.
 \subsection{Random processes in R}\label{random-processes-in-r}}
 
 There are several functions in R that mimic random processes. You have
-already seen one example in \textbf{?@sec-regression} and
+already seen one example in Chapters~\ref{sec-regression} and
 \ref{sec-multiple-regression} when we used \texttt{sample\_n} to
 randomly select a specifized number of rows from a dataset. The function
 \texttt{rbernoulli()} is another example, which allows us to mimic the
@@ -9983,9 +12574,9 @@ regression model.
 
 Why can't we use the same model to determine causality with
 observational data? Recall our discussion from
-\textbf{?@sec-correlation-is-not-causation}. We have to be very careful
-not to make unwarranted causal claims from observational data, because
-there may be an \textbf{omitted variable} (Z), also known as a
+Section~\ref{sec-correlation-is-not-causation}. We have to be very
+careful not to make unwarranted causal claims from observational data,
+because there may be an \textbf{omitted variable} (Z), also known as a
 \textbf{confounder}:
 
 \includegraphics{images/confounder.png}
@@ -15728,8 +18319,8 @@ reasoning to imagine other possible samples you might have seen if you
 knew the trend in the population. This way of thinking will lead us to
 define p-values.
 
-\hypertarget{packages-needed-3}{%
-\subsection*{Packages Needed}\label{packages-needed-3}}
+\hypertarget{packages-needed-4}{%
+\subsection*{Packages Needed}\label{packages-needed-4}}
 \addcontentsline{toc}{subsection}{Packages Needed}
 
 Let's load all the packages needed for this chapter (this assumes you've
@@ -16199,8 +18790,8 @@ We can also use a regression model to estimate the difference between
 means. We can fit the model \[\widehat{rating} = b_0 + b_1*genre,\]
 where \texttt{action} is the reference category (because it comes before
 \texttt{romance} in alphabetical order). Recalling what we learned in
-\textbf{?@sec-model2}, \(b_0\) is interpreted as the average rating for
-\texttt{action} movies, and \(b_1\) is the \emph{offset} in average
+Section~\ref{sec-model2}, \(b_0\) is interpreted as the average rating
+for \texttt{action} movies, and \(b_1\) is the \emph{offset} in average
 rating for \texttt{romance} movies, relative to \texttt{action} movies.
 That is, \(b_1 = \bar{x}_{romance} - \bar{x}_{action}\), which is
 exactly the estimate we're interested in. Let's fit this model and take
@@ -16568,8 +19159,8 @@ is because the concept of a p-value is distinct from the use of a
 p-value to make a decision. In this chapter, we introduce hypothesis
 testing, which can be used for just this purpose.
 
-\hypertarget{packages-needed-4}{%
-\subsection*{Packages Needed}\label{packages-needed-4}}
+\hypertarget{packages-needed-5}{%
+\subsection*{Packages Needed}\label{packages-needed-5}}
 \addcontentsline{toc}{subsection}{Packages Needed}
 
 Let's load all the packages needed for this chapter (this assumes you've
@@ -17954,8 +20545,8 @@ theory of estimation, generalizability, and causal inference (Parts II
 together, illustrating how descriptive and inferential statistics can be
 used with real data.
 
-\hypertarget{packages-needed-5}{%
-\subsection*{Packages Needed}\label{packages-needed-5}}
+\hypertarget{packages-needed-6}{%
+\subsection*{Packages Needed}\label{packages-needed-6}}
 \addcontentsline{toc}{subsection}{Packages Needed}
 
 Let's load all the packages needed for this chapter (this assumes you've
@@ -18421,6 +21012,11 @@ Markdown}. \url{http://ismayc.github.io/rbasics-book}.
 \leavevmode\vadjust pre{\hypertarget{ref-robbins2013}{}}%
 Robbins, Naomi. 2013. \emph{Creating More Effective Graphs}. Chart
 House.
+
+\leavevmode\vadjust pre{\hypertarget{ref-R-skimr}{}}%
+Waring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia,
+Hao Zhu, and Shannon Ellis. 2022. \emph{Skimr: Compact and Flexible
+Summaries of Data}. \url{https://CRAN.R-project.org/package=skimr}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-tidy}{}}%
 Wickham, Hadley. 2014. {``Tidy Data.''} \emph{Journal of Statistical
@@ -19021,11 +21617,11 @@ Exercise~\ref{exr-ch03-adv1}
 \hypertarget{sec-ex04-sol}{%
 \section{Chapter 4}\label{sec-ex04-sol}}
 
-\textbf{?@exr-ch05-c01} Yes it is tidy.
+Exercise~\ref{exr-ch05-c01} Yes it is tidy.
 
-\textbf{?@exr-ch05-c02} a, b, c, d
+Exercise~\ref{exr-ch05-c02} a, b, c, d
 
-\textbf{?@exr-ch05-app1}
+Exercise~\ref{exr-ch05-app1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19033,7 +21629,7 @@ Exercise~\ref{exr-ch03-adv1}
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{?@exr-ch05-app2}
+Exercise~\ref{exr-ch05-app2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19058,7 +21654,7 @@ Exercise~\ref{exr-ch03-adv1}
 6 China       2000  213766
 \end{verbatim}
 
-\textbf{?@exr-ch05-adv1}
+Exercise~\ref{exr-ch05-adv1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19089,33 +21685,33 @@ Exercise~\ref{exr-ch03-adv1}
 \hypertarget{sec-ex05-sol}{%
 \section{Chapter 5}\label{sec-ex05-sol}}
 
-\textbf{?@exr-ch05-c01} c) -0.7
+Exercise~\ref{exr-ch05-c01} c) -0.7
 
-\textbf{?@exr-ch05-c02} e) Exactly 1
+Exercise~\ref{exr-ch05-c02} e) Exactly 1
 
-\textbf{?@exr-ch05-c03} b) Between -1 and 0
+Exercise~\ref{exr-ch05-c03} b) Between -1 and 0
 
-\textbf{?@exr-ch05-c04} a) explanatory variable \& b) predictor variable
-\& d) independent variable f) covariate
+Exercise~\ref{exr-ch05-c04} a) explanatory variable \& b) predictor
+variable \& d) independent variable f) covariate
 
-\textbf{?@exr-ch05-c05} c) outcome variable \& e) dependent variable
+Exercise~\ref{exr-ch05-c05} c) outcome variable \& e) dependent variable
 
-\textbf{?@exr-ch05-c06} c) \(b_0\) \& e) the value of \(\hat{y}\) when
-\(x=0\) \& f) intercept
+Exercise~\ref{exr-ch05-c06} c) \(b_0\) \& e) the value of \(\hat{y}\)
+when \(x=0\) \& f) intercept
 
-\textbf{?@exr-ch05-c07} d) For every increase of 1 unit in x, there is
-an associated increase of, on average, 3.86 units of y.
+Exercise~\ref{exr-ch05-c07} d) For every increase of 1 unit in x, there
+is an associated increase of, on average, 3.86 units of y.
 
-\textbf{?@exr-ch05-c08} a) TRUE
+Exercise~\ref{exr-ch05-c08} a) TRUE
 
-\textbf{?@exr-ch05-c09} b) FALSE
+Exercise~\ref{exr-ch05-c09} b) FALSE
 
-\textbf{?@exr-ch05-c10} a) TRUE
+Exercise~\ref{exr-ch05-c10} a) TRUE
 
-\textbf{?@exr-ch05-c11} d) No, the positive correlation does not
+Exercise~\ref{exr-ch05-c11} d) No, the positive correlation does not
 necessarily imply causation.
 
-\textbf{?@exr-ch05-app1}
+Exercise~\ref{exr-ch05-app1}
 
 \textbf{a)}
 
@@ -19203,7 +21799,7 @@ the miles per gallon of the vehicle to decrease on average by 0.158.
 
 We would expect the vehicle to have 16.24 miles per gallon.
 
-\textbf{?@exr-ch05-app2}
+Exercise~\ref{exr-ch05-app2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19290,7 +21886,7 @@ expect the number of bikers to increase by 305.
 [1] 147.129
 \end{verbatim}
 
-\textbf{?@exr-ch05-app3}
+Exercise~\ref{exr-ch05-app3}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19359,7 +21955,7 @@ residual. The 166th day of the year at hour 17 had the worst prediction
 with an observed value of 638 and predicted value of 157 (residual of
 480.3).
 
-\textbf{?@exr-ch05-adv1}
+Exercise~\ref{exr-ch05-adv1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
