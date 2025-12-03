@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -68,14 +68,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./12-hypothesis-tests.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e8de9bd59ba156b9e4cb33cd6f01d621.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -127,7 +128,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -169,7 +170,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
-      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
@@ -436,7 +438,7 @@ window.Quarto = {
 <h3 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h3>
 <p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="a-general-process-for-using-statistics" class="level2" data-number="13.1">
@@ -459,10 +461,10 @@ Explore/ Estimate -> Question -> Hypothesize ->
 <p>The Tennessee STAR experiment was conducted in the 1980s in order to determine if class size effects student learning. In each school in the experiment, Kindergarten students were randomized to either be in a small classroom (13-17 students) or a regular sized classroom (22-27 students). This design was replicated in about 80 schools throughout the state. For information on the study, see <a href="https://en.wikipedia.org/wiki/Class-size_reduction">here</a>.</p>
 <p>For this example, we focus on data from a <em>single school</em>. In this school, there were 137 Kindergarten students that were randomly divided into 7 classes: 3 “small” classes and 4 “regular” classes. Teachers were also randomly assigned to these classrooms. At the end of the year, students were tested and achievement scores obtained. Let’s load this data and take a look at it.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># star_data &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTluVgdD7hdPLkKPMpN3OZjpBdZ1HloCGEQ1abcgfcWJHGYQppUGyXsGaPz74XQRwaMobDFLZgN3caU/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># star_data &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTluVgdD7hdPLkKPMpN3OZjpBdZ1HloCGEQ1abcgfcWJHGYQppUGyXsGaPz74XQRwaMobDFLZgN3caU/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>star_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/star_data.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(star_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(star_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 137
 Columns: 6
@@ -491,8 +493,8 @@ $ small     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
 <p>Notice here that the <em>population parameter</em> we are interested in is <span class="math inline">\(\beta_1\)</span>, which we estimate by the <em>sample statistic</em> <span class="math inline">\(b_1\)</span> in our model. Because the treatment of having small class sizes is fairly costly (as it would require hiring and paying more teachers), we want to make sure we have pretty strong evidence that it is effective before recommending that it should be adopted as a policy. Therefore, we design our test to have a Type I error of <span class="math inline">\(\alpha = 0.01\)</span>. That is, we are only willing to tolerate a 1% probability of falsely finding the treatment to be effective when in fact it is not, so we will only reject the null hypothesis if <span class="math inline">\(p &lt; 0.01.\)</span></p>
 <p><strong>Estimate</strong>: Our estimated model is found in the table below.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>star_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(math <span class="sc">~</span> small, <span class="at">data =</span> star_data)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(star_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>star_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(math <span class="sc">~</span> small, <span class="at">data =</span> star_data)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(star_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -537,10 +539,10 @@ $ important &lt;dbl&gt; 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0,
 <p>Given the cost of collecting this data and associated trade-offs, we decided to set our Type I error at 10%.</p>
 <p><strong>Estimate</strong>: Let’s use <code>prop.test()</code> to obtain our estimate. Recall that <code>prop.test()</code> requires an argument <code>x</code> that gives the counts of “successes,” which in this case means the number of people who responded “extremely important” (i.e.&nbsp;<code>important == 1</code> in the data), and an argument <code>n</code> for the total number of “trials,” which in this case means the total number of people surveyed (i.e.&nbsp;<code>n = 100</code>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beta_U_summary <span class="ot">&lt;-</span> beta_U_data <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beta_U_summary <span class="ot">&lt;-</span> beta_U_data <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">important =</span> <span class="fu">sum</span>(important),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>beta_U_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>beta_U_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   important     n
@@ -550,7 +552,7 @@ $ important &lt;dbl&gt; 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0,
 </div>
 <p>The default for <code>prop.test()</code> assumes the null hypothesis is <span class="math inline">\(\pi = 0.5\)</span>, so we need to override that here by specifying <code>p = 0.29</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> beta_U_summary<span class="sc">$</span>important, <span class="at">n =</span> beta_U_summary<span class="sc">$</span>n, <span class="at">p =</span> <span class="fl">0.29</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> beta_U_summary<span class="sc">$</span>important, <span class="at">n =</span> beta_U_summary<span class="sc">$</span>n, <span class="at">p =</span> <span class="fl">0.29</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     1-sample proportions test with continuity correction
@@ -577,7 +579,7 @@ sample estimates:
 <p><strong>Question</strong>: What is the relationship between the number of minifigures in a Harry Potter lego set and the price of the set?</p>
 <p>Let’s load in the data, create the relevant Harry Potter subset, and <code>skim</code> the relevant variables. Recall that <code>USD_MSRP</code> is our price variable in US dollars.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># legosets &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSwB0bCE4w7qrep4lIC-QVyF307mxFNUYQ08LZqiFsC_ks1bt_ZEJqiTEo7SaCl6g4TQ8gig2ZIfQJu/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># legosets &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSwB0bCE4w7qrep4lIC-QVyF307mxFNUYQ08LZqiFsC_ks1bt_ZEJqiTEo7SaCl6g4TQ8gig2ZIfQJu/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>legosets <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/legosets.csv"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>legosets_HP <span class="ot">&lt;-</span> legosets <span class="sc">%&gt;%</span> </span>
@@ -586,7 +588,7 @@ sample estimates:
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">skim_with</span>(<span class="at">numeric =</span> <span class="fu">list</span>(<span class="at">hist =</span> <span class="cn">NULL</span>))</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>legosets_HP <span class="sc">%&gt;%</span> </span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USD_MSRP, Minifigures) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>Skim summary statistics
  n obs: 53 
@@ -603,14 +605,14 @@ sample estimates:
 <p><span class="math display">\[\widehat{USD\_MSRP} = b_0 + b_1*Minifigures\]</span></p>
 <p>This model can be estimated in R using the following syntax:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lego_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(USD_MSRP <span class="sc">~</span> Minifigures, <span class="at">data =</span> legosets_HP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lego_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(USD_MSRP <span class="sc">~</span> Minifigures, <span class="at">data =</span> legosets_HP)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that we do not necessarily need to use a hypothesis test here to make a <em>decision</em> about anything; rather, we are interested in simply <em>estimating</em> the magnitude of the relationship between minifigures and price in the population of Harry Potter legosets. Therefore, we can simply construct a confidence interval, rather than conducting a hypothesis test.</p>
 <!-- **Null hypothesis**: Recalling that we seek to prove that there is a relationship, we invoke a **stochastic proof by contradiction** by assuming that there is **no relationship** between the number of minifigures and price. In the model, this means assuming that the slope $\beta_1 = 0$.  -->
 <!-- We decide to use a small Type I error (1%) for this test. -->
 <p><strong>Estimate</strong>: We can obtain our estimate <span class="math inline">\(b_1\)</span> from our data using <code>summary(lego_model)</code>, which provides us an estimate of this relationship.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lego_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lego_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -635,7 +637,7 @@ F-statistic: 95.9 on 1 and 49 DF,  p-value: 0.000000000000403</code></pre>
 </div>
 <p>Here the slope <span class="math inline">\(b_1 = 10.54\)</span>; this means that for every additional minifigure in a Harry Potter lego set, the average price increases by $10.54. How confident are we in this estimate? Is it precise? We can use the function <code>confint()</code> to construct a 95% confidence interval.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lego_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lego_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             2.5 % 97.5 %
 (Intercept) -13.24   6.33
@@ -706,13 +708,14 @@ Minifigures   8.38  12.70</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

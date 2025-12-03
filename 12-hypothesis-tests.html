@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./11-p-values.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e8de9bd59ba156b9e4cb33cd6f01d621.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -130,7 +131,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -172,7 +173,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
-      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
@@ -461,9 +463,9 @@ window.Quarto = {
 <h3 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h3>
 <p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="sec-decision-making" class="level2" data-number="12.1">
@@ -483,7 +485,7 @@ Table&nbsp;12.1: Party decision making
 </figcaption>
 <div aria-describedby="tbl-party-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">-</th>
@@ -534,7 +536,7 @@ Table&nbsp;12.2: Pregnancy test decision making
 </figcaption>
 <div aria-describedby="tbl-medicine-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">-</th>
@@ -579,7 +581,7 @@ Table&nbsp;12.3: Criminal trial decision making
 </figcaption>
 <div aria-describedby="tbl-law-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">-</th>
@@ -629,7 +631,7 @@ Table&nbsp;12.4: Hypothesis test decision making
 </figcaption>
 <div aria-describedby="tbl-ht-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">-</th>
@@ -712,7 +714,7 @@ Table&nbsp;12.4: Hypothesis test decision making
 <p>Each of the personnel files given to the supervisors were identical except that half of them indicated that the candidate was female and half indicated the candidate was male. Personnel files were randomly distributed to the 48 supervisors. Because only the candidate’s gender varied from file to file, and the files were randomly assigned to study participants, the researchers were able to isolate the effect of gender on promotion rates.</p>
 <p>The <code>moderndive</code> package contains the data on the 48 candidates in the <code>promotions</code> data frame. Let’s explore this data first:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>promotions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>promotions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 48 × 3
       id decision gender
@@ -733,9 +735,9 @@ Table&nbsp;12.4: Hypothesis test decision making
 <p>The variable <code>id</code> acts as an identification variable for all 48 rows, the <code>decision</code> variable indicates whether the candidate was selected for promotion or not, while the <code>gender</code> variable indicates the gender of the candidate indicated on the personnel file. Recall that this data does not pertain to 24 actual men and 24 actual women, but rather 48 identical personnel files of which 24 were indicated to be male candidates and 24 were indicated to be female candidates.</p>
 <p>Let’s perform an exploratory data analysis of the relationship between the two categorical variables <code>decision</code> and <code>gender</code>. Recall that we saw in <a href="02-visualization.html#sec-two-categ-barplot" class="quarto-xref"><span>Section 2.8.3</span></a> that one way we can visualize such a relationship is using a stacked barplot.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions, <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> decision)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions, <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> decision)) <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender on personnel file"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender on personnel file"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-promotions-barplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -751,12 +753,12 @@ Figure&nbsp;12.1: Barplot of relationship between gender and promotion decision.
 </div>
 <p>Observe in <a href="#fig-promotions-barplot" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> that it appears that female personnel files were much less likely to be accepted for promotion (even though they were identical to the male personnel files). Let’s quantify these promotion rates by computing the proportion of personnel files accepted for promotion for each group using the <code>dplyr</code> package for data wrangling:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>promotion_props <span class="ot">&lt;-</span> promotions <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>promotion_props <span class="ot">&lt;-</span> promotions <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">num_promoted =</span> <span class="fu">sum</span>(decision <span class="sc">==</span> <span class="st">"promoted"</span>),</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">pi_hat =</span> num_promoted <span class="sc">/</span> n)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>promotion_props</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>promotion_props</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   gender     n num_promoted pi_hat
@@ -776,19 +778,19 @@ Figure&nbsp;12.1: Barplot of relationship between gender and promotion decision.
 <p>Think about this intuition for a second: since we are working under the hypothesis that the two parameters <span class="math inline">\(\pi_m\)</span> and <span class="math inline">\(\pi_f\)</span> are equal, it is more efficient to use <em>all</em> of the information to estimate <em>one</em> parameter than to use half of the data to estimate <span class="math inline">\(\pi_m\)</span> and the other half of the data to estimate <span class="math inline">\(\pi_f\)</span>.</p>
 <p>In the promotions example, <span class="math display">\[\hat{\pi}_0 = \frac{21 + 14}{24 + 24} = 0.729.\]</span> We can compute the test statistic with the following code.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="ot">&lt;-</span> promotion_props <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="ot">&lt;-</span> promotion_props <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">diff_pi_hat =</span> <span class="fu">abs</span>(<span class="fu">diff</span>(pi_hat)),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pi_0 =</span> <span class="fu">sum</span>(num_promoted)<span class="sc">/</span><span class="fu">sum</span>(n),</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE =</span> <span class="fu">sqrt</span>(pi_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_0)<span class="sc">/</span><span class="dv">24</span> <span class="sc">+</span> pi_0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pi_0)<span class="sc">/</span><span class="dv">24</span>)) </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>estimates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>estimates</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   diff_pi_hat  pi_0    SE
         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1       0.292 0.729 0.128</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">test_stat =</span> diff_pi_hat<span class="sc">/</span>SE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>estimates <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">test_stat =</span> diff_pi_hat<span class="sc">/</span>SE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   test_stat
@@ -798,8 +800,8 @@ Figure&nbsp;12.1: Barplot of relationship between gender and promotion decision.
 </div>
 <p>Our test statistic is equal to 2.27, which we can now use to compute our p-value. Recall from <a href="10-confidence-intervals.html#tbl-samp-dist-table-ch-10" class="quarto-xref">Table&nbsp;<span>10.1</span></a> that the standardized statistic for a difference in proportions follows a N(0,1) distribution, so we can use <code>pnorm()</code> to compute the p-value.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="fl">2.27</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="fl">2.27</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0232</code></pre>
 </div>
@@ -821,10 +823,10 @@ Figure&nbsp;12.2: P-value for Promotions Hypothesis Test
 <p>Note that we set <code>lower.tail = FALSE</code> so that it gives us the probability in the upper tail of the distribution to the right of our observed test-statistic, and we multiply by 2 because we are conducting a two-sided hypothesis test (and the N(0,1) distribution is symmetric). The p-value = 0.02 is represented by the shaded region in <a href="#fig-promotions-p-value" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>.</p>
 <p>We could also find the p-value using the function called <code>prop.test()</code>, similar to <code>t.test()</code>, which will perform all of the above calculations for us when dealing with proportions. <code>prop.test()</code> needs you to specify <code>x</code>, a vector (or column) of data containing the number of successes (in this case promotions) for each group, and <code>n</code>, a vector (or column) of data containing the total number of trials per group. Recall that we computed this information in <code>promotion_props</code>. There is a something called the Yates’ continuity correction that is applied by default to tests of proportions in <code>prop.test()</code>, but because we did not use this correction when conducting the test “by hand”, we will override this default by setting <code>correct = FALSE</code> for now. Let’s see <code>prop.test()</code> in action on our promotions data.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>promotion_test <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x =</span> promotion_props<span class="sc">$</span>num_promoted, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>promotion_test <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(<span class="at">x =</span> promotion_props<span class="sc">$</span>num_promoted, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">n =</span> promotion_props<span class="sc">$</span>n, </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>promotion_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>promotion_test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     2-sample test for equality of proportions without continuity correction
@@ -841,7 +843,7 @@ prop 1 prop 2
 </div>
 <p>Note that <code>prop.test()</code> returns values for <span class="math inline">\(\hat{\pi}_m\)</span> (<code>prop 1</code>) and <span class="math inline">\(\hat{\pi}_f\)</span> (<code>prop 2</code>), a 95% confidence interval, and a p-value for a <code>two.sided</code> alternative hypothesis. We can verify that this returns the same p-value of 0.023.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>promotion_test<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>promotion_test<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.023</code></pre>
 </div>
@@ -856,14 +858,14 @@ prop 1 prop 2
 <p><span class="math display">\[H_0: \mu_1 - \mu_2 = 0\]</span> <span class="math display">\[H_A: \mu_1 - \mu_2 \neq 0,\]</span> so that it’s clear our parameter of interest is a difference in two means. We will test this hypothesis at the 95% confidence level (i.e.&nbsp;with <span class="math inline">\(\alpha = 0.05\)</span>).</p>
 <p>Recall that we already computed all the relevant values in <a href="11-p-values.html#sec-t-test" class="quarto-xref"><span>Section 11.3.3</span></a> using <code>t.test</code>, but we show the code again here.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>romance <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>romance <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Romance"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>action <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Action"</span>) </span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>movies_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> romance<span class="sc">$</span>rating, <span class="at">y =</span> action<span class="sc">$</span>rating)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>movies_t.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>movies_t.test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -882,8 +884,8 @@ mean of x mean of y
 <p>We could also conduct a hypothesis test for this same problem in the regression framework we demonstrated in <a href="11-p-values.html#sec-pvalues-regression" class="quarto-xref"><span>Section 11.3.4</span></a>. Recall we fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> and said <span class="math inline">\(b_1\)</span> could be interpreted as the difference in means. Recall that the slope <span class="math inline">\(b_1\)</span> in our sample is an estimate of the <em>population slope</em> <span class="math inline">\(\beta_1\)</span>. Note that assuming there is no difference in means implies <span class="math inline">\(\beta_1 = 0\)</span>. Therefore in this framework, our hypotheses would be:</p>
 <p><span class="math display">\[H_0: \beta_1 = 0\]</span> <span class="math display">\[H_A: \beta_1 \neq 0\]</span> Let’s look again at the results of this model.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(movies_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(movies_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -912,16 +914,16 @@ F-statistic: 8.28 on 1 and 66 DF,  p-value: 0.0054</code></pre>
 <p>Let’s return to our ride share price example from <a href="11-p-values.html#sec-ride-share" class="quarto-xref"><span>Section 11.4</span></a>. Recall that we wanted to know whether <span class="math inline">\(\mu_B = \$19.50\)</span>. We could test this with the following hypotheses, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance:</p>
 <p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span></p>
 <div class="cell" data-layout-align="center" data-warnings="false">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rides_B &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rides_B &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/rides_B.csv"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>rides_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>statistic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   t 
 1.53 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.13</code></pre>
 </div>
@@ -930,11 +932,11 @@ F-statistic: 8.28 on 1 and 66 DF,  p-value: 0.0054</code></pre>
 <p>We also considered this problem in the regression framework with the <em>intercept only model</em> <span class="math inline">\(\widehat{price} = b_0\)</span>. In this case, our hypotheses are:</p>
 <p><span class="math display">\[H_0: \beta_0 = 19.50\]</span> <span class="math display">\[H_A: \beta_0 \neq 19.50\]</span> Recall that in order to get the correct test statistic and p-value for this null value (as opposed to the defaul null value of zero in regression), we had to <em>center</em> our variable.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> rides_B <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> rides_B <span class="sc">%&gt;%</span> </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_centered =</span> price <span class="sc">-</span> <span class="fl">19.5</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>ride_model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price_centered <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> rides_B)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -964,13 +966,13 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 <p><span class="math display">\[H_0: \mu_B = 19.50\]</span> <span class="math display">\[H_A: \mu_B \neq 19.50\]</span> What if instead, we want to test the claim that the average price of rides at company B is <strong>greater than</strong> <span class="math inline">\(\$19.50\)</span>? In mathematical notation this claim is <span class="math inline">\(\mu_B &gt; 19.50\)</span>. We formulate the hypothesis as follows:</p>
 <p><span class="math display">\[H_0: \mu_B \leq 19.50\]</span> <span class="math display">\[H_A: \mu_B &gt; 19.50\]</span> It’s important to note that the null hypothesis always contains equality! Now our rejection region is strictly in the upper tail of the distribution. Let’s test this claim, again specifying <span class="math inline">\(\alpha = 0.05\)</span> in advance.</p>
 <div class="cell" data-layout-align="center" data-warnings="false">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rides_one.tail <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rides_one.tail<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rides_one.tail <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rides_one.tail<span class="sc">$</span>statistic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   t 
 1.53 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>rides_one.tail<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>rides_one.tail<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0648</code></pre>
 </div>
@@ -1008,7 +1010,7 @@ Table&nbsp;12.5: Formulating the Null and Alternative Hypothesis
 </figcaption>
 <div aria-describedby="tbl-tail-ch-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1226,13 +1228,14 @@ Table&nbsp;12.5: Formulating the Null and Alternative Hypothesis
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

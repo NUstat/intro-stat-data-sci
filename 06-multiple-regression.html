@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./05-regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e8de9bd59ba156b9e4cb33cd6f01d621.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -130,7 +131,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -172,7 +173,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
-      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
@@ -473,10 +475,10 @@ window.Quarto = {
 </ul>
 <p>If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="sec-model3" class="level2" data-number="6.1">
@@ -496,11 +498,11 @@ window.Quarto = {
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="sec-model3EDA"><span class="header-section-number">6.1.1</span> Exploratory data analysis</h3>
 <p>Let’s load the <code>Credit</code> dataset, but to keep things simple let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>credit_ch6</code>. Notice our slightly different use of the <code>select()</code> verb here than we introduced in <a href="03-wrangling.html#sec-select" class="quarto-xref">Subsection&nbsp;<span>3.8.1</span></a>. For example, we’ll select the <code>Balance</code> variable from <code>Credit</code> but then save it with a new variable name <code>debt</code>. We do this because here the term “debt” is a little more interpretable than “balance.”</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="ot">&lt;-</span> Credit <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">debt =</span> Balance, <span class="at">credit_limit =</span> Limit, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">income =</span> Income, <span class="at">credit_rating =</span> Rating, <span class="at">age =</span> Age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">income =</span> Income, <span class="at">credit_rating =</span> Rating, <span class="at">age =</span> Age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recall the three common steps in an exploratory data analysis we saw in <a href="05-regression.html#sec-model1EDA" class="quarto-xref">Subsection&nbsp;<span>5.1.1</span></a>:</p>
 <ol type="1">
@@ -510,7 +512,7 @@ window.Quarto = {
 </ol>
 <p>Let’s begin by looking at the raw values either in RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function from the <code>dplyr</code> package. You can observe the effect of our use of <code>select()</code> to keep and rename the relevant variables.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(credit_ch6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(credit_ch6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 400
 Columns: 5
@@ -523,9 +525,9 @@ $ age           &lt;dbl&gt; 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 
 </div>
 <p>Furthermore, let’s look at a random sample of five out of the 400 credit card holders in <a href="#tbl-model3-data-preview" class="quarto-xref">Table&nbsp;<span>6.1</span></a>. Once again, note that due to the random nature of the sampling, you will likely end up with a different subset of five rows.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -535,7 +537,7 @@ Table&nbsp;6.1: Random sample of 5 credit card holders.
 </figcaption>
 <div aria-describedby="tbl-model3-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">debt</th>
@@ -590,9 +592,9 @@ Table&nbsp;6.1: Random sample of 5 credit card holders.
 </div>
 <p>Now that we’ve looked at the raw values in our <code>credit_ch6</code> data frame and have a sense of the data, let’s move on to the next common step in an exploratory data analysis: computing summary statistics. As we did in our exploratory data analyses in <a href="05-regression.html#sec-model1EDA" class="quarto-xref">Subsections&nbsp;<span>5.1.1</span></a> and <a href="05-regression.html#sec-model2EDA" class="quarto-xref"><span>5.2.1</span></a> from the previous chapter, let’s use the <code>skim()</code> function from the <code>skimr</code> package, being sure to only <code>select()</code> the variables of interest in our model:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>Skim summary statistics
  n obs: 400 
@@ -607,15 +609,15 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 <p>Observe the summary statistics for the outcome variable <code>debt</code>: the mean and median credit card debt are $520.01 and $459.50 respectively and that 25% of card holders had debts of $68.75 or less. Let’s now look at one of the explanatory variables <code>credit_limit</code>: the mean and median credit card limit are $4735.6 and $4622.50 respectively while 75% of card holders had incomes of $57,470 or less.</p>
 <p>Since our outcome variable <code>debt</code> and the explanatory variables <code>credit_limit</code> and <code>income</code> are numerical, we can compute the correlation coefficient between the different possible pairs of these variables. First, we can run the <code>cor()</code> command as seen in <a href="05-regression.html#sec-model1EDA" class="quarto-xref">Subsections&nbsp;<span>5.1.1</span></a> twice, once for each explanatory variable:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>credit_limit)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>credit_limit)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>income)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Or we can simultaneously compute them by returning a <em>correlation matrix</em> which we display in <a href="#tbl-model3-correlation" class="quarto-xref">Table&nbsp;<span>6.2</span></a>. We can read off the correlation coefficient for any pair of variables by looking them up in the appropriate row/column combination.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-correlation" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -625,7 +627,7 @@ Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit,
 </figcaption>
 <div aria-describedby="tbl-model3-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -671,7 +673,7 @@ Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit,
 <p>So in our case since <code>credit_limit</code> and <code>income</code> are highly correlated, if we knew someone’s <code>credit_limit</code>, we could make pretty good guesses about their <code>income</code> as well. Thus, these two variables provide somewhat redundant information. However, we’ll leave discussion on how to work with collinear explanatory variables to a more intermediate-level book on regression modeling.</p>
 <p>Let’s visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots in <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(credit_ch6, <span class="fu">aes</span>(<span class="at">x =</span> credit_limit, <span class="at">y =</span> debt)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(credit_ch6, <span class="fu">aes</span>(<span class="at">x =</span> credit_limit, <span class="at">y =</span> debt)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Credit limit (in $)"</span>, <span class="at">y =</span> <span class="st">"Credit card debt (in $)"</span>, </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Debt and credit limit"</span>) <span class="sc">+</span></span>
@@ -681,7 +683,7 @@ Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit,
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income (in $1000)"</span>, <span class="at">y =</span> <span class="st">"Credit card debt (in $)"</span>, </span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Debt and income"</span>) <span class="sc">+</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -715,12 +717,12 @@ Figure&nbsp;6.2: 3D scatterplot and regression plane
 </div>
 <p>Furthermore, we also include the <em>regression plane</em>. Recall from <a href="05-regression.html#sec-leastsquares" class="quarto-xref">Subsection&nbsp;<span>5.3.3</span></a> that regression lines are “best-fitting” in that of all possible lines we can draw through a cloud of points, the regression line minimizes the <em>sum of squared residuals</em>. This concept also extends to models with two numerical explanatory variables. The difference is instead of a “best-fitting” line, we now have a “best-fitting” plane that similarly minimizes the sum of squared residuals. Head to <a href="https://beta.rstudioconnect.com/connect/#/apps/3214/">here</a> to open an interactive version of this plot in your browser.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.1
+<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -746,10 +748,10 @@ Figure&nbsp;6.2: 3D scatterplot and regression plane
 <li>We get the regression table by applying the <code>summary()</code> function to <code>debt_model</code>.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>debt_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(debt <span class="sc">~</span> credit_limit <span class="sc">+</span> income, <span class="at">data =</span> credit_ch6)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-table-output" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -759,7 +761,7 @@ Table&nbsp;6.3: Multiple regression table
 </figcaption>
 <div aria-describedby="tbl-model3-table-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
@@ -812,12 +814,12 @@ Table&nbsp;6.3: Multiple regression table
 \]</span></p>
 <p>Recall in the right-hand plot of <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> that when plotting the relationship between <code>debt</code> and <code>income</code> in isolation, there appeared to be a <em>positive</em> relationship. In the last discussed multiple regression however, when <em>jointly</em> modeling the relationship between <code>debt</code>, <code>credit_limit</code>, and <code>income</code>, there appears to be a <em>negative</em> relationship of <code>debt</code> and <code>income</code> as evidenced by the negative slope for <code>income</code> of -$7.663. What explains these contradictory results? A phenomenon known as <em>Simpson’s Paradox</em>, whereby overall trends that exist in aggregate either disappear or reverse when the data are broken down into groups. In <a href="#sec-simpsonsparadox" class="quarto-xref"><span>Section 6.3.3</span></a> we elaborate on this idea by looking at the relationship between <code>credit_limit</code> and credit card <code>debt</code>, but split along different <code>income</code> brackets.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.3
+<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -837,11 +839,11 @@ Table&nbsp;6.3: Multiple regression table
 \end{aligned}
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>debt_model_data <span class="ot">&lt;-</span> credit_ch6 <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>debt_model_data <span class="ot">&lt;-</span> credit_ch6 <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">debt_hat =</span> <span class="fu">fitted</span>(debt_model),</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(debt_model)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -851,7 +853,7 @@ Table&nbsp;6.4: Regression points (First 10 credit card holders out of 400).
 </figcaption>
 <div aria-describedby="tbl-model3-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">ID</th>
@@ -977,12 +979,12 @@ Table&nbsp;6.4: Regression points (First 10 credit card holders out of 400).
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-model4EDA"><span class="header-section-number">6.2.1</span> Exploratory data analysis</h3>
 <p>Recall that data on the 463 courses at UT Austin can be found in the <code>evals</code> data frame included in the <code>moderndive</code> package. However, to keep things simple, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>evals_ch6</code>. Note that these are different than the variables chosen in <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, score, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, score, age, gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s first look at the raw data values by either looking at <code>evals_ch6</code> using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(evals_ch6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(evals_ch6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 463
 Columns: 4
@@ -994,8 +996,8 @@ $ gender &lt;fct&gt; female, female, female, female, male, male, male, male, mal
 </div>
 <p>Let’s also display a random sample of 5 rows of the 463 rows corresponding to different courses in <a href="#tbl-model4-data-preview" class="quarto-xref">Table&nbsp;<span>6.5</span></a>. Remember due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model4-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1005,7 +1007,7 @@ Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
 </figcaption>
 <div aria-describedby="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
@@ -1054,9 +1056,9 @@ Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
 </div>
 <p>Now that we’ve looked at the raw values in our <code>evals_ch6</code> data frame and have a sense of the data, let’s compute summary statistics.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>Skim summary statistics
  n obs: 463 
@@ -1073,8 +1075,8 @@ Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
 <p>Observe for example that we have no missing data, that there are 268 courses taught by male instructors and 195 courses taught by female instructors, and that the average instructor age is 48.37. Recall however that each row of our data represents a particular course and that the same instructor often teaches more than one course. Therefore the average age of the unique instructors may differ.</p>
 <p>Furthermore, let’s compute the correlation coefficient between our two numerical variables: <code>score</code> and <code>age</code>. Recall from <a href="05-regression.html#sec-model1EDA" class="quarto-xref"><span>Section 5.1.1</span></a> that correlation coefficients only exist between numerical variables. We observe that they are “weakly negatively” correlated.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, age))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correlation
@@ -1084,10 +1086,10 @@ Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
 </div>
 <p>Let’s now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable <code>score</code> and explanatory variable <code>age</code> are both numerical, we’ll use a scatterplot to display their relationship. How can we incorporate the categorical variable <code>gender</code> however? By <code>mapping</code> the variable <code>gender</code> to the <code>color</code> aesthetic, thereby creating a <em>colored</em> scatterplot. The following code is similar to the code that created the scatterplot of teaching score over “beauty” score in <a href="05-regression.html#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, but with <code>color = gender</code> added to the <code>aes()</code>thetic mapping.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> score, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> score, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1115,10 +1117,10 @@ Figure&nbsp;6.3: Colored scatterplot of relationship of teaching and beauty scor
 <p>Going back to our multiple regression model for teaching <code>score</code> using <code>age</code> and <code>gender</code> in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, we generate the regression table using the same two-step approach from <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>: we first “fit” the model using the <code>lm()</code> “linear model” function and then we apply the <code>summary()</code> function. This time however, our model formula won’t be of the form <code>y ~ x</code>, but rather of the form <code>y ~ x1 + x2 + x1 * x2</code>. In other words, we include a <em>main effect</em> for each of our two explanatory variables <code>x1</code> and <code>x2</code>, as well as an <em>interaction term</em> <code>x1 * x2</code>. In terms of the general mathematical equation, an interaction model with two explanatory variables is of the form:</p>
 <p><span class="math display">\[\widehat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2\]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>score_model_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">*</span> gender, <span class="at">data =</span> evals_ch6)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Estimate Std. Error t value
 (Intercept)      4.8830    0.20521   23.80
@@ -1140,7 +1142,7 @@ Table&nbsp;6.6: Regression table for interaction model.
 </figcaption>
 <div aria-describedby="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
@@ -1199,7 +1201,7 @@ Table&nbsp;6.7: Comparison of intercepts and slopes for interaction model.
 </figcaption>
 <div aria-describedby="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
@@ -1299,10 +1301,10 @@ Figure&nbsp;6.4: Parallel slopes model of relationship of score with age and gen
 <p>However, observe also in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> that these two lines have different intercepts as evidenced by the fact that the blue line corresponding to the male instructors is higher than the red line corresponding to the female instructors. This is telling us that irrespective of age, female instructors tended to receive lower teaching scores than male instructors.</p>
 <p>In order to obtain the precise numerical values of the two intercepts and the single common slope, we once again “fit” the model using the <code>lm()</code> “linear model” function and then apply the <code>summary()</code> function. Our model formula this time is of the form <code>y ~ x1 + x2</code>, where <code>x1</code> and <code>x2</code> represent the two predictor variables, <code>age</code> and <code>gender</code>, but we do not include the extra interaction term <code>x1 * x2</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>score_model_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender, <span class="at">data =</span> evals_ch6)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-regtable-parallel-slopes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1312,7 +1314,7 @@ Table&nbsp;6.8: Regression table for parallel slopes model.
 </figcaption>
 <div aria-describedby="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
@@ -1364,7 +1366,7 @@ Table&nbsp;6.9: Comparison of intercepts and slope for parallel slopes model.
 </figcaption>
 <div aria-describedby="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
@@ -1458,12 +1460,12 @@ Figure&nbsp;6.6: Fitted values for two new professors
 <p>So our fitted values would be: 4.883 - 0.018 <span class="math inline">\(\cdot\)</span> 36 = 4.25 and 4.437 - 0.004 <span class="math inline">\(\cdot\)</span> 59 = 4.20 respectively.</p>
 <p>Now what if we want the fitted values not just for the instructors of these two courses, but for the instructors of all 463 courses included in the <code>evals_ch6</code> data frame? Doing this by hand would be long and tedious! This is where our data wrangling code from <a href="05-regression.html#sec-model1points" class="quarto-xref"><span>Section 5.1.3</span></a> can help: it will quickly automate this for all 463 courses. We present a preview of just the first 10 rows out of 463 in <a href="#tbl-model4-points-table" class="quarto-xref">Table&nbsp;<span>6.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data <span class="ot">&lt;-</span> evals_ch6 <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data <span class="ot">&lt;-</span> evals_ch6 <span class="sc">%&gt;%</span> </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model_interaction),</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(score_model_interaction)) <span class="sc">%&gt;%</span> </span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model4-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1473,7 +1475,7 @@ Table&nbsp;6.10: Regression points (First 10 out of 463 courses)
 </figcaption>
 <div aria-describedby="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">ID</th>
@@ -1574,12 +1576,12 @@ Table&nbsp;6.10: Regression points (First 10 out of 463 courses)
 </div>
 <p>In fact, it turns out that the female instructor of age 36 taught the first four courses, while the male instructor taught the next 3. The resulting <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> fitted values are in the <code>score_hat</code> column. The residuals <span class="math inline">\(y-\widehat{y}\)</span> are displayed in the <code>residuals</code> column. Notice for example the first and fourth courses the female instructor of age 36 taught had positive residuals, indicating that the actual teaching score they received from students was more than their fitted score of 4.25. On the other hand, the second and third course this instructor taught had negative residuals, indicating that the actual teaching score they received from students was less than their fitted score of 4.25.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.4
+<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1648,9 +1650,9 @@ Figure&nbsp;6.8: Comparison of interaction and parallel slopes models for MA sch
 <p>Look closely at the left-hand plot of <a href="#fig-numxcatx-comparison-2" class="quarto-xref">Figure&nbsp;<span>6.8</span></a> corresponding to an interaction model. While the slopes are indeed different, they do not differ <em>by much</em>. In other words, they are nearly identical. Now compare the left-hand plot with the right-hand plot corresponding to a parallel slopes model. The two models don’t appear all that different. Therefore in this case, it can be argued that the additional complexity of the interaction model is <em>not warranted</em>. Thus following Occam’s Razor, we should prefer the “simpler” parallel slopes model.</p>
 <p>Let’s explicitly define what “simpler” means in this case. Let’s compare the regression tables for the interaction and parallel slopes models in <a href="#tbl-model2-interaction" class="quarto-xref">Tables&nbsp;<span>6.11</span></a> and <a href="#tbl-model2-parallel-slopes" class="quarto-xref"><span>6.12</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model_2_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">*</span> size, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model_2_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">*</span> size, </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> MA_schools)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_interaction)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_interaction)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model2-interaction" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1660,7 +1662,7 @@ Table&nbsp;6.11: Interaction model regression table
 </figcaption>
 <div aria-describedby="tbl-model2-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
@@ -1721,9 +1723,9 @@ Table&nbsp;6.11: Interaction model regression table
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>model_2_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">+</span> size, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>model_2_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(average_sat_math <span class="sc">~</span> perc_disadvan <span class="sc">+</span> size, </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">data =</span> MA_schools)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_parallel_slopes)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2_parallel_slopes)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model2-parallel-slopes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1733,7 +1735,7 @@ Table&nbsp;6.12: Parallel slopes regression table
 </figcaption>
 <div aria-describedby="tbl-model2-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1787,10 +1789,10 @@ Table&nbsp;6.12: Parallel slopes regression table
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-correlationcoefficient2"><span class="header-section-number">6.3.2</span> Correlation coefficient</h3>
 <p>Recall from <a href="#tbl-model3-correlation" class="quarto-xref">Table&nbsp;<span>6.2</span></a> that the correlation coefficient between <code>income</code> in thousands of dollars and credit card <code>debt</code> was 0.464. What if instead we looked at the correlation coefficient between <code>income</code> and credit card <code>debt</code>, but where <code>income</code> was in dollars and not thousands of dollars? This can be done by multiplying <code>income</code> by 1000.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, income) <span class="sc">%&gt;%</span> </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> income <span class="sc">*</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-cor-credit-2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1800,7 +1802,7 @@ Table&nbsp;6.13: Correlation between income (in dollars) and credit card debt
 </figcaption>
 <div aria-describedby="tbl-cor-credit-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1854,7 +1856,7 @@ Table&nbsp;6.14: Multiple regression table
 </figcaption>
 <div aria-describedby="tbl-model3-table-output-repeat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
@@ -2091,13 +2093,14 @@ Figure&nbsp;6.11: Relationship between credit card debt and income by credit lim
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

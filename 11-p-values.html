@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./10-confidence-intervals.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e8de9bd59ba156b9e4cb33cd6f01d621.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -128,7 +129,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -170,7 +171,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="https://statistics.northwestern.edu/" class="sidebar-logo-link">
-      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logos/StatisticsDataScience-LogoSemi-VertPurple.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Statistics and Data Science</a> 
@@ -452,10 +454,10 @@ window.Quarto = {
 <h3 class="unnumbered anchored" data-anchor-id="packages-needed">Packages Needed</h3>
 <p>Let’s load all the packages needed for this chapter (this assumes you’ve already installed them). If needed, read <a href="01-getting-started.html#sec-packages" class="quarto-xref"><span>Section 1.3</span></a> for information on how to install and load R packages.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2movies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2movies)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="sec-proof-by-contradiction" class="level2" data-number="11.1">
@@ -512,7 +514,7 @@ Figure&nbsp;11.1: P-value diagram
 <h3 data-number="11.3.1" class="anchored" data-anchor-id="sec-imdb"><span class="header-section-number">11.3.1</span> IMDB data</h3>
 <p>The <code>movies</code> dataset in the <code>ggplot2movies</code> package contains information on 58,788 movies that have been rated by users of IMDB.com.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>movies</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>movies</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 58,788 × 24
    title     year length budget rating votes    r1    r2    r3    r4    r5    r6
@@ -535,7 +537,7 @@ Figure&nbsp;11.1: P-value diagram
 </div>
 <p>We’ll focus on a random sample of 68 movies that are classified as either “action” or “romance” movies but not both. We disregard movies that are classified as both so that we can assign all 68 movies into either category. Furthermore, since the original <code>movies</code> dataset was a little messy, we provided a pre-wrangled version of our data in the <code>movies_sample</code> data frame included in the <code>moderndive</code> package (you can look at the code to do this data wrangling <a href="https://github.com/moderndive/moderndive/blob/master/data-raw/process_data_sets.R#L14">here</a>):</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>movies_sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>movies_sample</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 68 × 4
    title                     year rating genre  
@@ -559,13 +561,13 @@ Figure&nbsp;11.1: P-value diagram
 <p><span class="math display">\[t\_stat = \frac{Estimate - Null \ \ value}{SE(Estimate)} = \frac{(\bar{x}_1 - \bar{x}_2) - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span></p>
 <p>Let’s compute all the necessary values from our sample data. We need: the number of movies (<code>n</code>), the mean rating (<code>xbar</code>), and the standard deviation (<code>s</code>) split by the binary variable <code>genre</code>. We’ll also calculate <span class="math inline">\(\frac{s_i^2}{n_i}\)</span> for each group (<code>var_xbar</code>), which is needed to calculate the denominator of <span class="math inline">\(t\_stat\)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>genre_mean_stats <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>genre_mean_stats <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">xbar =</span> <span class="fu">mean</span>(rating), </span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(rating),</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">var_xbar =</span> s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>genre_mean_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>genre_mean_stats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   genre       n  xbar     s var_xbar
@@ -576,10 +578,10 @@ Figure&nbsp;11.1: P-value diagram
 </div>
 <p>So we have 36 movies with an average rating of 6.32 stars out of 10 and 32 movies with a sample mean rating of 5.28 stars out of 10. The difference in these average ratings is thus 6.32 - 5.28 = 1.05. And the standard error of this difference is 0.36. Our resulting <code>t_stat</code> is 2.906.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>genre_mean_stats <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>genre_mean_stats <span class="sc">%&gt;%</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">diff_in_means =</span> <span class="fu">diff</span>(xbar),</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_diff =</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(var_xbar)),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">t_stat =</span> diff_in_means <span class="sc">/</span> SE_diff) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">t_stat =</span> diff_in_means <span class="sc">/</span> SE_diff) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   diff_in_means SE_diff t_stat
@@ -658,14 +660,14 @@ Figure&nbsp;11.2: 2*pt(-2, df = 99)
 <h3 data-number="11.3.3" class="anchored" data-anchor-id="sec-t-test"><span class="header-section-number">11.3.3</span> p-values using <code>t.test</code></h3>
 <p>There is a convenient function in R called <code>t.test</code> that will conduct the above calculations for you, including <span class="math inline">\(t\_stat\)</span> and its <span class="math inline">\(p-value\)</span>. For a difference in means like the IMDB example, <code>t.test</code> requires two arguments <code>x</code> and <code>y</code> that are numeric vectors of data values for each group you are comparing. In this example, <code>x</code> would be the ratings for romance movies and <code>y</code> would be the ratings for action movies. We can create these two vectors by using <code>filter()</code> on our <code>movies_sample</code> data.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>romance <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>romance <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Romance"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>action <span class="ot">&lt;-</span> movies_sample <span class="sc">%&gt;%</span> </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genre <span class="sc">==</span> <span class="st">"Action"</span>) </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>movies_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> romance<span class="sc">$</span>rating, <span class="at">y =</span> action<span class="sc">$</span>rating)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>movies_t.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>movies_t.test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -682,7 +684,7 @@ mean of x mean of y
 </div>
 <p>We see that <code>t.test</code> returns the same values for <span class="math inline">\(\bar{x}_1 = 6.32\)</span> and <span class="math inline">\(\bar{x}_2 = 5.28\)</span> that we saw before. The output shows a rounded value for <span class="math inline">\(t\_stat\)</span> as <span class="math inline">\(t = 3\)</span>, but we can access the unrounded value using <code>movies_t.test$statistic</code> and find that it gives the same value <span class="math inline">\(t\_stat = 2.91\)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>movies_t.test<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>movies_t.test<span class="sc">$</span>statistic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   t 
 2.91 </code></pre>
@@ -694,8 +696,8 @@ mean of x mean of y
 <h3 data-number="11.3.4" class="anchored" data-anchor-id="sec-pvalues-regression"><span class="header-section-number">11.3.4</span> p-values using regression</h3>
 <p>We can also use a regression model to estimate the difference between means. We can fit the model <span class="math display">\[\widehat{rating} = b_0 + b_1*genre,\]</span> where <code>action</code> is the reference category (because it comes before <code>romance</code> in alphabetical order). Recalling what we learned in <a href="05-regression.html#sec-model2" class="quarto-xref"><span>Section 5.2</span></a>, <span class="math inline">\(b_0\)</span> is interpreted as the average rating for <code>action</code> movies, and <span class="math inline">\(b_1\)</span> is the <em>offset</em> in average rating for <code>romance</code> movies, relative to <code>action</code> movies. That is, <span class="math inline">\(b_1 = \bar{x}_{romance} - \bar{x}_{action}\)</span>, which is exactly the estimate we’re interested in. Let’s fit this model and take a look at its summary output.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(movies_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>movies_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(rating <span class="sc">~</span> genre, <span class="at">data =</span> movies_sample)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(movies_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -725,11 +727,11 @@ F-statistic: 8.28 on 1 and 66 DF,  p-value: 0.0054</code></pre>
 <h2 data-number="11.4" class="anchored" data-anchor-id="sec-ride-share"><span class="header-section-number">11.4</span> Example: Ride-share prices</h2>
 <p>Imagine you work for a ride share company, which we will call company A, and you want to know how your competitor’s prices compare to yours. We will call your competitor company B. Because you work for company A, you have access to all of the company’s data and know that the average price for a ride is <span class="math inline">\(\mu_A = \$19.50\)</span>. However, you are only able to obtain a random sample of data on 100 rides from company B. Let’s load in this sample data and take a look at it.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rides_B &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rides_B &lt;- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQpOEBZ5zXfOnoIeRxql4X1-djLqCZRkNg4X1yqhdYXCqm_exyaeYDgWaj4KJ2FgpqPZPoDvD71gYEr/pub?gid=0&amp;single=true&amp;output=csv")</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/rides_B.csv"</span>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(rides_B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(rides_B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 100
 Columns: 2
@@ -739,8 +741,8 @@ $ duration &lt;dbl&gt; 16.3, 13.5, 21.1, 22.4, 18.9, 25.1, 38.1, 21.8, 26.1, 15.
 </div>
 <p>We want to know whether or not <span class="math inline">\(\mu_{\text{B}} = \$19.50\)</span>, so we estimate <span class="math inline">\(\mu_{\text{B}}\)</span> by <span class="math inline">\(\bar{x}_{\text{B}}\)</span>. We find that in our sample, the average company B ride price is <span class="math inline">\(\$20.30\)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(price))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
    xbar
@@ -753,12 +755,12 @@ $ duration &lt;dbl&gt; 16.3, 13.5, 21.1, 22.4, 18.9, 25.1, 38.1, 21.8, 26.1, 15.
 <h3 data-number="11.4.1" class="anchored" data-anchor-id="using-formulas"><span class="header-section-number">11.4.1</span> Using formulas</h3>
 <p>Note, we begin by assuming that company B also has a population average of $19.50, and we will examine whether our data seem to be consistent with that null hypothesis. That is, we start with the null hypothesis that <span class="math inline">\(\mu_{\text{B}} = \$19.50\)</span>. Note that this is a null hypothesis of the type <span class="math inline">\(\mu = \mu_{norm}\)</span>, where we have a specific null value we want to compare our sample to. If this null hypothesis is true, we expect the t-statistic <span class="math inline">\(\frac{\bar{x} - 19.50}{\frac{s}{\sqrt{n}}}\)</span> to follow a t-distribution with <span class="math inline">\(df = n - 1 = 99\)</span>. Let’s compute this t-statistic for the values in our sample and compare it to this known sampling distribution.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="sc">%&gt;%</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(price),</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(price),</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE =</span> s<span class="sc">/</span><span class="fu">sqrt</span>(n),</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">t_stat =</span> (xbar <span class="sc">-</span> <span class="fl">19.50</span>)<span class="sc">/</span>SE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">t_stat =</span> (xbar <span class="sc">-</span> <span class="fl">19.50</span>)<span class="sc">/</span>SE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
    xbar     s     n    SE t_stat
@@ -782,7 +784,7 @@ Figure&nbsp;11.3: t-statistic for average price of Uber rides (n = 100)
 </div>
 <p>By looking at <a href="#fig-B-fig" class="quarto-xref">Figure&nbsp;<span>11.3</span></a> and computing the p-value using <code>pt()</code>, we see that if company B does in fact have the same true population average price as company A (i.e.&nbsp;if <span class="math inline">\(\mu_{\text{B}} = \$19.50\)</span>), we would expect to observe an average price as large or larger than the one we did (i.e.&nbsp;<span class="math inline">\(\bar{x}_{\text{B}} = 20.3\)</span>) about 13% of the time.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">1.53</span>, <span class="at">df =</span> <span class="dv">99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">1.53</span>, <span class="at">df =</span> <span class="dv">99</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.129</code></pre>
 </div>
@@ -792,8 +794,8 @@ Figure&nbsp;11.3: t-statistic for average price of Uber rides (n = 100)
 <h3 data-number="11.4.2" class="anchored" data-anchor-id="using-t.test"><span class="header-section-number">11.4.2</span> Using <code>t.test</code></h3>
 <p>Let’s compute the same information using <code>t.test</code>. Note in this case, we are only concerned with one mean (rather than a difference in two group means), so we only need to specify <code>x</code>. There is a default argument in <code>t.test</code> that sets the null value <code>mu = 0</code>, which we need to change to <code>mu = 19.5</code>. Let’s run <code>t.test</code> on this data and examine the results.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rides_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rides_t.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rides_t.test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rides_B<span class="sc">$</span>price, <span class="at">mu =</span> <span class="fl">19.5</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rides_t.test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -807,16 +809,16 @@ sample estimates:
 mean of x 
      20.3 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>stderr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>stderr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.518</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>statistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>statistic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   t 
 1.53 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rides_t.test<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.13</code></pre>
 </div>
@@ -827,8 +829,8 @@ mean of x
 <h3 data-number="11.4.3" class="anchored" data-anchor-id="using-regression"><span class="header-section-number">11.4.3</span> Using regression</h3>
 <p>We can use a regression model with an <em>intercept only</em> to estimate the mean of a single variable. In this case, our model would be <span class="math inline">\(\widehat{price} = b_0\)</span>. In order to specify this in R, we simply put a <code>1</code> on the right hand side of the tilde instead of specifying any predictor variables. Let’s look at the results of this model.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ride_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> rides_B)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ride_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> rides_B)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -849,11 +851,11 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
 </div>
 <p>We see that this model gives the correct estimate <span class="math inline">\(\bar{x}_B = 20.3\)</span>, standard error <span class="math inline">\(SE(\bar{x}_B) = 0.518\)</span>, and degrees of freedom <span class="math inline">\(n - 1 = 99\)</span>. But what’s going on with the very large t-value of 39.1? In a regression framework, the model always assumes the null value is zero and therefore the <code>t_stat</code> is computed as <span class="math inline">\(\frac{Estimate - 0}{SE(Estimate)}\)</span>. We could use the model output for <span class="math inline">\(\bar{x}, SE(\bar{x})\)</span>, and <span class="math inline">\(df\)</span> to compute the correct t-value and p-value ourselves by subtracting off the null value of 19.5, similar to when we did the calculations via formulas. Alternatively, we could get the regression model to report the correct t-value and p-value by first <em>centering</em> our variable around the null value.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> rides_B <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rides_B <span class="ot">&lt;-</span> rides_B <span class="sc">%&gt;%</span> </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">price_centered =</span> price <span class="sc">-</span> <span class="fl">19.5</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>ride_model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price_centered <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> rides_B)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ride_model_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -953,13 +955,14 @@ Residual standard error: 5.18 on 99 degrees of freedom</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
