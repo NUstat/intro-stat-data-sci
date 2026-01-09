@@ -406,18 +406,18 @@ window.Quarto = {
    
   <ul>
   <li><a href="#needed-packages" id="toc-needed-packages" class="nav-link active" data-scroll-target="#needed-packages">Needed packages</a></li>
-  <li><a href="#sec-model3" id="toc-sec-model3" class="nav-link" data-scroll-target="#sec-model3"><span class="header-section-number">6.1</span> Two numerical explanatory variables</a>
+  <li><a href="#sec-model4" id="toc-sec-model4" class="nav-link" data-scroll-target="#sec-model4"><span class="header-section-number">6.1</span> One numerical &amp; one categorical explanatory variable</a>
   <ul class="collapse">
-  <li><a href="#sec-model3EDA" id="toc-sec-model3EDA" class="nav-link" data-scroll-target="#sec-model3EDA"><span class="header-section-number">6.1.1</span> Exploratory data analysis</a></li>
-  <li><a href="#sec-model3table" id="toc-sec-model3table" class="nav-link" data-scroll-target="#sec-model3table"><span class="header-section-number">6.1.2</span> Regression plane</a></li>
-  <li><a href="#sec-model3points" id="toc-sec-model3points" class="nav-link" data-scroll-target="#sec-model3points"><span class="header-section-number">6.1.3</span> Observed/fitted values and residuals</a></li>
+  <li><a href="#sec-model4EDA" id="toc-sec-model4EDA" class="nav-link" data-scroll-target="#sec-model4EDA"><span class="header-section-number">6.1.1</span> Exploratory data analysis</a></li>
+  <li><a href="#sec-model4interactiontable" id="toc-sec-model4interactiontable" class="nav-link" data-scroll-target="#sec-model4interactiontable"><span class="header-section-number">6.1.2</span> Interaction model</a></li>
+  <li><a href="#sec-model4table" id="toc-sec-model4table" class="nav-link" data-scroll-target="#sec-model4table"><span class="header-section-number">6.1.3</span> Parallel slopes model</a></li>
+  <li><a href="#sec-model4points" id="toc-sec-model4points" class="nav-link" data-scroll-target="#sec-model4points"><span class="header-section-number">6.1.4</span> Observed/fitted values and residuals</a></li>
   </ul></li>
-  <li><a href="#sec-model4" id="toc-sec-model4" class="nav-link" data-scroll-target="#sec-model4"><span class="header-section-number">6.2</span> One numerical &amp; one categorical explanatory variable</a>
+  <li><a href="#sec-model3" id="toc-sec-model3" class="nav-link" data-scroll-target="#sec-model3"><span class="header-section-number">6.2</span> Two numerical explanatory variables</a>
   <ul class="collapse">
-  <li><a href="#sec-model4EDA" id="toc-sec-model4EDA" class="nav-link" data-scroll-target="#sec-model4EDA"><span class="header-section-number">6.2.1</span> Exploratory data analysis</a></li>
-  <li><a href="#sec-model4interactiontable" id="toc-sec-model4interactiontable" class="nav-link" data-scroll-target="#sec-model4interactiontable"><span class="header-section-number">6.2.2</span> Interaction model</a></li>
-  <li><a href="#sec-model4table" id="toc-sec-model4table" class="nav-link" data-scroll-target="#sec-model4table"><span class="header-section-number">6.2.3</span> Parallel slopes model</a></li>
-  <li><a href="#sec-model4points" id="toc-sec-model4points" class="nav-link" data-scroll-target="#sec-model4points"><span class="header-section-number">6.2.4</span> Observed/fitted values and residuals</a></li>
+  <li><a href="#sec-model3EDA" id="toc-sec-model3EDA" class="nav-link" data-scroll-target="#sec-model3EDA"><span class="header-section-number">6.2.1</span> Exploratory data analysis</a></li>
+  <li><a href="#sec-model3table" id="toc-sec-model3table" class="nav-link" data-scroll-target="#sec-model3table"><span class="header-section-number">6.2.2</span> Regression plane</a></li>
+  <li><a href="#sec-model3points" id="toc-sec-model3points" class="nav-link" data-scroll-target="#sec-model3points"><span class="header-section-number">6.2.3</span> Observed/fitted values and residuals</a></li>
   </ul></li>
   <li><a href="#related-topics" id="toc-related-topics" class="nav-link" data-scroll-target="#related-topics"><span class="header-section-number">6.3</span> Related topics</a>
   <ul class="collapse">
@@ -481,9 +481,687 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="sec-model3" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="sec-model3"><span class="header-section-number">6.1</span> Two numerical explanatory variables</h2>
-<p>Let’s first consider a <em>multiple regression</em> model with two numerical explanatory variables. The dataset we’ll use is from <a href="https://www.statlearning.com/">“An Introduction to Statistical Learning with Applications in R, (Second Edition)”</a>, an intermediate-level textbook on statistical and machine learning. Its accompanying <code>ISLR2</code> R package contains the datasets that the authors apply various machine learning methods to.</p>
+<section id="sec-model4" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-model4"><span class="header-section-number">6.1</span> One numerical &amp; one categorical explanatory variable</h2>
+<p>Let’s revisit the instructor evaluation data from UT Austin we introduced in <a href="05-regression.html#sec-model1" class="quarto-xref"><span>Section 5.1</span></a>. We studied the relationship between teaching evaluation scores as given by students and “beauty” scores. The variable teaching <code>score</code> was the numerical outcome variable <span class="math inline">\(y\)</span> and the variable “beauty” score (<code>bty_avg</code>) was the numerical explanatory <span class="math inline">\(x\)</span> variable.</p>
+<p>In this section, we are going to consider a different model. Our outcome variable will still be teaching score, but now we’ll now include two different explanatory variables: age and gender. Could it be that instructors who are older receive better teaching evaluations from students? Or could it instead be that younger instructors receive better evaluations? Are there differences in evaluations given by students for instructors of different genders? We’ll answer these questions by modeling the relationship between these variables using <em>multiple regression</em>, where we have:</p>
+<ol type="1">
+<li>A numerical outcome variable <span class="math inline">\(y\)</span>, the instructor’s teaching score, and</li>
+<li>Two explanatory variables:
+<ol type="1">
+<li>A numerical explanatory variable <span class="math inline">\(x_1\)</span>, the instructor’s age</li>
+<li>A categorical explanatory variable <span class="math inline">\(x_2\)</span>, the instructor’s (binary) gender.</li>
+</ol></li>
+</ol>
+<section id="sec-model4EDA" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="sec-model4EDA"><span class="header-section-number">6.1.1</span> Exploratory data analysis</h3>
+<p>Recall that data on the 463 courses at UT Austin can be found in the <code>evals</code> data frame included in the <code>moderndive</code> package. However, to keep things simple, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>evals_ch6</code>. Note that these are different than the variables chosen in <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, score, age, gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s first look at the raw data values by either looking at <code>evals_ch6</code> using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(evals_ch6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 463
+Columns: 4
+$ ID     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, …
+$ score  &lt;dbl&gt; 4.7, 4.1, 3.9, 4.8, 4.6, 4.3, 2.8, 4.1, 3.4, 4.5, 3.8, 4.5, 4.6…
+$ age    &lt;int&gt; 36, 36, 36, 36, 59, 59, 59, 51, 51, 40, 40, 40, 40, 40, 40, 40,…
+$ gender &lt;fct&gt; female, female, female, female, male, male, male, male, male, f…</code></pre>
+</div>
+</div>
+<p>Let’s also display a random sample of 5 rows of the 463 rows corresponding to different courses in <a href="#tbl-model4-data-preview" class="quarto-xref">Table&nbsp;<span>6.1</span></a>. Remember due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-model4-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: A random sample of 5 out of the 463 courses at UT Austin
+</figcaption>
+<div aria-describedby="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">330</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: left;">male</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Now that we’ve looked at the raw values in our <code>evals_ch6</code> data frame and have a sense of the data, let’s compute summary statistics.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<pre><code>Skim summary statistics
+ n obs: 463 
+ n variables: 3 
+── Variable type:factor ────────────────────────────────────────────────────────
+ variable missing complete   n n_unique                top_counts ordered
+   gender       0      463 463        2 mal: 268, fem: 195, NA: 0   FALSE
+── Variable type:integer ───────────────────────────────────────────────────────
+ variable missing complete   n  mean  sd p0 p25 p50 p75 p100
+      age       0      463 463 48.37 9.8 29  42  48  57   73
+── Variable type:numeric ───────────────────────────────────────────────────────
+ variable missing complete   n mean   sd  p0 p25 p50 p75 p100
+    score       0      463 463 4.17 0.54 2.3 3.8 4.3 4.6    5</code></pre>
+<p>Observe for example that we have no missing data, that there are 268 courses taught by male instructors and 195 courses taught by female instructors, and that the average instructor age is 48.37. Recall however that each row of our data represents a particular course and that the same instructor often teaches more than one course. Therefore the average age of the unique instructors may differ.</p>
+<p>Furthermore, let’s compute the correlation coefficient between our two numerical variables: <code>score</code> and <code>age</code>. Recall from <a href="05-regression.html#sec-model1EDA" class="quarto-xref"><span>Section 5.1.1</span></a> that correlation coefficients only exist between numerical variables. We observe that they are “weakly negatively” correlated.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, age))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  correlation
+        &lt;dbl&gt;
+1      -0.107</code></pre>
+</div>
+</div>
+<p>Let’s now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable <code>score</code> and explanatory variable <code>age</code> are both numerical, we’ll use a scatterplot to display their relationship. How can we incorporate the categorical variable <code>gender</code>? By <code>mapping</code> the variable <code>gender</code> to the <code>color</code> aesthetic, thereby creating a <em>colored</em> scatterplot. The following code is similar to the code that created the scatterplot of teaching score over “beauty” score in <a href="05-regression.html#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, but with <code>color = gender</code> added to the <code>aes()</code>thetic mapping.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> score, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-numxcatxplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxcatxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-multiple-regression_files/figure-html/fig-numxcatxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxcatxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Colored scatterplot of relationship of teaching and beauty scores.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In the resulting <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>, observe that <code>ggplot()</code> assigns a default in red/blue color scheme to the points and to the lines associated with the two levels of <code>gender</code>: <code>female</code> and <code>male</code>. Furthermore the <code>geom_smooth(method = "lm", se = FALSE)</code> layer automatically fits a different regression line for each group.</p>
+<p>We notice some interesting trends. First, there are almost no women faculty over the age of 60 as evidenced by lack of red dots above <span class="math inline">\(x\)</span> = 60. Second, while both regression lines are negatively sloped with age (i.e.&nbsp;older instructors tend to have lower scores), the slope for age for the female instructors is <em>more</em> negative. In other words, female instructors are paying a harsher penalty for their age than the male instructors.</p>
+</section>
+<section id="sec-model4interactiontable" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="sec-model4interactiontable"><span class="header-section-number">6.1.2</span> Interaction model</h3>
+<p>Let’s now quantify the relationship of our outcome variable <span class="math inline">\(y\)</span> and the two explanatory variables using one type of multiple regression model known as an <em>interaction model</em>. We’ll explain where the term “interaction” comes from at the end of this section.</p>
+<p>In particular, we’ll write out the equation of the two regression lines in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> using the values from a regression table. Before we do this however, let’s go over a brief refresher of regression when you have a categorical explanatory variable <span class="math inline">\(x\)</span>.</p>
+<p>Recall in <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a> we fit a regression model for countries’ life expectancies as a function of which continent the country was in. In other words, we had a numerical outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> and a categorical explanatory variable <span class="math inline">\(x\)</span> = <code>continent</code> which had 5 levels: <code>Africa</code>, <code>Americas</code>, <code>Asia</code>, <code>Europe</code>, and <code>Oceania</code>. Let’s re-display the regression table you saw in <a href="05-regression.html#tbl-catxplot4b" class="quarto-xref">Table&nbsp;<span>5.8</span></a>:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Linear regression table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">54.8</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">53.45</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">continentAmericas</td>
+<td style="text-align: right;">18.8</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">10.45</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">continentAsia</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: right;">1.65</td>
+<td style="text-align: right;">9.68</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">continentEurope</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">13.47</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">continentOceania</td>
+<td style="text-align: right;">25.9</td>
+<td style="text-align: right;">5.33</td>
+<td style="text-align: right;">4.86</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Recall our interpretation of the <code>Estimate</code> column. Since <code>Africa</code> was the “baseline for comparison” group, the <code>Intercept</code> term corresponds to the mean life expectancy for all countries in Africa of 54.8 years. The other four values of <code>Estimate</code> correspond to “offsets” relative to the baseline group. So, for example, the “offset” corresponding to the Americas is +18.8 as compared to the baseline for comparison group Africa. In other words, the average life expectancy for countries in the Americas is 18.8 years <em>higher</em>. Thus the mean life expectancy for all countries in the Americas is 54.8 + 18.8 = 73.6. The same interpretation holds for Asia, Europe, and Oceania.</p>
+<p>Going back to our multiple regression model for teaching <code>score</code> using <code>age</code> and <code>gender</code> in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>, we generate the regression table using the same two-step approach from <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>: we first “fit” the model using the <code>lm()</code> “linear model” function and then we apply the <code>summary()</code> function. This time however, our model formula won’t be of the form <code>y ~ x</code>, but rather of the form <code>y ~ x1 + x2 + x1 * x2</code>. In other words, we include a <em>main effect</em> for each of our two explanatory variables <code>x1</code> and <code>x2</code>, as well as an <em>interaction term</em> <code>x1 * x2</code>. In terms of the general mathematical equation, an interaction model with two explanatory variables is of the form:</p>
+<p><span class="math display">\[\widehat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>score_model_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">*</span> gender, <span class="at">data =</span> evals_ch6)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-regtable-interaction" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2: Regression table for interaction model.
+</figcaption>
+<div aria-describedby="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">4.883</td>
+<td style="text-align: right;">0.205</td>
+<td style="text-align: right;">23.80</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">-0.018</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">-3.92</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">gendermale</td>
+<td style="text-align: right;">-0.446</td>
+<td style="text-align: right;">0.265</td>
+<td style="text-align: right;">-1.68</td>
+<td style="text-align: right;">0.094</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age:gendermale</td>
+<td style="text-align: right;">0.014</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">2.45</td>
+<td style="text-align: right;">0.015</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Looking at the regression table output in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.2</span></a>, we see there are four rows of values in the <code>Estimate</code> column that correspond to the 4 estimated components of the model: <span class="math inline">\(b_0, \ b_1, \ b_2,\)</span> and <span class="math inline">\(b_{1,2}\)</span>. Note that we chose to use the notation <span class="math inline">\(b_{1,2}\)</span> to make it clear this is the coefficient for the interaction term between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, but we could have easily decided to denote this as <span class="math inline">\(b_3\)</span> instead. While it is not immediately apparent, using these four values we can write out the equations of both lines in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</p>
+<p>First, since the word <code>female</code> comes alphabetically before <code>male</code>, female instructors are the “baseline for comparison” group. Therefore <code>Intercept</code> is the intercept <em>for only the female instructors</em>. This holds similarly for <code>age</code>. It is the slope for age <em>for only the female instructors</em>. Thus the red regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> has an intercept of 4.883 and slope for age of -0.018. Remember that for this particular data, while the intercept has a mathematical interpretation, it has no <em>practical</em> interpretation since there can’t be any instructors with age zero.</p>
+<p>What about the intercept and slope for age of the male instructors (i.e.&nbsp;the blue line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>)? This is where our notion of “offsets” comes into play once again. The value for <code>gendermale</code> of -0.446 is not the intercept for the male instructors, but rather the <em>offset</em> in intercept for male instructors relative to female instructors. Therefore, the intercept for the male instructors is <code>Intercept + gendermale</code> = 4.883 + (-0.446) = 4.883 - 0.446 = 4.437.</p>
+<p>Similarly, <code>age:gendermale</code> = 0.014 is not the slope for age for the male instructors, but rather the <em>offset</em> in slope for the male instructors. Therefore, the slope for age for the male instructors is <code>age + age:gendermale</code> = -0.018 + 0.014 = -0.004. Therefore the blue regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> has intercept 4.437 and slope for age of -0.004.</p>
+<p>Let’s summarize these values in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.3</span></a> and focus on the two slopes for age:</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-interaction-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.3: Comparison of intercepts and slopes for interaction model.
+</figcaption>
+<div aria-describedby="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Intercept</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Slope for age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female instructors</td>
+<td style="text-align: right;">4.883</td>
+<td style="text-align: right;">-0.018</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male instructors</td>
+<td style="text-align: right;">4.437</td>
+<td style="text-align: right;">-0.004</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Since the slope for age for the female instructors was -0.018, it means that on average, a female instructor who is a year older would have a teaching score that is 0.018 units <em>lower</em>. For the male instructors however, the corresponding associated decrease was on average only 0.004 units. While both slopes for age were negative, the slope for age for the female instructors is <em>more negative</em>. This is consistent with our observation from <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>, that this model is suggesting that age impacts teaching scores for female instructors more than for male instructors.</p>
+<p>Let’s now write the equation for our regression lines, which we can use to compute our fitted values <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{\mbox{age}} \cdot \mbox{age} + b_{\mbox{male}} \cdot \mathbb{1}_{\mbox{is male}}(x) + b_{\mbox{age,male}} \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\\
+&amp;= 4.883 -0.018 \cdot \mbox{age} - 0.446 \cdot \mathbb{1}_{\mbox{is male}}(x) + 0.014 \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}
+\end{aligned}
+\]</span></p>
+<p>Whoa! That’s even more daunting than the equation you saw for the life expectancy as a function of continent in <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>! However if you recall what an “indicator function” AKA “dummy variable” does, the equation simplifies greatly. In the previous equation, we have one indicator function of interest:</p>
+<p><span class="math display">\[
+\mathbb{1}_{\mbox{is male}}(x) = \left\{
+\begin{array}{ll}
+1 &amp; \text{if } \text{instructor } x \text{ is male} \\
+0 &amp; \text{otherwise}\end{array}
+\right.
+\]</span></p>
+<p>Second, let’s match coefficients in the previous equation with values in the <code>Estimate</code> column in our regression table in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.2</span></a>:</p>
+<ol type="1">
+<li><span class="math inline">\(b_0\)</span> is the <code>Intercept</code> = 4.883 for the female instructors</li>
+<li><span class="math inline">\(b_{\mbox{age}}\)</span> is the slope for <code>age</code> = -0.018 for the female instructors</li>
+<li><span class="math inline">\(b_{\mbox{male}}\)</span> is the offset in intercept for the male instructors</li>
+<li><span class="math inline">\(b_{\mbox{age,male}}\)</span> is the offset in slope for age for the male instructors</li>
+</ol>
+<p>Let’s put this all together and compute the fitted value <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span> for female instructors. Since for female instructors <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 0, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.883 - 0.018   \cdot \mbox{age} - 0.446 \cdot 0 + 0.014 \cdot \mbox{age} \cdot 0\\
+&amp;= 4.883 - 0.018    \cdot \mbox{age} - 0 + 0\\
+&amp;= 4.883 - 0.018    \cdot \mbox{age}\\
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the red regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> corresponding to the female instructors in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.3</span></a>. Correspondingly, since for male instructors <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 1, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.883 - 0.018   \cdot \mbox{age} - 0.446 + 0.014 \cdot \mbox{age}\\
+&amp;= (4.883 - 0.446) + (- 0.018 + 0.014) * \mbox{age}\\
+&amp;= 4.437 - 0.004    \cdot \mbox{age}\\
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the blue regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> corresponding to the male instructors in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.3</span></a>.</p>
+<p>Phew! That was a lot of arithmetic! Don’t fret however, this is as hard as modeling will get in this book. If you’re still a little unsure about using indicator functions and using categorical explanatory variables in a regression model, we <em>highly</em> suggest you re-read <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>. This involves only a single categorical explanatory variable and thus is much simpler.</p>
+<p>Before we end this section, we explain why we refer to this type of model as an “interaction model.” The <span class="math inline">\(b_{\mbox{age,male}}\)</span> term in the equation for the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> is what’s known in statistical modeling as an “interaction effect.” The interaction term corresponds to the <code>age:gendermale</code> = 0.014 in the final row of the regression table in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.2</span></a>.</p>
+<p>We say there is an interaction effect if the associated effect of one variable <em>depends on the value of another variable</em>. In other words, the two variables are “interacting” with each other. In our case, the associated effect of the variable age <em>depends</em> on the value of the other variable gender. This was evidenced by the difference in slopes for age of +0.014 of male instructors relative to female instructors. </p>
+<p>Another way of thinking about interaction effects on teaching scores is as follows. For a given instructor at UT Austin, there might be an associated effect of their age <em>by itself</em>, there might be an associated effect of their gender <em>by itself</em>, but when age and gender are considered <em>together</em> there might an <em>additional effect</em> above and beyond the two individual effects.</p>
+</section>
+<section id="sec-model4table" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="sec-model4table"><span class="header-section-number">6.1.3</span> Parallel slopes model</h3>
+<p>When creating regression models with one numerical and one categorical explanatory variable, we are not just limited to interaction models as we just saw. Another type of model we can use is known as a <em>parallel slopes</em> model. Unlike interaction models where the regression lines can have different intercepts and different slopes, parallel slopes models still allow for different intercepts but <em>force</em> all lines to have the same slope. The resulting regression lines are thus parallel. We can think of a parallel slopes model as a restricted case of the interaction model where we’ve forced <span class="math inline">\(b_{1,2}\)</span>, the coefficient of the interaction term <span class="math inline">\(x_{1} \cdot x_2\)</span>, to be zero. Therefore, the mathematical equation for a parallel slopes model with two explanatory variables is of the form:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{1} \cdot x_1 + b_{2} \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2\\
+&amp;= b_0 + b_{1} \cdot x_1 + b_{2} \cdot x_2 + 0 \cdot x_1 \cdot x_2\\
+&amp;= b_0 + b_{1} \cdot x_1 + b_{2} \cdot x_2
+\end{aligned}
+\]</span></p>
+<!-- Unfortunately, the `ggplot2` package does not have a convenient way to plot a parallel slopes model, so we just display it for you in  but leave the code for a more advanced data visualization class.  -->
+<p>To plot parallel slopes we use the function <code>geom_parallel_slopes()</code> that is included in the <code>moderndive</code> package. To use this function you need to load both the <code>ggplot2</code> and <code>moderndive</code> packages. Observe how the code is identical to the one used for the model with interactions in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>, but now the <code>geom_smooth(method = "lm", se = FALSE)</code> layer is replaced with <code>geom_parallel_slopes(se = FALSE)</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6,<span class="fu">aes</span>(<span class="at">x =</span>age, <span class="at">y =</span>score, <span class="at">color =</span>gender)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_slopes</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-numxcatx-parallel" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxcatx-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-multiple-regression_files/figure-html/fig-numxcatx-parallel-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxcatx-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Parallel slopes model of relationship of score with age and gender.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> that we have parallel lines corresponding to the female and male instructors respectively: here they have the same negative slope. This is different from the interaction model displayed in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>, which allowed <code>male</code> and <code>female</code> to have different slopes. <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> is telling us that instructors who are older will tend to receive lower teaching scores than instructors who are younger. Furthermore, since the lines are parallel, the associated penalty for aging is assumed to be the same for both female and male instructors.</p>
+<p>However, observe also in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> that these two lines have different intercepts as evidenced by the fact that the blue line corresponding to the male instructors is higher than the red line corresponding to the female instructors. This is telling us that irrespective of age, female instructors tended to receive lower teaching scores than male instructors.</p>
+<p>In order to obtain the precise numerical values of the two intercepts and the single common slope, we once again “fit” the model using the <code>lm()</code> “linear model” function and then apply the <code>summary()</code> function. Our model formula this time is of the form <code>y ~ x1 + x2</code>, where <code>x1</code> and <code>x2</code> represent the two predictor variables, <code>age</code> and <code>gender</code>, but we do not include the extra interaction term <code>x1 * x2</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>score_model_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender, <span class="at">data =</span> evals_ch6)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-regtable-parallel-slopes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.4: Regression table for parallel slopes model.
+</figcaption>
+<div aria-describedby="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">4.484</td>
+<td style="text-align: right;">0.125</td>
+<td style="text-align: right;">35.79</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">-0.009</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">-3.28</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">gendermale</td>
+<td style="text-align: right;">0.191</td>
+<td style="text-align: right;">0.052</td>
+<td style="text-align: right;">3.63</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Looking at the regression table output in <a href="#tbl-regtable-parallel-slopes" class="quarto-xref">Table&nbsp;<span>6.4</span></a>, we see there are three rows of values in the <code>Estimate</code> column. Similar to what we did in <a href="#sec-model4interactiontable" class="quarto-xref"><span>Section 6.1.2</span></a>, using these three values we can write out the equations of both lines in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>.</p>
+<p>Again, since the word <code>female</code> comes alphabetically before <code>male</code>, female instructors are the “baseline for comparison” group. Therefore, <code>Intercept</code> is the intercept <em>for only the female instructors</em>. Thus the red regression line in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> has an intercept of 4.484.</p>
+<p>Remember, the value for <code>gendermale</code> of 0.191 is not the intercept for the male instructors, but rather the <em>offset</em> in intercept for male instructors relative to female instructors. Therefore, the intercept for male instructors is <code>Intercept + gendermale</code> = <span class="math inline">\(4.484 + 0.191 = 4.675\)</span>. In other words, in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> the red regression line corresponding to the female instructors has an intercept of 4.484 while the blue regression line corresponding to the male instructors has an intercept of 4.675. Once again, since there aren’t any instructors of age 0, the intercepts only have a mathematical interpretation but no practical one.</p>
+<p>Unlike in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.2</span></a> however, we now only have a single slope for age of -0.009. This is because the model specifies that both the female and male instructors have a common slope for age. This is telling us that an instructor who is a year older than another instructor received a teaching score that is on average 0.009 units <em>lower</em>. This penalty for aging applies equally for both female and male instructors.</p>
+<p>Let’s summarize these values in <a href="#tbl-parallel-slopes-summary" class="quarto-xref">Table&nbsp;<span>6.5</span></a>, noting the different intercepts but common slopes:</p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-parallel-slopes-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.5: Comparison of intercepts and slope for parallel slopes model.
+</figcaption>
+<div aria-describedby="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Intercept</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Slope for age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female instructors</td>
+<td style="text-align: right;">4.484</td>
+<td style="text-align: right;">-0.009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male instructors</td>
+<td style="text-align: right;">4.675</td>
+<td style="text-align: right;">-0.009</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Recall that the common slope occurs because we chose not to include the interaction term <span class="math inline">\(\mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\)</span> in our model. This is equivalent to assuming <span class="math inline">\(b_{age,male} = 0\)</span> and therefore not allowing there to be an “offset” in slope for males.</p>
+<p>Let’s now write the equation for our parallel slopes regression lines, which we can use to compute our fitted values <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{\mbox{age}} \cdot \mbox{age} + b_{\mbox{male}} \cdot \mathbb{1}_{\mbox{is male}}(x)\\
+&amp;= 4.484 -0.009 \cdot \mbox{age} + 0.191 \cdot \mathbb{1}_{\mbox{is male}}(x)
+\end{aligned}
+\]</span></p>
+<p>Let’s put this all together and compute the fitted value <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span> for female instructors. Since for female instructors the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 0, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.484 -0.009    \cdot \mbox{age} + 0.191 \cdot 0\\
+&amp;= 4.484 -0.009 \cdot \mbox{age}
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the red regression line in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> corresponding to the female instructors. Correspondingly, since for male instructors the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 1, the previous equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat{y} = \widehat{\text{score}} &amp;= 4.484 -0.009    \cdot \mbox{age} + 0.191 \cdot 1\\
+&amp;= (4.484 + 0.191) - 0.009 \cdot \mbox{age}\\
+&amp;= 4.67 -0.009 \cdot \mbox{age}
+\end{aligned}
+\]</span></p>
+<p>which is the equation of the blue regression line in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> corresponding to the male instructors.</p>
+<p>Great! We’ve considered both an interaction model and a parallel slopes model for our data. Let’s compare the visualizations for both models side-by-side in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-numxcatx-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-numxcatx-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-multiple-regression_files/figure-html/fig-numxcatx-comparison-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxcatx-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Comparison of interaction and parallel slopes models
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>At this point, you might be asking yourself: “Why would we ever use a parallel slopes model?” Looking at the left-hand plot in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, the two lines definitely do not appear to be parallel, so why would we <em>force</em> them to be parallel? For this data, we agree! It can easily be argued that the interaction model is more appropriate. However, in the upcoming <a href="#sec-model-selection" class="quarto-xref"><span>Section 6.3.1</span></a> on model selection, we’ll present an example where it can be argued that the case for a parallel slopes model might be stronger.</p>
+</section>
+<section id="sec-model4points" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="sec-model4points"><span class="header-section-number">6.1.4</span> Observed/fitted values and residuals</h3>
+<p>For brevity’s sake, in this section we’ll only compute the observed values, fitted values, and residuals for the interaction model which we saved in <code>score_model_interaction</code>. You’ll have an opportunity to study these values for the parallel slopes model in the upcoming Learning Check.</p>
+<p>Say you have a professor who is female and is 36 years old. What fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> would our model yield? Say you have another professor who is male and is 59 years old. What would their fitted value <span class="math inline">\(\widehat{y}\)</span> be?</p>
+<p>We answer this question visually first by finding the intersection of the red regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 36. We mark this value with a large red dot in <a href="#fig-fitted-values" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>. Similarly, we can identify the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> for the male instructor by finding the intersection of the blue regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 59. We mark this value with a large blue dot in <a href="#fig-fitted-values" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fitted-values" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fitted-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-multiple-regression_files/figure-html/fig-fitted-values-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fitted-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Fitted values for two new professors
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>What are these two values of <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> precisely? We can use the equations of the two regression lines we computed in <a href="#sec-model4interactiontable" class="quarto-xref"><span>Section 6.1.2</span></a>, which in turn were based on values from the regression table in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.2</span></a>:</p>
+<ul>
+<li>For all female instructors: <span class="math inline">\(\widehat{y} = \widehat{\text{score}} = 4.883 - 0.018 \cdot \mbox{age}\)</span></li>
+<li>For all male instructors: <span class="math inline">\(\widehat{y} = \widehat{\text{score}} = 4.437 - 0.004 \cdot \mbox{age}\)</span></li>
+</ul>
+<p>So our fitted values would be: 4.883 - 0.018 <span class="math inline">\(\cdot\)</span> 36 = 4.25 and 4.437 - 0.004 <span class="math inline">\(\cdot\)</span> 59 = 4.20 respectively.</p>
+<p>Now what if we want the fitted values not just for the instructors of these two courses, but for the instructors of all 463 courses included in the <code>evals_ch6</code> data frame? Doing this by hand would be long and tedious! This is where our data wrangling code from <a href="05-regression.html#sec-model1points" class="quarto-xref"><span>Section 5.1.3</span></a> can help: it will quickly automate this for all 463 courses. We present a preview of just the first 10 rows out of 463 in <a href="#tbl-model4-points-table" class="quarto-xref">Table&nbsp;<span>6.6</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data <span class="ot">&lt;-</span> evals_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model_interaction),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(score_model_interaction)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-model4-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.6: Regression points (First 10 out of 463 courses)
+</figcaption>
+<div aria-describedby="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score_hat</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">residual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">0.448</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">-0.152</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">-0.352</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">0.548</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">0.399</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">4.3</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">0.099</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">-1.401</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">-0.133</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4.23</td>
+<td style="text-align: right;">-0.833</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">0.318</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>In fact, it turns out that the female instructor of age 36 taught the first four courses, while the male instructor taught the next 3. The resulting <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> fitted values are in the <code>score_hat</code> column. The residuals <span class="math inline">\(y-\widehat{y}\)</span> are displayed in the <code>residuals</code> column. Notice for example the first and fourth courses the female instructor of age 36 taught had positive residuals, indicating that the actual teaching score they received from students was more than their fitted score of 4.25. On the other hand, the second and third course this instructor taught had negative residuals, indicating that the actual teaching score they received from students was less than their fitted score of 4.25.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.1
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Compute the observed values, fitted values, and residuals not for the interaction model as we just did, but rather for the parallel slopes model we saved in <code>score_model_parallel_slopes</code>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-model3" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-model3"><span class="header-section-number">6.2</span> Two numerical explanatory variables</h2>
+<p>Now let’s consider a <em>multiple regression</em> model with two numerical explanatory variables. The dataset we’ll use is from <a href="https://www.statlearning.com/">“An Introduction to Statistical Learning with Applications in R, (Second Edition)”</a>, an intermediate-level textbook on statistical and machine learning. Its accompanying <code>ISLR2</code> R package contains the datasets that the authors apply various machine learning methods to.</p>
 <p>One frequently used dataset in this book is the <code>Credit</code> dataset, where the outcome variable of interest is the credit card debt of 400 individuals. Other variables like income, credit limit, credit rating, and age are included as well. Note that the <code>Credit</code> data is not based on real individuals’ financial information, but rather is a simulated dataset used for educational purposes.</p>
 <p>In this section, we’ll fit a regression model where we have</p>
 <ol type="1">
@@ -494,15 +1172,15 @@ window.Quarto = {
 <li>Another numerical explanatory variable <span class="math inline">\(x_2\)</span>, the cardholder’s income (in thousands of dollars).</li>
 </ol></li>
 </ol>
-<section id="sec-model3EDA" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="sec-model3EDA"><span class="header-section-number">6.1.1</span> Exploratory data analysis</h3>
+<section id="sec-model3EDA" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-model3EDA"><span class="header-section-number">6.2.1</span> Exploratory data analysis</h3>
 <p>Let’s load the <code>Credit</code> dataset, but to keep things simple let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>credit_ch6</code>. Notice our slightly different use of the <code>select()</code> verb here than we introduced in <a href="03-wrangling.html#sec-select" class="quarto-xref">Subsection&nbsp;<span>3.8.1</span></a>. For example, we’ll select the <code>Balance</code> variable from <code>Credit</code> but then save it with a new variable name <code>debt</code>. We do this because here the term “debt” is a little more interpretable than “balance.”</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="ot">&lt;-</span> Credit <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">debt =</span> Balance, <span class="at">credit_limit =</span> Limit, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">income =</span> Income, <span class="at">credit_rating =</span> Rating, <span class="at">age =</span> Age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="ot">&lt;-</span> Credit <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">debt =</span> Balance, <span class="at">credit_limit =</span> Limit, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">income =</span> Income, <span class="at">credit_rating =</span> Rating, <span class="at">age =</span> Age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recall the three common steps in an exploratory data analysis we saw in <a href="05-regression.html#sec-model1EDA" class="quarto-xref">Subsection&nbsp;<span>5.1.1</span></a>:</p>
 <ol type="1">
@@ -512,7 +1190,7 @@ window.Quarto = {
 </ol>
 <p>Let’s begin by looking at the raw values either in RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function from the <code>dplyr</code> package. You can observe the effect of our use of <code>select()</code> to keep and rename the relevant variables.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(credit_ch6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(credit_ch6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 400
 Columns: 5
@@ -523,17 +1201,17 @@ $ credit_rating &lt;dbl&gt; 283, 483, 514, 681, 357, 569, 259, 512, 266, 491, 58
 $ age           &lt;dbl&gt; 34, 82, 71, 36, 68, 77, 37, 87, 66, 41, 30, 64, 57, 49, …</code></pre>
 </div>
 </div>
-<p>Furthermore, let’s look at a random sample of five out of the 400 credit card holders in <a href="#tbl-model3-data-preview" class="quarto-xref">Table&nbsp;<span>6.1</span></a>. Once again, note that due to the random nature of the sampling, you will likely end up with a different subset of five rows.</p>
+<p>Furthermore, let’s look at a random sample of five out of the 400 credit card holders in <a href="#tbl-model3-data-preview" class="quarto-xref">Table&nbsp;<span>6.7</span></a>. Once again, note that due to the random nature of the sampling, you will likely end up with a different subset of five rows.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.1: Random sample of 5 credit card holders.
+Table&nbsp;6.7: Random sample of 5 credit card holders.
 </figcaption>
 <div aria-describedby="tbl-model3-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -549,39 +1227,39 @@ Table&nbsp;6.1: Random sample of 5 credit card holders.
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1259</td>
-<td style="text-align: right;">8376</td>
-<td style="text-align: right;">123.3</td>
-<td style="text-align: right;">610</td>
-<td style="text-align: right;">89</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">227</td>
-<td style="text-align: right;">6033</td>
-<td style="text-align: right;">108.0</td>
-<td style="text-align: right;">449</td>
-<td style="text-align: right;">64</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">467</td>
-<td style="text-align: right;">4534</td>
-<td style="text-align: right;">32.8</td>
-<td style="text-align: right;">333</td>
-<td style="text-align: right;">44</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">846</td>
-<td style="text-align: right;">7576</td>
-<td style="text-align: right;">94.2</td>
-<td style="text-align: right;">527</td>
-<td style="text-align: right;">44</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">436</td>
 <td style="text-align: right;">4866</td>
 <td style="text-align: right;">45.0</td>
 <td style="text-align: right;">347</td>
 <td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">2910</td>
+<td style="text-align: right;">26.5</td>
+<td style="text-align: right;">236</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">815</td>
+<td style="text-align: right;">6340</td>
+<td style="text-align: right;">55.4</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3189</td>
+<td style="text-align: right;">39.1</td>
+<td style="text-align: right;">263</td>
+<td style="text-align: right;">72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2420</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: right;">69</td>
 </tr>
 </tbody>
 </table>
@@ -592,9 +1270,9 @@ Table&nbsp;6.1: Random sample of 5 credit card holders.
 </div>
 <p>Now that we’ve looked at the raw values in our <code>credit_ch6</code> data frame and have a sense of the data, let’s move on to the next common step in an exploratory data analysis: computing summary statistics. As we did in our exploratory data analyses in <a href="05-regression.html#sec-model1EDA" class="quarto-xref">Subsections&nbsp;<span>5.1.1</span></a> and <a href="05-regression.html#sec-model2EDA" class="quarto-xref"><span>5.2.1</span></a> from the previous chapter, let’s use the <code>skim()</code> function from the <code>skimr</code> package, being sure to only <code>select()</code> the variables of interest in our model:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>Skim summary statistics
  n obs: 400 
@@ -609,21 +1287,21 @@ credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
 <p>Observe the summary statistics for the outcome variable <code>debt</code>: the mean and median credit card debt are $520.01 and $459.50 respectively and that 25% of card holders had debts of $68.75 or less. Let’s now look at one of the explanatory variables <code>credit_limit</code>: the mean and median credit card limit are $4735.6 and $4622.50 respectively while 75% of card holders had incomes of $57,470 or less.</p>
 <p>Since our outcome variable <code>debt</code> and the explanatory variables <code>credit_limit</code> and <code>income</code> are numerical, we can compute the correlation coefficient between the different possible pairs of these variables. First, we can run the <code>cor()</code> command as seen in <a href="05-regression.html#sec-model1EDA" class="quarto-xref">Subsections&nbsp;<span>5.1.1</span></a> twice, once for each explanatory variable:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>credit_limit)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>income)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>credit_limit)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(credit_ch6<span class="sc">$</span>debt, credit_ch6<span class="sc">$</span>income)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Or we can simultaneously compute them by returning a <em>correlation matrix</em> which we display in <a href="#tbl-model3-correlation" class="quarto-xref">Table&nbsp;<span>6.2</span></a>. We can read off the correlation coefficient for any pair of variables by looking them up in the appropriate row/column combination.</p>
+<p>Or we can simultaneously compute them by returning a <em>correlation matrix</em> which we display in <a href="#tbl-model3-correlation" class="quarto-xref">Table&nbsp;<span>6.8</span></a>. We can read off the correlation coefficient for any pair of variables by looking them up in the appropriate row/column combination.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-correlation" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit, and income.
+Table&nbsp;6.8: Correlation coefficients between credit card debt, credit limit, and income.
 </figcaption>
 <div aria-describedby="tbl-model3-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -671,19 +1349,19 @@ Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit,
 </ol>
 <p>We say there is a high degree of <em>collinearity</em> between the <code>credit_limit</code> and <code>income</code> explanatory variables. Collinearity (or multicollinearity) is a phenomenon where one explanatory variable in a multiple regression model is highly correlated with another.</p>
 <p>So in our case since <code>credit_limit</code> and <code>income</code> are highly correlated, if we knew someone’s <code>credit_limit</code>, we could make pretty good guesses about their <code>income</code> as well. Thus, these two variables provide somewhat redundant information. However, we’ll leave discussion on how to work with collinear explanatory variables to a more intermediate-level book on regression modeling.</p>
-<p>Let’s visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots in <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</p>
+<p>Let’s visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots in <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(credit_ch6, <span class="fu">aes</span>(<span class="at">x =</span> credit_limit, <span class="at">y =</span> debt)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Credit limit (in $)"</span>, <span class="at">y =</span> <span class="st">"Credit card debt (in $)"</span>, </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Debt and credit limit"</span>) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(credit_ch6, <span class="fu">aes</span>(<span class="at">x =</span> income, <span class="at">y =</span> debt)) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income (in $1000)"</span>, <span class="at">y =</span> <span class="st">"Credit card debt (in $)"</span>, </span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Debt and income"</span>) <span class="sc">+</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(credit_ch6, <span class="fu">aes</span>(<span class="at">x =</span> credit_limit, <span class="at">y =</span> debt)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Credit limit (in $)"</span>, <span class="at">y =</span> <span class="st">"Credit card debt (in $)"</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Debt and credit limit"</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(credit_ch6, <span class="fu">aes</span>(<span class="at">x =</span> income, <span class="at">y =</span> debt)) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income (in $1000)"</span>, <span class="at">y =</span> <span class="st">"Credit card debt (in $)"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Debt and income"</span>) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -693,14 +1371,14 @@ Table&nbsp;6.2: Correlation coefficients between credit card debt, credit limit,
 <img src="06-multiple-regression_files/figure-html/fig-2numxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2numxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: Relationship between credit card debt and credit limit/income.
+Figure&nbsp;6.5: Relationship between credit card debt and credit limit/income.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Observe there is a positive relationship between credit limit and credit card debt: as credit limit increases so also does credit card debt. This is consistent with the strongly positive correlation coefficient of 0.862 we computed earlier. In the case of income, the positive relationship doesn’t appear as strong, given the weakly positive correlation coefficient of 0.464.</p>
-<p>However, the two plots in <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> only focus on the relationship of the outcome variable with each of the two explanatory variables <em>separately</em>. To visualize the <em>joint</em> relationship of all three variables simultaneously, we need a 3-dimensional (3D) scatterplot as seen in <a href="#fig-3D-scatterplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>. Each of the 400 observations in the <code>credit_ch6</code> data frame are marked with a blue point where</p>
+<p>However, the two plots in <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> only focus on the relationship of the outcome variable with each of the two explanatory variables <em>separately</em>. To visualize the <em>joint</em> relationship of all three variables simultaneously, we need a 3-dimensional (3D) scatterplot as seen in <a href="#fig-3D-scatterplot" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>. Each of the 400 observations in the <code>credit_ch6</code> data frame are marked with a blue point where</p>
 <ol type="1">
 <li>The numerical outcome variable <span class="math inline">\(y\)</span> <code>debt</code> is on the vertical axis</li>
 <li>The two numerical explanatory variables, <span class="math inline">\(x_1\)</span> <code>income</code> and <span class="math inline">\(x_2\)</span> <code>credit_limit</code>, are on the two axes that form the bottom plane.</li>
@@ -711,24 +1389,24 @@ Figure&nbsp;6.1: Relationship between credit card debt and credit limit/income.
 <img src="images/credit_card_balance_regression_plane.png" class="img-fluid figure-img" data-out.width="60%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3D-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: 3D scatterplot and regression plane
+Figure&nbsp;6.6: 3D scatterplot and regression plane
 </figcaption>
 </figure>
 </div>
 <p>Furthermore, we also include the <em>regression plane</em>. Recall from <a href="05-regression.html#sec-leastsquares" class="quarto-xref">Subsection&nbsp;<span>5.3.3</span></a> that regression lines are “best-fitting” in that of all possible lines we can draw through a cloud of points, the regression line minimizes the <em>sum of squared residuals</em>. This concept also extends to models with two numerical explanatory variables. The difference is instead of a “best-fitting” line, we now have a “best-fitting” plane that similarly minimizes the sum of squared residuals. Head to <a href="https://beta.rstudioconnect.com/connect/#/apps/3214/">here</a> to open an interactive version of this plot in your browser.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.1
+<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(LC6.2)</strong> Conduct a new exploratory data analysis with the same outcome variable <span class="math inline">\(y\)</span> being <code>debt</code> but with <code>credit_rating</code> and <code>age</code> as the new explanatory variables <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Remember, this involves three things:</p>
+<p><strong>(LC6.3)</strong> Conduct a new exploratory data analysis with the same outcome variable <span class="math inline">\(y\)</span> being <code>debt</code> but with <code>credit_rating</code> and <code>age</code> as the new explanatory variables <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Remember, this involves three things:</p>
 <ol type="1">
 <li>Most crucially: Looking at the raw data values.</li>
 <li>Computing summary statistics, such as means, medians, and interquartile ranges.</li>
@@ -739,25 +1417,25 @@ Figure&nbsp;6.2: 3D scatterplot and regression plane
 </div>
 </div>
 </section>
-<section id="sec-model3table" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="sec-model3table"><span class="header-section-number">6.1.2</span> Regression plane</h3>
-<p>Let’s now fit a regression model and get the regression table corresponding to the regression plane in <a href="#fig-3D-scatterplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>. We’ll consider a model fit with a formula of the form <code>y ~ x1 + x2</code>, where <code>x1</code> and <code>x2</code> represent our two explanatory variables <code>credit_limit</code> and <code>income</code>.</p>
-<p>Just like we did in <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>, let’s get the regression table for this model using our two-step process and display the results in <a href="#tbl-model3-table-output" class="quarto-xref">Table&nbsp;<span>6.3</span></a>.</p>
+<section id="sec-model3table" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-model3table"><span class="header-section-number">6.2.2</span> Regression plane</h3>
+<p>Let’s now fit a regression model and get the regression table corresponding to the regression plane in <a href="#fig-3D-scatterplot" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>. We’ll consider a model fit with a formula of the form <code>y ~ x1 + x2</code>, where <code>x1</code> and <code>x2</code> represent our two explanatory variables <code>credit_limit</code> and <code>income</code>.</p>
+<p>Just like we did in <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>, let’s get the regression table for this model using our two-step process and display the results in <a href="#tbl-model3-table-output" class="quarto-xref">Table&nbsp;<span>6.9</span></a>.</p>
 <ol type="1">
 <li>We first “fit” the linear regression model using the <code>lm(y ~ x1 + x2, data)</code> function and save it in <code>debt_model</code>.</li>
 <li>We get the regression table by applying the <code>summary()</code> function to <code>debt_model</code>.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>debt_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(debt <span class="sc">~</span> credit_limit <span class="sc">+</span> income, <span class="at">data =</span> credit_ch6)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>debt_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(debt <span class="sc">~</span> credit_limit <span class="sc">+</span> income, <span class="at">data =</span> credit_ch6)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(debt_model)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-table-output" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-table-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.3: Multiple regression table
+Table&nbsp;6.9: Multiple regression table
 </figcaption>
 <div aria-describedby="tbl-model3-table-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -812,44 +1490,44 @@ Table&nbsp;6.3: Multiple regression table
 &amp;= -385.179 + 0.264 \cdot\text{limit} - 7.663 \cdot\text{income}
 \end{aligned}
 \]</span></p>
-<p>Recall in the right-hand plot of <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> that when plotting the relationship between <code>debt</code> and <code>income</code> in isolation, there appeared to be a <em>positive</em> relationship. In the last discussed multiple regression however, when <em>jointly</em> modeling the relationship between <code>debt</code>, <code>credit_limit</code>, and <code>income</code>, there appears to be a <em>negative</em> relationship of <code>debt</code> and <code>income</code> as evidenced by the negative slope for <code>income</code> of -$7.663. What explains these contradictory results? A phenomenon known as <em>Simpson’s Paradox</em>, whereby overall trends that exist in aggregate either disappear or reverse when the data are broken down into groups. In <a href="#sec-simpsonsparadox" class="quarto-xref"><span>Section 6.3.3</span></a> we elaborate on this idea by looking at the relationship between <code>credit_limit</code> and credit card <code>debt</code>, but split along different <code>income</code> brackets.</p>
+<p>Recall in the right-hand plot of <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> that when plotting the relationship between <code>debt</code> and <code>income</code> in isolation, there appeared to be a <em>positive</em> relationship. In the last discussed multiple regression however, when <em>jointly</em> modeling the relationship between <code>debt</code>, <code>credit_limit</code>, and <code>income</code>, there appears to be a <em>negative</em> relationship of <code>debt</code> and <code>income</code> as evidenced by the negative slope for <code>income</code> of -$7.663. What explains these contradictory results? A phenomenon known as <em>Simpson’s Paradox</em>, whereby overall trends that exist in aggregate either disappear or reverse when the data are broken down into groups. In <a href="#sec-simpsonsparadox" class="quarto-xref"><span>Section 6.3.3</span></a> we elaborate on this idea by looking at the relationship between <code>credit_limit</code> and credit card <code>debt</code>, but split along different <code>income</code> brackets.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.3
+<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Fit a new simple linear regression using <code>lm(debt ~ credit_rating + age, data = credit_ch6)</code> where <code>credit_rating</code> and <code>age</code> are the new numerical explanatory variables <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Get information about the “best-fitting” regression plane from the regression table by applying the <code>summary()</code> function. How do the regression results match up with the results from your previous exploratory data analysis?</p>
 </div>
 </div>
 </div>
 </section>
-<section id="sec-model3points" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="sec-model3points"><span class="header-section-number">6.1.3</span> Observed/fitted values and residuals</h3>
-<p>Let’s also compute all fitted values and residuals for our regression model using the code from <a href="05-regression.html#sec-model1points" class="quarto-xref"><span>Section 5.1.3</span></a> and present only the first 10 rows of output in <a href="#tbl-model3-points-table" class="quarto-xref">Table&nbsp;<span>6.4</span></a>. Remember that the coordinates of each of the blue points in our 3D scatterplot in <a href="#fig-3D-scatterplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> can be found in the <code>income</code>, <code>credit_limit</code>, and <code>debt</code> columns. The fitted values on the regression plane are found in the <code>debt_hat</code> column and are computed using our equation for the regression plane in the previous section:</p>
+<section id="sec-model3points" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="sec-model3points"><span class="header-section-number">6.2.3</span> Observed/fitted values and residuals</h3>
+<p>Let’s also compute all fitted values and residuals for our regression model using the code from <a href="05-regression.html#sec-model1points" class="quarto-xref"><span>Section 5.1.3</span></a> and present only the first 10 rows of output in <a href="#tbl-model3-points-table" class="quarto-xref">Table&nbsp;<span>6.10</span></a>. Remember that the coordinates of each of the blue points in our 3D scatterplot in <a href="#fig-3D-scatterplot" class="quarto-xref">Figure&nbsp;<span>6.6</span></a> can be found in the <code>income</code>, <code>credit_limit</code>, and <code>debt</code> columns. The fitted values on the regression plane are found in the <code>debt_hat</code> column and are computed using our equation for the regression plane in the previous section:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \widehat{y} = \widehat{\text{debt}} &amp;= -385.179 + 0.264 \cdot \text{limit} - 7.663 \cdot \text{income}
 \end{aligned}
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>debt_model_data <span class="ot">&lt;-</span> credit_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">debt_hat =</span> <span class="fu">fitted</span>(debt_model),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(debt_model)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>debt_model_data <span class="ot">&lt;-</span> credit_ch6 <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, credit_limit, income) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">debt_hat =</span> <span class="fu">fitted</span>(debt_model),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(debt_model)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model3-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.4: Regression points (First 10 credit card holders out of 400).
+Table&nbsp;6.10: Regression points (First 10 credit card holders out of 400).
 </figcaption>
 <div aria-describedby="tbl-model3-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -960,692 +1638,14 @@ Table&nbsp;6.4: Regression points (First 10 credit card holders out of 400).
 &amp;= 683
 \end{aligned}
 \]</span></p>
-<p>However, this person had an actual credit card <code>debt</code> of $580, so the residual for this observation is <span class="math inline">\(y - \widehat{y} = \$580 - \$683.37 = -\$103.37\)</span>. Note that <a href="#tbl-model3-points-table" class="quarto-xref">Table&nbsp;<span>6.4</span></a> presents rounded values for <code>debt_hat</code> and <code>residual</code>.</p>
-</section>
-</section>
-<section id="sec-model4" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="sec-model4"><span class="header-section-number">6.2</span> One numerical &amp; one categorical explanatory variable</h2>
-<p>Let’s revisit the instructor evaluation data from UT Austin we introduced in <a href="05-regression.html#sec-model1" class="quarto-xref"><span>Section 5.1</span></a>. We studied the relationship between teaching evaluation scores as given by students and “beauty” scores. The variable teaching <code>score</code> was the numerical outcome variable <span class="math inline">\(y\)</span> and the variable “beauty” score (<code>bty_avg</code>) was the numerical explanatory <span class="math inline">\(x\)</span> variable.</p>
-<p>In this section, we are going to consider a different model. Our outcome variable will still be teaching score, but now we’ll now include two different explanatory variables: age and gender. Could it be that instructors who are older receive better teaching evaluations from students? Or could it instead be that younger instructors receive better evaluations? Are there differences in evaluations given by students for instructors of different genders? We’ll answer these questions by modeling the relationship between these variables using <em>multiple regression</em>, where we have:</p>
-<ol type="1">
-<li>A numerical outcome variable <span class="math inline">\(y\)</span>, the instructor’s teaching score, and</li>
-<li>Two explanatory variables:
-<ol type="1">
-<li>A numerical explanatory variable <span class="math inline">\(x_1\)</span>, the instructor’s age</li>
-<li>A categorical explanatory variable <span class="math inline">\(x_2\)</span>, the instructor’s (binary) gender.</li>
-</ol></li>
-</ol>
-<section id="sec-model4EDA" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-model4EDA"><span class="header-section-number">6.2.1</span> Exploratory data analysis</h3>
-<p>Recall that data on the 463 courses at UT Austin can be found in the <code>evals</code> data frame included in the <code>moderndive</code> package. However, to keep things simple, let’s <code>select()</code> only the subset of the variables we’ll consider in this chapter, and save this data in a new data frame called <code>evals_ch6</code>. Note that these are different than the variables chosen in <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="ot">&lt;-</span> evals <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, score, age, gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Let’s first look at the raw data values by either looking at <code>evals_ch6</code> using RStudio’s spreadsheet viewer or by using the <code>glimpse()</code> function:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(evals_ch6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 463
-Columns: 4
-$ ID     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, …
-$ score  &lt;dbl&gt; 4.7, 4.1, 3.9, 4.8, 4.6, 4.3, 2.8, 4.1, 3.4, 4.5, 3.8, 4.5, 4.6…
-$ age    &lt;int&gt; 36, 36, 36, 36, 59, 59, 59, 51, 51, 40, 40, 40, 40, 40, 40, 40,…
-$ gender &lt;fct&gt; female, female, female, female, male, male, male, male, male, f…</code></pre>
-</div>
-</div>
-<p>Let’s also display a random sample of 5 rows of the 463 rows corresponding to different courses in <a href="#tbl-model4-data-preview" class="quarto-xref">Table&nbsp;<span>6.5</span></a>. Remember due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div id="tbl-model4-data-preview" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.5: A random sample of 5 out of the 463 courses at UT Austin
-</figcaption>
-<div aria-describedby="tbl-model4-data-preview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">gender</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">129</td>
-<td style="text-align: right;">3.7</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">4.7</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: left;">female</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">4.8</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">434</td>
-<td style="text-align: right;">2.8</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">330</td>
-<td style="text-align: right;">4.0</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: left;">male</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>Now that we’ve looked at the raw values in our <code>evals_ch6</code> data frame and have a sense of the data, let’s compute summary statistics.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">skim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<pre><code>Skim summary statistics
- n obs: 463 
- n variables: 3 
-── Variable type:factor ────────────────────────────────────────────────────────
- variable missing complete   n n_unique                top_counts ordered
-   gender       0      463 463        2 mal: 268, fem: 195, NA: 0   FALSE
-── Variable type:integer ───────────────────────────────────────────────────────
- variable missing complete   n  mean  sd p0 p25 p50 p75 p100
-      age       0      463 463 48.37 9.8 29  42  48  57   73
-── Variable type:numeric ───────────────────────────────────────────────────────
- variable missing complete   n mean   sd  p0 p25 p50 p75 p100
-    score       0      463 463 4.17 0.54 2.3 3.8 4.3 4.6    5</code></pre>
-<p>Observe for example that we have no missing data, that there are 268 courses taught by male instructors and 195 courses taught by female instructors, and that the average instructor age is 48.37. Recall however that each row of our data represents a particular course and that the same instructor often teaches more than one course. Therefore the average age of the unique instructors may differ.</p>
-<p>Furthermore, let’s compute the correlation coefficient between our two numerical variables: <code>score</code> and <code>age</code>. Recall from <a href="05-regression.html#sec-model1EDA" class="quarto-xref"><span>Section 5.1.1</span></a> that correlation coefficients only exist between numerical variables. We observe that they are “weakly negatively” correlated.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(score, age))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  correlation
-        &lt;dbl&gt;
-1      -0.107</code></pre>
-</div>
-</div>
-<p>Let’s now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable <code>score</code> and explanatory variable <code>age</code> are both numerical, we’ll use a scatterplot to display their relationship. How can we incorporate the categorical variable <code>gender</code> however? By <code>mapping</code> the variable <code>gender</code> to the <code>color</code> aesthetic, thereby creating a <em>colored</em> scatterplot. The following code is similar to the code that created the scatterplot of teaching score over “beauty” score in <a href="05-regression.html#fig-numxplot1" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, but with <code>color = gender</code> added to the <code>aes()</code>thetic mapping.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> score, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-numxcatxplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-numxcatxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-multiple-regression_files/figure-html/fig-numxcatxplot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxcatxplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.3: Colored scatterplot of relationship of teaching and beauty scores.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>In the resulting <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, observe that <code>ggplot()</code> assigns a default in red/blue color scheme to the points and to the lines associated with the two levels of <code>gender</code>: <code>female</code> and <code>male</code>. Furthermore the <code>geom_smooth(method = "lm", se = FALSE)</code> layer automatically fits a different regression line for each group.</p>
-<p>We notice some interesting trends. First, there are almost no women faculty over the age of 60 as evidenced by lack of red dots above <span class="math inline">\(x\)</span> = 60. Second, while both regression lines are negatively sloped with age (i.e.&nbsp;older instructors tend to have lower scores), the slope for age for the female instructors is <em>more</em> negative. In other words, female instructors are paying a harsher penalty for their age than the male instructors.</p>
-</section>
-<section id="sec-model4interactiontable" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-model4interactiontable"><span class="header-section-number">6.2.2</span> Interaction model</h3>
-<p>Let’s now quantify the relationship of our outcome variable <span class="math inline">\(y\)</span> and the two explanatory variables using one type of multiple regression model known as an <em>interaction model</em>. We’ll explain where the term “interaction” comes from at the end of this section.</p>
-<p>In particular, we’ll write out the equation of the two regression lines in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> using the values from a regression table. Before we do this however, let’s go over a brief refresher of regression when you have a categorical explanatory variable <span class="math inline">\(x\)</span>.</p>
-<p>Recall in <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a> we fit a regression model for countries’ life expectancies as a function of which continent the country was in. In other words, we had a numerical outcome variable <span class="math inline">\(y\)</span> = <code>lifeExp</code> and a categorical explanatory variable <span class="math inline">\(x\)</span> = <code>continent</code> which had 5 levels: <code>Africa</code>, <code>Americas</code>, <code>Asia</code>, <code>Europe</code>, and <code>Oceania</code>. Let’s re-display the regression table you saw in <a href="05-regression.html#tbl-catxplot4b" class="quarto-xref">Table&nbsp;<span>5.8</span></a>:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>Linear regression table</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">p value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: right;">54.8</td>
-<td style="text-align: right;">1.02</td>
-<td style="text-align: right;">53.45</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">continentAmericas</td>
-<td style="text-align: right;">18.8</td>
-<td style="text-align: right;">1.80</td>
-<td style="text-align: right;">10.45</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">continentAsia</td>
-<td style="text-align: right;">15.9</td>
-<td style="text-align: right;">1.65</td>
-<td style="text-align: right;">9.68</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">continentEurope</td>
-<td style="text-align: right;">22.8</td>
-<td style="text-align: right;">1.70</td>
-<td style="text-align: right;">13.47</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">continentOceania</td>
-<td style="text-align: right;">25.9</td>
-<td style="text-align: right;">5.33</td>
-<td style="text-align: right;">4.86</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Recall our interpretation of the <code>Estimate</code> column. Since <code>Africa</code> was the “baseline for comparison” group, the <code>Intercept</code> term corresponds to the mean life expectancy for all countries in Africa of 54.8 years. The other four values of <code>Estimate</code> correspond to “offsets” relative to the baseline group. So, for example, the “offset” corresponding to the Americas is +18.8 as compared to the baseline for comparison group Africa. In other words, the average life expectancy for countries in the Americas is 18.8 years <em>higher</em>. Thus the mean life expectancy for all countries in the Americas is 54.8 + 18.8 = 73.6. The same interpretation holds for Asia, Europe, and Oceania.</p>
-<p>Going back to our multiple regression model for teaching <code>score</code> using <code>age</code> and <code>gender</code> in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, we generate the regression table using the same two-step approach from <a href="05-regression.html" class="quarto-xref"><span>Chapter 5</span></a>: we first “fit” the model using the <code>lm()</code> “linear model” function and then we apply the <code>summary()</code> function. This time however, our model formula won’t be of the form <code>y ~ x</code>, but rather of the form <code>y ~ x1 + x2 + x1 * x2</code>. In other words, we include a <em>main effect</em> for each of our two explanatory variables <code>x1</code> and <code>x2</code>, as well as an <em>interaction term</em> <code>x1 * x2</code>. In terms of the general mathematical equation, an interaction model with two explanatory variables is of the form:</p>
-<p><span class="math display">\[\widehat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2\]</span></p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>score_model_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender <span class="sc">+</span> age <span class="sc">*</span> gender, <span class="at">data =</span> evals_ch6)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_interaction)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div id="tbl-regtable-interaction" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.6: Regression table for interaction model.
-</figcaption>
-<div aria-describedby="tbl-regtable-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">p value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: right;">4.883</td>
-<td style="text-align: right;">0.205</td>
-<td style="text-align: right;">23.80</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age</td>
-<td style="text-align: right;">-0.018</td>
-<td style="text-align: right;">0.004</td>
-<td style="text-align: right;">-3.92</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">gendermale</td>
-<td style="text-align: right;">-0.446</td>
-<td style="text-align: right;">0.265</td>
-<td style="text-align: right;">-1.68</td>
-<td style="text-align: right;">0.094</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age:gendermale</td>
-<td style="text-align: right;">0.014</td>
-<td style="text-align: right;">0.006</td>
-<td style="text-align: right;">2.45</td>
-<td style="text-align: right;">0.015</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>Looking at the regression table output in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a>, we see there are four rows of values in the <code>Estimate</code> column that correspond to the 4 estimated components of the model: <span class="math inline">\(b_0, \ b_1, \ b_2,\)</span> and <span class="math inline">\(b_{1,2}\)</span>. Note that we chose to use the notation <span class="math inline">\(b_{1,2}\)</span> to make it clear this is the coefficient for the interaction term between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, but we could have easily decided to denote this as <span class="math inline">\(b_3\)</span> instead. While it is not immediately apparent, using these four values we can write out the equations of both lines in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
-<p>First, since the word <code>female</code> comes alphabetically before <code>male</code>, female instructors are the “baseline for comparison” group. Therefore <code>Intercept</code> is the intercept <em>for only the female instructors</em>. This holds similarly for <code>age</code>. It is the slope for age <em>for only the female instructors</em>. Thus the red regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> has an intercept of 4.883 and slope for age of -0.018. Remember that for this particular data, while the intercept has a mathematical interpretation, it has no <em>practical</em> interpretation since there can’t be any instructors with age zero.</p>
-<p>What about the intercept and slope for age of the male instructors (i.e.&nbsp;the blue line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>)? This is where our notion of “offsets” comes into play once again. The value for <code>gendermale</code> of -0.446 is not the intercept for the male instructors, but rather the <em>offset</em> in intercept for male instructors relative to female instructors. Therefore, the intercept for the male instructors is <code>Intercept + gendermale</code> = 4.883 + (-0.446) = 4.883 - 0.446 = 4.437.</p>
-<p>Similarly, <code>age:gendermale</code> = 0.014 is not the slope for age for the male instructors, but rather the <em>offset</em> in slope for the male instructors. Therefore, the slope for age for the male instructors is <code>age + age:gendermale</code> = -0.018 + 0.014 = -0.004. Therefore the blue regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> has intercept 4.437 and slope for age of -0.004.</p>
-<p>Let’s summarize these values in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.7</span></a> and focus on the two slopes for age:</p>
-<div class="cell" data-layout-align="center">
-<div id="tbl-interaction-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.7: Comparison of intercepts and slopes for interaction model.
-</figcaption>
-<div aria-describedby="tbl-interaction-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Intercept</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Slope for age</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Female instructors</td>
-<td style="text-align: right;">4.883</td>
-<td style="text-align: right;">-0.018</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Male instructors</td>
-<td style="text-align: right;">4.437</td>
-<td style="text-align: right;">-0.004</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>Since the slope for age for the female instructors was -0.018, it means that on average, a female instructor who is a year older would have a teaching score that is 0.018 units <em>lower</em>. For the male instructors however, the corresponding associated decrease was on average only 0.004 units. While both slopes for age were negative, the slope for age for the female instructors is <em>more negative</em>. This is consistent with our observation from <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, that this model is suggesting that age impacts teaching scores for female instructors more than for male instructors.</p>
-<p>Let’s now write the equation for our regression lines, which we can use to compute our fitted values <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span>.</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{\mbox{age}} \cdot \mbox{age} + b_{\mbox{male}} \cdot \mathbb{1}_{\mbox{is male}}(x) + b_{\mbox{age,male}} \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\\
-&amp;= 4.883 -0.018 \cdot \mbox{age} - 0.446 \cdot \mathbb{1}_{\mbox{is male}}(x) + 0.014 \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}
-\end{aligned}
-\]</span></p>
-<p>Whoa! That’s even more daunting than the equation you saw for the life expectancy as a function of continent in <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>! However if you recall what an “indicator function” AKA “dummy variable” does, the equation simplifies greatly. In the previous equation, we have one indicator function of interest:</p>
-<p><span class="math display">\[
-\mathbb{1}_{\mbox{is male}}(x) = \left\{
-\begin{array}{ll}
-1 &amp; \text{if } \text{instructor } x \text{ is male} \\
-0 &amp; \text{otherwise}\end{array}
-\right.
-\]</span></p>
-<p>Second, let’s match coefficients in the previous equation with values in the <code>Estimate</code> column in our regression table in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a>:</p>
-<ol type="1">
-<li><span class="math inline">\(b_0\)</span> is the <code>Intercept</code> = 4.883 for the female instructors</li>
-<li><span class="math inline">\(b_{\mbox{age}}\)</span> is the slope for <code>age</code> = -0.018 for the female instructors</li>
-<li><span class="math inline">\(b_{\mbox{male}}\)</span> is the offset in intercept for the male instructors</li>
-<li><span class="math inline">\(b_{\mbox{age,male}}\)</span> is the offset in slope for age for the male instructors</li>
-</ol>
-<p>Let’s put this all together and compute the fitted value <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span> for female instructors. Since for female instructors <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 0, the previous equation becomes</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= 4.883 - 0.018   \cdot \mbox{age} - 0.446 \cdot 0 + 0.014 \cdot \mbox{age} \cdot 0\\
-&amp;= 4.883 - 0.018    \cdot \mbox{age} - 0 + 0\\
-&amp;= 4.883 - 0.018    \cdot \mbox{age}\\
-\end{aligned}
-\]</span></p>
-<p>which is the equation of the red regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> corresponding to the female instructors in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.7</span></a>. Correspondingly, since for male instructors <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 1, the previous equation becomes</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= 4.883 - 0.018   \cdot \mbox{age} - 0.446 + 0.014 \cdot \mbox{age}\\
-&amp;= (4.883 - 0.446) + (- 0.018 + 0.014) * \mbox{age}\\
-&amp;= 4.437 - 0.004    \cdot \mbox{age}\\
-\end{aligned}
-\]</span></p>
-<p>which is the equation of the blue regression line in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> corresponding to the male instructors in <a href="#tbl-interaction-summary" class="quarto-xref">Table&nbsp;<span>6.7</span></a>.</p>
-<p>Phew! That was a lot of arithmetic! Don’t fret however, this is as hard as modeling will get in this book. If you’re still a little unsure about using indicator functions and using categorical explanatory variables in a regression model, we <em>highly</em> suggest you re-read <a href="05-regression.html#sec-model2table" class="quarto-xref"><span>Section 5.2.2</span></a>. This involves only a single categorical explanatory variable and thus is much simpler.</p>
-<p>Before we end this section, we explain why we refer to this type of model as an “interaction model.” The <span class="math inline">\(b_{\mbox{age,male}}\)</span> term in the equation for the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> is what’s known in statistical modeling as an “interaction effect.” The interaction term corresponds to the <code>age:gendermale</code> = 0.014 in the final row of the regression table in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a>.</p>
-<p>We say there is an interaction effect if the associated effect of one variable <em>depends on the value of another variable</em>. In other words, the two variables are “interacting” with each other. In our case, the associated effect of the variable age <em>depends</em> on the value of the other variable gender. This was evidenced by the difference in slopes for age of +0.014 of male instructors relative to female instructors. </p>
-<p>Another way of thinking about interaction effects on teaching scores is as follows. For a given instructor at UT Austin, there might be an associated effect of their age <em>by itself</em>, there might be an associated effect of their gender <em>by itself</em>, but when age and gender are considered <em>together</em> there might an <em>additional effect</em> above and beyond the two individual effects.</p>
-</section>
-<section id="sec-model4table" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="sec-model4table"><span class="header-section-number">6.2.3</span> Parallel slopes model</h3>
-<p>When creating regression models with one numerical and one categorical explanatory variable, we are not just limited to interaction models as we just saw. Another type of model we can use is known as a <em>parallel slopes</em> model. Unlike interaction models where the regression lines can have different intercepts and different slopes, parallel slopes models still allow for different intercepts but <em>force</em> all lines to have the same slope. The resulting regression lines are thus parallel. We can think of a parallel slopes model as a restricted case of the interaction model where we’ve forced <span class="math inline">\(b_{1,2}\)</span>, the coefficient of the interaction term <span class="math inline">\(x_{1} \cdot x_2\)</span>, to be zero. Therefore, the mathematical equation for a parallel slopes model with two explanatory variables is of the form:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{1} \cdot x_1 + b_{2} \cdot x_2 + b_{1,2} \cdot x_1 \cdot x_2\\
-&amp;= b_0 + b_{1} \cdot x_1 + b_{2} \cdot x_2 + 0 \cdot x_1 \cdot x_2\\
-&amp;= b_0 + b_{1} \cdot x_1 + b_{2} \cdot x_2
-\end{aligned}
-\]</span></p>
-<!-- Unfortunately, the `ggplot2` package does not have a convenient way to plot a parallel slopes model, so we just display it for you in  but leave the code for a more advanced data visualization class.  -->
-<p>To plot parallel slopes we use the function <code>geom_parallel_slopes()</code> that is included in the <code>moderndive</code> package. To use this function you need to load both the <code>ggplot2</code> and <code>moderndive</code> packages. Observe how the code is identical to the one used for the model with interactions in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, but now the <code>geom_smooth(method = "lm", se = FALSE)</code> layer is replaced with <code>geom_parallel_slopes(se = FALSE)</code>.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(evals_ch6,<span class="fu">aes</span>(<span class="at">x =</span>age, <span class="at">y =</span>score, <span class="at">color =</span>gender)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Teaching Score"</span>, <span class="at">color =</span> <span class="st">"Gender"</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_slopes</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-numxcatx-parallel" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-numxcatx-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-multiple-regression_files/figure-html/fig-numxcatx-parallel-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxcatx-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: Parallel slopes model of relationship of score with age and gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Observe in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> that we have parallel lines corresponding to the female and male instructors respectively: here they have the same negative slope. This is different from the interaction model displayed in <a href="#fig-numxcatxplot1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, which allowed <code>male</code> and <code>female</code> to have different slopes. <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> is telling us that instructors who are older will tend to receive lower teaching scores than instructors who are younger. Furthermore, since the lines are parallel, the associated penalty for aging is assumed to be the same for both female and male instructors.</p>
-<p>However, observe also in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> that these two lines have different intercepts as evidenced by the fact that the blue line corresponding to the male instructors is higher than the red line corresponding to the female instructors. This is telling us that irrespective of age, female instructors tended to receive lower teaching scores than male instructors.</p>
-<p>In order to obtain the precise numerical values of the two intercepts and the single common slope, we once again “fit” the model using the <code>lm()</code> “linear model” function and then apply the <code>summary()</code> function. Our model formula this time is of the form <code>y ~ x1 + x2</code>, where <code>x1</code> and <code>x2</code> represent the two predictor variables, <code>age</code> and <code>gender</code>, but we do not include the extra interaction term <code>x1 * x2</code>.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit regression model:</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>score_model_parallel_slopes <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> age <span class="sc">+</span> gender, <span class="at">data =</span> evals_ch6)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(score_model_parallel_slopes)<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div id="tbl-regtable-parallel-slopes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.8: Regression table for parallel slopes model.
-</figcaption>
-<div aria-describedby="tbl-regtable-parallel-slopes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Std. Error</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">t value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">p value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: right;">4.484</td>
-<td style="text-align: right;">0.125</td>
-<td style="text-align: right;">35.79</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age</td>
-<td style="text-align: right;">-0.009</td>
-<td style="text-align: right;">0.003</td>
-<td style="text-align: right;">-3.28</td>
-<td style="text-align: right;">0.001</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">gendermale</td>
-<td style="text-align: right;">0.191</td>
-<td style="text-align: right;">0.052</td>
-<td style="text-align: right;">3.63</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>Looking at the regression table output in <a href="#tbl-regtable-parallel-slopes" class="quarto-xref">Table&nbsp;<span>6.8</span></a>, we see there are three rows of values in the <code>Estimate</code> column. Similar to what we did in <a href="#sec-model4interactiontable" class="quarto-xref"><span>Section 6.2.2</span></a>, using these three values we can write out the equations of both lines in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>.</p>
-<p>Again, since the word <code>female</code> comes alphabetically before <code>male</code>, female instructors are the “baseline for comparison” group. Therefore, <code>Intercept</code> is the intercept <em>for only the female instructors</em>. Thus the red regression line in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> has an intercept of 4.484.</p>
-<p>Remember, the value for <code>gendermale</code> of 0.191 is not the intercept for the male instructors, but rather the <em>offset</em> in intercept for male instructors relative to female instructors. Therefore, the intercept for male instructors is <code>Intercept + gendermale</code> = <span class="math inline">\(4.484 + 0.191 = 4.675\)</span>. In other words, in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> the red regression line corresponding to the female instructors has an intercept of 4.484 while the blue regression line corresponding to the male instructors has an intercept of 4.675. Once again, since there aren’t any instructors of age 0, the intercepts only have a mathematical interpretation but no practical one.</p>
-<p>Unlike in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a> however, we now only have a single slope for age of -0.009. This is because the model specifies that both the female and male instructors have a common slope for age. This is telling us that an instructor who is a year older than another instructor received a teaching score that is on average 0.009 units <em>lower</em>. This penalty for aging applies equally for both female and male instructors.</p>
-<p>Let’s summarize these values in <a href="#tbl-parallel-slopes-summary" class="quarto-xref">Table&nbsp;<span>6.9</span></a>, noting the different intercepts but common slopes:</p>
-<div class="cell" data-layout-align="center">
-<div id="tbl-parallel-slopes-summary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.9: Comparison of intercepts and slope for parallel slopes model.
-</figcaption>
-<div aria-describedby="tbl-parallel-slopes-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Intercept</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Slope for age</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Female instructors</td>
-<td style="text-align: right;">4.484</td>
-<td style="text-align: right;">-0.009</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Male instructors</td>
-<td style="text-align: right;">4.675</td>
-<td style="text-align: right;">-0.009</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>Recall that the common slope occurs because we chose not to include the interaction term <span class="math inline">\(\mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\)</span> in our model. This is equivalent to assuming <span class="math inline">\(b_{age,male} = 0\)</span> and therefore not allowing there to be an “offset” in slope for males.</p>
-<p>Let’s now write the equation for our parallel slopes regression lines, which we can use to compute our fitted values <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span>.</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= b_0 + b_{\mbox{age}} \cdot \mbox{age} + b_{\mbox{male}} \cdot \mathbb{1}_{\mbox{is male}}(x)\\
-&amp;= 4.484 -0.009 \cdot \mbox{age} + 0.191 \cdot \mathbb{1}_{\mbox{is male}}(x)
-\end{aligned}
-\]</span></p>
-<p>Let’s put this all together and compute the fitted value <span class="math inline">\(\widehat{y} = \widehat{\text{score}}\)</span> for female instructors. Since for female instructors the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 0, the previous equation becomes</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= 4.484 -0.009    \cdot \mbox{age} + 0.191 \cdot 0\\
-&amp;= 4.484 -0.009 \cdot \mbox{age}
-\end{aligned}
-\]</span></p>
-<p>which is the equation of the red regression line in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> corresponding to the female instructors. Correspondingly, since for male instructors the indicator function <span class="math inline">\(\mathbb{1}_{\mbox{is male}}(x)\)</span> = 1, the previous equation becomes</p>
-<p><span class="math display">\[
-\begin{aligned}
-\widehat{y} = \widehat{\text{score}} &amp;= 4.484 -0.009    \cdot \mbox{age} + 0.191 \cdot 1\\
-&amp;= (4.484 + 0.191) - 0.009 \cdot \mbox{age}\\
-&amp;= 4.67 -0.009 \cdot \mbox{age}
-\end{aligned}
-\]</span></p>
-<p>which is the equation of the blue regression line in <a href="#fig-numxcatx-parallel" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> corresponding to the male instructors.</p>
-<p>Great! We’ve considered both an interaction model and a parallel slopes model for our data. Let’s compare the visualizations for both models side-by-side in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-numxcatx-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-numxcatx-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-multiple-regression_files/figure-html/fig-numxcatx-comparison-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-numxcatx-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.5: Comparison of interaction and parallel slopes models
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>At this point, you might be asking yourself: “Why would we ever use a parallel slopes model?” Looking at the left-hand plot in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>, the two lines definitely do not appear to be parallel, so why would we <em>force</em> them to be parallel? For this data, we agree! It can easily be argued that the interaction model is more appropriate. However, in the upcoming <a href="#sec-model-selection" class="quarto-xref"><span>Section 6.3.1</span></a> on model selection, we’ll present an example where it can be argued that the case for a parallel slopes model might be stronger.</p>
-</section>
-<section id="sec-model4points" class="level3" data-number="6.2.4">
-<h3 data-number="6.2.4" class="anchored" data-anchor-id="sec-model4points"><span class="header-section-number">6.2.4</span> Observed/fitted values and residuals</h3>
-<p>For brevity’s sake, in this section we’ll only compute the observed values, fitted values, and residuals for the interaction model which we saved in <code>score_model_interaction</code>. You’ll have an opportunity to study these values for the parallel slopes model in the upcoming Learning Check.</p>
-<p>Say you have a professor who is female and is 36 years old. What fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> would our model yield? Say you have another professor who is male and is 59 years old. What would their fitted value <span class="math inline">\(\widehat{y}\)</span> be?</p>
-<p>We answer this question visually first by finding the intersection of the red regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 36. We mark this value with a large red dot in <a href="#fig-fitted-values" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>. Similarly, we can identify the fitted value <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> for the male instructor by finding the intersection of the blue regression line and the vertical line at <span class="math inline">\(x\)</span> = age = 59. We mark this value with a large blue dot in <a href="#fig-fitted-values" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-fitted-values" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-fitted-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-multiple-regression_files/figure-html/fig-fitted-values-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fitted-values-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.6: Fitted values for two new professors
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>What are these two values of <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> precisely? We can use the equations of the two regression lines we computed in <a href="#sec-model4interactiontable" class="quarto-xref"><span>Section 6.2.2</span></a>, which in turn were based on values from the regression table in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a>:</p>
-<ul>
-<li>For all female instructors: <span class="math inline">\(\widehat{y} = \widehat{\text{score}} = 4.883 - 0.018 \cdot \mbox{age}\)</span></li>
-<li>For all male instructors: <span class="math inline">\(\widehat{y} = \widehat{\text{score}} = 4.437 - 0.004 \cdot \mbox{age}\)</span></li>
-</ul>
-<p>So our fitted values would be: 4.883 - 0.018 <span class="math inline">\(\cdot\)</span> 36 = 4.25 and 4.437 - 0.004 <span class="math inline">\(\cdot\)</span> 59 = 4.20 respectively.</p>
-<p>Now what if we want the fitted values not just for the instructors of these two courses, but for the instructors of all 463 courses included in the <code>evals_ch6</code> data frame? Doing this by hand would be long and tedious! This is where our data wrangling code from <a href="05-regression.html#sec-model1points" class="quarto-xref"><span>Section 5.1.3</span></a> can help: it will quickly automate this for all 463 courses. We present a preview of just the first 10 rows out of 463 in <a href="#tbl-model4-points-table" class="quarto-xref">Table&nbsp;<span>6.10</span></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data <span class="ot">&lt;-</span> evals_ch6 <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score, age, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_hat =</span> <span class="fu">fitted</span>(score_model_interaction),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">residual =</span> <span class="fu">residuals</span>(score_model_interaction)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"ID"</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>score_model_interaction_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div id="tbl-model4-points-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.10: Regression points (First 10 out of 463 courses)
-</figcaption>
-<div aria-describedby="tbl-model4-points-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">ID</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">gender</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">score_hat</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">residual</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: right;">4.7</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">4.25</td>
-<td style="text-align: right;">0.448</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: right;">4.1</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">4.25</td>
-<td style="text-align: right;">-0.152</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: right;">3.9</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">4.25</td>
-<td style="text-align: right;">-0.352</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: right;">4.8</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">4.25</td>
-<td style="text-align: right;">0.548</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: right;">4.6</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: left;">male</td>
-<td style="text-align: right;">4.20</td>
-<td style="text-align: right;">0.399</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: right;">4.3</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: left;">male</td>
-<td style="text-align: right;">4.20</td>
-<td style="text-align: right;">0.099</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7</td>
-<td style="text-align: right;">2.8</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: left;">male</td>
-<td style="text-align: right;">4.20</td>
-<td style="text-align: right;">-1.401</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8</td>
-<td style="text-align: right;">4.1</td>
-<td style="text-align: right;">51</td>
-<td style="text-align: left;">male</td>
-<td style="text-align: right;">4.23</td>
-<td style="text-align: right;">-0.133</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9</td>
-<td style="text-align: right;">3.4</td>
-<td style="text-align: right;">51</td>
-<td style="text-align: left;">male</td>
-<td style="text-align: right;">4.23</td>
-<td style="text-align: right;">-0.833</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10</td>
-<td style="text-align: right;">4.5</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">4.18</td>
-<td style="text-align: right;">0.318</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>In fact, it turns out that the female instructor of age 36 taught the first four courses, while the male instructor taught the next 3. The resulting <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\widehat{\text{score}}\)</span> fitted values are in the <code>score_hat</code> column. The residuals <span class="math inline">\(y-\widehat{y}\)</span> are displayed in the <code>residuals</code> column. Notice for example the first and fourth courses the female instructor of age 36 taught had positive residuals, indicating that the actual teaching score they received from students was more than their fitted score of 4.25. On the other hand, the second and third course this instructor taught had negative residuals, indicating that the actual teaching score they received from students was less than their fitted score of 4.25.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><span class="emoji" data-emoji="dart">🎯</span> Learning Check 6.4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Compute the observed values, fitted values, and residuals not for the interaction model as we just did, but rather for the parallel slopes model we saved in <code>score_model_parallel_slopes</code>.</p>
-</div>
-</div>
-</div>
+<p>However, this person had an actual credit card <code>debt</code> of $580, so the residual for this observation is <span class="math inline">\(y - \widehat{y} = \$580 - \$683.37 = -\$103.37\)</span>. Note that <a href="#tbl-model3-points-table" class="quarto-xref">Table&nbsp;<span>6.10</span></a> presents rounded values for <code>debt_hat</code> and <code>residual</code>.</p>
 </section>
 </section>
 <section id="related-topics" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="related-topics"><span class="header-section-number">6.3</span> Related topics</h2>
 <section id="sec-model-selection" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="sec-model-selection"><span class="header-section-number">6.3.1</span> Model selection</h3>
-<p>When do we use an interaction model versus a parallel slopes model? Recall in <a href="#sec-model4interactiontable" class="quarto-xref">Sections&nbsp;<span>6.2.2</span></a> and <a href="#sec-model4table" class="quarto-xref"><span>6.2.3</span></a> we fit both interaction and parallel slopes models for the outcome variable <span class="math inline">\(y\)</span> (teaching score) using a numerical explanatory variable <span class="math inline">\(x_1\)</span> (age) and a categorical explanatory variable <span class="math inline">\(x_2\)</span> (gender). We compared these models in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>, which we display again now.</p>
+<p>When do we use an interaction model versus a parallel slopes model? Recall in <a href="#sec-model4interactiontable" class="quarto-xref">Sections&nbsp;<span>6.1.2</span></a> and <a href="#sec-model4table" class="quarto-xref"><span>6.1.3</span></a> we fit both interaction and parallel slopes models for the outcome variable <span class="math inline">\(y\)</span> (teaching score) using a numerical explanatory variable <span class="math inline">\(x_1\)</span> (age) and a categorical explanatory variable <span class="math inline">\(x_2\)</span> (gender). We compared these models in <a href="#fig-numxcatx-comparison" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, which we display again now.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -1673,7 +1673,7 @@ Figure&nbsp;6.7: Previously seen comparison of interaction and parallel slopes m
 \text{Parallel slopes} &amp;: \widehat{y} = \widehat{\text{score}} = b_0 + b_{\mbox{age}} \cdot \mbox{age} + b_{\mbox{male}} \cdot \mathbb{1}_{\mbox{is male}}(x)
 \end{aligned}
 \]</span></p>
-<p>The interaction model is “more complex” in that there is an additional <span class="math inline">\(b_{\mbox{age,male}} \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\)</span> element to the equation not present for the parallel slopes model. Or viewed alternatively, the regression table for the interaction model in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.6</span></a> has <em>four</em> rows, whereas the regression table for the parallel slopes model in <a href="#tbl-regtable-parallel-slopes" class="quarto-xref">Table&nbsp;<span>6.8</span></a> has <em>three</em> rows. The question becomes: “Is this additional complexity warranted?” In this case, it can be argued that this additional complexity is warranted, as evidenced by the clear x-shaped pattern of the two regression lines in the left-hand plot of <a href="#fig-recall-parallel-vs-interaction" class="quarto-xref">Figure&nbsp;<span>6.7</span></a>.</p>
+<p>The interaction model is “more complex” in that there is an additional <span class="math inline">\(b_{\mbox{age,male}} \cdot \mbox{age} \cdot \mathbb{1}_{\mbox{is male}}\)</span> element to the equation not present for the parallel slopes model. Or viewed alternatively, the regression table for the interaction model in <a href="#tbl-regtable-interaction" class="quarto-xref">Table&nbsp;<span>6.2</span></a> has <em>four</em> rows, whereas the regression table for the parallel slopes model in <a href="#tbl-regtable-parallel-slopes" class="quarto-xref">Table&nbsp;<span>6.4</span></a> has <em>three</em> rows. The question becomes: “Is this additional complexity warranted?” In this case, it can be argued that this additional complexity is warranted, as evidenced by the clear x-shaped pattern of the two regression lines in the left-hand plot of <a href="#fig-recall-parallel-vs-interaction" class="quarto-xref">Figure&nbsp;<span>6.7</span></a>.</p>
 <p>However, let’s consider an example where the additional complexity might <em>not</em> be warranted. Let’s consider the <code>MA_schools</code> data which contains 2017 data on Massachusetts public high schools provided by the Massachusetts Department of Education; read the help file for this data by running <code>?MA_schools</code> if you would like more details on this data included in the <code>moderndive</code> package.</p>
 <p>Let’s model the numerical outcome variable <span class="math inline">\(y\)</span>, average SAT math score for that high school, as a function of two explanatory variables:</p>
 <ol type="1">
@@ -1835,7 +1835,7 @@ Table&nbsp;6.12: Parallel slopes regression table
 </section>
 <section id="sec-correlationcoefficient2" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-correlationcoefficient2"><span class="header-section-number">6.3.2</span> Correlation coefficient</h3>
-<p>Recall from <a href="#tbl-model3-correlation" class="quarto-xref">Table&nbsp;<span>6.2</span></a> that the correlation coefficient between <code>income</code> in thousands of dollars and credit card <code>debt</code> was 0.464. What if instead we looked at the correlation coefficient between <code>income</code> and credit card <code>debt</code>, but where <code>income</code> was in dollars and not thousands of dollars? This can be done by multiplying <code>income</code> by 1000.</p>
+<p>Recall from <a href="#tbl-model3-correlation" class="quarto-xref">Table&nbsp;<span>6.8</span></a> that the correlation coefficient between <code>income</code> in thousands of dollars and credit card <code>debt</code> was 0.464. What if instead we looked at the correlation coefficient between <code>income</code> and credit card <code>debt</code>, but where <code>income</code> was in dollars and not thousands of dollars? This can be done by multiplying <code>income</code> by 1000.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>credit_ch6 <span class="sc">%&gt;%</span> </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(debt, income) <span class="sc">%&gt;%</span> </span>
@@ -1880,7 +1880,7 @@ Table&nbsp;6.13: Correlation between income (in dollars) and credit card debt
 </section>
 <section id="sec-simpsonsparadox" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-simpsonsparadox"><span class="header-section-number">6.3.3</span> Simpson’s Paradox</h3>
-<p>Recall in <a href="#sec-model3" class="quarto-xref"><span>Section 6.1</span></a>, we saw the two seemingly contradictory results when studying the relationship between credit card debt and income. On the one hand, the right hand plot of <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> suggested that the relationship between credit card debt and income was <em>positive</em>. We re-display this plot in <a href="#fig-2numxplot1-repeat" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>.</p>
+<p>Recall in <a href="#sec-model3" class="quarto-xref"><span>Section 6.2</span></a>, we saw the two seemingly contradictory results when studying the relationship between credit card debt and income. On the one hand, the right hand plot of <a href="#fig-2numxplot1" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> suggested that the relationship between credit card debt and income was <em>positive</em>. We re-display this plot in <a href="#fig-2numxplot1-repeat" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-2numxplot1-repeat" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -1895,7 +1895,7 @@ Figure&nbsp;6.9: Relationship between credit card debt and income.
 </div>
 </div>
 </div>
-<p>On the other hand, the multiple regression table in <a href="#tbl-model3-table-output" class="quarto-xref">Table&nbsp;<span>6.3</span></a> suggested that the relationship between debt and income was <em>negative</em>. We re-display this table in <a href="#tbl-model3-table-output-repeat" class="quarto-xref">Table&nbsp;<span>6.14</span></a>.</p>
+<p>On the other hand, the multiple regression table in <a href="#tbl-model3-table-output" class="quarto-xref">Table&nbsp;<span>6.9</span></a> suggested that the relationship between debt and income was <em>negative</em>. We re-display this table in <a href="#tbl-model3-table-output-repeat" class="quarto-xref">Table&nbsp;<span>6.14</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-model3-table-output-repeat" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
