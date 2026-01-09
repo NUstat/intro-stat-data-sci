@@ -77,362 +77,6 @@ library(patchwork)
 library(gapminder)
 ```
 
-## Two numerical explanatory variables {#sec-model3}
-
-Let's first consider a *multiple regression* model with two numerical explanatory variables. The dataset we'll use is from ["An Introduction to Statistical Learning with Applications in R, (Second Edition)"](https://www.statlearning.com/), an intermediate-level textbook on statistical and machine learning. Its accompanying `ISLR2` R package contains the datasets that the authors apply various machine learning methods to. 
-
-One frequently used dataset in this book is the `Credit` dataset, where the outcome variable of interest is the credit card debt of 400 individuals. Other variables like income, credit limit, credit rating, and age are included as well. Note that the `Credit` data is not based on real individuals' financial information, but rather is a simulated dataset used for educational purposes. 
-
-In this section, we'll fit a regression model where we have 
-
-1. A numerical outcome variable $y$, the cardholder's credit card debt
-1. Two explanatory variables:
-    1. One numerical explanatory variable $x_1$, the cardholder's credit limit
-    1. Another numerical explanatory variable $x_2$, the cardholder's income (in thousands of dollars).
-
-### Exploratory data analysis {#sec-model3EDA}
-
-Let's load the `Credit` dataset,\index{R packages!ISLR!Credit} but to keep things simple let's `select()` only the subset of the variables we'll consider in this chapter, and save this data in a new data frame called `credit_ch6`. Notice our slightly different use of the `select()` verb here than we introduced in [Subsection -@sec-select].  For example, we'll select the `Balance` variable from `Credit` but then save it with a new variable name `debt`. We do this because here the term "debt" is a little more interpretable than "balance."
-
-```{r}
-#| warning: false
-#| message: false
-library(ISLR2)
-credit_ch6 <- Credit %>%
-  as_tibble() %>% 
-  select(debt = Balance, credit_limit = Limit, 
-         income = Income, credit_rating = Rating, age = Age)
-```
-
-Recall the three common steps in an exploratory data analysis we saw in [Subsection -@sec-model1EDA]:
-
-1. Looking at the raw data values.
-1. Computing summary statistics.
-1. Creating data visualizations.
-
-Let's begin by looking at the raw values either in RStudio's spreadsheet viewer or by using the `glimpse()` function from the `dplyr` package. You can observe the effect of our use of `select()` to keep and rename the relevant variables.
-
-```{r}
-glimpse(credit_ch6)
-```
-
-Furthermore, let's look at a random sample of five out of the `r nrow(credit_ch6)` credit card holders in @tbl-model3-data-preview. Once again, note that due to the random nature of the sampling, you will likely end up with a different subset of five rows.
-
-```{r}
-#| eval: false
-set.seed(9)
-credit_ch6 %>%
-  sample_n(size = 5)
-```
-```{r}
-#| label: tbl-model3-data-preview
-#| tbl-cap: "Random sample of 5 credit card holders."
-#| echo: false
-credit_ch6 %>%
-  sample_n(5) %>%
-  knitr::kable(
-    format = "markdown",
-    digits = 3,
-  #  caption = "Random sample of 5 credit card holders.",
-    booktabs = TRUE
-  ) %>% 
-  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-                latex_options = c("hold_position"))
-```
-
-Now that we've looked at the raw values in our `credit_ch6` data frame and have a sense of the data, let's move on to the next common step in an exploratory data analysis: computing summary statistics. As we did in our exploratory data analyses in [Subsections -@sec-model1EDA] and  [-@sec-model2EDA] from the previous chapter, let's use the `skim()` function from the `skimr` package, being sure to only `select()` the variables of interest in our model:\index{R packages!skimr!skim()}
-
-```{r}
-#| eval: false
-credit_ch6 %>% 
-  select(debt, credit_limit, income) %>% 
-  skim()
-```
-```
-Skim summary statistics
- n obs: 400 
- n variables: 3 
-── Variable type:integer ───────────────────────────────────────────────────────
-  variable missing complete   n    mean      sd  p0     p25    p50     p75  p100
-credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
-         debt    0      400 400  520.01  459.76   0   68.75  459.5  863     1999
-── Variable type:numeric ───────────────────────────────────────────────────────
- variable missing complete   n  mean    sd    p0   p25   p50   p75   p100
-   income       0      400 400 45.22 35.24 10.35 21.01 33.12 57.47 186.63
-```
-
-Observe the summary statistics for the outcome variable `debt`: the mean and median credit card debt are \$520.01 and \$459.50 respectively and that 25% of card holders had debts of \$68.75 or less. Let's now look at one of the explanatory variables `credit_limit`: the mean and median credit card limit are \$4735.6 and \$4622.50 respectively while 75% of card holders had incomes of \$57,470 or less.
-
-Since our outcome variable `debt` and the explanatory variables `credit_limit` and `income` are numerical, we can compute the correlation coefficient between the different possible pairs of these variables. First, we can run the `cor()` command as seen in [Subsections -@sec-model1EDA] twice, once for each explanatory variable:
-
-```{r}
-#| eval: false
-cor(credit_ch6$debt, credit_ch6$credit_limit)
-
-cor(credit_ch6$debt, credit_ch6$income)
-```
-
-Or we can simultaneously compute them by returning a *correlation matrix* which we display in @tbl-model3-correlation. \index{correlation (coefficient)} We can read off the correlation coefficient for any pair of variables by looking them up in the appropriate row/column combination.
-
-```{r}
-#| eval: false
-credit_ch6 %>%
-  select(debt, credit_limit, income) %>% 
-  cor()
-```
-```{r}
-#| label: tbl-model3-correlation
-#| tbl-cap: "Correlation coefficients between credit card debt, credit limit, and income."
-#| echo: false
-credit_ch6 %>% 
-  select(debt, credit_limit, income) %>% 
-  cor() %>% 
-  knitr::kable(
-    format = "markdown",
-    digits = 3,
-   # caption = "Correlation coefficients between credit card debt, credit limit, and income.", 
-    booktabs = TRUE
-  ) %>% 
-  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-                latex_options = c("hold_position"))
-```
-
-For example, the correlation coefficient of:
-
-1. `debt` with itself is 1 as we would expect based on the definition of the correlation coefficient.
-1. `debt` with `credit_limit` is 0.862. This indicates a strong positive linear relationship, which makes sense as only individuals with large credit limits can accrue large credit card debts.
-1. `debt` with `income` is 0.464. This is suggestive of another positive linear relationship, although not as strong as the relationship between `debt` and `credit_limit`.
-1. As an added bonus, we can read off the correlation coefficient between the two explanatory variables of `credit_limit` and `income` as 0.792. 
-
-We say there is a high degree of *collinearity*\index{collinearity} between the `credit_limit` and `income` explanatory variables. Collinearity (or multicollinearity) is a phenomenon where one explanatory variable in a multiple regression model is highly correlated with another. 
-
-So in our case since `credit_limit` and `income` are highly correlated, if we knew someone's `credit_limit`, we could make pretty good guesses about their `income` as well. Thus, these two variables provide somewhat redundant information. However, we'll leave discussion on how to work with collinear explanatory variables to a more intermediate-level book on regression modeling.
-
-Let's visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots in @fig-2numxplot1.
-
-```{r}
-#| eval: false
-#| message: false
-#| warning: false
-ggplot(credit_ch6, aes(x = credit_limit, y = debt)) +
-  geom_point() +
-  labs(x = "Credit limit (in $)", y = "Credit card debt (in $)", 
-       title = "Debt and credit limit") +
-  geom_smooth(method = "lm", se = FALSE)
-  
-ggplot(credit_ch6, aes(x = income, y = debt)) +
-  geom_point() +
-  labs(x = "Income (in $1000)", y = "Credit card debt (in $)", 
-       title = "Debt and income") +
-  geom_smooth(method = "lm", se = FALSE)
-```
-```{r}
-#| label: fig-2numxplot1
-#| echo: false
-#| message: false
-#| warning: false
-#| fig-cap: "Relationship between credit card debt and credit limit/income."
-model3_balance_vs_limit_plot <- ggplot(credit_ch6, aes(x = credit_limit, y = debt)) +
-  geom_point() +
-  labs(x = "Credit limit (in $)", y = "Credit card debt (in $)", 
-       title = "Debt and credit limit") +
-  geom_smooth(method = "lm", se = FALSE) +
-  scale_y_continuous(limits = c(0, 2000))
-model3_balance_vs_income_plot <- ggplot(credit_ch6, aes(x = income, y = debt)) +
-  geom_point() +
-  labs(x = "Income (in $1000)", y = "Credit card debt (in $)", 
-       title = "Debt and income") +
-  geom_smooth(method = "lm", se = FALSE) +
-  scale_y_continuous(limits = c(0, 2000)) +
-  theme(axis.title.y = element_blank())
-model3_balance_vs_limit_plot + model3_balance_vs_income_plot
-```
-
-Observe there is a positive relationship between credit limit and credit card debt: as credit limit increases so also does credit card debt.  This is consistent with the strongly positive correlation coefficient of 0.862 we computed earlier. In the case of income, the positive relationship doesn't appear as strong, given the weakly positive correlation coefficient of 0.464. 
-
-However, the two plots in @fig-2numxplot1 only focus on the relationship of the outcome variable with each of the two explanatory variables *separately*. To visualize the *joint* relationship of all three variables simultaneously, we need a 3-dimensional (3D) scatterplot as seen in @fig-3D-scatterplot. Each of the 400 observations in the `credit_ch6` data frame are marked with a `r if_else(knitr::is_latex_output(), "", "blue")` point where
-
-1. The numerical outcome variable $y$ `debt` is on the vertical axis
-1. The two numerical explanatory variables, $x_1$ `income` and $x_2$ `credit_limit`, are on the two axes that form the bottom plane.
-
-![3D scatterplot and regression plane](images/credit_card_balance_regression_plane.png){#fig-3D-scatterplot out.width="60%"}
-
-Furthermore, we also include the *regression plane*\index{regression plane}. Recall from [Subsection -@sec-leastsquares] that regression lines are "best-fitting" in that of all possible lines we can draw through a cloud of points, the regression line minimizes the *sum of squared residuals*\index{sum of squared residuals}. This concept also extends to models with two numerical explanatory variables. The difference is instead of a "best-fitting" line, we now have a "best-fitting" plane that similarly minimizes the sum of squared residuals. Head to [here](https://beta.rstudioconnect.com/connect/#/apps/3214/) to open an interactive version of this plot in your browser.
-
-```{r}
-#| eval: false
-#| echo: false
-# Source code for above 3D scatterplot & regression plane. 
-library(ISLR2)
-library(plotly)
-library(tidyverse)
-# setup hideous grid required by plotly
-model_lm <- lm(debt ~ income + credit_limit, data = credit_ch6)
-x_grid <- seq(from = min(credit_ch6$income), to = max(credit_ch6$income), length = 100)
-y_grid <- seq(from = min(credit_ch6$credit_limit), to = max(credit_ch6$credit_limit), length = 200)
-z_grid <- expand.grid(x_grid, y_grid) %>%
-  tbl_df() %>%
-  rename(x_grid = Var1, y_grid = Var2) %>%
-  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid + coef(model_lm)[3]*y_grid) %>%
-  .[["z"]] %>%
-  matrix(nrow=length(x_grid)) %>%
-  t()
-# Plot points
-plot_ly() %>%
-  add_markers(
-    x = credit_ch6$income,
-    y = credit_ch6$credit_limit,
-    z = credit_ch6$debt,
-    hoverinfo = 'text',
-    text = ~paste("x1 - Income: ", 
-                  credit_ch6$income, 
-                  "</br> x2 - Credit Limit: ", 
-                  credit_ch6$credit_limit, 
-                  "</br> y - Debt: ", 
-                  credit_ch6$debt)
-  ) %>% 
-  # Label axes
-  layout(
-    scene = list(
-      xaxis = list(title = "x1 - Income (in $10K)"),
-      yaxis = list(title = "x2 - Credit Limit ($)"),
-      zaxis = list(title = "y - Debt ($)")
-    )
-  ) %>% 
-  # Add regression plane
-  add_surface(
-    x = x_grid,
-    y = y_grid,
-    z = z_grid
-  )
-```
-
-::: {.callout-tip icon="false" collapse="true"}
-## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
-
-**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Conduct a new exploratory data analysis with the same outcome variable $y$ being `debt` but with `credit_rating` and `age` as the new explanatory variables $x_1$ and $x_2$. Remember, this involves three things:
-
-1. Most crucially: Looking at the raw data values.
-1. Computing summary statistics, such as means, medians, and interquartile ranges.
-1. Creating data visualizations.
-
-What can you say about the relationship between a credit card holder's debt and their credit rating and age?
-:::
-
-### Regression plane {#sec-model3table}
-
-Let's now fit a regression model and get the regression table corresponding to the regression plane in @fig-3D-scatterplot. We'll consider a model fit with a formula of the form `y ~ x1 + x2`, where `x1` and `x2` represent our two explanatory variables `credit_limit` and `income`. 
-
-Just like we did in @sec-regression, let's get the regression table for this model using our two-step process and display the results in @tbl-model3-table-output.
-
-1. We first "fit" the linear regression model using the `lm(y ~ x1 + x2, data)` function and save it in `debt_model`.
-1. We get the regression table by applying the `summary()` function to `debt_model`.
-
-```{r}
-#| eval: false
-# Fit regression model:
-debt_model <- lm(debt ~ credit_limit + income, data = credit_ch6)
-# Get regression table:
-summary(debt_model)$coefficients
-```
-```{r}
-#| label: tbl-model3-table-output
-#| tbl-cap: "Multiple regression table"
-#| echo: false
-debt_model <- lm(debt ~ credit_limit + income, data = credit_ch6)
-credit_line <- summary(debt_model)$coefficients[, 1]
-
-debt_model_coeffs <- summary(debt_model)$coefficients
-colnames(debt_model_coeffs) <- c("Estimate", "Std. Error", "t value", "p value")
-
-debt_model_coeffs %>%  
-  as.data.frame() |> 
-  rownames_to_column("term") %>%
-  mutate(term = ifelse(term == "(Intercept)", 
-                       "Intercept", term)) %>%
-  knitr::kable(
-  #  format = "markdown",
-    digits = 3,
-   # caption = "Multiple regression table", 
-    booktabs = TRUE,
-    format = ifelse(knitr:::is_latex_output(), 
-                    "latex", "markdown")
-  ) %>% 
-  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-                latex_options = c("hold_position"))
-```
-
-Let's interpret the three values in the `Estimate` column. First, the `Intercept` value is -\$385.179. This intercept represents the credit card debt for an individual who has  `credit_limit` of \$0 and `income` of \$0. In our data however, the intercept has limited practical interpretation since no individuals had `credit_limit` or `income` values of \$0. Rather, the intercept is used to situate the regression plane in 3D space. 
-
-Second, the `credit_limit` value is \$0.264. Taking into account all the other explanatory variables in our model, for every increase of one dollar in `credit_limit`, there is an associated increase of on average \$0.26 in credit card debt. Just as we did in @sec-model1table, we are cautious to *not* imply causality as we saw in @sec-correlation-is-not-causation that "correlation is not necessarily causation." We do this merely stating there was an *associated* increase. 
-
-Furthermore, we preface our interpretation with the statement "taking into account all the other explanatory variables in our model."  Here, by all other explanatory variables we mean `income`. We do this to emphasize that we are now jointly interpreting the associated effect of multiple explanatory variables in the same model at the same time. 
-
-Third, `income` = -\$7.663. Taking into account all the other explanatory variables in our model, for every increase of one unit in the variable `income`, in other words \$1,000 in actual income, there is an associated decrease of on average \$7.663 in credit card debt.
-
-Putting these results together, the equation of the regression plane that gives us fitted values $\widehat{y}$ = $\widehat{\text{debt}}$ is:
-
-$$
-\begin{aligned}
-\widehat{y} &= b_0 + b_1 \cdot x_1 +  b_2 \cdot x_2\\
-\widehat{\text{debt}} &= b_0 + b_{\text{limit}} \cdot \text{limit} + b_{\text{income}} \cdot \text{income}\\
-&= -385.179 + 0.264 \cdot\text{limit} - 7.663 \cdot\text{income}
-\end{aligned}
-$$
-
-Recall in the right-hand plot of @fig-2numxplot1 that when plotting the relationship between `debt` and `income` in isolation, there appeared to be a *positive* relationship. In the last discussed multiple regression however, when *jointly* modeling the relationship between `debt`, `credit_limit`, and `income`, there appears to be a *negative* relationship of `debt` and `income` as evidenced by the negative slope for `income` of -\$7.663.  What explains these contradictory results? A phenomenon known as *Simpson's Paradox*\index{Simpson's Paradox}, whereby overall trends that exist in aggregate either disappear or reverse when the data are broken down into groups. In @sec-simpsonsparadox we elaborate on this idea by looking at the relationship between `credit_limit` and credit card `debt`, but split along different `income` brackets.
-
-::: {.callout-tip icon="false" collapse="true"}
-## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
-
-Fit a new simple linear regression using `lm(debt ~ credit_rating + age, data = credit_ch6)` where `credit_rating` and `age` are the new numerical explanatory variables $x_1$ and $x_2$. Get information about the "best-fitting" regression plane from the regression table by applying the `summary()` function. How do the regression results match up with the results from your previous exploratory data analysis?
-:::
-
-### Observed/fitted values and residuals {#sec-model3points}
-
-Let's also compute all fitted values and residuals for our regression model using the code from @sec-model1points and present only the first 10 rows of output in @tbl-model3-points-table. Remember that the coordinates of each of the `r if_else(knitr::is_latex_output(), "", "blue")` points in our 3D scatterplot in @fig-3D-scatterplot can be found in the `income`, `credit_limit`, and `debt` columns. The fitted values on the regression plane are found in the `debt_hat` column and are computed using our equation for the regression plane in the previous section:
-
-$$
-\begin{aligned}
-\widehat{y} = \widehat{\text{debt}} &= -385.179 + 0.264 \cdot \text{limit} - 7.663 \cdot \text{income}
-\end{aligned}
-$$
-
-```{r}
-debt_model_data <- credit_ch6 %>% 
-  select(debt, credit_limit, income) %>% 
-  mutate(debt_hat = fitted(debt_model),
-         residual = residuals(debt_model)) %>% 
-  rownames_to_column("ID")
-```
-```{r}
-#| label: tbl-model3-points-table
-#| tbl-cap: "Regression points (First 10 credit card holders out of 400)."
-#| echo: false
-set.seed(76)
-debt_model_data %>%
-  slice(1:10) %>%
-  knitr::kable(
-    format = "markdown",
-    digits = 3,
-   # caption = "Regression points (First 10 credit card holders out of 400).",
-    booktabs = TRUE
-  ) %>% 
-  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-                latex_options = c("hold_position"))
-```
-
-Let's interpret these results for the third card holder. Our regression model tells us that for a person with a `credit_limit` of \$7,075 and an `income` of \$104,600, we would expect them to have credit card `debt` of \$683, on average. We calculated this number by plugging into our regression equation: 
-
-$$
-\begin{aligned}
-\widehat{y} = \widehat{\text{debt}} &= -385.179 + 0.264 \cdot \text{limit} - 7.663 \cdot \text{income} \\
-&= -385.179 + 0.264(7075) - 7.663(104.6) \\
-&= 683
-\end{aligned}
-$$
-
-However, this person had an actual credit card `debt` of \$580, so the residual for this observation is $y - \widehat{y} = \$580 - \$683.37 = -\$103.37$. Note that  @tbl-model3-points-table presents rounded values for `debt_hat` and `residual`. 
 
 ## One numerical & one categorical explanatory variable {#sec-model4}
 
@@ -515,7 +159,7 @@ evals_ch6 %>%
   summarize(correlation = cor(score, age))
 ```
 
-Let's now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable `score` and explanatory variable `age` are both numerical, we'll use a scatterplot to display their relationship. How can we incorporate the categorical variable `gender` however? By `mapping` the variable `gender` to the `color` aesthetic, thereby creating a *colored* scatterplot. The following code is similar to the code that created the scatterplot of teaching score over "beauty" score in @fig-numxplot1, but with `color = gender` added to the `aes()`thetic mapping.
+Let's now perform the last of the three common steps in an exploratory data analysis: creating data visualizations. Given that the outcome variable `score` and explanatory variable `age` are both numerical, we'll use a scatterplot to display their relationship. How can we incorporate the categorical variable `gender`? By `mapping` the variable `gender` to the `color` aesthetic, thereby creating a *colored* scatterplot. The following code is similar to the code that created the scatterplot of teaching score over "beauty" score in @fig-numxplot1, but with `color = gender` added to the `aes()`thetic mapping.
 
 ```{r}
 #| eval: false
@@ -968,6 +612,364 @@ In fact, it turns out that the female instructor of age 36 taught the first four
 
 Compute the observed values, fitted values, and residuals not for the interaction model as we just did, but rather for the parallel slopes model we saved in `score_model_parallel_slopes`.
 :::
+
+## Two numerical explanatory variables {#sec-model3}
+
+Now let's consider a *multiple regression* model with two numerical explanatory variables. The dataset we'll use is from ["An Introduction to Statistical Learning with Applications in R, (Second Edition)"](https://www.statlearning.com/), an intermediate-level textbook on statistical and machine learning. Its accompanying `ISLR2` R package contains the datasets that the authors apply various machine learning methods to. 
+
+One frequently used dataset in this book is the `Credit` dataset, where the outcome variable of interest is the credit card debt of 400 individuals. Other variables like income, credit limit, credit rating, and age are included as well. Note that the `Credit` data is not based on real individuals' financial information, but rather is a simulated dataset used for educational purposes. 
+
+In this section, we'll fit a regression model where we have 
+
+1. A numerical outcome variable $y$, the cardholder's credit card debt
+1. Two explanatory variables:
+    1. One numerical explanatory variable $x_1$, the cardholder's credit limit
+    1. Another numerical explanatory variable $x_2$, the cardholder's income (in thousands of dollars).
+
+### Exploratory data analysis {#sec-model3EDA}
+
+Let's load the `Credit` dataset,\index{R packages!ISLR!Credit} but to keep things simple let's `select()` only the subset of the variables we'll consider in this chapter, and save this data in a new data frame called `credit_ch6`. Notice our slightly different use of the `select()` verb here than we introduced in [Subsection -@sec-select].  For example, we'll select the `Balance` variable from `Credit` but then save it with a new variable name `debt`. We do this because here the term "debt" is a little more interpretable than "balance."
+
+```{r}
+#| warning: false
+#| message: false
+library(ISLR2)
+credit_ch6 <- Credit %>%
+  as_tibble() %>% 
+  select(debt = Balance, credit_limit = Limit, 
+         income = Income, credit_rating = Rating, age = Age)
+```
+
+Recall the three common steps in an exploratory data analysis we saw in [Subsection -@sec-model1EDA]:
+
+1. Looking at the raw data values.
+1. Computing summary statistics.
+1. Creating data visualizations.
+
+Let's begin by looking at the raw values either in RStudio's spreadsheet viewer or by using the `glimpse()` function from the `dplyr` package. You can observe the effect of our use of `select()` to keep and rename the relevant variables.
+
+```{r}
+glimpse(credit_ch6)
+```
+
+Furthermore, let's look at a random sample of five out of the `r nrow(credit_ch6)` credit card holders in @tbl-model3-data-preview. Once again, note that due to the random nature of the sampling, you will likely end up with a different subset of five rows.
+
+```{r}
+#| eval: false
+set.seed(9)
+credit_ch6 %>%
+  sample_n(size = 5)
+```
+```{r}
+#| label: tbl-model3-data-preview
+#| tbl-cap: "Random sample of 5 credit card holders."
+#| echo: false
+credit_ch6 %>%
+  sample_n(5) %>%
+  knitr::kable(
+    format = "markdown",
+    digits = 3,
+  #  caption = "Random sample of 5 credit card holders.",
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                latex_options = c("hold_position"))
+```
+
+Now that we've looked at the raw values in our `credit_ch6` data frame and have a sense of the data, let's move on to the next common step in an exploratory data analysis: computing summary statistics. As we did in our exploratory data analyses in [Subsections -@sec-model1EDA] and  [-@sec-model2EDA] from the previous chapter, let's use the `skim()` function from the `skimr` package, being sure to only `select()` the variables of interest in our model:\index{R packages!skimr!skim()}
+
+```{r}
+#| eval: false
+credit_ch6 %>% 
+  select(debt, credit_limit, income) %>% 
+  skim()
+```
+```
+Skim summary statistics
+ n obs: 400 
+ n variables: 3 
+── Variable type:integer ───────────────────────────────────────────────────────
+  variable missing complete   n    mean      sd  p0     p25    p50     p75  p100
+credit_limit     0      400 400 4735.6  2308.2  855 3088    4622.5 5872.75 13913
+         debt    0      400 400  520.01  459.76   0   68.75  459.5  863     1999
+── Variable type:numeric ───────────────────────────────────────────────────────
+ variable missing complete   n  mean    sd    p0   p25   p50   p75   p100
+   income       0      400 400 45.22 35.24 10.35 21.01 33.12 57.47 186.63
+```
+
+Observe the summary statistics for the outcome variable `debt`: the mean and median credit card debt are \$520.01 and \$459.50 respectively and that 25% of card holders had debts of \$68.75 or less. Let's now look at one of the explanatory variables `credit_limit`: the mean and median credit card limit are \$4735.6 and \$4622.50 respectively while 75% of card holders had incomes of \$57,470 or less.
+
+Since our outcome variable `debt` and the explanatory variables `credit_limit` and `income` are numerical, we can compute the correlation coefficient between the different possible pairs of these variables. First, we can run the `cor()` command as seen in [Subsections -@sec-model1EDA] twice, once for each explanatory variable:
+
+```{r}
+#| eval: false
+cor(credit_ch6$debt, credit_ch6$credit_limit)
+
+cor(credit_ch6$debt, credit_ch6$income)
+```
+
+Or we can simultaneously compute them by returning a *correlation matrix* which we display in @tbl-model3-correlation. \index{correlation (coefficient)} We can read off the correlation coefficient for any pair of variables by looking them up in the appropriate row/column combination.
+
+```{r}
+#| eval: false
+credit_ch6 %>%
+  select(debt, credit_limit, income) %>% 
+  cor()
+```
+```{r}
+#| label: tbl-model3-correlation
+#| tbl-cap: "Correlation coefficients between credit card debt, credit limit, and income."
+#| echo: false
+credit_ch6 %>% 
+  select(debt, credit_limit, income) %>% 
+  cor() %>% 
+  knitr::kable(
+    format = "markdown",
+    digits = 3,
+   # caption = "Correlation coefficients between credit card debt, credit limit, and income.", 
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                latex_options = c("hold_position"))
+```
+
+For example, the correlation coefficient of:
+
+1. `debt` with itself is 1 as we would expect based on the definition of the correlation coefficient.
+1. `debt` with `credit_limit` is 0.862. This indicates a strong positive linear relationship, which makes sense as only individuals with large credit limits can accrue large credit card debts.
+1. `debt` with `income` is 0.464. This is suggestive of another positive linear relationship, although not as strong as the relationship between `debt` and `credit_limit`.
+1. As an added bonus, we can read off the correlation coefficient between the two explanatory variables of `credit_limit` and `income` as 0.792. 
+
+We say there is a high degree of *collinearity*\index{collinearity} between the `credit_limit` and `income` explanatory variables. Collinearity (or multicollinearity) is a phenomenon where one explanatory variable in a multiple regression model is highly correlated with another. 
+
+So in our case since `credit_limit` and `income` are highly correlated, if we knew someone's `credit_limit`, we could make pretty good guesses about their `income` as well. Thus, these two variables provide somewhat redundant information. However, we'll leave discussion on how to work with collinear explanatory variables to a more intermediate-level book on regression modeling.
+
+Let's visualize the relationship of the outcome variable with each of the two explanatory variables in two separate plots in @fig-2numxplot1.
+
+```{r}
+#| eval: false
+#| message: false
+#| warning: false
+ggplot(credit_ch6, aes(x = credit_limit, y = debt)) +
+  geom_point() +
+  labs(x = "Credit limit (in $)", y = "Credit card debt (in $)", 
+       title = "Debt and credit limit") +
+  geom_smooth(method = "lm", se = FALSE)
+  
+ggplot(credit_ch6, aes(x = income, y = debt)) +
+  geom_point() +
+  labs(x = "Income (in $1000)", y = "Credit card debt (in $)", 
+       title = "Debt and income") +
+  geom_smooth(method = "lm", se = FALSE)
+```
+```{r}
+#| label: fig-2numxplot1
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: "Relationship between credit card debt and credit limit/income."
+model3_balance_vs_limit_plot <- ggplot(credit_ch6, aes(x = credit_limit, y = debt)) +
+  geom_point() +
+  labs(x = "Credit limit (in $)", y = "Credit card debt (in $)", 
+       title = "Debt and credit limit") +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_y_continuous(limits = c(0, 2000))
+model3_balance_vs_income_plot <- ggplot(credit_ch6, aes(x = income, y = debt)) +
+  geom_point() +
+  labs(x = "Income (in $1000)", y = "Credit card debt (in $)", 
+       title = "Debt and income") +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_y_continuous(limits = c(0, 2000)) +
+  theme(axis.title.y = element_blank())
+model3_balance_vs_limit_plot + model3_balance_vs_income_plot
+```
+
+Observe there is a positive relationship between credit limit and credit card debt: as credit limit increases so also does credit card debt.  This is consistent with the strongly positive correlation coefficient of 0.862 we computed earlier. In the case of income, the positive relationship doesn't appear as strong, given the weakly positive correlation coefficient of 0.464. 
+
+However, the two plots in @fig-2numxplot1 only focus on the relationship of the outcome variable with each of the two explanatory variables *separately*. To visualize the *joint* relationship of all three variables simultaneously, we need a 3-dimensional (3D) scatterplot as seen in @fig-3D-scatterplot. Each of the 400 observations in the `credit_ch6` data frame are marked with a `r if_else(knitr::is_latex_output(), "", "blue")` point where
+
+1. The numerical outcome variable $y$ `debt` is on the vertical axis
+1. The two numerical explanatory variables, $x_1$ `income` and $x_2$ `credit_limit`, are on the two axes that form the bottom plane.
+
+![3D scatterplot and regression plane](images/credit_card_balance_regression_plane.png){#fig-3D-scatterplot out.width="60%"}
+
+Furthermore, we also include the *regression plane*\index{regression plane}. Recall from [Subsection -@sec-leastsquares] that regression lines are "best-fitting" in that of all possible lines we can draw through a cloud of points, the regression line minimizes the *sum of squared residuals*\index{sum of squared residuals}. This concept also extends to models with two numerical explanatory variables. The difference is instead of a "best-fitting" line, we now have a "best-fitting" plane that similarly minimizes the sum of squared residuals. Head to [here](https://beta.rstudioconnect.com/connect/#/apps/3214/) to open an interactive version of this plot in your browser.
+
+```{r}
+#| eval: false
+#| echo: false
+# Source code for above 3D scatterplot & regression plane. 
+library(ISLR2)
+library(plotly)
+library(tidyverse)
+# setup hideous grid required by plotly
+model_lm <- lm(debt ~ income + credit_limit, data = credit_ch6)
+x_grid <- seq(from = min(credit_ch6$income), to = max(credit_ch6$income), length = 100)
+y_grid <- seq(from = min(credit_ch6$credit_limit), to = max(credit_ch6$credit_limit), length = 200)
+z_grid <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(x_grid = Var1, y_grid = Var2) %>%
+  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid + coef(model_lm)[3]*y_grid) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+# Plot points
+plot_ly() %>%
+  add_markers(
+    x = credit_ch6$income,
+    y = credit_ch6$credit_limit,
+    z = credit_ch6$debt,
+    hoverinfo = 'text',
+    text = ~paste("x1 - Income: ", 
+                  credit_ch6$income, 
+                  "</br> x2 - Credit Limit: ", 
+                  credit_ch6$credit_limit, 
+                  "</br> y - Debt: ", 
+                  credit_ch6$debt)
+  ) %>% 
+  # Label axes
+  layout(
+    scene = list(
+      xaxis = list(title = "x1 - Income (in $10K)"),
+      yaxis = list(title = "x2 - Credit Limit ($)"),
+      zaxis = list(title = "y - Debt ($)")
+    )
+  ) %>% 
+  # Add regression plane
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid
+  )
+```
+
+::: {.callout-tip icon="false" collapse="true"}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Conduct a new exploratory data analysis with the same outcome variable $y$ being `debt` but with `credit_rating` and `age` as the new explanatory variables $x_1$ and $x_2$. Remember, this involves three things:
+
+1. Most crucially: Looking at the raw data values.
+1. Computing summary statistics, such as means, medians, and interquartile ranges.
+1. Creating data visualizations.
+
+What can you say about the relationship between a credit card holder's debt and their credit rating and age?
+:::
+
+### Regression plane {#sec-model3table}
+
+Let's now fit a regression model and get the regression table corresponding to the regression plane in @fig-3D-scatterplot. We'll consider a model fit with a formula of the form `y ~ x1 + x2`, where `x1` and `x2` represent our two explanatory variables `credit_limit` and `income`. 
+
+Just like we did in @sec-regression, let's get the regression table for this model using our two-step process and display the results in @tbl-model3-table-output.
+
+1. We first "fit" the linear regression model using the `lm(y ~ x1 + x2, data)` function and save it in `debt_model`.
+1. We get the regression table by applying the `summary()` function to `debt_model`.
+
+```{r}
+#| eval: false
+# Fit regression model:
+debt_model <- lm(debt ~ credit_limit + income, data = credit_ch6)
+# Get regression table:
+summary(debt_model)$coefficients
+```
+```{r}
+#| label: tbl-model3-table-output
+#| tbl-cap: "Multiple regression table"
+#| echo: false
+debt_model <- lm(debt ~ credit_limit + income, data = credit_ch6)
+credit_line <- summary(debt_model)$coefficients[, 1]
+
+debt_model_coeffs <- summary(debt_model)$coefficients
+colnames(debt_model_coeffs) <- c("Estimate", "Std. Error", "t value", "p value")
+
+debt_model_coeffs %>%  
+  as.data.frame() |> 
+  rownames_to_column("term") %>%
+  mutate(term = ifelse(term == "(Intercept)", 
+                       "Intercept", term)) %>%
+  knitr::kable(
+  #  format = "markdown",
+    digits = 3,
+   # caption = "Multiple regression table", 
+    booktabs = TRUE,
+    format = ifelse(knitr:::is_latex_output(), 
+                    "latex", "markdown")
+  ) %>% 
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                latex_options = c("hold_position"))
+```
+
+Let's interpret the three values in the `Estimate` column. First, the `Intercept` value is -\$385.179. This intercept represents the credit card debt for an individual who has  `credit_limit` of \$0 and `income` of \$0. In our data however, the intercept has limited practical interpretation since no individuals had `credit_limit` or `income` values of \$0. Rather, the intercept is used to situate the regression plane in 3D space. 
+
+Second, the `credit_limit` value is \$0.264. Taking into account all the other explanatory variables in our model, for every increase of one dollar in `credit_limit`, there is an associated increase of on average \$0.26 in credit card debt. Just as we did in @sec-model1table, we are cautious to *not* imply causality as we saw in @sec-correlation-is-not-causation that "correlation is not necessarily causation." We do this merely stating there was an *associated* increase. 
+
+Furthermore, we preface our interpretation with the statement "taking into account all the other explanatory variables in our model."  Here, by all other explanatory variables we mean `income`. We do this to emphasize that we are now jointly interpreting the associated effect of multiple explanatory variables in the same model at the same time. 
+
+Third, `income` = -\$7.663. Taking into account all the other explanatory variables in our model, for every increase of one unit in the variable `income`, in other words \$1,000 in actual income, there is an associated decrease of on average \$7.663 in credit card debt.
+
+Putting these results together, the equation of the regression plane that gives us fitted values $\widehat{y}$ = $\widehat{\text{debt}}$ is:
+
+$$
+\begin{aligned}
+\widehat{y} &= b_0 + b_1 \cdot x_1 +  b_2 \cdot x_2\\
+\widehat{\text{debt}} &= b_0 + b_{\text{limit}} \cdot \text{limit} + b_{\text{income}} \cdot \text{income}\\
+&= -385.179 + 0.264 \cdot\text{limit} - 7.663 \cdot\text{income}
+\end{aligned}
+$$
+
+Recall in the right-hand plot of @fig-2numxplot1 that when plotting the relationship between `debt` and `income` in isolation, there appeared to be a *positive* relationship. In the last discussed multiple regression however, when *jointly* modeling the relationship between `debt`, `credit_limit`, and `income`, there appears to be a *negative* relationship of `debt` and `income` as evidenced by the negative slope for `income` of -\$7.663.  What explains these contradictory results? A phenomenon known as *Simpson's Paradox*\index{Simpson's Paradox}, whereby overall trends that exist in aggregate either disappear or reverse when the data are broken down into groups. In @sec-simpsonsparadox we elaborate on this idea by looking at the relationship between `credit_limit` and credit card `debt`, but split along different `income` brackets.
+
+::: {.callout-tip icon="false" collapse="true"}
+## :dart: Learning Check `r paste0(chap, ".", (lc <- lc + 1))`
+
+Fit a new simple linear regression using `lm(debt ~ credit_rating + age, data = credit_ch6)` where `credit_rating` and `age` are the new numerical explanatory variables $x_1$ and $x_2$. Get information about the "best-fitting" regression plane from the regression table by applying the `summary()` function. How do the regression results match up with the results from your previous exploratory data analysis?
+:::
+
+### Observed/fitted values and residuals {#sec-model3points}
+
+Let's also compute all fitted values and residuals for our regression model using the code from @sec-model1points and present only the first 10 rows of output in @tbl-model3-points-table. Remember that the coordinates of each of the `r if_else(knitr::is_latex_output(), "", "blue")` points in our 3D scatterplot in @fig-3D-scatterplot can be found in the `income`, `credit_limit`, and `debt` columns. The fitted values on the regression plane are found in the `debt_hat` column and are computed using our equation for the regression plane in the previous section:
+
+$$
+\begin{aligned}
+\widehat{y} = \widehat{\text{debt}} &= -385.179 + 0.264 \cdot \text{limit} - 7.663 \cdot \text{income}
+\end{aligned}
+$$
+
+```{r}
+debt_model_data <- credit_ch6 %>% 
+  select(debt, credit_limit, income) %>% 
+  mutate(debt_hat = fitted(debt_model),
+         residual = residuals(debt_model)) %>% 
+  rownames_to_column("ID")
+```
+```{r}
+#| label: tbl-model3-points-table
+#| tbl-cap: "Regression points (First 10 credit card holders out of 400)."
+#| echo: false
+set.seed(76)
+debt_model_data %>%
+  slice(1:10) %>%
+  knitr::kable(
+    format = "markdown",
+    digits = 3,
+   # caption = "Regression points (First 10 credit card holders out of 400).",
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                latex_options = c("hold_position"))
+```
+
+Let's interpret these results for the third card holder. Our regression model tells us that for a person with a `credit_limit` of \$7,075 and an `income` of \$104,600, we would expect them to have credit card `debt` of \$683, on average. We calculated this number by plugging into our regression equation: 
+
+$$
+\begin{aligned}
+\widehat{y} = \widehat{\text{debt}} &= -385.179 + 0.264 \cdot \text{limit} - 7.663 \cdot \text{income} \\
+&= -385.179 + 0.264(7075) - 7.663(104.6) \\
+&= 683
+\end{aligned}
+$$
+
+However, this person had an actual credit card `debt` of \$580, so the residual for this observation is $y - \widehat{y} = \$580 - \$683.37 = -\$103.37$. Note that  @tbl-model3-points-table presents rounded values for `debt_hat` and `residual`. 
+
 
 ## Related topics
 
