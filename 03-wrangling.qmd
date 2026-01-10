@@ -348,6 +348,46 @@ summary_temp <- weather %>%
 
 :::
 
+
+## Missing variables {#sec-missing}
+
+In @sec-summarize we saw that missing values in a data frame are coded as `NA`. Almost any operation involving an unknown value will also result in an unknown value. When calculating summary statistics, we can include the argument `na.rm = TRUE` to remove missing values from the calculation. 
+
+In other situations, however, it may be necessary to remove entire observations from a data frame if one or more values are missing. Handling missing data requires extra care. Before removing observations, it is important to consider *why* the data are missing and whether it is appropriate to exclude those observations from the analysis.
+
+There are multiple ways to remove observations with missing values in R. The two most common approaches are using `filter()` with `is.na()` and using `drop_na()`. Both accomplish the same goal but differ in readability and flexibility.
+
+### `is.na()` function
+
+One way to remove observations with missing values is to `filter` them out. To do this, we need the `is.na()` function, which returns `TRUE` if a value is missing and `FALSE` otherwise.
+
+Consider the `weather` data frame and variable `temp` again. If we use `is.na(temp)` inside `filter()`, we would *keep* only the days where `temp` is missing. This is the opposite of what we want. Instead we  use `!is.na(temp)` to keep only observations where `temp` is *not* missing.
+
+```{r}
+#| eval: false
+
+weather %>% 
+  filter(!is.na(temp))
+```
+
+### `drop_na()` function
+
+Another way to remove missing values is with the `drop_na()` function from the `tidyr` package.
+
+```{r}
+#| eval: false
+
+library(tidyr)
+
+weather %>% 
+  drop_na(temp)
+
+```
+
+The `drop_na()` function removes rows where any of the specified variables contain missing values. It is very important to explicitly list the variables of interest. If no variables are specified, `drop_na()` will remove *all* rows that contain *any* missing values in the data frame. This can be dangerous, as it may unintentionally remove observations that are missing values in variables unrelated to your analysis.
+
+In general, `filter(!is.na(var))` offers greater control and allows for more complex filtering conditions, while `drop_na(var)` is a quick and readable way to remove missing values.
+
 ## `group_by()` rows {#sec-groupby}
 
 ![Group by and summarize diagram from Data Wrangling with dplyr and tidyr cheatsheet](images/group_summary.png)
