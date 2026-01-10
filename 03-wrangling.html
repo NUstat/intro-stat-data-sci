@@ -429,36 +429,41 @@ window.Quarto = {
   <li><a href="#sec-piping" id="toc-sec-piping" class="nav-link" data-scroll-target="#sec-piping"><span class="header-section-number">3.1</span> The pipe operator: <code>%&gt;%</code></a></li>
   <li><a href="#sec-filter" id="toc-sec-filter" class="nav-link" data-scroll-target="#sec-filter"><span class="header-section-number">3.2</span> <code>filter()</code> rows</a></li>
   <li><a href="#sec-summarize" id="toc-sec-summarize" class="nav-link" data-scroll-target="#sec-summarize"><span class="header-section-number">3.3</span> <code>summarize()</code> variables</a></li>
-  <li><a href="#sec-groupby" id="toc-sec-groupby" class="nav-link" data-scroll-target="#sec-groupby"><span class="header-section-number">3.4</span> <code>group_by()</code> rows</a>
+  <li><a href="#sec-missing" id="toc-sec-missing" class="nav-link" data-scroll-target="#sec-missing"><span class="header-section-number">3.4</span> Missing variables</a>
   <ul class="collapse">
-  <li><a href="#grouping-by-more-than-one-variable" id="toc-grouping-by-more-than-one-variable" class="nav-link" data-scroll-target="#grouping-by-more-than-one-variable"><span class="header-section-number">3.4.1</span> Grouping by more than one variable</a></li>
+  <li><a href="#is.na-function" id="toc-is.na-function" class="nav-link" data-scroll-target="#is.na-function"><span class="header-section-number">3.4.1</span> <code>is.na()</code> function</a></li>
+  <li><a href="#drop_na-function" id="toc-drop_na-function" class="nav-link" data-scroll-target="#drop_na-function"><span class="header-section-number">3.4.2</span> <code>drop_na()</code> function</a></li>
   </ul></li>
-  <li><a href="#sec-mutate" id="toc-sec-mutate" class="nav-link" data-scroll-target="#sec-mutate"><span class="header-section-number">3.5</span> <code>mutate</code> existing variables</a></li>
-  <li><a href="#sec-arrange" id="toc-sec-arrange" class="nav-link" data-scroll-target="#sec-arrange"><span class="header-section-number">3.6</span> <code>arrange()</code> and sort rows</a></li>
-  <li><a href="#sec-joins" id="toc-sec-joins" class="nav-link" data-scroll-target="#sec-joins"><span class="header-section-number">3.7</span> <code>join</code> data frames</a>
+  <li><a href="#sec-groupby" id="toc-sec-groupby" class="nav-link" data-scroll-target="#sec-groupby"><span class="header-section-number">3.5</span> <code>group_by()</code> rows</a>
   <ul class="collapse">
-  <li><a href="#matching-key-variable-names" id="toc-matching-key-variable-names" class="nav-link" data-scroll-target="#matching-key-variable-names"><span class="header-section-number">3.7.1</span> Matching “key” variable names</a></li>
-  <li><a href="#sec-diff-key" id="toc-sec-diff-key" class="nav-link" data-scroll-target="#sec-diff-key"><span class="header-section-number">3.7.2</span> Different “key” variable names</a></li>
-  <li><a href="#multiple-key-variables" id="toc-multiple-key-variables" class="nav-link" data-scroll-target="#multiple-key-variables"><span class="header-section-number">3.7.3</span> Multiple “key” variables</a></li>
-  <li><a href="#normal-forms" id="toc-normal-forms" class="nav-link" data-scroll-target="#normal-forms"><span class="header-section-number">3.7.4</span> Normal forms</a></li>
+  <li><a href="#grouping-by-more-than-one-variable" id="toc-grouping-by-more-than-one-variable" class="nav-link" data-scroll-target="#grouping-by-more-than-one-variable"><span class="header-section-number">3.5.1</span> Grouping by more than one variable</a></li>
   </ul></li>
-  <li><a href="#sec-other-verbs" id="toc-sec-other-verbs" class="nav-link" data-scroll-target="#sec-other-verbs"><span class="header-section-number">3.8</span> Other verbs</a>
+  <li><a href="#sec-mutate" id="toc-sec-mutate" class="nav-link" data-scroll-target="#sec-mutate"><span class="header-section-number">3.6</span> <code>mutate</code> existing variables</a></li>
+  <li><a href="#sec-arrange" id="toc-sec-arrange" class="nav-link" data-scroll-target="#sec-arrange"><span class="header-section-number">3.7</span> <code>arrange()</code> and sort rows</a></li>
+  <li><a href="#sec-joins" id="toc-sec-joins" class="nav-link" data-scroll-target="#sec-joins"><span class="header-section-number">3.8</span> <code>join</code> data frames</a>
   <ul class="collapse">
-  <li><a href="#sec-select" id="toc-sec-select" class="nav-link" data-scroll-target="#sec-select"><span class="header-section-number">3.8.1</span> <code>select()</code> variables</a></li>
-  <li><a href="#sec-rename" id="toc-sec-rename" class="nav-link" data-scroll-target="#sec-rename"><span class="header-section-number">3.8.2</span> <code>rename()</code> variables</a></li>
-  <li><a href="#slice-data-by-a-variable" id="toc-slice-data-by-a-variable" class="nav-link" data-scroll-target="#slice-data-by-a-variable"><span class="header-section-number">3.8.3</span> <code>slice()</code> data by a variable</a></li>
+  <li><a href="#matching-key-variable-names" id="toc-matching-key-variable-names" class="nav-link" data-scroll-target="#matching-key-variable-names"><span class="header-section-number">3.8.1</span> Matching “key” variable names</a></li>
+  <li><a href="#sec-diff-key" id="toc-sec-diff-key" class="nav-link" data-scroll-target="#sec-diff-key"><span class="header-section-number">3.8.2</span> Different “key” variable names</a></li>
+  <li><a href="#multiple-key-variables" id="toc-multiple-key-variables" class="nav-link" data-scroll-target="#multiple-key-variables"><span class="header-section-number">3.8.3</span> Multiple “key” variables</a></li>
+  <li><a href="#normal-forms" id="toc-normal-forms" class="nav-link" data-scroll-target="#normal-forms"><span class="header-section-number">3.8.4</span> Normal forms</a></li>
   </ul></li>
-  <li><a href="#sec-wrangling-conclusion" id="toc-sec-wrangling-conclusion" class="nav-link" data-scroll-target="#sec-wrangling-conclusion"><span class="header-section-number">3.9</span> Conclusion</a>
+  <li><a href="#sec-other-verbs" id="toc-sec-other-verbs" class="nav-link" data-scroll-target="#sec-other-verbs"><span class="header-section-number">3.9</span> Other verbs</a>
   <ul class="collapse">
-  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table"><span class="header-section-number">3.9.1</span> Summary table</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">3.9.2</span> Additional resources</a></li>
-  <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="header-section-number">3.9.3</span> What’s to come?</a></li>
+  <li><a href="#sec-select" id="toc-sec-select" class="nav-link" data-scroll-target="#sec-select"><span class="header-section-number">3.9.1</span> <code>select()</code> variables</a></li>
+  <li><a href="#sec-rename" id="toc-sec-rename" class="nav-link" data-scroll-target="#sec-rename"><span class="header-section-number">3.9.2</span> <code>rename()</code> variables</a></li>
+  <li><a href="#slice-data-by-a-variable" id="toc-slice-data-by-a-variable" class="nav-link" data-scroll-target="#slice-data-by-a-variable"><span class="header-section-number">3.9.3</span> <code>slice()</code> data by a variable</a></li>
   </ul></li>
-  <li><a href="#sec-ex03" id="toc-sec-ex03" class="nav-link" data-scroll-target="#sec-ex03"><span class="header-section-number">3.10</span> Exercises</a>
+  <li><a href="#sec-wrangling-conclusion" id="toc-sec-wrangling-conclusion" class="nav-link" data-scroll-target="#sec-wrangling-conclusion"><span class="header-section-number">3.10</span> Conclusion</a>
   <ul class="collapse">
-  <li><a href="#sec-ex03-conceptual" id="toc-sec-ex03-conceptual" class="nav-link" data-scroll-target="#sec-ex03-conceptual"><span class="header-section-number">3.10.1</span> Conceptual</a></li>
-  <li><a href="#sec-ex03-application" id="toc-sec-ex03-application" class="nav-link" data-scroll-target="#sec-ex03-application"><span class="header-section-number">3.10.2</span> Application</a></li>
-  <li><a href="#sec-ex03-advanced" id="toc-sec-ex03-advanced" class="nav-link" data-scroll-target="#sec-ex03-advanced"><span class="header-section-number">3.10.3</span> Advanced</a></li>
+  <li><a href="#summary-table" id="toc-summary-table" class="nav-link" data-scroll-target="#summary-table"><span class="header-section-number">3.10.1</span> Summary table</a></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">3.10.2</span> Additional resources</a></li>
+  <li><a href="#whats-to-come" id="toc-whats-to-come" class="nav-link" data-scroll-target="#whats-to-come"><span class="header-section-number">3.10.3</span> What’s to come?</a></li>
+  </ul></li>
+  <li><a href="#sec-ex03" id="toc-sec-ex03" class="nav-link" data-scroll-target="#sec-ex03"><span class="header-section-number">3.11</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#sec-ex03-conceptual" id="toc-sec-ex03-conceptual" class="nav-link" data-scroll-target="#sec-ex03-conceptual"><span class="header-section-number">3.11.1</span> Conceptual</a></li>
+  <li><a href="#sec-ex03-application" id="toc-sec-ex03-application" class="nav-link" data-scroll-target="#sec-ex03-application"><span class="header-section-number">3.11.2</span> Application</a></li>
+  <li><a href="#sec-ex03-advanced" id="toc-sec-ex03-advanced" class="nav-link" data-scroll-target="#sec-ex03-advanced"><span class="header-section-number">3.11.3</span> Advanced</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/03-wrangling.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -560,7 +565,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>alaska_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(carrier <span class="sc">==</span> <span class="st">"AS"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Keep in mind, there are many more advanced data wrangling functions than just the 6 listed in the introduction to this chapter; you’ll see some examples of these in <a href="#sec-other-verbs" class="quarto-xref"><span>Section 3.8</span></a>. However, just with these 6 verb-named functions you’ll be able to perform a broad array of data wrangling tasks for the rest of this book.</p>
+<p>Keep in mind, there are many more advanced data wrangling functions than just the 6 listed in the introduction to this chapter; you’ll see some examples of these in <a href="#sec-other-verbs" class="quarto-xref"><span>Section 3.9</span></a>. However, just with these 6 verb-named functions you’ll be able to perform a broad array of data wrangling tasks for the rest of this book.</p>
 </section>
 <section id="sec-filter" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sec-filter"><span class="header-section-number">3.2</span> <code>filter()</code> rows</h2>
@@ -723,7 +728,7 @@ Figure&nbsp;3.1: Diagram of filter()
 <li><p><code>min()</code> and <code>max()</code>: the minimum and maximum values respectively</p></li>
 <li><p><code>IQR()</code>: Interquartile range</p></li>
 <li><p><code>sum()</code>: the sum</p></li>
-<li><p><code>n()</code>: a count of the number of rows/observations in each group. This particular summary function will make more sense when <code>group_by()</code> is covered in <a href="#sec-groupby" class="quarto-xref"><span>Section 3.4</span></a>.</p></li>
+<li><p><code>n()</code>: a count of the number of rows/observations in each group. This particular summary function will make more sense when <code>group_by()</code> is covered in <a href="#sec-groupby" class="quarto-xref"><span>Section 3.5</span></a>.</p></li>
 </ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -781,8 +786,35 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 </div>
 </section>
-<section id="sec-groupby" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sec-groupby"><span class="header-section-number">3.4</span> <code>group_by()</code> rows</h2>
+<section id="sec-missing" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-missing"><span class="header-section-number">3.4</span> Missing variables</h2>
+<p>In <a href="#sec-summarize" class="quarto-xref"><span>Section 3.3</span></a> we saw that missing values in a data frame are coded as <code>NA</code>. Almost any operation involving an unknown value will also result in an unknown value. When calculating summary statistics, we can include the argument <code>na.rm = TRUE</code> to remove missing values from the calculation.</p>
+<p>In other situations, however, it may be necessary to remove entire observations from a data frame if one or more values are missing. Handling missing data requires extra care. Before removing observations, it is important to consider <em>why</em> the data are missing and whether it is appropriate to exclude those observations from the analysis.</p>
+<p>There are multiple ways to remove observations with missing values in R. The two most common approaches are using <code>filter()</code> with <code>is.na()</code> and using <code>drop_na()</code>. Both accomplish the same goal but differ in readability and flexibility.</p>
+<section id="is.na-function" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="is.na-function"><span class="header-section-number">3.4.1</span> <code>is.na()</code> function</h3>
+<p>One way to remove observations with missing values is to <code>filter</code> them out. To do this, we need the <code>is.na()</code> function, which returns <code>TRUE</code> if a value is missing and <code>FALSE</code> otherwise.</p>
+<p>Consider the <code>weather</code> data frame and variable <code>temp</code> again. If we use <code>is.na(temp)</code> inside <code>filter()</code>, we would <em>keep</em> only the days where <code>temp</code> is missing. This is the opposite of what we want. Instead we use <code>!is.na(temp)</code> to keep only observations where <code>temp</code> is <em>not</em> missing.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(temp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="drop_na-function" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="drop_na-function"><span class="header-section-number">3.4.2</span> <code>drop_na()</code> function</h3>
+<p>Another way to remove missing values is with the <code>drop_na()</code> function from the <code>tidyr</code> package.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>weather <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(temp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The <code>drop_na()</code> function removes rows where any of the specified variables contain missing values. It is very important to explicitly list the variables of interest. If no variables are specified, <code>drop_na()</code> will remove <em>all</em> rows that contain <em>any</em> missing values in the data frame. This can be dangerous, as it may unintentionally remove observations that are missing values in variables unrelated to your analysis.</p>
+<p>In general, <code>filter(!is.na(var))</code> offers greater control and allows for more complex filtering conditions, while <code>drop_na(var)</code> is a quick and readable way to remove missing values.</p>
+</section>
+</section>
+<section id="sec-groupby" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-groupby"><span class="header-section-number">3.5</span> <code>group_by()</code> rows</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/group_summary.png" class="img-fluid figure-img"></p>
@@ -791,12 +823,12 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 <p>Say instead of the a single mean temperature for the whole year, you would like 12 mean temperatures, one for each of the 12 months separately? In other words, we would like to compute the mean temperature split by month AKA sliced by month AKA aggregated by month. We can do this by “grouping” temperature observations by the values of another variable, in this case by the 12 values of the variable <code>month</code>. Run the following code:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std_dev =</span> <span class="fu">sd</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std_dev =</span> <span class="fu">sd</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    month  mean std_dev
@@ -818,7 +850,7 @@ Figure&nbsp;3.1: Diagram of filter()
 <p>This code is identical to the previous code that created <code>summary_temp</code>, but with an extra <code>group_by(month)</code> added before the <code>summarize()</code>. Grouping the <code>weather</code> dataset by <code>month</code> and then applying the <code>summarize()</code> function yields a data frame that displays the mean and standard deviation temperature split by the 12 months of the year.</p>
 <p>It is important to note that the <code>group_by()</code> function doesn’t change the data frame by itself. Rather it changes the <em>meta-data</em>, or data about the data, specifically the group structure. It is only after we apply the <code>summarize()</code> function that the data frame changes. For example, let’s consider the <code>diamonds</code> data frame included in the <code>ggplot2</code> package. Run this code, specifically in the console:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>diamonds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>diamonds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 53,940 × 10
    carat cut       color clarity depth table price     x     y     z
@@ -839,8 +871,8 @@ Figure&nbsp;3.1: Diagram of filter()
 <p>Observe that the first line of the output reads <code># A tibble: 53,940 x 10</code>. This is an example of meta-data, in this case the number of observations/rows and variables/columns in <code>diamonds</code>. The actual data itself are the subsequent table of values.</p>
 <p>Now let’s pipe the <code>diamonds</code> data frame into <code>group_by(cut)</code>. Run this code, specifically in the console:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 53,940 × 10
 # Groups:   cut [5]
@@ -862,9 +894,9 @@ Figure&nbsp;3.1: Diagram of filter()
 <p>Observe that now there is additional meta-data: <code># Groups: cut [5]</code> indicating that the grouping structure meta-data has been set based on the 5 possible values AKA levels of the categorical variable <code>cut</code>: <code>"Fair"</code>, <code>"Good"</code>, <code>"Very Good"</code>, <code>"Premium"</code>, <code>"Ideal"</code>. On the other hand observe that the data has not changed: it is still a table of 53,940 <span class="math inline">\(\times\)</span> 10 values.</p>
 <p>Only by combining a <code>group_by()</code> with another data wrangling operation, in this case <code>summarize()</code> will the actual data be transformed.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_price =</span> <span class="fu">mean</span>(price))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_price =</span> <span class="fu">mean</span>(price))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   cut       avg_price
@@ -878,9 +910,9 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 <p>If we would like to remove this group structure meta-data, we can pipe the resulting data frame into the <code>ungroup()</code> function. Observe how the <code># Groups: cut [5]</code> meta-data is no longer present. Run this code, specifically in the console:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 53,940 × 10
    carat cut       color clarity depth table price     x     y     z
@@ -900,11 +932,11 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 <p>Let’s now revisit <code>n()</code> the counting summary function introduced in the previous section. For example, suppose we’d like to count how many flights departed each of the three airports in New York City:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>by_origin <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>by_origin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>by_origin <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>by_origin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   origin  count
@@ -915,15 +947,15 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 </div>
 <p>We see that Newark (<code>"EWR"</code>) had the most flights departing in 2013 followed by <code>"JFK"</code> and lastly by LaGuardia (<code>"LGA"</code>). Note there is a subtle but important difference between <code>sum()</code> and <code>n()</code>; While <code>sum()</code> returns the sum of a numerical variable, <code>n()</code> returns counts of the number of rows/observations.</p>
-<section id="grouping-by-more-than-one-variable" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="grouping-by-more-than-one-variable"><span class="header-section-number">3.4.1</span> Grouping by more than one variable</h3>
+<section id="grouping-by-more-than-one-variable" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="grouping-by-more-than-one-variable"><span class="header-section-number">3.5.1</span> Grouping by more than one variable</h3>
 <p>You are not limited to grouping by one variable! Say you wanted to know the number of flights leaving each of the three New York City airports <em>for each month</em>, we can also group by a second variable <code>month</code>: <code>group_by(origin, month)</code>. We see there are 36 rows to <code>by_origin_monthly</code> because there are 12 months for 3 airports (<code>EWR</code>, <code>JFK</code>, and <code>LGA</code>).</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>by_origin_monthly <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, month) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>by_origin_monthly</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>by_origin_monthly <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, month) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>by_origin_monthly</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 36 × 3
 # Groups:   origin [3]
@@ -944,12 +976,12 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 <p>Why do we <code>group_by(origin, month)</code> and not <code>group_by(origin)</code> and then <code>group_by(month)</code>? Let’s investigate:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>by_origin_monthly_incorrect <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>by_origin_monthly_incorrect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>by_origin_monthly_incorrect <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>by_origin_monthly_incorrect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
    month count
@@ -1052,8 +1084,8 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 </section>
 </section>
-<section id="sec-mutate" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="sec-mutate"><span class="header-section-number">3.5</span> <code>mutate</code> existing variables</h2>
+<section id="sec-mutate" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-mutate"><span class="header-section-number">3.6</span> <code>mutate</code> existing variables</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/mutate.png" class="img-fluid figure-img"></p>
@@ -1066,23 +1098,23 @@ Figure&nbsp;3.1: Diagram of filter()
 \]</span></p>
 <p>We can apply this formula to the <code>temp</code> variable using the <code>mutate()</code> function, which takes existing variables and mutates them to create new ones.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">temp_in_C =</span> (temp<span class="dv">-32</span>)<span class="sc">/</span><span class="fl">1.8</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(weather)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>weather <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">temp_in_C =</span> (temp<span class="dv">-32</span>)<span class="sc">/</span><span class="fl">1.8</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(weather)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that we have overwritten the original <code>weather</code> data frame with a new version that now includes the additional variable <code>temp_in_C</code>. In other words, the <code>mutate()</code> command outputs a new data frame which then gets saved over the original <code>weather</code> data frame. Furthermore, note how in <code>mutate()</code> we used <code>temp_in_C = (temp-32)/1.8</code> to create a new variable <code>temp_in_C</code>.</p>
 <p>Why did we overwrite the data frame <code>weather</code> instead of assigning the result to a new data frame like <code>weather_new</code>, but on the other hand why did we <em>not</em> overwrite <code>temp</code>, but instead created a new variable called <code>temp_in_C</code>? As a rough rule of thumb, as long as you are not losing original information that you might need later, it’s acceptable practice to overwrite existing data frames. On the other hand, had we used <code>mutate(temp = (temp-32)/1.8)</code> instead of <code>mutate(temp_in_C = (temp-32)/1.8)</code>, we would have overwritten the original variable <code>temp</code> and lost its values.</p>
 <p>Let’s compute average monthly temperatures in both °F and °C using the similar <code>group_by()</code> and <code>summarize()</code> code as in the previous section.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_temp_in_F =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_temp_in_C =</span> <span class="fu">mean</span>(temp_in_C, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_temp_in_F =</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_temp_in_C =</span> <span class="fu">mean</span>(temp_in_C, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>summary_monthly_temp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    month mean_temp_in_F mean_temp_in_C
@@ -1103,8 +1135,8 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 <p>Let’s consider another example. Passengers are often frustrated when their flights depart late, but change their mood a bit if pilots can make up some time during the flight to get them to their destination close to the original arrival time. This is commonly referred to as “gain” and we will create this variable using the <code>mutate()</code> function.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gain =</span> dep_delay <span class="sc">-</span> arr_delay)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gain =</span> dep_delay <span class="sc">-</span> arr_delay)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s take a look at <code>dep_delay</code>, <code>arr_delay</code>, and the resulting <code>gain</code> variables for the first 5 rows in our new <code>flights</code> data frame:</p>
 <div class="cell" data-layout-align="center">
@@ -1122,19 +1154,19 @@ Figure&nbsp;3.1: Diagram of filter()
 <p>The flight in the first row departed 2 minutes late but arrived 11 minutes late, so its “gained time in the air” is actually a loss of 9 minutes, hence its <code>gain</code> is <code>-9</code>. Contrast this to the flight in the fourth row which departed a minute early (<code>dep_delay</code> of <code>-1</code>) but arrived 18 minutes early (<code>arr_delay</code> of <code>-18</code>), so its “gained time in the air” is 17 minutes, hence its <code>gain</code> is <code>+17</code>.</p>
 <p>Let’s look at summary measures of this <code>gain</code> variable and even plot it in the form of a histogram:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>gain_summary <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">quantile</span>(gain, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">quantile</span>(gain, <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">quantile</span>(gain, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(gain))</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>gain_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>gain_summary <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">quantile</span>(gain, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">quantile</span>(gain, <span class="fl">0.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">quantile</span>(gain, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(gain))</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>gain_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1168,8 +1200,8 @@ Figure&nbsp;3.1: Diagram of filter()
 </div>
 <p>We’ve recreated the <code>summary</code> function we saw in <a href="02-visualization.html" class="quarto-xref"><span>Chapter 2</span></a> here using the <code>summarize</code> function in <code>dplyr</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gain)) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> flights, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gain)) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">bins =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-hist-gain-variable" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1185,12 +1217,12 @@ Figure&nbsp;3.2: Histogram of gain variable
 </div>
 <p>We can also create multiple columns at once and even refer to columns that were just created in a new column. Hadley and Garrett produce one such example in Chapter 5 of “R for Data Science” <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain =</span> dep_delay <span class="sc">-</span> arr_delay,</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours =</span> air_time <span class="sc">/</span> <span class="dv">60</span>,</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain_per_hour =</span> gain <span class="sc">/</span> hours</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain =</span> dep_delay <span class="sc">-</span> arr_delay,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours =</span> air_time <span class="sc">/</span> <span class="dv">60</span>,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain_per_hour =</span> gain <span class="sc">/</span> hours</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -1241,16 +1273,16 @@ Figure&nbsp;3.2: Histogram of gain variable
 </div>
 </div>
 </section>
-<section id="sec-arrange" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sec-arrange"><span class="header-section-number">3.6</span> <code>arrange()</code> and sort rows</h2>
+<section id="sec-arrange" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-arrange"><span class="header-section-number">3.7</span> <code>arrange()</code> and sort rows</h2>
 <p>One of the most common tasks people working with data would like to perform is sort the data frame’s rows in alphanumeric order of the values in a variable/column. For example, when calculating a median by hand requires you to first sort the data from the smallest to highest in value and then identify the “middle” value. The <code>dplyr</code> package has a function called <code>arrange()</code> that we will use to sort/reorder a data frame’s rows according to the values of the specified variable. This is often used after we have used the <code>group_by()</code> and <code>summarize()</code> functions as we will see.</p>
 <p>Let’s suppose we were interested in determining the most frequent destination airports for all domestic flights departing from New York City in 2013:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>freq_dest <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_flights =</span> <span class="fu">n</span>())</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>freq_dest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>freq_dest <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_flights =</span> <span class="fu">n</span>())</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>freq_dest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 105 × 2
    dest  num_flights
@@ -1270,8 +1302,8 @@ Figure&nbsp;3.2: Histogram of gain variable
 </div>
 <p>Observe that by default the rows of the resulting <code>freq_dest</code> data frame are sorted in alphabetical order of <code>dest</code> destination. Say instead we would like to see the same data, but sorted from the most to the least number of flights <code>num_flights</code> instead:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>freq_dest <span class="sc">%&gt;%</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(num_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>freq_dest <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(num_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 105 × 2
    dest  num_flights
@@ -1291,8 +1323,8 @@ Figure&nbsp;3.2: Histogram of gain variable
 </div>
 <p>This is actually giving us the opposite of what we are looking for: the rows are sorted with the least frequent destination airports displayed first. To switch the ordering to be descending instead of ascending we use the <code>desc()</code> function, which is short for “descending”:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>freq_dest <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(num_flights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>freq_dest <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(num_flights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 105 × 2
    dest  num_flights
@@ -1312,11 +1344,11 @@ Figure&nbsp;3.2: Histogram of gain variable
 </div>
 <p>In other words, <code>arrange()</code> sorts in ascending order by default unless you override this default behavior by using <code>desc()</code>.</p>
 </section>
-<section id="sec-joins" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="sec-joins"><span class="header-section-number">3.7</span> <code>join</code> data frames</h2>
+<section id="sec-joins" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-joins"><span class="header-section-number">3.8</span> <code>join</code> data frames</h2>
 <p>Another common data transformation task is “joining” or “merging” two different datasets. For example in the <code>flights</code> data frame the variable <code>carrier</code> lists the carrier code for the different flights. While the corresponding airline names for <code>"UA"</code> and <code>"AA"</code> might be somewhat easy to guess (United and American Airlines), what airlines have codes? <code>"VX"</code>, <code>"HA"</code>, and <code>"B6"</code>? This information is provided in a separate data frame <code>airlines</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(airlines)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(airlines)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We see that in <code>airlines</code>, <code>carrier</code> is the carrier code while <code>name</code> is the full name of the airline company. Using this table, we can see that <code>"VX"</code>, <code>"HA"</code>, and <code>"B6"</code> correspond to Virgin America, Hawaiian Airlines, and JetBlue respectively. However, wouldn’t it be nice to have all this information in a single data frame instead of two separate data frames? We can do this by “joining” i.e.&nbsp;“merging” the <code>flights</code> and <code>airlines</code> data frames.</p>
 <p>Note that the values in the variable <code>carrier</code> in the <code>flights</code> data frame match the values in the variable <code>carrier</code> in the <code>airlines</code> data frame. In this case, we can use the variable <code>carrier</code> as a <em>key variable</em> to match the rows of the two data frames. Key variables are almost always identification variables that uniquely identify the observational units. This ensures that rows in both data frames are appropriately matched during the join. Hadley and Garrett <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span> created the following diagram to help us understand how the different datasets are linked by various key variables:</p>
@@ -1330,15 +1362,15 @@ Figure&nbsp;3.3: Data relationships in nycflights13 from R for Data Science
 </figcaption>
 </figure>
 </div>
-<section id="matching-key-variable-names" class="level3" data-number="3.7.1">
-<h3 data-number="3.7.1" class="anchored" data-anchor-id="matching-key-variable-names"><span class="header-section-number">3.7.1</span> Matching “key” variable names</h3>
+<section id="matching-key-variable-names" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="matching-key-variable-names"><span class="header-section-number">3.8.1</span> Matching “key” variable names</h3>
 <p>In both the <code>flights</code> and <code>airlines</code> data frames, the key variable we want to join/merge/match the rows of the two data frames by have the same name: <code>carriers</code>. We make use of the <code>inner_join()</code> function to join the two data frames, where the rows will be matched by the variable <code>carrier</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>flights_joined <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airlines, <span class="at">by =</span> <span class="st">"carrier"</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights)</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights_joined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>flights_joined <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airlines, <span class="at">by =</span> <span class="st">"carrier"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights_joined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Observe that the <code>flights</code> and <code>flights_joined</code> data frames are identical except that <code>flights_joined</code> has an additional variable <code>name</code> whose values correspond to the airline company names drawn from the <code>airlines</code> data frame.</p>
 <p>A visual representation of the <code>inner_join()</code> is given below <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span>. There are other types of joins available (such as <code>left_join()</code>, <code>right_join()</code>, <code>outer_join()</code>, and <code>anti_join()</code>), but the <code>inner_join()</code> will solve nearly all of the problems you’ll encounter in this book.</p>
@@ -1353,8 +1385,8 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </figure>
 </div>
 </section>
-<section id="sec-diff-key" class="level3" data-number="3.7.2">
-<h3 data-number="3.7.2" class="anchored" data-anchor-id="sec-diff-key"><span class="header-section-number">3.7.2</span> Different “key” variable names</h3>
+<section id="sec-diff-key" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="sec-diff-key"><span class="header-section-number">3.8.2</span> Different “key” variable names</h3>
 <p>Say instead you are interested in the destinations of all domestic flights departing NYC in 2013 and ask yourself:</p>
 <ul>
 <li>“What cities are these airports in?”</li>
@@ -1363,7 +1395,7 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </ul>
 <p>The <code>airports</code> data frame contains airport codes:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(airports)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(airports)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>However, considering the visual representation (<a href="#fig-flights-key-diagram" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>) of the relations between the datasets <code>airports</code> and <code>flights</code>, we see that:</p>
 <ul>
@@ -1372,21 +1404,21 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </ul>
 <p>We need to join these two data frames so that we can identify the destination cities. For example, our <code>inner_join()</code> operation will use the <code>by = c("dest" = "faa")</code> argument, which allows us to join two data frames where the key variable has a different name:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>flights_with_airport_names <span class="ot">&lt;-</span>  flights <span class="sc">%&gt;%</span> </span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>))</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights_with_airport_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>flights_with_airport_names <span class="ot">&lt;-</span>  flights <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>))</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights_with_airport_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s construct the sequence of commands that computes the number of flights from NYC to each destination, but also includes information about each destination airport:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>named_dests <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_flights =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(num_flights)) <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">airport_name =</span> name)</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>named_dests</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>named_dests <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_flights =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(num_flights)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airports, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">airport_name =</span> name)</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>named_dests</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 101 × 9
    dest  num_flights airport_name             lat    lon   alt    tz dst   tzone
@@ -1406,15 +1438,15 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </div>
 <p>In case you didn’t know, <code>"ORD"</code> is the airport code of Chicago O’Hare airport and <code>"FLL"</code> is the main airport in Fort Lauderdale, Florida, which we can now see in the <code>airport_name</code> variable in the resulting <code>named_dests</code> data frame.</p>
 </section>
-<section id="multiple-key-variables" class="level3" data-number="3.7.3">
-<h3 data-number="3.7.3" class="anchored" data-anchor-id="multiple-key-variables"><span class="header-section-number">3.7.3</span> Multiple “key” variables</h3>
+<section id="multiple-key-variables" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="multiple-key-variables"><span class="header-section-number">3.8.3</span> Multiple “key” variables</h3>
 <p>Say instead we are in a situation where we need to join by multiple variables. For example, in <a href="#fig-flights-key-diagram" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> above we see that in order to join the <code>flights</code> and <code>weather</code> data frames, we need more than one key variable: <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, and <code>origin</code>. This is because the combination of these 5 variables act to uniquely identify each observational unit in the <code>weather</code> data frame: hourly weather recordings at each of the 3 NYC airports.</p>
 <p>We achieve this by specifying a vector of key variables to join by using the <code>c()</code> function for “combine” or “concatenate” that we saw earlier:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>flights_weather_joined <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(weather, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"origin"</span>))</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights_weather_joined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>flights_weather_joined <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(weather, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"origin"</span>))</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(flights_weather_joined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
@@ -1449,14 +1481,14 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </div>
 </div>
 </section>
-<section id="normal-forms" class="level3" data-number="3.7.4">
-<h3 data-number="3.7.4" class="anchored" data-anchor-id="normal-forms"><span class="header-section-number">3.7.4</span> Normal forms</h3>
+<section id="normal-forms" class="level3" data-number="3.8.4">
+<h3 data-number="3.8.4" class="anchored" data-anchor-id="normal-forms"><span class="header-section-number">3.8.4</span> Normal forms</h3>
 <p>The data frames included in the <code>nycflights13</code> package are in a form that minimizes redundancy of data. For example, the <code>flights</code> data frame only saves the <code>carrier</code> code of the airline company; it does not include the actual name of the airline. For example the first row of <code>flights</code> has <code>carrier</code> equal to <code>UA</code>, but it does not include the airline name “United Air Lines Inc.” The names of the airline companies are included in the <code>name</code> variable of the <code>airlines</code> data frame. In order to have the airline company name included in <code>flights</code>, we could join these two data frames as follows:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>joined_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airlines, <span class="at">by =</span> <span class="st">"carrier"</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(joined_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>joined_flights <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(airlines, <span class="at">by =</span> <span class="st">"carrier"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(joined_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We are capable of performing this join because each of the data frames have <em>keys</em> in common to relate one to another: the <code>carrier</code> variable in both the <code>flights</code> and <code>airlines</code> data frames. The <em>key</em> variable(s) that we join are often <em>identification variables</em> we mentioned previously.</p>
 <p>This is an important property of what’s known as <strong>normal forms</strong> of data. The process of decomposing data frames into less redundant tables without losing information is called <strong>normalization</strong>. More information is available on <a href="https://en.wikipedia.org/wiki/Database_normalization">Wikipedia</a>.</p>
@@ -1478,16 +1510,16 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </div>
 </section>
 </section>
-<section id="sec-other-verbs" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="sec-other-verbs"><span class="header-section-number">3.8</span> Other verbs</h2>
+<section id="sec-other-verbs" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-other-verbs"><span class="header-section-number">3.9</span> Other verbs</h2>
 <p>Here are some other useful data wrangling verbs that might come in handy:</p>
 <ul>
 <li><code>select()</code> only a subset of variables/columns</li>
 <li><code>rename()</code> variables/columns to have new names</li>
 <li>Return only the <code>top_n()</code> values of a variable</li>
 </ul>
-<section id="sec-select" class="level3" data-number="3.8.1">
-<h3 data-number="3.8.1" class="anchored" data-anchor-id="sec-select"><span class="header-section-number">3.8.1</span> <code>select()</code> variables</h3>
+<section id="sec-select" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="sec-select"><span class="header-section-number">3.9.1</span> <code>select()</code> variables</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/select.png" class="img-fluid figure-img"></p>
@@ -1496,77 +1528,77 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </div>
 <p>We’ve seen that the <code>flights</code> data frame in the <code>nycflights13</code> package contains 19 different variables. You can identify the names of these 19 variables by running the <code>glimpse()</code> function from the <code>dplyr</code> package:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>However, say you only need two of these variables, say <code>carrier</code> and <code>flight</code>. You can <code>select()</code> these two variables:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carrier, flight)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> </span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carrier, flight)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This function makes exploring data frames with a very large number of variables easier for humans to process by restricting consideration to only those we care about, like our example with <code>carrier</code> and <code>flight</code> above. This might make viewing the dataset using the <code>View()</code> spreadsheet viewer more digestible. However, as far as the computer is concerned, it doesn’t care how many additional variables are in the data frame in question, so long as <code>carrier</code> and <code>flight</code> are included.</p>
 <p>Let’s say instead you want to drop i.e deselect certain variables. For example, take the variable <code>year</code> in the <code>flights</code> data frame. This variable isn’t quite a “variable” in the sense that all the values are <code>2013</code> i.e.&nbsp;it doesn’t change. Say you want to remove the <code>year</code> variable from the data frame; we can deselect <code>year</code> by using the <code>-</code> sign:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>flights_no_year <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>year)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights_no_year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>flights_no_year <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>year)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights_no_year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Another way of selecting columns/variables is by specifying a range of columns:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>flight_arr_times <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(month<span class="sc">:</span>day, arr_time<span class="sc">:</span>sched_arr_time)</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>flight_arr_times</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>flight_arr_times <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(month<span class="sc">:</span>day, arr_time<span class="sc">:</span>sched_arr_time)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>flight_arr_times</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>select()</code> function can also be used to reorder columns in combination with the <code>everything()</code> helper function. Let’s suppose we’d like the <code>hour</code>, <code>minute</code>, and <code>time_hour</code> variables, which appear at the end of the <code>flights</code> dataset, to appear immediately after the <code>year</code>, <code>month</code>, and <code>day</code> variables while keeping the rest of the variables. In the code below <code>everything()</code> picks up all remaining variables.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>flights_reorder <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute, time_hour, <span class="fu">everything</span>())</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights_reorder)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>flights_reorder <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, month, day, hour, minute, time_hour, <span class="fu">everything</span>())</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights_reorder)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Lastly, the helper functions <code>starts_with()</code>, <code>ends_with()</code>, and <code>contains()</code> can be used to select variables/column that match those conditions. For example:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>flights_begin_a <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"a"</span>))</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>flights_begin_a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>flights_delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"delay"</span>))</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>flights_delays</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>flights_time <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"time"</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>flights_begin_a <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"a"</span>))</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>flights_time</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>flights_begin_a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>flights_delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"delay"</span>))</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>flights_delays</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>flights_time <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"time"</span>))</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>flights_time</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="sec-rename" class="level3" data-number="3.8.2">
-<h3 data-number="3.8.2" class="anchored" data-anchor-id="sec-rename"><span class="header-section-number">3.8.2</span> <code>rename()</code> variables</h3>
+<section id="sec-rename" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="sec-rename"><span class="header-section-number">3.9.2</span> <code>rename()</code> variables</h3>
 <p>Another useful function is <code>rename()</code>, which as you may have guessed renames one column to another name. Suppose we want <code>dep_time</code> and <code>arr_time</code> to be <code>departure_time</code> and <code>arrival_time</code> instead in the <code>flights_time</code> data frame:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>flights_time <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"time"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">departure_time =</span> dep_time,</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrival_time =</span> arr_time)</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>flights_time <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"time"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">departure_time =</span> dep_time,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrival_time =</span> arr_time)</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that in this case we used a single <code>=</code> sign within the <code>rename()</code>, for example <code>departure_time = dep_time</code>. This is because we are not testing for equality like we would using <code>==</code>, but instead we want to assign a new variable <code>departure_time</code> to have the same values as <code>dep_time</code> and then delete the variable <code>dep_time</code>. It’s easy to forget if the new name comes before or after the equals sign. I usually remember this as “New Before, Old After” or NBOA.</p>
 </section>
-<section id="slice-data-by-a-variable" class="level3" data-number="3.8.3">
-<h3 data-number="3.8.3" class="anchored" data-anchor-id="slice-data-by-a-variable"><span class="header-section-number">3.8.3</span> <code>slice()</code> data by a variable</h3>
-<p>We can return observations with maximum or minimum values of a variable using the <code>slice_max()</code> or <code>slice_min()</code>. For example, we can get the observations the top 10 destination airports using the example from <a href="#sec-diff-key" class="quarto-xref"><span>Section 3.7.2</span></a>. Observe that we set the number of values to return to <code>n = 10</code> and <code>order_by = num_flights</code> to indicate that we want the rows corresponding to the top 10 values of <code>num_flights</code>. See the help file for the different <code>slice_*()</code> functions by running <code>?slice</code> for more information.</p>
+<section id="slice-data-by-a-variable" class="level3" data-number="3.9.3">
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="slice-data-by-a-variable"><span class="header-section-number">3.9.3</span> <code>slice()</code> data by a variable</h3>
+<p>We can return observations with maximum or minimum values of a variable using the <code>slice_max()</code> or <code>slice_min()</code>. For example, we can get the observations the top 10 destination airports using the example from <a href="#sec-diff-key" class="quarto-xref"><span>Section 3.8.2</span></a>. Observe that we set the number of values to return to <code>n = 10</code> and <code>order_by = num_flights</code> to indicate that we want the rows corresponding to the top 10 values of <code>num_flights</code>. See the help file for the different <code>slice_*()</code> functions by running <code>?slice</code> for more information.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>named_dests <span class="sc">%&gt;%</span> </span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span>  num_flights)</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>named_dests <span class="sc">%&gt;%</span> </span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span>  num_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>named_dests <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span>  num_flights)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>named_dests <span class="sc">%&gt;%</span> </span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span>  num_flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
@@ -1634,10 +1666,10 @@ Figure&nbsp;3.4: Diagram of inner join from R for Data Science
 </div>
 </section>
 </section>
-<section id="sec-wrangling-conclusion" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="sec-wrangling-conclusion"><span class="header-section-number">3.9</span> Conclusion</h2>
-<section id="summary-table" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1" class="anchored" data-anchor-id="summary-table"><span class="header-section-number">3.9.1</span> Summary table</h3>
+<section id="sec-wrangling-conclusion" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="sec-wrangling-conclusion"><span class="header-section-number">3.10</span> Conclusion</h2>
+<section id="summary-table" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="summary-table"><span class="header-section-number">3.10.1</span> Summary table</h3>
 <p>Let’s recap our data wrangling verbs in <a href="#tbl-wrangle-summary-table" class="quarto-xref">Table&nbsp;<span>3.1</span></a>. Using these verbs and the pipe <code>%&gt;%</code> operator from <a href="#sec-piping" class="quarto-xref"><span>Section 3.1</span></a>, you’ll be able to write easily legible code to perform almost all the data wrangling necessary for the rest of this book.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-wrangle-summary-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1687,8 +1719,8 @@ Table&nbsp;3.1: Summary of data wrangling verbs
 </div>
 </div>
 </section>
-<section id="additional-resources" class="level3" data-number="3.9.2">
-<h3 data-number="3.9.2" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">3.9.2</span> Additional resources</h3>
+<section id="additional-resources" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">3.10.2</span> Additional resources</h3>
 <p>If you want to further unlock the power of the <code>dplyr</code> package for data wrangling, we suggest you that you check out RStudio’s “Data Transformation with dplyr” cheatsheet. This cheatsheet summarizes much more than what we’ve discussed in this chapter, in particular more-intermediate level and advanced data wrangling functions, while providing quick and easy to read visual descriptions.</p>
 <p>You can access this cheatsheet by going to the RStudio Menu Bar -&gt; Help -&gt; Cheatsheets -&gt; “Data Transformation with dplyr”:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1699,17 +1731,17 @@ Table&nbsp;3.1: Summary of data wrangling verbs
 </div>
 <p>On top of data wrangling verbs and examples we presented in this section, if you’d like to see more examples of using the <code>dplyr</code> package for data wrangling check out <a href="http://r4ds.had.co.nz/transform.html">Chapter 5</a> of Garrett Grolemund and Hadley Wickham’s and Garrett’s book <span class="citation" data-cites="rds2016">(<a href="references.html#ref-rds2016" role="doc-biblioref">Grolemund and Wickham 2016</a>)</span>.</p>
 </section>
-<section id="whats-to-come" class="level3" data-number="3.9.3">
-<h3 data-number="3.9.3" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">3.9.3</span> What’s to come?</h3>
+<section id="whats-to-come" class="level3" data-number="3.10.3">
+<h3 data-number="3.10.3" class="anchored" data-anchor-id="whats-to-come"><span class="header-section-number">3.10.3</span> What’s to come?</h3>
 <p>So far in this book, we’ve explored, visualized, and wrangled data saved in data frames that are in spreadsheet-type format: rectangular with a certain number of rows corresponding to observations and a certain number of columns corresponding to variables describing the observations.</p>
 <p>We’ll see in <a href="04-tidy.html" class="quarto-xref"><span>Chapter 4</span></a> that there are actually two ways to represent data in spreadsheet-type rectangular format: 1) “wide” format and 2) “tall/narrow” format also known in R circles as “tidy” format. While the distinction between “tidy” and non-“tidy” formatted data is very subtle, it has very important implications for whether or not we can use the <code>ggplot2</code> package for data visualization and the <code>dplyr</code> package for data wrangling.</p>
 <p>Furthermore, we’ve only explored, visualized, and wrangled data saved within R packages. What if you have spreadsheet data saved in a Microsoft Excel, Google Sheets, or “Comma-Separated Values” (CSV) file that you would like to analyze? In <a href="04-tidy.html" class="quarto-xref"><span>Chapter 4</span></a>, we’ll show you how to import this data into R using the <code>readr</code> package.</p>
 </section>
 </section>
-<section id="sec-ex03" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="sec-ex03"><span class="header-section-number">3.10</span> Exercises</h2>
-<section id="sec-ex03-conceptual" class="level3" data-number="3.10.1">
-<h3 data-number="3.10.1" class="anchored" data-anchor-id="sec-ex03-conceptual"><span class="header-section-number">3.10.1</span> Conceptual</h3>
+<section id="sec-ex03" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="sec-ex03"><span class="header-section-number">3.11</span> Exercises</h2>
+<section id="sec-ex03-conceptual" class="level3" data-number="3.11.1">
+<h3 data-number="3.11.1" class="anchored" data-anchor-id="sec-ex03-conceptual"><span class="header-section-number">3.11.1</span> Conceptual</h3>
 <div id="exr-ch03-c01" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.1</strong></span> Consider the sequence of operations <code>a(b(c(x)))</code>. Which of the following would result in the output of this sequence?</p>
 <ol type="a">
@@ -1733,13 +1765,13 @@ Table&nbsp;3.1: Summary of data wrangling verbs
 <div id="exr-ch03-c03" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.3</strong></span> How many rows and columns are outputted from the following code?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>weather_summary <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span>  </span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(month)<span class="sc">%&gt;%</span> </span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">min =</span> <span class="fu">min</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),  </span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>weather_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>weather_summary <span class="ot">&lt;-</span> weather <span class="sc">%&gt;%</span>  </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(month)<span class="sc">%&gt;%</span> </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">min =</span> <span class="fu">min</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),  </span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(gain, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>weather_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol type="a">
 <li>12 rows and 5 columns</li>
@@ -1874,8 +1906,8 @@ Table&nbsp;3.1: Summary of data wrangling verbs
 </ol>
 </div>
 </section>
-<section id="sec-ex03-application" class="level3" data-number="3.10.2">
-<h3 data-number="3.10.2" class="anchored" data-anchor-id="sec-ex03-application"><span class="header-section-number">3.10.2</span> Application</h3>
+<section id="sec-ex03-application" class="level3" data-number="3.11.2">
+<h3 data-number="3.11.2" class="anchored" data-anchor-id="sec-ex03-application"><span class="header-section-number">3.11.2</span> Application</h3>
 <p>The <code>Bikeshare</code> and <code>Auto</code> datasets are in the <code>ISLR2</code> package. The <code>titanic_train</code> dataset is included in the <code>titanic</code> package.</p>
 <div id="exr-ch03-app1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.12</strong></span> Using the <code>Bikeshare</code> dataset, compute the average number of bikers at noon (<code>hr</code> 12) each month.</p>
@@ -1890,8 +1922,8 @@ Table&nbsp;3.1: Summary of data wrangling verbs
 <p><span class="theorem-title"><strong>Exercise 3.15</strong></span> Using the <code>titanic_train</code> dataset, calculate the count of men and women that survived and died.</p>
 </div>
 </section>
-<section id="sec-ex03-advanced" class="level3" data-number="3.10.3">
-<h3 data-number="3.10.3" class="anchored" data-anchor-id="sec-ex03-advanced"><span class="header-section-number">3.10.3</span> Advanced</h3>
+<section id="sec-ex03-advanced" class="level3" data-number="3.11.3">
+<h3 data-number="3.11.3" class="anchored" data-anchor-id="sec-ex03-advanced"><span class="header-section-number">3.11.3</span> Advanced</h3>
 <div id="exr-ch03-adv1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.16</strong></span> When you are using <code>filter</code>, you need to specify each criteria separately. This can get repetitive if you are trying to filter on multiple criteria for the same variable. Consider the <code>Bikeshare</code> dataset, what if we are interested in only the months of <code>June</code>, <code>July</code>, and <code>Aug</code>? Instead of listing <code>(mnth == "June",</code> <code>mnth == "July",</code> <code>mnth == "Aug")</code> we can use the <code>%in%</code> function to condense this.</p>
 <p>Try typing <code>mnth %in%</code> followed by the vector of months within <code>filter</code> to subset the dataset. Call this new dataset <code>bike_summer</code>.</p>
