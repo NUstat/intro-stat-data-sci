@@ -57,7 +57,8 @@ book:
       - 10-confidence-intervals.qmd
       - 11-p-values.qmd
       - 12-hypothesis-tests.qmd
-      - 13-putting-together.qmd
+      - 13-anova.qmd
+      - 14-putting-together.qmd
       - text: "---"
       - references.qmd
   

@@ -119,6 +119,7 @@ evals_aov_model <- aov(score ~ rank, data = evals_for_anova)
 
 ```{r}
 #| label: tbl-evals-for-anova-summary
+#| tbl-cap: "Summary output for `evals_aov_model`"
 summary(evals_aov_model)
 ```
 
