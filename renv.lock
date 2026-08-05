@@ -25,6 +25,33 @@
       "Hash": "7a29697b75e027767a53fde6c903eca7",
       "Requirements": []
     },
+    "GGally": {
+      "Package": "GGally",
+      "Version": "2.4.0",
+      "Source": "CRAN",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "GGally",
+      "RemoteRef": "GGally",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemoteSha": "2.4.0",
+      "Hash": "acf925fc4800661d1a3610657f14a703",
+      "Requirements": [
+        "RColorBrewer",
+        "S7",
+        "cli",
+        "dplyr",
+        "ggplot2",
+        "ggstats",
+        "gtable",
+        "lifecycle",
+        "magrittr",
+        "progress",
+        "rlang",
+        "scales",
+        "tidyr"
+      ]
+    },
     "HistData": {
       "Package": "HistData",
       "Version": "1.0.0",
@@ -580,6 +607,31 @@
       "Repository": "CRAN",
       "Hash": "df2c648760e7d07c45249c73ad5b95f9",
       "Requirements": []
+    },
+    "ggstats": {
+      "Package": "ggstats",
+      "Version": "0.13.0",
+      "Source": "CRAN",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "ggstats",
+      "RemoteRef": "ggstats",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemoteSha": "0.13.0",
+      "Hash": "401d12c926aa4c3cca5e9c909c5e6756",
+      "Requirements": [
+        "cli",
+        "dplyr",
+        "forcats",
+        "ggplot2",
+        "lifecycle",
+        "patchwork",
+        "purrr",
+        "rlang",
+        "scales",
+        "stringr",
+        "tidyr"
+      ]
     },
     "glue": {
       "Package": "glue",
