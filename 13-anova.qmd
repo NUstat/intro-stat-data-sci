@@ -214,7 +214,7 @@ mean_score_by_rank
 ```
 
 
-### Hypothesis test for model comparison {#hypo-test-mult-lm-1}
+## Hypothesis test for model comparison {#hypo-test-mult-lm-1}
 
 Another useful hypothesis test in multiple linear regression compares two models: one with a given set of explanatory variables called the *full model* and the other with only a subset of those explanatory variables called the *reduced model*.
 
