@@ -82,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-343830dee7e81009abd9657442190b55.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3d497cff885f6278d37568d0ef0763f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -417,14 +417,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#packages-needed" id="toc-packages-needed" class="nav-link active" data-scroll-target="#packages-needed">Packages Needed</a></li>
-  <li><a href="#sec-one-way-anova" id="toc-sec-one-way-anova" class="nav-link" data-scroll-target="#sec-one-way-anova"><span class="header-section-number">13.1</span> One way ANOVA</a>
+  <li><a href="#sec-one-way-anova" id="toc-sec-one-way-anova" class="nav-link" data-scroll-target="#sec-one-way-anova"><span class="header-section-number">13.1</span> One way ANOVA</a></li>
+  <li><a href="#hypo-test-mult-lm-1" id="toc-hypo-test-mult-lm-1" class="nav-link" data-scroll-target="#hypo-test-mult-lm-1"><span class="header-section-number">13.2</span> Hypothesis test for model comparison</a></li>
+  <li><a href="#sec-ex13" id="toc-sec-ex13" class="nav-link" data-scroll-target="#sec-ex13"><span class="header-section-number">13.3</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#hypo-test-mult-lm-1" id="toc-hypo-test-mult-lm-1" class="nav-link" data-scroll-target="#hypo-test-mult-lm-1"><span class="header-section-number">13.1.1</span> Hypothesis test for model comparison</a></li>
-  </ul></li>
-  <li><a href="#sec-ex13" id="toc-sec-ex13" class="nav-link" data-scroll-target="#sec-ex13"><span class="header-section-number">13.2</span> Exercises</a>
-  <ul class="collapse">
-  <li><a href="#sec-ex13-conceptual" id="toc-sec-ex13-conceptual" class="nav-link" data-scroll-target="#sec-ex13-conceptual"><span class="header-section-number">13.2.1</span> Conceptual</a></li>
-  <li><a href="#sec-ex13-application" id="toc-sec-ex13-application" class="nav-link" data-scroll-target="#sec-ex13-application"><span class="header-section-number">13.2.2</span> Application</a></li>
+  <li><a href="#sec-ex13-conceptual" id="toc-sec-ex13-conceptual" class="nav-link" data-scroll-target="#sec-ex13-conceptual"><span class="header-section-number">13.3.1</span> Conceptual</a></li>
+  <li><a href="#sec-ex13-application" id="toc-sec-ex13-application" class="nav-link" data-scroll-target="#sec-ex13-application"><span class="header-section-number">13.3.2</span> Application</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NUstat/intro-stat-data-sci/edit/main/13-anova.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/NUstat/intro-stat-data-sci/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -607,8 +605,9 @@ F = \frac{\text{MS}_{\text{between}}}{\text{MS}_{\text{within}}} =
 3 tenured            4.14    0.550   253</code></pre>
 </div>
 </div>
-<section id="hypo-test-mult-lm-1" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="hypo-test-mult-lm-1"><span class="header-section-number">13.1.1</span> Hypothesis test for model comparison</h3>
+</section>
+<section id="hypo-test-mult-lm-1" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="hypo-test-mult-lm-1"><span class="header-section-number">13.2</span> Hypothesis test for model comparison</h2>
 <p>Another useful hypothesis test in multiple linear regression compares two models: one with a given set of explanatory variables called the <em>full model</em> and the other with only a subset of those explanatory variables called the <em>reduced model</em>.</p>
 <p>To illustrate these methods, we use the <code>coffee_quality</code> data frame from the <code>moderndive</code> package. This dataset from the Coffee Quality Institute contains information about coffee rating scores based on ten different attributes: <code>aroma</code>, <code>flavor</code>, <code>aftertaste</code>, <code>acidity</code>, <code>body</code>, <code>balance</code>, <code>uniformity</code>, <code>clean_cup</code>, <code>sweetness</code>, and <code>overall.</code> In addition, the data frame contains other information such as the <code>moisture_percentage</code> and the coffee’s <code>country</code> and <code>continent_of_origin</code>. We can assume that this is a random sample.</p>
 <p>We plan to regress <code>total_cup_points</code> (response variable) on the numerical explanatory variables <code>aroma</code>, <code>flavor</code>, and <code>moisture_percentage</code>. This will be our <strong>full model</strong>.</p>
@@ -755,11 +754,10 @@ H_A&amp;:\quad \text{the full model is needed}
 <!-- We reject the null hypothesis and conclude that the full model was needed or, alternatively, that it is appropriate to add the factor `continent_of_origin` to a model that already has `aroma`, `flavor`, and `moisture_percentage`. -->
 <!-- ## Conclusion {#inference-conclusion} -->
 </section>
-</section>
-<section id="sec-ex13" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="sec-ex13"><span class="header-section-number">13.2</span> Exercises</h2>
-<section id="sec-ex13-conceptual" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="sec-ex13-conceptual"><span class="header-section-number">13.2.1</span> Conceptual</h3>
+<section id="sec-ex13" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="sec-ex13"><span class="header-section-number">13.3</span> Exercises</h2>
+<section id="sec-ex13-conceptual" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="sec-ex13-conceptual"><span class="header-section-number">13.3.1</span> Conceptual</h3>
 <div id="exr-ch13-c01" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 13.1</strong></span> In a one-way ANOVA, what does the null hypothesis state?</p>
 <ol type="a">
@@ -797,8 +795,8 @@ H_A&amp;:\quad \text{the full model is needed}
 </ol>
 </div>
 </section>
-<section id="sec-ex13-application" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="sec-ex13-application"><span class="header-section-number">13.2.2</span> Application</h3>
+<section id="sec-ex13-application" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="sec-ex13-application"><span class="header-section-number">13.3.2</span> Application</h3>
 <div id="exr-ch13-app1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 13.5</strong></span> Using the <code>spotify_by_genre</code> dataset from the <code>moderndive</code> package, consider only the <code>genres</code> of <code>country</code>, <code>hip-hop</code>, and <code>rock</code>.</p>
 <p>Conduct a one-way ANOVA test to determine if there is a difference in mean <code>popularity</code> between these three genres.</p>
