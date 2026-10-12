@@ -52,6 +52,8 @@ jobs:
             echo "tlmgr not found"; ls -la "$HOME" "$HOME/bin" 2>/dev/null; exit 1
           fi
           echo "Using $TLMGR"
+          "$TLMGR" update --self
+          "$TLMGR" update --all
           "$TLMGR" install luatexbase selnolig
           echo "$(dirname "$TLMGR")" >> "$GITHUB_PATH"
         
