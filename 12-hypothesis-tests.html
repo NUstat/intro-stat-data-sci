@@ -106,11 +106,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <script>
- MathJax = {
-   tex: {
-     inlineMath: [['$', '$'], ['\\(', '\\)']]
-   }
- };
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    options: {
+      ignoreHtmlClass: 'content',
+      processHtmlClass: 'math|cell-output-display'
+    }
+  };
 </script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
