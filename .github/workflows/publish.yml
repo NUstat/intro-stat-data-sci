@@ -46,7 +46,14 @@ jobs:
           cache-version: 1
       
       - name: Install missing LaTeX packages
-        run: tlmgr install luatexbase selnolig
+        run: |
+          TLMGR=$(find "$HOME/.TinyTeX" "$HOME/bin" -name tlmgr -type f -o -name tlmgr -type l 2>/dev/null | head -n 1)
+          if [ -z "$TLMGR" ]; then
+            echo "tlmgr not found"; ls -la "$HOME" "$HOME/bin" 2>/dev/null; exit 1
+          fi
+          echo "Using $TLMGR"
+          "$TLMGR" install luatexbase selnolig
+          echo "$(dirname "$TLMGR")" >> "$GITHUB_PATH"
         
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
