@@ -1,7 +1,11 @@
 <script>
- MathJax = {
-   tex: {
-     inlineMath: [['$', '$'], ['\\(', '\\)']]
-   }
- };
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    options: {
+      ignoreHtmlClass: 'content',
+      processHtmlClass: 'math|cell-output-display'
+    }
+  };
 </script>
