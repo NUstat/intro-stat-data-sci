@@ -67,7 +67,7 @@ ANOVA, or analysis of variance, is a statistical technique used to compare the m
 
 Recall the `evals` dataset loaded in the `moderndive` package containing student evaluations for professors from the University of Texas at Austin. Suppose we want to compare the average evaluation `score` across professors of different `rank`, specifically `teaching`, `tenure track`, and `tenured` professors. Because we are considering only one explanatory variable (`rank`), this method is called a one-way ANOVA.
 
-We use the `slice_sample()` function after selecting the variables of interest to display  a few rows of this data frame in Table \@tbl-evals-for-anova-slice-five.
+We use the `slice_sample()` function after selecting the variables of interest to display  a few rows of this data frame in @tbl-evals-for-anova-slice-five.
 
 
 ```{r anova-create-evals_for_anova, echo=-1}
@@ -93,11 +93,8 @@ evals_for_anova |>
   kable(
     format = "markdown",
     booktabs = TRUE,
-    escape = FALSE,
-    col.names = NULL
-    #align = c('c', 'c', 'c')
-  ) |> 
-  #kbl(caption = "(ref:evals-for-anova-slice)") |> 
+    escape = FALSE
+  ) |>
   kable_styling(
     font_size = ifelse(is_latex_output(), 8, 16),
     latex_options = c("HOLD_position")
@@ -148,7 +145,7 @@ $$
 
 where $k$ is the number of groups, $n$ is the sample size, $\bar{y}_j$ is the mean for group $j$, and $\bar{y}$ is the overall sample mean. The associated degrees of freedom are $df_1 = k - 1$ and $df_2 = n - k$.
 
-In practice, however, statistical software computes the F-statistic automatically. The ANOVA output in Table @tbl-evals-for-anova-summary reports an F-statistic of 2.71.
+In practice, however, statistical software computes the F-statistic automatically. The ANOVA output in @tbl-evals-for-anova-summary reports an F-statistic of 2.71.
 
 Because there are three groups, the numerator degrees of freedom are
 $df_1 = 3 - 1 = 2$ and because there are 463 observations total, the denominator degrees of freedom are $df_2 = 463 - 3 = 460$. Notice that the p-value is represented by the upper tail area of the F-distribution to the right of the observed F-statistic.
@@ -225,7 +222,7 @@ We can assume that this is a random sample.
 
 We plan to regress `total_cup_points` (response variable) on the numerical explanatory variables `aroma`, `flavor`, and `moisture_percentage`. This will be our **full model**.
 
-We will then regress `total_cup_points` (response variable) on only the explanatory variables `aroma` and `flavor`. This is called a **reduced model** because it contains only a subset of the explanatory variables from the full model..
+We will then regress `total_cup_points` (response variable) on only the explanatory variables `aroma` and `moisture_percentage`. This is called a **reduced model** because it contains only a subset of the explanatory variables from the full model.
 
 Before proceeding, we construct a new data frame called `coffee_data` by keeping the variables of interest. 
 
@@ -324,18 +321,21 @@ H_A&:\quad \text{the full model is needed}
 This test is called an ANOVA test or an $F$-test, because the distribution of the test statistic follows an $F$ distribution. 
 The test compares the residual variation from the full and reduced models. If the full model reduces the residual variation substantially, then the additional explanatory variables improve the model fit.
 
-To get the result of this test in R, we use the R function `anova()` and enter the reduced model followed by the full model with Table \@ref(tab:mult-model-4) providing information for this test.
+To get the result of this test in R, we use the R function `anova()` and enter the reduced model followed by the full model, with @tbl-mult-model-4 providing information for this test.
 
 ```{r anova-alt2-dup1, eval=FALSE}
 anova(mod_mult_2, mod_mult_1) 
 ```
 
-```{r mult-model-4, echo=FALSE, purl=FALSE}
-anova_table <- anova(mod_mult_2, mod_mult_1) 
+```{r}
+#| label: tbl-mult-model-4
+#| tbl-cap: "ANOVA test for model comparison"
+#| echo: false
+#| purl: false
+anova_table <- anova(mod_mult_2, mod_mult_1)
 anova_table|>
   kbl(
     digits = 3,
-    caption = "ANOVA test for model comparison",
     booktabs = TRUE,
     linesep = ""
   ) |>
