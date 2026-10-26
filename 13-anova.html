@@ -463,7 +463,7 @@ window.Quarto = {
 <h2 data-number="13.1" class="anchored" data-anchor-id="sec-one-way-anova"><span class="header-section-number">13.1</span> One way ANOVA</h2>
 <p>ANOVA, or analysis of variance, is a statistical technique used to compare the means of three or more groups. Rather than comparing groups two at a time, ANOVA evaluates whether there is evidence that at least one group mean differs from the others.</p>
 <p>Recall the <code>evals</code> dataset loaded in the <code>moderndive</code> package containing student evaluations for professors from the University of Texas at Austin. Suppose we want to compare the average evaluation <code>score</code> across professors of different <code>rank</code>, specifically <code>teaching</code>, <code>tenure track</code>, and <code>tenured</code> professors. Because we are considering only one explanatory variable (<code>rank</code>), this method is called a one-way ANOVA.</p>
-<p>We use the <code>slice_sample()</code> function after selecting the variables of interest to display a few rows of this data frame in Table @tbl-evals-for-anova-slice-five.</p>
+<p>We use the <code>slice_sample()</code> function after selecting the variables of interest to display a few rows of this data frame in <a href="#tbl-evals-for-anova-slice-five" class="quarto-xref">Table&nbsp;<span>13.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>evals_for_anova <span class="ot">&lt;-</span> evals <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ID, prof_ID, score, rank) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -484,10 +484,10 @@ Table&nbsp;13.1: Five randomly selected rows from <code>evals_for_anova</code>
 <table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: right;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">prof_ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">score</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">rank</th>
 </tr>
 </thead>
 <tbody>
@@ -572,7 +572,7 @@ F = \frac{\text{MS}_{\text{between}}}{\text{MS}_{\text{within}}} =
 }
 \]</span></p>
 <p>where <span class="math inline">\(k\)</span> is the number of groups, <span class="math inline">\(n\)</span> is the sample size, <span class="math inline">\(\bar{y}_j\)</span> is the mean for group <span class="math inline">\(j\)</span>, and <span class="math inline">\(\bar{y}\)</span> is the overall sample mean. The associated degrees of freedom are <span class="math inline">\(df_1 = k - 1\)</span> and <span class="math inline">\(df_2 = n - k\)</span>.</p>
-<p>In practice, however, statistical software computes the F-statistic automatically. The ANOVA output in Table <a href="#tbl-evals-for-anova-summary" class="quarto-xref">Table&nbsp;<span>13.2</span></a> reports an F-statistic of 2.71.</p>
+<p>In practice, however, statistical software computes the F-statistic automatically. The ANOVA output in <a href="#tbl-evals-for-anova-summary" class="quarto-xref">Table&nbsp;<span>13.2</span></a> reports an F-statistic of 2.71.</p>
 <p>Because there are three groups, the numerator degrees of freedom are <span class="math inline">\(df_1 = 3 - 1 = 2\)</span> and because there are 463 observations total, the denominator degrees of freedom are <span class="math inline">\(df_2 = 463 - 3 = 460\)</span>. Notice that the p-value is represented by the upper tail area of the F-distribution to the right of the observed F-statistic.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -608,7 +608,7 @@ F = \frac{\text{MS}_{\text{between}}}{\text{MS}_{\text{within}}} =
 <p>Another useful hypothesis test in multiple linear regression compares two models: one with a given set of explanatory variables called the <em>full model</em> and the other with only a subset of those explanatory variables called the <em>reduced model</em>.</p>
 <p>To illustrate these methods, we use the <code>coffee_quality</code> data frame from the <code>moderndive</code> package. This dataset from the Coffee Quality Institute contains information about coffee rating scores based on ten different attributes: <code>aroma</code>, <code>flavor</code>, <code>aftertaste</code>, <code>acidity</code>, <code>body</code>, <code>balance</code>, <code>uniformity</code>, <code>clean_cup</code>, <code>sweetness</code>, and <code>overall.</code> In addition, the data frame contains other information such as the <code>moisture_percentage</code> and the coffee’s <code>country</code> and <code>continent_of_origin</code>. We can assume that this is a random sample.</p>
 <p>We plan to regress <code>total_cup_points</code> (response variable) on the numerical explanatory variables <code>aroma</code>, <code>flavor</code>, and <code>moisture_percentage</code>. This will be our <strong>full model</strong>.</p>
-<p>We will then regress <code>total_cup_points</code> (response variable) on only the explanatory variables <code>aroma</code> and <code>flavor</code>. This is called a <strong>reduced model</strong> because it contains only a subset of the explanatory variables from the full model..</p>
+<p>We will then regress <code>total_cup_points</code> (response variable) on only the explanatory variables <code>aroma</code> and <code>moisture_percentage</code>. This is called a <strong>reduced model</strong> because it contains only a subset of the explanatory variables from the full model.</p>
 <p>Before proceeding, we construct a new data frame called <code>coffee_data</code> by keeping the variables of interest.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>coffee_data <span class="ot">&lt;-</span> coffee_quality <span class="sc">|&gt;</span></span>
@@ -684,14 +684,19 @@ H_0&amp;:\quad \text{the reduced model is adequate}\\
 H_A&amp;:\quad \text{the full model is needed}
 \end{aligned}\]</span></p>
 <p>This test is called an ANOVA test or an <span class="math inline">\(F\)</span>-test, because the distribution of the test statistic follows an <span class="math inline">\(F\)</span> distribution. The test compares the residual variation from the full and reduced models. If the full model reduces the residual variation substantially, then the additional explanatory variables improve the model fit.</p>
-<p>To get the result of this test in R, we use the R function <code>anova()</code> and enter the reduced model followed by the full model with Table @ref(tab:mult-model-4) providing information for this test.</p>
+<p>To get the result of this test in R, we use the R function <code>anova()</code> and enter the reduced model followed by the full model, with <a href="#tbl-mult-model-4" class="quarto-xref">Table&nbsp;<span>13.3</span></a> providing information for this test.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_mult_2, mod_mult_1) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
+<div id="tbl-mult-model-4" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mult-model-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13.3: ANOVA test for model comparison
+</figcaption>
+<div aria-describedby="tbl-mult-model-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
-<caption>ANOVA test for model comparison</caption>
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Res.Df</th>
@@ -721,6 +726,9 @@ H_A&amp;:\quad \text{the full model is needed}
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</figure>
 </div>
 </div>
 <p>The test statistic is given in the second row for the column <code>F</code>. The test statistic is <span class="math inline">\(F =349.6\)</span> and the associated <span class="math inline">\(p\)</span>-value is near zero. In conclusion, we reject the null hypothesis and conclude that the full model was needed.</p>
