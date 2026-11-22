@@ -573,7 +573,7 @@ The RMSE of the parallel slopes is 119.38 and the RMSE of the interaction is 119
 
 @exr-ch07-c06 b) private colleges are only correlated with higher GPAs, because this would be an observational study
 
-@exr-ch07-c07 b) video games are only correlated with violent behavior, because this would be an observational study
+@exr-ch07-c07 c) video games cause violent behavior, because this would be a randomized experiment
 
 @exr-ch07-c08 Perhaps class size is a confounding variable for gpa, smaller sizes could lead to more individualized attention and higher grades. Perhaps parental control is a confounding variable for video games, children that play violent video games probably have less parental guidance or household rules leading to poor behavior choices.
 
